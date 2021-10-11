@@ -1,0 +1,733 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		20FD29974075AD973F2A391362B8EB4D /* Pods-xe_wallet-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D05F26D860DD965F9156AE5F540855D /* Pods-xe_wallet-dummy.m */; };
+		279F0426587B2DB71E739B7D6388029F /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = B080563FF7623A845E859D19CCCD861D /* KeychainItemAccessibility.swift */; };
+		3BE510AE2BCC161F2C1A6DAB58D2501A /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E31B0139775E941B16C553BB9D9CA792 /* KeychainWrapper.swift */; };
+		5183D23DC416531892A3F703A23AAA04 /* Pods-xe_wallet-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F8CBF6E29A3CB0FF0B46CB50BDB7E86 /* Pods-xe_wallet-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		5C139143D2917FF5F66F113AFC48618E /* FAPaginationLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B9E0072117B74832A85DED4FF12F54 /* FAPaginationLayout.swift */; };
+		5D919434BDC5ECFB1BEDF538465A92AF /* SwiftKeychainWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 56749ED2BE83286DBEC934CDC5C81D37 /* SwiftKeychainWrapper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		749D4C566A54AD84C29C0893008107D4 /* SwiftKeychainWrapper-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91FB245660A0FDC3EE13ABC11027A3B4 /* SwiftKeychainWrapper-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8693C6AE51790FF3760BB7998880FC0C /* KeychainWrapperSubscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF34311201BEC6685D4F27F5EB27FCC6 /* KeychainWrapperSubscript.swift */; };
+		87F6BD21F8829E8D5344E6E45489F21A /* FAPaginationLayout-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 50F864245FB5B5C6E59E63ED4589E6AC /* FAPaginationLayout-dummy.m */; };
+		8897306D0A7C396E798B87E4E142E0B6 /* FAPaginationLayout-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CA82F0EC40AB887346544C3C2AB8E249 /* FAPaginationLayout-umbrella.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9CF200F6088C39283046008BB8A81DCB /* SwiftKeychainWrapper-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 85F684724471EE7BBA3CB91C750B1E0E /* SwiftKeychainWrapper-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A167C1F904B99BA860FA20C93DC860CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CF903DF43E111410ECA0C288D36FA21A;
+			remoteInfo = SwiftKeychainWrapper;
+		};
+		D9880208F7F8F70D1C6D65B0E3A79132 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5647CF2DD2B8AD11B035C56525966E32;
+			remoteInfo = FAPaginationLayout;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		07B91CE0C5466E30C811A5FE7575A5A5 /* FAPaginationLayout-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FAPaginationLayout-prefix.pch"; sourceTree = "<group>"; };
+		0D99A4A7CAE6AE057F0F603FA534F94B /* Pods-xe_wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xe_wallet.release.xcconfig"; sourceTree = "<group>"; };
+		21B044B71AC46775C6B621A650C15639 /* Pods-xe_wallet-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-xe_wallet-acknowledgements.plist"; sourceTree = "<group>"; };
+		273F8018132489EC4917DC706B63F71F /* libFAPaginationLayout.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFAPaginationLayout.a; path = libFAPaginationLayout.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		34E960862F543C90AD8643332013B0F4 /* FAPaginationLayout.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FAPaginationLayout.release.xcconfig; sourceTree = "<group>"; };
+		37B9E0072117B74832A85DED4FF12F54 /* FAPaginationLayout.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FAPaginationLayout.swift; path = FAPaginationLayout/Source/FAPaginationLayout.swift; sourceTree = "<group>"; };
+		5069D199AB328CCD047E61C632CD7C32 /* libSwiftKeychainWrapper.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libSwiftKeychainWrapper.a; path = libSwiftKeychainWrapper.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		50F864245FB5B5C6E59E63ED4589E6AC /* FAPaginationLayout-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FAPaginationLayout-dummy.m"; sourceTree = "<group>"; };
+		56749ED2BE83286DBEC934CDC5C81D37 /* SwiftKeychainWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftKeychainWrapper.h; path = SwiftKeychainWrapper/SwiftKeychainWrapper.h; sourceTree = "<group>"; };
+		6C31E7BB18B977ACD96E6C8986A2D157 /* SwiftKeychainWrapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftKeychainWrapper-prefix.pch"; sourceTree = "<group>"; };
+		6D05F26D860DD965F9156AE5F540855D /* Pods-xe_wallet-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-xe_wallet-dummy.m"; sourceTree = "<group>"; };
+		7FA4A7E3DF90841BEFE8B29048FDD8D6 /* SwiftKeychainWrapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftKeychainWrapper.debug.xcconfig; sourceTree = "<group>"; };
+		85F684724471EE7BBA3CB91C750B1E0E /* SwiftKeychainWrapper-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftKeychainWrapper-dummy.m"; sourceTree = "<group>"; };
+		8F8CBF6E29A3CB0FF0B46CB50BDB7E86 /* Pods-xe_wallet-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-xe_wallet-umbrella.h"; sourceTree = "<group>"; };
+		91FB245660A0FDC3EE13ABC11027A3B4 /* SwiftKeychainWrapper-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftKeychainWrapper-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		AF34311201BEC6685D4F27F5EB27FCC6 /* KeychainWrapperSubscript.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapperSubscript.swift; path = SwiftKeychainWrapper/KeychainWrapperSubscript.swift; sourceTree = "<group>"; };
+		B080563FF7623A845E859D19CCCD861D /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainItemAccessibility.swift; path = SwiftKeychainWrapper/KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		B1C28FCB0A302A801FFC10E50C277EAB /* Pods-xe_wallet-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-xe_wallet-acknowledgements.markdown"; sourceTree = "<group>"; };
+		B6D742A587FE581418EBE0E40362D663 /* Pods-xe_wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-xe_wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		C05DF89FBAA6B6899BC200DE602E0F3D /* SwiftKeychainWrapper.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftKeychainWrapper.modulemap; sourceTree = "<group>"; };
+		CA82F0EC40AB887346544C3C2AB8E249 /* FAPaginationLayout-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FAPaginationLayout-umbrella.h"; sourceTree = "<group>"; };
+		E040AD9A7B01186CE0460FB6BDDF6B68 /* FAPaginationLayout.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FAPaginationLayout.modulemap; sourceTree = "<group>"; };
+		E0B2E2A625D40C4A6940FA23D8FF7E4C /* SwiftKeychainWrapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftKeychainWrapper.release.xcconfig; sourceTree = "<group>"; };
+		E31B0139775E941B16C553BB9D9CA792 /* KeychainWrapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeychainWrapper.swift; path = SwiftKeychainWrapper/KeychainWrapper.swift; sourceTree = "<group>"; };
+		EBCEE76B285FC09059B4DD588B028686 /* libPods-xe_wallet.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-xe_wallet.a"; path = "libPods-xe_wallet.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F258D2446B24F6679817F8F1BCD13205 /* FAPaginationLayout.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FAPaginationLayout.debug.xcconfig; sourceTree = "<group>"; };
+		F67DDF4F30CEB7F36ABD3C371F270A84 /* Pods-xe_wallet.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-xe_wallet.modulemap"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		03FAD228A604E2AD4752208356B49AC1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73FE3C4033376FF7ADC0A6DC62ECE213 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		821D18CAE398A48899322701898A0A49 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F59AFF7238C79A0199FA78953ACDB93 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7FF0EA5D6B31318CC3A0C3B3F0CE0F5B /* FAPaginationLayout */,
+				A765EDBDE718CD9C2DDD79A7A354DDF8 /* SwiftKeychainWrapper */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		423C60860819AB5A3B31207023C059D6 /* Pods-xe_wallet */ = {
+			isa = PBXGroup;
+			children = (
+				F67DDF4F30CEB7F36ABD3C371F270A84 /* Pods-xe_wallet.modulemap */,
+				B1C28FCB0A302A801FFC10E50C277EAB /* Pods-xe_wallet-acknowledgements.markdown */,
+				21B044B71AC46775C6B621A650C15639 /* Pods-xe_wallet-acknowledgements.plist */,
+				6D05F26D860DD965F9156AE5F540855D /* Pods-xe_wallet-dummy.m */,
+				8F8CBF6E29A3CB0FF0B46CB50BDB7E86 /* Pods-xe_wallet-umbrella.h */,
+				B6D742A587FE581418EBE0E40362D663 /* Pods-xe_wallet.debug.xcconfig */,
+				0D99A4A7CAE6AE057F0F603FA534F94B /* Pods-xe_wallet.release.xcconfig */,
+			);
+			name = "Pods-xe_wallet";
+			path = "Target Support Files/Pods-xe_wallet";
+			sourceTree = "<group>";
+		};
+		791FBE65AF5CCE17C64E88294B24A2B6 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				C05DF89FBAA6B6899BC200DE602E0F3D /* SwiftKeychainWrapper.modulemap */,
+				85F684724471EE7BBA3CB91C750B1E0E /* SwiftKeychainWrapper-dummy.m */,
+				6C31E7BB18B977ACD96E6C8986A2D157 /* SwiftKeychainWrapper-prefix.pch */,
+				91FB245660A0FDC3EE13ABC11027A3B4 /* SwiftKeychainWrapper-umbrella.h */,
+				7FA4A7E3DF90841BEFE8B29048FDD8D6 /* SwiftKeychainWrapper.debug.xcconfig */,
+				E0B2E2A625D40C4A6940FA23D8FF7E4C /* SwiftKeychainWrapper.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/SwiftKeychainWrapper";
+			sourceTree = "<group>";
+		};
+		7FF0EA5D6B31318CC3A0C3B3F0CE0F5B /* FAPaginationLayout */ = {
+			isa = PBXGroup;
+			children = (
+				37B9E0072117B74832A85DED4FF12F54 /* FAPaginationLayout.swift */,
+				FCFD9F47762E73D4CE2667435D6EE875 /* Support Files */,
+			);
+			name = FAPaginationLayout;
+			path = FAPaginationLayout;
+			sourceTree = "<group>";
+		};
+		A765EDBDE718CD9C2DDD79A7A354DDF8 /* SwiftKeychainWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				B080563FF7623A845E859D19CCCD861D /* KeychainItemAccessibility.swift */,
+				E31B0139775E941B16C553BB9D9CA792 /* KeychainWrapper.swift */,
+				AF34311201BEC6685D4F27F5EB27FCC6 /* KeychainWrapperSubscript.swift */,
+				56749ED2BE83286DBEC934CDC5C81D37 /* SwiftKeychainWrapper.h */,
+				791FBE65AF5CCE17C64E88294B24A2B6 /* Support Files */,
+			);
+			name = SwiftKeychainWrapper;
+			path = SwiftKeychainWrapper;
+			sourceTree = "<group>";
+		};
+		C06A352A62C469B9AAF9A9841862826E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				273F8018132489EC4917DC706B63F71F /* libFAPaginationLayout.a */,
+				EBCEE76B285FC09059B4DD588B028686 /* libPods-xe_wallet.a */,
+				5069D199AB328CCD047E61C632CD7C32 /* libSwiftKeychainWrapper.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C46B2EC00CC0DB503DE06002686491D1 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				423C60860819AB5A3B31207023C059D6 /* Pods-xe_wallet */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D89477F20FB1DE18A04690586D7808C4 /* Frameworks */,
+				1F59AFF7238C79A0199FA78953ACDB93 /* Pods */,
+				C06A352A62C469B9AAF9A9841862826E /* Products */,
+				C46B2EC00CC0DB503DE06002686491D1 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D89477F20FB1DE18A04690586D7808C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FCFD9F47762E73D4CE2667435D6EE875 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E040AD9A7B01186CE0460FB6BDDF6B68 /* FAPaginationLayout.modulemap */,
+				50F864245FB5B5C6E59E63ED4589E6AC /* FAPaginationLayout-dummy.m */,
+				07B91CE0C5466E30C811A5FE7575A5A5 /* FAPaginationLayout-prefix.pch */,
+				CA82F0EC40AB887346544C3C2AB8E249 /* FAPaginationLayout-umbrella.h */,
+				F258D2446B24F6679817F8F1BCD13205 /* FAPaginationLayout.debug.xcconfig */,
+				34E960862F543C90AD8643332013B0F4 /* FAPaginationLayout.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FAPaginationLayout";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		4AB1768396E2EC6474E470450F77C827 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5183D23DC416531892A3F703A23AAA04 /* Pods-xe_wallet-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		583599A79908335F4AE4D4903D46579F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8897306D0A7C396E798B87E4E142E0B6 /* FAPaginationLayout-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F3EFDE42C741E9CCC5571E5E5D0E1458 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5D919434BDC5ECFB1BEDF538465A92AF /* SwiftKeychainWrapper.h in Headers */,
+				749D4C566A54AD84C29C0893008107D4 /* SwiftKeychainWrapper-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		5647CF2DD2B8AD11B035C56525966E32 /* FAPaginationLayout */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2745650B7795B15B7D4CB0DB107C69CC /* Build configuration list for PBXNativeTarget "FAPaginationLayout" */;
+			buildPhases = (
+				583599A79908335F4AE4D4903D46579F /* Headers */,
+				16F6AFF7E495B67E3089A5E582C53F39 /* Sources */,
+				73FE3C4033376FF7ADC0A6DC62ECE213 /* Frameworks */,
+				9DA06555CF1B2BF0F4C0291FC25599CA /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FAPaginationLayout;
+			productName = FAPaginationLayout;
+			productReference = 273F8018132489EC4917DC706B63F71F /* libFAPaginationLayout.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		9672EA1B1EE52C7B348A316C2D0517FB /* Pods-xe_wallet */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94098E0732E382ADE218F33EFB5A326B /* Build configuration list for PBXNativeTarget "Pods-xe_wallet" */;
+			buildPhases = (
+				4AB1768396E2EC6474E470450F77C827 /* Headers */,
+				EE9770881F64514DE7E5E717B0AF83FD /* Sources */,
+				03FAD228A604E2AD4752208356B49AC1 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1FB7F29C72F3EC2130671AFEAF75918C /* PBXTargetDependency */,
+				48A9A187A66DCE4AF15025AE159FE97A /* PBXTargetDependency */,
+			);
+			name = "Pods-xe_wallet";
+			productName = "Pods-xe_wallet";
+			productReference = EBCEE76B285FC09059B4DD588B028686 /* libPods-xe_wallet.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		CF903DF43E111410ECA0C288D36FA21A /* SwiftKeychainWrapper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1621E05FE4208DD33708F181B57CEE14 /* Build configuration list for PBXNativeTarget "SwiftKeychainWrapper" */;
+			buildPhases = (
+				F3EFDE42C741E9CCC5571E5E5D0E1458 /* Headers */,
+				6391D41928ABC7E45CA6422A8B8EF85B /* Sources */,
+				821D18CAE398A48899322701898A0A49 /* Frameworks */,
+				FCF21BDD33AA572CE9C44A8206E322BF /* Copy generated compatibility header */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SwiftKeychainWrapper;
+			productName = SwiftKeychainWrapper;
+			productReference = 5069D199AB328CCD047E61C632CD7C32 /* libSwiftKeychainWrapper.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = C06A352A62C469B9AAF9A9841862826E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5647CF2DD2B8AD11B035C56525966E32 /* FAPaginationLayout */,
+				9672EA1B1EE52C7B348A316C2D0517FB /* Pods-xe_wallet */,
+				CF903DF43E111410ECA0C288D36FA21A /* SwiftKeychainWrapper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9DA06555CF1B2BF0F4C0291FC25599CA /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/FAPaginationLayout/FAPaginationLayout.modulemap",
+				"${PODS_ROOT}/Headers/Public/FAPaginationLayout/FAPaginationLayout-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/FAPaginationLayout-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/FAPaginationLayout/FAPaginationLayout.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/FAPaginationLayout/FAPaginationLayout-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+		FCF21BDD33AA572CE9C44A8206E322BF /* Copy generated compatibility header */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h",
+				"${PODS_ROOT}/Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap",
+				"${PODS_ROOT}/Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper-umbrella.h",
+			);
+			name = "Copy generated compatibility header";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper-umbrella.h",
+				"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "COMPATIBILITY_HEADER_PATH=\"${BUILT_PRODUCTS_DIR}/Swift Compatibility Header/${PRODUCT_MODULE_NAME}-Swift.h\"\nMODULE_MAP_PATH=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_MODULE_NAME}.modulemap\"\n\nditto \"${DERIVED_SOURCES_DIR}/${PRODUCT_MODULE_NAME}-Swift.h\" \"${COMPATIBILITY_HEADER_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap\" \"${MODULE_MAP_PATH}\"\nditto \"${PODS_ROOT}/Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper-umbrella.h\" \"${BUILT_PRODUCTS_DIR}\"\nprintf \"\\n\\nmodule ${PRODUCT_MODULE_NAME}.Swift {\\n  header \\\"${COMPATIBILITY_HEADER_PATH}\\\"\\n  requires objc\\n}\\n\" >> \"${MODULE_MAP_PATH}\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		16F6AFF7E495B67E3089A5E582C53F39 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C139143D2917FF5F66F113AFC48618E /* FAPaginationLayout.swift in Sources */,
+				87F6BD21F8829E8D5344E6E45489F21A /* FAPaginationLayout-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6391D41928ABC7E45CA6422A8B8EF85B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				279F0426587B2DB71E739B7D6388029F /* KeychainItemAccessibility.swift in Sources */,
+				3BE510AE2BCC161F2C1A6DAB58D2501A /* KeychainWrapper.swift in Sources */,
+				8693C6AE51790FF3760BB7998880FC0C /* KeychainWrapperSubscript.swift in Sources */,
+				9CF200F6088C39283046008BB8A81DCB /* SwiftKeychainWrapper-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EE9770881F64514DE7E5E717B0AF83FD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				20FD29974075AD973F2A391362B8EB4D /* Pods-xe_wallet-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1FB7F29C72F3EC2130671AFEAF75918C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FAPaginationLayout;
+			target = 5647CF2DD2B8AD11B035C56525966E32 /* FAPaginationLayout */;
+			targetProxy = D9880208F7F8F70D1C6D65B0E3A79132 /* PBXContainerItemProxy */;
+		};
+		48A9A187A66DCE4AF15025AE159FE97A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftKeychainWrapper;
+			target = CF903DF43E111410ECA0C288D36FA21A /* SwiftKeychainWrapper */;
+			targetProxy = A167C1F904B99BA860FA20C93DC860CF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		02DB0061F51C5156614F038CC87C0511 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B6D742A587FE581418EBE0E40362D663 /* Pods-xe_wallet.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-xe_wallet/Pods-xe_wallet.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		14330C92FB32DDFB21E9EBC07255C3D5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F258D2446B24F6679817F8F1BCD13205 /* FAPaginationLayout.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FAPaginationLayout/FAPaginationLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/FAPaginationLayout/FAPaginationLayout.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FAPaginationLayout;
+				PRODUCT_NAME = FAPaginationLayout;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2385F6C0345F1CE530824B3C20EAB4DB /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E0B2E2A625D40C4A6940FA23D8FF7E4C /* SwiftKeychainWrapper.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = SwiftKeychainWrapper;
+				PRODUCT_NAME = SwiftKeychainWrapper;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		296940B0BD49808004A021ED8760FA0F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0D99A4A7CAE6AE057F0F603FA534F94B /* Pods-xe_wallet.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-xe_wallet/Pods-xe_wallet.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6E56535E3A17F472A4D15644B6EF42A7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7FA4A7E3DF90841BEFE8B29048FDD8D6 /* SwiftKeychainWrapper.debug.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/SwiftKeychainWrapper/SwiftKeychainWrapper-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/SwiftKeychainWrapper/SwiftKeychainWrapper.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = SwiftKeychainWrapper;
+				PRODUCT_NAME = SwiftKeychainWrapper;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DE5143C03248BB6CD542DE3963D6F3A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		9E406C6AAF85E580207CD97B0044DEAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		EF5A4F17293FC67FD417867EDCD78946 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34E960862F543C90AD8643332013B0F4 /* FAPaginationLayout.release.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FAPaginationLayout/FAPaginationLayout-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MODULEMAP_FILE = Headers/Public/FAPaginationLayout/FAPaginationLayout.modulemap;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FAPaginationLayout;
+				PRODUCT_NAME = FAPaginationLayout;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1621E05FE4208DD33708F181B57CEE14 /* Build configuration list for PBXNativeTarget "SwiftKeychainWrapper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E56535E3A17F472A4D15644B6EF42A7 /* Debug */,
+				2385F6C0345F1CE530824B3C20EAB4DB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		2745650B7795B15B7D4CB0DB107C69CC /* Build configuration list for PBXNativeTarget "FAPaginationLayout" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				14330C92FB32DDFB21E9EBC07255C3D5 /* Debug */,
+				EF5A4F17293FC67FD417867EDCD78946 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DE5143C03248BB6CD542DE3963D6F3A /* Debug */,
+				9E406C6AAF85E580207CD97B0044DEAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94098E0732E382ADE218F33EFB5A326B /* Build configuration list for PBXNativeTarget "Pods-xe_wallet" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				02DB0061F51C5156614F038CC87C0511 /* Debug */,
+				296940B0BD49808004A021ED8760FA0F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}

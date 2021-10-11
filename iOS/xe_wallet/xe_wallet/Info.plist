@@ -2,6 +2,24 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundleDisplayName</key>
+	<string>XEWallet</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>This application wants to access your FaceID scanner to allow easier login</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Inter-Bold</string>
+		<string>Inter-ExtraBold</string>
+		<string>Inter-ExtraLight</string>
+		<string>Inter-Light</string>
+		<string>Inter-Medium</string>
+		<string>Inter-Regular</string>
+		<string>Inter-Thin</string>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -21,5 +39,9 @@
 			</array>
 		</dict>
 	</dict>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleLightContent</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

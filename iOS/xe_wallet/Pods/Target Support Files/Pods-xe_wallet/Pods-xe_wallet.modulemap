@@ -1,0 +1,6 @@
+module Pods_xe_wallet {
+  umbrella header "Pods-xe_wallet-umbrella.h"
+
+  export *
+  module * { export * }
+}

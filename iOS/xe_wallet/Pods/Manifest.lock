@@ -1,0 +1,20 @@
+PODS:
+  - FAPaginationLayout (2.0.1)
+  - SwiftKeychainWrapper (4.0.1)
+
+DEPENDENCIES:
+  - FAPaginationLayout
+  - SwiftKeychainWrapper
+
+SPEC REPOS:
+  trunk:
+    - FAPaginationLayout
+    - SwiftKeychainWrapper
+
+SPEC CHECKSUMS:
+  FAPaginationLayout: 5f9d95fbd94dff12f863c196640bd797abe68907
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+
+PODFILE CHECKSUM: e12cfceb4165d25ad3bde86ecb9b435eaafc6e67
+
+COCOAPODS: 1.10.1

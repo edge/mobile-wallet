@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.otf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-Regular.otf">
+            <string>Inter-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Enter Pin View Controller-->
+        <scene sceneID="DKk-6p-XXS">
+            <objects>
+                <viewController storyboardIdentifier="EnterPinViewController" modalPresentationStyle="fullScreen" id="RVQ-ks-Uks" customClass="EnterPinViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LeV-Tq-hqW">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJp-qB-4aU">
+                                <rect key="frame" x="167" y="160" width="80.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
+                                <color key="textColor" name="FontMain"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign in with your 6 digit code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="51J-Zi-Dje">
+                                <rect key="frame" x="97" y="186" width="220" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                <color key="textColor" name="FontSecondary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Gx-Jy-9Ae" customClass="PinEntryViewWrapper" customModule="xe_wallet" customModuleProvider="target">
+                                <rect key="frame" x="16" y="229.5" width="382" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="5Gx-Jy-9Ae" secondAttribute="height" multiplier="191:30" id="phE-Rm-fK2"/>
+                                </constraints>
+                            </view>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="63O-Bv-189">
+                                <rect key="frame" x="159" y="744" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TRT-of-cQE"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                        <constraints>
+                            <constraint firstItem="sJp-qB-4aU" firstAttribute="top" secondItem="TRT-of-cQE" secondAttribute="top" constant="116" id="11i-sh-3L7"/>
+                            <constraint firstItem="sJp-qB-4aU" firstAttribute="centerX" secondItem="LeV-Tq-hqW" secondAttribute="centerX" id="AxF-6j-AAh"/>
+                            <constraint firstItem="5Gx-Jy-9Ae" firstAttribute="top" secondItem="51J-Zi-Dje" secondAttribute="bottom" constant="24" id="TFf-8d-ZXq"/>
+                            <constraint firstItem="51J-Zi-Dje" firstAttribute="top" secondItem="sJp-qB-4aU" secondAttribute="bottom" constant="4" id="YRq-DV-8DF"/>
+                            <constraint firstItem="TRT-of-cQE" firstAttribute="trailing" secondItem="5Gx-Jy-9Ae" secondAttribute="trailing" constant="16" id="jqf-PR-v6c"/>
+                            <constraint firstItem="51J-Zi-Dje" firstAttribute="centerX" secondItem="LeV-Tq-hqW" secondAttribute="centerX" id="twy-4X-Mq9"/>
+                            <constraint firstItem="5Gx-Jy-9Ae" firstAttribute="leading" secondItem="TRT-of-cQE" secondAttribute="leading" constant="16" id="vAQ-E6-yDr"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="jf8-Cc-gHy"/>
+                    <connections>
+                        <outlet property="pinEntryView" destination="5Gx-Jy-9Ae" id="KSu-aD-yJk"/>
+                        <outlet property="textEntry" destination="63O-Bv-189" id="o6n-lU-D2F"/>
+                        <segue destination="kv6-6c-gRl" kind="show" identifier="ShowWalletViewController" animates="NO" id="0LE-PL-Lr7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4az-uX-qmc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="429" y="708"/>
+        </scene>
+        <!--WalletNavigationController-->
+        <scene sceneID="hzd-U7-eH5">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Wallet" referencedIdentifier="WalletNavigationController" id="kv6-6c-gRl" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ghr-Wh-Xsy"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dl3-sI-6Oh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1277" y="708"/>
+        </scene>
+        <!--Create Pin View Controller-->
+        <scene sceneID="zS1-89-vqh">
+            <objects>
+                <viewController storyboardIdentifier="CreatePinViewController" modalPresentationStyle="fullScreen" id="0DZ-2K-faE" customClass="CreatePinViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6bZ-WG-xcZ" customClass="Create">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r0y-8Q-cPP">
+                                <rect key="frame" x="161" y="160" width="92.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
+                                <color key="textColor" name="FontMain"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a PIN to secure your wallets" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6Z-Q3-YvJ">
+                                <rect key="frame" x="74" y="186" width="266" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                <color key="textColor" name="FontSecondary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kmc-Zh-Ksz" customClass="PinEntryViewWrapper" customModule="xe_wallet" customModuleProvider="target">
+                                <rect key="frame" x="16" y="229.5" width="382" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Kmc-Zh-Ksz" secondAttribute="height" multiplier="191:30" id="Aah-3o-T4S"/>
+                                </constraints>
+                            </view>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QGL-L2-6qA">
+                                <rect key="frame" x="163" y="828" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jWy-iy-mQm"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                        <constraints>
+                            <constraint firstItem="r0y-8Q-cPP" firstAttribute="centerX" secondItem="6bZ-WG-xcZ" secondAttribute="centerX" id="7xU-eQ-XwB"/>
+                            <constraint firstItem="d6Z-Q3-YvJ" firstAttribute="top" secondItem="r0y-8Q-cPP" secondAttribute="bottom" constant="4" id="9Zd-u0-ZpG"/>
+                            <constraint firstItem="Kmc-Zh-Ksz" firstAttribute="leading" secondItem="jWy-iy-mQm" secondAttribute="leading" constant="16" id="EaV-Lk-GIA"/>
+                            <constraint firstItem="r0y-8Q-cPP" firstAttribute="top" secondItem="jWy-iy-mQm" secondAttribute="top" constant="116" id="awv-TB-FVw"/>
+                            <constraint firstItem="Kmc-Zh-Ksz" firstAttribute="top" secondItem="d6Z-Q3-YvJ" secondAttribute="bottom" constant="24" id="bRx-Al-FLM"/>
+                            <constraint firstItem="jWy-iy-mQm" firstAttribute="trailing" secondItem="Kmc-Zh-Ksz" secondAttribute="trailing" constant="16" id="i4d-ke-3xI"/>
+                            <constraint firstItem="d6Z-Q3-YvJ" firstAttribute="centerX" secondItem="6bZ-WG-xcZ" secondAttribute="centerX" id="tFl-j1-d8x"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="H13-3R-JDh"/>
+                    <connections>
+                        <outlet property="pinEntryView" destination="Kmc-Zh-Ksz" id="m0M-nZ-2Zm"/>
+                        <outlet property="textEntry" destination="QGL-L2-6qA" id="TUv-kW-EvU"/>
+                        <segue destination="fYc-q1-Q0V" kind="show" identifier="ShowConfirmPinViewController" animates="NO" id="Wf6-ys-Ogh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="I5R-uv-iBm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="428.98550724637687" y="-80.357142857142847"/>
+        </scene>
+        <!--Confirm Pin View Controller-->
+        <scene sceneID="Z8R-wc-fak">
+            <objects>
+                <viewController storyboardIdentifier="ConfirmPinViewController" modalPresentationStyle="fullScreen" id="fYc-q1-Q0V" customClass="ConfirmPinViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="F9s-ut-7rr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zj6-TU-0lz">
+                                <rect key="frame" x="155.5" y="160" width="103.5" height="22"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
+                                <color key="textColor" name="FontMain"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ensure you backup this code" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jp6-w7-2Q5">
+                                <rect key="frame" x="98" y="186" width="218" height="19.5"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                <color key="textColor" name="FontSecondary"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xTp-uJ-eWe" customClass="PinEntryViewWrapper" customModule="xe_wallet" customModuleProvider="target">
+                                <rect key="frame" x="16" y="229.5" width="382" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xTp-uJ-eWe" secondAttribute="height" multiplier="191:30" id="zqk-eM-hqR"/>
+                                </constraints>
+                            </view>
+                            <textField hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K8t-xn-9wH">
+                                <rect key="frame" x="159" y="810" width="97" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="k3A-lV-IWk"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                        <constraints>
+                            <constraint firstItem="xTp-uJ-eWe" firstAttribute="top" secondItem="jp6-w7-2Q5" secondAttribute="bottom" constant="24" id="El3-as-64h"/>
+                            <constraint firstItem="zj6-TU-0lz" firstAttribute="top" secondItem="k3A-lV-IWk" secondAttribute="top" constant="116" id="K3B-Uf-V0u"/>
+                            <constraint firstItem="k3A-lV-IWk" firstAttribute="trailing" secondItem="xTp-uJ-eWe" secondAttribute="trailing" constant="16" id="QjV-m6-3N7"/>
+                            <constraint firstItem="jp6-w7-2Q5" firstAttribute="centerX" secondItem="F9s-ut-7rr" secondAttribute="centerX" id="Ylb-oi-rTI"/>
+                            <constraint firstItem="zj6-TU-0lz" firstAttribute="centerX" secondItem="F9s-ut-7rr" secondAttribute="centerX" id="fC9-aX-ov9"/>
+                            <constraint firstItem="xTp-uJ-eWe" firstAttribute="leading" secondItem="k3A-lV-IWk" secondAttribute="leading" constant="16" id="vV8-yC-5lE"/>
+                            <constraint firstItem="jp6-w7-2Q5" firstAttribute="top" secondItem="zj6-TU-0lz" secondAttribute="bottom" constant="4" id="w9l-Di-EJE"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="bOH-W7-6YS"/>
+                    <connections>
+                        <outlet property="pinEntryView" destination="xTp-uJ-eWe" id="Pjd-GX-fLS"/>
+                        <outlet property="textEntry" destination="K8t-xn-9wH" id="4eO-jh-ZHu"/>
+                        <segue destination="kv6-6c-gRl" kind="show" identifier="ShowWalletViewController" animates="NO" id="8Bl-N2-bzg"/>
+                        <segue destination="2xp-yC-OnJ" kind="unwind" identifier="UnwindToPinEntry" animates="NO" unwindAction="unwindToPinEntryWithSender:" id="MSr-0f-X5l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="07e-2j-e7c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="2xp-yC-OnJ" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="1278" y="-80"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="8Bl-N2-bzg"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <namedColor name="BackgroundMain">
+            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FontMain">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FontSecondary">
+            <color red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
