@@ -12,6 +12,18 @@ enum TransactionType: String {
     case send = "Sent"
     case receive = "Received"
     case exchange = "Exchanged"
+    
+    func getImageName() -> String {
+        
+        switch self {
+        case .send:
+            return "send"
+        case .receive:
+            return "receive"
+        case .exchange:
+            return "exchange"
+        }
+    }
 }
 
 enum TransactionStatus: String {

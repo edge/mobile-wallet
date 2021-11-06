@@ -14,6 +14,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var cardView: UIView!
     
     @IBOutlet weak var backupView: UIView!
     
@@ -32,17 +33,19 @@ class WalletCollectionViewCell: UICollectionViewCell {
     public func config(data: WalletDataModel) {
         
         self.walletTypeIcon.image = UIImage(named:data.type.rawValue)
-        self.addressLabel.text = "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F"
+        self.addressLabel.text = data.address
         self.amountLabel.text = "1,303.000000 \(data.type.getDisplayLabel())"
         self.valueLabel.text = "$900 USD"
+    }
+    
+    public func getCardViewImage() -> UIImage {
         
-        if data.backedup == true {
+        let renderer = UIGraphicsImageRenderer(size: self.cardView.bounds.size)
+        let image = renderer.image { ctx in
             
-            self.backupView.isHidden = true
-        } else {
-            
-            self.backupView.isHidden = false
+            self.cardView.drawHierarchy(in: self.cardView.bounds, afterScreenUpdates: true)
         }
+        return image
     }
 }
 

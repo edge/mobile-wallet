@@ -7,12 +7,10 @@
 
 import Foundation
 
-
-
 struct WalletDataModel {
     
     var type: WalletType
-    var backedup: Bool
+    var address: String
     var transactions: [TransactionRecordDataModel]?
 }
 

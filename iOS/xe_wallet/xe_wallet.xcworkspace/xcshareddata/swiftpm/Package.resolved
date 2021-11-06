@@ -1,0 +1,43 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "IQKeyboardManagerSwift",
+        "repositoryURL": "https://github.com/hackiftekhar/IQKeyboardManager.git",
+        "state": {
+          "branch": null,
+          "revision": "4dc6bc7d1c9747bd0c261c8c055903f9fdef91f7",
+          "version": "6.5.6"
+        }
+      },
+      {
+        "package": "keccak256",
+        "repositoryURL": "https://github.com/yeeth/keccak256.swift",
+        "state": {
+          "branch": "master",
+          "revision": "1a71ee667b55250077550147e8749ec864c469a8",
+          "version": null
+        }
+      },
+      {
+        "package": "secp256k1",
+        "repositoryURL": "https://github.com/Boilertalk/secp256k1.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "823281fe9def21b384099b72a9a53ca988317b20",
+          "version": "0.1.4"
+        }
+      },
+      {
+        "package": "SwiftKeccak",
+        "repositoryURL": "https://github.com/bitflying/SwiftKeccak.git",
+        "state": {
+          "branch": null,
+          "revision": "698d440536f87628a4b326ff2d7ea7030c3ab026",
+          "version": "0.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

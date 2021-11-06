@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController, UITableViewDelegate,  UITableViewDataSource {
+class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
 
     var settingsMenuTableViewData = [SettingsDataModel]()
     
@@ -18,6 +18,8 @@ class SettingsViewController: UIViewController, UITableViewDelegate,  UITableVie
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.settingsMenuTableViewData = SettingsDataModelManager.shared.getSettingsData()
+        
+        self.title = "Edge (XE) Testnet"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,5 +56,23 @@ extension SettingsViewController {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+        switch self.settingsMenuTableViewData[indexPath.row].linkDataType {
+            
+        case .header:
+            break
+        case .screen:
+            self.performSegue(withIdentifier: self.settingsMenuTableViewData[indexPath.row].linkData, sender: nil)
+            break
+        case .web:
+            if let url = URL(string: self.settingsMenuTableViewData[indexPath.row].linkData) {
+
+                UIApplication.shared.open(url)
+            }
+            break
+        }
+    }
 }
 

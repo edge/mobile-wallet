@@ -22,8 +22,17 @@ enum SettingsCellType: String {
     }
 }
 
+enum SettingsLinkDataType {
+    
+    case header
+    case screen
+    case web
+}
+
 struct SettingsDataModel {
     
     var type: SettingsCellType
     var menuTitle: String
+    var linkDataType: SettingsLinkDataType
+    var linkData: String
 }

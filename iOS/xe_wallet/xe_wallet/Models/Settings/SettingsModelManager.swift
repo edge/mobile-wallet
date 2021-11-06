@@ -15,11 +15,12 @@ class SettingsDataModelManager {
     
     private init() {
         
-        self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"ACCOUNT"))
-        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Manage Wallets"))
-        self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"INFO"))
-        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Support"))
-        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"About"))
+        self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"ACCOUNT", linkDataType:.header, linkData: ""))
+        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Manage Wallets", linkDataType:.screen, linkData: "ShowManageViewController"))
+        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Network", linkDataType:.screen, linkData: "ShowNetworkViewController"))
+        self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"INFO", linkDataType:.header, linkData: ""))
+        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Support", linkDataType:.web, linkData: "https://wiki.edge.network/support/community-guidelines"))
+        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"About", linkDataType:.web, linkData: "https://wiki.edge.network/support/community-guidelines"))
     }
     
     public func getSettingsData() -> [SettingsDataModel] {

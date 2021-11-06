@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+struct AddressKeyPairModel {
+    
+    var privateKey: PrivateKey
+    var address: String
+}

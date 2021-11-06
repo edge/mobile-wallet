@@ -14,7 +14,9 @@ enum WalletType: String {
     case ethereum = "coin_ethereum"
     
     func getDisplayLabel() -> String {
+        
         switch self {
+            
         case .xe:
             return "XE"
         case .edge:

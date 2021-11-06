@@ -15,6 +15,10 @@ class EnterPinViewController: UIViewController {
     @IBOutlet weak var textEntry: UITextField!
     var entered = false
     
+    let incorrectPinMessageHeader = "Incorrect PIN"
+    let incorrectPinMessageBody = "You entered an incorrect PIN.  Please try again"
+    let incorrectPinButtonText = "Retry"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -29,10 +33,10 @@ class EnterPinViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        /*let story = UIStoryboard(name: "Wallet", bundle:nil)
+        let story = UIStoryboard(name: "Wallet", bundle:nil)
         let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
         UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()*/
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -41,7 +45,7 @@ class EnterPinViewController: UIViewController {
         
             _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
             
-            if characters >= 6 && self.entered == false {
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
                 
                 self.entered = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -59,8 +63,8 @@ class EnterPinViewController: UIViewController {
                             }
                         } else {
                             
-                            let alert = UIAlertController(title: "Incorrect PIN", message: "You entered an incorrect PIN.  Please try again", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                            let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
 
                                 LoginDataModelManager.shared.increaseLoginAttemts()
                                 self.textEntry.text = ""

@@ -19,7 +19,7 @@ class SplashViewController: UIViewController {
         super.viewDidAppear(animated)
     
 
-        let username = "xewalletpincode2"
+        let username = "xewalletpincode"
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: username,

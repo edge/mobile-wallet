@@ -2,16 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>CFBundleIdentifier</key>
-	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-	<key>CFBundleName</key>
-	<string>$(PRODUCT_NAME)</string>
-	<key>CFBundleDisplayName</key>
-	<string>XEWallet</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>This application wants to access your FaceID scanner to allow easier login</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>RobotoMono-Thin</string>
+		<string>RobotoMono-Regular</string>
+		<string>RobotoMono-Medium</string>
+		<string>RobotoMono-Bold</string>
 		<string>Inter-Bold</string>
 		<string>Inter-ExtraBold</string>
 		<string>Inter-ExtraLight</string>

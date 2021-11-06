@@ -30,24 +30,9 @@ class TransactionTableViewCell: UITableViewCell {
     
     func configure(data: TransactionRecordDataModel) {
         
-        var imageString = "send"
-        
-        switch data.type {
-        case .send:
-            imageString = "send"
-            self.typeLabel.text = "Sent"
-            break
-        case.receive:
-            imageString = "receive"
-            self.typeLabel.text = "Received"
-            break
-        case .exchange:
-            imageString = "exchange"
-            self.typeLabel.text = "Exchanged"
-            break
-        }
-        self.typeImageView.image = UIImage(named:imageString)
+        self.typeImageView.image = UIImage(named:data.type.getImageName())
 
+        self.typeLabel.text = "\(data.type.rawValue)"
         self.memoLabel.text = "Memo"
         self.amountLabel.text = "\(data.amount)"
         self.statusLabel.text = "\(data.status.rawValue)"

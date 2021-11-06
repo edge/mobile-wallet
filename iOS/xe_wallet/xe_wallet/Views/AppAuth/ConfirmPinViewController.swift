@@ -18,6 +18,10 @@ class ConfirmPinViewController: UIViewController {
     var pinCode:String = ""
     var entered = false
     
+    let incorrectPinMessageHeader = "Incorrect PIN"
+    let incorrectPinMessageBody = "The PIN does not match previously entered PIN.  Please try again"
+    let incorrectPinButtonText = "Retry"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -34,7 +38,7 @@ class ConfirmPinViewController: UIViewController {
         if let characters = textField.text?.count {
         
             _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
-            if characters >= 6 && self.entered == false {
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
                 
                 self.entered = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
@@ -45,7 +49,7 @@ class ConfirmPinViewController: UIViewController {
                             
                             DispatchQueue.main.async {
                                 
-                                let username = "xewalletpincode2"
+                                let username = "xewalletpincode"
                                 let password = self.pinCode.data(using: .utf8)!
 
                                 let attributes: [String: Any] = [
@@ -62,8 +66,8 @@ class ConfirmPinViewController: UIViewController {
                                     UIApplication.shared.windows.first?.makeKeyAndVisible()
                                 } else {
 
-                                    let alert = UIAlertController(title: "Incorrect PIN", message: "The PIN does not match previously entered PIN.  Please try again", preferredStyle: .alert)
-                                    alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                                    let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
 
                                         self.performSegue(withIdentifier: "UnwindToPinEntry", sender: self)
                                     }))
@@ -72,8 +76,8 @@ class ConfirmPinViewController: UIViewController {
                             }
                         } else {
                                                         
-                            let alert = UIAlertController(title: "Incorrect PIN", message: "The PIN does not match previously entered PIN.  Please try again", preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: "Retry", style: .default, handler: { action in
+                            let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
 
                                 self.performSegue(withIdentifier: "UnwindToPinEntry", sender: self)
                             }))

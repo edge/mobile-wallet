@@ -10,4 +10,5 @@ import Foundation
 struct AppDataModel {
     
     var pinCode: String = ""
+    var testMode = false
 }

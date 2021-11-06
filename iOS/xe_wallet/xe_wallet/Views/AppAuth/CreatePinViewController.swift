@@ -51,7 +51,7 @@ class CreatePinViewController: UIViewController {
         if let characters = textField.text?.count {
         
             _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
-            if characters >= 6 && self.entered == false {
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
 
                 self.entered = true
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

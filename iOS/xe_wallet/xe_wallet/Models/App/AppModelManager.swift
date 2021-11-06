@@ -13,6 +13,8 @@ class AppDataModelManager {
     
     var appData = AppDataModel()
     
+    let appPinCharacterLength = 6
+    
     private init() {
         
     }
@@ -34,5 +36,16 @@ class AppDataModelManager {
             return true
         }
         return false
+    }
+    
+    func testModeStatus() -> Bool {
+        
+        return appData.testMode
+    }
+    
+    func testModeToggle() -> Bool {
+        
+        appData.testMode.toggle()
+        return appData.testMode
     }
 }
