@@ -98,6 +98,9 @@
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="brf-87-Zo8">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="continueButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dg1-v4-svx"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="ButtonGreen"/>
@@ -127,7 +130,18 @@
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yGx-qG-54G">
                                                                 <rect key="frame" x="2" y="2" width="44" height="44"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cLq-wd-XQ8">
+                                                                        <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                                                    </imageView>
+                                                                </subviews>
                                                                 <color key="backgroundColor" name="MainBlack"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="cLq-wd-XQ8" firstAttribute="top" secondItem="yGx-qG-54G" secondAttribute="top" constant="8" id="1u8-TO-RbY"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="cLq-wd-XQ8" secondAttribute="trailing" constant="8" id="BfA-HH-FZg"/>
+                                                                    <constraint firstItem="cLq-wd-XQ8" firstAttribute="leading" secondItem="yGx-qG-54G" secondAttribute="leading" constant="8" id="dIG-bh-49E"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="cLq-wd-XQ8" secondAttribute="bottom" constant="8" id="mbm-0o-0sb"/>
+                                                                </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="22"/>
@@ -155,7 +169,18 @@
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mpL-C3-X90">
                                                                 <rect key="frame" x="2" y="2" width="44" height="44"/>
+                                                                <subviews>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mW1-wf-CrO">
+                                                                        <rect key="frame" x="8" y="8" width="28" height="28"/>
+                                                                    </imageView>
+                                                                </subviews>
                                                                 <color key="backgroundColor" name="MainBlack"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="bottom" secondItem="mW1-wf-CrO" secondAttribute="bottom" constant="8" id="ScH-2z-RJe"/>
+                                                                    <constraint firstItem="mW1-wf-CrO" firstAttribute="leading" secondItem="mpL-C3-X90" secondAttribute="leading" constant="8" id="bMf-ea-kEZ"/>
+                                                                    <constraint firstItem="mW1-wf-CrO" firstAttribute="top" secondItem="mpL-C3-X90" secondAttribute="top" constant="8" id="hMb-sg-NPh"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="mW1-wf-CrO" secondAttribute="trailing" constant="8" id="nBm-yz-GNm"/>
+                                                                </constraints>
                                                                 <userDefinedRuntimeAttributes>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                         <integer key="value" value="22"/>
@@ -257,12 +282,18 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="arrowImage" destination="y3w-MV-YhH" id="wRj-Xr-ZEt"/>
                         <outlet property="backgroundView" destination="OIH-Hk-5RD" id="k9c-us-EEP"/>
+                        <outlet property="buttonLabel" destination="EQn-gb-OpE" id="FFF-Z7-ufa"/>
                         <outlet property="cardView" destination="yf2-6N-ryc" id="gxB-mg-ieI"/>
                         <outlet property="cardViewLeftConstraint" destination="0Ob-0B-zI8" id="huU-IW-dRu"/>
                         <outlet property="cardViewRightConstraint" destination="uwc-9i-8r7" id="UPz-LW-YcA"/>
                         <outlet property="cardViewTopConstraint" destination="rDb-im-gi7" id="A8s-nQ-nPR"/>
+                        <outlet property="comentLabel" destination="ca3-Gw-95I" id="VFy-QB-v2o"/>
                         <outlet property="creditCardImage" destination="xq2-Zd-Eg5" id="vXz-Vb-3yl"/>
+                        <outlet property="fromImage" destination="cLq-wd-XQ8" id="8TJ-QS-xCV"/>
+                        <outlet property="titleLabel" destination="VWw-jI-pWz" id="ccK-qa-toZ"/>
+                        <outlet property="toImage" destination="mW1-wf-CrO" id="fCb-tx-gNe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

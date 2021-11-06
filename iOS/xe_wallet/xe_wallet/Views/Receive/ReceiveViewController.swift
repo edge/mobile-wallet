@@ -29,6 +29,7 @@ class ReceiveViewController: BaseViewController {
     let cardScaleSpeed = 0.1
     
     var selectedWalletAddress = ""
+    var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
     
     override func viewDidLoad() {

@@ -69,6 +69,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
                 
                 controller.cardImage = selectedCardCell.getCardViewImage()
              }
+            controller.walletData = self.walletCollectionViewData[self.selectedWallet]
             
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
@@ -83,6 +84,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
                 controller.cardImage = selectedCardCell.getCardViewImage()
              }
             
+            controller.walletData = self.walletCollectionViewData[self.selectedWallet]
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
         
@@ -96,6 +98,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
                 controller.cardImage = selectedCardCell.getCardViewImage()
              }
             
+            controller.walletData = self.walletCollectionViewData[self.selectedWallet]
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
     }

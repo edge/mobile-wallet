@@ -17,6 +17,14 @@ class ExchangeViewController: BaseViewController {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
     
+    
+    @IBOutlet weak var fromImage: UIImageView!
+    @IBOutlet weak var toImage: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var comentLabel: UILabel!
+    @IBOutlet weak var buttonLabel: UILabel!
+    @IBOutlet weak var arrowImage: UIImageView!
+    
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
     let cardViewSideConstraintStart: CGFloat = 16
@@ -25,6 +33,7 @@ class ExchangeViewController: BaseViewController {
     let cardScaleSpeed = 0.1
     
     var selectedWalletAddress = ""
+    var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
     
     override func viewDidLoad() {
@@ -40,6 +49,8 @@ class ExchangeViewController: BaseViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.configureDisplay()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -55,6 +66,27 @@ class ExchangeViewController: BaseViewController {
         }, completion: { finished in
 
         })
+    }
+    
+    func configureDisplay() {
+        
+        if walletData?.type != .xe {
+            
+            self.arrowImage.image = UIImage(named:"arrowRight")
+            self.titleLabel.text = "Deposit XE"
+            self.comentLabel.text = "Convert EDGE to XE for staking, governance and service use"
+            self.fromImage.image = UIImage(named:"coin_ethereum")
+            self.toImage.image = UIImage(named:"coin_xe")
+            self.buttonLabel.text = "Deposit"
+        } else {
+            
+            self.arrowImage.image = UIImage(named:"arrowRight")
+            self.titleLabel.text = "Withdraw XE"
+            self.comentLabel.text = "Convert XE to EDGE, governance and service use"
+            self.fromImage.image = UIImage(named:"coin_xe")
+            self.toImage.image = UIImage(named:"coin_ethereum")
+            self.buttonLabel.text = "Withdraw"
+        }
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -79,4 +111,10 @@ class ExchangeViewController: BaseViewController {
             self.dismiss(animated: false, completion: nil)
         })
     }
+    
+    @IBAction func continueButtonPressed(_ sender: Any) {
+        
+        
+    }
+    
 }
