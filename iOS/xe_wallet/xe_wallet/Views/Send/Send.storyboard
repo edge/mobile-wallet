@@ -387,13 +387,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yJ-CC-g97">
-                                <rect key="frame" x="16" y="213" width="52.5" height="17"/>
+                                <rect key="frame" x="16" y="197.5" width="52.5" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xi0-dd-Tya">
-                                <rect key="frame" x="16" y="234" width="382" height="56"/>
+                                <rect key="frame" x="16" y="218.5" width="382" height="56"/>
                                 <color key="backgroundColor" name="MainBlack"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="rmr-Wp-rA2"/>
@@ -405,13 +405,13 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="acw-Kf-5tt">
-                                <rect key="frame" x="16" y="300" width="16.5" height="17"/>
+                                <rect key="frame" x="16" y="284.5" width="16.5" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubz-sx-AFO">
-                                <rect key="frame" x="16" y="321" width="382" height="56"/>
+                                <rect key="frame" x="16" y="305.5" width="382" height="56"/>
                                 <color key="backgroundColor" name="MainBlack"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="7rc-4K-KzA"/>
@@ -423,25 +423,25 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="They Will Receive" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TYq-kw-JUp">
-                                <rect key="frame" x="16" y="387" width="118" height="17"/>
+                                <rect key="frame" x="16" y="371.5" width="118" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0 XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ef2-Qb-9tw">
-                                <rect key="frame" x="16" y="409" width="72" height="29.5"/>
+                                <rect key="frame" x="16" y="393.5" width="72" height="29.5"/>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="24"/>
                                 <color key="textColor" name="FontMain"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm with PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ic9-vj-zb2">
-                                <rect key="frame" x="16" y="458.5" width="113" height="17"/>
+                                <rect key="frame" x="16" y="443" width="113" height="17"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwQ-Lu-aPK" customClass="PinEntryViewWrapper" customModule="xe_wallet" customModuleProvider="target">
-                                <rect key="frame" x="16" y="482.5" width="382" height="60"/>
+                                <rect key="frame" x="16" y="467" width="382" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="3Hi-FJ-8Ug"/>
@@ -466,7 +466,7 @@
                             <constraint firstItem="Ef2-Qb-9tw" firstAttribute="top" secondItem="TYq-kw-JUp" secondAttribute="bottom" constant="5" id="AUi-LJ-SZO"/>
                             <constraint firstItem="oHl-pR-Y0O" firstAttribute="trailing" secondItem="LSh-6v-OtS" secondAttribute="trailing" id="G36-Hl-51d"/>
                             <constraint firstItem="LSh-6v-OtS" firstAttribute="trailing" secondItem="JwQ-Lu-aPK" secondAttribute="trailing" constant="16" id="NGi-bv-XQc"/>
-                            <constraint firstItem="3yJ-CC-g97" firstAttribute="top" secondItem="1nj-O8-tw0" secondAttribute="bottom" constant="120" id="Rpk-Bf-Duw"/>
+                            <constraint firstItem="3yJ-CC-g97" firstAttribute="top" secondItem="WFP-jU-isk" secondAttribute="bottom" constant="16" id="QDk-XU-CBp"/>
                             <constraint firstItem="oHl-pR-Y0O" firstAttribute="top" secondItem="pyb-gS-Rad" secondAttribute="top" id="Rqt-pN-2rB"/>
                             <constraint firstItem="WFP-jU-isk" firstAttribute="leading" secondItem="LSh-6v-OtS" secondAttribute="leading" constant="95" id="UPI-rs-PjL"/>
                             <constraint firstItem="Ubz-sx-AFO" firstAttribute="top" secondItem="acw-Kf-5tt" secondAttribute="bottom" constant="4" id="UYf-Xz-R8R"/>

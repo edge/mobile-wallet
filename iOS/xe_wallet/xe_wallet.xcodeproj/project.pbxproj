@@ -79,8 +79,8 @@
 		FD6018F62734144C00F78EBE /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018F52734144C00F78EBE /* BaseViewController.swift */; };
 		FD6018F9273464E500F78EBE /* Network.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD6018F8273464E400F78EBE /* Network.storyboard */; };
 		FD6018FB273464F500F78EBE /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FA273464F500F78EBE /* NetworkViewController.swift */; };
-		FD6018FD27361C5D00F78EBE /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FC27361C5C00F78EBE /* DepositViewController.swift */; };
-		FD6018FF27361C6F00F78EBE /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FE27361C6F00F78EBE /* WithdrawViewController.swift */; };
+		FD6018FD27361C5D00F78EBE /* ExchangeDepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */; };
+		FD6018FF27361C6F00F78EBE /* ExchangeWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */; };
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
@@ -168,8 +168,8 @@
 		FD6018F52734144C00F78EBE /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		FD6018F8273464E400F78EBE /* Network.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Network.storyboard; sourceTree = "<group>"; };
 		FD6018FA273464F500F78EBE /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
-		FD6018FC27361C5C00F78EBE /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
-		FD6018FE27361C6F00F78EBE /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDepositViewController.swift; sourceTree = "<group>"; };
+		FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWithdrawViewController.swift; sourceTree = "<group>"; };
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
@@ -479,8 +479,8 @@
 			children = (
 				FD31F23F27183FB10034A59E /* Exchange.storyboard */,
 				FD31F24127183FBE0034A59E /* ExchangeViewController.swift */,
-				FD6018FC27361C5C00F78EBE /* DepositViewController.swift */,
-				FD6018FE27361C6F00F78EBE /* WithdrawViewController.swift */,
+				FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */,
+				FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
@@ -646,7 +646,7 @@
 				FD22ED5F270F04B800B5B33F /* ViewController.swift in Sources */,
 				FD6018E72731C5A000F78EBE /* CreateWalletViewController.swift in Sources */,
 				FD6018ED2731D54700F78EBE /* AddressKeyPair.swift in Sources */,
-				FD6018FD27361C5D00F78EBE /* DepositViewController.swift in Sources */,
+				FD6018FD27361C5D00F78EBE /* ExchangeDepositViewController.swift in Sources */,
 				FD6018EF2731F0C700F78EBE /* KeyChainHelper.swift in Sources */,
 				FD6018FB273464F500F78EBE /* NetworkViewController.swift in Sources */,
 				FD6018D4272E0BFF00F78EBE /* CryptoFactory.swift in Sources */,
@@ -689,7 +689,7 @@
 				FD6018CE272E0A7000F78EBE /* Error.swift in Sources */,
 				FD073E03271462AE0077F184 /* WalletType.swift in Sources */,
 				FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */,
-				FD6018FF27361C6F00F78EBE /* WithdrawViewController.swift in Sources */,
+				FD6018FF27361C6F00F78EBE /* ExchangeWithdrawViewController.swift in Sources */,
 				FD31F23827183F520034A59E /* SendViewController.swift in Sources */,
 				FD31F23627183EC40034A59E /* BackupViewController.swift in Sources */,
 				FD6018C4272E097100F78EBE /* PrivateKey.swift in Sources */,

@@ -10,6 +10,7 @@ import UIKit
 protocol KillViewDelegate: AnyObject {
     
     func killView()
+    func viewNeedsToHide()
 }
 
 class BaseViewController: UIViewController {

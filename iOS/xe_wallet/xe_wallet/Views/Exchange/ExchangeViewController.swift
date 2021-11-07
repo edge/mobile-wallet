@@ -8,7 +8,8 @@
 import UIKit
 import XCTest
 
-class ExchangeViewController: BaseViewController {
+class ExchangeViewController: BaseViewController, KillViewDelegate {
+
         
     @IBOutlet var backgroundView: UIView!
     
@@ -17,7 +18,6 @@ class ExchangeViewController: BaseViewController {
     @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
-    
     
     @IBOutlet weak var fromImage: UIImageView!
     @IBOutlet weak var toImage: UIImageView!
@@ -97,6 +97,28 @@ class ExchangeViewController: BaseViewController {
             self.closeButtonPressed(UIButton())
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowExchangeDepositViewController" {
+            
+            let controller = segue.destination as! ExchangeDepositViewController
+            controller.modalPresentationStyle = .overCurrentContext
+            
+            controller.walletData = self.walletData
+            controller.cardImage = self.cardImage
+            controller.delete = self
+        }
+        if segue.identifier == "ShowExchangeWithdrawViewController" {
+            
+            let controller = segue.destination as! ExchangeWithdrawViewController
+            controller.modalPresentationStyle = .overCurrentContext
+            
+            controller.walletData = self.walletData
+            controller.cardImage = self.cardImage
+            controller.delete = self
+        }
+    }
         
     @IBAction func closeButtonPressed(_ sender: Any) {
         
@@ -117,12 +139,21 @@ class ExchangeViewController: BaseViewController {
         
         if self.walletData?.type == .xe {
             
-            performSegue(withIdentifier: "ShowDepositViewController", sender: nil)
+            performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
         } else {
             
-            performSegue(withIdentifier: "ShowWithdrawViewController", sender: nil)
+            performSegue(withIdentifier: "ShowExchangeWithdrawViewController", sender: nil)
         }
             
     }
+ 
+    func viewNeedsToHide() {
     
+        self.backgroundView.alpha = 0.0
+    }
+    
+    func killView() {
+        
+        self.dismiss(animated: false, completion: nil)
+    }
 }

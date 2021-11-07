@@ -148,13 +148,17 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             controller.walletData = self.walletData
             controller.cardImage = self.cardImage
             controller.delete = self
-            //self.view.alpha = 0
         }
     }
     
     @IBAction func reviewButtonPressed(_ sender: Any) {
         
         performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
+    }
+    
+    func viewNeedsToHide() {
+    
+        self.backgroundView.alpha = 0.0
     }
     
     func killView() {
