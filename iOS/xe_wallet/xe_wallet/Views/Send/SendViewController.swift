@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SendViewController: BaseViewController, UITextFieldDelegate {
+class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDelegate {
         
     @IBOutlet weak var backgroundView: UIView!
 
@@ -136,5 +136,29 @@ class SendViewController: BaseViewController, UITextFieldDelegate {
             textField.resignFirstResponder()
         }
         return true
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowSendReviewViewController" {
+            
+            let controller = segue.destination as! SendConfirmViewController
+            controller.modalPresentationStyle = .overCurrentContext
+            
+            controller.walletData = self.walletData
+            controller.cardImage = self.cardImage
+            controller.delete = self
+            //self.view.alpha = 0
+        }
+    }
+    
+    @IBAction func reviewButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
+    }
+    
+    func killView() {
+        
+        self.dismiss(animated: false, completion: nil)
     }
 }

@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -294,11 +295,45 @@
                         <outlet property="fromImage" destination="cLq-wd-XQ8" id="8TJ-QS-xCV"/>
                         <outlet property="titleLabel" destination="VWw-jI-pWz" id="ccK-qa-toZ"/>
                         <outlet property="toImage" destination="mW1-wf-CrO" id="fCb-tx-gNe"/>
+                        <segue destination="ZS8-FJ-Inh" kind="show" identifier="ShowDepositViewController" id="pAa-of-QiO"/>
+                        <segue destination="2C9-W7-zCX" kind="show" identifier="ShowWithdrawViewController" id="mVX-db-SVy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="118.84057971014494" y="68.973214285714278"/>
+        </scene>
+        <!--Withdraw View Controller-->
+        <scene sceneID="OLg-eh-fqa">
+            <objects>
+                <viewController storyboardIdentifier="WithdrawViewController" id="2C9-W7-zCX" customClass="WithdrawViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JAQ-IL-nbd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cmo-i4-11Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="NCF-aI-ppH"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rEh-iA-JcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1275" y="569"/>
+        </scene>
+        <!--Deposit View Controller-->
+        <scene sceneID="jrl-Oi-Icb">
+            <objects>
+                <viewController storyboardIdentifier="DepositViewController" id="ZS8-FJ-Inh" customClass="DepositViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uoq-Zb-LFd">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dru-qD-sQL"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oiK-tH-v5U"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nIF-L5-1vC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1280" y="-262"/>
         </scene>
     </scenes>
     <resources>
@@ -309,7 +344,7 @@
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ButtonGreen">
-            <color red="0.055" green="0.80000000000000004" blue="0.373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.054999999701976776" green="0.80000001192092896" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FontMain">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -323,5 +358,8 @@
         <namedColor name="PinEntryBoxBackground">
             <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

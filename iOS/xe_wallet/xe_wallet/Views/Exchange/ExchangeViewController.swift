@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import XCTest
 
 class ExchangeViewController: BaseViewController {
         
@@ -114,7 +115,14 @@ class ExchangeViewController: BaseViewController {
     
     @IBAction func continueButtonPressed(_ sender: Any) {
         
-        
+        if self.walletData?.type == .xe {
+            
+            performSegue(withIdentifier: "ShowDepositViewController", sender: nil)
+        } else {
+            
+            performSegue(withIdentifier: "ShowWithdrawViewController", sender: nil)
+        }
+            
     }
     
 }

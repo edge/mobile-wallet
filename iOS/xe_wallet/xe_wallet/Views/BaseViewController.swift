@@ -7,6 +7,11 @@
 
 import UIKit
 
+protocol KillViewDelegate: AnyObject {
+    
+    func killView()
+}
+
 class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
