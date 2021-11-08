@@ -85,6 +85,8 @@
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
 		FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */; };
+		FDCF72342739DCF100F027DC /* ExchangeDepositConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */; };
+		FDCF72362739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF72352739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift */; };
 		FDFB696E270F1E08004C2BFD /* AppAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */; };
 		FDFB6970270F1FB0004C2BFD /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDFB696F270F1FB0004C2BFD /* Wallet.storyboard */; };
 		FDFB697D270F390A004C2BFD /* PinEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDFB697C270F390A004C2BFD /* PinEntryView.xib */; };
@@ -174,6 +176,8 @@
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
 		FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
+		FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDepositConfirmViewController.swift; sourceTree = "<group>"; };
+		FDCF72352739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWithdrawConfirmViewController.swift; sourceTree = "<group>"; };
 		FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppAuth.storyboard; sourceTree = "<group>"; };
 		FDFB696F270F1FB0004C2BFD /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		FDFB697C270F390A004C2BFD /* PinEntryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinEntryView.xib; sourceTree = "<group>"; };
@@ -480,7 +484,9 @@
 				FD31F23F27183FB10034A59E /* Exchange.storyboard */,
 				FD31F24127183FBE0034A59E /* ExchangeViewController.swift */,
 				FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */,
+				FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */,
 				FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */,
+				FDCF72352739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift */,
 			);
 			path = Exchange;
 			sourceTree = "<group>";
@@ -641,6 +647,7 @@
 			files = (
 				FD31F2312714FFD60034A59E /* ManageTableViewCell.swift in Sources */,
 				FD31F2292714DBC90034A59E /* AppDataModel.swift in Sources */,
+				FDCF72342739DCF100F027DC /* ExchangeDepositConfirmViewController.swift in Sources */,
 				FD31F22B2714DBD50034A59E /* AppModelManager.swift in Sources */,
 				FD073DFD2714615E0077F184 /* WalletDataModel.swift in Sources */,
 				FD22ED5F270F04B800B5B33F /* ViewController.swift in Sources */,
@@ -656,6 +663,7 @@
 				FD6018C6272E097E00F78EBE /* PublicKey.swift in Sources */,
 				FD6018F62734144C00F78EBE /* BaseViewController.swift in Sources */,
 				FD073DE8271106840077F184 /* TransactionTableViewCell.swift in Sources */,
+				FDCF72362739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift in Sources */,
 				FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */,
 				FD6018D2272E0AFC00F78EBE /* Encoding.swift in Sources */,
 				FD073E0C2714960F0077F184 /* SettingsModelManager.swift in Sources */,

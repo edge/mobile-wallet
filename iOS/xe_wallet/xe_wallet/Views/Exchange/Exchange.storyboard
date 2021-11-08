@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -35,7 +36,7 @@
                                     <constraint firstAttribute="height" constant="239" id="g66-vR-M7k"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIH-Hk-5RD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OIH-Hk-5RD">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e97-WO-PJZ">
@@ -554,11 +555,28 @@
                         <outlet property="cardViewRightConstraint" destination="s4U-wA-Zzb" id="mJe-5E-k7L"/>
                         <outlet property="cardViewTopConstraint" destination="tbE-Th-e8z" id="s3M-Rh-n5U"/>
                         <outlet property="creditCardImage" destination="Vxy-xx-LWR" id="Z4k-ua-gNR"/>
+                        <segue destination="HJ5-vI-Nvu" kind="show" identifier="ShowExchangeWithdrawConfirmViewController" id="rmB-dc-SVX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rEh-iA-JcM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1273.913043478261" y="568.52678571428567"/>
+            <point key="canvasLocation" x="936" y="461"/>
+        </scene>
+        <!--Exchange Withdraw Confirm View Controller-->
+        <scene sceneID="Z1B-KB-IdN">
+            <objects>
+                <viewController storyboardIdentifier="ExchangeWithdrawConfirmViewController" modalPresentationStyle="fullScreen" id="HJ5-vI-Nvu" customClass="ExchangeWithdrawConfirmViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xmB-V5-UWs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PRl-wx-yAy"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="385-BQ-aiW"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k7Z-Bo-VjY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1799" y="461"/>
         </scene>
         <!--Exchange Deposit View Controller-->
         <scene sceneID="jrl-Oi-Icb">
@@ -807,11 +825,139 @@
                         <outlet property="cardViewRightConstraint" destination="n7n-cm-lfV" id="isG-PP-LKH"/>
                         <outlet property="cardViewTopConstraint" destination="LEN-Vs-0p2" id="v0d-Yy-lat"/>
                         <outlet property="creditCardImage" destination="T39-2T-e8a" id="UcJ-aG-mki"/>
+                        <segue destination="pGN-y6-bvc" kind="show" identifier="ShowExchangeDepositConfirmViewController" id="5Wg-AW-qdV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nIF-L5-1vC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1279.7101449275362" y="-262.5"/>
+            <point key="canvasLocation" x="935" y="-215"/>
+        </scene>
+        <!--Exchange Deposit Confirm View Controller-->
+        <scene sceneID="smx-R2-8w9">
+            <objects>
+                <viewController storyboardIdentifier="ExchangeDepositConfirmViewController" modalPresentationStyle="fullScreen" id="pGN-y6-bvc" customClass="ExchangeDepositConfirmViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1GY-I4-YMj">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YHH-MR-USp">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rB4-xd-qBR">
+                                        <rect key="frame" x="16" y="105" width="34.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="16f-5E-a1l">
+                                        <rect key="frame" x="16" y="126" width="382" height="56"/>
+                                        <color key="backgroundColor" name="MainBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="vhu-4a-8H8"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rDH-0K-rUU">
+                                        <rect key="frame" x="16" y="198" width="17" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hnb-ey-hrE">
+                                        <rect key="frame" x="16" y="219" width="382" height="56"/>
+                                        <color key="backgroundColor" name="MainBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="ySN-o2-bS9"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zgu-8c-OcG">
+                                        <rect key="frame" x="16" y="291" width="52.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0l0-Mv-vHp">
+                                        <rect key="frame" x="16" y="312" width="382" height="56"/>
+                                        <color key="backgroundColor" name="MainBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="gt2-IZ-cIr"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm with PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlW-tn-Yao">
+                                        <rect key="frame" x="16" y="384" width="113" height="17"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gas: 417 Gwei" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2L-7v-IZ1">
+                                        <rect key="frame" x="316.5" y="384" width="81.5" height="15"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2WS-Ca-g7I" customClass="PinEntryViewWrapper" customModule="xe_wallet" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="405" width="382" height="60"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="Qxp-si-dYI"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="BackgroundMain"/>
+                                <constraints>
+                                    <constraint firstItem="Hnb-ey-hrE" firstAttribute="top" secondItem="rDH-0K-rUU" secondAttribute="bottom" constant="4" id="5Si-6n-XmE"/>
+                                    <constraint firstItem="16f-5E-a1l" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="AVi-dA-p36"/>
+                                    <constraint firstItem="mlW-tn-Yao" firstAttribute="top" secondItem="0l0-Mv-vHp" secondAttribute="bottom" constant="16" id="EhD-hf-EpW"/>
+                                    <constraint firstItem="0l0-Mv-vHp" firstAttribute="top" secondItem="Zgu-8c-OcG" secondAttribute="bottom" constant="4" id="Fdf-4E-CJx"/>
+                                    <constraint firstItem="rB4-xd-qBR" firstAttribute="top" secondItem="YHH-MR-USp" secondAttribute="top" constant="105" id="Le6-9R-PZc"/>
+                                    <constraint firstAttribute="trailing" secondItem="16f-5E-a1l" secondAttribute="trailing" constant="16" id="Nmz-94-sS7"/>
+                                    <constraint firstItem="rDH-0K-rUU" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="Nw8-iC-gfj"/>
+                                    <constraint firstItem="16f-5E-a1l" firstAttribute="top" secondItem="rB4-xd-qBR" secondAttribute="bottom" constant="4" id="Ocl-xx-Y5s"/>
+                                    <constraint firstItem="2WS-Ca-g7I" firstAttribute="top" secondItem="mlW-tn-Yao" secondAttribute="bottom" constant="4" id="WGo-fi-oHZ"/>
+                                    <constraint firstItem="W2L-7v-IZ1" firstAttribute="top" secondItem="0l0-Mv-vHp" secondAttribute="bottom" constant="16" id="ZgA-io-Sew"/>
+                                    <constraint firstAttribute="trailing" secondItem="Hnb-ey-hrE" secondAttribute="trailing" constant="16" id="b1l-V0-sZm"/>
+                                    <constraint firstItem="0l0-Mv-vHp" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="cYy-64-b60"/>
+                                    <constraint firstAttribute="trailing" secondItem="0l0-Mv-vHp" secondAttribute="trailing" constant="16" id="fCA-Z6-4CU"/>
+                                    <constraint firstItem="Hnb-ey-hrE" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="fqz-EZ-Ug9"/>
+                                    <constraint firstItem="2WS-Ca-g7I" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="hTy-rW-9KT"/>
+                                    <constraint firstAttribute="trailing" secondItem="2WS-Ca-g7I" secondAttribute="trailing" constant="16" id="l9m-sQ-bxU"/>
+                                    <constraint firstItem="rB4-xd-qBR" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="lgj-7w-4EX"/>
+                                    <constraint firstItem="Zgu-8c-OcG" firstAttribute="top" secondItem="Hnb-ey-hrE" secondAttribute="bottom" constant="16" id="nQc-e9-icT"/>
+                                    <constraint firstItem="rDH-0K-rUU" firstAttribute="top" secondItem="16f-5E-a1l" secondAttribute="bottom" constant="16" id="qe1-P7-UUq"/>
+                                    <constraint firstItem="Zgu-8c-OcG" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="x4h-gU-Ipb"/>
+                                    <constraint firstAttribute="trailing" secondItem="W2L-7v-IZ1" secondAttribute="trailing" constant="16" id="zhF-dl-1Xb"/>
+                                    <constraint firstItem="mlW-tn-Yao" firstAttribute="leading" secondItem="YHH-MR-USp" secondAttribute="leading" constant="16" id="zoD-ik-9t0"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="NbM-JQ-PuJ"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="YHH-MR-USp" secondAttribute="bottom" id="2QG-hy-3j8"/>
+                            <constraint firstItem="YHH-MR-USp" firstAttribute="top" secondItem="1GY-I4-YMj" secondAttribute="top" id="7rA-E6-psL"/>
+                            <constraint firstItem="YHH-MR-USp" firstAttribute="trailing" secondItem="NbM-JQ-PuJ" secondAttribute="trailing" id="BnX-YE-PIc"/>
+                            <constraint firstItem="YHH-MR-USp" firstAttribute="leading" secondItem="NbM-JQ-PuJ" secondAttribute="leading" id="Nbw-qG-Coo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ea1-ws-Xvg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tST-0s-QSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1798.5507246376812" y="-216.29464285714286"/>
         </scene>
     </scenes>
     <resources>
@@ -840,5 +986,8 @@
         <namedColor name="SeperatorLine">
             <color red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
