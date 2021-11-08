@@ -137,7 +137,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     
     @IBAction func continueButtonPressed(_ sender: Any) {
         
-        if self.walletData?.type == .xe {
+        if self.walletData?.type != .xe {
             
             performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
         } else {

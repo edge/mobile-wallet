@@ -11,7 +11,6 @@ class ExchangeDepositViewController: BaseViewController {
 
     @IBOutlet weak var backgroundView: UIView!
     
-
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
