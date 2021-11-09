@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExchangeWithdrawViewController: BaseViewController {
+class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
 
     @IBOutlet weak var backgroundView: UIView!
     
@@ -22,22 +22,40 @@ class ExchangeWithdrawViewController: BaseViewController {
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 0.1
+    let cardScaleSpeed = 1.1
     
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
     
-    var delete: KillViewDelegate?
+    var delegate: KillViewDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        view.isOpaque = false
+        view.backgroundColor = .clear
         self.creditCardImage.image = self.cardImage
+        self.backgroundView.alpha = 0.0
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.cardViewTopConstraint.constant = self.cardViewTopConstraintEnd
+        self.cardViewRightConstraint.constant = self.cardViewSideConstraintEnd
+        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintEnd
+        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+        })
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -48,18 +66,60 @@ class ExchangeWithdrawViewController: BaseViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "ShowExchangeWithdrawConfirmViewController" {
+            
+            let controller = segue.destination as! ExchangeWithdrawConfirmViewController
+            controller.modalPresentationStyle = .overCurrentContext
+            
+            //controller.walletData = self.walletData
+            //controller.cardImage = self.cardImage
+            controller.delegate = self
+        }
+    }
+    
+    @IBAction func withdrawButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ShowExchangeWithdrawConfirmViewController", sender: nil)
+    }
+    
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
+        
+        self.delegate?.viewNeedsToHide()
+        
+        self.dismiss(animated: false, completion: nil)
+        self.delegate?.killView()
+        
+
+        /*self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
         self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
         UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
 
+            self.backgroundView.alpha = 0.0
             self.view.layoutIfNeeded()
         }, completion: { finished in
 
             self.dismiss(animated: false, completion: nil)
-            self.delete?.killView()
-        })
+            self.delegate?.killView()
+        })*/
+    }
+    
+    func viewNeedsToShow() {
+    
+        self.backgroundView.alpha = 1.0
+    }
+    
+    func killView() {
+        
+        self.dismiss(animated: false, completion: nil)
+        self.delegate?.killView()
+    }
+    
+    func viewNeedsToHide() {
+        
+        self.backgroundView.alpha = 0.0
     }
 }

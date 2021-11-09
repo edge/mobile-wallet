@@ -71,7 +71,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     
     func configureDisplay() {
         
-        if walletData?.type == .xe {
+        if walletData?.type != .xe {
             
             self.arrowImage.image = UIImage(named:"arrowRight")
             self.titleLabel.text = "Deposit XE"
@@ -116,7 +116,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
             
             controller.walletData = self.walletData
             controller.cardImage = self.cardImage
-            controller.delete = self
+            controller.delegate = self
         }
     }
         
@@ -137,7 +137,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     
     @IBAction func continueButtonPressed(_ sender: Any) {
         
-        if self.walletData?.type == .xe {
+        if self.walletData?.type != .xe {
             
             performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
         } else {
