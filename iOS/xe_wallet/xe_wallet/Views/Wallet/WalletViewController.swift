@@ -92,7 +92,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             
             let controller = segue.destination as! ExchangeViewController
             controller.modalPresentationStyle = .overCurrentContext
-            controller.backgroundView.alpha = 0
+            //controller.backgroundView.alpha = 0
             if let selectedCardCell = self.collectionView.cellForItem(at: IndexPath(row: self.selectedWallet, section: 0)) as? WalletCollectionViewCell{
                 
                 controller.cardImage = selectedCardCell.getCardViewImage()

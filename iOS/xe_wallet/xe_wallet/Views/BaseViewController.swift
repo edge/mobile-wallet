@@ -11,6 +11,7 @@ protocol KillViewDelegate: AnyObject {
     
     func killView()
     func viewNeedsToHide()
+    func viewNeedsToShow()
 }
 
 class BaseViewController: UIViewController {

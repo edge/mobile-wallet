@@ -31,7 +31,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 0.1
+    let cardScaleSpeed = 1.1
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
@@ -71,7 +71,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     
     func configureDisplay() {
         
-        if walletData?.type != .xe {
+        if walletData?.type == .xe {
             
             self.arrowImage.image = UIImage(named:"arrowRight")
             self.titleLabel.text = "Deposit XE"
@@ -107,7 +107,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
             
             controller.walletData = self.walletData
             controller.cardImage = self.cardImage
-            controller.delete = self
+            controller.delegate = self
         }
         if segue.identifier == "ShowExchangeWithdrawViewController" {
             
@@ -137,7 +137,7 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
     
     @IBAction func continueButtonPressed(_ sender: Any) {
         
-        if self.walletData?.type != .xe {
+        if self.walletData?.type == .xe {
             
             performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
         } else {
@@ -152,8 +152,13 @@ class ExchangeViewController: BaseViewController, KillViewDelegate {
         self.backgroundView.alpha = 0.0
     }
     
+    func viewNeedsToShow() {
+    
+        self.backgroundView.alpha = 1.0
+    }
+    
     func killView() {
         
-        self.dismiss(animated: false, completion: nil)
+        self.closeButtonPressed((Any).self)
     }
 }

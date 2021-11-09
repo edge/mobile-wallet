@@ -161,6 +161,11 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         self.backgroundView.alpha = 0.0
     }
     
+    func viewNeedsToShow() {
+    
+        self.backgroundView.alpha = 1.0
+    }
+    
     func killView() {
         
         self.dismiss(animated: false, completion: nil)
