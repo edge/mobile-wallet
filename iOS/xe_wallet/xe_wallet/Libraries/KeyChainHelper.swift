@@ -31,4 +31,21 @@ final class KeychainHelper {
             print("Error: \(status)")
         }
     }
+    
+    public class func logout()  {
+        
+        let secItemClasses =  [
+            kSecClassGenericPassword,
+            kSecClassInternetPassword,
+            kSecClassCertificate,
+            kSecClassKey,
+            kSecClassIdentity,
+        ]
+        
+        for itemClass in secItemClasses {
+            
+            let spec: NSDictionary = [kSecClass: itemClass]
+            SecItemDelete(spec)
+        }
+    }
 }

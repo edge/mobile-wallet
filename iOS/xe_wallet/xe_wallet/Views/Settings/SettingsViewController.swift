@@ -9,6 +9,11 @@ import UIKit
 
 class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
 
+    let resetAppMessageHeader = "Reset App Data"
+    let resetAppMessageBody = "This will remove all apps data including pins and wallets."
+    let resetAppButtonOkText = "Ok"
+    let resetAppButtonCancelText = "Cancel"
+    
     var settingsMenuTableViewData = [SettingsDataModel]()
     
     override func viewDidLoad() {
@@ -70,6 +75,33 @@ extension SettingsViewController {
             if let url = URL(string: self.settingsMenuTableViewData[indexPath.row].linkData) {
 
                 UIApplication.shared.open(url)
+            }
+            break
+        case .popup:
+            let type = self.settingsMenuTableViewData[indexPath.row].linkData
+                
+            if type == "ResetApp" {
+                
+                let alert = UIAlertController(title: self.resetAppMessageHeader, message: self.resetAppMessageBody, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: self.resetAppButtonOkText, style: .default, handler: { action in
+
+                    KeychainHelper.logout()
+                    let defaults = UserDefaults.standard
+                    let dictionary = defaults.dictionaryRepresentation()
+                    dictionary.keys.forEach { key in
+                        
+                        defaults.removeObject(forKey: key)
+                    }
+                    exit(0)
+                }))
+                alert.addAction(UIAlertAction(title: self.resetAppButtonCancelText, style: .default, handler: { action in
+
+                    self.dismiss(animated: true, completion: nil)
+                }))
+                self.present(alert, animated: true)
+                
+                
+
             }
             break
         }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -23,7 +24,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pW-MF-2Ol">
                                     <rect key="frame" x="19.5" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="9z1-et-EdO"/>
                                         <constraint firstAttribute="width" constant="20" id="eh8-8b-PQq"/>
@@ -51,7 +52,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6D-aU-RMI">
                                     <rect key="frame" x="19.5" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="bCX-r2-yxq"/>
                                         <constraint firstAttribute="height" constant="20" id="ceV-dw-F7i"/>
@@ -79,7 +80,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo1-hF-eQi">
                                     <rect key="frame" x="19" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="s0S-aL-f0r"/>
                                         <constraint firstAttribute="width" constant="20" id="tl4-mO-VoK"/>
@@ -107,7 +108,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNp-Yo-7KZ">
                                     <rect key="frame" x="19.5" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="QYK-bx-tSY"/>
                                         <constraint firstAttribute="height" constant="20" id="TGu-kJ-30C"/>
@@ -135,7 +136,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzX-9C-hD8">
                                     <rect key="frame" x="19.5" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="20" id="ZvI-X2-raU"/>
                                         <constraint firstAttribute="height" constant="20" id="kAz-Ke-jLL"/>
@@ -163,7 +164,7 @@
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-4Q-Xxn">
                                     <rect key="frame" x="19" y="20" width="20" height="20"/>
-                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="RPv-iG-SP8"/>
                                         <constraint firstAttribute="width" constant="20" id="pqW-VC-zhP"/>
@@ -214,6 +215,9 @@
     <resources>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ButtonGreen">
+            <color red="0.054999999701976776" green="0.80000001192092896" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PinEntryBoxBackground">
             <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

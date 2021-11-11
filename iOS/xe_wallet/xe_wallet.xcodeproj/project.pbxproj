@@ -52,7 +52,6 @@
 		FD31F23C27183F870034A59E /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD31F23B27183F870034A59E /* Receive.storyboard */; };
 		FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD31F23D27183F940034A59E /* ReceiveViewController.swift */; };
 		FD31F24027183FB10034A59E /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD31F23F27183FB10034A59E /* Exchange.storyboard */; };
-		FD31F24227183FBE0034A59E /* ExchangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD31F24127183FBE0034A59E /* ExchangeViewController.swift */; };
 		FD60182A272CCBB300F78EBE /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = FD601829272CCBB300F78EBE /* secp256k1 */; };
 		FD6018C4272E097100F78EBE /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018C3272E097100F78EBE /* PrivateKey.swift */; };
 		FD6018C6272E097E00F78EBE /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018C5272E097E00F78EBE /* PublicKey.swift */; };
@@ -143,7 +142,6 @@
 		FD31F23B27183F870034A59E /* Receive.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Receive.storyboard; sourceTree = "<group>"; };
 		FD31F23D27183F940034A59E /* ReceiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		FD31F23F27183FB10034A59E /* Exchange.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Exchange.storyboard; sourceTree = "<group>"; };
-		FD31F24127183FBE0034A59E /* ExchangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController.swift; sourceTree = "<group>"; };
 		FD601834272DE06000F78EBE /* RobotoMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Thin.ttf"; sourceTree = "<group>"; };
 		FD601835272DE06000F78EBE /* RobotoMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Bold.ttf"; sourceTree = "<group>"; };
 		FD601836272DE06000F78EBE /* RobotoMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Medium.ttf"; sourceTree = "<group>"; };
@@ -482,7 +480,6 @@
 			isa = PBXGroup;
 			children = (
 				FD31F23F27183FB10034A59E /* Exchange.storyboard */,
-				FD31F24127183FBE0034A59E /* ExchangeViewController.swift */,
 				FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */,
 				FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */,
 				FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */,
@@ -672,7 +669,6 @@
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
 				FD22ED5D270F04B800B5B33F /* SceneDelegate.swift in Sources */,
 				FD073DEF27121C660077F184 /* SettingsViewController.swift in Sources */,
-				FD31F24227183FBE0034A59E /* ExchangeViewController.swift in Sources */,
 				FD6018D0272E0AA700F78EBE /* Context.swift in Sources */,
 				FD073E01271461D90077F184 /* WalletDataModelManager.swift in Sources */,
 				FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */,
@@ -855,7 +851,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -888,7 +884,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

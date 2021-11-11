@@ -27,6 +27,7 @@ enum SettingsLinkDataType {
     case header
     case screen
     case web
+    case popup
 }
 
 struct SettingsDataModel {

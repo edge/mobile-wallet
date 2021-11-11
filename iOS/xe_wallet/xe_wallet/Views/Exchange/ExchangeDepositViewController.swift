@@ -22,7 +22,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 1.1
+    let cardScaleSpeed = 1.2
     
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -64,9 +64,6 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
             
             let controller = segue.destination as! ExchangeDepositConfirmViewController
             controller.modalPresentationStyle = .overCurrentContext
-            
-            //controller.walletData = self.walletData
-            //controller.cardImage = self.cardImage
             controller.delegate = self
         }
     }
@@ -86,13 +83,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         
-        self.delegate?.viewNeedsToHide()
-        
-        self.dismiss(animated: false, completion: nil)
-        self.delegate?.killView()
-        
-
-        /*self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
+        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
         self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
         UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
@@ -103,7 +94,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
 
             self.dismiss(animated: false, completion: nil)
             self.delegate?.killView()
-        })*/
+        })
     }
     
     func viewNeedsToShow() {
@@ -114,11 +105,10 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
     func killView() {
         
         self.dismiss(animated: false, completion: nil)
-        self.delegate?.killView()
     }
     
     func viewNeedsToHide() {
         
-        self.backgroundView.alpha = 0.0
+        self.view.alpha = 0.0
     }
 }

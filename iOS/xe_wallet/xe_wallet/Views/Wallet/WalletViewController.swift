@@ -88,26 +88,53 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
         
-        if segue.identifier == "ShowExchangeViewController" {
+        if segue.identifier == "ShowExchangeDepositViewController" {
             
-            let controller = segue.destination as! ExchangeViewController
+            let controller = segue.destination as! ExchangeDepositViewController
             controller.modalPresentationStyle = .overCurrentContext
-            //controller.backgroundView.alpha = 0
             if let selectedCardCell = self.collectionView.cellForItem(at: IndexPath(row: self.selectedWallet, section: 0)) as? WalletCollectionViewCell{
                 
                 controller.cardImage = selectedCardCell.getCardViewImage()
              }
             
             controller.walletData = self.walletCollectionViewData[self.selectedWallet]
-            controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
+        
+        if segue.identifier == "ShowExchangeWithdrawViewController" {
+            
+            let controller = segue.destination as! ExchangeWithdrawViewController
+            controller.modalPresentationStyle = .overCurrentContext
+            if let selectedCardCell = self.collectionView.cellForItem(at: IndexPath(row: self.selectedWallet, section: 0)) as? WalletCollectionViewCell{
+                
+                controller.cardImage = selectedCardCell.getCardViewImage()
+             }
+            
+            controller.walletData = self.walletCollectionViewData[self.selectedWallet]
+        }
+        
+        
     }
     
     @IBAction func walletButtonPressed(_ sender: UIButton) {
         
         if !self.collectionViewUpdating {
         
-            performSegue(withIdentifier: self.walletButtonSegues[sender.tag], sender: nil)
+            switch sender.tag {
+                
+            case 0:
+                performSegue(withIdentifier: "ShowSendViewController", sender: nil)
+            case 1:
+                performSegue(withIdentifier: "ShowReceiveViewController", sender: nil)
+            case 2:
+                if self.walletCollectionViewData[self.selectedWallet].type == .xe {
+                    
+                    performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
+                } else {
+                 
+                    performSegue(withIdentifier: "ShowExchangeWithdrawViewController", sender: nil)
+                }
+            default: break
+            }
         }
     }
     

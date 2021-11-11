@@ -21,6 +21,8 @@ class SettingsDataModelManager {
         self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"INFO", linkDataType:.header, linkData: ""))
         self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Support", linkDataType:.web, linkData: "https://wiki.edge.network/support/community-guidelines"))
         self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"About", linkDataType:.web, linkData: "https://wiki.edge.network/support/community-guidelines"))
+        self.settingsData.append(SettingsDataModel(type:.header, menuTitle:"DEVELOPMENT", linkDataType:.header, linkData: ""))
+        self.settingsData.append(SettingsDataModel(type:.menuItem, menuTitle:"Reset App", linkDataType:.popup, linkData: "ResetApp"))
     }
     
     public func getSettingsData() -> [SettingsDataModel] {

@@ -11,7 +11,7 @@ class ExchangeDepositConfirmViewController: BaseViewController {
     
     @IBOutlet weak var backgroundView: UIView!
     
-    let cardScaleSpeed = 1.1
+    let cardScaleSpeed = 1.2
     var delegate: KillViewDelegate?
     
     override func viewDidLoad() {

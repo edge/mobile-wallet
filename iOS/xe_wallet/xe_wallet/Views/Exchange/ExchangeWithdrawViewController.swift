@@ -22,7 +22,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 1.1
+    let cardScaleSpeed = 1.2
     
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -86,14 +86,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
     
     @IBAction func closeButtonPressed(_ sender: UIButton) {
         
-        
-        self.delegate?.viewNeedsToHide()
-        
-        self.dismiss(animated: false, completion: nil)
-        self.delegate?.killView()
-        
-
-        /*self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
+        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
         self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
         UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
@@ -104,7 +97,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
 
             self.dismiss(animated: false, completion: nil)
             self.delegate?.killView()
-        })*/
+        })
     }
     
     func viewNeedsToShow() {
@@ -115,11 +108,10 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
     func killView() {
         
         self.dismiss(animated: false, completion: nil)
-        self.delegate?.killView()
     }
     
     func viewNeedsToHide() {
         
-        self.backgroundView.alpha = 0.0
+        self.view.alpha = 0.0
     }
 }

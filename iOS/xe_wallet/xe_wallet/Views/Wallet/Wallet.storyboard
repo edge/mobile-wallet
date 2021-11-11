@@ -50,13 +50,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3j-Id-DnR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="207.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="mX7-9V-Bz4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-fq-SdQ">
-                                                            <rect key="frame" x="16" y="18" width="48" height="48"/>
+                                                            <rect key="frame" x="16" y="8" width="48" height="48"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-h7-j6F">
                                                                     <rect key="frame" x="12" y="12" width="24" height="24"/>
@@ -79,7 +79,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rx5-8D-igy">
-                                                            <rect key="frame" x="16" y="84" width="382" height="15"/>
+                                                            <rect key="frame" x="16" y="74" width="382" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="CPF-t2-xv3"/>
                                                             </constraints>
@@ -88,7 +88,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="xe_1jhgsdfjhgw37gsdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="443-YF-uZd">
-                                                            <rect key="frame" x="16" y="105" width="382" height="16"/>
+                                                            <rect key="frame" x="16" y="95" width="382" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="K13-4I-VF6"/>
                                                             </constraints>
@@ -97,7 +97,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BALANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4JG-jx-ueO">
-                                                            <rect key="frame" x="16" y="132" width="382" height="14"/>
+                                                            <rect key="frame" x="16" y="122" width="382" height="14"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="14" id="I9T-yV-yOg"/>
                                                             </constraints>
@@ -106,7 +106,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,503.000000 XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1k-QC-tVv">
-                                                            <rect key="frame" x="16" y="150" width="382" height="22"/>
+                                                            <rect key="frame" x="16" y="140" width="382" height="38"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="22" id="2TX-dQ-WmL"/>
                                                             </constraints>
@@ -132,7 +132,7 @@
                                                         <constraint firstItem="mX7-9V-Bz4" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" id="8k0-fS-aOy"/>
                                                         <constraint firstItem="4JG-jx-ueO" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="9SM-89-5V5"/>
                                                         <constraint firstAttribute="trailing" secondItem="mX7-9V-Bz4" secondAttribute="trailing" id="A0z-Eq-S9g"/>
-                                                        <constraint firstItem="yYa-N6-cNc" firstAttribute="top" secondItem="e1k-QC-tVv" secondAttribute="bottom" constant="14" id="AGv-ER-FLW"/>
+                                                        <constraint firstItem="yYa-N6-cNc" firstAttribute="top" secondItem="e1k-QC-tVv" secondAttribute="bottom" constant="8" id="AGv-ER-FLW"/>
                                                         <constraint firstAttribute="trailing" secondItem="yYa-N6-cNc" secondAttribute="trailing" constant="16" id="BDB-qE-UCm"/>
                                                         <constraint firstAttribute="trailing" secondItem="443-YF-uZd" secondAttribute="trailing" constant="16" id="BmB-aD-FAO"/>
                                                         <constraint firstItem="4JG-jx-ueO" firstAttribute="top" secondItem="443-YF-uZd" secondAttribute="bottom" constant="11" id="Cif-SB-UKu"/>
@@ -140,7 +140,8 @@
                                                         <constraint firstAttribute="bottom" secondItem="mX7-9V-Bz4" secondAttribute="bottom" id="FPh-U5-96F"/>
                                                         <constraint firstAttribute="trailing" secondItem="Rx5-8D-igy" secondAttribute="trailing" constant="16" id="HMa-3e-g77"/>
                                                         <constraint firstAttribute="width" secondItem="F3j-Id-DnR" secondAttribute="height" multiplier="2:1" id="IQP-qH-8Ff"/>
-                                                        <constraint firstItem="Rx5-8D-igy" firstAttribute="top" secondItem="xm2-fq-SdQ" secondAttribute="bottom" constant="18" id="QOc-fo-inu"/>
+                                                        <constraint firstItem="Rx5-8D-igy" firstAttribute="top" relation="lessThanOrEqual" secondItem="xm2-fq-SdQ" secondAttribute="bottom" constant="18" id="QOc-fo-inu"/>
+                                                        <constraint firstAttribute="bottom" secondItem="yYa-N6-cNc" secondAttribute="bottom" constant="7" id="Uk3-0K-RRt"/>
                                                         <constraint firstItem="443-YF-uZd" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="Zpo-SW-UyH"/>
                                                         <constraint firstAttribute="trailing" secondItem="e1k-QC-tVv" secondAttribute="trailing" constant="16" id="bKg-5l-GuQ"/>
                                                         <constraint firstAttribute="bottom" secondItem="mX7-9V-Bz4" secondAttribute="bottom" id="dVw-0o-6yv"/>
@@ -150,7 +151,7 @@
                                                         <constraint firstItem="mX7-9V-Bz4" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" id="lcc-BM-f1O"/>
                                                         <constraint firstItem="Rx5-8D-igy" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="rKP-VG-VFx"/>
                                                         <constraint firstItem="yYa-N6-cNc" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="vHF-S2-kve"/>
-                                                        <constraint firstItem="xm2-fq-SdQ" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" constant="18" id="vcH-oq-KCX"/>
+                                                        <constraint firstItem="xm2-fq-SdQ" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" constant="8" id="vcH-oq-KCX"/>
                                                         <constraint firstAttribute="trailing" secondItem="mX7-9V-Bz4" secondAttribute="trailing" id="wg1-rh-bjN"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
@@ -162,7 +163,6 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="F3j-Id-DnR" firstAttribute="leading" secondItem="dAy-d8-qRt" secondAttribute="leading" id="MYP-ea-w5H"/>
-                                                <constraint firstAttribute="bottom" secondItem="F3j-Id-DnR" secondAttribute="bottom" id="nfc-q9-BXG"/>
                                                 <constraint firstAttribute="trailing" secondItem="F3j-Id-DnR" secondAttribute="trailing" id="oci-YH-vKe"/>
                                                 <constraint firstItem="F3j-Id-DnR" firstAttribute="top" secondItem="dAy-d8-qRt" secondAttribute="top" id="sbK-O7-mgK"/>
                                             </constraints>
@@ -651,8 +651,9 @@
                         <outlet property="tableView" destination="qKa-g0-ka5" id="wZp-y3-aBs"/>
                         <segue destination="OVK-sp-nMd" kind="presentation" identifier="ShowSendViewController" animates="NO" id="fr0-Ca-8iE"/>
                         <segue destination="a3J-Mf-tAc" kind="presentation" identifier="ShowReceiveViewController" animates="NO" id="3bW-BD-J2w"/>
-                        <segue destination="cee-2x-Ikr" kind="presentation" identifier="ShowExchangeViewController" animates="NO" id="2Ht-uK-aXv"/>
+                        <segue destination="cee-2x-Ikr" kind="presentation" identifier="ShowExchangeDepositViewController" animates="NO" id="2Ht-uK-aXv"/>
                         <segue destination="kgt-He-MZh" kind="unwind" unwindAction="unwindToWalletViewWithSender:" id="C3G-rI-Rz7"/>
+                        <segue destination="MRj-MO-L4Z" kind="presentation" identifier="ShowExchangeWithdrawViewController" animates="NO" id="04q-nG-g80"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWC-5h-dhN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -700,15 +701,23 @@
             </objects>
             <point key="canvasLocation" x="1601" y="403"/>
         </scene>
-        <!--ExchangeViewController-->
+        <!--ExchangeDepositViewController-->
         <scene sceneID="oaN-Qd-Kyt">
             <objects>
-                <viewControllerPlaceholder storyboardName="Exchange" referencedIdentifier="ExchangeViewController" id="cee-2x-Ikr" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Exchange" referencedIdentifier="ExchangeDepositViewController" id="cee-2x-Ikr" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="0YD-aU-clh"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CI8-d4-iSu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1604" y="455"/>
+        </scene>
+        <!--ExchangeWithdrawViewController-->
+        <scene sceneID="2qw-ho-7Ad">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Exchange" referencedIdentifier="ExchangeWithdrawViewController" id="MRj-MO-L4Z" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IrJ-99-sAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1586" y="521"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="FDW-0z-wGg">
