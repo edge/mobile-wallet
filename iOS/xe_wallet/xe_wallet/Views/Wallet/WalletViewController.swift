@@ -50,12 +50,19 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         
         self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
         self.tableView.reloadData()
+
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super .viewDidAppear(animated)
+        
         self.collectionView.reloadData()
     }
     
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        self.collectionView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -141,6 +148,12 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     @IBAction func unwindToWalletView(sender: UIStoryboardSegue) {
 
     }
+    
+    @IBAction func addWalletButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ShowAddWalletViewController", sender: nil)
+    }
+    
 }
 
 extension WalletViewController {

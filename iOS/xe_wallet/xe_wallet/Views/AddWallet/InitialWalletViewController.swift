@@ -16,4 +16,29 @@ class InitialWalletViewController: BaseViewController {
         navigationItem.hidesBackButton = true
         self.navigationController?.navigationBar.topItem?.title = ""
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "CreateWalletViewController" {
+            
+            let controller = segue.destination as! CreateWalletViewController
+            controller.type = .xe
+        }
+        
+        if segue.identifier == "RestoreWalletViewController" {
+            
+            let controller = segue.destination as! RestoreWalletViewController
+            controller.type = .xe
+        }
+    }
+    
+    @IBAction func createWalletButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "CreateWalletViewController", sender: nil)
+    }
+    
+    @IBAction func restoreButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "RestoreWalletViewController", sender: nil)
+    }
 }

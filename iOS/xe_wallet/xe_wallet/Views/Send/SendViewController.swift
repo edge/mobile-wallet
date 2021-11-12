@@ -27,7 +27,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 0.1
+    let cardScaleSpeed = 1.2
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil

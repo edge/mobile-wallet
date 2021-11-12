@@ -132,19 +132,19 @@
                                 </constraints>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSQ-VJ-SKK">
-                                <rect key="frame" x="16" y="110" width="382" height="200"/>
+                                <rect key="frame" x="16" y="110" width="382" height="191"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="R6G-LO-GXi">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="R6G-LO-GXi" firstAttribute="top" secondItem="zSQ-VJ-SKK" secondAttribute="top" id="9tA-qu-Jlz"/>
-                                    <constraint firstItem="R6G-LO-GXi" firstAttribute="leading" secondItem="zSQ-VJ-SKK" secondAttribute="leading" id="9yZ-GW-Kk5"/>
-                                    <constraint firstAttribute="trailing" secondItem="R6G-LO-GXi" secondAttribute="trailing" id="Swf-gM-HFN"/>
-                                    <constraint firstAttribute="bottom" secondItem="R6G-LO-GXi" secondAttribute="bottom" id="Z8G-WQ-QDn"/>
-                                    <constraint firstAttribute="width" secondItem="zSQ-VJ-SKK" secondAttribute="height" multiplier="191:100" id="dTa-ax-IC5"/>
+                                    <constraint firstItem="R6G-LO-GXi" firstAttribute="leading" secondItem="zSQ-VJ-SKK" secondAttribute="leading" id="15c-1m-LG5"/>
+                                    <constraint firstAttribute="bottom" secondItem="R6G-LO-GXi" secondAttribute="bottom" id="Uta-Z8-uCC"/>
+                                    <constraint firstItem="R6G-LO-GXi" firstAttribute="top" secondItem="zSQ-VJ-SKK" secondAttribute="top" id="av1-vk-2i5"/>
+                                    <constraint firstAttribute="trailing" secondItem="R6G-LO-GXi" secondAttribute="trailing" id="azy-7H-prM"/>
+                                    <constraint firstAttribute="width" secondItem="zSQ-VJ-SKK" secondAttribute="height" multiplier="2:1" id="mUI-68-ixh"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

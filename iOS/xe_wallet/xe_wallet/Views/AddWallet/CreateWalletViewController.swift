@@ -32,7 +32,7 @@ class CreateWalletViewController: BaseViewController {
 
         self.title = "Create Wallet"
         
-        self.walletData = WalletDataModelManager.shared.generateWallet()
+        self.walletData = WalletDataModelManager.shared.generateWallet(type: self.type)
         
         if let data = self.walletData {
         

@@ -52,7 +52,6 @@
 		FD31F23C27183F870034A59E /* Receive.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD31F23B27183F870034A59E /* Receive.storyboard */; };
 		FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD31F23D27183F940034A59E /* ReceiveViewController.swift */; };
 		FD31F24027183FB10034A59E /* Exchange.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD31F23F27183FB10034A59E /* Exchange.storyboard */; };
-		FD60182A272CCBB300F78EBE /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = FD601829272CCBB300F78EBE /* secp256k1 */; };
 		FD6018C4272E097100F78EBE /* PrivateKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018C3272E097100F78EBE /* PrivateKey.swift */; };
 		FD6018C6272E097E00F78EBE /* PublicKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018C5272E097E00F78EBE /* PublicKey.swift */; };
 		FD6018C8272E09D000F78EBE /* Secp256k1Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018C7272E09D000F78EBE /* Secp256k1Context.swift */; };
@@ -84,6 +83,9 @@
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
 		FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */; };
+		FDB72A2D273DE4070071711F /* XEWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB72A2C273DE4070071711F /* XEWallet.swift */; };
+		FDB72A2F273DE41D0071711F /* EtherWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB72A2E273DE41D0071711F /* EtherWallet.swift */; };
+		FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = FDB72A3B273DF3160071711F /* secp256k1 */; };
 		FDCF72342739DCF100F027DC /* ExchangeDepositConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */; };
 		FDCF72362739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDCF72352739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift */; };
 		FDFB696E270F1E08004C2BFD /* AppAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */; };
@@ -174,6 +176,8 @@
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
 		FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
+		FDB72A2C273DE4070071711F /* XEWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEWallet.swift; sourceTree = "<group>"; };
+		FDB72A2E273DE41D0071711F /* EtherWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherWallet.swift; sourceTree = "<group>"; };
 		FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDepositConfirmViewController.swift; sourceTree = "<group>"; };
 		FDCF72352739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWithdrawConfirmViewController.swift; sourceTree = "<group>"; };
 		FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppAuth.storyboard; sourceTree = "<group>"; };
@@ -188,10 +192,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				FD6018F2273229C100F78EBE /* IQKeyboardManagerSwift in Frameworks */,
+				FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */,
 				C0AEA6385A8E1B4F4118623D /* libPods-xe_wallet.a in Frameworks */,
 				FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */,
 				FD6018DD272F443A00F78EBE /* SwiftKeccak in Frameworks */,
-				FD60182A272CCBB300F78EBE /* secp256k1 in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +265,8 @@
 				FD073DFE2714617E0077F184 /* TransactionRecordDataModel.swift */,
 				FD6018EC2731D54700F78EBE /* AddressKeyPair.swift */,
 				FD073E02271462AD0077F184 /* WalletType.swift */,
+				FDB72A2C273DE4070071711F /* XEWallet.swift */,
+				FDB72A2E273DE41D0071711F /* EtherWallet.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -533,10 +539,10 @@
 			);
 			name = xe_wallet;
 			packageProductDependencies = (
-				FD601829272CCBB300F78EBE /* secp256k1 */,
 				FD6018D8272F3EA300F78EBE /* keccak256 */,
 				FD6018DC272F443A00F78EBE /* SwiftKeccak */,
 				FD6018F1273229C100F78EBE /* IQKeyboardManagerSwift */,
+				FDB72A3B273DF3160071711F /* secp256k1 */,
 			);
 			productName = xe_wallet;
 			productReference = FD22ED57270F04B800B5B33F /* xe_wallet.app */;
@@ -567,10 +573,10 @@
 			);
 			mainGroup = FD22ED4E270F04B800B5B33F;
 			packageReferences = (
-				FD601828272CCBB300F78EBE /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
 				FD6018D7272F3EA300F78EBE /* XCRemoteSwiftPackageReference "keccak256" */,
 				FD6018DB272F443A00F78EBE /* XCRemoteSwiftPackageReference "SwiftKeccak" */,
 				FD6018F0273229C100F78EBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
 			);
 			productRefGroup = FD22ED58270F04B800B5B33F /* Products */;
 			projectDirPath = "";
@@ -649,6 +655,7 @@
 				FD073DFD2714615E0077F184 /* WalletDataModel.swift in Sources */,
 				FD22ED5F270F04B800B5B33F /* ViewController.swift in Sources */,
 				FD6018E72731C5A000F78EBE /* CreateWalletViewController.swift in Sources */,
+				FDB72A2F273DE41D0071711F /* EtherWallet.swift in Sources */,
 				FD6018ED2731D54700F78EBE /* AddressKeyPair.swift in Sources */,
 				FD6018FD27361C5D00F78EBE /* ExchangeDepositViewController.swift in Sources */,
 				FD6018EF2731F0C700F78EBE /* KeyChainHelper.swift in Sources */,
@@ -697,6 +704,7 @@
 				FD31F23827183F520034A59E /* SendViewController.swift in Sources */,
 				FD31F23627183EC40034A59E /* BackupViewController.swift in Sources */,
 				FD6018C4272E097100F78EBE /* PrivateKey.swift in Sources */,
+				FDB72A2D273DE4070071711F /* XEWallet.swift in Sources */,
 				FD6018CC272E0A2F00F78EBE /* Secp256k1PublicKey.swift in Sources */,
 				FD6018E82731C5A000F78EBE /* RestoreWalletViewController.swift in Sources */,
 			);
@@ -851,7 +859,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -884,7 +892,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -934,14 +942,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		FD601828272CCBB300F78EBE /* XCRemoteSwiftPackageReference "secp256k1.swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Boilertalk/secp256k1.swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.4;
-			};
-		};
 		FD6018D7272F3EA300F78EBE /* XCRemoteSwiftPackageReference "keccak256" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yeeth/keccak256.swift";
@@ -966,14 +966,17 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Boilertalk/secp256k1.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		FD601829272CCBB300F78EBE /* secp256k1 */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = FD601828272CCBB300F78EBE /* XCRemoteSwiftPackageReference "secp256k1.swift" */;
-			productName = secp256k1;
-		};
 		FD6018D8272F3EA300F78EBE /* keccak256 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD6018D7272F3EA300F78EBE /* XCRemoteSwiftPackageReference "keccak256" */;
@@ -988,6 +991,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD6018F0273229C100F78EBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		FDB72A3B273DF3160071711F /* secp256k1 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */;
+			productName = secp256k1;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

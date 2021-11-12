@@ -8,7 +8,6 @@
 import Foundation
 import secp256k1
 import SwiftKeccak
-import keccak256
 import UIKit
 import Security
 
@@ -25,21 +24,6 @@ class WalletDataModelManager {
         //UserDefaults.standard.removeObject(forKey: "WalletList")
         self.walletAddressList = UserDefaults.standard.stringArray(forKey: "WalletList") ?? [String]()
         self.buildWalletDatabase()
-
-        /*self.walletData.append(WalletDataModel(type:.xe, backedup: false, address: "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F", transactions: [
-            TransactionRecordDataModel(type:.receive, status:.pending, date:"test", amount:"12.000000"),
-            TransactionRecordDataModel(type:.send, status:.confirmed, date:"test", amount:"9.001000"),
-            TransactionRecordDataModel(type:.exchange, status:.confirmed, date:"test", amount:"4.120000")
-                                               ]))
-        self.walletData.append(WalletDataModel(type:.edge, backedup: false, address: "skfjhasdkjfhasdfkjhasdfjkhasdf", transactions: [
-            TransactionRecordDataModel(type:.receive, status:.confirmed, date:"test", amount:"5.110000")
-                                               ]))
-        self.walletData.append(WalletDataModel(type:.xe, backedup: false, address: "xe_A1188d8201Fb879e3b7523a0367401D2a985A32C", transactions: [
-            TransactionRecordDataModel(type:.receive, status:.pending, date:"test", amount:"3.200000"),
-            TransactionRecordDataModel(type:.receive, status:.confirmed, date:"test", amount:"1.000000")
-                                               ]))
-        self.walletData.append(WalletDataModel(type:.ethereum, backedup: true, address: "asdflkjasdflkjasdflkjasdflkjasdflkj", transactions: [
-                                               ]))*/
     }
     
     func buildWalletDatabase() {
@@ -106,12 +90,8 @@ class WalletDataModelManager {
                let passwordData = existingItem[kSecValueData as String] as? Data,
                let password = String(data: passwordData, encoding: .utf8)
             {
-
-                let a = 1
             }
         } else {
-
-            let b = 2
         }
     }
     
@@ -131,43 +111,11 @@ class WalletDataModelManager {
         self.walletData.insert(movedObject, at: bIndex)
     }
         
-    public func generateWallet() -> AddressKeyPairModel {
+    public func generateWallet(type:WalletType) -> AddressKeyPairModel {
         
-        let context = Secp256k1Context()
-
-        let privateKeyData = context.newRandomPrivateKey()
-        let privateKeyString = privateKeyData.hex()
-        print("PRIVATE KEY : \(privateKeyString)")
-        
-        let publicKeyData = try! context.getPublicKey(privateKey: privateKeyData)
-        let publicKeyString = publicKeyData.hex()
-        print("PUBLIC KEY : \(publicKeyString)")
-        
-        let address = self.publicKeyToChecksumAddress(publicKey: publicKeyString)
-        print("ADDRESS : \(address)")
-        
-        return AddressKeyPairModel(privateKey: privateKeyData, address: address)
+        let pair = XEWallet().generateWallet(type:type)
+        return pair
     }
     
-    public func publicKeyToChecksumAddress(publicKey: String) -> String {
 
-        let hash = keccak256(publicKey)
-        let addr = "\(hash.toHex().substring(with: hash.toHex().count-40..<hash.toHex().count))"
-        let addrHash = keccak256(addr.lowercased()).toHex()
-        var chkAddr = ""
-
-        for i in 0..<addr.count {
-            
-            let digit = addrHash[addrHash.index(addrHash.startIndex, offsetBy: i)]
-                
-            if digit.hexDigitValue! >= 8 {
-                    
-                chkAddr.append(addr[addr.index(addr.startIndex, offsetBy: i)].uppercased())
-            } else {
-                
-                chkAddr.append(addr[addr.index(addr.startIndex, offsetBy: i)])
-            }
-        }
-        return "xe_\(chkAddr)"
-    }
 }

@@ -16,6 +16,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
     @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
+    @IBOutlet weak var closeXIcon: UIImageView!
     
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
@@ -28,7 +29,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
     var cardImage: UIImage? = nil
     
     var delegate: KillViewDelegate?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -56,6 +57,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate {
         }, completion: { finished in
 
         })
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

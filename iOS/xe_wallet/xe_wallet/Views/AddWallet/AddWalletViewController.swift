@@ -45,9 +45,16 @@ class AddWalletViewController: BaseViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "ShowSendViewController" {
+        if segue.identifier == "CreateWalletViewController" {
             
-
+            let controller = segue.destination as! CreateWalletViewController
+            controller.type = self.selected
+        }
+        
+        if segue.identifier == "RestoreWalletViewController" {
+            
+            let controller = segue.destination as! RestoreWalletViewController
+            controller.type = self.selected
         }
     }
     
@@ -70,11 +77,11 @@ class AddWalletViewController: BaseViewController {
     
     @IBAction func createButtonPressed(_ sender: Any) {
         
-        performSegue(withIdentifier: "ShowCreateWalletViewController", sender: nil)
+        performSegue(withIdentifier: "CreateWalletViewController", sender: nil)
     }
     
     @IBAction func restoreButtonPressed(_ sender: Any) {
         
-        performSegue(withIdentifier: "ShowRestoreWalletViewController", sender: nil)
+        performSegue(withIdentifier: "RestoreWalletViewController", sender: nil)
     }
 }
