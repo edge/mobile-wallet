@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
+class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, CustomTitleBarDelegate {
 
     @IBOutlet weak var backgroundView: UIView!
     
@@ -17,12 +17,14 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
     
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
+    
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 1.2
+    let cardScaleSpeed = 0.6
     
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -41,6 +43,8 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.customTitleBarView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -62,7 +66,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
 
         if gesture.direction == .down {
 
-            self.closeButtonPressed(UIButton())
+            self.closeWindow()
         }
     }
     
@@ -84,7 +88,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
         performSegue(withIdentifier: "ShowExchangeWithdrawConfirmViewController", sender: nil)
     }
     
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
+    func closeWindow() {
         
         self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
@@ -113,5 +117,16 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate {
     func viewNeedsToHide() {
         
         self.view.alpha = 0.0
+    }
+}
+
+extension ExchangeWithdrawViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+
+        self.closeWindow()
     }
 }

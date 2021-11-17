@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ExchangeDepositConfirmViewController: BaseViewController {
+class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDelegate {
     
     @IBOutlet weak var backgroundView: UIView!
     
-    let cardScaleSpeed = 1.2
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
+    
+    let cardScaleSpeed = 0.6
     var delegate: KillViewDelegate?
     
     override func viewDidLoad() {
@@ -25,6 +27,8 @@ class ExchangeDepositConfirmViewController: BaseViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.customTitleBarView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,13 +47,19 @@ class ExchangeDepositConfirmViewController: BaseViewController {
 
         if gesture.direction == .down {
 
-            self.closeButtonPressed(UIButton())
+            self.closeWindow(callKillDelegate: true)
         }
     }
-    
-    @IBAction func backButtonPressed(_ sender: Any) {
+
+    func closeWindow(callKillDelegate: Bool) {
         
-        self.delegate?.viewNeedsToShow()
+        if callKillDelegate {
+        
+            self.delegate?.viewNeedsToHide()
+        } else {
+        
+            self.delegate?.viewNeedsToShow()
+        }
         UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
@@ -57,20 +67,23 @@ class ExchangeDepositConfirmViewController: BaseViewController {
         }, completion: { finished in
 
             self.dismiss(animated: false, completion: nil)
+            if callKillDelegate {
+            
+                self.delegate?.killView()
+            }
         })
     }
+}
+
+extension ExchangeDepositConfirmViewController {
     
-    @IBAction func closeButtonPressed(_ sender: Any) {
+    func letButtonPressed() {
         
-        self.delegate?.viewNeedsToHide()
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.closeWindow(callKillDelegate: false)
+    }
+    
+    func rightButtonPressed() {
 
-            self.backgroundView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }, completion: { finished in
-
-            self.dismiss(animated: false, completion: nil)
-            self.delegate?.killView()
-        })
+        self.closeWindow(callKillDelegate: true)
     }
 }

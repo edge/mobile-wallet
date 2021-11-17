@@ -30,19 +30,30 @@ class TransactionTableViewCell: UITableViewCell {
     
     func configure(data: TransactionRecordDataModel) {
         
-        self.typeImageView.image = UIImage(named:data.type.getImageName())
+        //self.typeImageView.image = UIImage(named:data.type.getImageName())
 
-        self.typeLabel.text = "\(data.type.rawValue)"
-        self.memoLabel.text = "Memo"
-        self.amountLabel.text = "\(data.amount)"
-        self.statusLabel.text = "\(data.status.rawValue)"
+        //self.typeLabel.text = "\(data.type.rawValue)"
         
-        self.sumTxHashLabel.text = "hash number"
-        self.sumDateLabel.text = "Confirmed - Sept 12th at 9:34am"
+        var memo = ""
+        if let memData = data.data {
+            
+            memo = memData.memo
+        }
+        self.memoLabel.text = memo
+        
+        //Double(0.123456789).roundToPlaces(4)
+        
+        
+        
+        self.amountLabel.text = "\(String(format: "%.6f", Double(data.amount/1000000)))"
+        //self.statusLabel.text = "\(data.status.rawValue)"
+        
+        self.sumTxHashLabel.text = data.hash
+        self.sumDateLabel.text = "\(data.timestamp)"
         self.sumAaddressLabel.text = "xe_1239487skjfhsmd"
-        self.sumMemoLabel.text = "testing"
-        self.sumStatusLabel.text = "\(data.status.rawValue)"
-        self.sumAmountLabel.text = "\(data.amount)"
+        self.sumMemoLabel.text = memo
+        //self.sumStatusLabel.text = "\(data.status.rawValue)"
+        self.sumAmountLabel.text = "\(String(format: "%.6f", Double(data.amount/1000000)))"
     }
 }
 

@@ -80,7 +80,15 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate {
         
         if self.continueActive {
             
-            self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+            if let walletData = WalletDataModelManager.shared.restoreWallet(type: self.type, key: self.privateKeyTextView.text) {
+                
+                WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
+                
+                self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+            } else {
+                
+                
+            }
         }
     }
     

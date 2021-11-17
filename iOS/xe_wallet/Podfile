@@ -2,6 +2,12 @@
 # platform :ios, '13.0'
 
 target 'xe_wallet' do
-   pod 'SwiftKeychainWrapper'
+   	use_frameworks!
+	pod 'SwiftKeychainWrapper'
 	pod 'FAPaginationLayout'
+	pod 'web3swift', :git => 'https://github.com/PJDavis1970/web3swift'
+	pod 'Alamofire', '~> 4.4'
+	pod 'DataCache'
+	pod 'SwiftyJSON', '~> 4.0'
+	pod 'AnyCodable-FlightSchool', '~> 0.6.0'
 end

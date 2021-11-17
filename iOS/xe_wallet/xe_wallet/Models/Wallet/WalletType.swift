@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum WalletType: String {
+enum WalletType: String, Codable {
     
     case xe = "coin_xe"
     case edge = "coin_edge"
@@ -19,8 +19,10 @@ enum WalletType: String {
             
         case .xe:
             return "XE"
+            
         case .edge:
             return "Edge"
+            
         case .ethereum:
             return "Ether"
         }

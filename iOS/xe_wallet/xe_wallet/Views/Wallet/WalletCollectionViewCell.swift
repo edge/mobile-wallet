@@ -36,8 +36,17 @@ class WalletCollectionViewCell: UICollectionViewCell {
         
         self.walletTypeIcon.image = UIImage(named:data.type.rawValue)
         self.addressLabel.text = data.address
-        self.amountLabel.text = "1,303.000000 \(data.type.getDisplayLabel())"
-        self.valueLabel.text = "$900 USD"
+        
+        var amount = 0
+        var value = "$0 USD"
+        
+        if let status = data.status {
+            
+            amount = status.balance
+        }
+        
+        self.amountLabel.text = "\(String(format: "%.6f", Double(amount/1000000))) \(data.type.getDisplayLabel())"
+        self.valueLabel.text = value
     }
     
     public func getCardViewImage() -> UIImage {

@@ -96,7 +96,7 @@ class CreateWalletViewController: BaseViewController {
             
             if let data = self.walletData {
             
-                WalletDataModelManager.shared.saveWalletToSystem(wallet: data)
+                WalletDataModelManager.shared.saveWalletToSystem(wallet: data, type: self.type)
                 
                 self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
             }

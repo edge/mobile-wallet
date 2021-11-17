@@ -14,6 +14,9 @@ class AddWalletViewController: BaseViewController {
     @IBOutlet weak var etherCircleView: UIView!
     @IBOutlet weak var etherInnerCircleView: UIView!
     
+    @IBOutlet weak var closeXIconTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeXIconRightConstraint: NSLayoutConstraint!
+    
     var selected:WalletType = .xe
     
     override func viewDidLoad() {
@@ -24,6 +27,9 @@ class AddWalletViewController: BaseViewController {
         self.title = "Add Wallet"
         
         self.configureSelectedButtons()
+        
+        self.closeXIconTopConstraint.constant = UIApplication.shared.statusBarFrame.size.height + 15
+        self.closeXIconRightConstraint.constant = UIScreen.main.bounds.width * 0.06
     }
     
     func configureSelectedButtons() {

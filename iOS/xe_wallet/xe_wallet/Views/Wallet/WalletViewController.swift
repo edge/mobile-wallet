@@ -11,7 +11,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
-    
+
     var transactionListViewData = [TransactionRecordDataModel]()
     var walletCollectionViewData = [WalletDataModel]()
     
@@ -40,9 +40,11 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             self.navigationController?.pushViewController(vc!, animated: false)
         }
         
-        self.title = "Edge (XE) Testnet"
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
         
         tableView.allowsSelectionDuringEditing = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,8 +67,15 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         self.collectionView.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    @objc func onDidReceiveData(_ notification: Notification) {
         
+        self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
+        self.collectionView.reloadData()
+        self.tableView.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                
         if segue.identifier == "ShowSendViewController" {
             
             let controller = segue.destination as! SendViewController
@@ -77,7 +86,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
                 controller.cardImage = selectedCardCell.getCardViewImage()
              }
             controller.walletData = self.walletCollectionViewData[self.selectedWallet]
-            
+
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
         }
         
@@ -163,7 +172,8 @@ extension WalletViewController {
         if self.walletCollectionViewData.count > 0 {
         
             guard let trans = self.walletCollectionViewData[self.selectedWallet].transactions else { return 0 }
-            return trans.count
+            guard let results = trans.results else { return 0 }
+            return results.count
         }
         return 0
     }
@@ -183,7 +193,10 @@ extension WalletViewController {
         
         if let trans = self.walletCollectionViewData[self.selectedWallet].transactions {
             
-            (cell as! TransactionTableViewCell).configure(data:trans[indexPath.row])
+            if let entries = trans.results {
+            
+                (cell as! TransactionTableViewCell).configure(data:entries[indexPath.row])
+            }
         }
         cell.selectionStyle = .none
         return cell

@@ -17,12 +17,15 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     
     @IBOutlet weak var textEntryTextView: UITextView!
     
+    @IBOutlet weak var closeXIconTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var closeXIconRightConstraint: NSLayoutConstraint!
+    
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 0.1
+    let cardScaleSpeed = 0.4
     
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -41,12 +44,27 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.closeXIconTopConstraint.constant = UIApplication.shared.statusBarFrame.size.height + 15
+        self.closeXIconRightConstraint.constant = UIScreen.main.bounds.width * 0.06
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         self.textEntryTextView.becomeFirstResponder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            //self.backgroundView.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+        })
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

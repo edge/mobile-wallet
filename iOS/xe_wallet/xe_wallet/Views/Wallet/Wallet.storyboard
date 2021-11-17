@@ -56,10 +56,10 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-fq-SdQ">
-                                                            <rect key="frame" x="16" y="6" width="48" height="49"/>
+                                                            <rect key="frame" x="16" y="7" width="48" height="48"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-h7-j6F">
-                                                                    <rect key="frame" x="11" y="15" width="24" height="21"/>
+                                                                    <rect key="frame" x="11" y="13" width="24" height="21"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
@@ -70,7 +70,7 @@
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="ADDRESS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Rx5-8D-igy">
-                                                            <rect key="frame" x="16" y="76" width="57" height="15"/>
+                                                            <rect key="frame" x="16" y="76" width="56.5" height="15"/>
                                                             <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                                             <color key="textColor" name="FontSecondary"/>
                                                             <nil key="highlightedColor"/>
@@ -88,7 +88,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1,503.000000 XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="e1k-QC-tVv">
-                                                            <rect key="frame" x="16" y="144" width="157" height="22"/>
+                                                            <rect key="frame" x="16" y="144" width="156.5" height="22"/>
                                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
@@ -424,7 +424,7 @@
                                                     <rect key="frame" x="0.0" y="66" width="414" height="168"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tx Hash" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aXn-QY-rYo">
-                                                            <rect key="frame" x="14" y="16" width="50" height="16"/>
+                                                            <rect key="frame" x="14" y="16" width="79" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="chB-bW-KLj"/>
                                                             </constraints>
@@ -432,10 +432,11 @@
                                                             <color key="textColor" name="FontSecondary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-kq-MFW">
-                                                            <rect key="frame" x="398" y="16" width="0.0" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Jl8-kq-MFW">
+                                                            <rect key="frame" x="130" y="16" width="268" height="16"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="16" id="Ks1-DB-sky"/>
+                                                                <constraint firstAttribute="width" constant="268" id="ZXr-Eo-1D1"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                             <color key="textColor" name="FontMain"/>
@@ -539,6 +540,7 @@
                                                         <constraint firstItem="aXn-QY-rYo" firstAttribute="leading" secondItem="tNd-8d-EeU" secondAttribute="leading" constant="14" id="28Y-8D-64x"/>
                                                         <constraint firstAttribute="trailing" secondItem="BhX-1H-PAw" secondAttribute="trailing" constant="16" id="40t-1Q-653"/>
                                                         <constraint firstItem="dM8-sP-ke6" firstAttribute="top" secondItem="yL7-e9-Vxg" secondAttribute="bottom" constant="8" id="8Sy-bL-9r2"/>
+                                                        <constraint firstItem="Jl8-kq-MFW" firstAttribute="leading" secondItem="aXn-QY-rYo" secondAttribute="trailing" constant="37" id="BNC-iv-csM"/>
                                                         <constraint firstItem="nE2-Ft-Xb3" firstAttribute="top" secondItem="Jl8-kq-MFW" secondAttribute="bottom" constant="8" id="Bpv-rV-O0Q"/>
                                                         <constraint firstAttribute="trailing" secondItem="Stx-IO-6wh" secondAttribute="trailing" constant="16" id="EIz-dz-4E9"/>
                                                         <constraint firstAttribute="trailing" secondItem="dM8-sP-ke6" secondAttribute="trailing" constant="16" id="GBK-I9-Ww1"/>
@@ -631,7 +633,7 @@
                         <segue destination="cee-2x-Ikr" kind="presentation" identifier="ShowExchangeDepositViewController" animates="NO" id="2Ht-uK-aXv"/>
                         <segue destination="kgt-He-MZh" kind="unwind" unwindAction="unwindToWalletViewWithSender:" id="C3G-rI-Rz7"/>
                         <segue destination="MRj-MO-L4Z" kind="presentation" identifier="ShowExchangeWithdrawViewController" animates="NO" id="04q-nG-g80"/>
-                        <segue destination="CjT-D7-IxK" kind="show" identifier="ShowAddWalletViewController" id="5ms-ty-gZC"/>
+                        <segue destination="CjT-D7-IxK" kind="presentation" identifier="ShowAddWalletViewController" modalTransitionStyle="crossDissolve" id="5ms-ty-gZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWC-5h-dhN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

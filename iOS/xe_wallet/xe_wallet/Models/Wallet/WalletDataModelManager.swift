@@ -17,29 +17,20 @@ class WalletDataModelManager {
     
     var walletData = [WalletDataModel]()
     
-    var walletAddressList:[String] = []
-    
     private init() {
         
-        //UserDefaults.standard.removeObject(forKey: "WalletList")
-        self.walletAddressList = UserDefaults.standard.stringArray(forKey: "WalletList") ?? [String]()
-        self.buildWalletDatabase()
+        self.loadWalletList()
     }
     
-    func buildWalletDatabase() {
+    func loadWalletList() {
         
-        self.walletData.removeAll()
-        for addr in walletAddressList {
+        if let data = UserDefaults.standard.data(forKey: "WalletData8") {
             
-            self.walletData.append(WalletDataModel(type: .xe, address: addr, transactions: [
-                TransactionRecordDataModel(type:.receive, status:.pending, date:"test", amount:"12.000000"),
-                TransactionRecordDataModel(type:.send, status:.confirmed, date:"test", amount:"9.001000"),
-                TransactionRecordDataModel(type:.exchange, status:.confirmed, date:"test", amount:"4.120000")
-                                                   ]))
+            self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
         }
     }
     
-    public func saveWalletToSystem(wallet:AddressKeyPairModel) {
+    public func saveWalletToSystem(wallet:AddressKeyPairModel, type: WalletType) {
         
         let username = wallet.address
         let password = wallet.privateKey.hex().data(using: .utf8)!
@@ -51,10 +42,12 @@ class WalletDataModelManager {
         ]
 
         if SecItemAdd(attributes as CFDictionary, nil) == noErr {
-            
-            self.walletAddressList.append(wallet.address)
-            UserDefaults.standard.set(self.walletAddressList, forKey: "WalletList")
-            self.buildWalletDatabase()
+                        
+            let wallet = WalletDataModel(type: type, address: wallet.address)
+            self.walletData.append(wallet)
+            let wData = try! JSONEncoder().encode(self.walletData)
+            let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
+            UserDefaults.standard.set(wData, forKey: "WalletData8")
         } else {
 
         }
@@ -62,7 +55,6 @@ class WalletDataModelManager {
     
     public func activeWalletAmount() -> Int {
         
-        //return self.walletAddressList.count
         return self.walletData.count
     }
     
@@ -88,8 +80,7 @@ class WalletDataModelManager {
             if let existingItem = item as? [String: Any],
                let username = existingItem[kSecAttrAccount as String] as? String,
                let passwordData = existingItem[kSecValueData as String] as? Data,
-               let password = String(data: passwordData, encoding: .utf8)
-            {
+               let password = String(data: passwordData, encoding: .utf8) {
             }
         } else {
         }
@@ -111,11 +102,39 @@ class WalletDataModelManager {
         self.walletData.insert(movedObject, at: bIndex)
     }
         
-    public func generateWallet(type:WalletType) -> AddressKeyPairModel {
+    public func generateWallet(type:WalletType) -> AddressKeyPairModel? {
         
-        let pair = XEWallet().generateWallet(type:type)
-        return pair
+        switch type {
+            
+        case .xe:
+            let pair = XEWallet().generateWallet(type:type)
+            return pair
+            
+        case .ethereum:
+            let pair = EtherWallet().generateWallet(type:type)
+            return pair
+
+        case .edge:
+            break
+        }
+        return nil
     }
     
-
+    public func restoreWallet(type:WalletType, key: String) -> AddressKeyPairModel? {
+        
+        switch type {
+            
+        case .xe:
+            let pair = XEWallet().generateWalletFromPrivateKey(privateKeyString: key)
+            return pair
+            
+        case .ethereum:
+            let pair = EtherWallet().generateWallet(type:type)
+            return pair
+            
+        case .edge:
+            break
+        }
+        return nil
+    }
 }

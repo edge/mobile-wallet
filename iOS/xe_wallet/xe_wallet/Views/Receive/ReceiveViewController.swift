@@ -9,7 +9,7 @@ import UIKit
 import CoreImage.CIFilterBuiltins
 import CoreImage.CIFilterConstructor
 
-class ReceiveViewController: BaseViewController {
+class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
         
     @IBOutlet var backgroundView: UIView!
     
@@ -21,12 +21,14 @@ class ReceiveViewController: BaseViewController {
     
     @IBOutlet weak var QRImageView: UIImageView!
     
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
+    
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 1.2
+    let cardScaleSpeed = 0.6
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
@@ -54,6 +56,8 @@ class ReceiveViewController: BaseViewController {
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.customTitleBarView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,11 +79,11 @@ class ReceiveViewController: BaseViewController {
 
         if gesture.direction == .down {
 
-            self.closeButtonPressed(UIButton())
+            self.closeWindow()
         }
     }
     
-    @IBAction func closeButtonPressed(_ sender: Any) {
+    func closeWindow() {
         
         self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
@@ -110,4 +114,15 @@ class ReceiveViewController: BaseViewController {
         return nil
     }
     
+}
+
+extension ReceiveViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+
+        self.closeWindow()
+    }
 }

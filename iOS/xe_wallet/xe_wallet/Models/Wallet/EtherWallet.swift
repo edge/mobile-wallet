@@ -8,52 +8,25 @@
 import SwiftKeccak
 import UIKit
 import Security
-//import web3
+import web3swift
+import secp256k1
 
 class EtherWallet {
     
     public func generateWallet(type:WalletType) -> AddressKeyPairModel {
                 
-        //guard let clientUrl = URL(string: "https://an-infura-or-similar-url.com/123") else { return }
-        //let client = EthereumClient(url: clientUrl)
+        let password = "web3swift" // We recommend here and everywhere to use the password set by the user.
+        let keystore = try! EthereumKeystoreV3(password: password)!
+        let name = "New Wallet"
+        let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
+        let address = keystore.addresses!.first!.address
+        //let wallet = Wallet(address: address, data: keyData, name: name, isHD: false)
         
+        let ethereumAddress = EthereumAddress(address)!
+        let pkData = try! keystore.UNSAFE_getPrivateKeyData(password: password, account: ethereumAddress).toHexString()
         
-        let context = Secp256k1Context()
-
-        let privateKeyData = context.newRandomPrivateKey()
-        let privateKeyString = privateKeyData.hex()
-        print("PRIVATE KEY : \(privateKeyString)")
-        
-        let publicKeyData = try! context.getPublicKey(privateKey: privateKeyData)
-        let publicKeyString = publicKeyData.hex()
-        print("PUBLIC KEY : \(publicKeyString)")
-        
-        let address = self.publicKeyToChecksumAddress(publicKey: publicKeyString)
-        print("ADDRESS : \(address)")
-        
-        return AddressKeyPairModel(privateKey: privateKeyData, address: address)
+        return  AddressKeyPairModel(privateKey: "" as! PrivateKey , address: "")
     }
     
-    public func publicKeyToChecksumAddress(publicKey: String) -> String {
-
-        let hash = keccak256(publicKey)
-        let addr = "\(hash.toHex().substring(with: hash.toHex().count-40..<hash.toHex().count))"
-        let addrHash = keccak256(addr.lowercased()).toHex()
-        var chkAddr = ""
-
-        for i in 0..<addr.count {
-            
-            let digit = addrHash[addrHash.index(addrHash.startIndex, offsetBy: i)]
-                
-            if digit.hexDigitValue! >= 8 {
-                    
-                chkAddr.append(addr[addr.index(addr.startIndex, offsetBy: i)].uppercased())
-            } else {
-                
-                chkAddr.append(addr[addr.index(addr.startIndex, offsetBy: i)])
-            }
-        }
-        return "xe_\(chkAddr)"
-    }
 }
 

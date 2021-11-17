@@ -7,8 +7,8 @@
 
 import UIKit
 
-class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDelegate {
-        
+class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDelegate, CustomTitleBarDelegate {
+
     @IBOutlet weak var backgroundView: UIView!
 
     @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
@@ -21,13 +21,15 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     @IBOutlet weak var toTextField: UITextField!
     @IBOutlet weak var memoTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
+                
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
     
     let cardViewTopConstraintStart: CGFloat = 66
     let cardViewTopConstraintEnd: CGFloat = 20
     let cardViewSideConstraintStart: CGFloat = 16
     let cardViewSideConstraintEnd: CGFloat = 95
     
-    let cardScaleSpeed = 1.2
+    let cardScaleSpeed = 0.6
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
@@ -52,7 +54,6 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         
         self.creditCardImage.image = self.cardImage
         
-        
         let attrs1 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontSecondary")]
         let attrs2 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontOptional")]
         let attributedString1 = NSMutableAttributedString(string:"Memo ", attributes:attrs1)
@@ -76,6 +77,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+
+        self.customTitleBarView.delegate = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,11 +100,11 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
 
         if gesture.direction == .down {
 
-            self.closeButtonPressed(UIButton())
+            self.closeWindow()
         }
     }
     
-    @IBAction func closeButtonPressed(_ sender: UIButton) {
+    func closeWindow() {
         
         self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
@@ -169,5 +172,16 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     func killView() {
         
         self.dismiss(animated: false, completion: nil)
+    }
+}
+
+extension SendViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+
+        self.closeWindow()
     }
 }

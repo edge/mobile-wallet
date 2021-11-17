@@ -48,4 +48,34 @@ class AppDataModelManager {
         appData.testMode.toggle()
         return appData.testMode
     }
+    
+    func getXEServerStatusUrl() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            return self.appData.XE_MainNetStatusUrl
+        }
+        
+        return self.appData.XE_TestNetStatusUrl
+    }
+    
+    func getXEServerTransactionUrl() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            return self.appData.XE_MainNetTransactionUrl
+        }
+        
+        return self.appData.XE_TestNetTransactionUrl
+    }
+    
+    func getNetworkTitleString() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            return self.appData.XE_networkMainNetTitle
+        }
+        
+        return self.appData.XE_networkTestNetTitle
+    }
 }

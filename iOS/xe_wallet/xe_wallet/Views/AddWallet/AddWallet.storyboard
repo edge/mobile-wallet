@@ -473,7 +473,7 @@
             </objects>
             <point key="canvasLocation" x="1284" y="53"/>
         </scene>
-        <!--Add Wallet View Controller-->
+        <!--Title-->
         <scene sceneID="ayQ-kk-cye">
             <objects>
                 <viewController storyboardIdentifier="AddWalletViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="fullScreen" id="Kyd-EG-59K" customClass="AddWalletViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
@@ -828,10 +828,10 @@
                         <color key="backgroundColor" name="BackgroundMain"/>
                         <constraints>
                             <constraint firstItem="Olg-no-UkP" firstAttribute="top" secondItem="KpY-3c-At1" secondAttribute="bottom" constant="8" id="2f7-P3-Rqu"/>
+                            <constraint firstItem="Jhp-fg-Be3" firstAttribute="top" secondItem="XhH-uI-wd8" secondAttribute="top" id="4Tv-wd-utL"/>
                             <constraint firstAttribute="trailing" secondItem="Jhp-fg-Be3" secondAttribute="trailing" id="6zd-WV-UfS"/>
                             <constraint firstItem="xuW-GD-bqM" firstAttribute="trailing" secondItem="WWA-l8-ssc" secondAttribute="trailing" constant="16" id="I3V-qj-qR9"/>
                             <constraint firstItem="xuW-GD-bqM" firstAttribute="trailing" secondItem="KpY-3c-At1" secondAttribute="trailing" constant="16" id="JV9-Py-PIg"/>
-                            <constraint firstItem="Jhp-fg-Be3" firstAttribute="top" secondItem="XhH-uI-wd8" secondAttribute="top" id="Or1-XR-QCf"/>
                             <constraint firstItem="MC5-3S-s7e" firstAttribute="leading" secondItem="xuW-GD-bqM" secondAttribute="leading" constant="16" id="QSA-tY-qYB"/>
                             <constraint firstItem="xuW-GD-bqM" firstAttribute="trailing" secondItem="Olg-no-UkP" secondAttribute="trailing" constant="16" id="Sdr-4b-zXZ"/>
                             <constraint firstItem="WWA-l8-ssc" firstAttribute="leading" secondItem="xuW-GD-bqM" secondAttribute="leading" constant="16" id="WIx-UG-ZFS"/>
@@ -845,8 +845,10 @@
                             <constraint firstItem="wL0-3p-Z5w" firstAttribute="leading" secondItem="xuW-GD-bqM" secondAttribute="leading" constant="16" id="tQd-8l-IQU"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Yuh-QC-ziR"/>
+                    <navigationItem key="navigationItem" title="Title" id="wvT-z3-527"/>
                     <connections>
+                        <outlet property="closeXIconRightConstraint" destination="JV4-yT-BsB" id="pYr-T2-iO4"/>
+                        <outlet property="closeXIconTopConstraint" destination="nbv-8d-FUn" id="jHE-NA-JiH"/>
                         <outlet property="etherCircleView" destination="30o-fc-rPA" id="klz-k2-x5G"/>
                         <outlet property="etherInnerCircleView" destination="MmI-XJ-3cd" id="3Rg-Ed-u9m"/>
                         <outlet property="xeCircleView" destination="hZp-tC-ZgP" id="MzE-SL-rC3"/>

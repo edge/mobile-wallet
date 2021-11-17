@@ -24,7 +24,7 @@ class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableV
         
         self.settingsMenuTableViewData = SettingsDataModelManager.shared.getSettingsData()
         
-        self.title = "Edge (XE) Testnet"
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
     }
     
     override func viewDidAppear(_ animated: Bool) {
