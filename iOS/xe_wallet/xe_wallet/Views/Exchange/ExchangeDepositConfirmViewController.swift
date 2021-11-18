@@ -10,10 +10,8 @@ import UIKit
 class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDelegate {
     
     @IBOutlet weak var backgroundView: UIView!
-    
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
     
-    let cardScaleSpeed = 0.6
     var delegate: KillViewDelegate?
     
     override func viewDidLoad() {
@@ -34,7 +32,7 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -60,7 +58,7 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
         
             self.delegate?.viewNeedsToShow()
         }
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
             self.view.layoutIfNeeded()

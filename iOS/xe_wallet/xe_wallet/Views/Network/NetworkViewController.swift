@@ -9,10 +9,75 @@ import UIKit
 
 class NetworkViewController: BaseViewController {
     
+    @IBOutlet weak var mainNetHighlightView: UIView!
+    @IBOutlet weak var testNetHighlightView: UIView!
+    
+    @IBOutlet weak var selectNetworkButtonView: UIView!
+    @IBOutlet weak var selectNetworkButtonText: UILabel!
+    
+    var testnetStatus = false
+    var testnetStatusStart = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
         self.title = "Network"
+        
+        self.testnetStatus = AppDataModelManager.shared.testModeStatus()
+        self.testnetStatusStart = self.testnetStatus
+        self.setButtonStatus()
+    }
+    
+    @IBAction func mainNetButtonPressed(_ sender: Any) {
+        
+        self.testnetStatus = false
+        self.setButtonStatus()
+    }
+    
+    @IBAction func testNetButtonPressed(_ sender: Any) {
+        
+        self.testnetStatus = true
+        self.setButtonStatus()
+    }
+    
+    @IBAction func selectNetworkButtonPressed(_ sender: Any) {
+        
+        let networkText = AppDataModelManager.shared.getNetworkTitleString(status: self.testnetStatus)
+        
+        let alert = UIAlertController(title: Constants.networkChangeConfirmMessageHeader , message: "\(Constants.networkChangeConfirmMessage) \(networkText)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
+
+            AppDataModelManager.shared.testModeToggle()
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
+
+            self.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func setButtonStatus() {
+        
+        if self.testnetStatus {
+        
+            self.mainNetHighlightView.backgroundColor = UIColor(named: "BackgroundMain")
+            self.testNetHighlightView.backgroundColor = UIColor(named: "ButtonGreen")
+        } else {
+            
+            self.mainNetHighlightView.backgroundColor = UIColor(named: "ButtonGreen")
+            self.testNetHighlightView.backgroundColor = UIColor(named: "BackgroundMain")
+        }
+        
+        if self.testnetStatus == !self.testnetStatusStart {
+
+            self.selectNetworkButtonText.textColor = UIColor(named: "FontMain")
+            self.selectNetworkButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+        } else {
+            
+            self.selectNetworkButtonText.textColor = UIColor(named: "ButtonTextInactive")
+            self.selectNetworkButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+        }
     }
 }

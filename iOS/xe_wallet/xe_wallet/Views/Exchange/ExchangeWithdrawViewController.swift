@@ -19,13 +19,6 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
     
-    let cardViewTopConstraintStart: CGFloat = 66
-    let cardViewTopConstraintEnd: CGFloat = 20
-    let cardViewSideConstraintStart: CGFloat = 16
-    let cardViewSideConstraintEnd: CGFloat = 95
-    
-    let cardScaleSpeed = 0.6
-    
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
     
@@ -50,10 +43,10 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintEnd
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintEnd
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintEnd
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintEnd
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintEnd
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintEnd
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -76,9 +69,6 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
             
             let controller = segue.destination as! ExchangeWithdrawConfirmViewController
             controller.modalPresentationStyle = .overCurrentContext
-            
-            //controller.walletData = self.walletData
-            //controller.cardImage = self.cardImage
             controller.delegate = self
         }
     }
@@ -90,10 +80,10 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     
     func closeWindow() {
         
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
             self.view.layoutIfNeeded()
@@ -103,6 +93,9 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
             self.delegate?.killView()
         })
     }
+}
+
+extension ExchangeWithdrawViewController {
     
     func viewNeedsToShow() {
     

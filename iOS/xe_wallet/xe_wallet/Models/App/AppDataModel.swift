@@ -10,7 +10,7 @@ import Foundation
 struct AppDataModel {
     
     var pinCode: String = ""
-    var testMode = true
+    var testMode: Bool = true
     
     var XE_MainNetStatusUrl = "https://api.xe.network/wallet/"
     var XE_TestNetStatusUrl = "https://xe1.test.network/wallet/"

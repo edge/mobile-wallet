@@ -17,6 +17,7 @@ class AppDataModelManager {
     
     private init() {
         
+        self.appData.testMode = UserDefaults.standard.bool(forKey: "TestMode")
     }
     
     func setAppPinCode(pin: String) {
@@ -46,6 +47,7 @@ class AppDataModelManager {
     func testModeToggle() -> Bool {
         
         appData.testMode.toggle()
+        UserDefaults.standard.set(appData.testMode, forKey: "TestMode")
         return appData.testMode
     }
     
@@ -72,6 +74,16 @@ class AppDataModelManager {
     func getNetworkTitleString() -> String {
         
         if self.testModeStatus() == false {
+            
+            return self.appData.XE_networkMainNetTitle
+        }
+        
+        return self.appData.XE_networkTestNetTitle
+    }
+    
+    func getNetworkTitleString(status: Bool) -> String {
+        
+        if status == false {
             
             return self.appData.XE_networkMainNetTitle
         }

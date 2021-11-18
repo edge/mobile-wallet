@@ -47,7 +47,7 @@ class CreateWalletViewController: BaseViewController {
 
         let attributsBold = [NSAttributedString.Key.font : UIFont(name:"Inter-Bold", size:16)]
         let attributsNormal = [NSAttributedString.Key.font : UIFont(name:"Inter-Regular", size:16)]
-        var attributedString = NSMutableAttributedString(string: "Warning. ", attributes:attributsBold)
+        let attributedString = NSMutableAttributedString(string: "Warning. ", attributes:attributsBold)
         let boldStringPart = NSMutableAttributedString(string: "Please ensure you have backed up your private key message", attributes:attributsNormal)
         attributedString.append(boldStringPart)
       

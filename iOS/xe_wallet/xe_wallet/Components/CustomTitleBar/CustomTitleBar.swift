@@ -54,11 +54,14 @@ import UIKit
         addSubview(containerView)
         containerView.frame = self.bounds
         containerView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-
-        self.leftImageTopConstraint.constant = UIApplication.shared.statusBarFrame.size.height + 15
+        
+        let window = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
+        let height = window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        
+        self.leftImageTopConstraint.constant = height + 15
         self.leftImageLeftConstraint.constant = UIScreen.main.bounds.width * 0.06
         
-        self.rightImageTopConstraint.constant = UIApplication.shared.statusBarFrame.size.height + 15
+        self.rightImageTopConstraint.constant = height + 15
         self.rightImageRightConstraint.constant = UIScreen.main.bounds.width * 0.06
     }
     

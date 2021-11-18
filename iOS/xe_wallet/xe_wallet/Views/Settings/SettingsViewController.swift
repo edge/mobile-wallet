@@ -9,11 +9,6 @@ import UIKit
 
 class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
 
-    let resetAppMessageHeader = "Reset App Data"
-    let resetAppMessageBody = "This will remove all apps data including pins and wallets."
-    let resetAppButtonOkText = "Ok"
-    let resetAppButtonCancelText = "Cancel"
-    
     var settingsMenuTableViewData = [SettingsDataModel]()
     
     override func viewDidLoad() {
@@ -23,12 +18,12 @@ class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableV
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.settingsMenuTableViewData = SettingsDataModelManager.shared.getSettingsData()
-        
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
     }
 }
 
@@ -82,8 +77,8 @@ extension SettingsViewController {
                 
             if type == "ResetApp" {
                 
-                let alert = UIAlertController(title: self.resetAppMessageHeader, message: self.resetAppMessageBody, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: self.resetAppButtonOkText, style: .default, handler: { action in
+                let alert = UIAlertController(title: Constants.resetAppMessageHeader, message: Constants.resetAppMessageBody, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
 
                     KeychainHelper.logout()
                     let defaults = UserDefaults.standard
@@ -94,14 +89,11 @@ extension SettingsViewController {
                     }
                     exit(0)
                 }))
-                alert.addAction(UIAlertAction(title: self.resetAppButtonCancelText, style: .default, handler: { action in
+                alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
 
                     self.dismiss(animated: true, completion: nil)
                 }))
                 self.present(alert, animated: true)
-                
-                
-
             }
             break
         }

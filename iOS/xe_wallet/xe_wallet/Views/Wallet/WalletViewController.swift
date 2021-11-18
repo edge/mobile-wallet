@@ -39,9 +39,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             let vc = UIStoryboard.init(name: "AddWallet", bundle: Bundle.main).instantiateViewController(withIdentifier: "InitialWalletViewController") as? InitialWalletViewController
             self.navigationController?.pushViewController(vc!, animated: false)
         }
-        
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
-        
+                
         tableView.allowsSelectionDuringEditing = true
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
@@ -50,6 +48,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
         self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
         self.tableView.reloadData()
 

@@ -22,14 +22,7 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     @IBOutlet weak var QRImageView: UIImageView!
     
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
-    
-    let cardViewTopConstraintStart: CGFloat = 66
-    let cardViewTopConstraintEnd: CGFloat = 20
-    let cardViewSideConstraintStart: CGFloat = 16
-    let cardViewSideConstraintEnd: CGFloat = 95
-    
-    let cardScaleSpeed = 0.6
-    
+            
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -63,10 +56,10 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintEnd
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintEnd
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintEnd
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintEnd
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintEnd
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintEnd
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -85,10 +78,10 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     
     func closeWindow() {
         
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
             self.view.layoutIfNeeded()

@@ -17,11 +17,7 @@ class ConfirmPinViewController: UIViewController {
     
     var pinCode:String = ""
     var entered = false
-    
-    let incorrectPinMessageHeader = "Incorrect PIN"
-    let incorrectPinMessageBody = "The PIN does not match previously entered PIN.  Please try again"
-    let incorrectPinButtonText = "Retry"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -66,8 +62,8 @@ class ConfirmPinViewController: UIViewController {
                                     UIApplication.shared.windows.first?.makeKeyAndVisible()
                                 } else {
 
-                                    let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
-                                    alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
+                                    let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                                    alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
 
                                         self.performSegue(withIdentifier: "UnwindToPinEntry", sender: self)
                                     }))
@@ -76,8 +72,8 @@ class ConfirmPinViewController: UIViewController {
                             }
                         } else {
                                                         
-                            let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
 
                                 self.performSegue(withIdentifier: "UnwindToPinEntry", sender: self)
                             }))

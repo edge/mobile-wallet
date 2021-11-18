@@ -45,12 +45,17 @@ class WalletDataModelManager {
                         
             let wallet = WalletDataModel(type: type, address: wallet.address)
             self.walletData.append(wallet)
-            let wData = try! JSONEncoder().encode(self.walletData)
-            let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
-            UserDefaults.standard.set(wData, forKey: "WalletData8")
+            self.saveWalletData()
         } else {
 
         }
+    }
+    
+    private func saveWalletData() {
+        
+        let wData = try! JSONEncoder().encode(self.walletData)
+        //let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
+        UserDefaults.standard.set(wData, forKey: "WalletData8")
     }
     
     public func activeWalletAmount() -> Int {
@@ -100,6 +105,7 @@ class WalletDataModelManager {
         let movedObject = self.walletData[aIndex]
         self.walletData.remove(at: aIndex)
         self.walletData.insert(movedObject, at: bIndex)
+        self.saveWalletData()
     }
         
     public func generateWallet(type:WalletType) -> AddressKeyPairModel? {

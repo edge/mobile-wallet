@@ -9,7 +9,7 @@ import UIKit
 
 @IBDesignable class PinEntryViewWrapper : NibWrapperView<PinEntryView> { }
 
-class PinEntryView: UIView {
+@IBDesignable class PinEntryView: UIView {
     
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet var pinTickBoxes:[UIView]!

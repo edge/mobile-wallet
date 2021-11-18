@@ -23,14 +23,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     @IBOutlet weak var amountTextField: UITextField!
                 
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
-    
-    let cardViewTopConstraintStart: CGFloat = 66
-    let cardViewTopConstraintEnd: CGFloat = 20
-    let cardViewSideConstraintStart: CGFloat = 16
-    let cardViewSideConstraintEnd: CGFloat = 95
-    
-    let cardScaleSpeed = 0.6
-    
+
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
     
@@ -45,9 +38,9 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         view.isOpaque = false
         view.backgroundColor = .clear
         self.backgroundView.alpha = 0.0
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart
         self.view.layoutIfNeeded()
         
         self.walletData = WalletDataModelManager.shared.getWalletDataWithAddress(address: self.selectedWalletAddress)
@@ -84,10 +77,10 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintEnd
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintEnd
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintEnd
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintEnd
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintEnd
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintEnd
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
@@ -106,10 +99,10 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     
     func closeWindow() {
         
-        self.cardViewTopConstraint.constant = self.cardViewTopConstraintStart
-        self.cardViewRightConstraint.constant = self.cardViewSideConstraintStart
-        self.cardViewLeftConstraint.constant = self.cardViewSideConstraintStart
-        UIView.animate(withDuration: self.cardScaleSpeed, delay: 0, options: .curveEaseOut, animations: {
+        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
+        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
+        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
             self.view.layoutIfNeeded()
@@ -147,10 +140,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             
             let controller = segue.destination as! SendConfirmViewController
             controller.modalPresentationStyle = .overCurrentContext
-            
             controller.walletData = self.walletData
-            controller.cardImage = self.cardImage
-            controller.delete = self
+            controller.delegate = self
         }
     }
     
@@ -158,14 +149,18 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         
         performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
     }
+}
+
+extension SendViewController {
     
     func viewNeedsToHide() {
     
-        self.backgroundView.alpha = 0.0
+        self.view.alpha = 0.0
     }
     
     func viewNeedsToShow() {
     
+        self.view.alpha = 1.0
         self.backgroundView.alpha = 1.0
     }
     

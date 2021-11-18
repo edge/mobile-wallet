@@ -87,6 +87,7 @@
 		FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */; };
 		FD9EA5F02745AA980068B9F9 /* CustomTitleBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */; };
 		FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */; };
+		FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F52745C62A0068B9F9 /* Constants.swift */; };
 		FDB72A2D273DE4070071711F /* XEWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB72A2C273DE4070071711F /* XEWallet.swift */; };
 		FDB72A2F273DE41D0071711F /* EtherWallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB72A2E273DE41D0071711F /* EtherWallet.swift */; };
 		FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = FDB72A3B273DF3160071711F /* secp256k1 */; };
@@ -184,6 +185,7 @@
 		FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleBar.xib; sourceTree = "<group>"; };
 		FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleBar.swift; sourceTree = "<group>"; };
+		FD9EA5F52745C62A0068B9F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FDB72A2C273DE4070071711F /* XEWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEWallet.swift; sourceTree = "<group>"; };
 		FDB72A2E273DE41D0071711F /* EtherWallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherWallet.swift; sourceTree = "<group>"; };
 		FDCF72332739DCF000F027DC /* ExchangeDepositConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDepositConfirmViewController.swift; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 			children = (
 				FD31F2282714DBC90034A59E /* AppDataModel.swift */,
 				FD31F22A2714DBD50034A59E /* AppModelManager.swift */,
+				FD9EA5F52745C62A0068B9F9 /* Constants.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -740,6 +743,7 @@
 				FD073DEA27110D2F0077F184 /* WalletCollectionViewCell.swift in Sources */,
 				FD073E07271494130077F184 /* SettingsMenuItemTableViewCell.swift in Sources */,
 				FD6018CE272E0A7000F78EBE /* Error.swift in Sources */,
+				FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */,
 				FD073E03271462AE0077F184 /* WalletType.swift in Sources */,
 				FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */,
 				FD6018FF27361C6F00F78EBE /* ExchangeWithdrawViewController.swift in Sources */,

@@ -14,11 +14,7 @@ class EnterPinViewController: UIViewController {
     
     @IBOutlet weak var textEntry: UITextField!
     var entered = false
-    
-    let incorrectPinMessageHeader = "Incorrect PIN"
-    let incorrectPinMessageBody = "You entered an incorrect PIN.  Please try again"
-    let incorrectPinButtonText = "Retry"
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -63,8 +59,8 @@ class EnterPinViewController: UIViewController {
                             }
                         } else {
                             
-                            let alert = UIAlertController(title: self.incorrectPinMessageHeader, message: self.incorrectPinMessageBody, preferredStyle: .alert)
-                            alert.addAction(UIAlertAction(title: self.incorrectPinButtonText, style: .default, handler: { action in
+                            let alert = UIAlertController(title: Constants.enterIncorrectPinMessageHeader, message: Constants.enterIncorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: Constants.enterIncorrectPinButtonText, style: .default, handler: { action in
 
                                 LoginDataModelManager.shared.increaseLoginAttemts()
                                 self.textEntry.text = ""
