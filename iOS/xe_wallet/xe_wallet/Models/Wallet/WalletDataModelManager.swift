@@ -91,6 +91,14 @@ class WalletDataModelManager {
         }
     }
     
+    public func reloadAllWalletInformation() {
+        
+        for wallet in self.walletData {
+            
+            wallet.downloadWalletsData()
+        }
+    }
+    
     public func getWalletDataWithAddress(address: String) -> WalletDataModel? {
         
         if let index = self.walletData.firstIndex(where: { $0.address == address }) {

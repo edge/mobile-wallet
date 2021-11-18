@@ -10,6 +10,7 @@ import UIKit
 class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var walletTableViewData = [WalletDataModel]()
     
     let tableViewCellHeight:CGFloat = 68
@@ -22,8 +23,6 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        self.title = "Manager Wallets"
-    
         self.walletTableViewData = WalletDataModelManager.shared.getWalletData()
         
         self.tableView.isEditing = true
@@ -34,6 +33,12 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         super.viewWillAppear(animated)
         
         self.tableView.reloadData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
     }
 }
 

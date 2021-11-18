@@ -21,12 +21,16 @@ class NetworkViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        self.title = "Network"
-        
+    
         self.testnetStatus = AppDataModelManager.shared.testModeStatus()
         self.testnetStatusStart = self.testnetStatus
         self.setButtonStatus()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        self.title = AppDataModelManager.shared.getNetworkTitleString()
     }
     
     @IBAction func mainNetButtonPressed(_ sender: Any) {
@@ -49,7 +53,11 @@ class NetworkViewController: BaseViewController {
         alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
 
             AppDataModelManager.shared.testModeToggle()
+            
+            WalletDataModelManager.shared.reloadAllWalletInformation()
+            NotificationCenter.default.post(name: .didReceiveData, object: nil)
             self.dismiss(animated: true, completion: nil)
+            
         }))
         alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
 

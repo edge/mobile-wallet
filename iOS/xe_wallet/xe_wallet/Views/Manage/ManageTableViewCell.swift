@@ -15,6 +15,10 @@ class ManageTableViewCell: UITableViewCell {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     
+    @IBOutlet weak var subAdressLabel: UILabel!
+    @IBOutlet weak var subCreatedLabel: UILabel!
+    @IBOutlet weak var subBackedupLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
