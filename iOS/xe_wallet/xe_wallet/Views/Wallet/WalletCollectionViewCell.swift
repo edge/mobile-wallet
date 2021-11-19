@@ -45,7 +45,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
             amount = status.balance
         }
         
-        self.amountLabel.text = "\(String(format: "%.6f", Double(amount/1000000))) \(data.type.getDisplayLabel())"
+        self.amountLabel.text = "\(String(format: "%.6f", Double(amount)/1000000)) \(data.type.getDisplayLabel())"
         self.valueLabel.text = value
     }
     

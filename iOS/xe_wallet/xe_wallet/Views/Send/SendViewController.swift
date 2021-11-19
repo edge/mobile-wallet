@@ -64,6 +64,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             string: "0",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named:"PlaceHolderFont") ?? .white])
         
+
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
@@ -142,6 +143,24 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             controller.modalPresentationStyle = .overCurrentContext
             controller.walletData = self.walletData
             controller.delegate = self
+            controller.toAddress = self.toTextField.text!
+            controller.amount = self.amountTextField.text!
+            controller.memo = self.memoTextField.text!
+        }
+    }
+    
+    @IBAction func pasteButtonPressed(_ sender: Any) {
+        
+        weak var pb: UIPasteboard? = .general
+        guard let text = pb?.string else { return }
+        self.toTextField.text = text
+    }
+    
+    @IBAction func maxButtonPressed(_ sender: Any) {
+        
+        if let status = self.walletData?.status {
+            
+            self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance)/1000000))"
         }
     }
     
@@ -149,6 +168,22 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         
         performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
     }
+    
+    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        // Check here decimal places
+        if (textField.text?.contains("."))! {
+            let limitDecimalPlace = 6
+            let decimalPlace = textField.text?.components(separatedBy: ".").last
+            if (decimalPlace?.count)! < limitDecimalPlace {
+                return true
+            }
+            else {
+                return false
+            }
+        }
+        return true
+    }*/
 }
 
 extension SendViewController {

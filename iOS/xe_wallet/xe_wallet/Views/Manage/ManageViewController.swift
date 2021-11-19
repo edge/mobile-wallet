@@ -7,9 +7,11 @@
 
 import UIKit
 
-class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
-    
+class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource, ManageTableViewCellDelegate {
+
     @IBOutlet weak var tableView: UITableView!
+    
+    
     
     var walletTableViewData = [WalletDataModel]()
     
@@ -18,7 +20,7 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
     
     let tableViewCellHeightClosed: CGFloat = 56
     let tableViewCellHeightOpen: CGFloat = 256
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -27,6 +29,7 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         
         self.tableView.isEditing = true
         self.tableView.allowsSelectionDuringEditing = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,7 +67,8 @@ extension ManageViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManageTableViewCell", for: indexPath)
         
         (cell as? ManageTableViewCell)?.configure(data: self.walletTableViewData[indexPath.row])
-
+        (cell as? ManageTableViewCell)?.delegate = self
+        
         cell.overrideUserInterfaceStyle = .dark
         cell.selectionStyle = .none
         cell.layer.borderColor = UIColor(named:"BackgroundMain")?.cgColor
@@ -92,7 +96,6 @@ extension ManageViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.isEditing = true
-        let a = indexPath.row
         if selectedIndex == indexPath.row {
             
             self.selectedIndex = nil
@@ -105,5 +108,16 @@ extension ManageViewController {
     }
 }
 
-
+extension ManageViewController {
+    
+    func backupButtonPressed(address: String) {
+        let a = address
+        let b = a
+    }
+    
+    func removeButtonPressed(address: String) {
+        let a = address
+        let b = a
+    }
+}
 

@@ -9,6 +9,12 @@ import Foundation
 
 struct AddressKeyPairModel {
     
-    var privateKey: PrivateKey
+    var privateKey: String//PrivateKey
+    var address: String
+}
+
+struct EtherAddressKeyPairModel {
+    
+    var privateKey: String
     var address: String
 }

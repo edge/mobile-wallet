@@ -16,15 +16,16 @@ class WalletDataModelManager {
     static let shared = WalletDataModelManager()
     
     var walletData = [WalletDataModel]()
+
     
     private init() {
         
         self.loadWalletList()
     }
-    
+        
     func loadWalletList() {
         
-        if let data = UserDefaults.standard.data(forKey: "WalletData8") {
+        if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
         }
@@ -33,7 +34,7 @@ class WalletDataModelManager {
     public func saveWalletToSystem(wallet:AddressKeyPairModel, type: WalletType) {
         
         let username = wallet.address
-        let password = wallet.privateKey.hex().data(using: .utf8)!
+        let password = wallet.privateKey.data(using: .utf8)!//PD.hex().data(using: .utf8)!
 
         let attributes: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -55,7 +56,7 @@ class WalletDataModelManager {
         
         let wData = try! JSONEncoder().encode(self.walletData)
         //let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
-        UserDefaults.standard.set(wData, forKey: "WalletData8")
+        UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
     }
     
     public func activeWalletAmount() -> Int {
@@ -68,7 +69,7 @@ class WalletDataModelManager {
         return self.walletData
     }
     
-    public func loadWalletKey(key:String) {
+    public func loadWalletKey(key:String) -> String {
         
         let username = key
         let query: [String: Any] = [
@@ -86,9 +87,12 @@ class WalletDataModelManager {
                let username = existingItem[kSecAttrAccount as String] as? String,
                let passwordData = existingItem[kSecValueData as String] as? Data,
                let password = String(data: passwordData, encoding: .utf8) {
+                
+                return password
             }
         } else {
         }
+        return ""
     }
     
     public func reloadAllWalletInformation() {
@@ -116,6 +120,8 @@ class WalletDataModelManager {
         self.saveWalletData()
     }
         
+// TODO use protocols for wallets with same functionality
+    
     public func generateWallet(type:WalletType) -> AddressKeyPairModel? {
         
         switch type {
@@ -143,12 +149,30 @@ class WalletDataModelManager {
             return pair
             
         case .ethereum:
-            let pair = EtherWallet().generateWallet(type:type)
+            let pair = EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
             return pair
             
         case .edge:
             break
         }
         return nil
+    }
+    
+    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String) {
+        
+        let key = self.loadWalletKey(key:wallet.address)
+        
+        switch wallet.type {
+            
+        case .xe:
+            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key)
+            break
+            
+        case .ethereum:
+            break
+            
+        case .edge:
+            break
+        }
     }
 }

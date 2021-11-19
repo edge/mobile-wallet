@@ -5,7 +5,7 @@
 //  Created by Paul Davis on 11/10/2021.
 //
 
-import Foundation
+import UIKit
 import CryptoSwift
 
 enum TransactionType: String {
@@ -52,6 +52,17 @@ struct TransactionsDataModel: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.results = try container.decode([TransactionRecordDataModel].self, forKey: .results)
         self.metadata = try container.decode(TransactionMetaDataModel.self, forKey: .metadata)
+    }
+    
+    public init(from ether: EtherTransactionsModel) {
+        
+        guard let results = ether.result else { return }
+        
+        self.results = [TransactionRecordDataModel]()
+        for n in results {
+            
+            //self.results?.append(contentsOf: TransactionRecordDataModel(from: n))
+        }
     }
 }
 
@@ -127,6 +138,21 @@ struct TransactionRecordDataModel: Codable {
         self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
     }
+    
+    public init(from ether: EtherTransactionDataModel) {
+        
+        self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
+        self.sender = ether.from ?? ""
+        self.recipient = ether.to ?? ""
+        self.amount = Int((ether.value ?? "0000000000000").dropLast(12)) ?? 0
+        self.data = TransactionDataDataModel()
+        self.nonce = Int(ether.nonce ?? "0") ?? 0
+        self.signature = ""
+        self.hash = ether.hash ?? ""
+        self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
+        self.confirmations = Int(ether.confirmations ?? "0") ?? 0
+
+    }
 }
 
 struct TransactionDataDataModel: Codable {
@@ -142,6 +168,11 @@ struct TransactionDataDataModel: Codable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.memo = try container.decode(String.self, forKey: .memo)
+    }
+    
+    public init() {
+        
+        self.memo = ""
     }
 }
 
@@ -161,6 +192,12 @@ struct TransactionBlockDataModel: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.height = try container.decode(Int.self, forKey: .height)
         self.hash = try container.decode(String.self, forKey: .hash)
+    }
+    
+    public init(height: Int, hash: String) {
+        
+        self.height = height
+        self.hash = hash
     }
 }
 

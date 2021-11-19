@@ -30,11 +30,11 @@ class WalletStatusDataModel: Codable {
         self.nonce = try container.decode(Int.self, forKey: .nonce)
     }
     
-    public init(address: String) {
+    public init(address: String, balance: Int, nonce: Int) {
         
         self.address = address
-        self.balance = 0
-        self.nonce = 0
+        self.balance = balance
+        self.nonce = nonce
     }
     
     

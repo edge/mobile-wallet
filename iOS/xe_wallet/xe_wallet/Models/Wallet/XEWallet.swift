@@ -9,6 +9,8 @@ import SwiftKeccak
 import UIKit
 import Security
 import Alamofire
+import CryptoSwift
+import secp256k1
 
 class XEWallet {
     
@@ -27,7 +29,7 @@ class XEWallet {
         let address = self.publicKeyToChecksumAddress(publicKey: publicKeyString)
         print("ADDRESS : \(address)")
         
-        return AddressKeyPairModel(privateKey: privateKeyData, address: address)
+        return AddressKeyPairModel(privateKey: privateKeyData.hex(), address: address)//PD
     }
     
     public func generateWalletFromPrivateKey(privateKeyString: String) -> AddressKeyPairModel {
@@ -42,7 +44,7 @@ class XEWallet {
         let address = self.publicKeyToChecksumAddress(publicKey: publicKeyString)
         print("ADDRESS : \(address)")
         
-        return AddressKeyPairModel(privateKey: privateKeyData, address: address)
+        return AddressKeyPairModel(privateKey: privateKeyData.hex(), address: address)//PD
     }
     
     public func publicKeyToChecksumAddress(publicKey: String) -> String {
@@ -126,5 +128,53 @@ class XEWallet {
                     print("Request error: \(error.localizedDescription)")
              }
          }
+    }
+    
+    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String) {
+                
+        let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+        let digitalAmount = Int(amountString)
+        
+        var jsonObject: [String: Any] = [
+            "timestamp": Date().timeIntervalSince1970,
+            "sender": wallet.address,
+            "recipient": toAddress,
+            "amount": digitalAmount,
+            "data": [
+                "memo": memo
+            ],
+            "nonce": wallet.status?.nonce
+        ]
+        
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+            let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
+            print (jsonString)
+            let sig = self.generateSignature(message: jsonString, key: key)
+            jsonObject.updateValue(sig, forKey: "signature")
+            
+            
+            
+        } catch _ {
+            print ("JSON Failure")
+        }
+    
+    }
+    
+    func generateSignature(message: String, key: String) -> String {
+        
+        //let msgHash = "hello world".sha256() //message.sha256()
+        //let addrHash = keccak256(msgHash).toHexString()
+        
+        let addrHashArray: [UInt8] = Array(message.utf8)
+        //let addrHashArray: [UInt8] = Array("hello world".utf8)
+        let context = Secp256k1Context()
+        let privateKey = Secp256k1PrivateKey(privKey: key.toBytes)
+        //let privateKey = Secp256k1PrivateKey(privKey: "d221434e2cf538ca8dd409e6ccea0d9b75d7c8eb3efa10a507cf8277d786d5ac".toBytes)
+        
+        //let signatureObj1 = try! context.sign(data: addrHashArray, privateKey: privateKey)
+        let signatureObj = try! context.sign_recoverable(data: addrHashArray, privateKey: privateKey)
+
+        return signatureObj
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 import secp256k1
 import Security
+import libsecp256k1
 
 
 /// A Context for signing and verifying secp256k1 signatures.
@@ -21,7 +22,7 @@ public class Secp256k1Context: Context {
         
         let ctx = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN))
         var sig = secp256k1_ecdsa_signature()
-
+    
         var msgDigest = hash(data: data)
         var resultSign = msgDigest.withUnsafeMutableBytes { (msgDigestBytes) in
             
@@ -54,7 +55,49 @@ public class Secp256k1Context: Context {
         secp256k1_context_destroy(ctx)
         return Data(csigArray).toHex()
     }
+    
+    public func sign_recoverable(data: [UInt8], privateKey: PrivateKey) throws -> String {
+        
+        let ctx = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_SIGN))
+        var sig = secp256k1_ecdsa_recoverable_signature()
+    
+        
+        var msgDigest = hash(data: data)
+        var resultSign = msgDigest.withUnsafeMutableBytes { (msgDigestBytes) in
+            
+            secp256k1_ecdsa_sign_recoverable(ctx!, &sig, msgDigestBytes, privateKey.getBytes(), nil, nil)
+        }
+        
+        if resultSign == 0 {
+            
+            throw SigningError.invalidPrivateKey
+        }
 
+        var input: [UInt8] {
+            
+            var tmp = sig.data
+            return [UInt8](UnsafeBufferPointer(start: &tmp.0, count: MemoryLayout.size(ofValue: tmp)))
+        }
+        var compactSig = secp256k1_ecdsa_recoverable_signature()
+
+        var recid: Int32 = 1
+        
+        if secp256k1_ecdsa_recoverable_signature_parse_compact(ctx!, &compactSig, input, recid) == 0 {
+            
+            secp256k1_context_destroy(ctx)
+            throw SigningError.invalidSignature
+        }
+
+        var csigArray: [UInt8] {
+            
+            var tmp = compactSig.data
+            return [UInt8](UnsafeBufferPointer(start: &tmp.0, count: MemoryLayout.size(ofValue: tmp)))
+        }
+
+        secp256k1_context_destroy(ctx)
+        return Data(csigArray).toHex()
+    }
+    
     public func verify(signature: String, data: [UInt8], publicKey: PublicKey) throws-> Bool {
         
         let ctx = secp256k1_context_create(UInt32(SECP256K1_CONTEXT_VERIFY))

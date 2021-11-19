@@ -79,6 +79,11 @@
 		FD6018FB273464F500F78EBE /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FA273464F500F78EBE /* NetworkViewController.swift */; };
 		FD6018FD27361C5D00F78EBE /* ExchangeDepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */; };
 		FD6018FF27361C6F00F78EBE /* ExchangeWithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */; };
+		FD74267A2746E1A90046D148 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7426792746E1A90046D148 /* UITableView+Ext.swift */; };
+		FD74267C2748095E0046D148 /* sha256.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74267B2748095E0046D148 /* sha256.swift */; };
+		FD74268227480F980046D148 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = FD74268127480F980046D148 /* Crypto */; };
+		FD74268427480F980046D148 /* _CryptoExtras in Frameworks */ = {isa = PBXBuildFile; productRef = FD74268327480F980046D148 /* _CryptoExtras */; };
+		FD742686274817170046D148 /* EtherTransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD742685274817170046D148 /* EtherTransactionsModel.swift */; };
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
@@ -177,6 +182,9 @@
 		FD6018FA273464F500F78EBE /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		FD6018FC27361C5C00F78EBE /* ExchangeDepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeDepositViewController.swift; sourceTree = "<group>"; };
 		FD6018FE27361C6F00F78EBE /* ExchangeWithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWithdrawViewController.swift; sourceTree = "<group>"; };
+		FD7426792746E1A90046D148 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		FD74267B2748095E0046D148 /* sha256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sha256.swift; sourceTree = "<group>"; };
+		FD742685274817170046D148 /* EtherTransactionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherTransactionsModel.swift; sourceTree = "<group>"; };
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
@@ -204,7 +212,9 @@
 				FD6018F2273229C100F78EBE /* IQKeyboardManagerSwift in Frameworks */,
 				FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */,
 				FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */,
+				FD74268227480F980046D148 /* Crypto in Frameworks */,
 				FD6018DD272F443A00F78EBE /* SwiftKeccak in Frameworks */,
+				FD74268427480F980046D148 /* _CryptoExtras in Frameworks */,
 				2B0C525DE8800736750A2ED1 /* Pods_xe_wallet.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -275,6 +285,7 @@
 				FD073E00271461D90077F184 /* WalletDataModelManager.swift */,
 				FD9EA5E6274476220068B9F9 /* WalletStatusDataModel.swift */,
 				FD073DFE2714617E0077F184 /* TransactionsDataModel.swift */,
+				FD742685274817170046D148 /* EtherTransactionsModel.swift */,
 				FDB72A2C273DE4070071711F /* XEWallet.swift */,
 				FDB72A2E273DE41D0071711F /* EtherWallet.swift */,
 			);
@@ -481,6 +492,8 @@
 				FD6018DE272F465500F78EBE /* String+Ext.swift */,
 				FD6018F327336DC500F78EBE /* UIImage+Ext.swift */,
 				FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */,
+				FD7426792746E1A90046D148 /* UITableView+Ext.swift */,
+				FD74267B2748095E0046D148 /* sha256.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -567,6 +580,8 @@
 				FD6018DC272F443A00F78EBE /* SwiftKeccak */,
 				FD6018F1273229C100F78EBE /* IQKeyboardManagerSwift */,
 				FDB72A3B273DF3160071711F /* secp256k1 */,
+				FD74268127480F980046D148 /* Crypto */,
+				FD74268327480F980046D148 /* _CryptoExtras */,
 			);
 			productName = xe_wallet;
 			productReference = FD22ED57270F04B800B5B33F /* xe_wallet.app */;
@@ -601,6 +616,7 @@
 				FD6018DB272F443A00F78EBE /* XCRemoteSwiftPackageReference "SwiftKeccak" */,
 				FD6018F0273229C100F78EBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
+				FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */,
 			);
 			productRefGroup = FD22ED58270F04B800B5B33F /* Products */;
 			projectDirPath = "";
@@ -718,6 +734,7 @@
 				FD22ED5B270F04B800B5B33F /* AppDelegate.swift in Sources */,
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
 				FD22ED5D270F04B800B5B33F /* SceneDelegate.swift in Sources */,
+				FD74267C2748095E0046D148 /* sha256.swift in Sources */,
 				FD073DEF27121C660077F184 /* SettingsViewController.swift in Sources */,
 				FD6018D0272E0AA700F78EBE /* Context.swift in Sources */,
 				FD073E01271461D90077F184 /* WalletDataModelManager.swift in Sources */,
@@ -726,6 +743,7 @@
 				FD22ED98270F16E700B5B33F /* WalletViewController.swift in Sources */,
 				FD6018EB2731C5E300F78EBE /* AddWalletViewController.swift in Sources */,
 				FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */,
+				FD742686274817170046D148 /* EtherTransactionsModel.swift in Sources */,
 				FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */,
 				FD22ED8E270F108800B5B33F /* SplashViewController.swift in Sources */,
 				FD22ED92270F11AF00B5B33F /* EnterPinViewController.swift in Sources */,
@@ -735,6 +753,7 @@
 				FD073DFF2714617E0077F184 /* TransactionsDataModel.swift in Sources */,
 				FD22ED94270F162800B5B33F /* ConfirmPinViewController.swift in Sources */,
 				FD6018F427336DC600F78EBE /* UIImage+Ext.swift in Sources */,
+				FD74267A2746E1A90046D148 /* UITableView+Ext.swift in Sources */,
 				FD6018CA272E0A2000F78EBE /* Secp256k1PrivateKey.swift in Sources */,
 				FD073E0A271496020077F184 /* SettingsDataModel.swift in Sources */,
 				FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */,
@@ -1012,6 +1031,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-crypto.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 		FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/secp256k1.swift.git";
@@ -1037,6 +1064,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD6018F0273229C100F78EBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
 			productName = IQKeyboardManagerSwift;
+		};
+		FD74268127480F980046D148 /* Crypto */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = Crypto;
+		};
+		FD74268327480F980046D148 /* _CryptoExtras */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */;
+			productName = _CryptoExtras;
 		};
 		FDB72A3B273DF3160071711F /* secp256k1 */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -9,6 +9,10 @@ import UIKit
 
 class Constants {
     
+    /// default storage values
+
+    static var defaultStorageName = "WalletData9"
+    
     /// default button messages
 
     static var buttonOkText = "Ok"

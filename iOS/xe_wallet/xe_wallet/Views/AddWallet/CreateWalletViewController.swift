@@ -32,12 +32,23 @@ class CreateWalletViewController: BaseViewController {
 
         self.title = "Create Wallet"
         
+        switch self.type {
+            
+        case .xe:
+            break
+        case .ethereum:
+            break
+        case .edge:
+            break
+        }
+        
+        
         self.walletData = WalletDataModelManager.shared.generateWallet(type: self.type)
         
         if let data = self.walletData {
         
             self.walletAddressLabel.text = data.address
-            self.privateKeyLabel.text = data.privateKey.hex()
+            self.privateKeyLabel.text = data.privateKey//PD.hex()
         }
         self.initialiseWarningMessage()
         self.setConfirmStatus()

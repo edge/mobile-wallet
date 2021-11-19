@@ -10,11 +10,25 @@ import UIKit
 class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomTitleBarDelegate {
         
     @IBOutlet weak var backgroundView: UIView!
-    @IBOutlet weak var textEntryTextView: UITextView!
+    @IBOutlet weak var textEntryTextView: UITextField!
+    
+    @NibWrapped(PinEntryView.self)
+    @IBOutlet var pinEntryView: UIView!
+    
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
+    
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var receiveAmountLabel: UILabel!
     
     var walletData: WalletDataModel? = nil
     var delegate: KillViewDelegate?
+    var toAddress = ""
+    var memo = ""
+    var amount = ""
+    
+    var entered = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +46,22 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         self.view.addGestureRecognizer(swipeDown)
         
         self.customTitleBarView.delegate = self
+        
+
+        self.toLabel.text = self.toAddress
+        self.amountLabel.text = self.amount
+        if let wallet = self.walletData {
+        
+            self.typeLabel.text = "(\(wallet.type.getDisplayLabel()))"
+            self.receiveAmountLabel.text = "\(self.amount) \(wallet.type.getDisplayLabel())"
+        }
+        
+        UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
+        textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        textEntryTextView.becomeFirstResponder()
+        
+        _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+        self.textEntryTextView.text = ""
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,6 +122,44 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
     @objc func dismissKeyboard() {
 
         view.endEditing(true)
+    }
+    
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        if let characters = textField.text?.count {
+        
+            _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
+                
+                self.entered = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    
+                    if let code = textField.text {
+                    
+                        if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
+                            
+                            if let wallet = self.walletData {
+                                                            
+                                let amountValue = Float(self.amount)
+                                let fAmount = String(format: "%.6f", amountValue!)
+                                
+                                WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
+                            }
+                        } else {
+                                                        
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
+
+                                self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+                                self.textEntryTextView.text = ""
+                            }))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 

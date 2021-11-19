@@ -168,13 +168,24 @@ extension WalletViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
-        if self.walletCollectionViewData.count > 0 {
+        guard let trans = self.walletCollectionViewData[self.selectedWallet].transactions else {
+            
+            self.tableView.setEmptyMessage("No Transactions")
+            return 0 }
+        guard let results = trans.results else {
+            
+            self.tableView.setEmptyMessage("No Transactions")
+            return 0 }
         
-            guard let trans = self.walletCollectionViewData[self.selectedWallet].transactions else { return 0 }
-            guard let results = trans.results else { return 0 }
-            return results.count
+        if results.count == 0 {
+            
+            self.tableView.setEmptyMessage("No Transactions")
+            return 0
+            
         }
-        return 0
+        self.tableView.restore()
+        return results.count
+
     }
         
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

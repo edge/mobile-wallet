@@ -12,6 +12,8 @@ class WalletDataModel: Codable {
 
     var type: WalletType
     var address: String
+    var created: Double
+    var backedup: Double
     var status: WalletStatusDataModel?
     var transactions: TransactionsDataModel?
     
@@ -19,6 +21,8 @@ class WalletDataModel: Codable {
         
         case type
         case address
+        case created
+        case backedup
         case status
         case transactions
     }
@@ -28,6 +32,8 @@ class WalletDataModel: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.type = try container.decode(WalletType.self, forKey: .type)
         self.address = try container.decode(String.self, forKey: .address)
+        self.created = try container.decode(Double.self, forKey: .created)
+        self.backedup = try container.decode(Double.self, forKey: .backedup)
         self.status = try container.decode(WalletStatusDataModel.self, forKey: .status)
         self.transactions = nil
         
@@ -38,22 +44,27 @@ class WalletDataModel: Codable {
         
         self.type = type
         self.address = address
-        self.status = WalletStatusDataModel(address: address)
+        self.created = Date().timeIntervalSince1970
+        self.backedup = Date().timeIntervalSince1970
+        self.status = WalletStatusDataModel(address: address, balance: 0, nonce: 0)
         self.transactions = nil
         
         self.downloadWalletsData()
     }
     
+// TODO use protocols for wallets with same functionality
+    
     func downloadWalletsData() {
-        
+                
         switch self.type {
             
         case .xe:
-            let xeWallet = XEWallet()
-            xeWallet.downloadStatus(address: self.address, completion:{ status in
+            let walletController = XEWallet()
+            
+            walletController.downloadStatus(address: self.address, completion:{ status in
             
                 self.status = status
-                xeWallet.downloadTransactions(address: self.address, completion:{ transactions in
+                walletController.downloadTransactions(address: self.address, completion:{ transactions in
                 
                     self.transactions = transactions
                     NotificationCenter.default.post(name: .didReceiveData, object: nil)
@@ -62,6 +73,16 @@ class WalletDataModel: Codable {
             break
             
         case .ethereum:
+            let walletController = EtherWallet()
+            walletController.downloadStatus(address: self.address, completion:{ status in
+            
+                self.status = status
+                walletController.downloadTransactions(address: self.address, completion:{ transactions in
+                
+                    self.transactions = transactions
+                    NotificationCenter.default.post(name: .didReceiveData, object: nil)
+                })
+            })
             break
             
         case .edge:
