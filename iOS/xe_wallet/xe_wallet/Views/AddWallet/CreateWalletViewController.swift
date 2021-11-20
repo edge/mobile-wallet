@@ -36,6 +36,9 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
         view.backgroundColor = .clear
         self.backgroundView.alpha = 0.0
         
+        self.walletAddressLabel.text = ""
+        self.privateKeyLabel.text = ""
+        
         navigationItem.hidesBackButton = false
 
         self.title = "Create Wallet"
@@ -50,17 +53,8 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             break
         }
         
-        
-        self.walletData = WalletDataModelManager.shared.generateWallet(type: self.type)
-        
-        if let data = self.walletData {
-        
-            self.walletAddressLabel.text = data.address
-            self.privateKeyLabel.text = data.privateKey//PD.hex()
-        }
-        self.initialiseWarningMessage()
         self.setConfirmStatus()
-        
+        self.initialiseWarningMessage()
         self.customTitleBarView.delegate = self
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
@@ -77,6 +71,17 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             self.view.layoutIfNeeded()
         }, completion: { finished in
 
+            self.showSpinner(onView: self.backgroundView)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 ) {
+            
+                self.walletData = WalletDataModelManager.shared.generateWallet(type: self.type)
+                self.removeSpinner()
+                if let data = self.walletData {
+                    
+                    self.walletAddressLabel.text = data.address
+                    self.privateKeyLabel.text = data.privateKey//PD.hex()
+                }
+            }
         })
     }
     

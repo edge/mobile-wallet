@@ -62,7 +62,6 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finished in
-
         })
     }
     
@@ -101,14 +100,18 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         
         if self.continueActive {
             
-            if let walletData = WalletDataModelManager.shared.restoreWallet(type: self.type, key: self.privateKeyTextView.text) {
-                
-                WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
-                
-                self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
-            } else {
-                
-                
+            self.showSpinner(onView: self.backgroundView)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 ) {
+            
+                if let walletData = WalletDataModelManager.shared.restoreWallet(type: self.type, key: self.privateKeyTextView.text) {
+                    
+                    WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
+                    self.removeSpinner()
+                    self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                } else {
+                    
+                    self.removeSpinner()
+                }
             }
         }
     }

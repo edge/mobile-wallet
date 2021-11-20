@@ -503,7 +503,7 @@
                         <outlet property="privateKeyLabel" destination="Hpp-i7-cxM" id="L6J-by-AbF"/>
                         <outlet property="walletAddressLabel" destination="x0S-DQ-Faf" id="3pC-hn-opx"/>
                         <outlet property="warningMessageLabel" destination="Lay-98-Eyw" id="zUp-Ix-gMf"/>
-                        <segue destination="XRE-KN-CeK" kind="unwind" identifier="unwindToWalletView" unwindAction="unwindToWalletViewWithSender:" id="T3E-Nc-0z1"/>
+                        <segue destination="XRE-KN-CeK" kind="unwind" identifier="unwindToWalletView" animates="NO" unwindAction="unwindToWalletViewWithSender:" id="T3E-Nc-0z1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMw-U1-Tng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

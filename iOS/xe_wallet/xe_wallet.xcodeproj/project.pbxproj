@@ -85,6 +85,7 @@
 		FD74268427480F980046D148 /* _CryptoExtras in Frameworks */ = {isa = PBXBuildFile; productRef = FD74268327480F980046D148 /* _CryptoExtras */; };
 		FD742686274817170046D148 /* EtherTransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD742685274817170046D148 /* EtherTransactionsModel.swift */; };
 		FD74268827487B560046D148 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268727487B560046D148 /* DateFunctions.swift */; };
+		FD74268A27488D4B0046D148 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268927488D4A0046D148 /* UIViewController+Ext.swift */; };
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
@@ -187,6 +188,7 @@
 		FD74267B2748095E0046D148 /* sha256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sha256.swift; sourceTree = "<group>"; };
 		FD742685274817170046D148 /* EtherTransactionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherTransactionsModel.swift; sourceTree = "<group>"; };
 		FD74268727487B560046D148 /* DateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
+		FD74268927488D4A0046D148 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */,
 				FD7426792746E1A90046D148 /* UITableView+Ext.swift */,
 				FD74267B2748095E0046D148 /* sha256.swift */,
+				FD74268927488D4A0046D148 /* UIViewController+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -711,6 +714,7 @@
 			files = (
 				FD31F2312714FFD60034A59E /* ManageTableViewCell.swift in Sources */,
 				FD31F2292714DBC90034A59E /* AppDataModel.swift in Sources */,
+				FD74268A27488D4B0046D148 /* UIViewController+Ext.swift in Sources */,
 				FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */,
 				FDCF72342739DCF100F027DC /* ExchangeDepositConfirmViewController.swift in Sources */,
 				FD31F22B2714DBD50034A59E /* AppModelManager.swift in Sources */,
