@@ -84,6 +84,7 @@
 		FD74268227480F980046D148 /* Crypto in Frameworks */ = {isa = PBXBuildFile; productRef = FD74268127480F980046D148 /* Crypto */; };
 		FD74268427480F980046D148 /* _CryptoExtras in Frameworks */ = {isa = PBXBuildFile; productRef = FD74268327480F980046D148 /* _CryptoExtras */; };
 		FD742686274817170046D148 /* EtherTransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD742685274817170046D148 /* EtherTransactionsModel.swift */; };
+		FD74268827487B560046D148 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268727487B560046D148 /* DateFunctions.swift */; };
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
@@ -185,6 +186,7 @@
 		FD7426792746E1A90046D148 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
 		FD74267B2748095E0046D148 /* sha256.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sha256.swift; sourceTree = "<group>"; };
 		FD742685274817170046D148 /* EtherTransactionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherTransactionsModel.swift; sourceTree = "<group>"; };
+		FD74268727487B560046D148 /* DateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 				FD7523B2270F52C9009BCB78 /* NibWrapped.swift */,
 				FD31F2252714D9C80034A59E /* BiometricsManager.swift */,
 				FD6018EE2731F0C600F78EBE /* KeyChainHelper.swift */,
+				FD74268727487B560046D148 /* DateFunctions.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -719,6 +722,7 @@
 				FD6018FD27361C5D00F78EBE /* ExchangeDepositViewController.swift in Sources */,
 				FD6018EF2731F0C700F78EBE /* KeyChainHelper.swift in Sources */,
 				FD6018FB273464F500F78EBE /* NetworkViewController.swift in Sources */,
+				FD74268827487B560046D148 /* DateFunctions.swift in Sources */,
 				FD6018D4272E0BFF00F78EBE /* CryptoFactory.swift in Sources */,
 				FD31F2262714D9C80034A59E /* BiometricsManager.swift in Sources */,
 				FD6018C8272E09D000F78EBE /* Secp256k1Context.swift in Sources */,

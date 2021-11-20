@@ -41,6 +41,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         }
                 
         tableView.allowsSelectionDuringEditing = true
+        self.tableView.refreshControl = nil
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
     }
@@ -75,6 +76,13 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
                 
+            
+        if segue.identifier == "ShowAddWalletViewController" {
+            
+            let controller = segue.destination as! AddWalletViewController
+            controller.modalPresentationStyle = .overCurrentContext
+        }
+        
         if segue.identifier == "ShowSendViewController" {
             
             let controller = segue.destination as! SendViewController
@@ -272,14 +280,17 @@ extension WalletViewController  {
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
-        let pageWidth = scrollView.frame.size.width
-        let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
-        print("page = \(page)")
-        
-        self.collectionViewUpdating = false
-        self.selectedIndex = nil
-        self.selectedWallet = page
-        self.tableView.reloadData()
+        if scrollView.tag == 1 {
+            
+            let pageWidth = scrollView.frame.size.width
+            let page = Int(floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1)
+            print("page = \(page)")
+            
+            self.collectionViewUpdating = false
+            self.selectedIndex = nil
+            self.selectedWallet = page
+            self.tableView.reloadData()
+        }
     }
 }
 

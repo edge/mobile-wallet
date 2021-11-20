@@ -29,7 +29,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-1H-47P">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-1H-47P">
                                 <rect key="frame" x="0.0" y="22" width="414" height="207"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -323,7 +323,7 @@
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qKa-g0-ka5">
+                            <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qKa-g0-ka5">
                                 <rect key="frame" x="0.0" y="370" width="414" height="404"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -451,9 +451,10 @@
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stx-IO-6wh">
-                                                            <rect key="frame" x="398" y="64" width="0.0" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Stx-IO-6wh">
+                                                            <rect key="frame" x="218" y="64" width="180" height="16"/>
                                                             <constraints>
+                                                                <constraint firstAttribute="width" constant="180" id="Vuw-3g-me0"/>
                                                                 <constraint firstAttribute="height" constant="16" id="zc9-Zs-In0"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
@@ -633,7 +634,7 @@
                         <segue destination="cee-2x-Ikr" kind="presentation" identifier="ShowExchangeDepositViewController" animates="NO" id="2Ht-uK-aXv"/>
                         <segue destination="kgt-He-MZh" kind="unwind" unwindAction="unwindToWalletViewWithSender:" id="C3G-rI-Rz7"/>
                         <segue destination="MRj-MO-L4Z" kind="presentation" identifier="ShowExchangeWithdrawViewController" animates="NO" id="04q-nG-g80"/>
-                        <segue destination="CjT-D7-IxK" kind="presentation" identifier="ShowAddWalletViewController" modalTransitionStyle="crossDissolve" id="5ms-ty-gZC"/>
+                        <segue destination="CjT-D7-IxK" kind="presentation" identifier="ShowAddWalletViewController" animates="NO" id="5ms-ty-gZC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hWC-5h-dhN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

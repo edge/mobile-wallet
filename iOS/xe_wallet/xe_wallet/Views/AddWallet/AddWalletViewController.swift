@@ -7,8 +7,10 @@
 
 import UIKit
 
-class AddWalletViewController: BaseViewController {
+class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
         
+    @IBOutlet weak var backgroundView: UIView!
+    
     @IBOutlet weak var xeCircleView: UIView!
     @IBOutlet weak var xeInnerCircleView: UIView!
     @IBOutlet weak var etherCircleView: UIView!
@@ -17,19 +19,39 @@ class AddWalletViewController: BaseViewController {
     @IBOutlet weak var closeXIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeXIconRightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
     var selected:WalletType = .xe
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        view.isOpaque = false
+        view.backgroundColor = .clear
+        self.backgroundView.alpha = 0.0
+        
         navigationItem.hidesBackButton = true
         self.title = "Add Wallet"
         
         self.configureSelectedButtons()
+
+        self.customTitleBarView.delegate = self
         
-        self.closeXIconTopConstraint.constant = UIApplication.shared.statusBarFrame.size.height + 15
-        self.closeXIconRightConstraint.constant = UIScreen.main.bounds.width * 0.06
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+        })
     }
     
     func configureSelectedButtons() {
@@ -54,12 +76,14 @@ class AddWalletViewController: BaseViewController {
         if segue.identifier == "CreateWalletViewController" {
             
             let controller = segue.destination as! CreateWalletViewController
+            controller.modalPresentationStyle = .overCurrentContext
             controller.type = self.selected
         }
         
         if segue.identifier == "RestoreWalletViewController" {
             
             let controller = segue.destination as! RestoreWalletViewController
+            controller.modalPresentationStyle = .overCurrentContext
             controller.type = self.selected
         }
     }
@@ -90,4 +114,36 @@ class AddWalletViewController: BaseViewController {
         
         performSegue(withIdentifier: "RestoreWalletViewController", sender: nil)
     }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+
+        if gesture.direction == .down {
+
+            self.closeWindow()
+        }
+    }
+    
+    func closeWindow() {
+        
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
+}
+
+extension AddWalletViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+        
+        self.closeWindow()
+    }
+
 }

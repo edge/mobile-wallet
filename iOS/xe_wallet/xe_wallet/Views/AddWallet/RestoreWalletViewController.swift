@@ -7,8 +7,11 @@
 
 import UIKit
 
-class RestoreWalletViewController: BaseViewController, UITextViewDelegate {
+class RestoreWalletViewController: BaseViewController, UITextViewDelegate, CustomTitleBarDelegate {
         
+    @IBOutlet weak var backgroundView: UIView!
+    
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
     @IBOutlet weak var privateKeyTextView: UITextView!
     
     @IBOutlet weak var buttonView: UIView!
@@ -23,6 +26,10 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
         
         navigationItem.hidesBackButton = false
+        
+        view.isOpaque = false
+        view.backgroundColor = .clear
+        self.backgroundView.alpha = 0.0
         
         self.title = "Restore Wallet"
         
@@ -39,10 +46,24 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate {
         self.buttonPos = self.buttonView.frame.origin.y
         self.changeContinueButtonStatus()
         
+        self.customTitleBarView.delegate = self
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        super .viewDidAppear(animated)
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -115,5 +136,36 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate {
                 self.changeContinueButtonStatus()
             }
         }
+    }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+
+        if gesture.direction == .down {
+
+            self.closeWindow()
+        }
+    }
+    
+    func closeWindow() {
+        
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
+}
+
+extension RestoreWalletViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+        
+        self.closeWindow()
     }
 }

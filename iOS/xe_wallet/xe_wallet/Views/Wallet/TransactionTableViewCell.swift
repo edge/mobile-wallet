@@ -44,16 +44,15 @@ class TransactionTableViewCell: UITableViewCell {
         //Double(0.123456789).roundToPlaces(4)
         
         
-        
-        self.amountLabel.text = "\(String(format: "%.6f", Double(data.amount/1000000)))"
+        self.amountLabel.text = "\(String(format: "%.6f", Double(data.amount)/1000000))"
         //self.statusLabel.text = "\(data.status.rawValue)"
         
         self.sumTxHashLabel.text = data.hash
-        self.sumDateLabel.text = "\(data.timestamp)"
-        self.sumAaddressLabel.text = "xe_1239487skjfhsmd"
+        self.sumDateLabel.text = "\(DateFunctions.getFormattedDateString(timeSince: Double(data.timestamp)))"
+        self.sumAaddressLabel.text = data.sender
         self.sumMemoLabel.text = memo
         //self.sumStatusLabel.text = "\(data.status.rawValue)"
-        self.sumAmountLabel.text = "\(String(format: "%.6f", Double(data.amount/1000000)))"
+        self.sumAmountLabel.text = "\(String(format: "%.6f", Double(data.amount)/1000000))"
     }
 }
 

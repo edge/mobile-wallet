@@ -7,8 +7,12 @@
 
 import UIKit
 
-class CreateWalletViewController: BaseViewController {
+class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
         
+    @IBOutlet weak var backgroundView: UIView!
+    
+    @IBOutlet weak var customTitleBarView: CustomTitleBar!
+    
     @IBOutlet weak var warningMessageLabel: UILabel!
     
     @IBOutlet weak var confirmOuterView: UIView!
@@ -27,6 +31,10 @@ class CreateWalletViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        view.isOpaque = false
+        view.backgroundColor = .clear
+        self.backgroundView.alpha = 0.0
         
         navigationItem.hidesBackButton = false
 
@@ -52,6 +60,24 @@ class CreateWalletViewController: BaseViewController {
         }
         self.initialiseWarningMessage()
         self.setConfirmStatus()
+        
+        self.customTitleBarView.delegate = self
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
+        swipeDown.direction = .down
+        self.view.addGestureRecognizer(swipeDown)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 1.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+        })
     }
     
     func initialiseWarningMessage() {
@@ -113,4 +139,36 @@ class CreateWalletViewController: BaseViewController {
             }
         }
     }
+    
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+
+        if gesture.direction == .down {
+
+            self.closeWindow()
+        }
+    }
+    
+    func closeWindow() {
+        
+        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+
+            self.backgroundView.alpha = 0.0
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+
+            self.dismiss(animated: false, completion: nil)
+        })
+    }
+}
+
+extension CreateWalletViewController {
+    
+    func letButtonPressed() {
+    }
+    
+    func rightButtonPressed() {
+        
+        self.closeWindow()
+    }
+
 }

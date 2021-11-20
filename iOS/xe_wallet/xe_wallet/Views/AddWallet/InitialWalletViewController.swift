@@ -22,12 +22,14 @@ class InitialWalletViewController: BaseViewController {
         if segue.identifier == "CreateWalletViewController" {
             
             let controller = segue.destination as! CreateWalletViewController
+            controller.modalPresentationStyle = .overCurrentContext
             controller.type = .xe
         }
         
         if segue.identifier == "RestoreWalletViewController" {
             
             let controller = segue.destination as! RestoreWalletViewController
+            controller.modalPresentationStyle = .overCurrentContext
             controller.type = .xe
         }
     }
