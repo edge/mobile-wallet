@@ -346,6 +346,8 @@
                         <outlet property="customTitleBarView" destination="wla-Ne-LOD" id="lKJ-sc-i6J"/>
                         <outlet property="memoLabel" destination="re2-tw-tfC" id="tS6-mZ-7bO"/>
                         <outlet property="memoTextField" destination="qgg-FV-l6u" id="REa-VC-BFv"/>
+                        <outlet property="reviewButtonText" destination="57W-7u-2i3" id="RVl-mO-fzY"/>
+                        <outlet property="reviewButtonView" destination="pDE-PG-DTg" id="6EP-op-jLY"/>
                         <outlet property="toTextField" destination="Mt0-tR-K1s" id="c9U-f9-oaY"/>
                         <segue destination="Lwp-1A-ZD4" kind="show" identifier="ShowSendReviewViewController" animates="NO" id="uE3-Yf-WT5"/>
                     </connections>

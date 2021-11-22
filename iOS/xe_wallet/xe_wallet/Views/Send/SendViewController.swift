@@ -24,12 +24,16 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
                 
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
 
+    @IBOutlet weak var reviewButtonView: UIView!
+    @IBOutlet weak var reviewButtonText: UILabel!
+    
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
     
     var cardFrame: CGRect? = nil
-    
     var cardImage: UIImage? = nil
+    
+    var isReviewActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,6 +68,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             string: "0",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named:"PlaceHolderFont") ?? .white])
         
+        self.toTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
@@ -73,6 +79,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         self.view.addGestureRecognizer(swipeDown)
 
         self.customTitleBarView.delegate = self
+        
+        self.configureReviewButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -89,7 +97,53 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
 
         })
     }
+    
+    func configureReviewButton() {
         
+        if self.isReviewActive {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonText.textColor = UIColor(named: "FontMain")
+        } else {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+            self.reviewButtonText.textColor = UIColor(named: "ButtonTextInactive")
+        }
+    }
+        
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        var shouldBeActive = false
+        
+        guard let amountText = self.amountTextField.text else { return }
+        guard let toText = self.toTextField.text else { return }
+        guard let amountVal = Double(amountText) else { return }
+        guard let wallet = self.walletData else { return }
+        guard let status = wallet.status else { return }
+        
+        if amountText != "" {
+            
+            let walletAmount = status.balance
+            
+            if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+                
+                shouldBeActive = true
+                
+                if toText.count != wallet.type.getWalletCharacterLength() || !toText.hasPrefix(wallet.type.getWalletPrefix()) {
+                    
+                    shouldBeActive = false
+                }
+            }
+        }
+                
+        if self.isReviewActive != shouldBeActive {
+            
+            self.isReviewActive = shouldBeActive
+            self.configureReviewButton()
+        }
+        
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
 
         if gesture.direction == .down {
@@ -182,7 +236,10 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
     
     @IBAction func reviewButtonPressed(_ sender: Any) {
         
-        performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
+        if self.isReviewActive {
+        
+            performSegue(withIdentifier: "ShowSendReviewViewController", sender: nil)
+        }
     }
     
     /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

@@ -42,9 +42,10 @@ class Constants {
     static var networkChangeConfirmMessage = "Are you sure you wish to change to "
     
     /// settings reset messages
-    ///
+
     static var resetAppMessageHeader = "Reset App Data"
     static var resetAppMessageBody = "This will remove all apps data including pins and wallets."
 
     static var toastDisplayTime = 1.5
+    
 }

@@ -28,11 +28,17 @@ class TransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(data: TransactionRecordDataModel) {
+    func configure(data: TransactionRecordDataModel, address: String) {
         
-        //self.typeImageView.image = UIImage(named:data.type.getImageName())
-
-        //self.typeLabel.text = "\(data.type.rawValue)"
+        var typeLabel = "Sent"
+        var iconName = "send"
+        if address == data.recipient {
+            
+            typeLabel = "Received"
+            iconName = "receive"
+        }
+        self.typeLabel.text = typeLabel
+        self.typeImageView.image = UIImage(named:iconName)
         
         var memo = ""
         if let memData = data.data {

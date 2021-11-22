@@ -91,8 +91,7 @@ class EtherWallet {
     
     public func sendEther(toAddr: String, fromAddr: String, amt: String, parent: UIViewController) {
         
-        /*
-        DispatchQueue.global().async {
+        /*DispatchQueue.global().async {
             
             let value: String = amt
             let walletAddress = EthereumAddress(fromAddr)! // Your wallet address

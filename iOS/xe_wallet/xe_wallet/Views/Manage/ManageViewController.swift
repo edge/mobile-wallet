@@ -93,6 +93,23 @@ extension ManageViewController {
         self.walletTableViewData.insert(movedObject, at: destinationIndexPath.row)
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        for view in cell.subviews {
+            
+            if view.self.description.contains("UITableViewCellReorderControl") {
+                
+                let movedReorderControl = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY))
+                movedReorderControl.addSubview(view)
+                cell.addSubview(movedReorderControl)
+                let moveLeft = CGSize(width: movedReorderControl.frame.size.width - view.frame.size.width, height: movedReorderControl.frame.size.height - view.frame.size.height)
+                var transform: CGAffineTransform = .identity
+                transform = transform.translatedBy(x: -moveLeft.width, y: -moveLeft.height)
+                movedReorderControl.transform = transform
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         self.tableView.isEditing = true

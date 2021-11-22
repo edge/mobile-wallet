@@ -213,7 +213,7 @@ extension WalletViewController {
             
             if let entries = trans.results {
             
-                (cell as! TransactionTableViewCell).configure(data:entries[indexPath.row])
+                (cell as! TransactionTableViewCell).configure(data:entries[indexPath.row], address: self.walletCollectionViewData[self.selectedWallet].address)
             }
         }
         cell.selectionStyle = .none

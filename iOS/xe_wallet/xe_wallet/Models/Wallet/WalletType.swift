@@ -27,4 +27,49 @@ enum WalletType: String, Codable {
             return "Ether"
         }
     }
+    
+    func getMinSendValue() -> Double {
+        
+        switch self {
+            
+        case .xe:
+            return 0.001000
+            
+        case .edge:
+            return 0.001000
+            
+        case .ethereum:
+            return 0.001000
+        }
+    }
+    
+    func getWalletCharacterLength() -> Int {
+        
+        switch self {
+            
+        case .xe:
+            return 43
+            
+        case .edge:
+            return 42
+            
+        case .ethereum:
+            return 42
+        }
+    }
+    
+    func getWalletPrefix() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return "xe_"
+            
+        case .edge:
+            return "0x"
+            
+        case .ethereum:
+            return "0x"
+        }
+    }
 }
