@@ -41,7 +41,13 @@ class ManageTableViewCell: UITableViewCell {
         self.subAdressLabel.text = data.address
         self.walletIconImage.image = UIImage(named:"\(data.type.rawValue)")
         self.addressLabel.text = "\(data.address)"
-        self.amountLabel.text = "1.000000 XE"
+        
+        var amount = 0
+        if let status = data.status {
+            
+            amount = status.balance
+        }
+        self.amountLabel.text = "\(String(format: "%.6f", Double(amount)/1000000)) \(data.type.getDisplayLabel())"
         
         self.subCreatedLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.created))
         self.subBackedupLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.backedup))

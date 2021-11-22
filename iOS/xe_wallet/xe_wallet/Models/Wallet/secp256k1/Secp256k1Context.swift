@@ -80,7 +80,7 @@ public class Secp256k1Context: Context {
         }
         var compactSig = secp256k1_ecdsa_recoverable_signature()
 
-        var recid: Int32 = 1
+        var recid: Int32 = Int32(sig.data.64)
         
         if secp256k1_ecdsa_recoverable_signature_parse_compact(ctx!, &compactSig, input, recid) == 0 {
             

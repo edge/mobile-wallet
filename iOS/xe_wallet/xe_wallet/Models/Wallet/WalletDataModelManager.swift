@@ -119,6 +119,11 @@ class WalletDataModelManager {
         self.walletData.insert(movedObject, at: bIndex)
         self.saveWalletData()
     }
+    
+    public func getExchangeOptions(type: WalletType) -> [WalletDataModel] {
+        
+        return self.walletData
+    }
         
 // TODO use protocols for wallets with same functionality
     

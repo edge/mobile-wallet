@@ -56,7 +56,7 @@ extension ManageViewController {
      
         if selectedIndex == indexPath.row {
             
-            self.tableView.isEditing = false
+            //self.tableView.isEditing = false
             return tableViewCellHeightOpen
         }
         return tableViewCellHeightClosed

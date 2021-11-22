@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toast
 
 class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
         
@@ -120,9 +121,11 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
         if sender.tag == 0 {
             
             UIPasteboard.general.string = self.walletAddressLabel.text
+            self.view.makeToast("Address copied to clipboard", duration: Constants.toastDisplayTime, position: .top)
         } else if sender.tag == 1 {
             
             UIPasteboard.general.string = self.privateKeyLabel.text
+            self.view.makeToast("Private Key copied to clipboard", duration: Constants.toastDisplayTime, position: .top)
         }
     }
     

@@ -97,7 +97,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tle-6x-fJu">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
-                                                <color key="backgroundColor" name="BackgroundMain"/>
+                                                <color key="backgroundColor" name="MainBlack"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
@@ -209,7 +209,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1V-Zw-3bS">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
-                                                <color key="backgroundColor" name="BackgroundMain"/>
+                                                <color key="backgroundColor" name="MainBlack"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
@@ -327,7 +327,7 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PdM-BJ-v9I">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
-                                                <color key="backgroundColor" name="BackgroundMain"/>
+                                                <color key="backgroundColor" name="MainBlack"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>

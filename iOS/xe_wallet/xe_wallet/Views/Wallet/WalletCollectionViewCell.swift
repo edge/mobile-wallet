@@ -27,9 +27,9 @@ class WalletCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        self.iconCircleView.layer.cornerRadius = self.iconCircleView.frame.height / 2
-        self.iconCircleView.layer.borderWidth = 2
-        self.iconCircleView.layer.borderColor = UIColor.darkGray.cgColor
+        //self.iconCircleView.layer.cornerRadius = self.iconCircleView.frame.height / 2
+        //self.iconCircleView.layer.borderWidth = 2
+        //self.iconCircleView.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     public func config(data: WalletDataModel) {

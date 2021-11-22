@@ -18,6 +18,9 @@ struct AppDataModel {
     var XE_MainNetTransactionUrl = "https://index.xe.network/transactions/"
     var XE_TestNetTransactionUrl = "https://index.test.network/transactions/"
     
+    var XE_MainNetSendUrl = "https://api.xe.network/transaction"
+    var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
+    
     var XE_networkMainNetTitle = "Edge (XE) Mainnet"
     var XE_networkTestNetTitle = "Edge (XE) Testnet"
 }

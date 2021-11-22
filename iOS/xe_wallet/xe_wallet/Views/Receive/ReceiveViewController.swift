@@ -19,6 +19,7 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
     
+    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var QRImageView: UIImageView!
     
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
@@ -39,16 +40,21 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
         
         self.QRImageView.layer.magnificationFilter = CALayerContentsFilter.nearest
         
-        if let qrImage = generateQrCode2(self.selectedWalletAddress) {
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
             
-            self.QRImageView.image = UIImage(ciImage: qrImage)
-            let smallLogo = UIImage(named: "qrlogo")
-            smallLogo?.addToCenter(of: self.QRImageView)
+            if let qrImage = self.generateQrCode2(self.selectedWalletAddress) {
+                
+                self.QRImageView.image = UIImage(ciImage: qrImage)
+                let smallLogo = UIImage(named: "qrlogo")
+                smallLogo?.addToCenter(of: self.QRImageView)
+            }
         }
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        self.addressLabel.text = self.walletData?.address
         
         self.customTitleBarView.delegate = self
     }
@@ -74,6 +80,17 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
 
             self.closeWindow()
         }
+    }
+    
+    @IBAction func copyButtonPressed(_ sender: Any) {
+        
+        UIPasteboard.general.string = self.addressLabel.text
+        self.view.makeToast("Address copied to clipboard", duration: Constants.toastDisplayTime, position: .top)
+    }
+    
+    @IBAction func closeButtonPressed(_ sender: Any) {
+    
+        self.closeWindow()
     }
     
     func closeWindow() {

@@ -90,7 +90,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="ButtonGreen"/>
+                                <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="JO1-1u-JEk" secondAttribute="bottom" id="VkG-gw-paT"/>
                                     <constraint firstItem="JO1-1u-JEk" firstAttribute="top" secondItem="0Qg-42-NMg" secondAttribute="top" id="dVD-Yy-oj1"/>
@@ -123,7 +123,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" name="ButtonGreen"/>
+                                <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                 <constraints>
                                     <constraint firstItem="h4H-Je-jLJ" firstAttribute="centerX" secondItem="8GV-Nl-zrD" secondAttribute="centerX" id="0aQ-XV-FAI"/>
                                     <constraint firstItem="h4H-Je-jLJ" firstAttribute="centerY" secondItem="8GV-Nl-zrD" secondAttribute="centerY" id="GOY-MF-ENT"/>
@@ -245,7 +245,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="93Z-4Q-Jpg"/>
                                             <constraint firstItem="zSI-d6-8gG" firstAttribute="centerY" secondItem="j3X-D7-bBR" secondAttribute="centerY" id="Hyo-cM-bcq"/>
@@ -317,7 +317,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                         <constraints>
                                             <constraint firstItem="SMk-6e-FgP" firstAttribute="centerY" secondItem="uDP-OX-en0" secondAttribute="centerY" id="CUG-tQ-nhA"/>
                                             <constraint firstAttribute="height" constant="70" id="EMA-z3-3os"/>
@@ -370,19 +370,19 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gXI-pe-px3">
-                                        <rect key="frame" x="16" y="428" width="48" height="48"/>
+                                        <rect key="frame" x="16" y="428" width="32" height="32"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGP-lD-dEP">
-                                                <rect key="frame" x="2" y="2" width="44" height="44"/>
-                                                <color key="backgroundColor" name="BackgroundMain"/>
+                                                <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                <color key="backgroundColor" name="MainBlack"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="22"/>
+                                                        <integer key="value" value="14"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Yk-VS-pNy">
-                                                <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <connections>
                                                     <action selector="confirmButtonPressed:" destination="emf-Wv-KvA" eventType="touchUpInside" id="nG7-SI-a8L"/>
@@ -394,32 +394,22 @@
                                             <constraint firstItem="dGP-lD-dEP" firstAttribute="top" secondItem="gXI-pe-px3" secondAttribute="top" constant="2" id="1ST-P7-L4U"/>
                                             <constraint firstItem="dGP-lD-dEP" firstAttribute="leading" secondItem="gXI-pe-px3" secondAttribute="leading" constant="2" id="1UL-vz-Rd3"/>
                                             <constraint firstItem="7Yk-VS-pNy" firstAttribute="top" secondItem="gXI-pe-px3" secondAttribute="top" id="Fdt-LA-JKH"/>
-                                            <constraint firstAttribute="width" constant="48" id="M7T-1E-OGD"/>
+                                            <constraint firstAttribute="width" constant="32" id="M7T-1E-OGD"/>
                                             <constraint firstItem="7Yk-VS-pNy" firstAttribute="leading" secondItem="gXI-pe-px3" secondAttribute="leading" id="OLB-Vq-wmM"/>
                                             <constraint firstAttribute="trailing" secondItem="dGP-lD-dEP" secondAttribute="trailing" constant="2" id="RBU-e1-NmK"/>
-                                            <constraint firstAttribute="height" constant="48" id="ToM-iL-de4"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="VPk-Bt-LGI"/>
+                                            <constraint firstAttribute="height" constant="32" id="ToM-iL-de4"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="VPk-Bt-LGI"/>
                                             <constraint firstAttribute="bottom" secondItem="7Yk-VS-pNy" secondAttribute="bottom" id="aIp-NP-AcQ"/>
                                             <constraint firstAttribute="trailing" secondItem="7Yk-VS-pNy" secondAttribute="trailing" id="gWj-6F-VQi"/>
                                             <constraint firstAttribute="bottom" secondItem="dGP-lD-dEP" secondAttribute="bottom" constant="2" id="qks-jB-ymA"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="48" id="rdT-hp-1gb"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="32" id="rdT-hp-1gb"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="24"/>
+                                                <integer key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I've backed this up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cf-wi-wbI">
-                                        <rect key="frame" x="81" y="436" width="143" height="19"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="19" id="Zdl-QH-R0r"/>
-                                            <constraint firstAttribute="height" constant="19" id="zhp-1X-d6n"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                        <color key="textColor" name="FontMain"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l6d-96-bpr">
                                         <rect key="frame" x="16" y="758" width="382" height="60"/>
                                         <subviews>
@@ -454,15 +444,22 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="I have backed up the key" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Cf-wi-wbI">
+                                        <rect key="frame" x="60" y="435" width="190" height="19"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <color key="textColor" name="FontMain"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
+                                    <constraint firstItem="8Cf-wi-wbI" firstAttribute="leading" secondItem="gXI-pe-px3" secondAttribute="trailing" constant="12" id="1in-TS-rGD"/>
                                     <constraint firstAttribute="trailing" secondItem="l6d-96-bpr" secondAttribute="trailing" constant="16" id="2Av-nX-Jnp"/>
                                     <constraint firstAttribute="trailing" secondItem="271-5s-CuQ" secondAttribute="trailing" constant="16" id="417-og-6Ni"/>
                                     <constraint firstAttribute="trailing" secondItem="uDP-OX-en0" secondAttribute="trailing" constant="16" id="45r-Z5-ZY4"/>
                                     <constraint firstItem="dGI-jj-6Lx" firstAttribute="leading" secondItem="Aik-AP-k1n" secondAttribute="leading" constant="16" id="4yJ-g6-aEJ"/>
                                     <constraint firstItem="gXI-pe-px3" firstAttribute="top" secondItem="271-5s-CuQ" secondAttribute="bottom" constant="30" id="7wY-yD-XDf"/>
-                                    <constraint firstItem="8Cf-wi-wbI" firstAttribute="leading" secondItem="gXI-pe-px3" secondAttribute="trailing" constant="17" id="AgX-hJ-LDE"/>
+                                    <constraint firstItem="8Cf-wi-wbI" firstAttribute="top" secondItem="271-5s-CuQ" secondAttribute="bottom" constant="37" id="C8c-Be-3tR"/>
                                     <constraint firstAttribute="trailing" secondItem="gLI-fy-dWd" secondAttribute="trailing" id="GTy-RS-jW5"/>
                                     <constraint firstItem="hZE-U4-OjO" firstAttribute="top" secondItem="gLI-fy-dWd" secondAttribute="bottom" constant="16" id="J7S-NF-Goh"/>
                                     <constraint firstItem="uDP-OX-en0" firstAttribute="leading" secondItem="Aik-AP-k1n" secondAttribute="leading" constant="16" id="OJm-71-a6r"/>
@@ -470,7 +467,6 @@
                                     <constraint firstItem="gLI-fy-dWd" firstAttribute="leading" secondItem="Aik-AP-k1n" secondAttribute="leading" id="TGg-6u-MwM"/>
                                     <constraint firstItem="271-5s-CuQ" firstAttribute="top" secondItem="uDP-OX-en0" secondAttribute="bottom" constant="24" id="XLK-4O-XAB"/>
                                     <constraint firstAttribute="trailing" secondItem="j3X-D7-bBR" secondAttribute="trailing" constant="16" id="ZGD-qe-uqv"/>
-                                    <constraint firstItem="8Cf-wi-wbI" firstAttribute="top" secondItem="271-5s-CuQ" secondAttribute="bottom" constant="38" id="ZGT-yI-wze"/>
                                     <constraint firstItem="gXI-pe-px3" firstAttribute="leading" secondItem="Aik-AP-k1n" secondAttribute="leading" constant="16" id="ae1-Uf-oqM"/>
                                     <constraint firstItem="uDP-OX-en0" firstAttribute="top" secondItem="dGI-jj-6Lx" secondAttribute="bottom" constant="4" id="dSr-88-RRQ"/>
                                     <constraint firstItem="dGI-jj-6Lx" firstAttribute="top" secondItem="j3X-D7-bBR" secondAttribute="bottom" constant="16" id="djZ-xP-use"/>
@@ -593,7 +589,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7d-qX-E8K">
                                                         <rect key="frame" x="2" y="2" width="28" height="28"/>
-                                                        <color key="backgroundColor" name="BackgroundMain"/>
+                                                        <color key="backgroundColor" name="MainBlack"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="14"/>
@@ -712,7 +708,7 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmI-XJ-3cd">
                                                         <rect key="frame" x="2" y="2" width="28" height="28"/>
-                                                        <color key="backgroundColor" name="BackgroundMain"/>
+                                                        <color key="backgroundColor" name="MainBlack"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="14"/>
@@ -976,7 +972,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                         </subviews>
-                                        <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                                        <color key="backgroundColor" name="MainBlack"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="GUe-J7-2IM" secondAttribute="trailing" constant="9" id="2nV-P3-zuu"/>
                                             <constraint firstItem="GUe-J7-2IM" firstAttribute="centerY" secondItem="WtH-iy-Gqy" secondAttribute="centerY" id="2ni-aH-60o"/>
@@ -1070,7 +1066,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="WlX-Fg-CRK"/>
-        <segue reference="DiW-o6-VuV"/>
+        <segue reference="TJz-f2-AfC"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="coin_xe" width="24" height="24"/>

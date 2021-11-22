@@ -10,4 +10,6 @@ target 'xe_wallet' do
 	pod 'DataCache'
 	pod 'SwiftyJSON', '~> 4.0'
 	pod 'AnyCodable-FlightSchool', '~> 0.6.0'
+	pod 'DropDown'
+	pod 'Tisander', '~> 1.0'
 end

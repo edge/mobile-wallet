@@ -1,0 +1,6 @@
+framework module Tisander {
+  umbrella header "Tisander-umbrella.h"
+
+  export *
+  module * { export * }
+}

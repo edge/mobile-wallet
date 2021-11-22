@@ -11,6 +11,38 @@ import Security
 import Alamofire
 import CryptoSwift
 import secp256k1
+import SwiftyJSON
+
+
+struct BodyStringEncoding: ParameterEncoding {
+
+    private let body: String
+
+    init(body: String) { self.body = body }
+
+    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+        guard var urlRequest = urlRequest.urlRequest else { throw Errors.emptyURLRequest }
+        guard let data = body.data(using: .utf8) else { throw Errors.encodingProblem }
+        urlRequest.httpBody = data
+        return urlRequest
+    }
+}
+
+extension BodyStringEncoding {
+    enum Errors: Error {
+        case emptyURLRequest
+        case encodingProblem
+    }
+}
+
+extension BodyStringEncoding.Errors: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+            case .emptyURLRequest: return "Empty url request"
+            case .encodingProblem: return "Encoding problem"
+        }
+    }
+}
 
 class XEWallet {
     
@@ -130,13 +162,17 @@ class XEWallet {
          }
     }
     
+
+    
+
+    
     func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String) {
                 
-        let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+        /*let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
         let digitalAmount = Int(amountString)
         
         var jsonObject: [String: Any] = [
-            "timestamp": Date().timeIntervalSince1970,
+            "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
             "sender": wallet.address,
             "recipient": toAddress,
             "amount": digitalAmount,
@@ -144,16 +180,97 @@ class XEWallet {
                 "memo": memo
             ],
             "nonce": wallet.status?.nonce
-        ]
+        ]*/
+        
+        //var jsonObject: [String: Any] = [String: Any]()
+    
         
         do {
-            let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
-            let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
-            print (jsonString)
-            let sig = self.generateSignature(message: jsonString, key: key)
-            jsonObject.updateValue(sig, forKey: "signature")
             
+
+
+        
+            //let json = JSON(jsonObject)
             
+            let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+            let digitalAmount = Int(amountString) ?? 0
+            let data = SendMessageDataModel(memo: "Testing")
+            let sendMessage = SendMessageModel(timestamp: UInt64(Date().timeIntervalSince1970)*1000, sender: wallet.address, recipient: toAddress, amount: digitalAmount, data: data, nonce: wallet.status?.nonce ?? 0)
+            
+            //let encoder = JSONEncoder()
+            //encoder.outputFormatting = [.withoutEscapingSlashes]
+            /*
+            var param = [
+                "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
+                "sender": wallet.address,
+                "recipient": toAddress,
+                "amount": digitalAmount,
+                "data": ["memo": "Testing"],
+                "nonce": wallet.status?.nonce ?? 0,
+
+            ] as [String : Any]
+
+            
+            var jData = try JSONSerialization.data(withJSONObject: param, options: [])
+            var jString = String(data: jData, encoding: String.Encoding.ascii)!
+            print(jString)
+            
+            var sig = self.generateSignature(message: jString, key: key)
+            print(sig)
+            
+            param.updateValue(sig, forKey: "signature")
+            
+            jData = try JSONSerialization.data(withJSONObject: param, options: [])
+            jString = String(data: jData, encoding: String.Encoding.ascii)!
+            print(jString)
+            
+            var hash = jString.sha256()
+            param.updateValue(hash, forKey: "hash")
+            jData = try JSONSerialization.data(withJSONObject: param, options: [])
+            jString = String(data: jData, encoding: String.Encoding.ascii)!
+            print(jString)
+            
+            */
+            
+            var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(toAddress)\",\"amount\":\(digitalAmount),\"data\":{\"memo\":\"Testing\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+            print(j2String)
+            j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
+            print(j2String)
+            var sig = self.generateSignature(message: j2String, key: key)
+            print(sig)
+            j2String = String(j2String.dropLast())
+            print(j2String)
+            j2String = "\(j2String),\"signature\":\"\(sig)\"}"
+            print(j2String)
+            var hash = j2String.sha256()
+            print(hash)
+            j2String = String(j2String.dropLast())
+            print(j2String)
+            j2String = "\(j2String),\"hash\":\"\(hash)\"}"
+            print(j2String)
+            
+            let url = AppDataModelManager.shared.getXEServerSendUrl()
+            /*
+            let params = [
+                "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
+                "sender": wallet.address,
+                "recipient": toAddress,
+                "amount": digitalAmount,
+                "data": ["memo": "Testing"],
+                "nonce": wallet.status?.nonce ?? 0,
+                "signature": sig,
+                "hash": hash
+            ] as [String : Any]
+            
+*/
+            
+            let headers: HTTPHeaders = [
+                "Content-type": "application/json"
+            ]
+            Alamofire.request(url, method: .post, parameters: nil, encoding: BodyStringEncoding(body: j2String), headers: headers ).responseJSON { response in
+                 print(response)
+                    print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue))
+            }
             
         } catch _ {
             print ("JSON Failure")
@@ -163,16 +280,10 @@ class XEWallet {
     
     func generateSignature(message: String, key: String) -> String {
         
-        //let msgHash = "hello world".sha256() //message.sha256()
-        //let addrHash = keccak256(msgHash).toHexString()
-        
         let addrHashArray: [UInt8] = Array(message.utf8)
-        //let addrHashArray: [UInt8] = Array("hello world".utf8)
         let context = Secp256k1Context()
+        print(key)
         let privateKey = Secp256k1PrivateKey(privKey: key.toBytes)
-        //let privateKey = Secp256k1PrivateKey(privKey: "d221434e2cf538ca8dd409e6ccea0d9b75d7c8eb3efa10a507cf8277d786d5ac".toBytes)
-        
-        //let signatureObj1 = try! context.sign(data: addrHashArray, privateKey: privateKey)
         let signatureObj = try! context.sign_recoverable(data: addrHashArray, privateKey: privateKey)
 
         return signatureObj

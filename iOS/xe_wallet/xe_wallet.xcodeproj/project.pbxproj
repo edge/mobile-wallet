@@ -86,6 +86,12 @@
 		FD742686274817170046D148 /* EtherTransactionsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD742685274817170046D148 /* EtherTransactionsModel.swift */; };
 		FD74268827487B560046D148 /* DateFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268727487B560046D148 /* DateFunctions.swift */; };
 		FD74268A27488D4B0046D148 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268927488D4A0046D148 /* UIViewController+Ext.swift */; };
+		FD74268D27498E830046D148 /* DropDownSelection.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD74268C27498E830046D148 /* DropDownSelection.xib */; };
+		FD74268F27498E940046D148 /* DropDownSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74268E27498E940046D148 /* DropDownSelection.swift */; };
+		FD74269127499A5D0046D148 /* NiceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD74269027499A5D0046D148 /* NiceButton.swift */; };
+		FD7426932749DC4F0046D148 /* SendMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7426922749DC4E0046D148 /* SendMessageModel.swift */; };
+		FD7426952749EDA40046D148 /* JSONSerlializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7426942749EDA30046D148 /* JSONSerlializer.swift */; };
+		FD74269B274B10CD0046D148 /* Toast in Frameworks */ = {isa = PBXBuildFile; productRef = FD74269A274B10CD0046D148 /* Toast */; };
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
@@ -189,6 +195,11 @@
 		FD742685274817170046D148 /* EtherTransactionsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherTransactionsModel.swift; sourceTree = "<group>"; };
 		FD74268727487B560046D148 /* DateFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFunctions.swift; sourceTree = "<group>"; };
 		FD74268927488D4A0046D148 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
+		FD74268C27498E830046D148 /* DropDownSelection.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownSelection.xib; sourceTree = "<group>"; };
+		FD74268E27498E940046D148 /* DropDownSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownSelection.swift; sourceTree = "<group>"; };
+		FD74269027499A5D0046D148 /* NiceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiceButton.swift; sourceTree = "<group>"; };
+		FD7426922749DC4E0046D148 /* SendMessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageModel.swift; sourceTree = "<group>"; };
+		FD7426942749EDA30046D148 /* JSONSerlializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONSerlializer.swift; sourceTree = "<group>"; };
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
@@ -213,6 +224,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD74269B274B10CD0046D148 /* Toast in Frameworks */,
 				FD6018F2273229C100F78EBE /* IQKeyboardManagerSwift in Frameworks */,
 				FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */,
 				FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */,
@@ -292,6 +304,7 @@
 				FD742685274817170046D148 /* EtherTransactionsModel.swift */,
 				FDB72A2C273DE4070071711F /* XEWallet.swift */,
 				FDB72A2E273DE41D0071711F /* EtherWallet.swift */,
+				FD7426922749DC4E0046D148 /* SendMessageModel.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -469,6 +482,16 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		FD74268B27498E5E0046D148 /* DropDownSelection */ = {
+			isa = PBXGroup;
+			children = (
+				FD74268C27498E830046D148 /* DropDownSelection.xib */,
+				FD74268E27498E940046D148 /* DropDownSelection.swift */,
+				FD74269027499A5D0046D148 /* NiceButton.swift */,
+			);
+			path = DropDownSelection;
+			sourceTree = "<group>";
+		};
 		FD9EA5EE2745AA510068B9F9 /* CustomTitleBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +509,7 @@
 				FD31F2252714D9C80034A59E /* BiometricsManager.swift */,
 				FD6018EE2731F0C600F78EBE /* KeyChainHelper.swift */,
 				FD74268727487B560046D148 /* DateFunctions.swift */,
+				FD7426942749EDA30046D148 /* JSONSerlializer.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -548,6 +572,7 @@
 		FDFB697A270F3871004C2BFD /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				FD74268B27498E5E0046D148 /* DropDownSelection */,
 				FD9EA5EE2745AA510068B9F9 /* CustomTitleBar */,
 				FDFB697B270F387B004C2BFD /* PinEntry */,
 			);
@@ -588,6 +613,7 @@
 				FDB72A3B273DF3160071711F /* secp256k1 */,
 				FD74268127480F980046D148 /* Crypto */,
 				FD74268327480F980046D148 /* _CryptoExtras */,
+				FD74269A274B10CD0046D148 /* Toast */,
 			);
 			productName = xe_wallet;
 			productReference = FD22ED57270F04B800B5B33F /* xe_wallet.app */;
@@ -623,6 +649,7 @@
 				FD6018F0273229C100F78EBE /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
 				FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */,
+				FD742699274B10CD0046D148 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
 			);
 			productRefGroup = FD22ED58270F04B800B5B33F /* Products */;
 			projectDirPath = "";
@@ -648,6 +675,7 @@
 				FD22ED64270F04BA00B5B33F /* Assets.xcassets in Resources */,
 				FD073DE62710F4780077F184 /* Inter-ExtraBold.otf in Resources */,
 				FD6018F9273464E500F78EBE /* Network.storyboard in Resources */,
+				FD74268D27498E830046D148 /* DropDownSelection.xib in Resources */,
 				FDFB697D270F390A004C2BFD /* PinEntryView.xib in Resources */,
 				FD073DE02710F4780077F184 /* Inter-Light.otf in Resources */,
 				FD073DED27121C530077F184 /* Settings.storyboard in Resources */,
@@ -720,6 +748,7 @@
 				FD31F22B2714DBD50034A59E /* AppModelManager.swift in Sources */,
 				FD073DFD2714615E0077F184 /* WalletDataModel.swift in Sources */,
 				FD22ED5F270F04B800B5B33F /* ViewController.swift in Sources */,
+				FD7426952749EDA40046D148 /* JSONSerlializer.swift in Sources */,
 				FD6018E72731C5A000F78EBE /* CreateWalletViewController.swift in Sources */,
 				FDB72A2F273DE41D0071711F /* EtherWallet.swift in Sources */,
 				FD6018ED2731D54700F78EBE /* AddressKeyPair.swift in Sources */,
@@ -728,6 +757,7 @@
 				FD6018FB273464F500F78EBE /* NetworkViewController.swift in Sources */,
 				FD74268827487B560046D148 /* DateFunctions.swift in Sources */,
 				FD6018D4272E0BFF00F78EBE /* CryptoFactory.swift in Sources */,
+				FD74268F27498E940046D148 /* DropDownSelection.swift in Sources */,
 				FD31F2262714D9C80034A59E /* BiometricsManager.swift in Sources */,
 				FD6018C8272E09D000F78EBE /* Secp256k1Context.swift in Sources */,
 				FD31F22F2714F2B20034A59E /* ManageViewController.swift in Sources */,
@@ -741,6 +771,8 @@
 				FD073E05271494060077F184 /* SettingsHeaderTableViewCell.swift in Sources */,
 				FD22ED5B270F04B800B5B33F /* AppDelegate.swift in Sources */,
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
+				FD74269127499A5D0046D148 /* NiceButton.swift in Sources */,
+				FD7426932749DC4F0046D148 /* SendMessageModel.swift in Sources */,
 				FD22ED5D270F04B800B5B33F /* SceneDelegate.swift in Sources */,
 				FD74267C2748095E0046D148 /* sha256.swift in Sources */,
 				FD073DEF27121C660077F184 /* SettingsViewController.swift in Sources */,
@@ -932,7 +964,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -965,7 +997,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1047,6 +1079,14 @@
 				minimumVersion = 2.0.0;
 			};
 		};
+		FD742699274B10CD0046D148 /* XCRemoteSwiftPackageReference "Toast-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scalessec/Toast-Swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Boilertalk/secp256k1.swift.git";
@@ -1082,6 +1122,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */;
 			productName = _CryptoExtras;
+		};
+		FD74269A274B10CD0046D148 /* Toast */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD742699274B10CD0046D148 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
+			productName = Toast;
 		};
 		FDB72A3B273DF3160071711F /* secp256k1 */ = {
 			isa = XCSwiftPackageProductDependency;

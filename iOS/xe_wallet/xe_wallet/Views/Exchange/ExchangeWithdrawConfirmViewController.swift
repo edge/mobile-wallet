@@ -37,7 +37,6 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finished in
-
         })
     }
     

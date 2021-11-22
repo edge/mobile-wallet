@@ -143,9 +143,25 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             controller.modalPresentationStyle = .overCurrentContext
             controller.walletData = self.walletData
             controller.delegate = self
-            controller.toAddress = self.toTextField.text!
-            controller.amount = self.amountTextField.text!
-            controller.memo = self.memoTextField.text!
+            var toAddress = ""
+            if let to = self.toTextField.text {
+                
+                toAddress = to
+            }
+            controller.toAddress = toAddress
+            var amount = "0"
+            if let amt = self.amountTextField.text {
+                
+                amount = amt
+            }
+            controller.amount = amount
+            var memo = ""
+            if let mem = self.memoTextField.text {
+                
+                memo = mem
+            }
+            controller.memo = memo
+            
         }
     }
     

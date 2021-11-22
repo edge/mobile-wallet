@@ -45,6 +45,15 @@
           "revision": "698d440536f87628a4b326ff2d7ea7030c3ab026",
           "version": "0.1.0"
         }
+      },
+      {
+        "package": "Toast",
+        "repositoryURL": "https://github.com/scalessec/Toast-Swift",
+        "state": {
+          "branch": null,
+          "revision": "0c9493eeacb102cc614da385cfaaf475379f4ab4",
+          "version": "5.0.1"
+        }
       }
     ]
   },

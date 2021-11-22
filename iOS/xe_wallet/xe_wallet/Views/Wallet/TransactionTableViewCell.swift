@@ -48,7 +48,7 @@ class TransactionTableViewCell: UITableViewCell {
         //self.statusLabel.text = "\(data.status.rawValue)"
         
         self.sumTxHashLabel.text = data.hash
-        self.sumDateLabel.text = "\(DateFunctions.getFormattedDateString(timeSince: Double(data.timestamp)))"
+        self.sumDateLabel.text = "\(DateFunctions.getFormattedDateString(timeSince: Double(data.timestamp)/1000))"
         self.sumAaddressLabel.text = data.sender
         self.sumMemoLabel.text = memo
         //self.sumStatusLabel.text = "\(data.status.rawValue)"

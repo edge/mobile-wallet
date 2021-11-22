@@ -61,6 +61,16 @@ class AppDataModelManager {
         return self.appData.XE_TestNetStatusUrl
     }
     
+    func getXEServerSendUrl() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            return self.appData.XE_MainNetSendUrl
+        }
+        
+        return self.appData.XE_TestNetSendUrl
+    }
+    
     func getXEServerTransactionUrl() -> String {
         
         if self.testModeStatus() == false {

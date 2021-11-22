@@ -149,7 +149,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             case 1:
                 performSegue(withIdentifier: "ShowReceiveViewController", sender: nil)
             case 2:
-                if self.walletCollectionViewData[self.selectedWallet].type == .xe {
+                if self.walletCollectionViewData[self.selectedWallet].type != .xe {
                     
                     performSegue(withIdentifier: "ShowExchangeDepositViewController", sender: nil)
                 } else {

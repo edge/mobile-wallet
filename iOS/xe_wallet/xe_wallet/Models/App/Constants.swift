@@ -46,4 +46,5 @@ class Constants {
     static var resetAppMessageHeader = "Reset App Data"
     static var resetAppMessageBody = "This will remove all apps data including pins and wallets."
 
+    static var toastDisplayTime = 1.5
 }

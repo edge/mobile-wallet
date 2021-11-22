@@ -145,6 +145,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
                                 WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
+                                
+                                self.closeWindow(callKillDelegate: true)
                             }
                         } else {
                                                         

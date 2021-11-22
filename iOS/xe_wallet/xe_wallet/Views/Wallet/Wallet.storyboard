@@ -63,7 +63,7 @@
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                                                 </imageView>
                                                             </subviews>
-                                                            <color key="backgroundColor" name="MainBlack"/>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="any-li-Zy9"/>
                                                                 <constraint firstAttribute="width" constant="48" id="dQC-xe-fjE"/>
@@ -75,8 +75,11 @@
                                                             <color key="textColor" name="FontSecondary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="xe_1jhgsdfjhgw37gsdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="443-YF-uZd">
-                                                            <rect key="frame" x="16" y="93" width="382" height="16"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="xe_1jhgsdfjhgw37gsdf" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="443-YF-uZd">
+                                                            <rect key="frame" x="16" y="93" width="200" height="16"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="200" id="HeX-By-K2X"/>
+                                                            </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
@@ -125,7 +128,6 @@
                                                         <constraint firstItem="mX7-9V-Bz4" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" id="iyK-Ng-gNQ"/>
                                                         <constraint firstItem="xm2-fq-SdQ" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="jrt-8b-QTZ"/>
                                                         <constraint firstItem="mX7-9V-Bz4" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" id="lcc-BM-f1O"/>
-                                                        <constraint firstAttribute="trailing" secondItem="443-YF-uZd" secondAttribute="trailing" constant="16" id="oIv-zk-Hx8"/>
                                                         <constraint firstItem="Rx5-8D-igy" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="pf5-Vx-xwb"/>
                                                         <constraint firstItem="yYa-N6-cNc" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="r6Z-eV-PQB"/>
                                                         <constraint firstAttribute="trailing" secondItem="mX7-9V-Bz4" secondAttribute="trailing" id="wg1-rh-bjN"/>
@@ -749,9 +751,6 @@
         </namedColor>
         <namedColor name="FontSecondary">
             <color red="0.62352941176470589" green="0.62352941176470589" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="MainBlack">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="PinEntryBoxBackground">
             <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
