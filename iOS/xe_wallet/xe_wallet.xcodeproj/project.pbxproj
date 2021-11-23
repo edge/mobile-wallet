@@ -95,6 +95,10 @@
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
+		FD871388274D523800B4CD2A /* GasRatesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD871387274D523700B4CD2A /* GasRatesDataModel.swift */; };
+		FD87138A274D600300B4CD2A /* ExchangeRatesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD871389274D600300B4CD2A /* ExchangeRatesDataModel.swift */; };
+		FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */; };
+		FD87138E274D83DA00B4CD2A /* CurrencyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87138D274D83D900B4CD2A /* CurrencyType.swift */; };
 		FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */; };
 		FD9EA5E7274476220068B9F9 /* WalletStatusDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5E6274476220068B9F9 /* WalletStatusDataModel.swift */; };
 		FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */; };
@@ -203,6 +207,10 @@
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
+		FD871387274D523700B4CD2A /* GasRatesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasRatesDataModel.swift; sourceTree = "<group>"; };
+		FD871389274D600300B4CD2A /* ExchangeRatesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesDataModel.swift; sourceTree = "<group>"; };
+		FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelpers.swift; sourceTree = "<group>"; };
+		FD87138D274D83D900B4CD2A /* CurrencyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyType.swift; sourceTree = "<group>"; };
 		FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		FD9EA5E6274476220068B9F9 /* WalletStatusDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletStatusDataModel.swift; sourceTree = "<group>"; };
 		FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
@@ -305,6 +313,9 @@
 				FDB72A2C273DE4070071711F /* XEWallet.swift */,
 				FDB72A2E273DE41D0071711F /* EtherWallet.swift */,
 				FD7426922749DC4E0046D148 /* SendMessageModel.swift */,
+				FD871387274D523700B4CD2A /* GasRatesDataModel.swift */,
+				FD871389274D600300B4CD2A /* ExchangeRatesDataModel.swift */,
+				FD87138D274D83D900B4CD2A /* CurrencyType.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -510,6 +521,7 @@
 				FD6018EE2731F0C600F78EBE /* KeyChainHelper.swift */,
 				FD74268727487B560046D148 /* DateFunctions.swift */,
 				FD7426942749EDA30046D148 /* JSONSerlializer.swift */,
+				FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -770,6 +782,7 @@
 				FD073E0C2714960F0077F184 /* SettingsModelManager.swift in Sources */,
 				FD073E05271494060077F184 /* SettingsHeaderTableViewCell.swift in Sources */,
 				FD22ED5B270F04B800B5B33F /* AppDelegate.swift in Sources */,
+				FD87138A274D600300B4CD2A /* ExchangeRatesDataModel.swift in Sources */,
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
 				FD74269127499A5D0046D148 /* NiceButton.swift in Sources */,
 				FD7426932749DC4F0046D148 /* SendMessageModel.swift in Sources */,
@@ -789,7 +802,9 @@
 				FD22ED92270F11AF00B5B33F /* EnterPinViewController.swift in Sources */,
 				FDFB697F270F3996004C2BFD /* PinEntryView.swift in Sources */,
 				FD6018D6272E0C5E00F78EBE /* Signer.swift in Sources */,
+				FD87138E274D83DA00B4CD2A /* CurrencyType.swift in Sources */,
 				FD6018E62731C5A000F78EBE /* InitialWalletViewController.swift in Sources */,
+				FD871388274D523800B4CD2A /* GasRatesDataModel.swift in Sources */,
 				FD073DFF2714617E0077F184 /* TransactionsDataModel.swift in Sources */,
 				FD22ED94270F162800B5B33F /* ConfirmPinViewController.swift in Sources */,
 				FD6018F427336DC600F78EBE /* UIImage+Ext.swift in Sources */,
@@ -800,6 +815,7 @@
 				FD073DD6270FA1B70077F184 /* Login.swift in Sources */,
 				FD9EA5E7274476220068B9F9 /* WalletStatusDataModel.swift in Sources */,
 				FD073DEA27110D2F0077F184 /* WalletCollectionViewCell.swift in Sources */,
+				FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */,
 				FD073E07271494130077F184 /* SettingsMenuItemTableViewCell.swift in Sources */,
 				FD6018CE272E0A7000F78EBE /* Error.swift in Sources */,
 				FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */,

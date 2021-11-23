@@ -21,6 +21,8 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     @IBOutlet weak var amountLabel: UILabel!
     
+    @IBOutlet weak var gasPriceLabel: UILabel!
+    
     @NibWrapped(PinEntryView.self)
     @IBOutlet var pinEntryView: UIView!
     @IBOutlet weak var textEntryTextView: UITextField!
@@ -32,6 +34,12 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     var amount = ""
     var entered = false
+    
+    var timerGasPrice : Timer?
+    var exchangeFee = ""
+    
+    var gasRatesDataModel: GasRatesDataModel? = nil
+    var exchangeRatesDataModel: ExchangeRatesDataModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +69,7 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
             self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
         }
         
-        self.amountLabel.text = self.amount
+        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)
         
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
         textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -69,6 +77,14 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
+        
+        self.updateRates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.startGasPriceUpdating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,11 +98,61 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
         })
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.timerGasPrice != nil {
+            
+            self.timerGasPrice?.invalidate()
+            self.timerGasPrice = nil
+        }
+    }
+    
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
 
         if gesture.direction == .down {
 
             self.closeWindow(callKillDelegate: true)
+        }
+    }
+    
+    func startGasPriceUpdating() {
+        
+        self.timerGasPrice = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+            
+            self.updateRates()
+        }
+    }
+    
+    func updateRates() {
+        
+        self.gasRatesDataModel = GasRatesManager.shared.getRates()
+        self.exchangeRatesDataModel = ExchangeRatesManager.shared.getRates()
+        self.displayGasRates()
+    }
+    
+    func displayGasRates() {
+        
+        if let gas = self.gasRatesDataModel {
+            
+            var amount: String = self.amount ?? "0"
+            if amount == "" {
+                
+                amount = "0"
+            }
+            //var percent = gas.handlingFeePercentage
+            var value = (Double(amount) ?? 0)/100
+            var handlingFee = value * gas.handlingFeePercentage
+            if handlingFee < gas.minimumHandlingFee {
+                
+                handlingFee = gas.minimumHandlingFee
+            }
+            var totalFee = Double(gas.fast) + handlingFee
+            var exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
+            self.exchangeFee = "\(totalFee)XE"
+            
+            var cost = exchangeRate * totalFee
+            self.gasPriceLabel.text = "\(self.exchangeFee) ($\(String(format: "%.2f", cost as! CVarArg))USD)"
         }
     }
 
@@ -117,6 +183,7 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
 
         if let characters = textField.text?.count {
         
+            self.updateRates()
             _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
             if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
                 
@@ -132,7 +199,7 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                //WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
+                                WalletDataModelManager.shared.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount)
                                 
                                 self.closeWindow(callKillDelegate: true)
                             }

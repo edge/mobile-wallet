@@ -51,15 +51,14 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         
 
         self.toLabel.text = self.toAddress
-        let amountVal = Double(self.amount)
-        self.amountLabel.text = "\(String(format: "%.6f", amountVal as! CVarArg))"
-        
-        
-        
+
+        let valString = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)
+        self.amountLabel.text = valString
+
         if let wallet = self.walletData {
         
             self.typeLabel.text = "(\(wallet.type.getDisplayLabel()))"
-            self.receiveAmountLabel.text = "\(String(format: "%.6f", amountVal as! CVarArg)) \(wallet.type.getDisplayLabel())"
+            self.receiveAmountLabel.text = "\(valString) \(wallet.type.getDisplayLabel())"
         }
         
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark

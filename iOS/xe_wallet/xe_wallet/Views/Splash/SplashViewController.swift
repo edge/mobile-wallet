@@ -13,6 +13,9 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        ExchangeRatesManager.shared.configure()
+        GasRatesManager.shared.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {

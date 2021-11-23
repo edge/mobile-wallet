@@ -50,7 +50,8 @@ class TransactionTableViewCell: UITableViewCell {
         //Double(0.123456789).roundToPlaces(4)
         
         
-        self.amountLabel.text = "\(String(format: "%.6f", Double(data.amount)/1000000))"
+        let valString = CryptoHelpers.generateCryptoValueString(value: (Double(data.amount)/1000000) ?? 0)
+        self.amountLabel.text = "\(valString)"
         //self.statusLabel.text = "\(data.status.rawValue)"
         
         self.sumTxHashLabel.text = data.hash
@@ -58,7 +59,7 @@ class TransactionTableViewCell: UITableViewCell {
         self.sumAaddressLabel.text = data.sender
         self.sumMemoLabel.text = memo
         //self.sumStatusLabel.text = "\(data.status.rawValue)"
-        self.sumAmountLabel.text = "\(String(format: "%.6f", Double(data.amount)/1000000))"
+        self.sumAmountLabel.text = "\(valString)"
     }
 }
 

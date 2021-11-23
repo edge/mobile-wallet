@@ -96,7 +96,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cON-Gt-YIl">
-                                                            <rect key="frame" x="74" y="34" width="165" height="15"/>
+                                                            <rect key="frame" x="74" y="34" width="295" height="15"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="15" id="JZn-aP-VDx"/>
                                                             </constraints>
@@ -109,7 +109,7 @@
                                                     <constraints>
                                                         <constraint firstItem="VXB-Fc-WBs" firstAttribute="top" secondItem="6x3-17-fqa" secondAttribute="top" constant="7" id="0dS-6d-Khf"/>
                                                         <constraint firstAttribute="height" constant="66" id="9zF-cY-Kv7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="cON-Gt-YIl" secondAttribute="trailing" constant="175" id="D0K-cS-8iA"/>
+                                                        <constraint firstAttribute="trailing" secondItem="cON-Gt-YIl" secondAttribute="trailing" constant="45" id="D0K-cS-8iA"/>
                                                         <constraint firstItem="cON-Gt-YIl" firstAttribute="leading" secondItem="VXB-Fc-WBs" secondAttribute="trailing" constant="12" id="UjK-Ni-OPv"/>
                                                         <constraint firstItem="EeV-9I-SH7" firstAttribute="leading" secondItem="VXB-Fc-WBs" secondAttribute="trailing" constant="12" id="fiU-Wy-Fdh"/>
                                                         <constraint firstItem="VXB-Fc-WBs" firstAttribute="leading" secondItem="6x3-17-fqa" secondAttribute="leading" constant="14" id="mP9-6o-1ib"/>

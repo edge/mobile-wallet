@@ -31,6 +31,8 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     @IBOutlet weak var reviewButtonView: UIView!
     @IBOutlet weak var reviewButtonText: UILabel!
     
+    @IBOutlet weak var gasPriceLabel: UILabel!
+    
     @IBAction func chooseToWallet(_ sender: AnyObject) {
         
         toDropDown.show()
@@ -46,6 +48,11 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     
     let toDropDown = DropDown()
     var isReviewActive = false
+    var timerGasPrice : Timer?
+    var exchangeFee = ""
+    
+    var gasRatesDataModel: GasRatesDataModel? = nil
+    var exchangeRatesDataModel: ExchangeRatesDataModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +76,14 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         
         self.setupDropDowns()
         self.configureReviewButton()
+
+        self.updateRates()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.startGasPriceUpdating()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -92,11 +107,60 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         self.toDropDown.width = self.view.frame.width - 32
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.timerGasPrice != nil {
+            
+            self.timerGasPrice?.invalidate()
+            self.timerGasPrice = nil
+        }
+    }
+    
     @objc func dismissKeyboard() {
 
         view.endEditing(true)
     }
     
+    func startGasPriceUpdating() {
+        
+        self.timerGasPrice = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+            
+            self.updateRates()
+        }
+    }
+    
+    func updateRates() {
+        
+        self.gasRatesDataModel = GasRatesManager.shared.getRates()
+        self.exchangeRatesDataModel = ExchangeRatesManager.shared.getRates()
+        self.displayGasRates()
+    }
+    
+    func displayGasRates() {
+        
+        if let gas = self.gasRatesDataModel {
+            
+            var amount: String = self.amountTextField.text ?? "0"
+            if amount == "" {
+                
+                amount = "0"
+            }
+            //var percent = gas.handlingFeePercentage
+            var value = (Double(amount) ?? 0)/100
+            var handlingFee = value * gas.handlingFeePercentage
+            if handlingFee < gas.minimumHandlingFee {
+                
+                handlingFee = gas.minimumHandlingFee
+            }
+            var totalFee = Double(gas.fast) + handlingFee
+            var exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
+            self.exchangeFee = "\(totalFee)XE"
+            
+            var cost = exchangeRate * totalFee
+            self.gasPriceLabel.text = "\(self.exchangeFee) ($\(String(format: "%.2f", cost as! CVarArg))USD)"
+        }
+    }
     
     func setupDropDowns() {
         
@@ -226,6 +290,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
                 if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
                     
                     shouldBeActive = true
+                    self.displayGasRates()
                 }
             } else {
                 

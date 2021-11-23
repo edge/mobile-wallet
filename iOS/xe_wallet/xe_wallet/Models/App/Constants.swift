@@ -48,4 +48,24 @@ class Constants {
 
     static var toastDisplayTime = 1.5
     
+    /// NETWORK settings
+    
+    static var XE_MainNetStatusUrl = "https://api.xe.network/wallet/"
+    static var XE_TestNetStatusUrl = "https://xe1.test.network/wallet/"
+    
+    static var XE_MainNetTransactionUrl = "https://index.xe.network/transactions/"
+    static var XE_TestNetTransactionUrl = "https://index.test.network/transactions/"
+    
+    static var XE_MainNetSendUrl = "https://api.xe.network/transaction"
+    static var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
+    
+    static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
+    static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
+    
+    static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
+    static var XE_networkTestNetTitle = "Edge (XE) Testnet"
+    
+    /// TIMERS
+
+    static var XE_GasPriceUpdateTime = 2.0
 }

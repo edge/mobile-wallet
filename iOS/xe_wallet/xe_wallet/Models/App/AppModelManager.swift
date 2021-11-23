@@ -55,49 +55,49 @@ class AppDataModelManager {
         
         if self.testModeStatus() == false {
             
-            return self.appData.XE_MainNetStatusUrl
+            return Constants.XE_MainNetStatusUrl
         }
         
-        return self.appData.XE_TestNetStatusUrl
+        return Constants.XE_TestNetStatusUrl
     }
     
     func getXEServerSendUrl() -> String {
         
         if self.testModeStatus() == false {
             
-            return self.appData.XE_MainNetSendUrl
+            return Constants.XE_MainNetSendUrl
         }
         
-        return self.appData.XE_TestNetSendUrl
+        return Constants.XE_TestNetSendUrl
     }
     
     func getXEServerTransactionUrl() -> String {
         
         if self.testModeStatus() == false {
             
-            return self.appData.XE_MainNetTransactionUrl
+            Constants.XE_MainNetTransactionUrl
         }
         
-        return self.appData.XE_TestNetTransactionUrl
+        return Constants.XE_TestNetTransactionUrl
     }
     
     func getNetworkTitleString() -> String {
         
         if self.testModeStatus() == false {
             
-            return self.appData.XE_networkMainNetTitle
+            return Constants.XE_networkMainNetTitle
         }
         
-        return self.appData.XE_networkTestNetTitle
+        return Constants.XE_networkTestNetTitle
     }
     
     func getNetworkTitleString(status: Bool) -> String {
         
         if status == false {
             
-            return self.appData.XE_networkMainNetTitle
+            return Constants.XE_networkMainNetTitle
         }
         
-        return self.appData.XE_networkTestNetTitle
+        return Constants.XE_networkTestNetTitle
     }
 }

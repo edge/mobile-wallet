@@ -24,6 +24,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     let walletButtonSegues = ["ShowSendViewController","ShowReceiveViewController","ShowExchangeViewController" ]
     
     var collectionViewUpdating = false
+    var timerExchangePrice : Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,9 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
         self.tableView.reloadData()
 
+        self.timerExchangePrice = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+            
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +69,16 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         super.viewDidLayoutSubviews()
         
         self.collectionView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.timerExchangePrice != nil {
+            
+            self.timerExchangePrice?.invalidate()
+            self.timerExchangePrice = nil
+        }
     }
     
     @objc func onDidReceiveData(_ notification: Notification) {

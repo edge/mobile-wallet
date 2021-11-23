@@ -181,7 +181,7 @@
                                                 </constraints>
                                                 <color key="textColor" name="FontSecondary"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
-                                                <textInputTraits key="textInputTraits"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="2C9-W7-zCX" id="fky-qj-BCF"/>
                                                 </connections>
@@ -378,6 +378,7 @@
                         <outlet property="cardViewTopConstraint" destination="tbE-Th-e8z" id="s3M-Rh-n5U"/>
                         <outlet property="creditCardImage" destination="Vxy-xx-LWR" id="Z4k-ua-gNR"/>
                         <outlet property="customTitleBarView" destination="rTV-30-Sbu" id="Rfg-bV-93v"/>
+                        <outlet property="gasPriceLabel" destination="o9O-38-QCM" id="fbV-U8-TKI"/>
                         <outlet property="reviewButtonText" destination="nUF-9m-6HW" id="X4h-BX-bWf"/>
                         <outlet property="reviewButtonView" destination="VFt-Uk-3hY" id="Xbc-YM-ZvC"/>
                         <outlet property="toButtonAddressLabel" destination="DLd-zt-EEC" id="2LR-ZF-Y70"/>
@@ -622,6 +623,12 @@
                                             <constraint firstAttribute="height" constant="60" id="wUp-ah-5US"/>
                                         </constraints>
                                     </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="84XE ($100 USD)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yuh-KV-ewb">
+                                        <rect key="frame" x="299" y="389" width="99" height="15"/>
+                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                        <color key="textColor" name="FontSecondary"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
@@ -635,12 +642,14 @@
                                     <constraint firstItem="C9Z-gC-xgp" firstAttribute="top" secondItem="NY6-nh-SFO" secondAttribute="bottom" constant="16" id="HbI-gF-Jxb"/>
                                     <constraint firstItem="t5u-CU-AIm" firstAttribute="top" secondItem="fwf-4i-iY1" secondAttribute="bottom" constant="32" id="PKa-t6-0Hw"/>
                                     <constraint firstItem="Owq-8E-eM8" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="SYC-VI-DX3"/>
+                                    <constraint firstAttribute="trailing" secondItem="yuh-KV-ewb" secondAttribute="trailing" constant="16" id="TAD-Nx-u6l"/>
                                     <constraint firstItem="NY6-nh-SFO" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="VhT-Mq-ysu"/>
                                     <constraint firstItem="C9Z-gC-xgp" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="bZv-PM-ucr"/>
                                     <constraint firstItem="hax-hK-S8J" firstAttribute="top" secondItem="C9Z-gC-xgp" secondAttribute="bottom" constant="4" id="bf1-VP-As0"/>
                                     <constraint firstItem="t5u-CU-AIm" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="c75-A9-yat"/>
                                     <constraint firstAttribute="trailing" secondItem="NY6-nh-SFO" secondAttribute="trailing" constant="16" id="cQe-Pz-E0F"/>
                                     <constraint firstItem="xxj-5a-Ilh" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="dyV-1k-sbt"/>
+                                    <constraint firstItem="yuh-KV-ewb" firstAttribute="top" secondItem="hax-hK-S8J" secondAttribute="bottom" constant="15" id="eQP-rJ-xKc"/>
                                     <constraint firstItem="bf4-rK-1CH" firstAttribute="top" secondItem="Tax-MB-dpU" secondAttribute="bottom" constant="16" id="eT1-Pf-yJp"/>
                                     <constraint firstAttribute="trailing" secondItem="hax-hK-S8J" secondAttribute="trailing" constant="16" id="hEe-Mm-pkm"/>
                                     <constraint firstItem="hax-hK-S8J" firstAttribute="leading" secondItem="g1R-3g-0Sy" secondAttribute="leading" constant="16" id="iCA-B8-llv"/>
@@ -688,6 +697,7 @@
                         <outlet property="fromAddressLabel" destination="9oU-ha-gQq" id="Uhq-jT-3G4"/>
                         <outlet property="fromAmountLabel" destination="pj7-nr-sTI" id="bDX-NR-0UU"/>
                         <outlet property="fromImageView" destination="SgN-sC-8u7" id="orT-ZB-mDW"/>
+                        <outlet property="gasPriceLabel" destination="yuh-KV-ewb" id="h3z-NU-gGw"/>
                         <outlet property="pinEntryView" destination="xxj-5a-Ilh" id="o2S-oT-D6b"/>
                         <outlet property="textEntryTextView" destination="8Po-fe-BSa" id="ei5-3o-UCY"/>
                         <outlet property="toAddressLabel" destination="5YL-rx-P2u" id="DCT-OZ-IlW"/>

@@ -181,4 +181,22 @@ class WalletDataModelManager {
             break
         }
     }
+    
+    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String) {
+        
+        let key = self.loadWalletKey(key:wallet.address)
+        
+        switch wallet.type {
+            
+        case .xe:
+            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, key: key)
+            break
+            
+        case .ethereum:
+            break
+            
+        case .edge:
+            break
+        }
+    }
 }

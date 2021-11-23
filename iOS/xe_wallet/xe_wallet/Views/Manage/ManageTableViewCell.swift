@@ -47,7 +47,8 @@ class ManageTableViewCell: UITableViewCell {
             
             amount = status.balance
         }
-        self.amountLabel.text = "\(String(format: "%.6f", Double(amount)/1000000)) \(data.type.getDisplayLabel())"
+        let valString = CryptoHelpers.generateCryptoValueString(value: (Double(amount)/1000000) ?? 0)
+        self.amountLabel.text = "\(valString) \(data.type.getDisplayLabel())"
         
         self.subCreatedLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.created))
         self.subBackedupLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.backedup))
