@@ -58,13 +58,18 @@
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-fq-SdQ">
                                                             <rect key="frame" x="16" y="7" width="48" height="48"/>
                                                             <subviews>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-h7-j6F">
-                                                                    <rect key="frame" x="11" y="13" width="24" height="21"/>
-                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-h7-j6F">
+                                                                    <rect key="frame" x="0.0" y="12" width="24" height="24"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="24" id="Ff9-ca-56k"/>
+                                                                        <constraint firstAttribute="height" constant="24" id="dSL-aS-6Xe"/>
+                                                                    </constraints>
                                                                 </imageView>
                                                             </subviews>
                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             <constraints>
+                                                                <constraint firstItem="Mg7-h7-j6F" firstAttribute="centerY" secondItem="xm2-fq-SdQ" secondAttribute="centerY" id="KZT-Kg-RdG"/>
+                                                                <constraint firstItem="Mg7-h7-j6F" firstAttribute="leading" secondItem="xm2-fq-SdQ" secondAttribute="leading" id="Kgf-pp-4Jb"/>
                                                                 <constraint firstAttribute="height" constant="48" id="any-li-Zy9"/>
                                                                 <constraint firstAttribute="width" constant="48" id="dQC-xe-fjE"/>
                                                             </constraints>
@@ -151,6 +156,7 @@
                                             <outlet property="addressLabel" destination="443-YF-uZd" id="cDW-Yx-xYF"/>
                                             <outlet property="amountLabel" destination="e1k-QC-tVv" id="7d2-Xc-EjC"/>
                                             <outlet property="cardView" destination="F3j-Id-DnR" id="FDY-2h-a7O"/>
+                                            <outlet property="creditCardImage" destination="mX7-9V-Bz4" id="9ay-bR-g1h"/>
                                             <outlet property="iconCircleView" destination="xm2-fq-SdQ" id="B03-0A-efw"/>
                                             <outlet property="valueLabel" destination="yYa-N6-cNc" id="fKG-gy-a33"/>
                                             <outlet property="walletTypeIcon" destination="Mg7-h7-j6F" id="lo2-H0-8kw"/>

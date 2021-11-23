@@ -111,9 +111,9 @@
                                                 <rect key="frame" x="97" y="97" width="100" height="100"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-eM-n53">
-                                                        <rect key="frame" x="12" y="12" width="76" height="76"/>
+                                                        <rect key="frame" x="8" y="8" width="84" height="84"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-TA-WjM">
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-TA-WjM">
                                                                 <rect key="frame" x="16" y="16" width="47" height="44"/>
                                                             </imageView>
                                                         </subviews>
@@ -164,7 +164,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgG-Q6-pdz">
-                                        <rect key="frame" x="16" y="744" width="382" height="60"/>
+                                        <rect key="frame" x="16" y="754" width="382" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="paj-2J-kY1">
                                                 <rect key="frame" x="170.5" y="20.5" width="41" height="19"/>
@@ -201,7 +201,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="cgG-Q6-pdz" secondAttribute="trailing" constant="16" id="5YI-qF-ZXh"/>
                                     <constraint firstItem="d61-E9-BKx" firstAttribute="centerY" secondItem="VTh-gh-1YI" secondAttribute="centerY" constant="29" id="Ims-15-60p"/>
-                                    <constraint firstAttribute="bottom" secondItem="cgG-Q6-pdz" secondAttribute="bottom" constant="58" id="XlG-Yz-lOR"/>
+                                    <constraint firstAttribute="bottom" secondItem="cgG-Q6-pdz" secondAttribute="bottom" constant="48" id="XlG-Yz-lOR"/>
                                     <constraint firstItem="cgG-Q6-pdz" firstAttribute="leading" secondItem="VTh-gh-1YI" secondAttribute="leading" constant="16" id="g8l-I3-1Uf"/>
                                     <constraint firstAttribute="trailing" secondItem="d61-E9-BKx" secondAttribute="trailing" constant="60" id="nDL-fr-zee"/>
                                     <constraint firstItem="d61-E9-BKx" firstAttribute="leading" secondItem="VTh-gh-1YI" secondAttribute="leading" constant="60" id="uOP-bH-Q01"/>

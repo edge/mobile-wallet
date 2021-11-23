@@ -20,7 +20,7 @@ class Constants {
     
     /// card screen transitions and positioning
     
-    static var screenFadeTransitionSpeed = 0.6
+    static var screenFadeTransitionSpeed = 0.3
     static var cardViewTopConstraintStart: CGFloat = 66
     static var cardViewTopConstraintEnd: CGFloat = 20
     static var cardViewSideConstraintStart: CGFloat = 16

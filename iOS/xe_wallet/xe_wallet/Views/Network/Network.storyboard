@@ -313,7 +313,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aQ9-g1-oii">
-                                <rect key="frame" x="16" y="744" width="382" height="60"/>
+                                <rect key="frame" x="16" y="754" width="382" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZOE-k5-sp8">
                                         <rect key="frame" x="131" y="20.5" width="120" height="19.5"/>
@@ -346,7 +346,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPU-i2-vBS">
-                                <rect key="frame" x="16" y="688" width="382" height="32"/>
+                                <rect key="frame" x="16" y="698" width="382" height="32"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nem-Oa-0ma">
                                         <rect key="frame" x="5" y="0.0" width="32" height="32"/>
@@ -415,7 +415,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Z9z-nk-9c3" secondAttribute="trailing" constant="16" id="KTg-ew-Y09"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aQ9-g1-oii" secondAttribute="trailing" constant="16" id="RXD-d7-Bp9"/>
                             <constraint firstItem="lIj-M2-AAV" firstAttribute="top" secondItem="YBT-8d-awn" secondAttribute="bottom" constant="46" id="TT0-zV-Zya"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="aQ9-g1-oii" secondAttribute="bottom" constant="58" id="U0a-vG-n9H"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="aQ9-g1-oii" secondAttribute="bottom" constant="48" id="U0a-vG-n9H"/>
                             <constraint firstItem="YBT-8d-awn" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Wih-Jh-RIv"/>
                             <constraint firstItem="Z4r-Eq-I4c" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="ZEn-Nb-n76"/>
                             <constraint firstItem="aQ9-g1-oii" firstAttribute="top" secondItem="KPU-i2-vBS" secondAttribute="bottom" constant="24" id="f96-9b-t5R"/>
@@ -441,7 +441,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="coin_xe" width="24" height="24"/>
+        <image name="coin_xe" width="24" height="19"/>
         <image name="tick" width="14" height="10"/>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

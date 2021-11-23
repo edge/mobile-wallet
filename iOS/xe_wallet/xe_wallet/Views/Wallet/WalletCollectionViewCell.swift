@@ -15,6 +15,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
+    @IBOutlet weak var creditCardImage: UIImageView!
     
     @IBOutlet weak var backupView: UIView!
     
@@ -34,6 +35,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
     
     public func config(data: WalletDataModel) {
         
+        self.creditCardImage.image = UIImage(named:data.type.getBackgroundImage())
         self.walletTypeIcon.image = UIImage(named:data.type.rawValue)
         self.addressLabel.text = data.address
         

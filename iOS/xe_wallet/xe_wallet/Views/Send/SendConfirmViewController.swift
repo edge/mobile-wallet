@@ -38,6 +38,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         view.backgroundColor = .clear
         self.backgroundView.alpha = 0.0
         
+        self.title = "Confirm"
+        
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
@@ -49,11 +51,15 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         
 
         self.toLabel.text = self.toAddress
-        self.amountLabel.text = self.amount
+        let amountVal = Double(self.amount)
+        self.amountLabel.text = "\(String(format: "%.6f", amountVal as! CVarArg))"
+        
+        
+        
         if let wallet = self.walletData {
         
             self.typeLabel.text = "(\(wallet.type.getDisplayLabel()))"
-            self.receiveAmountLabel.text = "\(self.amount) \(wallet.type.getDisplayLabel())"
+            self.receiveAmountLabel.text = "\(String(format: "%.6f", amountVal as! CVarArg)) \(wallet.type.getDisplayLabel())"
         }
         
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark

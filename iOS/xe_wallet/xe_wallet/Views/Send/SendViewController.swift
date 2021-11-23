@@ -42,6 +42,9 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         view.isOpaque = false
         view.backgroundColor = .clear
         self.backgroundView.alpha = 0.0
+        
+        self.title = "Send"
+        
         self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
         self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
         self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart

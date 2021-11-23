@@ -28,6 +28,21 @@ enum WalletType: String, Codable {
         }
     }
     
+    func getBackgroundImage() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return "credit_card_xe"
+            
+        case .edge:
+            return "credit_card_xe"
+            
+        case .ethereum:
+            return "credit_card_ether"
+        }
+    }
+    
     func getMinSendValue() -> Double {
         
         switch self {

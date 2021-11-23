@@ -17,7 +17,9 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var buttonText: UILabel!
     
-    var buttonPos: CGFloat = 0
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    var buttonBottomConstraintOriginal: CGFloat = 0
+    
     var continueActive = false
     var type:WalletType = .xe
     
@@ -33,6 +35,8 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         
         self.title = "Restore Wallet"
         
+        self.buttonBottomConstraintOriginal = self.buttonBottomConstraint.constant
+        
         self.privateKeyTextView.keyboardAppearance = .dark
         self.privateKeyTextView.delegate = self
         
@@ -43,7 +47,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        self.buttonPos = self.buttonView.frame.origin.y
+
         self.changeContinueButtonStatus()
         
         self.customTitleBarView.delegate = self
@@ -57,18 +61,20 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+
         UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finished in
+            
+            self.privateKeyTextView.becomeFirstResponder()
         })
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        self.privateKeyTextView.becomeFirstResponder()
+    
     }
     
     @objc func dismissKeyboard() {
@@ -80,13 +86,24 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
             
-            self.buttonView.frame.origin.y = self.buttonPos - (keyboardSize.height)
+            UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+                
+                self.buttonBottomConstraint.constant = self.buttonBottomConstraintOriginal + (keyboardSize.height)
+                self.view.layoutIfNeeded()
+            }, completion: { finished in
+            })
         }
     }
 
     @objc private func keyboardWillHide(notification: NSNotification) {
         
-        self.buttonView.frame.origin.y = self.buttonPos
+
+        UIView.animate(withDuration: 0.6, delay: 0, options: .curveEaseOut, animations: {
+            
+            self.buttonBottomConstraint.constant = self.buttonBottomConstraintOriginal
+            self.view.layoutIfNeeded()
+        }, completion: { finished in
+        })
     }
     
     @IBAction func pasteButtonPressed(_ sender: Any) {
