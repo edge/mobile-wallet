@@ -124,7 +124,6 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         view.endEditing(true)
     }
     
-    
     @objc func textFieldDidChange(_ textField: UITextField) {
 
         if let characters = textField.text?.count {

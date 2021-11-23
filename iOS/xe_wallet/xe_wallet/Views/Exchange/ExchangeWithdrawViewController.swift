@@ -37,7 +37,8 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     }
     
     var walletData: WalletDataModel? = nil
-    var toAddress = ""
+    var toWallets: [WalletDataModel] = [WalletDataModel]()
+    var selectedWalletIndex = 0
     
     var cardImage: UIImage? = nil
     
@@ -102,14 +103,14 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         self.toDropDown.anchorView = self.toButtonDropDown
         self.toDropDown.bottomOffset = CGPoint(x: 0, y: self.toButtonDropDown.bounds.height)
         
-        
-        let wallets = WalletDataModelManager.shared.getExchangeOptions(type: .xe)
+        self.toWallets.removeAll()
+        self.toWallets = WalletDataModelManager.shared.getExchangeOptions(type: .xe)
         
         self.toDropDown.dataSource = []
         var cellImages: [String] = []
         var cellAmounts: [String] = []
         
-        for wallet in wallets {
+        for wallet in self.toWallets {
             
             self.toDropDown.dataSource.append(wallet.address)
             cellImages.append(wallet.type.rawValue)
@@ -119,14 +120,13 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]
         self.toButtonAmountLabel.text = cellAmounts[0]
         self.toButtonImage.image = UIImage(named:cellImages[0])
-        self.toAddress = self.toDropDown.dataSource[0]
         
         self.toDropDown.selectionAction = { [weak self] (index, item) in
             
             self?.toButtonAddressLabel.text = self?.toDropDown.dataSource[index]
             self?.toButtonAmountLabel.text = cellAmounts[index]
             self?.toButtonImage.image = UIImage(named:cellImages[index])
-            self?.toAddress = self?.toDropDown.dataSource[index] ?? ""
+            self?.selectedWalletIndex = index
         }
         
         let appearance = DropDown.appearance()
@@ -164,6 +164,9 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
             let controller = segue.destination as! ExchangeWithdrawConfirmViewController
             controller.modalPresentationStyle = .overCurrentContext
             controller.delegate = self
+            controller.walletData = self.walletData
+            controller.toWalletData = self.toWallets[self.selectedWalletIndex]
+            controller.amount = self.amountTextField.text ?? ""
         }
     }
     

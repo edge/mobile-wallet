@@ -12,10 +12,27 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
     
+    @IBOutlet weak var fromImageView: UIImageView!
+    @IBOutlet weak var fromAddressLabel: UILabel!
+    @IBOutlet weak var fromAmountLabel: UILabel!
+    
+    @IBOutlet weak var toImageView: UIImageView!
+    @IBOutlet weak var toAddressLabel: UILabel!
+    @IBOutlet weak var toAmountLabel: UILabel!
+    
+    @IBOutlet weak var amountLabel: UILabel!
+    
+    @NibWrapped(PinEntryView.self)
+    @IBOutlet var pinEntryView: UIView!
+    @IBOutlet weak var textEntryTextView: UITextField!
+    
     var delegate: KillViewDelegate?
     
     var walletData: WalletDataModel? = nil
-    var toAddress =  ""
+    var toWalletData: WalletDataModel? = nil
+    
+    var amount = ""
+    var entered = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +47,29 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
         self.view.addGestureRecognizer(swipeDown)
         
         self.customTitleBarView.delegate = self
+        
+        if let fWallet = self.walletData {
+            
+            self.fromImageView.image = UIImage(named: fWallet.type.rawValue ?? "" )
+            self.fromAddressLabel.text = fWallet.address
+            self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDisplayLabel())"
+        }
+        
+        if let tWallet = self.toWalletData {
+            
+            self.toImageView.image = UIImage(named: tWallet.type.rawValue ?? "" )
+            self.toAddressLabel.text = tWallet.address
+            self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
+        }
+        
+        self.amountLabel.text = self.amount
+        
+        UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
+        textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        textEntryTextView.becomeFirstResponder()
+        
+        _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+        self.textEntryTextView.text = ""
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -73,6 +113,45 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
                 self.delegate?.killView()
             }
         })
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        if let characters = textField.text?.count {
+        
+            _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
+                
+                self.entered = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    
+                    if let code = textField.text {
+                    
+                        if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
+                            
+                            if let wallet = self.walletData {
+                                                            
+                                let amountValue = Float(self.amount)
+                                let fAmount = String(format: "%.6f", amountValue!)
+                                
+                                //WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
+                                
+                                self.closeWindow(callKillDelegate: true)
+                            }
+                        } else {
+                                                        
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
+
+                                self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+                                self.textEntryTextView.text = ""
+                            }))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
