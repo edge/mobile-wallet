@@ -37,7 +37,7 @@
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-nk-9c3">
+                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-nk-9c3">
                                 <rect key="frame" x="16" y="115" width="382" height="48"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1f-jQ-eaA">
@@ -97,7 +97,20 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tle-6x-fJu">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="o8x-54-Lbn">
+                                                        <rect key="frame" x="7" y="9" width="14" height="10"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="14" id="YkK-p3-Yp4"/>
+                                                            <constraint firstAttribute="height" constant="10" id="oEr-i1-GSb"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" name="MainBlack"/>
+                                                <constraints>
+                                                    <constraint firstItem="o8x-54-Lbn" firstAttribute="centerY" secondItem="tle-6x-fJu" secondAttribute="centerY" id="2Nk-iA-yIY"/>
+                                                    <constraint firstItem="o8x-54-Lbn" firstAttribute="centerX" secondItem="tle-6x-fJu" secondAttribute="centerX" id="WxF-JN-Eoh"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
@@ -209,7 +222,20 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1V-Zw-3bS">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="bok-za-3hi">
+                                                        <rect key="frame" x="7" y="9" width="14" height="10"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="10" id="AoS-bU-iJb"/>
+                                                            <constraint firstAttribute="width" constant="14" id="htF-Uc-wrA"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" name="MainBlack"/>
+                                                <constraints>
+                                                    <constraint firstItem="bok-za-3hi" firstAttribute="centerY" secondItem="g1V-Zw-3bS" secondAttribute="centerY" id="My5-UM-vy1"/>
+                                                    <constraint firstItem="bok-za-3hi" firstAttribute="centerX" secondItem="g1V-Zw-3bS" secondAttribute="centerX" id="QZQ-h3-xFV"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
@@ -265,8 +291,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIj-M2-AAV">
                                 <rect key="frame" x="16" y="277" width="382" height="86"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Correct copy to go here" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-L8-4xZ">
-                                        <rect key="frame" x="12" y="15" width="358" height="56"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="During the Beta only Testnet is available.  Mainnet will become available after the Beta testing is complete." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-L8-4xZ">
+                                        <rect key="frame" x="12" y="0.0" width="358" height="86"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -275,9 +301,9 @@
                                 <color key="backgroundColor" name="WarningYellow"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="86" id="3dZ-4q-p0y"/>
-                                    <constraint firstAttribute="bottom" secondItem="6rH-L8-4xZ" secondAttribute="bottom" constant="15" id="6TG-Sn-jrj"/>
+                                    <constraint firstAttribute="bottom" secondItem="6rH-L8-4xZ" secondAttribute="bottom" id="6TG-Sn-jrj"/>
                                     <constraint firstItem="6rH-L8-4xZ" firstAttribute="leading" secondItem="lIj-M2-AAV" secondAttribute="leading" constant="12" id="PYM-p0-JyF"/>
-                                    <constraint firstItem="6rH-L8-4xZ" firstAttribute="top" secondItem="lIj-M2-AAV" secondAttribute="top" constant="15" id="b3J-9Y-fWH"/>
+                                    <constraint firstItem="6rH-L8-4xZ" firstAttribute="top" secondItem="lIj-M2-AAV" secondAttribute="top" id="b3J-9Y-fWH"/>
                                     <constraint firstAttribute="trailing" secondItem="6rH-L8-4xZ" secondAttribute="trailing" constant="12" id="ceY-6h-YvV"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -319,7 +345,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPU-i2-vBS">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPU-i2-vBS">
                                 <rect key="frame" x="16" y="688" width="382" height="32"/>
                                 <subviews>
                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nem-Oa-0ma">
@@ -402,9 +428,11 @@
                     </view>
                     <connections>
                         <outlet property="mainNetHighlightView" destination="tle-6x-fJu" id="FWh-eF-d5b"/>
+                        <outlet property="mainnetTickImage" destination="o8x-54-Lbn" id="s9f-Ok-uTH"/>
                         <outlet property="selectNetworkButtonText" destination="ZOE-k5-sp8" id="AS2-o5-Bxh"/>
                         <outlet property="selectNetworkButtonView" destination="aQ9-g1-oii" id="Ji2-Ew-8z7"/>
                         <outlet property="testNetHighlightView" destination="g1V-Zw-3bS" id="I62-eS-qYS"/>
+                        <outlet property="testnetTickImage" destination="bok-za-3hi" id="UjM-vw-oGj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -414,6 +442,7 @@
     </scenes>
     <resources>
         <image name="coin_xe" width="24" height="24"/>
+        <image name="tick" width="14" height="10"/>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -370,6 +370,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="NCF-aI-ppH"/>
                     <connections>
+                        <outlet property="amountTextField" destination="WLs-V8-W69" id="dD3-Ph-iZm"/>
                         <outlet property="backgroundView" destination="nZT-Ne-Z8y" id="a3Z-gf-Iz0"/>
                         <outlet property="cardView" destination="H8r-fG-Csf" id="TSt-jy-HJz"/>
                         <outlet property="cardViewLeftConstraint" destination="IEA-wT-7fp" id="MNR-tq-EOb"/>
@@ -377,6 +378,8 @@
                         <outlet property="cardViewTopConstraint" destination="tbE-Th-e8z" id="s3M-Rh-n5U"/>
                         <outlet property="creditCardImage" destination="Vxy-xx-LWR" id="Z4k-ua-gNR"/>
                         <outlet property="customTitleBarView" destination="rTV-30-Sbu" id="Rfg-bV-93v"/>
+                        <outlet property="reviewButtonText" destination="nUF-9m-6HW" id="X4h-BX-bWf"/>
+                        <outlet property="reviewButtonView" destination="VFt-Uk-3hY" id="Xbc-YM-ZvC"/>
                         <outlet property="toButtonAddressLabel" destination="DLd-zt-EEC" id="2LR-ZF-Y70"/>
                         <outlet property="toButtonAmountLabel" destination="FVs-Ug-qDv" id="VZM-IM-XYK"/>
                         <outlet property="toButtonDropDown" destination="kni-Rg-h85" id="bls-SW-MDr"/>
@@ -628,7 +631,7 @@
                                                 <color key="textColor" name="FontSecondary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xME-Yb-NG5">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xME-Yb-NG5">
                                                 <rect key="frame" x="344" y="15" width="26" height="24"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevronDown" translatesAutoresizingMaskIntoConstraints="NO" id="uR0-u4-beS">
@@ -874,6 +877,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="oiK-tH-v5U"/>
                     <connections>
+                        <outlet property="amountTextField" destination="5qz-ws-iWN" id="STx-8K-BML"/>
                         <outlet property="backgroundView" destination="MGS-hf-r9z" id="761-JE-gye"/>
                         <outlet property="cardView" destination="VD7-C2-Kp0" id="yMQ-J8-Ijh"/>
                         <outlet property="cardViewLeftConstraint" destination="VEJ-vH-REx" id="I4d-YO-WF5"/>
@@ -881,6 +885,8 @@
                         <outlet property="cardViewTopConstraint" destination="LEN-Vs-0p2" id="v0d-Yy-lat"/>
                         <outlet property="creditCardImage" destination="T39-2T-e8a" id="UcJ-aG-mki"/>
                         <outlet property="customTitleBarView" destination="F9P-ZS-lYR" id="98i-ik-FYp"/>
+                        <outlet property="reviewButtonText" destination="igq-Rq-v10" id="BnX-a6-4wu"/>
+                        <outlet property="reviewButtonView" destination="L2v-gE-WDJ" id="QFH-ra-Bca"/>
                         <outlet property="toButtonAddressLabel" destination="8Bu-NF-PjX" id="KPK-aX-9lB"/>
                         <outlet property="toButtonAmountLabel" destination="RXp-9L-gcz" id="z0H-cJ-hmW"/>
                         <outlet property="toButtonDropDown" destination="ukH-Ts-BER" id="zou-YT-Ktj"/>

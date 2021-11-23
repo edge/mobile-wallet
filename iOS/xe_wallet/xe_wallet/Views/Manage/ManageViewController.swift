@@ -92,7 +92,7 @@ extension ManageViewController {
         self.walletTableViewData.remove(at: sourceIndexPath.row)
         self.walletTableViewData.insert(movedObject, at: destinationIndexPath.row)
     }
-    
+    /*
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         for view in cell.subviews {
@@ -108,7 +108,7 @@ extension ManageViewController {
                 movedReorderControl.transform = transform
             }
         }
-    }
+    }*/
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

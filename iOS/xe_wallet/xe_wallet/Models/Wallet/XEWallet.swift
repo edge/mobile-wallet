@@ -162,75 +162,14 @@ class XEWallet {
          }
     }
     
-
-    
-
-    
     func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String) {
                 
-        /*let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
-        let digitalAmount = Int(amountString)
-        
-        var jsonObject: [String: Any] = [
-            "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
-            "sender": wallet.address,
-            "recipient": toAddress,
-            "amount": digitalAmount,
-            "data": [
-                "memo": memo
-            ],
-            "nonce": wallet.status?.nonce
-        ]*/
-        
-        //var jsonObject: [String: Any] = [String: Any]()
-    
-        
         do {
-            
 
-
-        
-            //let json = JSON(jsonObject)
-            
             let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
             let digitalAmount = Int(amountString) ?? 0
             let data = SendMessageDataModel(memo: "Testing")
             let sendMessage = SendMessageModel(timestamp: UInt64(Date().timeIntervalSince1970)*1000, sender: wallet.address, recipient: toAddress, amount: digitalAmount, data: data, nonce: wallet.status?.nonce ?? 0)
-            
-            //let encoder = JSONEncoder()
-            //encoder.outputFormatting = [.withoutEscapingSlashes]
-            /*
-            var param = [
-                "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
-                "sender": wallet.address,
-                "recipient": toAddress,
-                "amount": digitalAmount,
-                "data": ["memo": "Testing"],
-                "nonce": wallet.status?.nonce ?? 0,
-
-            ] as [String : Any]
-
-            
-            var jData = try JSONSerialization.data(withJSONObject: param, options: [])
-            var jString = String(data: jData, encoding: String.Encoding.ascii)!
-            print(jString)
-            
-            var sig = self.generateSignature(message: jString, key: key)
-            print(sig)
-            
-            param.updateValue(sig, forKey: "signature")
-            
-            jData = try JSONSerialization.data(withJSONObject: param, options: [])
-            jString = String(data: jData, encoding: String.Encoding.ascii)!
-            print(jString)
-            
-            var hash = jString.sha256()
-            param.updateValue(hash, forKey: "hash")
-            jData = try JSONSerialization.data(withJSONObject: param, options: [])
-            jString = String(data: jData, encoding: String.Encoding.ascii)!
-            print(jString)
-            
-            */
             
             var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(toAddress)\",\"amount\":\(digitalAmount),\"data\":{\"memo\":\"Testing\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
             print(j2String)
@@ -250,19 +189,6 @@ class XEWallet {
             print(j2String)
             
             let url = AppDataModelManager.shared.getXEServerSendUrl()
-            /*
-            let params = [
-                "timestamp": UInt64(Date().timeIntervalSince1970)*1000,
-                "sender": wallet.address,
-                "recipient": toAddress,
-                "amount": digitalAmount,
-                "data": ["memo": "Testing"],
-                "nonce": wallet.status?.nonce ?? 0,
-                "signature": sig,
-                "hash": hash
-            ] as [String : Any]
-            
-*/
             
             let headers: HTTPHeaders = [
                 "Content-type": "application/json"
@@ -276,6 +202,59 @@ class XEWallet {
             print ("JSON Failure")
         }
     
+    }
+    
+    func withdrawCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String) {
+        
+        do {
+            /*"timestamp": 1637568556235,
+            "sender": "xe_8eC0B0fE40142adE4a1Be2c67810210c596398ee",
+            "recipient": "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F",
+            "amount": 35064000000,
+            "data": {
+              "destination": "0x839667153D52aA712C276d30386628678C61c880",
+              "fee": 319000000,
+              "memo": "XE Withdrawal",
+              "token": "EDGE"
+            },
+            "nonce": 18,*/
+            
+            
+            
+            let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+            let digitalAmount = Int(amountString) ?? 0
+            let data = SendMessageDataModel(memo: "Testing")
+            let sendMessage = SendMessageModel(timestamp: UInt64(Date().timeIntervalSince1970)*1000, sender: wallet.address, recipient: toAddress, amount: digitalAmount, data: data, nonce: wallet.status?.nonce ?? 0)
+            
+            var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"xe_A4788d8201Fb879e3b7523a0367401D2a985D42F\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"fee\":\(319000000)\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\" },\"nonce\":\(wallet.status?.nonce ?? 0)}"
+            print(j2String)
+            j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
+            print(j2String)
+            var sig = self.generateSignature(message: j2String, key: key)
+            print(sig)
+            j2String = String(j2String.dropLast())
+            print(j2String)
+            j2String = "\(j2String),\"signature\":\"\(sig)\"}"
+            print(j2String)
+            var hash = j2String.sha256()
+            print(hash)
+            j2String = String(j2String.dropLast())
+            print(j2String)
+            j2String = "\(j2String),\"hash\":\"\(hash)\"}"
+            print(j2String)
+            
+            let url = AppDataModelManager.shared.getXEServerSendUrl()
+            
+            let headers: HTTPHeaders = [
+                "Content-type": "application/json"
+            ]
+            Alamofire.request(url, method: .post, parameters: nil, encoding: BodyStringEncoding(body: j2String), headers: headers ).responseJSON { response in
+                 print(response)
+                    print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue))
+            }
+        } catch _ {
+            print ("JSON Failure")
+        }
     }
     
     func generateSignature(message: String, key: String) -> String {

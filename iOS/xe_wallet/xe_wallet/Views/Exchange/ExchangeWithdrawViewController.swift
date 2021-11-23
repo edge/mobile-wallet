@@ -26,17 +26,25 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     @IBOutlet weak var toButtonDropDown: UIButton!
     @IBOutlet weak var toButtonImage: UIImageView!
     
+    @IBOutlet weak var amountTextField: UITextField!
+    
+    @IBOutlet weak var reviewButtonView: UIView!
+    @IBOutlet weak var reviewButtonText: UILabel!
+    
     @IBAction func chooseToWallet(_ sender: AnyObject) {
         
         toDropDown.show()
     }
     
     var walletData: WalletDataModel? = nil
+    var toAddress = ""
+    
     var cardImage: UIImage? = nil
     
     var delegate: KillViewDelegate?
     
     let toDropDown = DropDown()
+    var isReviewActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +62,12 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
         self.customTitleBarView.delegate = self
         
-        setupDropDowns()
+        self.setupDropDowns()
+        self.configureReviewButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,12 +119,14 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]
         self.toButtonAmountLabel.text = cellAmounts[0]
         self.toButtonImage.image = UIImage(named:cellImages[0])
+        self.toAddress = self.toDropDown.dataSource[0]
         
         self.toDropDown.selectionAction = { [weak self] (index, item) in
             
             self?.toButtonAddressLabel.text = self?.toDropDown.dataSource[index]
             self?.toButtonAmountLabel.text = cellAmounts[index]
             self?.toButtonImage.image = UIImage(named:cellImages[index])
+            self?.toAddress = self?.toDropDown.dataSource[index] ?? ""
         }
         
         let appearance = DropDown.appearance()
@@ -156,7 +169,10 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     
     @IBAction func withdrawButtonPressed(_ sender: Any) {
         
-        performSegue(withIdentifier: "ShowExchangeWithdrawConfirmViewController", sender: nil)
+        if self.isReviewActive {
+        
+            performSegue(withIdentifier: "ShowExchangeWithdrawConfirmViewController", sender: nil)
+        }
     }
     
     func closeWindow() {
@@ -173,6 +189,52 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
             self.dismiss(animated: false, completion: nil)
             self.delegate?.killView()
         })
+    }
+    
+    func configureReviewButton() {
+        
+        if self.isReviewActive {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonText.textColor = UIColor(named: "FontMain")
+        } else {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+            self.reviewButtonText.textColor = UIColor(named: "ButtonTextInactive")
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+
+        var shouldBeActive = false
+        
+        guard let amountText = self.amountTextField.text else { return }
+        
+        if amountText != "" {
+        
+            guard let amountVal = Double(amountText) else { return }
+            guard let wallet = self.walletData else { return }
+            guard let status = wallet.status else { return }
+            
+            if amountText != "" {
+                
+                let walletAmount = status.balance
+                
+                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+                    
+                    shouldBeActive = true
+                }
+            } else {
+                
+                shouldBeActive = false
+            }
+        }
+                
+        if self.isReviewActive != shouldBeActive {
+            
+            self.isReviewActive = shouldBeActive
+            self.configureReviewButton()
+        }
     }
 }
 

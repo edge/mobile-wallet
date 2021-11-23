@@ -25,6 +25,8 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
     @IBOutlet weak var walletAddressLabel: UILabel!
     @IBOutlet weak var privateKeyLabel: UILabel!
     
+    @IBOutlet weak var tickImage: UIImageView!
+    
     var confirmStatus = false
     var walletData: AddressKeyPairModel? = nil
     var type:WalletType = .xe
@@ -106,6 +108,7 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             
             self.continueButtonText.textColor = UIColor(named: "FontMain")
             self.continueButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.tickImage.isHidden = false
         } else {
             
             self.confirmInnerView.backgroundColor = UIColor(named:"BackgroundMain")
@@ -113,6 +116,7 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             
             self.continueButtonText.textColor = UIColor(named: "ButtonTextInactive")
             self.continueButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+            self.tickImage.isHidden = true
         }
     }
     

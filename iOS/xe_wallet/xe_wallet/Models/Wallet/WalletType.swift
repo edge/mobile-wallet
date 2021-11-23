@@ -33,7 +33,7 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return 0.001000
+            return 0.000001
             
         case .edge:
             return 0.001000

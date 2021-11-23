@@ -23,7 +23,8 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     @IBOutlet weak var QRImageView: UIImageView!
     
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
-            
+    @IBOutlet weak var walletImageIcon: UIImageView!
+    
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
     var cardImage: UIImage? = nil
@@ -57,6 +58,8 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
         self.addressLabel.text = self.walletData?.address
         
         self.customTitleBarView.delegate = self
+        
+        self.walletImageIcon.image = UIImage(named:self.walletData?.type.rawValue ?? "")
     }
     
     override func viewDidAppear(_ animated: Bool) {

@@ -15,6 +15,8 @@ class NetworkViewController: BaseViewController {
     @IBOutlet weak var selectNetworkButtonView: UIView!
     @IBOutlet weak var selectNetworkButtonText: UILabel!
     
+    @IBOutlet weak var mainnetTickImage: UIImageView!
+    @IBOutlet weak var testnetTickImage: UIImageView!
     var testnetStatus = false
     var testnetStatusStart = false
     
@@ -35,8 +37,9 @@ class NetworkViewController: BaseViewController {
     
     @IBAction func mainNetButtonPressed(_ sender: Any) {
         
+        /*
         self.testnetStatus = false
-        self.setButtonStatus()
+        self.setButtonStatus()*/
     }
     
     @IBAction func testNetButtonPressed(_ sender: Any) {
@@ -72,10 +75,15 @@ class NetworkViewController: BaseViewController {
         
             self.mainNetHighlightView.backgroundColor = UIColor(named: "BackgroundMain")
             self.testNetHighlightView.backgroundColor = UIColor(named: "ButtonGreen")
+            self.testnetTickImage.isHidden = false
+            self.mainnetTickImage.isHidden = true
         } else {
             
             self.mainNetHighlightView.backgroundColor = UIColor(named: "ButtonGreen")
             self.testNetHighlightView.backgroundColor = UIColor(named: "BackgroundMain")
+            self.testnetTickImage.isHidden = true
+            self.mainnetTickImage.isHidden = false
+
         }
         
         if self.testnetStatus == !self.testnetStatusStart {

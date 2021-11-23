@@ -122,7 +122,8 @@ class WalletDataModelManager {
     
     public func getExchangeOptions(type: WalletType) -> [WalletDataModel] {
         
-        return self.walletData
+        let filtered = self.walletData.filter { $0.type != type }
+        return filtered
     }
         
 // TODO use protocols for wallets with same functionality

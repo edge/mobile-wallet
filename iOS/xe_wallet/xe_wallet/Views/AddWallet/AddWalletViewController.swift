@@ -13,8 +13,10 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
     
     @IBOutlet weak var xeCircleView: UIView!
     @IBOutlet weak var xeInnerCircleView: UIView!
+    @IBOutlet weak var xeWalletTickImage: UIImageView!
     @IBOutlet weak var etherCircleView: UIView!
     @IBOutlet weak var etherInnerCircleView: UIView!
+    @IBOutlet weak var etherWalletTickImage: UIImageView!
     
     @IBOutlet weak var closeXIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeXIconRightConstraint: NSLayoutConstraint!
@@ -62,12 +64,16 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
             self.xeInnerCircleView.backgroundColor = UIColor(named:"ButtonGreen")
             self.etherCircleView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
             self.etherInnerCircleView.backgroundColor = UIColor(named:"MainBlack")
+            self.xeWalletTickImage.isHidden = false
+            self.etherWalletTickImage.isHidden = true
         } else {
             
             self.xeCircleView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
             self.xeInnerCircleView.backgroundColor = UIColor(named:"MainBlack")
             self.etherCircleView.backgroundColor = UIColor(named:"ButtonGreen")
             self.etherInnerCircleView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.xeWalletTickImage.isHidden = true
+            self.etherWalletTickImage.isHidden = false
         }
     }
 

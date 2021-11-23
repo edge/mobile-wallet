@@ -26,17 +26,24 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
     @IBOutlet weak var toButtonDropDown: UIButton!
     @IBOutlet weak var toButtonImage: UIImageView!
     
+    @IBOutlet weak var reviewButtonView: UIView!
+    @IBOutlet weak var reviewButtonText: UILabel!
+    
+    @IBOutlet weak var amountTextField: UITextField!
+    
     @IBAction func chooseToWallet(_ sender: AnyObject) {
         
         toDropDown.show()
     }
     
     var walletData: WalletDataModel? = nil
+    var toAddress = ""
     var cardImage: UIImage? = nil
     
     var delegate: KillViewDelegate?
     
     let toDropDown = DropDown()
+    var isReviewActive = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +61,12 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
         view.addGestureRecognizer(tap)
         
+        self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
         self.customTitleBarView.delegate = self
         
-        setupDropDowns()
+        self.setupDropDowns()
+        self.configureReviewButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,7 +100,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
         self.toDropDown.anchorView = self.toButtonDropDown
         self.toDropDown.bottomOffset = CGPoint(x: 0, y: self.toButtonDropDown.bounds.height)
         
-        let wallets = WalletDataModelManager.shared.getExchangeOptions(type: .xe)
+        let wallets = WalletDataModelManager.shared.getExchangeOptions(type: .ethereum)
         
         self.toDropDown.dataSource = []
         var cellImages: [String] = []
@@ -106,12 +116,14 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]
         self.toButtonAmountLabel.text = cellAmounts[0]
         self.toButtonImage.image = UIImage(named:cellImages[0])
+        self.toAddress = self.toDropDown.dataSource[0]
         
         self.toDropDown.selectionAction = { [weak self] (index, item) in
             
             self?.toButtonAddressLabel.text = self?.toDropDown.dataSource[index]
             self?.toButtonAmountLabel.text = cellAmounts[index]
             self?.toButtonImage.image = UIImage(named:cellImages[index])
+            self?.toAddress = self?.toDropDown.dataSource[index] ?? ""
         }
         
         let appearance = DropDown.appearance()
@@ -141,6 +153,8 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
             let controller = segue.destination as! ExchangeDepositConfirmViewController
             controller.modalPresentationStyle = .overCurrentContext
             controller.delegate = self
+            controller.walletData = self.walletData
+            controller.toAddress = ""
         }
     }
     
@@ -154,7 +168,10 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
     
     @IBAction func depositButtonPressed(_ sender: Any) {
         
-        performSegue(withIdentifier: "ShowExchangeDepositConfirmViewController", sender: nil)
+        if self.isReviewActive {
+        
+            performSegue(withIdentifier: "ShowExchangeDepositConfirmViewController", sender: nil)
+        }
     }
     
     func closeWindow() {
@@ -173,7 +190,51 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
         })
     }
     
+    func configureReviewButton() {
+        
+        if self.isReviewActive {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonText.textColor = UIColor(named: "FontMain")
+        } else {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+            self.reviewButtonText.textColor = UIColor(named: "ButtonTextInactive")
+        }
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
 
+        var shouldBeActive = false
+        
+        guard let amountText = self.amountTextField.text else { return }
+        
+        if amountText != "" {
+        
+            guard let amountVal = Double(amountText) else { return }
+            guard let wallet = self.walletData else { return }
+            guard let status = wallet.status else { return }
+            
+            if amountText != "" {
+                
+                let walletAmount = status.balance
+                
+                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+                    
+                    shouldBeActive = true
+                }
+            } else {
+                
+                shouldBeActive = false
+            }
+        }
+                
+        if self.isReviewActive != shouldBeActive {
+            
+            self.isReviewActive = shouldBeActive
+            self.configureReviewButton()
+        }
+    }
 }
 
 extension ExchangeDepositViewController {

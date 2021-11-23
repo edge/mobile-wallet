@@ -14,6 +14,9 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     var delegate: KillViewDelegate?
     
+    var walletData: WalletDataModel? = nil
+    var toAddress =  ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

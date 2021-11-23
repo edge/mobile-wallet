@@ -374,7 +374,20 @@
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dGP-lD-dEP">
                                                 <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="v5Y-qU-hdS">
+                                                        <rect key="frame" x="7" y="9" width="14" height="10"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="14" id="Kjo-bQ-m6W"/>
+                                                            <constraint firstAttribute="height" constant="10" id="tc2-0W-Kuh"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                </subviews>
                                                 <color key="backgroundColor" name="MainBlack"/>
+                                                <constraints>
+                                                    <constraint firstItem="v5Y-qU-hdS" firstAttribute="centerY" secondItem="dGP-lD-dEP" secondAttribute="centerY" id="MPd-lr-qRh"/>
+                                                    <constraint firstItem="v5Y-qU-hdS" firstAttribute="centerX" secondItem="dGP-lD-dEP" secondAttribute="centerX" id="h0z-sy-jbO"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                         <integer key="value" value="14"/>
@@ -497,6 +510,7 @@
                         <outlet property="continueButtonView" destination="l6d-96-bpr" id="Xat-ma-R1W"/>
                         <outlet property="customTitleBarView" destination="gLI-fy-dWd" id="iJz-vO-3LX"/>
                         <outlet property="privateKeyLabel" destination="Hpp-i7-cxM" id="L6J-by-AbF"/>
+                        <outlet property="tickImage" destination="v5Y-qU-hdS" id="TRK-Fo-Cl8"/>
                         <outlet property="walletAddressLabel" destination="x0S-DQ-Faf" id="3pC-hn-opx"/>
                         <outlet property="warningMessageLabel" destination="Lay-98-Eyw" id="zUp-Ix-gMf"/>
                         <segue destination="XRE-KN-CeK" kind="unwind" identifier="unwindToWalletView" animates="NO" unwindAction="unwindToWalletViewWithSender:" id="T3E-Nc-0z1"/>
@@ -589,7 +603,20 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H7d-qX-E8K">
                                                         <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                        <subviews>
+                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="uua-Na-ZjN">
+                                                                <rect key="frame" x="7" y="9" width="14" height="10"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="10" id="7KT-Uw-tQI"/>
+                                                                    <constraint firstAttribute="width" constant="14" id="aKx-cf-4gH"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
                                                         <color key="backgroundColor" name="MainBlack"/>
+                                                        <constraints>
+                                                            <constraint firstItem="uua-Na-ZjN" firstAttribute="centerY" secondItem="H7d-qX-E8K" secondAttribute="centerY" id="AZ7-gM-X8B"/>
+                                                            <constraint firstItem="uua-Na-ZjN" firstAttribute="centerX" secondItem="H7d-qX-E8K" secondAttribute="centerX" id="fzn-uG-2mf"/>
+                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="14"/>
@@ -621,8 +648,8 @@
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$XE is used for serives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-pO-q3s">
-                                                <rect key="frame" x="56" y="25" width="131" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$XE is used for services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-pO-q3s">
+                                                <rect key="frame" x="56" y="25" width="138" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="fXX-9Y-1ew"/>
                                                 </constraints>
@@ -708,7 +735,20 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MmI-XJ-3cd">
                                                         <rect key="frame" x="2" y="2" width="28" height="28"/>
+                                                        <subviews>
+                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="GaG-sG-udr">
+                                                                <rect key="frame" x="7" y="9" width="14" height="10"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="10" id="kBf-Dn-XfX"/>
+                                                                    <constraint firstAttribute="width" constant="14" id="m0e-c3-olr"/>
+                                                                </constraints>
+                                                            </imageView>
+                                                        </subviews>
                                                         <color key="backgroundColor" name="MainBlack"/>
+                                                        <constraints>
+                                                            <constraint firstItem="GaG-sG-udr" firstAttribute="centerY" secondItem="MmI-XJ-3cd" secondAttribute="centerY" id="6W9-Q6-ZIY"/>
+                                                            <constraint firstItem="GaG-sG-udr" firstAttribute="centerX" secondItem="MmI-XJ-3cd" secondAttribute="centerX" id="mIl-Dn-sf4"/>
+                                                        </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                                 <integer key="value" value="14"/>
@@ -796,7 +836,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="ButtonGreen"/>
+                                        <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                         <constraints>
                                             <constraint firstItem="cy7-nH-UY4" firstAttribute="leading" secondItem="KpY-3c-At1" secondAttribute="leading" id="0Kf-b4-M2f"/>
                                             <constraint firstItem="qHj-zv-v0L" firstAttribute="centerX" secondItem="KpY-3c-At1" secondAttribute="centerX" id="HRX-Cm-EYx"/>
@@ -830,7 +870,7 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" name="ButtonGreen"/>
+                                        <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                         <constraints>
                                             <constraint firstItem="kCe-c8-fuI" firstAttribute="centerX" secondItem="Olg-no-UkP" secondAttribute="centerX" id="1rh-Ze-7qJ"/>
                                             <constraint firstAttribute="trailing" secondItem="cxv-nS-WCw" secondAttribute="trailing" id="47L-lg-Vjo"/>
@@ -885,8 +925,10 @@
                         <outlet property="customTitleBarView" destination="HHI-F1-hHd" id="1bo-Cc-vjM"/>
                         <outlet property="etherCircleView" destination="30o-fc-rPA" id="klz-k2-x5G"/>
                         <outlet property="etherInnerCircleView" destination="MmI-XJ-3cd" id="3Rg-Ed-u9m"/>
+                        <outlet property="etherWalletTickImage" destination="GaG-sG-udr" id="iYg-Yb-HCf"/>
                         <outlet property="xeCircleView" destination="hZp-tC-ZgP" id="MzE-SL-rC3"/>
                         <outlet property="xeInnerCircleView" destination="H7d-qX-E8K" id="cho-br-hnU"/>
+                        <outlet property="xeWalletTickImage" destination="uua-Na-ZjN" id="b3s-Nb-kG5"/>
                         <segue destination="emf-Wv-KvA" kind="presentation" identifier="CreateWalletViewController" animates="NO" id="DiW-o6-VuV"/>
                         <segue destination="Up6-3t-FRw" kind="presentation" identifier="RestoreWalletViewController" animates="NO" id="WV4-zf-ftA"/>
                     </connections>
@@ -1065,12 +1107,13 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WlX-Fg-CRK"/>
-        <segue reference="TJz-f2-AfC"/>
+        <segue reference="WV4-zf-ftA"/>
+        <segue reference="DiW-o6-VuV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="coin_xe" width="24" height="24"/>
         <image name="logo" width="110" height="83"/>
+        <image name="tick" width="14" height="10"/>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
