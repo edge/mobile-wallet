@@ -47,6 +47,18 @@ class TransactionTableViewCell: UITableViewCell {
         }
         self.memoLabel.text = memo
         
+        if let status = data.status {
+            
+            self.statusLabel.text = status.rawValue
+            self.sumStatusLabel.text = status.rawValue
+        } else {
+            
+            self.statusLabel.text = TransactionStatus.confirmed.rawValue
+            self.sumStatusLabel.text = TransactionStatus.confirmed.rawValue
+        }
+        
+        
+        
         //Double(0.123456789).roundToPlaces(4)
         
         

@@ -112,7 +112,8 @@ struct TransactionRecordDataModel: Codable {
     var hash: String
     var block: TransactionBlockDataModel?
     var confirmations: Int?
-
+    var status: TransactionStatus?
+    
     enum CodingKeys: String, CodingKey {
         
         case timestamp
@@ -140,6 +141,7 @@ struct TransactionRecordDataModel: Codable {
         self.hash = try container.decode(String.self, forKey: .hash)
         self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
+
     }
     
     public init(from ether: EtherTransactionDataModel) {
@@ -154,6 +156,7 @@ struct TransactionRecordDataModel: Codable {
         self.hash = ether.hash ?? ""
         self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
         self.confirmations = Int(ether.confirmations ?? "0") ?? 0
+        self.status = .confirmed
     }
     
     public init(from pending: TransactionPendingRecordDataModel) {
@@ -166,6 +169,7 @@ struct TransactionRecordDataModel: Codable {
         self.nonce = pending.nonce
         self.signature = pending.signature
         self.hash = pending.hash
+        self.status = .pending
     }
 }
 
