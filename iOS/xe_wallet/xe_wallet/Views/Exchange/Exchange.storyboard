@@ -30,10 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bRc-76-3Bc">
-                                <rect key="frame" x="0.0" y="86" width="414" height="223"/>
+                                <rect key="frame" x="0.0" y="86" width="414" height="261"/>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="223" id="X29-XY-I5Q"/>
+                                    <constraint firstAttribute="height" constant="261" id="X29-XY-I5Q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZT-Ne-Z8y">
@@ -329,10 +329,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8r-fG-Csf">
-                                <rect key="frame" x="16" y="110" width="382" height="191"/>
+                                <rect key="frame" x="16" y="110" width="382" height="242"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="Vxy-xx-LWR">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="242"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -341,7 +341,7 @@
                                     <constraint firstItem="Vxy-xx-LWR" firstAttribute="top" secondItem="H8r-fG-Csf" secondAttribute="top" id="9be-M3-qNe"/>
                                     <constraint firstAttribute="bottom" secondItem="Vxy-xx-LWR" secondAttribute="bottom" id="HHV-CS-Ij7"/>
                                     <constraint firstItem="Vxy-xx-LWR" firstAttribute="leading" secondItem="H8r-fG-Csf" secondAttribute="leading" id="P3f-bV-hRe"/>
-                                    <constraint firstAttribute="width" secondItem="H8r-fG-Csf" secondAttribute="height" multiplier="2:1" id="uMq-sv-aVF"/>
+                                    <constraint firstAttribute="width" secondItem="H8r-fG-Csf" secondAttribute="height" multiplier="1.58:1" id="uMq-sv-aVF"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -791,10 +791,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yro-Ij-Yxh">
-                                <rect key="frame" x="0.0" y="88" width="414" height="213"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="261"/>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="213" id="LYz-QN-YLR"/>
+                                    <constraint firstAttribute="height" constant="261" id="LYz-QN-YLR"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MGS-hf-r9z">
@@ -1081,16 +1081,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VD7-C2-Kp0">
-                                <rect key="frame" x="16" y="110" width="382" height="191"/>
+                                <rect key="frame" x="16" y="110" width="382" height="242"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="T39-2T-e8a">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="242"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="T39-2T-e8a" firstAttribute="leading" secondItem="VD7-C2-Kp0" secondAttribute="leading" id="BF0-HI-Qcl"/>
-                                    <constraint firstAttribute="width" secondItem="VD7-C2-Kp0" secondAttribute="height" multiplier="2:1" id="M2A-WL-FGQ"/>
+                                    <constraint firstAttribute="width" secondItem="VD7-C2-Kp0" secondAttribute="height" multiplier="1.58:1" id="M2A-WL-FGQ"/>
                                     <constraint firstAttribute="trailing" secondItem="T39-2T-e8a" secondAttribute="trailing" id="j8f-Bo-V5d"/>
                                     <constraint firstItem="T39-2T-e8a" firstAttribute="top" secondItem="VD7-C2-Kp0" secondAttribute="top" id="n4z-n4-DJu"/>
                                     <constraint firstAttribute="bottom" secondItem="T39-2T-e8a" secondAttribute="bottom" id="rnH-Nl-rPa"/>

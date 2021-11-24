@@ -30,30 +30,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mn8-1H-47P">
-                                <rect key="frame" x="0.0" y="22" width="414" height="207"/>
+                                <rect key="frame" x="0.0" y="22" width="414" height="262"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="mn8-1H-47P" secondAttribute="height" multiplier="2:1" id="W6H-aF-VJU"/>
+                                    <constraint firstAttribute="width" secondItem="mn8-1H-47P" secondAttribute="height" multiplier="1.58:1" id="W6H-aF-VJU"/>
                                 </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="1" minimumInteritemSpacing="1" id="tXC-dX-BVV" customClass="FAPaginationLayout" customModule="FAPaginationLayout">
-                                    <size key="itemSize" width="414" height="207.5"/>
+                                    <size key="itemSize" width="414" height="262"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="WalletCollectionViewCell" reuseIdentifier="WalletCollectionViewCell" id="W25-3B-o7s" customClass="WalletCollectionViewCell" customModule="xe_wallet" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="-0.5" width="414" height="207.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="dAy-d8-qRt">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F3j-Id-DnR">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="mX7-9V-Bz4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="207"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="262"/>
                                                         </imageView>
                                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xm2-fq-SdQ">
                                                             <rect key="frame" x="16" y="7" width="48" height="48"/>
@@ -101,7 +101,7 @@
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$1,030 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yYa-N6-cNc">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="$1,030 USD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="yYa-N6-cNc">
                                                             <rect key="frame" x="16" y="184" width="73" height="16"/>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="13"/>
                                                             <color key="textColor" name="FontSecondary"/>
@@ -124,7 +124,7 @@
                                                         <constraint firstItem="xm2-fq-SdQ" firstAttribute="top" secondItem="F3j-Id-DnR" secondAttribute="top" constant="7" id="E7D-1H-IPV"/>
                                                         <constraint firstAttribute="bottom" secondItem="mX7-9V-Bz4" secondAttribute="bottom" id="FPh-U5-96F"/>
                                                         <constraint firstItem="e1k-QC-tVv" firstAttribute="leading" secondItem="F3j-Id-DnR" secondAttribute="leading" constant="16" id="GyC-NF-51J"/>
-                                                        <constraint firstAttribute="width" secondItem="F3j-Id-DnR" secondAttribute="height" multiplier="2:1" id="IQP-qH-8Ff"/>
+                                                        <constraint firstAttribute="width" secondItem="F3j-Id-DnR" secondAttribute="height" multiplier="1.58:1" id="IQP-qH-8Ff"/>
                                                         <constraint firstItem="yYa-N6-cNc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="e1k-QC-tVv" secondAttribute="bottom" constant="8" id="MAD-An-Crd"/>
                                                         <constraint firstItem="4JG-jx-ueO" firstAttribute="top" relation="lessThanOrEqual" secondItem="443-YF-uZd" secondAttribute="bottom" constant="16" id="dGC-mX-DcS"/>
                                                         <constraint firstAttribute="bottom" secondItem="mX7-9V-Bz4" secondAttribute="bottom" id="dVw-0o-6yv"/>
@@ -169,7 +169,7 @@
                                 </connections>
                             </collectionView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="fZf-sh-cdp">
-                                <rect key="frame" x="71" y="244" width="272" height="70"/>
+                                <rect key="frame" x="71" y="299" width="272" height="70"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a5A-Bx-Mr8">
                                         <rect key="frame" x="0.0" y="0.0" width="78.5" height="70"/>
@@ -326,13 +326,13 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRANSACTIONS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cso-5A-eqw">
-                                <rect key="frame" x="16" y="346" width="102.5" height="16"/>
+                                <rect key="frame" x="16" y="401" width="102.5" height="16"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="13"/>
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" tag="2" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qKa-g0-ka5">
-                                <rect key="frame" x="0.0" y="370" width="414" height="404"/>
+                                <rect key="frame" x="0.0" y="425" width="414" height="349"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TransactionTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="234" id="0of-T0-KA2" customClass="TransactionTableViewCell" customModule="xe_wallet" customModuleProvider="target">
@@ -625,7 +625,7 @@
                     <navigationItem key="navigationItem" title="Wallets" largeTitleDisplayMode="never" id="Mj3-qO-TAn">
                         <barButtonItem key="leftBarButtonItem" title="Item" image="burger" id="SYW-eZ-VRq">
                             <connections>
-                                <segue destination="bHo-8N-Y5L" kind="show" id="G6w-FE-tIb"/>
+                                <segue destination="bHo-8N-Y5L" kind="show" animates="NO" id="G6w-FE-tIb"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" id="5rN-dk-aK5">
@@ -636,6 +636,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="mn8-1H-47P" id="8x9-HA-7yW"/>
+                        <outlet property="exchangeButtonTextLabel" destination="698-Zy-die" id="DHI-51-oCu"/>
                         <outlet property="tableView" destination="qKa-g0-ka5" id="wZp-y3-aBs"/>
                         <segue destination="OVK-sp-nMd" kind="presentation" identifier="ShowSendViewController" animates="NO" id="fr0-Ca-8iE"/>
                         <segue destination="a3J-Mf-tAc" kind="presentation" identifier="ShowReceiveViewController" animates="NO" id="3bW-BD-J2w"/>

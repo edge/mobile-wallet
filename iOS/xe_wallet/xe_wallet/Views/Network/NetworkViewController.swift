@@ -27,12 +27,18 @@ class NetworkViewController: BaseViewController {
         self.testnetStatus = AppDataModelManager.shared.testModeStatus()
         self.testnetStatusStart = self.testnetStatus
         self.setButtonStatus()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.title = AppDataModelManager.shared.getNetworkTitleString()
+    }
+    
+    @objc func backTapped(sender: UIBarButtonItem) {
+        
+        navigationController?.popViewController(animated: false)
     }
     
     @IBAction func mainNetButtonPressed(_ sender: Any) {

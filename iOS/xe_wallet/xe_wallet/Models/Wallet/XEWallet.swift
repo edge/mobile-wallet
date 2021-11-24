@@ -278,21 +278,13 @@ class XEWallet {
             let sendMessage = SendMessageModel(timestamp: UInt64(Date().timeIntervalSince1970)*1000, sender: wallet.address, recipient: toAddress, amount: digitalAmount, data: data, nonce: wallet.status?.nonce ?? 0)
             
             var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"xe_A4788d8201Fb879e3b7523a0367401D2a985D42F\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"fee\":\(1000000),\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
-            print(j2String)
             j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
-            print(j2String)
             var sig = self.generateSignature(message: j2String, key: key)
-            print(sig)
             j2String = String(j2String.dropLast())
-            print(j2String)
             j2String = "\(j2String),\"signature\":\"\(sig)\"}"
-            print(j2String)
             var hash = j2String.sha256()
-            print(hash)
             j2String = String(j2String.dropLast())
-            print(j2String)
             j2String = "\(j2String),\"hash\":\"\(hash)\"}"
-            print(j2String)
             
             let url = AppDataModelManager.shared.getXEServerSendUrl()
             

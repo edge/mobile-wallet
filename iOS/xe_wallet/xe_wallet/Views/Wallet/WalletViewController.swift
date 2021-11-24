@@ -12,6 +12,8 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
 
+    @IBOutlet weak var exchangeButtonTextLabel: UILabel!
+    
     var transactionListViewData = [TransactionRecordDataModel]()
     var walletCollectionViewData = [WalletDataModel]()
     
@@ -34,6 +36,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         self.collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
                 
         self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
+        self.updateWalletPage()
         
         if WalletDataModelManager.shared.activeWalletAmount() == 0 {
             
@@ -184,6 +187,22 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         performSegue(withIdentifier: "ShowAddWalletViewController", sender: nil)
     }
     
+    func updateWalletPage() {
+        
+        if self.walletCollectionViewData.count > 0 && self.walletCollectionViewData.count > self.selectedWallet {
+            
+            let wallet = self.walletCollectionViewData[self.selectedWallet]
+            
+            if wallet.type == .xe {
+                
+                self.exchangeButtonTextLabel.text = "Withdraw"
+            } else {
+                
+                self.exchangeButtonTextLabel.text = "Deposit"
+            }
+        }
+    }
+    
 }
 
 extension WalletViewController {
@@ -304,6 +323,7 @@ extension WalletViewController  {
             self.selectedIndex = nil
             self.selectedWallet = page
             self.tableView.reloadData()
+            self.updateWalletPage()
         }
     }
 }

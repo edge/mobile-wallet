@@ -20,7 +20,7 @@
         <!--Settings View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SettingsViewController" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" modalTransitionStyle="crossDissolve" id="Y6W-OH-hqX" customClass="SettingsViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -124,8 +124,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="i8M-di-EfR" kind="show" identifier="ShowManageViewController" id="0mL-1A-Nqm"/>
-                        <segue destination="sU0-Y4-4B4" kind="show" identifier="ShowNetworkViewController" id="cal-Ro-I2o"/>
+                        <segue destination="i8M-di-EfR" kind="show" identifier="ShowManageViewController" animates="NO" id="0mL-1A-Nqm"/>
+                        <segue destination="sU0-Y4-4B4" kind="show" identifier="ShowNetworkViewController" animates="NO" id="cal-Ro-I2o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -29,7 +29,7 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         
         self.tableView.isEditing = true
         self.tableView.allowsSelectionDuringEditing = true
-        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +42,11 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         super.viewDidAppear(animated)
         
         self.title = AppDataModelManager.shared.getNetworkTitleString()
+    }
+    
+    @objc func backTapped(sender: UIBarButtonItem) {
+        
+        navigationController?.popViewController(animated: false)
     }
 }
 
@@ -123,6 +128,7 @@ extension ManageViewController {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+    
 }
 
 extension ManageViewController {

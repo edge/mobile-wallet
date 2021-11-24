@@ -30,10 +30,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XqG-Vs-s0w">
-                                <rect key="frame" x="16" y="91" width="382" height="210"/>
+                                <rect key="frame" x="16" y="91" width="382" height="261"/>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="210" id="Hpd-55-USj"/>
+                                    <constraint firstAttribute="height" constant="261" id="Hpd-55-USj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qbs-98-IOY">
@@ -297,16 +297,16 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Yw-9f-AGb">
-                                <rect key="frame" x="16" y="110" width="382" height="191"/>
+                                <rect key="frame" x="16" y="110" width="382" height="242"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="credit_card" translatesAutoresizingMaskIntoConstraints="NO" id="b1n-46-gWa">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="191"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="242"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="b1n-46-gWa" secondAttribute="trailing" id="R8M-Uv-MCr"/>
-                                    <constraint firstAttribute="width" secondItem="0Yw-9f-AGb" secondAttribute="height" multiplier="2:1" id="UBh-I4-7cm"/>
+                                    <constraint firstAttribute="width" secondItem="0Yw-9f-AGb" secondAttribute="height" multiplier="1.58:1" id="UBh-I4-7cm"/>
                                     <constraint firstItem="b1n-46-gWa" firstAttribute="top" secondItem="0Yw-9f-AGb" secondAttribute="top" id="Ugb-4k-xqi"/>
                                     <constraint firstAttribute="bottom" secondItem="b1n-46-gWa" secondAttribute="bottom" id="YS1-PC-iPK"/>
                                     <constraint firstItem="b1n-46-gWa" firstAttribute="leading" secondItem="0Yw-9f-AGb" secondAttribute="leading" id="tfW-4b-GDI"/>

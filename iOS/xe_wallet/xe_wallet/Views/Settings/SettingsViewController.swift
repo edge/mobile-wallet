@@ -18,12 +18,18 @@ class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableV
         self.navigationController?.navigationBar.tintColor = UIColor.white
         
         self.settingsMenuTableViewData = SettingsDataModelManager.shared.getSettingsData()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         self.title = AppDataModelManager.shared.getNetworkTitleString()
+    }
+    
+    @objc func backTapped(sender: UIBarButtonItem) {
+        
+        navigationController?.popViewController(animated: false)
     }
 }
 
