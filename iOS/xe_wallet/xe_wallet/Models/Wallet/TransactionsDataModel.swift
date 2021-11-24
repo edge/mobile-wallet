@@ -111,8 +111,8 @@ struct TransactionRecordDataModel: Codable {
     var signature: String
     var hash: String
     var block: TransactionBlockDataModel?
-    var confirmations: Int
-    
+    var confirmations: Int?
+
     enum CodingKeys: String, CodingKey {
         
         case timestamp
@@ -154,9 +154,58 @@ struct TransactionRecordDataModel: Codable {
         self.hash = ether.hash ?? ""
         self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
         self.confirmations = Int(ether.confirmations ?? "0") ?? 0
-
+    }
+    
+    public init(from pending: TransactionPendingRecordDataModel) {
+        
+        self.timestamp =  pending.timestamp
+        self.sender = pending.sender
+        self.recipient = pending.recipient
+        self.amount = pending.amount
+        self.data = pending.data
+        self.nonce = pending.nonce
+        self.signature = pending.signature
+        self.hash = pending.hash
     }
 }
+
+struct TransactionPendingRecordDataModel: Codable {
+
+    var timestamp: Int
+    var sender: String
+    var recipient: String
+    var amount: Int
+    var data: TransactionDataDataModel?
+    var nonce: Int
+    var signature: String
+    var hash: String
+
+    enum CodingKeys: String, CodingKey {
+        
+        case timestamp
+        case sender
+        case recipient
+        case amount
+        case data
+        case nonce
+        case signature
+        case hash
+    }
+
+    public init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.timestamp = try container.decode(Int.self, forKey: .timestamp)
+        self.sender = try container.decode(String.self, forKey: .sender)
+        self.recipient = try container.decode(String.self, forKey: .recipient)
+        self.amount = try container.decode(Int.self, forKey: .amount)
+        self.data = try container.decode(TransactionDataDataModel.self, forKey: .data)
+        self.nonce = try container.decode(Int.self, forKey: .nonce)
+        self.signature = try container.decode(String.self, forKey: .signature)
+        self.hash = try container.decode(String.self, forKey: .hash)
+    }
+}
+
 
 struct TransactionDataDataModel: Codable {
 

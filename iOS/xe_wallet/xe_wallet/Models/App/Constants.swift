@@ -59,6 +59,10 @@ class Constants {
     static var XE_MainNetSendUrl = "https://api.xe.network/transaction"
     static var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
     
+    static var XE_MainNetPendingUrl = "https://api.xe.network/transactions/pending/"
+    static var XE_TestNetPendingUrl = "https://xe1.test.network/transactions/pending/"
+    
+    
     static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
     static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
     

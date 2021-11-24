@@ -81,6 +81,16 @@ class AppDataModelManager {
         return Constants.XE_TestNetTransactionUrl
     }
     
+    func getXEServerPendingUrl() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            Constants.XE_MainNetPendingUrl
+        }
+        
+        return Constants.XE_TestNetPendingUrl
+    }
+    
     func getNetworkTitleString() -> String {
         
         if self.testModeStatus() == false {

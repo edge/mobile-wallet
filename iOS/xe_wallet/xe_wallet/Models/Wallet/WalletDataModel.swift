@@ -67,6 +67,7 @@ class WalletDataModel: Codable {
                 walletController.downloadTransactions(address: self.address, completion:{ transactions in
                 
                     self.transactions = transactions
+                    
                     NotificationCenter.default.post(name: .didReceiveData, object: nil)
                 })
             })

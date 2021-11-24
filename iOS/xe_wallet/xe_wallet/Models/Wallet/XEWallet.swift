@@ -138,9 +138,9 @@ class XEWallet {
     
     func downloadTransactions(address: String, completion: @escaping (TransactionsDataModel)-> Void) {
         
-        let url = AppDataModelManager.shared.getXEServerTransactionUrl()
-        
-        Alamofire.request("\(url)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+        let urlTransactions = AppDataModelManager.shared.getXEServerTransactionUrl()
+                
+        Alamofire.request("\(urlTransactions)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 
@@ -151,15 +151,63 @@ class XEWallet {
 
                 do {
 
-                    let data = try JSONDecoder().decode(TransactionsDataModel.self, from: response.data!)
-                    completion(data)
+                    var data = try JSONDecoder().decode(TransactionsDataModel.self, from: response.data!)
+                    
+                    self.downloadPendingTransactions(address: address, completion: { pending in
+                        
+                        if let array = pending {
+                            
+                            for n in array {
+                                
+                                let newRecord = TransactionRecordDataModel(from: n)
+                                data.results?.insert(newRecord, at:0)
+                            }
+                        }
+                        completion(data)
+                    })
+
+
+                } catch let error as NSError {
+                    
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+                case .failure(let error):
+                    print("Request error: \(error.localizedDescription)")
+             }
+         }
+    }
+    
+    func downloadPendingTransactions(address: String, completion: @escaping ([TransactionPendingRecordDataModel]?)-> Void) {
+
+        let urlPending = AppDataModelManager.shared.getXEServerPendingUrl()
+        Alamofire.request("\(urlPending)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+         .validate()
+         .responseJSON { response in
+
+             print(response)
+            switch (response.result) {
+
+                case .success( _):
+
+                do {
+
+                    if response.data?.count ?? 0 > 2 {
+                    
+                        let data = try JSONDecoder().decode([TransactionPendingRecordDataModel].self, from: response.data!)
+                        completion(data)
+                    } else {
+                        
+                        completion(nil)
+                    }
 
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
+                    completion(nil)
                 }
 
                  case .failure(let error):
                     print("Request error: \(error.localizedDescription)")
+                    completion(nil)
              }
          }
     }
