@@ -190,14 +190,17 @@ class WalletDataModelManager {
         }
     }
     
-    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String) {
+    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, completion: @escaping (Bool)-> Void) {
         
         let key = self.loadWalletKey(key:wallet.address)
         
         switch wallet.type {
             
         case .xe:
-            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, key: key)
+            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
             break
             
         case .ethereum:

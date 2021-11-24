@@ -27,6 +27,12 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     @IBOutlet var pinEntryView: UIView!
     @IBOutlet weak var textEntryTextView: UITextField!
     
+    @IBOutlet weak var pinEntryMainView: UIView!
+    @IBOutlet weak var confirmButtonText: UILabel!
+    @IBOutlet weak var confirmButtonMainView: UIView!
+    @IBOutlet weak var confirmButtonOutterView: UIView!
+    @IBOutlet weak var confirmButtonErrorLabel: UILabel!
+    
     var delegate: KillViewDelegate?
     
     var walletData: WalletDataModel? = nil
@@ -40,6 +46,8 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     var gasRatesDataModel: GasRatesDataModel? = nil
     var exchangeRatesDataModel: ExchangeRatesDataModel? = nil
+    
+    var confirmStatus = SendConfirmStatus.confirm
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +87,7 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
         self.textEntryTextView.text = ""
         
         self.updateRates()
+        self.configureConfirmStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,6 +114,61 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
             
             self.timerGasPrice?.invalidate()
             self.timerGasPrice = nil
+        }
+    }
+    
+    func configureConfirmStatus() {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Confirm"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .pinEntry:
+            self.pinEntryMainView.isHidden = false
+            self.confirmButtonOutterView.isHidden = true
+            break
+        case .processing:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Submitting..."
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")
+            break
+        case .error:
+            self.confirmButtonErrorLabel.text = "Failed to withdraw coins"
+            self.confirmButtonText.text = "Retry"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .done:
+            break
+        }
+    }
+    
+    @IBAction func reviewContinueButtonPressed(_ sender: Any) {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .pinEntry:
+            break
+        case .processing:
+            break
+        case .error:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .done:
+            break
         }
     }
     
@@ -195,13 +259,26 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
                         if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
                             
                             if let wallet = self.walletData {
-                                                            
+                                                  
+                                self.textEntryTextView.endEditing(true)
+                                self.confirmStatus = .processing
+                                self.configureConfirmStatus()
+                                
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                WalletDataModelManager.shared.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount)
                                 
-                                self.closeWindow(callKillDelegate: true)
+                                WalletDataModelManager.shared.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount, completion: { res in
+                                    
+                                    if res {
+                                        
+                                        self.closeWindow(callKillDelegate: true)
+                                    } else {
+                                        
+                                        self.confirmStatus = .error
+                                        self.configureConfirmStatus()
+                                    }
+                                })
                             }
                         } else {
                                                         

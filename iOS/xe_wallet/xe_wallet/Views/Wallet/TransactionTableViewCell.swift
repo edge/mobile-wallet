@@ -32,7 +32,7 @@ class TransactionTableViewCell: UITableViewCell {
         
         var typeLabel = "Sent"
         var iconName = "send"
-        if address == data.recipient {
+        if address.lowercased() == data.recipient.lowercased() {
             
             typeLabel = "Received"
             iconName = "receive"

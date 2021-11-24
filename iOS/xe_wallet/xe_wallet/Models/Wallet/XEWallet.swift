@@ -207,8 +207,6 @@ class XEWallet {
                                 completion(false)
                             }
                         }
-                        
-
                     }
                     
                      case .failure(let error):
@@ -223,23 +221,9 @@ class XEWallet {
     
     }
     
-    func withdrawCoins(wallet: WalletDataModel, toAddress: String, amount: String, key: String) {
+    func withdrawCoins(wallet: WalletDataModel, toAddress: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
         
         do {
-            /*"timestamp": 1637568556235,
-            "sender": "xe_8eC0B0fE40142adE4a1Be2c67810210c596398ee",
-            "recipient": "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F",
-            "amount": 35064000000,
-            "data": {
-              "destination": "0x839667153D52aA712C276d30386628678C61c880",
-              "fee": 319000000,
-              "memo": "XE Withdrawal",
-              "token": "EDGE"
-            },
-            "nonce": 18,*/
-            
-            
-            
             let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
             let digitalAmount = Int(amountString) ?? 0
             let data = SendMessageDataModel(memo: "Testing")
@@ -269,7 +253,30 @@ class XEWallet {
             ]
             Alamofire.request(url, method: .post, parameters: nil, encoding: BodyStringEncoding(body: j2String), headers: headers ).responseJSON { response in
                  print(response)
-                    print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue))
+
+                switch (response.result) {
+
+                    case .success( _):
+
+                    if let json = response.result.value as? [String:AnyObject] {
+                        
+                        if let meta : [String:AnyObject] = json["metadata"] as? [String : AnyObject] {
+                            
+                            if let accepted = meta["accepted"]  {
+                                
+                                completion(true)
+                            }
+                            if let rejected = meta["rejected"]  {
+                               
+                                completion(false)
+                            }
+                        }
+                    }
+                    
+                     case .failure(let error):
+                        print("Request error: \(error.localizedDescription)")
+                        completion(false)
+                 }
             }
         } catch _ {
             print ("JSON Failure")

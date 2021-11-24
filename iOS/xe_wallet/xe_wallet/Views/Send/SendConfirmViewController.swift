@@ -128,7 +128,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
             self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")
             break
         case .error:
-            self.confirmButtonErrorLabel.text = "Failed to send coind"
+            self.confirmButtonErrorLabel.text = "Failed to send coins"
             self.confirmButtonText.text = "Retry"
             self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
             break
@@ -152,6 +152,10 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         case .processing:
             break
         case .error:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
             break
         case .done:
             break
