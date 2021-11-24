@@ -68,4 +68,5 @@ class Constants {
     /// TIMERS
 
     static var XE_GasPriceUpdateTime = 2.0
+    static var UpdateWalletsTimer = 10.0
 }

@@ -17,10 +17,15 @@ class WalletDataModelManager {
     
     var walletData = [WalletDataModel]()
 
+    var timerUpdate: Timer?
     
     private init() {
         
         self.loadWalletList()
+        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: Constants.UpdateWalletsTimer, repeats: true) { timer in
+            
+            self.reloadAllWalletInformation()
+        }
     }
         
     func loadWalletList() {
@@ -164,14 +169,17 @@ class WalletDataModelManager {
         return nil
     }
     
-    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String) {
+    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, completion: @escaping (Bool)-> Void) {
         
         let key = self.loadWalletKey(key:wallet.address)
         
         switch wallet.type {
             
         case .xe:
-            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key)
+            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
             break
             
         case .ethereum:

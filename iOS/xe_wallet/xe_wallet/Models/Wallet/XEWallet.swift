@@ -44,6 +44,7 @@ extension BodyStringEncoding.Errors: LocalizedError {
     }
 }
 
+
 class XEWallet {
     
     public func generateWallet(type:WalletType) -> AddressKeyPairModel {
@@ -143,6 +144,7 @@ class XEWallet {
          .validate()
          .responseJSON { response in
 
+             print(response)
             switch (response.result) {
 
                 case .success( _):
@@ -162,7 +164,7 @@ class XEWallet {
          }
     }
     
-    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String) {
+    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
                 
         do {
 
@@ -172,21 +174,13 @@ class XEWallet {
             let sendMessage = SendMessageModel(timestamp: UInt64(Date().timeIntervalSince1970)*1000, sender: wallet.address, recipient: toAddress, amount: digitalAmount, data: data, nonce: wallet.status?.nonce ?? 0)
             
             var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(toAddress)\",\"amount\":\(digitalAmount),\"data\":{\"memo\":\"Testing\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
-            print(j2String)
             j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
-            print(j2String)
-            var sig = self.generateSignature(message: j2String, key: key)
-            print(sig)
+            let sig = self.generateSignature(message: j2String, key: key)
             j2String = String(j2String.dropLast())
-            print(j2String)
             j2String = "\(j2String),\"signature\":\"\(sig)\"}"
-            print(j2String)
-            var hash = j2String.sha256()
-            print(hash)
+            let hash = j2String.sha256()
             j2String = String(j2String.dropLast())
-            print(j2String)
             j2String = "\(j2String),\"hash\":\"\(hash)\"}"
-            print(j2String)
             
             let url = AppDataModelManager.shared.getXEServerSendUrl()
             
@@ -195,7 +189,32 @@ class XEWallet {
             ]
             Alamofire.request(url, method: .post, parameters: nil, encoding: BodyStringEncoding(body: j2String), headers: headers ).responseJSON { response in
                  print(response)
-                    print(NSString(data: (response.request?.httpBody)!, encoding: String.Encoding.utf8.rawValue))
+
+                switch (response.result) {
+
+                    case .success( _):
+
+                    if let json = response.result.value as? [String:AnyObject] {
+                        
+                        if let meta : [String:AnyObject] = json["metadata"] as? [String : AnyObject] {
+                            
+                            if let accepted = meta["accepted"]  {
+                                
+                                completion(true)
+                            }
+                            if let rejected = meta["rejected"]  {
+                               
+                                completion(false)
+                            }
+                        }
+                        
+
+                    }
+                    
+                     case .failure(let error):
+                        print("Request error: \(error.localizedDescription)")
+                        completion(false)
+                 }
             }
             
         } catch _ {

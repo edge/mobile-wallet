@@ -7,6 +7,15 @@
 
 import UIKit
 
+enum SendConfirmStatus {
+    
+    case confirm
+    case pinEntry
+    case processing
+    case error
+    case done
+}
+
 class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomTitleBarDelegate {
         
     @IBOutlet weak var backgroundView: UIView!
@@ -22,6 +31,14 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var receiveAmountLabel: UILabel!
     
+    
+    @IBOutlet weak var pinEntryMainView: UIView!
+    @IBOutlet weak var confirmButtonText: UILabel!
+    @IBOutlet weak var confirmButtonMainView: UIView!
+    @IBOutlet weak var confirmButtonOutterView: UIView!
+    @IBOutlet weak var confirmButtonErrorLabel: UILabel!
+    
+    
     var walletData: WalletDataModel? = nil
     var delegate: KillViewDelegate?
     var toAddress = ""
@@ -29,6 +46,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
     var amount = ""
     
     var entered = false
+    var confirmStatus = SendConfirmStatus.confirm
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,10 +81,12 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
         textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-        textEntryTextView.becomeFirstResponder()
+
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
+        
+        self.configureConfirmStatus()
     }
     
     override func viewDidLayoutSubviews() {
@@ -85,6 +105,57 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         }, completion: { finished in
 
         })
+    }
+    
+    func configureConfirmStatus() {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Confirm"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .pinEntry:
+            self.pinEntryMainView.isHidden = false
+            self.confirmButtonOutterView.isHidden = true
+            break
+        case .processing:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Submitting..."
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")
+            break
+        case .error:
+            self.confirmButtonErrorLabel.text = "Failed to send coind"
+            self.confirmButtonText.text = "Retry"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .done:
+            break
+        }
+    }
+    
+    @IBAction func reviewContinueButtonPressed(_ sender: Any) {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .pinEntry:
+            break
+        case .processing:
+            break
+        case .error:
+            break
+        case .done:
+            break
+        }
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -144,13 +215,25 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
                         if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
                             
                             if let wallet = self.walletData {
-                                                            
+                                               
+                                self.textEntryTextView.endEditing(true)
+                                self.confirmStatus = .processing
+                                self.configureConfirmStatus()
+                                
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
-                                
-                                self.closeWindow(callKillDelegate: true)
+                                WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, completion: { res in
+                                    
+                                    if res {
+                                        
+                                        self.closeWindow(callKillDelegate: true)
+                                    } else {
+                                        
+                                        self.confirmStatus = .error
+                                        self.configureConfirmStatus()
+                                    }
+                                })
                             }
                         } else {
                                                         
