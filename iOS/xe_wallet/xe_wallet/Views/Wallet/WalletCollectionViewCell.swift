@@ -26,15 +26,10 @@ class WalletCollectionViewCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        //self.iconCircleView.layer.cornerRadius = self.iconCircleView.frame.height / 2
-        //self.iconCircleView.layer.borderWidth = 2
-        //self.iconCircleView.layer.borderColor = UIColor.darkGray.cgColor
     }
     
     override func prepareForReuse() {
@@ -54,48 +49,52 @@ class WalletCollectionViewCell: UICollectionViewCell {
     public func config(data: WalletDataModel) {
         
         self.walletData = data
-        self.creditCardImage.image = UIImage(named:data.type.getBackgroundImage())
-        self.walletTypeIcon.image = UIImage(named:data.type.rawValue)
-        self.addressLabel.text = data.address
-        
-        var amount = 0
-        if let status = data.status {
-            
-            amount = status.balance
-        }
-        self.displayValue()
-        let valString = CryptoHelpers.generateCryptoValueString(value: (Double(amount)/1000000) ?? 0)
-        self.amountLabel.text = "\(valString) \(data.type.getDisplayLabel())"
-        
+
+        self.displayCellData()
         self.timerExchange = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-            self.displayValue()
+            self.displayCellData()
         }
     }
     
-    func displayValue() {
+    func displayCellData() {
         
-        if let dat = self.walletData {
+        guard let wallet = self.walletData else { return }
+        //guard let displayData = wallet.getFormattedDataDisplayModel() else { return }
+
+        self.creditCardImage.image = UIImage(named:wallet.type.getBackgroundImage())
+        self.walletTypeIcon.image = UIImage(named:wallet.type.rawValue)
+                
+        self.addressLabel.text = wallet.address
+        
+        if let status = wallet.status {
+        
+            self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance ?? 0)
             
-            var totalValue: Double = 0
-            var amount = 0
-            if let status = dat.status {
-                
-                amount = status.balance
-            }
-            let value = Double(amount)/1000000
             
-            if dat.type == .ethereum {
+            var erate: Double = 0
+            if wallet.type == .ethereum {
+            
+                erate = Double(EtherExchangeRatesManager.shared.getRates())
+            } else {
                 
-                let exchangeRate = ExchangeRatesManager.shared.getEtherRate().doubleValue
-                totalValue = Double(value) * Double(exchangeRate)
-            } else if dat.type == .xe {
+                if let rate = XEExchangeRatesManager.shared.getRates() {
+                    
+                    erate = rate.rate
+                } else {
+                    
+                    erate = 0
+                }
                 
-                let exchangeRates = ExchangeRatesManager.shared.getRates()
-                totalValue = value * Double(exchangeRates?.rate ?? 0)
             }
-            let val = "$\(String(format: "%.2f", totalValue)) USD"
-            self.valueLabel.text = val
+            
+            self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance*erate))) USD"
+
+            
+        } else {
+            
+            self.amountLabel.text = ""
+            self.valueLabel.text = ""
         }
     }
     

@@ -53,13 +53,13 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
+        self.title = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString()
         self.walletCollectionViewData = WalletDataModelManager.shared.getWalletData()
         self.tableView.reloadData()
 
-        self.timerExchangePrice = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+        /*self.timerExchangePrice = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-        }
+        }*/
     }
     
     override func viewDidAppear(_ animated: Bool) {

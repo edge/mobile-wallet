@@ -39,6 +39,14 @@ class AppDataModelManager {
         return false
     }
     
+    public func getNetworkStatus() -> NetworkState {
+        
+        return appData.networkState
+    }
+    
+    
+    
+    
     func testModeStatus() -> Bool {
         
         return appData.testMode
@@ -50,7 +58,7 @@ class AppDataModelManager {
         UserDefaults.standard.set(appData.testMode, forKey: "TestMode")
         return appData.testMode
     }
-    
+    /*
     func getXEServerStatusUrl() -> String {
         
         if self.testModeStatus() == false {
@@ -110,4 +118,14 @@ class AppDataModelManager {
         
         return Constants.XE_networkTestNetTitle
     }
+    
+    func getNetworkBridgeString() -> String {
+        
+        if self.testModeStatus() == false {
+            
+            return Constants.XE_mainNetBridge
+        }
+        
+        return Constants.XE_testNetBridge
+    }*/
 }

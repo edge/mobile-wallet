@@ -233,7 +233,7 @@ open class JSONSerializer {
                 if str != "nil" {
                     // Some optional values cannot be unpacked if type is "Any"
                     // We remove the "Optional(" and last ")" from the value by string manipulation
-                    var d = String(str).dropFirst(9)
+                    var d = try! String(str).dropFirst(9)
                     d = d.dropLast(1)
                     handledValue = String(d)
                 } else {

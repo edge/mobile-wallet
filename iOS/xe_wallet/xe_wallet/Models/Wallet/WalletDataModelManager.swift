@@ -39,21 +39,24 @@ class WalletDataModelManager {
     public func saveWalletToSystem(wallet:AddressKeyPairModel, type: WalletType) {
         
         let username = wallet.address
-        let password = wallet.privateKey.data(using: .utf8)!//PD.hex().data(using: .utf8)!
-
-        let attributes: [String: Any] = [
-            kSecClass as String: kSecClassGenericPassword,
-            kSecAttrAccount as String: username,
-            kSecValueData as String: password,
-        ]
-
-        if SecItemAdd(attributes as CFDictionary, nil) == noErr {
-                        
+        let password = wallet.privateKey.data(using: .utf8)!
+        
+        do {
+            
+            try KeychainHelper.update(password: password, account: username)
             let wallet = WalletDataModel(type: type, address: wallet.address)
             self.walletData.append(wallet)
             self.saveWalletData()
-        } else {
-
+        } catch {
+        
+            do {
+                
+                try KeychainHelper.save(password: password, account: username)
+                let wallet = WalletDataModel(type: type, address: wallet.address)
+                self.walletData.append(wallet)
+                self.saveWalletData()
+            } catch {
+            }
         }
     }
     
@@ -62,6 +65,7 @@ class WalletDataModelManager {
         let wData = try! JSONEncoder().encode(self.walletData)
         //let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
         UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
+        NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
     
     public func activeWalletAmount() -> Int {
@@ -77,6 +81,14 @@ class WalletDataModelManager {
     public func loadWalletKey(key:String) -> String {
         
         let username = key
+        /*
+        do {
+            
+            let password = try KeychainHelper.update(account: username)
+            return password
+        } catch {
+        }*/
+        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: username,
@@ -89,7 +101,7 @@ class WalletDataModelManager {
         if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
 
             if let existingItem = item as? [String: Any],
-               let username = existingItem[kSecAttrAccount as String] as? String,
+               let _ = existingItem[kSecAttrAccount as String] as? String,
                let passwordData = existingItem[kSecValueData as String] as? Data,
                let password = String(data: passwordData, encoding: .utf8) {
                 
@@ -104,7 +116,8 @@ class WalletDataModelManager {
         
         for wallet in self.walletData {
             
-            wallet.downloadWalletsData()
+            wallet.downloadWalletStatus()
+            wallet.downloadWalletTransactions()
         }
     }
     
@@ -131,83 +144,4 @@ class WalletDataModelManager {
         return filtered
     }
         
-// TODO use protocols for wallets with same functionality
-    
-    public func generateWallet(type:WalletType) -> AddressKeyPairModel? {
-        
-        switch type {
-            
-        case .xe:
-            let pair = XEWallet().generateWallet(type:type)
-            return pair
-            
-        case .ethereum:
-            let pair = EtherWallet().generateWallet(type:type)
-            return pair
-
-        case .edge:
-            break
-        }
-        return nil
-    }
-    
-    public func restoreWallet(type:WalletType, key: String) -> AddressKeyPairModel? {
-        
-        switch type {
-            
-        case .xe:
-            let pair = XEWallet().generateWalletFromPrivateKey(privateKeyString: key)
-            return pair
-            
-        case .ethereum:
-            let pair = EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
-            return pair
-            
-        case .edge:
-            break
-        }
-        return nil
-    }
-    
-    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, completion: @escaping (Bool)-> Void) {
-        
-        let key = self.loadWalletKey(key:wallet.address)
-        
-        switch wallet.type {
-            
-        case .xe:
-            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key, completion: { res in
-                
-                completion( res )
-            })
-            break
-            
-        case .ethereum:
-            break
-            
-        case .edge:
-            break
-        }
-    }
-    
-    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, completion: @escaping (Bool)-> Void) {
-        
-        let key = self.loadWalletKey(key:wallet.address)
-        
-        switch wallet.type {
-            
-        case .xe:
-            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, key: key, completion: { res in
-                
-                completion( res )
-            })
-            break
-            
-        case .ethereum:
-            break
-            
-        case .edge:
-            break
-        }
-    }
 }

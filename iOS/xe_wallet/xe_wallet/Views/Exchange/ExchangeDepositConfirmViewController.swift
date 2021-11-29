@@ -26,6 +26,12 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
     @IBOutlet var pinEntryView: UIView!
     @IBOutlet weak var textEntryTextView: UITextField!
     
+    @IBOutlet weak var pinEntryMainView: UIView!
+    @IBOutlet weak var confirmButtonText: UILabel!
+    @IBOutlet weak var confirmButtonMainView: UIView!
+    @IBOutlet weak var confirmButtonOutterView: UIView!
+    @IBOutlet weak var confirmButtonErrorLabel: UILabel!
+    
     var delegate: KillViewDelegate?
     
     var walletData: WalletDataModel? = nil
@@ -33,6 +39,8 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
     
     var amount = ""
     var entered = false
+    
+    var confirmStatus = SendConfirmStatus.confirm
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,16 +58,16 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
         
         if let fWallet = self.walletData {
             
-            self.fromImageView.image = UIImage(named: fWallet.type.rawValue ?? "" )
+            self.fromImageView.image = UIImage(named: fWallet.type.rawValue )
             self.fromAddressLabel.text = fWallet.address
-            self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDisplayLabel())"
+            //self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDisplayLabel())"
         }
         
         if let tWallet = self.toWalletData {
             
-            self.toImageView.image = UIImage(named: tWallet.type.rawValue ?? "" )
+            self.toImageView.image = UIImage(named: tWallet.type.rawValue )
             self.toAddressLabel.text = tWallet.address
-            self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
+            //self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
         }
         
         self.amountLabel.text = self.amount
@@ -70,6 +78,8 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
+        
+        self.configureConfirmStatus()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -82,6 +92,61 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
         }, completion: { finished in
 
         })
+    }
+    
+    func configureConfirmStatus() {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Confirm"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .pinEntry:
+            self.pinEntryMainView.isHidden = false
+            self.confirmButtonOutterView.isHidden = true
+            break
+        case .processing:
+            self.pinEntryMainView.isHidden = true
+            self.confirmButtonOutterView.isHidden = false
+            self.confirmButtonText.text = "Submitting..."
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")
+            break
+        case .error:
+            self.confirmButtonErrorLabel.text = "Failed to withdraw coins"
+            self.confirmButtonText.text = "Retry"
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .done:
+            break
+        }
+    }
+    
+    @IBAction func reviewContinueButtonPressed(_ sender: Any) {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .pinEntry:
+            break
+        case .processing:
+            break
+        case .error:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .done:
+            break
+        }
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
@@ -131,10 +196,25 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
                             
                             if let wallet = self.walletData {
                                                             
+                                self.textEntryTextView.endEditing(true)
+                                self.confirmStatus = .processing
+                                self.configureConfirmStatus()
+                                
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                //WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount)
+                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
+                                wallet.type.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
+                                    
+                                    if res {
+                                        
+                                        self.closeWindow(callKillDelegate: true)
+                                    } else {
+                                        
+                                        self.confirmStatus = .error
+                                        self.configureConfirmStatus()
+                                    }
+                                })
                                 
                                 self.closeWindow(callKillDelegate: true)
                             }

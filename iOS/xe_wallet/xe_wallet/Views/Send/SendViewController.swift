@@ -74,7 +74,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         self.toTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
 
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
@@ -128,7 +128,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             
             let walletAmount = status.balance
             
-            if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+            if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
                 
                 shouldBeActive = true
                 
@@ -233,7 +233,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
         
         if let status = self.walletData?.status {
             
-            self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance)/1000000))"
+            self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance)))"
         }
     }
     

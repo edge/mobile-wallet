@@ -12,7 +12,7 @@ import SwiftyJSON
 class WalletStatusDataModel: Codable {
 
     var address: String
-    var balance: Int
+    var balance: Double
     var nonce: Int
 
     enum CodingKeys: String, CodingKey {
@@ -26,17 +26,29 @@ class WalletStatusDataModel: Codable {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.address = try container.decode(String.self, forKey: .address)
-        self.balance = try container.decode(Int.self, forKey: .balance)
+        self.balance = try container.decode(Double.self, forKey: .balance)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
     }
     
-    public init(address: String, balance: Int, nonce: Int) {
+    public init(address: String, balance: Double, nonce: Int) {
         
         self.address = address
         self.balance = balance
         self.nonce = nonce
     }
     
+    public init(from xe: XEWalletStatusDataModel) {
+        
+        self.address = xe.address ?? ""
+        self.balance = Double(xe.balance ?? 0)/1000000
+        self.nonce = xe.nonce ?? 0
+    }
     
+    public init(from ether: EtherWalletStatusDataModel) {
+        
+        self.address = ether.address ?? ""
+        self.balance = Double(ether.balance ?? 0)/1000000
+        self.nonce = ether.nonce ?? 0
+    }
 }
 

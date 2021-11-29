@@ -9,8 +9,8 @@ import UIKit
 
 class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource, ManageTableViewCellDelegate {
 
+
     @IBOutlet weak var tableView: UITableView!
-    
     
     
     var walletTableViewData = [WalletDataModel]()
@@ -27,9 +27,11 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         
         self.walletTableViewData = WalletDataModelManager.shared.getWalletData()
         
-        self.tableView.isEditing = true
+        //self.tableView.isEditing = true
         self.tableView.allowsSelectionDuringEditing = true
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
+        
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +43,7 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
+        self.title = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString()
     }
     
     @objc func backTapped(sender: UIBarButtonItem) {
@@ -51,6 +53,7 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
 }
 
 extension ManageViewController {
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
@@ -97,27 +100,11 @@ extension ManageViewController {
         self.walletTableViewData.remove(at: sourceIndexPath.row)
         self.walletTableViewData.insert(movedObject, at: destinationIndexPath.row)
     }
-    /*
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        
-        for view in cell.subviews {
-            
-            if view.self.description.contains("UITableViewCellReorderControl") {
-                
-                let movedReorderControl = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.maxX, height: view.frame.maxY))
-                movedReorderControl.addSubview(view)
-                cell.addSubview(movedReorderControl)
-                let moveLeft = CGSize(width: movedReorderControl.frame.size.width - view.frame.size.width, height: movedReorderControl.frame.size.height - view.frame.size.height)
-                var transform: CGAffineTransform = .identity
-                transform = transform.translatedBy(x: -moveLeft.width, y: -moveLeft.height)
-                movedReorderControl.transform = transform
-            }
-        }
-    }*/
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        self.tableView.isEditing = true
+        //self.tableView.isEditing = true
         if selectedIndex == indexPath.row {
             
             self.selectedIndex = nil

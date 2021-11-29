@@ -14,8 +14,8 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        ExchangeRatesManager.shared.configure()
-        GasRatesManager.shared.configure()
+        XEExchangeRatesManager.shared.configure()
+        XEGasRatesManager.shared.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -35,7 +35,7 @@ class SplashViewController: UIViewController {
         if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
 
             if let existingItem = item as? [String: Any],
-               let username = existingItem[kSecAttrAccount as String] as? String,
+               let _ = existingItem[kSecAttrAccount as String] as? String,
                let passwordData = existingItem[kSecValueData as String] as? Data,
                let password = String(data: passwordData, encoding: .utf8)
             {

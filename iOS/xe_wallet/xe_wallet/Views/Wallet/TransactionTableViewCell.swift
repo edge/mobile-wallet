@@ -56,13 +56,8 @@ class TransactionTableViewCell: UITableViewCell {
             self.statusLabel.text = TransactionStatus.confirmed.rawValue
             self.sumStatusLabel.text = TransactionStatus.confirmed.rawValue
         }
-        
-        
-        
-        //Double(0.123456789).roundToPlaces(4)
-        
-        
-        let valString = CryptoHelpers.generateCryptoValueString(value: (Double(data.amount)/1000000) ?? 0)
+
+        let valString = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
         self.amountLabel.text = "\(valString)"
         //self.statusLabel.text = "\(data.status.rawValue)"
         

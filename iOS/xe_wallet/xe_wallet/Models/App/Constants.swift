@@ -69,6 +69,9 @@ class Constants {
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
     static var XE_networkTestNetTitle = "Edge (XE) Testnet"
     
+    static var XE_mainNetBridge = "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F"
+    static var XE_testNetBridge = "xe_BEE3d7E5f007b662B2C886d51e2B3E08de090488"
+    
     /// TIMERS
 
     static var XE_GasPriceUpdateTime = 2.0

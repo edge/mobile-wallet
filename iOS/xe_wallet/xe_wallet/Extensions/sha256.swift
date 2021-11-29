@@ -30,7 +30,8 @@ extension Data{
         var hexString = ""
         for byte in bytes {
             
-            hexString += String(format:"%02x", UInt8(byte))
+            //let val = UInt8(byte)
+            hexString += String(format:"%02x", byte)
         }
         
         return hexString

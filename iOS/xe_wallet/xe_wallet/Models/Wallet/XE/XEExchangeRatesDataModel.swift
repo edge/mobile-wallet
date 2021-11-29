@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import web3swift
 
-class ExchangeRatesDataModel: Codable {
+class XEExchangeRatesDataModel: Codable {
 
     var date: String
     var ref: String
@@ -37,13 +37,12 @@ class ExchangeRatesDataModel: Codable {
     }
 }
 
-class ExchangeRatesManager {
+class XEExchangeRatesManager {
 
-    static let shared = ExchangeRatesManager()
+    static let shared = XEExchangeRatesManager()
     
-    var exchangeDataModel: ExchangeRatesDataModel? = nil
+    var exchangeDataModel: XEExchangeRatesDataModel? = nil
     var timer: Timer?
-    var etherValue: NSNumber = 0
     
     private init() {
         
@@ -51,7 +50,6 @@ class ExchangeRatesManager {
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
             self.downloadExchangeRates()
-            self.getCurrentEtherValue()
         }
     }
     
@@ -59,16 +57,11 @@ class ExchangeRatesManager {
         
     }
     
-    func getRates() -> ExchangeRatesDataModel? {
+    func getRates() -> XEExchangeRatesDataModel? {
         
         return self.exchangeDataModel
     }
-    
-    func getEtherRate() -> NSNumber {
         
-        return self.etherValue
-    }
-    
     func downloadExchangeRates() {
         
         Alamofire.request(Constants.XE_ExchangeRatesUrl, method: .get, encoding: URLEncoding.queryString, headers: nil)
@@ -87,7 +80,7 @@ class ExchangeRatesManager {
 
                 do {
 
-                    self.exchangeDataModel = try JSONDecoder().decode(ExchangeRatesDataModel.self, from: response.data!)
+                    self.exchangeDataModel = try JSONDecoder().decode(XEExchangeRatesDataModel.self, from: response.data!)
 
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
@@ -97,16 +90,5 @@ class ExchangeRatesManager {
                     print("Request error: \(error.localizedDescription)")
              }
          }
-    }
-    
-    func getCurrentEtherValue() {
-        
-        CurrencyType.eth.requestValue { (value) in
-            
-            DispatchQueue.global().async {
-                
-                self.etherValue = value ?? 0
-            }
-        }
     }
 }

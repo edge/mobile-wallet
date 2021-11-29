@@ -33,7 +33,8 @@ class NetworkViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
+        self.title = AppDataModelManager.shared.getNetworkStatus().rawValue
+        //getNetworkTitleString()
     }
     
     @objc func backTapped(sender: UIBarButtonItem) {
@@ -56,7 +57,7 @@ class NetworkViewController: BaseViewController {
     
     @IBAction func selectNetworkButtonPressed(_ sender: Any) {
         
-        let networkText = AppDataModelManager.shared.getNetworkTitleString(status: self.testnetStatus)
+        let networkText = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString(status: self.testnetStatus)
         
         let alert = UIAlertController(title: Constants.networkChangeConfirmMessageHeader , message: "\(Constants.networkChangeConfirmMessage) \(networkText)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in

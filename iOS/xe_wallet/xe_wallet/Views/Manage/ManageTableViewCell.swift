@@ -29,10 +29,11 @@ class ManageTableViewCell: UITableViewCell {
     
     var address: String = ""
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+
     }
     
     func configure(data: WalletDataModel) {
@@ -42,12 +43,12 @@ class ManageTableViewCell: UITableViewCell {
         self.walletIconImage.image = UIImage(named:"\(data.type.rawValue)")
         self.addressLabel.text = "\(data.address)"
         
-        var amount = 0
+        var amount: Double = 0
         if let status = data.status {
             
             amount = status.balance
         }
-        let valString = CryptoHelpers.generateCryptoValueString(value: (Double(amount)/1000000) ?? 0)
+        let valString = CryptoHelpers.generateCryptoValueString(value: amount)
         self.amountLabel.text = "\(valString) \(data.type.getDisplayLabel())"
         
         self.subCreatedLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.created))
@@ -63,6 +64,4 @@ class ManageTableViewCell: UITableViewCell {
         
         self.delegate?.removeButtonPressed(address: address)
     }
-    
-
 }

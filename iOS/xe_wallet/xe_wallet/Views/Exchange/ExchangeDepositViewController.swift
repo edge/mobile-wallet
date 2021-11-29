@@ -60,7 +60,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
@@ -113,7 +113,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
             
             self.toDropDown.dataSource.append(wallet.address)
             cellImages.append(wallet.type.rawValue)
-            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0)/1000000)) \(wallet.type.getDisplayLabel())")
+            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0))) \(wallet.type.getDisplayLabel())")
         }
         
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]
@@ -221,7 +221,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
                 
                 let walletAmount = status.balance
                 
-                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
                     
                     shouldBeActive = true
                 }
@@ -230,7 +230,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
                 shouldBeActive = false
             }
         }
-                
+             
         if self.isReviewActive != shouldBeActive {
             
             self.isReviewActive = shouldBeActive

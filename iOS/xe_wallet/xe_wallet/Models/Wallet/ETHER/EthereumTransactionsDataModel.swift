@@ -7,7 +7,7 @@
 
 import Foundation
 
-class EtherTransactionsModel: Codable {
+class EtherTransactionsDataModel: Codable {
     
     var result: [EtherTransactionDataModel]?
     var status: String?

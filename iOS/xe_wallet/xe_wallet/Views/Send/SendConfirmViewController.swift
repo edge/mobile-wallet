@@ -58,7 +58,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         
         self.title = "Confirm"
         
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
@@ -204,7 +204,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         view.endEditing(true)
     }
     
-    @objc func textFieldDidChange(_ textField: UITextField) {
+    @objc private func textFieldDidChange(_ textField: UITextField) {
 
         if let characters = textField.text?.count {
         
@@ -227,7 +227,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                WalletDataModelManager.shared.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, completion: { res in
+                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
+                                wallet.type.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
                                     
                                     if res {
                                         

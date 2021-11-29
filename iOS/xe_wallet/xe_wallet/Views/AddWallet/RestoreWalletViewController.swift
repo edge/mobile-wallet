@@ -120,7 +120,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
             self.showSpinner(onView: self.backgroundView)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 ) {
             
-                if let walletData = WalletDataModelManager.shared.restoreWallet(type: self.type, key: self.privateKeyTextView.text) {
+                if let walletData = self.type.restoreWallet(key: self.privateKeyTextView.text) {
                     
                     WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
                     self.removeSpinner()

@@ -43,9 +43,10 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     var timerGasPrice : Timer?
     var exchangeFee = ""
+    var totalFee: Double = 0
     
-    var gasRatesDataModel: GasRatesDataModel? = nil
-    var exchangeRatesDataModel: ExchangeRatesDataModel? = nil
+    var gasRatesDataModel: XEGasRatesDataModel? = nil
+    var exchangeRatesDataModel: XEExchangeRatesDataModel? = nil
     
     var confirmStatus = SendConfirmStatus.confirm
     
@@ -65,14 +66,14 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
         
         if let fWallet = self.walletData {
             
-            self.fromImageView.image = UIImage(named: fWallet.type.rawValue ?? "" )
+            self.fromImageView.image = UIImage(named: fWallet.type.rawValue )
             self.fromAddressLabel.text = fWallet.address
             self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDisplayLabel())"
         }
         
         if let tWallet = self.toWalletData {
             
-            self.toImageView.image = UIImage(named: tWallet.type.rawValue ?? "" )
+            self.toImageView.image = UIImage(named: tWallet.type.rawValue )
             self.toAddressLabel.text = tWallet.address
             self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
         }
@@ -190,8 +191,8 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
     
     func updateRates() {
         
-        self.gasRatesDataModel = GasRatesManager.shared.getRates()
-        self.exchangeRatesDataModel = ExchangeRatesManager.shared.getRates()
+        self.gasRatesDataModel = XEGasRatesManager.shared.getRates()
+        self.exchangeRatesDataModel = XEExchangeRatesManager.shared.getRates()
         self.displayGasRates()
     }
     
@@ -199,24 +200,25 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
         
         if let gas = self.gasRatesDataModel {
             
-            var amount: String = self.amount ?? "0"
+            var amount: String = self.amount
             if amount == "" {
                 
                 amount = "0"
             }
             //var percent = gas.handlingFeePercentage
-            var value = (Double(amount) ?? 0)/100
+            let value = (Double(amount) ?? 0)/100
             var handlingFee = value * gas.handlingFeePercentage
             if handlingFee < gas.minimumHandlingFee {
                 
                 handlingFee = gas.minimumHandlingFee
             }
-            var totalFee = Double(gas.fast) + handlingFee
-            var exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
+            let totalFee = Double(gas.fast) + handlingFee
+            let exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
             self.exchangeFee = "\(totalFee)XE"
+            self.totalFee = totalFee
             
-            var cost = exchangeRate * totalFee
-            self.gasPriceLabel.text = "\(self.exchangeFee) ($\(String(format: "%.2f", cost as! CVarArg))USD)"
+            let cost = exchangeRate * totalFee
+            self.gasPriceLabel.text = "\(self.exchangeFee) ($\(String(format: "%.2f", cost as CVarArg))USD)"
         }
     }
 
@@ -267,8 +269,8 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
                                 let amountValue = Float(self.amount)
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
-                                
-                                WalletDataModelManager.shared.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount, completion: { res in
+                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
+                                wallet.type.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount, fee: self.totalFee, key: key, completion: { res in
                                     
                                     if res {
                                         

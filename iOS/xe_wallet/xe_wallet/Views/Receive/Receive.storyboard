@@ -113,14 +113,18 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDT-eM-n53">
                                                         <rect key="frame" x="8" y="8" width="84" height="84"/>
                                                         <subviews>
-                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-TA-WjM">
-                                                                <rect key="frame" x="16" y="16" width="47" height="44"/>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pA-TA-WjM">
+                                                                <rect key="frame" x="16" y="16" width="52" height="52"/>
                                                             </imageView>
                                                         </subviews>
                                                         <color key="backgroundColor" name="MainBlack"/>
                                                         <constraints>
+                                                            <constraint firstItem="8pA-TA-WjM" firstAttribute="top" secondItem="hDT-eM-n53" secondAttribute="top" constant="16" id="1wV-pX-iyJ"/>
+                                                            <constraint firstItem="8pA-TA-WjM" firstAttribute="leading" secondItem="hDT-eM-n53" secondAttribute="leading" constant="16" id="3KF-Q7-yBo"/>
                                                             <constraint firstItem="8pA-TA-WjM" firstAttribute="centerY" secondItem="hDT-eM-n53" secondAttribute="centerY" id="6h6-P1-3w8"/>
+                                                            <constraint firstAttribute="bottom" secondItem="8pA-TA-WjM" secondAttribute="bottom" constant="16" id="7S1-9F-qnE"/>
                                                             <constraint firstItem="8pA-TA-WjM" firstAttribute="centerX" secondItem="hDT-eM-n53" secondAttribute="centerX" id="DFB-8g-k51"/>
+                                                            <constraint firstAttribute="trailing" secondItem="8pA-TA-WjM" secondAttribute="trailing" constant="16" id="Dob-Gu-vhd"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

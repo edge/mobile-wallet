@@ -51,8 +51,8 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     var timerGasPrice : Timer?
     var exchangeFee = ""
     
-    var gasRatesDataModel: GasRatesDataModel? = nil
-    var exchangeRatesDataModel: ExchangeRatesDataModel? = nil
+    var gasRatesDataModel: XEGasRatesDataModel? = nil
+    var exchangeRatesDataModel: XEExchangeRatesDataModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,8 +132,8 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
     
     func updateRates() {
         
-        self.gasRatesDataModel = GasRatesManager.shared.getRates()
-        self.exchangeRatesDataModel = ExchangeRatesManager.shared.getRates()
+        self.gasRatesDataModel = XEGasRatesManager.shared.getRates()
+        self.exchangeRatesDataModel = XEExchangeRatesManager.shared.getRates()
         self.displayGasRates()
     }
     
@@ -287,7 +287,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
                 
                 let walletAmount = status.balance
                 
-                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount)/1000000 {
+                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
                     
                     shouldBeActive = true
                     self.displayGasRates()
@@ -297,7 +297,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
                 shouldBeActive = false
             }
         }
-                
+          
         if self.isReviewActive != shouldBeActive {
             
             self.isReviewActive = shouldBeActive

@@ -77,7 +77,7 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             self.showSpinner(onView: self.backgroundView)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.1 ) {
             
-                self.walletData = WalletDataModelManager.shared.generateWallet(type: self.type)
+                self.walletData = self.type.createWallet()// WalletDataModelManager.shared.generateWallet(type: self.type)
                 self.removeSpinner()
                 if let data = self.walletData {
                     

@@ -1,45 +1,17 @@
 //
-//  TransactionsDataModel.swift
+//  Transaction.swift
 //  xe_wallet
 //
-//  Created by Paul Davis on 26/11/2021.
+//  Created by Paul Davis on 11/10/2021.
 //
 
 import UIKit
 import CryptoSwift
 
-enum TransactionType: String {
-    
-    case send = "Sent"
-    case receive = "Received"
-    case exchange = "Exchanged"
-    
-    func getImageName() -> String {
-        
-        switch self {
-        case .send:
-            return "send"
-            
-        case .receive:
-            return "receive"
-            
-        case .exchange:
-            return "exchange"
-        }
-    }
-}
+struct XETransactionsDataModel: Codable {
 
-enum TransactionStatus: String {
-    
-    case pending = "Pending"
-    case confirmed = "Confirmed"
-}
-
-
-struct TransactionsDataModel: Codable {
-
-    var results: [TransactionRecordDataModel]?
-    var metadata: TransactionMetaDataModel?
+    var results: [XETransactionRecordDataModel]?
+    var metadata: XETransactionMetaDataModel?
     
     enum CodingKeys: String, CodingKey {
         
@@ -50,40 +22,12 @@ struct TransactionsDataModel: Codable {
     public init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.results = try container.decode([TransactionRecordDataModel].self, forKey: .results)
-        self.metadata = try container.decode(TransactionMetaDataModel.self, forKey: .metadata)
-    }
-    
-    public init(from xe: XETransactionsDataModel) {
-        
-        guard let results = xe.results else { return }
-        
-        var res = [TransactionRecordDataModel]()
-
-        for n in results {
-            
-            let newRecord = TransactionRecordDataModel(from: n)
-            res.append(newRecord)
-        }
-        self.results = res
-    }
-    
-    public init(from ether: EtherTransactionsDataModel) {
-        
-        guard let results = ether.result else { return }
-        
-        var res = [TransactionRecordDataModel]()
-
-        for n in results {
-            
-            let newRecord = TransactionRecordDataModel(from: n)
-            res.append(newRecord)
-        }
-        self.results = res
+        self.results = try container.decode([XETransactionRecordDataModel].self, forKey: .results)
+        self.metadata = try container.decode(XETransactionMetaDataModel.self, forKey: .metadata)
     }
 }
 
-struct TransactionMetaDataModel: Codable {
+struct XETransactionMetaDataModel: Codable {
 
     var address: String
     var totalCount: Int
@@ -114,17 +58,17 @@ struct TransactionMetaDataModel: Codable {
     }
 }
 
-struct TransactionRecordDataModel: Codable {
+struct XETransactionRecordDataModel: Codable {
 
     var timestamp: Int
     var sender: String
     var recipient: String
     var amount: Int
-    var data: TransactionDataDataModel?
+    var data: XETransactionDataDataModel?
     var nonce: Int
     var signature: String
     var hash: String
-    var block: TransactionBlockDataModel?
+    var block: XETransactionBlockDataModel?
     var confirmations: Int?
     var status: TransactionStatus?
     
@@ -149,70 +93,22 @@ struct TransactionRecordDataModel: Codable {
         self.sender = try container.decode(String.self, forKey: .sender)
         self.recipient = try container.decode(String.self, forKey: .recipient)
         self.amount = try container.decode(Int.self, forKey: .amount)
-        self.data = try container.decode(TransactionDataDataModel.self, forKey: .data)
+        self.data = try container.decode(XETransactionDataDataModel.self, forKey: .data)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
         self.signature = try container.decode(String.self, forKey: .signature)
         self.hash = try container.decode(String.self, forKey: .hash)
-        self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
+        self.block = try container.decode(XETransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
 
     }
-    
-    public init(from ether: EtherTransactionDataModel) {
         
-        self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
-        self.sender = ether.from ?? ""
-        self.recipient = ether.to ?? ""
-        self.amount = Int((ether.value ?? "0000000000000").dropLast(12)) ?? 0
-        self.data = TransactionDataDataModel()
-        self.nonce = Int(ether.nonce ?? "0") ?? 0
-        self.signature = ""
-        self.hash = ether.hash ?? ""
-        self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
-        self.confirmations = Int(ether.confirmations ?? "0") ?? 0
-        self.status = .confirmed
-    }
-    
-    public init(from xe: XETransactionRecordDataModel) {
-        
-        self.timestamp = xe.timestamp
-        self.sender = xe.sender
-        self.recipient = xe.recipient
-        self.amount = xe.amount / 1000000
-        if let data = xe.data {
-            
-            self.data = TransactionDataDataModel(from: data)
-        } else {
-            
-            self.data = nil
-        }
-        self.nonce = xe.nonce
-        self.signature = xe.signature
-        self.hash = xe.hash
-        if let block = xe.block {
-            
-            self.block = TransactionBlockDataModel(from: block)
-        } else {
-            
-            self.block = nil
-        }
-        self.confirmations = xe.confirmations
-        self.status = .confirmed
-    }
-    
     public init(from pending: XETransactionPendingRecordDataModel) {
         
         self.timestamp =  pending.timestamp
         self.sender = pending.sender
         self.recipient = pending.recipient
         self.amount = pending.amount / 1000000
-        if let data = pending.data {
-            
-            self.data = TransactionDataDataModel(from: data)
-        } else {
-            
-            self.data = nil
-        }
+        self.data = pending.data
         self.nonce = pending.nonce
         self.signature = pending.signature
         self.hash = pending.hash
@@ -220,13 +116,13 @@ struct TransactionRecordDataModel: Codable {
     }
 }
 
-struct TransactionPendingRecordDataModel: Codable {
+struct XETransactionPendingRecordDataModel: Codable {
 
     var timestamp: Int
     var sender: String
     var recipient: String
     var amount: Int
-    var data: TransactionDataDataModel?
+    var data: XETransactionDataDataModel?
     var nonce: Int
     var signature: String
     var hash: String
@@ -250,33 +146,15 @@ struct TransactionPendingRecordDataModel: Codable {
         self.sender = try container.decode(String.self, forKey: .sender)
         self.recipient = try container.decode(String.self, forKey: .recipient)
         self.amount = try container.decode(Int.self, forKey: .amount)
-        self.data = try container.decode(TransactionDataDataModel.self, forKey: .data)
+        self.data = try container.decode(XETransactionDataDataModel.self, forKey: .data)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
         self.signature = try container.decode(String.self, forKey: .signature)
         self.hash = try container.decode(String.self, forKey: .hash)
     }
-    
-    public init(from xe: XETransactionPendingRecordDataModel) {
-        
-        self.timestamp = xe.timestamp
-        self.sender = xe.sender
-        self.recipient = xe.recipient
-        self.amount = xe.amount
-        if let data = xe.data {
-            
-            self.data = TransactionDataDataModel(from: data)
-        } else {
-            
-            self.data = nil
-        }
-        self.nonce = xe.nonce
-        self.signature = xe.signature
-        self.hash = xe.hash
-    }
 }
 
 
-struct TransactionDataDataModel: Codable {
+struct XETransactionDataDataModel: Codable {
 
     var memo: String
     
@@ -295,14 +173,9 @@ struct TransactionDataDataModel: Codable {
         
         self.memo = ""
     }
-    
-    public init(from xe:XETransactionDataDataModel) {
-        
-        self.memo = xe.memo
-    }
 }
 
-struct TransactionBlockDataModel: Codable {
+struct XETransactionBlockDataModel: Codable {
 
     var height: Int
     var hash: String
@@ -325,12 +198,5 @@ struct TransactionBlockDataModel: Codable {
         self.height = height
         self.hash = hash
     }
-    
-    public init(from xe: XETransactionBlockDataModel) {
-        
-        self.height = xe.height
-        self.hash = xe.hash
-    }
 }
-
 

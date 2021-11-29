@@ -12,7 +12,7 @@ extension Data {
     
     public func toHex() -> String {
         
-        return map { String(format: "%02x", UInt8($0)) }.joined()
+        return map { String(format: "%02x", try! UInt8($0)) }.joined()
     }
 }
 

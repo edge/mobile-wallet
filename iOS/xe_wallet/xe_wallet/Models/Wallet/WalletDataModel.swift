@@ -14,6 +14,10 @@ class WalletDataModel: Codable {
     var address: String
     var created: Double
     var backedup: Double
+    
+    //var xeWallet: XEWalletDataModel?
+    //var etherWallet: EtherWalletDataModel?
+    
     var status: WalletStatusDataModel?
     var transactions: TransactionsDataModel?
     
@@ -23,6 +27,9 @@ class WalletDataModel: Codable {
         case address
         case created
         case backedup
+        //case xeWallet
+        //case etherWallet
+        
         case status
         case transactions
     }
@@ -34,10 +41,14 @@ class WalletDataModel: Codable {
         self.address = try container.decode(String.self, forKey: .address)
         self.created = try container.decode(Double.self, forKey: .created)
         self.backedup = try container.decode(Double.self, forKey: .backedup)
+        //self.xeWallet = try container.decodeIfPresent(XEWalletDataModel.self, forKey: .xeWallet)
+        //self.etherWallet = try container.decodeIfPresent(EtherWalletDataModel.self, forKey: .etherWallet)
+        
         self.status = try container.decode(WalletStatusDataModel.self, forKey: .status)
         self.transactions = nil
         
-        self.downloadWalletsData()
+        self.downloadWalletStatus()
+        self.downloadWalletTransactions()
     }
     
     public init(type: WalletType, address: String) {
@@ -46,43 +57,43 @@ class WalletDataModel: Codable {
         self.address = address
         self.created = Date().timeIntervalSince1970
         self.backedup = Date().timeIntervalSince1970
+                        
+        /*if type == .xe {
+            
+            self.xeWallet = XEWalletDataModel(address: address)
+        } else if type == .ethereum {
+            
+            self.etherWallet = EtherWalletDataModel(address: address)
+        }*/
+        
         self.status = WalletStatusDataModel(address: address, balance: 0, nonce: 0)
         self.transactions = nil
         
-        self.downloadWalletsData()
+        self.downloadWalletStatus()
+        self.downloadWalletTransactions()
     }
     
-// TODO use protocols for wallets with same functionality
-    
-    func downloadWalletsData() {
+    func downloadWalletStatus() {
                 
         switch self.type {
             
         case .xe:
-            let walletController = XEWallet()
+            XEWallet().downloadStatus(address: self.address, completion: { status in
             
-            walletController.downloadStatus(address: self.address, completion:{ status in
-            
-                self.status = status
-                walletController.downloadTransactions(address: self.address, completion:{ transactions in
+                if let stat = status {
                 
-                    self.transactions = transactions
-                    
-                    NotificationCenter.default.post(name: .didReceiveData, object: nil)
-                })
+                    self.status = WalletStatusDataModel(from: stat)
+                }
             })
             break
             
         case .ethereum:
-            let walletController = EtherWallet()
-            walletController.downloadStatus(address: self.address, completion:{ status in
-            
-                self.status = status
-                walletController.downloadTransactions(address: self.address, completion:{ transactions in
+            EtherWallet().downloadStatus(address: self.address, completion: { status in
                 
-                    self.transactions = transactions
-                    NotificationCenter.default.post(name: .didReceiveData, object: nil)
-                })
+                if let stat = status {
+                
+                    self.status = WalletStatusDataModel(from: stat)
+                }
             })
             break
             
@@ -90,4 +101,59 @@ class WalletDataModel: Codable {
             break
         }
     }
+    
+    func downloadWalletTransactions() {
+                
+        switch self.type {
+            
+        case .xe:
+            XEWallet().downloadTransactions(address: self.address, completion: { transactions in
+            
+                if let trans = transactions {
+                
+                    self.transactions = TransactionsDataModel(from: trans)
+                }
+            })
+            XEWallet().downloadPendingTransactions(address: self.address, completion: { transactions in
+            
+                if let trans = transactions {
+                
+                    var newArray = [TransactionRecordDataModel]()
+                    for t in trans {
+
+                        let newRecord = TransactionRecordDataModel(from: t)
+                        newArray.append(newRecord)
+                    }
+                    
+                    if self.transactions?.results == nil {
+                        
+                        self.transactions?.results = [TransactionRecordDataModel]()
+                    }
+                    
+                    if var oldTrans = self.transactions?.results {
+                        
+                        oldTrans.insert(contentsOf: newArray, at: 0)
+                        self.transactions?.results = oldTrans
+                    }
+
+                }
+            })
+            NotificationCenter.default.post(name: .didReceiveData, object: nil)
+            break
+            
+        case .ethereum:
+            EtherWallet().downloadStatus(address: self.address, completion: { status in
+                
+                if let stat = status {
+                
+                    self.status = WalletStatusDataModel(from: stat)
+                }
+            })
+            break
+            
+        case .edge:
+            break
+        }
+    }
+    
 }

@@ -24,7 +24,7 @@ class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableV
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        self.title = AppDataModelManager.shared.getNetworkTitleString()
+        self.title = AppDataModelManager.shared.getNetworkStatus().rawValue// getNetworkTitleString()
     }
     
     @objc func backTapped(sender: UIBarButtonItem) {

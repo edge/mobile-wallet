@@ -87,4 +87,76 @@ enum WalletType: String, Codable {
             return "0x"
         }
     }
+
+    func createWallet() -> AddressKeyPairModel? {
+        
+        switch self {
+            
+        case .xe:
+            return XEWallet().generateWallet(type: .xe)
+            
+        case .edge:
+            return EtherWallet().generateWallet(type: .ethereum)
+            
+        case .ethereum:
+            return EtherWallet().generateWallet(type: .ethereum)
+        }
+    }
+    
+    public func restoreWallet(key: String) -> AddressKeyPairModel? {
+        
+        switch self {
+            
+        case .xe:
+            return XEWallet().generateWalletFromPrivateKey(privateKeyString: key)
+            
+        case .ethereum:
+            return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
+            
+        case .edge:
+            return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
+        }
+    }
+
+    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
+        
+        switch self {
+            
+        case .xe:
+            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
+            break
+            
+        case .ethereum:
+            break
+            
+        case .edge:
+            break
+        }
+    }
+    
+    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
+        
+        switch self {
+            
+        case .xe:
+            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, fee: fee, key: key, completion: { res in
+                
+                completion( res )
+            })
+            break
+            
+        case .ethereum:
+            EtherWallet().depositCoins(wallet: wallet, toAddress: toAddress, amount: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
+            break
+            
+        case .edge:
+            break
+        }
+    }
 }

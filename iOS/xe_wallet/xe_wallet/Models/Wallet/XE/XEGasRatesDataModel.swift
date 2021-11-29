@@ -8,7 +8,7 @@
 import UIKit
 import Alamofire
 
-class GasRatesDataModel: Codable {
+class XEGasRatesDataModel: Codable {
 
     var date: Int
     var average: Int
@@ -42,11 +42,11 @@ class GasRatesDataModel: Codable {
     }
 }
 
-class GasRatesManager {
+class XEGasRatesManager {
 
-    static let shared = GasRatesManager()
+    static let shared = XEGasRatesManager()
     
-    var gasDataModel: GasRatesDataModel? = nil
+    var gasDataModel: XEGasRatesDataModel? = nil
     var timer: Timer?
     
     private init() {
@@ -62,7 +62,7 @@ class GasRatesManager {
         
     }
     
-    func getRates() -> GasRatesDataModel? {
+    func getRates() -> XEGasRatesDataModel? {
         
         return self.gasDataModel
     }
@@ -85,7 +85,7 @@ class GasRatesManager {
 
                 do {
 
-                    self.gasDataModel = try JSONDecoder().decode(GasRatesDataModel.self, from: response.data!)
+                    self.gasDataModel = try JSONDecoder().decode(XEGasRatesDataModel.self, from: response.data!)
 
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
