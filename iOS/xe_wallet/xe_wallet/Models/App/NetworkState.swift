@@ -121,6 +121,15 @@ enum NetworkState: String, Codable {
         }
     }
     
-    
-
+    func getInfuraUrl() -> String {
+                    
+        switch self {
+                        
+        case .main:
+            return "https://mainnet.infura.io/v3/f4953edd390547d3bb63dd1f76af13f2"
+                        
+        case .test:
+            return "https://rinkeby.infura.io/v3/f4953edd390547d3bb63dd1f76af13f2"
+        }
+    }
 }

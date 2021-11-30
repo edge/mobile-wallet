@@ -78,6 +78,10 @@
 		FD5C2172275508BE00795A2F /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C2171275508BE00795A2F /* NetworkState.swift */; };
 		FD5C21742755097300795A2F /* HttpBodyStringEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21732755097300795A2F /* HttpBodyStringEncoding.swift */; };
 		FD5C217D27550C1F00795A2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5C217B27550C1F00795A2F /* Main.storyboard */; };
+		FD5C21862755404E00795A2F /* EtherWallet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21852755404E00795A2F /* EtherWallet2.swift */; };
+		FD5C218C27564D2400795A2F /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218B27564D2400795A2F /* Web3 */; };
+		FD5C218E27564D2400795A2F /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218D27564D2400795A2F /* Web3ContractABI */; };
+		FD5C219027564D2400795A2F /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218F27564D2400795A2F /* Web3PromiseKit */; };
 		FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */ = {isa = PBXBuildFile; productRef = FD6018D8272F3EA300F78EBE /* keccak256 */; };
 		FD6018DD272F443A00F78EBE /* SwiftKeccak in Frameworks */ = {isa = PBXBuildFile; productRef = FD6018DC272F443A00F78EBE /* SwiftKeccak */; };
 		FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD6018DE272F465500F78EBE /* String+Ext.swift */; };
@@ -199,6 +203,7 @@
 		FD5C2171275508BE00795A2F /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		FD5C21732755097300795A2F /* HttpBodyStringEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBodyStringEncoding.swift; sourceTree = "<group>"; };
 		FD5C217C27550C1F00795A2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
+		FD5C21852755404E00795A2F /* EtherWallet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherWallet2.swift; sourceTree = "<group>"; };
 		FD601834272DE06000F78EBE /* RobotoMono-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Thin.ttf"; sourceTree = "<group>"; };
 		FD601835272DE06000F78EBE /* RobotoMono-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Bold.ttf"; sourceTree = "<group>"; };
 		FD601836272DE06000F78EBE /* RobotoMono-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoMono-Medium.ttf"; sourceTree = "<group>"; };
@@ -246,9 +251,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD5C219027564D2400795A2F /* Web3PromiseKit in Frameworks */,
+				FD5C218C27564D2400795A2F /* Web3 in Frameworks */,
 				FD74269B274B10CD0046D148 /* Toast in Frameworks */,
 				FD6018F2273229C100F78EBE /* IQKeyboardManagerSwift in Frameworks */,
 				FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */,
+				FD5C218E27564D2400795A2F /* Web3ContractABI in Frameworks */,
 				FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */,
 				FD74268227480F980046D148 /* Crypto in Frameworks */,
 				FD6018DD272F443A00F78EBE /* SwiftKeccak in Frameworks */,
@@ -491,6 +499,7 @@
 				FD5C21462755087000795A2F /* EtherExchangeRatesManager.swift */,
 				FD5C21492755087000795A2F /* EthereumTransactionsDataModel.swift */,
 				FD5C21472755087000795A2F /* EtherWalletDataModel.swift */,
+				FD5C21852755404E00795A2F /* EtherWallet2.swift */,
 			);
 			path = ETHER;
 			sourceTree = "<group>";
@@ -671,6 +680,9 @@
 				FD74268127480F980046D148 /* Crypto */,
 				FD74268327480F980046D148 /* _CryptoExtras */,
 				FD74269A274B10CD0046D148 /* Toast */,
+				FD5C218B27564D2400795A2F /* Web3 */,
+				FD5C218D27564D2400795A2F /* Web3ContractABI */,
+				FD5C218F27564D2400795A2F /* Web3PromiseKit */,
 			);
 			productName = xe_wallet;
 			productReference = FD22ED57270F04B800B5B33F /* xe_wallet.app */;
@@ -707,6 +719,7 @@
 				FDB72A3A273DF3160071711F /* XCRemoteSwiftPackageReference "secp256k1.swift" */,
 				FD74268027480F980046D148 /* XCRemoteSwiftPackageReference "swift-crypto" */,
 				FD742699274B10CD0046D148 /* XCRemoteSwiftPackageReference "Toast-Swift" */,
+				FD5C218A27564D2300795A2F /* XCRemoteSwiftPackageReference "Web3.swift" */,
 			);
 			productRefGroup = FD22ED58270F04B800B5B33F /* Products */;
 			projectDirPath = "";
@@ -865,6 +878,7 @@
 				FD073DEA27110D2F0077F184 /* WalletCollectionViewCell.swift in Sources */,
 				FD5C21632755087000795A2F /* EtherExchangeRatesManager.swift in Sources */,
 				FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */,
+				FD5C21862755404E00795A2F /* EtherWallet2.swift in Sources */,
 				FD5C21592755087000795A2F /* Error.swift in Sources */,
 				FD073E07271494130077F184 /* SettingsMenuItemTableViewCell.swift in Sources */,
 				FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */,
@@ -1115,6 +1129,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		FD5C218A27564D2300795A2F /* XCRemoteSwiftPackageReference "Web3.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Boilertalk/Web3.swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		FD6018D7272F3EA300F78EBE /* XCRemoteSwiftPackageReference "keccak256" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/yeeth/keccak256.swift";
@@ -1166,6 +1188,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		FD5C218B27564D2400795A2F /* Web3 */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD5C218A27564D2300795A2F /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3;
+		};
+		FD5C218D27564D2400795A2F /* Web3ContractABI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD5C218A27564D2300795A2F /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3ContractABI;
+		};
+		FD5C218F27564D2400795A2F /* Web3PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FD5C218A27564D2300795A2F /* XCRemoteSwiftPackageReference "Web3.swift" */;
+			productName = Web3PromiseKit;
+		};
 		FD6018D8272F3EA300F78EBE /* keccak256 */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = FD6018D7272F3EA300F78EBE /* XCRemoteSwiftPackageReference "keccak256" */;

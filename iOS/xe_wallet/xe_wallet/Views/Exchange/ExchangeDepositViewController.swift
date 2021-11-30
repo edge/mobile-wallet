@@ -221,10 +221,10 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
                 
                 let walletAmount = status.balance
                 
-                if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
+                //if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
                     
                     shouldBeActive = true
-                }
+                //}
             } else {
                 
                 shouldBeActive = false

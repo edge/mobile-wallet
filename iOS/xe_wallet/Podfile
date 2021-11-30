@@ -5,7 +5,7 @@ target 'xe_wallet' do
    	use_frameworks!
 	pod 'SwiftKeychainWrapper'
 	pod 'FAPaginationLayout'
-	pod 'web3swift', :git => 'https://github.com/PJDavis1970/web3swift'
+	pod 'web3swift', :git => 'https://github.com/skywinder/web3swift'
 	pod 'Alamofire', '~> 4.4'
 	pod 'DataCache'
 	pod 'SwiftyJSON', '~> 4.0'

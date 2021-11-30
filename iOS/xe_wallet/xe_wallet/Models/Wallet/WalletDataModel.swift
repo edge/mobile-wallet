@@ -95,6 +95,7 @@ class WalletDataModel: Codable {
                     self.status = WalletStatusDataModel(from: stat)
                 }
             })
+            EtherWallet2().getBalance(address: self.address)
             break
             
         case .edge:

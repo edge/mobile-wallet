@@ -25,7 +25,7 @@ struct Wallet {
 class EtherWallet {
     
     public func generateWallet(type:WalletType) -> AddressKeyPairModel {
-                
+                        
         let password = AppDataModelManager.shared.getAppPinCode()
         let keystore = try! EthereumKeystoreV3(password: password)!
         //let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
@@ -181,19 +181,93 @@ class EtherWallet {
         }*/
     }
     
+    func sendEdge(wallet: WalletDataModel, toAddress: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
+        
+        let password = "web3swift"
+        let key = "9b93770e1a7b0b7352ffd3017054a3272757001e5e8734c89d93f0d930f010e5" // Some private key
+        let formattedKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
+        let dataKey = Data.fromHex(formattedKey)!
+        let keystore = try! EthereumKeystoreV3(privateKey: dataKey, password: password)!
+        let name = "New Wallet"
+        let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
+        let address = keystore.addresses!.first!.address
+        let wallet2 = Wallet(address: address, data: keyData, name: name, isHD: false)
+        
+        let data = wallet2.data
+        let keystoreManager: KeystoreManager
+        if wallet2.isHD {
+            let keystore = BIP32Keystore(data)!
+            keystoreManager = KeystoreManager([keystore])
+        } else {
+            let keystore = EthereumKeystoreV3(data)!
+            keystoreManager = KeystoreManager([keystore])
+        }
+        
+        let web3 = Web3.InfuraRinkebyWeb3()
+        web3.addKeystoreManager(keystoreManager)
+        
+        
+        let value: String = "0" // Any amount of Ether you need to send
+        let walletAddress = EthereumAddress(wallet2.address)! // Your wallet address
+        
+        let tAddress = EthereumAddress("0x05D7F6CD1cDc12A5e623d7A4c0f1E22842757D20")
+        let amount = Web3.Utils.parseToBigUInt("10", units: .eth)
+        //let parameters: [tAddress as Any, amount as Any] as [AnyObject],
+        
+        let erc20ContractAddress = EthereumAddress("0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301")
+        let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
+        
+        var options = TransactionOptions.defaultOptions
+        options.from = walletAddress
+        options.gasLimit = .automatic
+        options.gasPrice = .automatic
+        
+        let contractMethod = "transfer"
+        if let transaction = contract.write(contractMethod, parameters: [tAddress, UInt(amount ?? 0)] as [AnyObject], extraData: Data(), transactionOptions: options) {
+            
+            do {
+                let result = try transaction.send(password: password)
+                
+                print(" DEPOSIT SUCCESS \(result)")
+                return
+            } catch {
+                
+                print("DEPOSIT FAIL \(error)")
+                return
+            }
+        }
+    }
+    
     func depositCoins(wallet: WalletDataModel, toAddress: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
         
-        let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
-        /*let digitalAmount = Int(amountString) ?? 0
         
-        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"xe_A4788d8201Fb879e3b7523a0367401D2a985D42F\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"fee\":\(1000000),\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
-        j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
-        let sig = self.generateSignature(message: j2String, key: key)
-        j2String = String(j2String.dropLast())
-        j2String = "\(j2String),\"signature\":\"\(sig)\"}"
-        let hash = j2String.sha256()
-        j2String = String(j2String.dropLast())
-        j2String = "\(j2String),\"hash\":\"\(hash)\"}"*/
+        
+        
+        //EtherWallet2().sendCoins(wallet: wallet, toAddress: "", amount: "100", key: "", completion: {})
+        //return
+        
+        //self.sendEdge(wallet: wallet, toAddress: "", amount: "100", key: key, completion: {_ in })
+        //return
+        
+        let password = "web3swift"
+        let key = "9b93770e1a7b0b7352ffd3017054a3272757001e5e8734c89d93f0d930f010e5" // Some private key
+        let formattedKey = key.trimmingCharacters(in: .whitespacesAndNewlines)
+        let dataKey = Data.fromHex(formattedKey)!
+        let keystore = try! EthereumKeystoreV3(privateKey: dataKey, password: password)!
+        let name = "New Wallet"
+        let keyData = try! JSONEncoder().encode(keystore.keystoreParams)
+        let address = keystore.addresses!.first!.address
+        let wallet2 = Wallet(address: address, data: keyData, name: name, isHD: false)
+        
+        let data = wallet2.data
+        let keystoreManager: KeystoreManager
+        if wallet2.isHD {
+            let keystore = BIP32Keystore(data)!
+            keystoreManager = KeystoreManager([keystore])
+        } else {
+            let keystore = EthereumKeystoreV3(data)!
+            keystoreManager = KeystoreManager([keystore])
+        }
         
         
         var web3 = Web3.InfuraMainnetWeb3()
@@ -201,63 +275,44 @@ class EtherWallet {
             
             web3 = Web3.InfuraRinkebyWeb3()
         }
+        web3.addKeystoreManager(keystoreManager)
+        
+        
+        
+        let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+        DispatchQueue.global(qos: .userInitiated).async {
+            
+            let abiContract = self.getDepositABIContract(completion: { abiJson in
+                
+                let walletAddress = EthereumAddress(wallet2.address)! // Your wallet address
+                let parameters: [AnyObject] = [walletAddress as Any, UInt(1000) as Any, toAddress as Any] as [AnyObject]
+                
+                let contractABI = abiJson
+                let contractAddress = EthereumAddress(AppDataModelManager.shared.getNetworkStatus().getDepositTokenAddress())!
+                let contract = web3.contract(contractABI ?? "", at: contractAddress, abiVersion: 2)!
+                
+                var options = TransactionOptions.defaultOptions
+                options.from = walletAddress
+                options.gasLimit = .automatic
+                options.gasPrice = .automatic
 
-        let abiContract = self.getDepositABIContract(completion: { abiJson in
-        
-            print(abiJson)
-            
-            let value: String = "0" // Any amount of Ether you need to send
-            let walletAddress = EthereumAddress(wallet.address)! // Your wallet address
-            let contractMethod = "approveAndCall" // Contract method you want to write
-            let contractABI = abiJson
-            let contractAddress = EthereumAddress(AppDataModelManager.shared.getNetworkStatus().getDepositTokenAddress())!
-            let abiVersion = 2 // Contract ABI version
-            let amount = Web3.Utils.parseToBigUInt(amountString, units: .eth)
-            let parameters: [Any] = ["_sender", walletAddress, "_amount",amount, "_destination",toAddress] // Parameters for contract method
-            let extraData: Data = Data() // Extra data for contract method
-            let contract = web3.contract(contractABI ?? "", at: contractAddress, abiVersion: abiVersion)!
-            var options = TransactionOptions.defaultOptions
-            options.value = Web3.Utils.parseToBigUInt(value, units: .eth)
-            options.from = walletAddress
-            //options.to = contractAddress
-            options.gasPrice = .automatic
-            options.gasLimit = .automatic
-            let txMessage = contract.write(
-                contractMethod,
-                parameters:  parameters as [AnyObject],
-                extraData: extraData,
-                transactionOptions: options)
-            
-            if let tx = txMessage {
-            
-                let test = try! tx.call()
-
-                print(tx)
-            }
-        })
-        
-        
-        /*
-        let value: String = amountString // Any amount of Ether you need to send
-        let walletAddress = EthereumAddress(wallet.address)! // Your wallet address
-        let contractMethod = "SOMECONTRACTMETHOD" // Contract method you want to write
-        let contractABI = "..." // Contract ABI
-        let contractAddress = EthereumAddress(AppDataModelManager.shared.getNetworkStatus().getDepositBridgeAddress())!
-        let abiVersion = 2 // Contract ABI version
-        let parameters: [AnyObject] = [...]() // Parameters for contract method
-        let extraData: Data = Data() // Extra data for contract method
-        let contract = web3.contract(contractABI, at: contractAddress, abiVersion: abiVersion)!
-        let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
-        var options = TransactionOptions.defaultOptions
-        options.value = amount
-        options.from = walletAddress
-        options.gasPrice = .automatic
-        options.gasLimit = .automatic
-        let tx = contract.write(
-            contractMethod,
-            parameters: parameters,
-            extraData: extraData,
-            transactionOptions: options)!*/
+                let contractMethod = "approveAndCall" // Contract method you want to write
+                if let transaction = contract.write(contractMethod, parameters: parameters as [AnyObject], extraData: Data(), transactionOptions: options) {
+                    
+                    do {
+                        let result = try transaction.send(password: password)
+                        
+                        print(" DEPOSIT SUCCESS \(result)")
+                        return
+                    } catch {
+                        
+                        print("DEPOSIT FAIL \(error)")
+                        return
+                    }
+                }
+            })
+        }
+        return
     }
     
     func getDepositABIContract(completion: @escaping (String?)-> Void) {
@@ -284,6 +339,7 @@ class EtherWallet {
                     
                     let jsonString = self.json(from: abi)
                     completion(jsonString)
+                    return
                 }
                 
                 /*if let json = response.result.value as? [String:AnyObject] {

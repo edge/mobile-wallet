@@ -118,7 +118,7 @@ class XEWallet {
          .validate()
          .responseJSON { response in
 
-             print(response)
+             //print(response)
             switch (response.result) {
 
                 case .success( _):
@@ -165,7 +165,7 @@ class XEWallet {
          .validate()
          .responseJSON { response in
 
-             print(response)
+             //print(response)
             switch (response.result) {
 
                 case .success( _):
