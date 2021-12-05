@@ -81,7 +81,7 @@ enum NetworkState: String, Codable {
             return "0x857a9b116074466F56f1360c09b6BF9E898964Fe"
                         
         case .test:
-            return "0x3cfa3Ac4b2C8105cB5cd5dB0009Ce1BB2AC026aD"
+            return "0xC456173cEcB6E5EF1e86c38af322E024f2193B26"
         }
     }
     

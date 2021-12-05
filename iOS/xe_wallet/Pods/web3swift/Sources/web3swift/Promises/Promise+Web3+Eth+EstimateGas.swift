@@ -24,6 +24,7 @@ extension web3.Eth {
                     }
                     throw Web3Error.nodeError(desc: "Invalid value from Ethereum node")
                 }
+                
                 if let policy = transactionOptions?.gasLimit {
                     switch policy {
                     case .automatic:

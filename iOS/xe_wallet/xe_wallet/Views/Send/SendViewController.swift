@@ -128,7 +128,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, KillViewDeleg
             
             let walletAmount = status.balance
             
-            if amountVal >= wallet.type.getMinSendValue() && amountVal <= Double(walletAmount) {
+            if amountVal >= wallet.type.getMinSendValue() {//}&& amountVal <= Double(walletAmount) {
                 
                 shouldBeActive = true
                 

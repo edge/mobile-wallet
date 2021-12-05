@@ -74,20 +74,19 @@ public class WriteTransaction: ReadTransaction {
             optionsForGasEstimation.value = mergedOptions.value
             optionsForGasEstimation.gasLimit = mergedOptions.gasLimit
             optionsForGasEstimation.callOnBlock = mergedOptions.callOnBlock
-
             
             // assemble promise for gasLimit
-              var gasEstimatePromise: Promise<BigUInt>? = nil
-              guard let gasLimitPolicy = mergedOptions.gasLimit else {
-                  seal.reject(Web3Error.inputError(desc: "No gasLimit policy provided"))
-                  return
-              }
-              switch gasLimitPolicy {
-              case .automatic, .withMargin, .limited:
-                  gasEstimatePromise = self.web3.eth.estimateGasPromise(assembledTransaction, transactionOptions: optionsForGasEstimation)
-              case .manual(let gasLimit):
-                  gasEstimatePromise = Promise<BigUInt>.value(gasLimit)
-              }
+            var gasEstimatePromise: Promise<BigUInt>? = nil
+            guard let gasLimitPolicy = mergedOptions.gasLimit else {
+                seal.reject(Web3Error.inputError(desc: "No gasLimit policy provided"))
+                return
+            }
+            switch gasLimitPolicy {
+            case .automatic, .withMargin, .limited:
+                gasEstimatePromise = self.web3.eth.estimateGasPromise(assembledTransaction, transactionOptions: optionsForGasEstimation)
+            case .manual(let gasLimit):
+                gasEstimatePromise = Promise<BigUInt>.value(gasLimit)
+            }
             
             // assemble promise for nonce
             var getNoncePromise: Promise<BigUInt>?
@@ -104,23 +103,20 @@ public class WriteTransaction: ReadTransaction {
                 getNoncePromise = Promise<BigUInt>.value(nonce)
             }
 
-
-                
-                // assemble promise for gasPrice
-                var gasPricePromise: Promise<BigUInt>? = nil
-                guard let gasPricePolicy = mergedOptions.gasPrice else {
-                    seal.reject(Web3Error.inputError(desc: "No gasPrice policy provided"))
-                    return
-                }
-                switch gasPricePolicy {
-                case .automatic, .withMargin:
-                    gasPricePromise = self.web3.eth.getGasPricePromise()
-                case .manual(let gasPrice):
-                    gasPricePromise = Promise<BigUInt>.value(gasPrice)
-                }
-                var promisesToFulfill: [Promise<BigUInt>] = [getNoncePromise!, gasPricePromise!, gasEstimatePromise!]
-                when(resolved: getNoncePromise!, gasEstimatePromise!, gasPricePromise!).map(on: queue, { (results:[PromiseResult<BigUInt>]) throws -> EthereumTransaction in
-
+            // assemble promise for gasPrice
+            var gasPricePromise: Promise<BigUInt>? = nil
+            guard let gasPricePolicy = mergedOptions.gasPrice else {
+                seal.reject(Web3Error.inputError(desc: "No gasPrice policy provided"))
+                return
+            }
+            switch gasPricePolicy {
+            case .automatic, .withMargin:
+                gasPricePromise = self.web3.eth.getGasPricePromise()
+            case .manual(let gasPrice):
+                gasPricePromise = Promise<BigUInt>.value(gasPrice)
+            }
+            var promisesToFulfill: [Promise<BigUInt>] = [getNoncePromise!, gasPricePromise!, gasEstimatePromise!]
+            when(resolved: getNoncePromise!, gasEstimatePromise!, gasPricePromise!).map(on: queue, { (results:[PromiseResult<BigUInt>]) throws -> EthereumTransaction in
                 
                 promisesToFulfill.removeAll()
                 guard case .fulfilled(let nonce) = results[0] else {

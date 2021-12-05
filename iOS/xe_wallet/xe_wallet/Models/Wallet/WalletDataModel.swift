@@ -14,12 +14,9 @@ class WalletDataModel: Codable {
     var address: String
     var created: Double
     var backedup: Double
-    
-    //var xeWallet: XEWalletDataModel?
-    //var etherWallet: EtherWalletDataModel?
-    
     var status: WalletStatusDataModel?
     var transactions: TransactionsDataModel?
+    var wallet: Wallet?
     
     enum CodingKeys: String, CodingKey {
         
@@ -27,11 +24,9 @@ class WalletDataModel: Codable {
         case address
         case created
         case backedup
-        //case xeWallet
-        //case etherWallet
-        
         case status
         case transactions
+        case wallet
     }
 
     public required init(from decoder: Decoder) throws {
@@ -41,36 +36,29 @@ class WalletDataModel: Codable {
         self.address = try container.decode(String.self, forKey: .address)
         self.created = try container.decode(Double.self, forKey: .created)
         self.backedup = try container.decode(Double.self, forKey: .backedup)
-        //self.xeWallet = try container.decodeIfPresent(XEWalletDataModel.self, forKey: .xeWallet)
-        //self.etherWallet = try container.decodeIfPresent(EtherWalletDataModel.self, forKey: .etherWallet)
-        
         self.status = try container.decode(WalletStatusDataModel.self, forKey: .status)
         self.transactions = nil
+        self.wallet = try container.decodeIfPresent(Wallet.self, forKey: .wallet)
         
         self.downloadWalletStatus()
         self.downloadWalletTransactions()
     }
     
-    public init(type: WalletType, address: String) {
+    public init(type: WalletType, wallet: AddressKeyPairModel) {
         
         self.type = type
-        self.address = address
+        self.address = wallet.address
         self.created = Date().timeIntervalSince1970
         self.backedup = Date().timeIntervalSince1970
-                        
-        /*if type == .xe {
-            
-            self.xeWallet = XEWalletDataModel(address: address)
-        } else if type == .ethereum {
-            
-            self.etherWallet = EtherWalletDataModel(address: address)
-        }*/
-        
-        self.status = WalletStatusDataModel(address: address, balance: 0, nonce: 0)
+
+        self.status = WalletStatusDataModel(address: wallet.address, balance: 0, nonce: 0)
         self.transactions = nil
+        
+        self.wallet = wallet.wallet
         
         self.downloadWalletStatus()
         self.downloadWalletTransactions()
+        
     }
     
     func downloadWalletStatus() {
@@ -143,11 +131,11 @@ class WalletDataModel: Codable {
             break
             
         case .ethereum:
-            EtherWallet().downloadStatus(address: self.address, completion: { status in
+            EtherWallet().downloadTransactions(address: self.address, completion: { transactions in
                 
-                if let stat = status {
+                if let trans = transactions {
                 
-                    self.status = WalletStatusDataModel(from: stat)
+                    self.transactions = TransactionsDataModel(from: trans)
                 }
             })
             break

@@ -119,7 +119,7 @@ struct TransactionRecordDataModel: Codable {
     var timestamp: Int
     var sender: String
     var recipient: String
-    var amount: Int
+    var amount: Double
     var data: TransactionDataDataModel?
     var nonce: Int
     var signature: String
@@ -148,7 +148,7 @@ struct TransactionRecordDataModel: Codable {
         self.timestamp = try container.decode(Int.self, forKey: .timestamp)
         self.sender = try container.decode(String.self, forKey: .sender)
         self.recipient = try container.decode(String.self, forKey: .recipient)
-        self.amount = try container.decode(Int.self, forKey: .amount)
+        self.amount = try container.decode(Double.self, forKey: .amount)
         self.data = try container.decode(TransactionDataDataModel.self, forKey: .data)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
         self.signature = try container.decode(String.self, forKey: .signature)
@@ -163,7 +163,9 @@ struct TransactionRecordDataModel: Codable {
         self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
         self.sender = ether.from ?? ""
         self.recipient = ether.to ?? ""
-        self.amount = Int((ether.value ?? "0000000000000").dropLast(12)) ?? 0
+        //self.amount = Double(Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 6)!) ?? 0
+        
+        self.amount = Double((ether.value ?? "0000000000000").dropLast(12)) ?? 0
         self.data = TransactionDataDataModel()
         self.nonce = Int(ether.nonce ?? "0") ?? 0
         self.signature = ""
@@ -178,7 +180,7 @@ struct TransactionRecordDataModel: Codable {
         self.timestamp = xe.timestamp
         self.sender = xe.sender
         self.recipient = xe.recipient
-        self.amount = xe.amount / 1000000
+        self.amount = Double(xe.amount / 1000000)
         if let data = xe.data {
             
             self.data = TransactionDataDataModel(from: data)
@@ -205,7 +207,7 @@ struct TransactionRecordDataModel: Codable {
         self.timestamp =  pending.timestamp
         self.sender = pending.sender
         self.recipient = pending.recipient
-        self.amount = pending.amount / 1000000
+        self.amount = Double(pending.amount / 1000000)
         if let data = pending.data {
             
             self.data = TransactionDataDataModel(from: data)

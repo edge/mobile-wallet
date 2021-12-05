@@ -44,7 +44,7 @@ class WalletDataModelManager {
         do {
             
             try KeychainHelper.update(password: password, account: username)
-            let wallet = WalletDataModel(type: type, address: wallet.address)
+            let wallet = WalletDataModel(type: type, wallet: wallet)
             self.walletData.append(wallet)
             self.saveWalletData()
         } catch {
@@ -52,7 +52,7 @@ class WalletDataModelManager {
             do {
                 
                 try KeychainHelper.save(password: password, account: username)
-                let wallet = WalletDataModel(type: type, address: wallet.address)
+                let wallet = WalletDataModel(type: type, wallet: wallet)
                 self.walletData.append(wallet)
                 self.saveWalletData()
             } catch {

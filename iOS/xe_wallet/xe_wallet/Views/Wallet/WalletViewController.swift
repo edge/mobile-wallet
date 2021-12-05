@@ -209,6 +209,8 @@ extension WalletViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
+        if self.walletCollectionViewData.count == 0 { return 0 }
+        
         guard let trans = self.walletCollectionViewData[self.selectedWallet].transactions else {
             
             self.tableView.setEmptyMessage("No Transactions")

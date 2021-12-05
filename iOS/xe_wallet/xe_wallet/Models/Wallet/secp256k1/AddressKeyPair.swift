@@ -11,10 +11,12 @@ struct AddressKeyPairModel {
     
     var privateKey: String//PrivateKey
     var address: String
+    var wallet: Wallet?
 }
 
+/*
 struct EtherAddressKeyPairModel {
     
     var privateKey: String
     var address: String
-}
+}*/

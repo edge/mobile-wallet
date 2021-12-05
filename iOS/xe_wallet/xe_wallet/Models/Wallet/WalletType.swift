@@ -130,6 +130,20 @@ enum WalletType: String, Codable {
             break
             
         case .ethereum:
+            
+            if memo.lowercased() == "edge" {
+                
+                EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
+                    
+                    completion( res )
+                })
+            } else {
+             
+                EtherWallet().sendEther(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
+                    
+                    completion( res )
+                })
+            }
             break
             
         case .edge:

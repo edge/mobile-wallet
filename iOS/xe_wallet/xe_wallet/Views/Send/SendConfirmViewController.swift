@@ -76,7 +76,20 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate, CustomT
         if let wallet = self.walletData {
         
             self.typeLabel.text = "(\(wallet.type.getDisplayLabel()))"
-            self.receiveAmountLabel.text = "\(valString) \(wallet.type.getDisplayLabel())"
+            
+            var valTypeLabel = "XE"
+            if wallet.type != .xe {
+                
+                if memo.lowercased() == "edge" {
+                    
+                    valTypeLabel = "EDGE"
+                } else {
+                    
+                    valTypeLabel = "ETH"
+                }
+            }
+            
+            self.receiveAmountLabel.text = "\(valString) \(valTypeLabel)"
         }
         
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark

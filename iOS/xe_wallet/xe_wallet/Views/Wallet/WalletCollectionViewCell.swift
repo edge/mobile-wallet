@@ -17,6 +17,12 @@ class WalletCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var creditCardImage: UIImageView!
     
+    @IBOutlet weak var balanaceStringLabel: UILabel!
+    @IBOutlet weak var edgeView: UIView!
+    @IBOutlet weak var edgeAmountLabel: UILabel!
+    @IBOutlet weak var edgeTotalLabel: UILabel!
+    
+    
     @IBOutlet weak var backupView: UIView!
     
     var timerExchange: Timer?
@@ -65,12 +71,23 @@ class WalletCollectionViewCell: UICollectionViewCell {
         self.creditCardImage.image = UIImage(named:wallet.type.getBackgroundImage())
         self.walletTypeIcon.image = UIImage(named:wallet.type.rawValue)
                 
+        if wallet.type == .ethereum {
+            
+            self.balanaceStringLabel.text = "ETH"
+            self.edgeView.isHidden = false
+        } else {
+            
+            self.balanaceStringLabel.text = "BALANCE"
+            self.edgeView.isHidden = true
+        }
+        
+        
         self.addressLabel.text = wallet.address
         
         if let status = wallet.status {
         
             self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance ?? 0)
-            
+            self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance ?? 0)
             
             var erate: Double = 0
             if wallet.type == .ethereum {
@@ -90,7 +107,6 @@ class WalletCollectionViewCell: UICollectionViewCell {
             
             self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance*erate))) USD"
 
-            
         } else {
             
             self.amountLabel.text = ""
