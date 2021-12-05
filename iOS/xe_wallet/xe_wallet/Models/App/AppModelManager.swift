@@ -17,7 +17,7 @@ class AppDataModelManager {
     
     private init() {
         
-11        if UserDefaults.standard.object(forKey: "TestMode") == nil {
+        if UserDefaults.standard.object(forKey: "TestMode") == nil {
             
             appData.testMode = true
         } else {

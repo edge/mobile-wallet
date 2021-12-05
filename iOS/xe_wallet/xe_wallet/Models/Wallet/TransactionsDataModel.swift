@@ -7,6 +7,8 @@
 
 import UIKit
 import CryptoSwift
+import web3swift
+import BigInt
 
 enum TransactionType: String {
     
@@ -163,9 +165,9 @@ struct TransactionRecordDataModel: Codable {
         self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
         self.sender = ether.from ?? ""
         self.recipient = ether.to ?? ""
-        //self.amount = Double(Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 6)!) ?? 0
         
-        self.amount = Double((ether.value ?? "0000000000000").dropLast(12)) ?? 0
+        let newVal: String = String(ether.value?.dropLast(16) ?? "0")
+        self.amount = Double(newVal) ?? 0
         self.data = TransactionDataDataModel()
         self.nonce = Int(ether.nonce ?? "0") ?? 0
         self.signature = ""

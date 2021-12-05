@@ -53,7 +53,7 @@ class WalletStatusDataModel: Codable {
         
         self.address = ether.address ?? ""
         self.balance = Double(ether.balance ?? 0)///1000000
-        self.edgeBalance = ether.edgeBalance ?? 0
+        self.edgeBalance = Double(ether.edgeBalance ?? 0)
         self.nonce = ether.nonce ?? 0
     }
 }
