@@ -151,7 +151,6 @@ class EtherWallet {
             let keystore = EthereumKeystoreV3(data)!
             keystoreManager = KeystoreManager([keystore])
         }
-        print(keystoreManager.addresses)
         web3.addKeystoreManager(keystoreManager)
         
         let value: String = amt

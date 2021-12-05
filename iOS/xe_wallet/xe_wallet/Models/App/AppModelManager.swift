@@ -17,7 +17,13 @@ class AppDataModelManager {
     
     private init() {
         
-        self.appData.testMode = UserDefaults.standard.bool(forKey: "TestMode")
+11        if UserDefaults.standard.object(forKey: "TestMode") == nil {
+            
+            appData.testMode = true
+        } else {
+            
+            self.appData.testMode = UserDefaults.standard.bool(forKey: "TestMode")
+        }
     }
     
     func setAppPinCode(pin: String) {

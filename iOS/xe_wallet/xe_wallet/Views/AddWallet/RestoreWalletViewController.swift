@@ -111,6 +111,8 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         weak var pb: UIPasteboard? = .general
         guard let text = pb?.string else { return }
         self.privateKeyTextView.text = text
+        self.continueActive.toggle()
+        self.changeContinueButtonStatus()
     }
     
     @IBAction func continueButtonPressed(_ sender: Any) {
