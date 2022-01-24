@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public class FAPaginationLayout: UICollectionViewFlowLayout {
     
     

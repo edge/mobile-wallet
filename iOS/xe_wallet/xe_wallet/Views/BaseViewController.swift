@@ -34,7 +34,7 @@ class BaseViewController: UIViewController {
             
            //statusColour = UIColor(named:"ButtonGreen")
         }
-        if #available(iOS 13, *)
+        /*if #available(iOS 13, *)
         {
             let statusBar = UIView(frame: (UIApplication.shared.keyWindow?.windowScene?.statusBarManager?.statusBarFrame)!)
             statusBar.backgroundColor = statusColour
@@ -46,6 +46,6 @@ class BaseViewController: UIViewController {
                statusBar.backgroundColor = statusColour
            }
            UIApplication.shared.statusBarStyle = .lightContent
-        }
+        }*/
     }
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -36,7 +36,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="9pW-MF-2Ol" firstAttribute="centerY" secondItem="ubg-KI-0Ic" secondAttribute="centerY" id="GVa-di-jNT"/>
                                 <constraint firstItem="9pW-MF-2Ol" firstAttribute="centerX" secondItem="ubg-KI-0Ic" secondAttribute="centerX" id="LFh-w1-uJa"/>
@@ -64,7 +64,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="e6D-aU-RMI" firstAttribute="centerY" secondItem="aPC-fH-6xI" secondAttribute="centerY" id="02D-G5-oIA"/>
                                 <constraint firstItem="e6D-aU-RMI" firstAttribute="centerX" secondItem="aPC-fH-6xI" secondAttribute="centerX" id="VmX-sp-aIX"/>
@@ -92,7 +92,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="Uo1-hF-eQi" firstAttribute="centerY" secondItem="m4u-Ou-i0U" secondAttribute="centerY" id="1W9-Fb-f0n"/>
                                 <constraint firstItem="Uo1-hF-eQi" firstAttribute="centerX" secondItem="m4u-Ou-i0U" secondAttribute="centerX" id="UFw-eH-yRd"/>
@@ -120,7 +120,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="tNp-Yo-7KZ" firstAttribute="centerX" secondItem="bT8-AN-30W" secondAttribute="centerX" id="KR6-5u-AS8"/>
                                 <constraint firstItem="tNp-Yo-7KZ" firstAttribute="centerY" secondItem="bT8-AN-30W" secondAttribute="centerY" id="f88-qZ-neS"/>
@@ -148,7 +148,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="YzX-9C-hD8" firstAttribute="centerY" secondItem="Zb0-Ur-mYz" secondAttribute="centerY" id="Fpk-Te-7cj"/>
                                 <constraint firstItem="YzX-9C-hD8" firstAttribute="centerX" secondItem="Zb0-Ur-mYz" secondAttribute="centerX" id="bkN-ql-q1s"/>
@@ -176,7 +176,7 @@
                                     </userDefinedRuntimeAttributes>
                                 </view>
                             </subviews>
-                            <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                            <color key="backgroundColor" name="MainBlack"/>
                             <constraints>
                                 <constraint firstItem="ap5-4Q-Xxn" firstAttribute="centerX" secondItem="hYI-RN-odv" secondAttribute="centerX" id="6km-3j-KYH"/>
                                 <constraint firstItem="ap5-4Q-Xxn" firstAttribute="centerY" secondItem="hYI-RN-odv" secondAttribute="centerY" id="Phd-qp-hZs"/>
@@ -219,8 +219,8 @@
         <namedColor name="ButtonGreen">
             <color red="0.054999999701976776" green="0.80000001192092896" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="PinEntryBoxBackground">
-            <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="MainBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

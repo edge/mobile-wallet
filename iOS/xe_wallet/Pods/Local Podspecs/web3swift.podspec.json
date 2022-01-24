@@ -1,9 +1,9 @@
 {
   "name": "web3swift",
-  "version": "2.3.0",
+  "version": "2.5.0",
   "platforms": {
     "ios": "9.0",
-    "osx": "10.11"
+    "osx": "10.12"
   },
   "license": {
     "type": "Apache License 2.0",
@@ -18,7 +18,7 @@
   },
   "source": {
     "git": "https://github.com/matter-labs/web3swift.git",
-    "tag": "2.3.0"
+    "tag": "2.5.0"
   },
   "source_files": [
     "Sources/web3swift/{Contract,Convenience,EthereumABI,EthereumAddress,HookedFunctions,KeystoreManager,Promises,SwiftRLP,Transaction,Web3}/*.swift",
@@ -34,13 +34,13 @@
   "frameworks": "CoreImage",
   "dependencies": {
     "BigInt": [
-      "~> 5.2"
+      "~> 5.2.0"
     ],
     "Starscream": [
       "~> 4.0.4"
     ],
     "CryptoSwift": [
-      "~> 1.4.0"
+      "~> 1.4.2"
     ],
     "secp256k1.c": [
       "~> 0.1"

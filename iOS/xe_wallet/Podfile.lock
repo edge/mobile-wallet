@@ -20,9 +20,9 @@ PODS:
   - SwiftKeychainWrapper (4.0.1)
   - SwiftyJSON (4.3.0)
   - Tisander (1.0.0)
-  - web3swift (2.3.0):
-    - BigInt (~> 5.2)
-    - CryptoSwift (~> 1.4.0)
+  - web3swift (2.5.0):
+    - BigInt (~> 5.2.0)
+    - CryptoSwift (~> 1.4.2)
     - PromiseKit (~> 6.15.3)
     - secp256k1.c (~> 0.1)
     - Starscream (~> 4.0.4)
@@ -61,7 +61,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   web3swift:
-    :commit: 3c65404364043f2f6800ad29408e6964ba751cf5
+    :commit: 5b45521c05006195ccd5109d24570e35150c87e1
     :git: https://github.com/skywinder/web3swift
 
 SPEC CHECKSUMS:
@@ -78,7 +78,7 @@ SPEC CHECKSUMS:
   SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
   SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
   Tisander: 4d6b710f944c5bab1a0cd98050895942a374db32
-  web3swift: dcc8da6f0944a062faa381869ce64114ddb5f8d3
+  web3swift: 31ecb7a7da543f851344cdd64badea94c439b0d9
 
 PODFILE CHECKSUM: 28d9ec5d99d7d132ebf26269ee945b2465048f11
 

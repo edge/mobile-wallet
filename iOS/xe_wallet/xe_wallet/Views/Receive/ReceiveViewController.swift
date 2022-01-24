@@ -8,38 +8,36 @@
 import UIKit
 import CoreImage.CIFilterBuiltins
 import CoreImage.CIFilterConstructor
+import PanModal
 
-class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
+class ReceiveViewController: BaseViewController {
         
     @IBOutlet var backgroundView: UIView!
-    
-    @IBOutlet weak var cardViewTopConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewRightConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardViewLeftConstraint: NSLayoutConstraint!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var creditCardImage: UIImageView!
-    
-    @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var QRImageView: UIImageView!
-    
-    @IBOutlet weak var customTitleBarView: CustomTitleBar!
     @IBOutlet weak var walletImageIcon: UIImageView!
+    @IBOutlet weak var walletBackgroundImage: UIImageView!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    @IBOutlet weak var imageOuterView: UIView!
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
-    var cardImage: UIImage? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        view.isOpaque = false
-        view.backgroundColor = .clear
-        self.backgroundView.alpha = 0.0
-        
-        self.creditCardImage.image = self.cardImage
-        
+
+        self.imageOuterView.isHidden = true
         self.QRImageView.layer.magnificationFilter = CALayerContentsFilter.nearest
+        
+        self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
+        if let wallet = self.walletData {
+        
+            self.walletBackgroundImage.image = UIImage(named:wallet.type.getBackgroundImage())
+            self.walletImageIcon.image = UIImage(named:wallet.type.rawValue)
+            self.addressLabel.text = wallet.address
+            self.selectedWalletAddress = wallet.address
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             
@@ -48,40 +46,8 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
                 self.QRImageView.image = UIImage(ciImage: qrImage)
                 let smallLogo = UIImage(named: "qrlogo")
                 smallLogo?.addToCenter(of: self.QRImageView)
+                self.imageOuterView.isHidden = false
             }
-        }
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
-        
-        self.addressLabel.text = self.walletData?.address
-        
-        self.customTitleBarView.delegate = self
-        
-        self.walletImageIcon.image = UIImage(named:self.walletData?.type.rawValue ?? "")
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintEnd
-        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintEnd
-        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintEnd
-        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
-
-            self.backgroundView.alpha = 1.0
-            self.view.layoutIfNeeded()
-        }, completion: { finished in
-
-        })
-    }
-        
-    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-
-        if gesture.direction == .down {
-
-            self.closeWindow()
         }
     }
     
@@ -93,22 +59,7 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
     
-        self.closeWindow()
-    }
-    
-    func closeWindow() {
-        
-        self.cardViewTopConstraint.constant = Constants.cardViewTopConstraintStart
-        self.cardViewRightConstraint.constant = Constants.cardViewSideConstraintStart
-        self.cardViewLeftConstraint.constant = Constants.cardViewSideConstraintStart
-        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
-
-            self.backgroundView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }, completion: { finished in
-
-            self.dismiss(animated: false, completion: nil)
-        })
+        self.dismiss(animated: true, completion: nil)
     }
     
     func generateQrCode2(_ content: String)  -> CIImage? {
@@ -129,13 +80,12 @@ class ReceiveViewController: BaseViewController, CustomTitleBarDelegate {
     
 }
 
-extension ReceiveViewController {
+extension ReceiveViewController: PanModalPresentable {
     
-    func letButtonPressed() {
-    }
-    
-    func rightButtonPressed() {
-
-        self.closeWindow()
-    }
+    var panScrollable: UIScrollView? { return nil }
+    var allowsExtendedPanScrolling: Bool { return false }
+    var anchorModalToLongForm: Bool { return false }
+    var cornerRadius: CGFloat { return 12 }
+    var longFormHeight: PanModalHeight { return .contentHeight(484) }
+    var dragIndicatorBackgroundColor: UIColor { return .clear }
 }

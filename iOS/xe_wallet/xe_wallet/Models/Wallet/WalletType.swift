@@ -28,6 +28,36 @@ enum WalletType: String, Codable {
         }
     }
     
+    func getFullNameLabel() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return "XE"
+            
+        case .edge:
+            return "Edge"
+            
+        case .ethereum:
+            return "Ethereum"
+        }
+    }
+    
+    func getCoinSymbol() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return "XE"
+            
+        case .edge:
+            return "EDGE"
+            
+        case .ethereum:
+            return "ETH"
+        }
+    }
+    
     func getBackgroundImage() -> String {
         
         switch self {
@@ -129,21 +159,19 @@ enum WalletType: String, Codable {
             })
             break
             
+        case .edge:
+            EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
+            break
+            
         case .ethereum:
             
-            if memo.lowercased() == "edge" {
+            EtherWallet().sendEther(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
                 
-                EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
-                    
-                    completion( res )
-                })
-            } else {
-             
-                EtherWallet().sendEther(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
-                    
-                    completion( res )
-                })
-            }
+                completion( res )
+            })
             break
             
         case .edge:

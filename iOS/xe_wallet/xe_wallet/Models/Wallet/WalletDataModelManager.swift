@@ -18,6 +18,8 @@ class WalletDataModelManager {
     var walletData = [WalletDataModel]()
 
     var timerUpdate: Timer?
+    //var selectedWalletAddress = ""
+    
     
     private init() {
         
@@ -33,6 +35,11 @@ class WalletDataModelManager {
         if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
+            
+            if self.walletData.count > 0 {
+                
+                //self.selectedWalletAddress = self.walletData[0].address
+            }
         }
     }
     
@@ -121,6 +128,16 @@ class WalletDataModelManager {
         }
     }
     
+    public func getInitialWalletAddress() -> String {
+        
+        if self.walletData.count > 0 {
+            
+            return self.walletData[0].address
+        }
+        
+        return ""
+    }
+    
     public func getWalletDataWithAddress(address: String) -> WalletDataModel? {
         
         if let index = self.walletData.firstIndex(where: { $0.address == address }) {
@@ -144,4 +161,33 @@ class WalletDataModelManager {
         return filtered
     }
         
+    /*
+    public func setSelectedWalletAddress(address: String) {
+        
+        self.selectedWalletAddress = address
+    }
+    
+    public func getSelectedWalletAddress() -> String {
+        
+        return self.selectedWalletAddress
+    }*/
+
+    /*
+    public func getSelectedWalletData() -> WalletDataModel? {
+        
+        if let i = self.walletData.firstIndex(where: { $0.address == self.selectedWalletAddress }) {
+            
+            return self.walletData[i]
+        }
+        return nil
+    }*/
+    
+    public func getSelectedWalletData(address: String) -> WalletDataModel? {
+        
+        if let i = self.walletData.firstIndex(where: { $0.address == address }) {
+            
+            return self.walletData[i]
+        }
+        return nil
+    }
 }

@@ -4,7 +4,7 @@
 ## [Join our discord](https://discord.gg/8bHCNmhS7x) if you need a support or want to contribute to web3swift development!
 
 ![matter-github-swift](https://github.com/skywinder/web3swift/blob/develop/web3swift-logo.png)
-[![Build Status](https://travis-ci.com/skywinder/web3swift.svg?branch=develop)](https://travis-ci.com/skywinder/web3swift)
+[![Web3swift CI](https://github.com/skywinder/web3swift/actions/workflows/ci.yml/badge.svg)](https://github.com/skywinder/web3swift/actions/workflows/ci.yml)
 [![Swift](https://img.shields.io/badge/Swift-5.4-orange.svg?style=flat)](https://developer.apple.com/swift/)
 [![Platform](https://img.shields.io/cocoapods/p/web3swift.svg?style=flat)](http://cocoapods.org/pods/web3.swift.pod)
 [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/web3.swift.pod.svg?style=flat)](http://cocoapods.org/pods/web3.swift.pod)
@@ -373,7 +373,7 @@ If you are using this library in your project, please [add a link](https://githu
 
 ## Support
 
-**[Join our discord](https://discord.gg/DZKFJFn3) if you need a support or want to contribute to web3swift development!**
+**[Join our discord](https://discord.gg/8bHCNmhS7x) if you need a support or want to contribute to web3swift development!**
 
 - If you **need help**, [open an issue](https://github.com/skywinder/web3swift/issues).
 - If you'd like to **see web3swift best practices**, check [Projects that using web3swift](https://github.com/skywinder/web3swift#projects-that-using-web3swift).

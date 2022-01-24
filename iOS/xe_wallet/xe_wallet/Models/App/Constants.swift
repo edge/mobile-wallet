@@ -76,4 +76,7 @@ class Constants {
 
     static var XE_GasPriceUpdateTime = 2.0
     static var UpdateWalletsTimer = 10.0
+    
+    
+    static var infuraToken = "f4953edd390547d3bb63dd1f76af13f2"
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,13 +42,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create or restore a wallet to begin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7A-Gk-bR7">
-                                                <rect key="frame" x="78" y="120.5" width="258.5" height="19.5"/>
+                                                <rect key="frame" x="78" y="121" width="258.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
                                                 <color key="textColor" name="FontSecondary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Edge" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eSb-fY-coL">
-                                                <rect key="frame" x="71" y="70.5" width="272" height="39"/>
+                                                <rect key="frame" x="71" y="71" width="272" height="39"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="32"/>
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
@@ -77,7 +77,7 @@
                                 <rect key="frame" x="16" y="686" width="382" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poH-LI-Ors">
-                                        <rect key="frame" x="164.5" y="20.5" width="53" height="19.5"/>
+                                        <rect key="frame" x="164.5" y="20.5" width="53" height="19"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                         <color key="textColor" name="FontMain"/>
                                         <nil key="highlightedColor"/>
@@ -110,7 +110,7 @@
                                 <rect key="frame" x="16" y="754" width="382" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4H-Je-jLJ">
-                                        <rect key="frame" x="160.5" y="20.5" width="61" height="19.5"/>
+                                        <rect key="frame" x="160.5" y="20.5" width="61" height="19"/>
                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                         <color key="textColor" name="FontMain"/>
                                         <nil key="highlightedColor"/>
@@ -427,7 +427,7 @@
                                         <rect key="frame" x="16" y="788" width="382" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QTt-Vy-HNL">
-                                                <rect key="frame" x="155" y="20.5" width="72" height="19.5"/>
+                                                <rect key="frame" x="155" y="20.5" width="72" height="19"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
@@ -811,7 +811,7 @@
                                         <rect key="frame" x="16" y="720" width="382" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qHj-zv-v0L">
-                                                <rect key="frame" x="164.5" y="20.5" width="53" height="19.5"/>
+                                                <rect key="frame" x="164.5" y="20.5" width="53" height="19"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
@@ -845,7 +845,7 @@
                                         <rect key="frame" x="16" y="788" width="382" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Restore" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kCe-c8-fuI">
-                                                <rect key="frame" x="160.5" y="20.5" width="61" height="19.5"/>
+                                                <rect key="frame" x="160.5" y="20.5" width="61" height="19"/>
                                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
@@ -1107,8 +1107,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WlX-Fg-CRK"/>
-        <segue reference="TJz-f2-AfC"/>
+        <segue reference="WV4-zf-ftA"/>
+        <segue reference="DiW-o6-VuV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="coin_ethereum" width="256" height="417"/>

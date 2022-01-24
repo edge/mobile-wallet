@@ -10,4 +10,5 @@ import Foundation
 extension Notification.Name {
     
     static let didReceiveData = Notification.Name("didReceiveData")
+    static let setWalletCardAmount = Notification.Name("setWalletCardAmount")
 }

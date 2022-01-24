@@ -30,7 +30,8 @@ class EnterPinViewController: UIViewController {
         super.viewDidAppear(animated)
         
         let story = UIStoryboard(name: "Wallet", bundle:nil)
-        let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
+        //let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
+        let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
         UIApplication.shared.windows.first?.rootViewController = vc
         UIApplication.shared.windows.first?.makeKeyAndVisible()
     }
@@ -53,7 +54,8 @@ class EnterPinViewController: UIViewController {
                             DispatchQueue.main.async {
 
                                 let story = UIStoryboard(name: "Wallet", bundle:nil)
-                                let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
+                                let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
+                                //let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
                                 UIApplication.shared.windows.first?.rootViewController = vc
                                 UIApplication.shared.windows.first?.makeKeyAndVisible()
                             }

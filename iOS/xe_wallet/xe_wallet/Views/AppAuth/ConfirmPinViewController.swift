@@ -57,7 +57,8 @@ class ConfirmPinViewController: UIViewController {
                                 if SecItemAdd(attributes as CFDictionary, nil) == noErr {
                                     
                                     let story = UIStoryboard(name: "Wallet", bundle:nil)
-                                    let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
+                                    //let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
+                                    let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
                                     UIApplication.shared.windows.first?.rootViewController = vc
                                     UIApplication.shared.windows.first?.makeKeyAndVisible()
                                 } else {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BouncyLayout
 
 class WalletViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -48,6 +49,11 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
         self.tableView.refreshControl = nil
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
+        
+        let layout = BouncyLayout(style: .regular)
+        layout.scrollDirection = .horizontal
+        self.collectionView.collectionViewLayout = layout
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -119,10 +125,10 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
             let controller = segue.destination as! ReceiveViewController
             controller.modalPresentationStyle = .overCurrentContext
             
-            if let selectedCardCell = self.collectionView.cellForItem(at: IndexPath(row: self.selectedWallet, section: 0)) as? WalletCollectionViewCell{
+            /*if let selectedCardCell = self.collectionView.cellForItem(at: IndexPath(row: self.selectedWallet, section: 0)) as? WalletCollectionViewCell{
                 
                 controller.cardImage = selectedCardCell.getCardViewImage()
-             }
+             }*/
             
             controller.walletData = self.walletCollectionViewData[self.selectedWallet]
             controller.selectedWalletAddress = self.walletCollectionViewData[self.selectedWallet].address
@@ -307,8 +313,42 @@ extension WalletViewController  {
         //    NotificationCenter.default.post(name: Notification.Name(rawValue: "RefreshAccount"), object: nil)
         //}
     }
+    /*
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+        self.collectionView.scrollToNearestVisibleCollectionViewCell()
+    }
+
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if !decelerate {
+            
+            self.collectionView.scrollToNearestVisibleCollectionViewCell()
+        }
+    }*/
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if !decelerate {
+        
+            self.snapToNearestCell(scrollView: scrollView)
+        }
+    }
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        self.snapToNearestCell(scrollView: scrollView)
+    }
+    
+    func snapToNearestCell(scrollView: UIScrollView) {
+         let middlePoint = Int(scrollView.contentOffset.x + UIScreen.main.bounds.width / 2)
+         if let indexPath = self.collectionView.indexPathForItem(at: CGPoint(x: middlePoint, y: 0)) {
+              self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+         }
+    }
+    
+    
+   /* func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         
         self.collectionViewUpdating = true
     }
@@ -327,7 +367,7 @@ extension WalletViewController  {
             self.tableView.reloadData()
             self.updateWalletPage()
         }
-    }
+    }*/
 }
 
 

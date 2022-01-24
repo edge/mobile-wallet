@@ -28,12 +28,12 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.isOpaque = false
-        view.backgroundColor = .clear
-        self.backgroundView.alpha = 0.0
+        //view.isOpaque = false
+        //view.backgroundColor = .clear
+        //self.backgroundView.alpha = 0.0
         
-        navigationItem.hidesBackButton = true
-        self.title = "Add Wallet"
+        //navigationItem.hidesBackButton = true
+        //self.title = "Add Wallet"
         
         self.configureSelectedButtons()
 
@@ -47,13 +47,13 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
+        /*UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 1.0
             self.view.layoutIfNeeded()
         }, completion: { finished in
 
-        })
+        })*/
     }
     
     func configureSelectedButtons() {
@@ -131,6 +131,8 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
     
     func closeWindow() {
         
+        self.dismiss(animated: true, completion: nil)
+        /*
         UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
 
             self.backgroundView.alpha = 0.0
@@ -138,7 +140,7 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
         }, completion: { finished in
 
             self.dismiss(animated: false, completion: nil)
-        })
+        })*/
     }
 }
 
