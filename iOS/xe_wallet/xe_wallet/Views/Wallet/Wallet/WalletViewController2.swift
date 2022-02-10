@@ -40,9 +40,39 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         self.tableView.separatorColor = .clear
         
+        self.buildMainPage()
+        
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        self.refreshControl?.tintColor = .white
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
+        
+        if WalletDataModelManager.shared.activeWalletAmount() == 0 {
+            
+            performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
+        }
+        
+        self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        self.tableView.reloadData()
+    }
+
+    @objc func onDidReceiveData(_ notification: Notification) {
+        
+        self.buildMainPage()
+    }
+    
+    func buildMainPage() {
+        
         let results = WalletDataModelManager.shared.getLatestTransaction()
         self.lastTransactionWallet = results.wallet
         self.lastTransactionTransaction = results.transaction
+        
+        self.walletScreenSegments.removeAll()
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletPortfolioTableViewCell", size: 56, data: ""))
         
@@ -68,26 +98,6 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Signal"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Learn"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletDisclaimerTableViewCell", size: 128, data: ""))
-        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
-        self.refreshControl?.tintColor = .white
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-        
-        if WalletDataModelManager.shared.activeWalletAmount() == 0 {
-            
-            performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
-        }
-        
-        self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        self.tableView.reloadData()
-    }
-
-    @objc func onDidReceiveData(_ notification: Notification) {
         
         self.tableView.reloadData()
     }
@@ -134,7 +144,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         self.tabBarController?.selectedIndex = 1
     }
-    
+        
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return self.walletScreenSegments.count
