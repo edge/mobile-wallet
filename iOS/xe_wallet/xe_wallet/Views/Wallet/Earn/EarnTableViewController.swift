@@ -12,20 +12,15 @@ class EarnSegmentData {
     var type: WalletType = .ethereum
     var header: String
     var body: String
-    var data11: String
-    var data12: String
-    var data21: String
-    var data22: String
+    var data: [String]
+
     
-    init(type: WalletType, header: String, body: String, data11: String, data12: String, data21: String, data22: String) {
+    init(type: WalletType, header: String, body: String, data: [String]) {
         
         self.type = type
         self.header = header
         self.body = body
-        self.data11 = data11
-        self.data12 = data12
-        self.data21 = data21
-        self.data22 = data22
+        self.data = data
     }
 }
 
@@ -43,9 +38,25 @@ class EarnTableViewController: UITableViewController {
     
     func configureArrayData() {
         
-        self.earnSegments.append(EarnSegmentData(type: .xe, header: "XE Staking", body: "Start earning rewards on your XE today.  Simplified staking with no minimum requirements and instant activation.", data11: "Total staked", data12: "1,213,134", data21: "Current APY", data22: "4.2%"))
-        self.earnSegments.append(EarnSegmentData(type: .edge, header: "Run a Node", body: "Contribute your spare capacity to the Edge Network and earn passive income", data11: "Nodes online", data12: "12,839", data21: "Current APY", data22: "12.65%"))
-        self.earnSegments.append(EarnSegmentData(type: .ethereum, header: "Eth Staking", body: "Stake against Ethereum 2.0 nodes running in the Edge Network and earn rewards.", data11: "Total staked", data12: "96", data21: "Current APY", data22: "4.45%"))
+        let stakedData = XEStakedDataManagerManager.shared.getStakeData()
+        var stakedCount = "0"
+        if let count = stakedData?.count {
+            
+            stakedCount = "\(count)"
+        }
+        var stakedAmount = "0"
+        if let amount = stakedData?.stakedAmount {
+            
+            stakedAmount = "\(CryptoHelpers.generateCryptoValueString(value: amount/1000000 ?? 0))"
+        }
+        
+        self.earnSegments.append(EarnSegmentData(type: .xe, header: "XE Staking", body: "Start earning rewards on your XE today.  Simplified staking with no minimum requirements and instant activation.", data: ["Stakes", stakedCount, "Staked XE", stakedAmount]))
+        
+//        Stargates / Gateways / Hosts
+        self.earnSegments.append(EarnSegmentData(type: .edge, header: "Run a Node", body: "Contribute your spare capacity to the Edge Network and earn passive income", data: ["Stargates", "TBC", "Gateways", "TBC", "Hosts", "TBC"]))
+        
+        
+        self.earnSegments.append(EarnSegmentData(type: .ethereum, header: "Eth Staking", body: "Stake against Ethereum 2.0 nodes running in the Edge Network and earn rewards.", data: ["Total staked", "Coming Soon", "Current APY", "Coming Soon"]))
     }
 }
 

@@ -9,15 +9,26 @@ import UIKit
 
 class EarnTableViewCell: UITableViewCell {
             
+    
     @IBOutlet weak var tokenIconImage: UIImageView!
     @IBOutlet weak var headerLabel: UILabel!
     @IBOutlet weak var bodyLabel: UITextView!
     
-    @IBOutlet weak var data11Label: UILabel!
-    @IBOutlet weak var data12Label: UILabel!
+    @IBOutlet weak var stackView2: UIStackView!
+    @IBOutlet weak var data111Label: UILabel!
+    @IBOutlet weak var data112Label: UILabel!
+    @IBOutlet weak var data121Label: UILabel!
+    @IBOutlet weak var data122Label: UILabel!
     
-    @IBOutlet weak var data21Label: UILabel!
-    @IBOutlet weak var data22Label: UILabel!
+    @IBOutlet weak var stackView3: UIStackView!
+    
+    @IBOutlet weak var data211Label: UILabel!
+    @IBOutlet weak var data212Label: UILabel!
+    @IBOutlet weak var data221Label: UILabel!
+    @IBOutlet weak var data222Label: UILabel!
+    @IBOutlet weak var data231Label: UILabel!
+    @IBOutlet weak var data232Label: UILabel!
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,10 +43,26 @@ class EarnTableViewCell: UITableViewCell {
         self.tokenIconImage.image = UIImage(named:data.type.rawValue)
         self.headerLabel.text = data.header
         self.bodyLabel.text = data.body
-        self.data11Label.text = data.data11
-        self.data12Label.text = data.data12
-        self.data21Label.text = data.data21
-        self.data22Label.text = data.data22
+        
+        if data.data.count == 4 {
+          
+            self.stackView2.isHidden = false
+            self.stackView3.isHidden = true
+            self.data111Label.text = data.data[0]
+            self.data112Label.text = data.data[1]
+            self.data121Label.text = data.data[2]
+            self.data122Label.text = data.data[3]
+        } else {
+            
+            self.stackView2.isHidden = true
+            self.stackView3.isHidden = false
+            self.data211Label.text = data.data[0]
+            self.data212Label.text = data.data[1]
+            self.data221Label.text = data.data[2]
+            self.data222Label.text = data.data[3]
+            self.data231Label.text = data.data[4]
+            self.data232Label.text = data.data[5]
+        }
     }
 }
 

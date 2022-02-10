@@ -128,6 +128,7 @@
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
 		FD83C3DC27B0112E00507A5F /* ManageBackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C3DB27B0112E00507A5F /* ManageBackupViewController.swift */; };
 		FD83C3DE27B01C2700507A5F /* NSAttributedString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */; };
+		FD83C3E027B5980600507A5F /* XEStakedDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C3DF27B5980500507A5F /* XEStakedDataModel.swift */; };
 		FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */; };
 		FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */; };
 		FD93146A279C8353001C0A2C /* SendSelectTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD931469279C8353001C0A2C /* SendSelectTokenViewController.swift */; };
@@ -299,6 +300,7 @@
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
 		FD83C3DB27B0112E00507A5F /* ManageBackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageBackupViewController.swift; sourceTree = "<group>"; };
 		FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
+		FD83C3DF27B5980500507A5F /* XEStakedDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEStakedDataModel.swift; sourceTree = "<group>"; };
 		FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelpers.swift; sourceTree = "<group>"; };
 		FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		FD931469279C8353001C0A2C /* SendSelectTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSelectTokenViewController.swift; sourceTree = "<group>"; };
@@ -626,6 +628,7 @@
 				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
 				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
 				FD5C21522755087000795A2F /* XEGasRatesDataModel.swift */,
+				FD83C3DF27B5980500507A5F /* XEStakedDataModel.swift */,
 			);
 			path = XE;
 			sourceTree = "<group>";
@@ -1083,6 +1086,7 @@
 				FD31F22F2714F2B20034A59E /* ManageViewController.swift in Sources */,
 				FD5C21572755087000795A2F /* Encoding.swift in Sources */,
 				FD6018F62734144C00F78EBE /* BaseViewController.swift in Sources */,
+				FD83C3E027B5980600507A5F /* XEStakedDataModel.swift in Sources */,
 				FDA65FB827A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift in Sources */,
 				FD073DE8271106840077F184 /* TransactionTableViewCell.swift in Sources */,
 				FD5C21662755087000795A2F /* EthereumTransactionsDataModel.swift in Sources */,

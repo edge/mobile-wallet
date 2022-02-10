@@ -2546,6 +2546,104 @@
                                                         <constraint firstAttribute="height" constant="40" id="1LK-qi-fRl"/>
                                                     </constraints>
                                                 </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3oB-Wv-Bbq">
+                                                    <rect key="frame" x="16" y="168" width="334" height="40"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rZK-0X-41t">
+                                                            <rect key="frame" x="0.0" y="0.0" width="111.5" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k41-Tm-Xjs">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="uGo-XS-Aup"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="FontMain"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GX-oJ-Gel">
+                                                                    <rect key="frame" x="0.0" y="20" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="bp3-1s-vGu"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="ButtonGreen"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstItem="k41-Tm-Xjs" firstAttribute="leading" secondItem="rZK-0X-41t" secondAttribute="leading" id="6nz-UJ-jOw"/>
+                                                                <constraint firstItem="0GX-oJ-Gel" firstAttribute="leading" secondItem="rZK-0X-41t" secondAttribute="leading" id="Oof-6Q-vrc"/>
+                                                                <constraint firstAttribute="bottom" secondItem="0GX-oJ-Gel" secondAttribute="bottom" id="Usy-z0-lvB"/>
+                                                                <constraint firstItem="k41-Tm-Xjs" firstAttribute="top" secondItem="rZK-0X-41t" secondAttribute="top" id="Wlu-bA-zfS"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H1x-m2-mn5">
+                                                            <rect key="frame" x="111.5" y="0.0" width="111" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Uv-Ez-PEV">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="5ke-8n-rnD"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="FontMain"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kgx-g6-xqw">
+                                                                    <rect key="frame" x="0.0" y="20" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="HR3-N0-mb8"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="ButtonGreen"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="kgx-g6-xqw" secondAttribute="bottom" id="LJb-iY-FCy"/>
+                                                                <constraint firstItem="7Uv-Ez-PEV" firstAttribute="top" secondItem="H1x-m2-mn5" secondAttribute="top" id="Rc5-ES-g5q"/>
+                                                                <constraint firstItem="7Uv-Ez-PEV" firstAttribute="leading" secondItem="H1x-m2-mn5" secondAttribute="leading" id="n4m-zq-uiJ"/>
+                                                                <constraint firstItem="kgx-g6-xqw" firstAttribute="leading" secondItem="H1x-m2-mn5" secondAttribute="leading" id="okc-Ud-lNF"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aYS-YP-FFn">
+                                                            <rect key="frame" x="222.5" y="0.0" width="111.5" height="40"/>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="81Y-V2-Nq6">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="RgU-em-JKx"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="FontMain"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HQw-pY-bC8">
+                                                                    <rect key="frame" x="0.0" y="20" width="41.5" height="20"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="20" id="DQe-bE-PGc"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                    <color key="textColor" name="ButtonGreen"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="bottom" secondItem="HQw-pY-bC8" secondAttribute="bottom" id="bcs-TV-kG0"/>
+                                                                <constraint firstItem="81Y-V2-Nq6" firstAttribute="top" secondItem="aYS-YP-FFn" secondAttribute="top" id="bpn-x2-PCc"/>
+                                                                <constraint firstItem="HQw-pY-bC8" firstAttribute="leading" secondItem="aYS-YP-FFn" secondAttribute="leading" id="cC7-XL-lLe"/>
+                                                                <constraint firstItem="81Y-V2-Nq6" firstAttribute="leading" secondItem="aYS-YP-FFn" secondAttribute="leading" id="hSE-CQ-y3t"/>
+                                                            </constraints>
+                                                        </view>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="bQR-4P-ppK"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
@@ -2553,15 +2651,18 @@
                                                 <constraint firstItem="m96-w9-O4Z" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="23" id="6lm-li-Cgz"/>
                                                 <constraint firstAttribute="bottom" secondItem="qco-X3-I99" secondAttribute="bottom" constant="16" id="B9Z-QQ-yXj"/>
                                                 <constraint firstItem="qco-X3-I99" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="EN9-qv-gAB"/>
+                                                <constraint firstAttribute="bottom" secondItem="3oB-Wv-Bbq" secondAttribute="bottom" constant="16" id="EyH-8o-VOh"/>
                                                 <constraint firstAttribute="bottom" secondItem="ocg-SR-PHj" secondAttribute="bottom" id="FYQ-4K-7q5"/>
                                                 <constraint firstItem="6Sk-Qo-b0N" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="16" id="Rbd-Gu-HY3"/>
                                                 <constraint firstItem="jSX-sl-wTJ" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="Sp2-Gm-6eY"/>
+                                                <constraint firstAttribute="trailing" secondItem="3oB-Wv-Bbq" secondAttribute="trailing" constant="16" id="TVm-uE-r4U"/>
                                                 <constraint firstItem="6Sk-Qo-b0N" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="VdZ-1h-Tcf"/>
                                                 <constraint firstItem="ocg-SR-PHj" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" id="Xmi-lI-OOX"/>
                                                 <constraint firstAttribute="trailing" secondItem="jSX-sl-wTJ" secondAttribute="trailing" constant="16" id="bIe-kl-Cdt"/>
                                                 <constraint firstItem="jSX-sl-wTJ" firstAttribute="top" secondItem="6Sk-Qo-b0N" secondAttribute="bottom" constant="16" id="bei-C9-vFh"/>
                                                 <constraint firstAttribute="trailing" secondItem="qco-X3-I99" secondAttribute="trailing" constant="16" id="e0e-yT-IrH"/>
                                                 <constraint firstItem="ocg-SR-PHj" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" id="llI-ia-Mib"/>
+                                                <constraint firstItem="3oB-Wv-Bbq" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="nfn-y2-tnO"/>
                                                 <constraint firstItem="m96-w9-O4Z" firstAttribute="leading" secondItem="6Sk-Qo-b0N" secondAttribute="trailing" constant="8" symbolic="YES" id="tFx-Gd-hyq"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -2582,11 +2683,19 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="bodyLabel" destination="jSX-sl-wTJ" id="JeA-ao-J9Y"/>
-                                    <outlet property="data11Label" destination="HEr-Jg-TXB" id="SZU-Tg-Os5"/>
-                                    <outlet property="data12Label" destination="4lM-uB-DLs" id="e14-hv-5ee"/>
-                                    <outlet property="data21Label" destination="xCv-Lr-3aW" id="gA6-az-aPu"/>
-                                    <outlet property="data22Label" destination="ev2-Md-Xgn" id="ULk-y8-gWi"/>
+                                    <outlet property="data111Label" destination="HEr-Jg-TXB" id="mhH-N5-q0d"/>
+                                    <outlet property="data112Label" destination="4lM-uB-DLs" id="Eq4-cx-gTx"/>
+                                    <outlet property="data121Label" destination="xCv-Lr-3aW" id="hgU-82-JAh"/>
+                                    <outlet property="data122Label" destination="ev2-Md-Xgn" id="5mA-UC-Qwq"/>
+                                    <outlet property="data211Label" destination="k41-Tm-Xjs" id="iRM-45-iDu"/>
+                                    <outlet property="data212Label" destination="0GX-oJ-Gel" id="oDy-xF-XhM"/>
+                                    <outlet property="data221Label" destination="7Uv-Ez-PEV" id="nsM-Y1-hK7"/>
+                                    <outlet property="data222Label" destination="kgx-g6-xqw" id="z40-7A-aRv"/>
+                                    <outlet property="data231Label" destination="81Y-V2-Nq6" id="3IK-xp-Gnr"/>
+                                    <outlet property="data232Label" destination="HQw-pY-bC8" id="at7-gY-51P"/>
                                     <outlet property="headerLabel" destination="m96-w9-O4Z" id="Rdr-3Y-shn"/>
+                                    <outlet property="stackView2" destination="qco-X3-I99" id="ajD-Nj-1WW"/>
+                                    <outlet property="stackView3" destination="3oB-Wv-Bbq" id="FUj-TW-q8m"/>
                                     <outlet property="tokenIconImage" destination="6Sk-Qo-b0N" id="8VX-VD-0NA"/>
                                 </connections>
                             </tableViewCell>

@@ -17,12 +17,12 @@ class SplashViewController: UIViewController {
         XEExchangeRatesManager.shared.configure()
         XEGasRatesManager.shared.configure()
         XEExchangeRateHistoryManager.shared.configure()
+        XEStakedDataManagerManager.shared.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     
-
         let username = "xewalletpincode"
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,

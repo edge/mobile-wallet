@@ -66,7 +66,7 @@ class Constants {
     static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
     static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
     static var XE_ExchangeRateHistoryUrl = "https://index.test.network/token/lastweek"
-    
+    static var XE_StakedAmountsUrl = "https://index.xe.network/stats/stakes"
     
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
     static var XE_networkTestNetTitle = "Edge (XE) Testnet"
