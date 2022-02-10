@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "ArrowUpOutline.png",
-      "idiom" : "universal"
+      "filename" : "uparrow.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "uparrow@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "uparrow@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

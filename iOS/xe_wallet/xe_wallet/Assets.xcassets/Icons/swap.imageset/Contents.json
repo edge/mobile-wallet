@@ -1,8 +1,19 @@
 {
   "images" : [
     {
-      "filename" : "swap-svgrepo-com.svg",
-      "idiom" : "universal"
+      "filename" : "exchange.png",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "filename" : "exchange@2x.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "filename" : "exchange@3x.png",
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

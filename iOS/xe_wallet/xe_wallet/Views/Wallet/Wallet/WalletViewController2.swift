@@ -61,7 +61,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         if WalletDataModelManager.shared.activeWalletAmount() == 0 {
             
-            performSegue(withIdentifier: "ShowAddWallet", sender: nil)
+            performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
         }
         
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
@@ -134,6 +134,11 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
 
         let cell = tableView.dequeueReusableCell(withIdentifier: self.walletScreenSegments[indexPath.row].cellName, for: indexPath)
         cell.selectionStyle = .none
+        
+        if self.walletScreenSegments[indexPath.row].cellName == "WalletPortfolioTableViewCell" {
+         
+            (cell as! WalletPortfolioTableViewCell).configure()
+        }
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletCardsTableViewCell" {
          

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "wallet25.png",
+      "filename" : "wallet.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "wallet50.png",
+      "filename" : "wallet@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "wallet75.png",
+      "filename" : "wallet@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
