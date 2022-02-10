@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="56" estimatedRowHeight="-1" sectionHeaderHeight="2" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mr6-1C-H5p">
-                                <rect key="frame" x="24" y="44" width="366" height="818"/>
+                                <rect key="frame" x="24" y="44" width="366" height="769"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ManageTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ManageTableViewCell" rowHeight="56" id="3AC-wZ-Xdl" customClass="ManageTableViewCell" customModule="xe_wallet" customModuleProvider="target">
@@ -131,13 +131,16 @@
                             <constraint firstItem="mr6-1C-H5p" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="mJX-Jc-4JC"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="mr6-1C-H5p" id="l0j-In-5oQ"/>
+                        <segue destination="rg3-8D-Ax1" kind="presentation" identifier="ShowAddWallet" modalTransitionStyle="coverVertical" id="b3R-9h-qAE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118.84057971014494" y="68.973214285714278"/>
+            <point key="canvasLocation" x="67" y="62"/>
         </scene>
         <!--Manage Details View Controller-->
         <scene sceneID="uHo-Dc-sp6">
@@ -407,7 +410,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CrD-Zn-GCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="947.82608695652186" y="68.973214285714278"/>
+            <point key="canvasLocation" x="1338" y="62"/>
         </scene>
         <!--Manage Backup View Controller-->
         <scene sceneID="xgx-eW-YVB">
@@ -636,7 +639,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Xc-h2-eAb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1831.8840579710147" y="68.973214285714278"/>
+            <point key="canvasLocation" x="2135" y="62"/>
+        </scene>
+        <!--AddWalletViewController-->
+        <scene sceneID="dTi-LK-fRd">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AddWallet" referencedIdentifier="AddWalletViewController" id="rg3-8D-Ax1" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eBQ-Cr-1Yz"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xgk-vo-wvn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="714" y="62"/>
         </scene>
     </scenes>
     <resources>

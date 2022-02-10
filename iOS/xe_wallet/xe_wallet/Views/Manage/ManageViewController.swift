@@ -34,11 +34,15 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
         
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
+        let logoutBarButtonItem = UIBarButtonItem(image: UIImage(named: "plus"), style: .done, target: self, action: #selector(addWalletButtonPressed))
+        self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        self.walletTableViewData = WalletDataModelManager.shared.getWalletData()
         self.tableView.reloadData()
     }
     
@@ -46,6 +50,11 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         super.viewDidAppear(animated)
         
         //self.title = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString()
+    }
+    
+    @objc func addWalletButtonPressed() {
+
+        performSegue(withIdentifier: "ShowAddWallet", sender: nil)
     }
     
     @objc func backTapped(sender: UIBarButtonItem) {
