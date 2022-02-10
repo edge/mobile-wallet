@@ -53,6 +53,8 @@
 		FD46E68027761256008806C4 /* BouncyLayout2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46E67F27761256008806C4 /* BouncyLayout2.swift */; };
 		FD46E68227761F18008806C4 /* WalletButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46E68127761F18008806C4 /* WalletButtonsTableViewCell.swift */; };
 		FD46E68427762AF8008806C4 /* AddWalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD46E68327762AF8008806C4 /* AddWalletViewController2.swift */; };
+		FD53905127A99FA400D4C0B6 /* FeedItemWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD53905027A99FA400D4C0B6 /* FeedItemWebViewController.swift */; };
+		FD53905327A99FF700D4C0B6 /* XmlParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD53905227A99FF700D4C0B6 /* XmlParserManager.swift */; };
 		FD5C21552755087000795A2F /* TransactionsDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21362755087000795A2F /* TransactionsDataModel.swift */; };
 		FD5C21562755087000795A2F /* CryptoFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21382755087000795A2F /* CryptoFactory.swift */; };
 		FD5C21572755087000795A2F /* Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21392755087000795A2F /* Encoding.swift */; };
@@ -124,6 +126,8 @@
 		FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */; };
 		FD7523B1270F50DE009BCB78 /* NibWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */; };
 		FD7523B3270F52C9009BCB78 /* NibWrapped.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD7523B2270F52C9009BCB78 /* NibWrapped.swift */; };
+		FD83C3DC27B0112E00507A5F /* ManageBackupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C3DB27B0112E00507A5F /* ManageBackupViewController.swift */; };
+		FD83C3DE27B01C2700507A5F /* NSAttributedString+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */; };
 		FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */; };
 		FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */; };
 		FD93146A279C8353001C0A2C /* SendSelectTokenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD931469279C8353001C0A2C /* SendSelectTokenViewController.swift */; };
@@ -133,12 +137,33 @@
 		FD931474279DD080001C0A2C /* TransactionPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD931473279DD080001C0A2C /* TransactionPage.storyboard */; };
 		FD931476279DD08F001C0A2C /* TransactionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD931475279DD08F001C0A2C /* TransactionPage.swift */; };
 		FD931478279DF6E7001C0A2C /* WalletMarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD931477279DF6E6001C0A2C /* WalletMarketTableViewCell.swift */; };
+		FD93147A279EE9D1001C0A2C /* WalletPageAssetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD931479279EE9D0001C0A2C /* WalletPageAssetTableViewCell.swift */; };
+		FD93147C279EE9E2001C0A2C /* WalletPageTransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93147B279EE9E2001C0A2C /* WalletPageTransactionTableViewCell.swift */; };
+		FD93147E279F8D86001C0A2C /* UITabBar+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD93147D279F8D86001C0A2C /* UITabBar+Ext.swift */; };
+		FD99E6A427A153C400F069C8 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E6A327A153C400F069C8 /* ScanQRCodeViewController.swift */; };
 		FD9BACBC2763A78D00D0C14D /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BACBB2763A78D00D0C14D /* UICollectionView+Ext.swift */; };
 		FD9BACBE2766B2FE00D0C14D /* WalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */; };
 		FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */; };
 		FD9EA5F02745AA980068B9F9 /* CustomTitleBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */; };
 		FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */; };
 		FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F52745C62A0068B9F9 /* Constants.swift */; };
+		FDA65FB027A4052A00B8069C /* EarnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */; };
+		FDA65FB227A4063100B8069C /* EarnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */; };
+		FDA65FB427A43E7B00B8069C /* WalletMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */; };
+		FDA65FB627A456F900B8069C /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB527A456F900B8069C /* Date+Ext.swift */; };
+		FDA65FB827A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB727A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift */; };
+		FDA65FBA27A705AE00B8069C /* SignalTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB927A705AE00B8069C /* SignalTableViewController.swift */; };
+		FDA65FBC27A73F0400B8069C /* ManageDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FBB27A73F0400B8069C /* ManageDetailsViewController.swift */; };
+		FDA65FBE27A93F7700B8069C /* XEExchangeRateHistoryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FBD27A93F7600B8069C /* XEExchangeRateHistoryDataModel.swift */; };
+		FDA65FC327A94CA100B8069C /* LineChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FC227A94CA100B8069C /* LineChart.swift */; };
+		FDA65FC527A94CEC00B8069C /* CurveAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FC427A94CEC00B8069C /* CurveAlgorithm.swift */; };
+		FDA65FC827A94D2D00B8069C /* DotCALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FC727A94D2D00B8069C /* DotCALayer.swift */; };
+		FDA65FCA27A9CC1D00B8069C /* SignalTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FC927A9CC1D00B8069C /* SignalTableViewCell.swift */; };
+		FDA65FCD27A9F5E400B8069C /* LearnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FCC27A9F5E400B8069C /* LearnTableViewController.swift */; };
+		FDA65FCF27AAB74800B8069C /* LearnMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FCE27AAB74700B8069C /* LearnMenuItemTableViewCell.swift */; };
+		FDA65FD127AAB8AC00B8069C /* LearnHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FD027AAB8AC00B8069C /* LearnHeaderTableViewCell.swift */; };
+		FDA65FD327AABADE00B8069C /* LearnDisclaimerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FD227AABADE00B8069C /* LearnDisclaimerTableViewCell.swift */; };
+		FDA65FD627AACA4200B8069C /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = FDA65FD527AACA4200B8069C /* SDWebImage */; };
 		FDABB8C22768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDABB8C12768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift */; };
 		FDB1C73627637E7B009E2DCB /* BouncyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = FDB1C73527637E7B009E2DCB /* BouncyLayout */; };
 		FDB1C7392763809D009E2DCB /* FAPaginationLayout2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */; };
@@ -205,6 +230,8 @@
 		FD46E67F27761256008806C4 /* BouncyLayout2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncyLayout2.swift; sourceTree = "<group>"; };
 		FD46E68127761F18008806C4 /* WalletButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletButtonsTableViewCell.swift; sourceTree = "<group>"; };
 		FD46E68327762AF8008806C4 /* AddWalletViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddWalletViewController2.swift; sourceTree = "<group>"; };
+		FD53905027A99FA400D4C0B6 /* FeedItemWebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemWebViewController.swift; sourceTree = "<group>"; };
+		FD53905227A99FF700D4C0B6 /* XmlParserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlParserManager.swift; sourceTree = "<group>"; };
 		FD5C21362755087000795A2F /* TransactionsDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransactionsDataModel.swift; sourceTree = "<group>"; };
 		FD5C21382755087000795A2F /* CryptoFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CryptoFactory.swift; sourceTree = "<group>"; };
 		FD5C21392755087000795A2F /* Encoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encoding.swift; sourceTree = "<group>"; };
@@ -270,6 +297,8 @@
 		FD7523AE270F50B4009BCB78 /* UIView+Nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Nib.swift"; sourceTree = "<group>"; };
 		FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapperView.swift; sourceTree = "<group>"; };
 		FD7523B2270F52C9009BCB78 /* NibWrapped.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibWrapped.swift; sourceTree = "<group>"; };
+		FD83C3DB27B0112E00507A5F /* ManageBackupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageBackupViewController.swift; sourceTree = "<group>"; };
+		FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Ext.swift"; sourceTree = "<group>"; };
 		FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoHelpers.swift; sourceTree = "<group>"; };
 		FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendConfirmViewController.swift; sourceTree = "<group>"; };
 		FD931469279C8353001C0A2C /* SendSelectTokenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendSelectTokenViewController.swift; sourceTree = "<group>"; };
@@ -279,12 +308,32 @@
 		FD931473279DD080001C0A2C /* TransactionPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TransactionPage.storyboard; sourceTree = "<group>"; };
 		FD931475279DD08F001C0A2C /* TransactionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPage.swift; sourceTree = "<group>"; };
 		FD931477279DF6E6001C0A2C /* WalletMarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMarketTableViewCell.swift; sourceTree = "<group>"; };
+		FD931479279EE9D0001C0A2C /* WalletPageAssetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageAssetTableViewCell.swift; sourceTree = "<group>"; };
+		FD93147B279EE9E2001C0A2C /* WalletPageTransactionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageTransactionTableViewCell.swift; sourceTree = "<group>"; };
+		FD93147D279F8D86001C0A2C /* UITabBar+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBar+Ext.swift"; sourceTree = "<group>"; };
+		FD99E6A327A153C400F069C8 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		FD9BACBB2763A78D00D0C14D /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController2.swift; sourceTree = "<group>"; };
 		FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleBar.xib; sourceTree = "<group>"; };
 		FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleBar.swift; sourceTree = "<group>"; };
 		FD9EA5F52745C62A0068B9F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewController.swift; sourceTree = "<group>"; };
+		FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FB527A456F900B8069C /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
+		FDA65FB727A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDisclaimerTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FB927A705AE00B8069C /* SignalTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalTableViewController.swift; sourceTree = "<group>"; };
+		FDA65FBB27A73F0400B8069C /* ManageDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManageDetailsViewController.swift; sourceTree = "<group>"; };
+		FDA65FBD27A93F7600B8069C /* XEExchangeRateHistoryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEExchangeRateHistoryDataModel.swift; sourceTree = "<group>"; };
+		FDA65FC227A94CA100B8069C /* LineChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChart.swift; sourceTree = "<group>"; };
+		FDA65FC427A94CEC00B8069C /* CurveAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurveAlgorithm.swift; sourceTree = "<group>"; };
+		FDA65FC727A94D2D00B8069C /* DotCALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotCALayer.swift; sourceTree = "<group>"; };
+		FDA65FC927A9CC1D00B8069C /* SignalTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FCC27A9F5E400B8069C /* LearnTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnTableViewController.swift; sourceTree = "<group>"; };
+		FDA65FCE27AAB74700B8069C /* LearnMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnMenuItemTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FD027AAB8AC00B8069C /* LearnHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		FDA65FD227AABADE00B8069C /* LearnDisclaimerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearnDisclaimerTableViewCell.swift; sourceTree = "<group>"; };
 		FDABB8C12768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAPaginationLayout2.swift; sourceTree = "<group>"; };
 		FDC6CF5227839FA100C4D49D /* ExchangeWalletCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -311,6 +360,7 @@
 				FDC6CF4E27827CDA00C4D49D /* PanModal in Frameworks */,
 				FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */,
 				FD5C218E27564D2400795A2F /* Web3ContractABI in Frameworks */,
+				FDA65FD627AACA4200B8069C /* SDWebImage in Frameworks */,
 				FD6018D9272F3EA300F78EBE /* keccak256 in Frameworks */,
 				FD74268227480F980046D148 /* Crypto in Frameworks */,
 				FD6018DD272F443A00F78EBE /* SwiftKeccak in Frameworks */,
@@ -490,7 +540,9 @@
 				FD073DE927110D2F0077F184 /* WalletCollectionViewCell.swift */,
 				FDC6CF4F27839F4100C4D49D /* Wallet */,
 				FDC6CF5027839F5800C4D49D /* Exchange */,
-				FDC6CF5127839F6500C4D49D /* Settings */,
+				FDC6CF5127839F6500C4D49D /* Signal */,
+				FDA65FCB27A9F5CB00B8069C /* Learn */,
+				FDA65FAE27A404FF00B8069C /* Earn */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -570,6 +622,7 @@
 				FD5C21532755087000795A2F /* XEWallet.swift */,
 				FD5C214F2755087000795A2F /* XEWalletDataModel.swift */,
 				FD5C21502755087000795A2F /* XEExchangeRatesDataModel.swift */,
+				FDA65FBD27A93F7600B8069C /* XEExchangeRateHistoryDataModel.swift */,
 				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
 				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
 				FD5C21522755087000795A2F /* XEGasRatesDataModel.swift */,
@@ -633,6 +686,8 @@
 			children = (
 				FD93146E279DA2F7001C0A2C /* WalletPage.storyboard */,
 				FD931470279DA307001C0A2C /* WalletPageViewController.swift */,
+				FD931479279EE9D0001C0A2C /* WalletPageAssetTableViewCell.swift */,
+				FD93147B279EE9E2001C0A2C /* WalletPageTransactionTableViewCell.swift */,
 			);
 			path = WalletPage;
 			sourceTree = "<group>";
@@ -655,6 +710,36 @@
 			path = CustomTitleBar;
 			sourceTree = "<group>";
 		};
+		FDA65FAE27A404FF00B8069C /* Earn */ = {
+			isa = PBXGroup;
+			children = (
+				FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */,
+				FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */,
+			);
+			path = Earn;
+			sourceTree = "<group>";
+		};
+		FDA65FC627A94D1500B8069C /* LineChart */ = {
+			isa = PBXGroup;
+			children = (
+				FDA65FC227A94CA100B8069C /* LineChart.swift */,
+				FDA65FC427A94CEC00B8069C /* CurveAlgorithm.swift */,
+				FDA65FC727A94D2D00B8069C /* DotCALayer.swift */,
+			);
+			path = LineChart;
+			sourceTree = "<group>";
+		};
+		FDA65FCB27A9F5CB00B8069C /* Learn */ = {
+			isa = PBXGroup;
+			children = (
+				FDA65FCC27A9F5E400B8069C /* LearnTableViewController.swift */,
+				FDA65FD027AAB8AC00B8069C /* LearnHeaderTableViewCell.swift */,
+				FDA65FCE27AAB74700B8069C /* LearnMenuItemTableViewCell.swift */,
+				FDA65FD227AABADE00B8069C /* LearnDisclaimerTableViewCell.swift */,
+			);
+			path = Learn;
+			sourceTree = "<group>";
+		};
 		FDC6CF4F27839F4100C4D49D /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
@@ -666,7 +751,9 @@
 				FD46E68127761F18008806C4 /* WalletButtonsTableViewCell.swift */,
 				FD073DE7271106840077F184 /* TransactionTableViewCell.swift */,
 				FD93146B279D9FF3001C0A2C /* WalletHeaderTableViewCell.swift */,
+				FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */,
 				FD931477279DF6E6001C0A2C /* WalletMarketTableViewCell.swift */,
+				FDA65FB727A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -680,16 +767,20 @@
 			path = Exchange;
 			sourceTree = "<group>";
 		};
-		FDC6CF5127839F6500C4D49D /* Settings */ = {
+		FDC6CF5127839F6500C4D49D /* Signal */ = {
 			isa = PBXGroup;
 			children = (
+				FDA65FB927A705AE00B8069C /* SignalTableViewController.swift */,
+				FD53905027A99FA400D4C0B6 /* FeedItemWebViewController.swift */,
+				FDA65FC927A9CC1D00B8069C /* SignalTableViewCell.swift */,
 			);
-			path = Settings;
+			path = Signal;
 			sourceTree = "<group>";
 		};
 		FDFB6974270F22B3004C2BFD /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				FDA65FC627A94D1500B8069C /* LineChart */,
 				FD7523B0270F50DE009BCB78 /* NibWrapperView.swift */,
 				FD7523B2270F52C9009BCB78 /* NibWrapped.swift */,
 				FD31F2252714D9C80034A59E /* BiometricsManager.swift */,
@@ -700,6 +791,7 @@
 				FD87138B274D72D500B4CD2A /* CryptoHelpers.swift */,
 				FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */,
 				FD46E67F27761256008806C4 /* BouncyLayout2.swift */,
+				FD53905227A99FF700D4C0B6 /* XmlParserManager.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -715,6 +807,9 @@
 				FD74267B2748095E0046D148 /* sha256.swift */,
 				FD74268927488D4A0046D148 /* UIViewController+Ext.swift */,
 				FD9BACBB2763A78D00D0C14D /* UICollectionView+Ext.swift */,
+				FD93147D279F8D86001C0A2C /* UITabBar+Ext.swift */,
+				FDA65FB527A456F900B8069C /* Date+Ext.swift */,
+				FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -726,6 +821,7 @@
 				FD31F23727183F520034A59E /* SendViewController.swift */,
 				FD919FE7273841B70002CA0C /* SendConfirmViewController.swift */,
 				FD931469279C8353001C0A2C /* SendSelectTokenViewController.swift */,
+				FD99E6A327A153C400F069C8 /* ScanQRCodeViewController.swift */,
 			);
 			path = Send;
 			sourceTree = "<group>";
@@ -757,6 +853,8 @@
 				FD31F22C2714F2A40034A59E /* Manage.storyboard */,
 				FD31F22E2714F2B20034A59E /* ManageViewController.swift */,
 				FD31F2302714FFD60034A59E /* ManageTableViewCell.swift */,
+				FDA65FBB27A73F0400B8069C /* ManageDetailsViewController.swift */,
+				FD83C3DB27B0112E00507A5F /* ManageBackupViewController.swift */,
 			);
 			path = Manage;
 			sourceTree = "<group>";
@@ -812,6 +910,7 @@
 				FD5C219D2757BA9100795A2F /* UInt256 */,
 				FDB1C73527637E7B009E2DCB /* BouncyLayout */,
 				FDC6CF4D27827CDA00C4D49D /* PanModal */,
+				FDA65FD527AACA4200B8069C /* SDWebImage */,
 			);
 			productName = xe_wallet;
 			productReference = FD22ED57270F04B800B5B33F /* xe_wallet.app */;
@@ -852,6 +951,7 @@
 				FD5C219C2757BA9100795A2F /* XCRemoteSwiftPackageReference "UInt256" */,
 				FDB1C73427637E7B009E2DCB /* XCRemoteSwiftPackageReference "BouncyLayout" */,
 				FDC6CF4C27827CDA00C4D49D /* XCRemoteSwiftPackageReference "PanModal" */,
+				FDA65FD427AACA4100B8069C /* XCRemoteSwiftPackageReference "SDWebImage" */,
 			);
 			productRefGroup = FD22ED58270F04B800B5B33F /* Products */;
 			projectDirPath = "";
@@ -946,16 +1046,21 @@
 			files = (
 				FD5C2172275508BE00795A2F /* NetworkState.swift in Sources */,
 				FD31F2312714FFD60034A59E /* ManageTableViewCell.swift in Sources */,
+				FD93147E279F8D86001C0A2C /* UITabBar+Ext.swift in Sources */,
 				FD93146C279D9FF3001C0A2C /* WalletHeaderTableViewCell.swift in Sources */,
+				FDA65FD127AAB8AC00B8069C /* LearnHeaderTableViewCell.swift in Sources */,
 				FD31F2292714DBC90034A59E /* AppDataModel.swift in Sources */,
 				FD2865EB276F8202006DEEF4 /* WalletCardCollectionViewCell.swift in Sources */,
+				FD83C3DC27B0112E00507A5F /* ManageBackupViewController.swift in Sources */,
 				FD74268A27488D4B0046D148 /* UIViewController+Ext.swift in Sources */,
 				FD5C216E2755087000795A2F /* XEGasRatesDataModel.swift in Sources */,
 				FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */,
+				FDA65FB627A456F900B8069C /* Date+Ext.swift in Sources */,
 				FD2865E9276A93B8006DEEF4 /* WalletManageTableViewCell.swift in Sources */,
 				FDCF72342739DCF100F027DC /* ExchangeDepositConfirmViewController.swift in Sources */,
 				FD5C21652755087000795A2F /* EtherWallet.swift in Sources */,
 				FDC6CF552783A02E00C4D49D /* ExchangeViewController2.swift in Sources */,
+				FDA65FBA27A705AE00B8069C /* SignalTableViewController.swift in Sources */,
 				FD5C21672755087000795A2F /* WalletType.swift in Sources */,
 				FD31F22B2714DBD50034A59E /* AppModelManager.swift in Sources */,
 				FD5C21612755087000795A2F /* WalletDataModelManager.swift in Sources */,
@@ -978,32 +1083,48 @@
 				FD31F22F2714F2B20034A59E /* ManageViewController.swift in Sources */,
 				FD5C21572755087000795A2F /* Encoding.swift in Sources */,
 				FD6018F62734144C00F78EBE /* BaseViewController.swift in Sources */,
+				FDA65FB827A6B8A200B8069C /* WalletDisclaimerTableViewCell.swift in Sources */,
 				FD073DE8271106840077F184 /* TransactionTableViewCell.swift in Sources */,
 				FD5C21662755087000795A2F /* EthereumTransactionsDataModel.swift in Sources */,
 				FDCF72362739DD0400F027DC /* ExchangeWithdrawConfirmViewController.swift in Sources */,
+				FDA65FB027A4052A00B8069C /* EarnTableViewController.swift in Sources */,
+				FDA65FD327AABADE00B8069C /* LearnDisclaimerTableViewCell.swift in Sources */,
 				FD931476279DD08F001C0A2C /* TransactionPage.swift in Sources */,
 				FD919FE8273841B70002CA0C /* SendConfirmViewController.swift in Sources */,
+				FDA65FCF27AAB74800B8069C /* LearnMenuItemTableViewCell.swift in Sources */,
+				FDA65FBC27A73F0400B8069C /* ManageDetailsViewController.swift in Sources */,
 				FD073E0C2714960F0077F184 /* SettingsModelManager.swift in Sources */,
 				FD5C21642755087000795A2F /* EtherWalletDataModel.swift in Sources */,
 				FD073E05271494060077F184 /* SettingsHeaderTableViewCell.swift in Sources */,
+				FDA65FBE27A93F7700B8069C /* XEExchangeRateHistoryDataModel.swift in Sources */,
+				FDA65FCA27A9CC1D00B8069C /* SignalTableViewCell.swift in Sources */,
 				FD5C216F2755087000795A2F /* XEWallet.swift in Sources */,
 				FD5C219B2757853000795A2F /* ContractHelpers.swift in Sources */,
 				FD5C215E2755087000795A2F /* Signer.swift in Sources */,
 				FD22ED5B270F04B800B5B33F /* AppDelegate.swift in Sources */,
+				FDA65FC327A94CA100B8069C /* LineChart.swift in Sources */,
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
+				FDA65FB427A43E7B00B8069C /* WalletMenuItemTableViewCell.swift in Sources */,
 				FD931471279DA307001C0A2C /* WalletPageViewController.swift in Sources */,
 				FD74269127499A5D0046D148 /* NiceButton.swift in Sources */,
+				FD83C3DE27B01C2700507A5F /* NSAttributedString+Ext.swift in Sources */,
 				FD22ED5D270F04B800B5B33F /* SceneDelegate.swift in Sources */,
+				FD53905327A99FF700D4C0B6 /* XmlParserManager.swift in Sources */,
+				FDA65FC527A94CEC00B8069C /* CurveAlgorithm.swift in Sources */,
 				FD5C21952757850C00795A2F /* ProjectContract.swift in Sources */,
 				FD5C215C2755087000795A2F /* Secp256k1PrivateKey.swift in Sources */,
 				FD46E68027761256008806C4 /* BouncyLayout2.swift in Sources */,
 				FD74267C2748095E0046D148 /* sha256.swift in Sources */,
+				FD93147A279EE9D1001C0A2C /* WalletPageAssetTableViewCell.swift in Sources */,
 				FD5C21692755087000795A2F /* WalletStatusDataModel.swift in Sources */,
 				FD073DEF27121C660077F184 /* SettingsViewController.swift in Sources */,
 				FD7523AF270F50B4009BCB78 /* UIView+Nib.swift in Sources */,
 				FD22ED90270F11A200B5B33F /* CreatePinViewController.swift in Sources */,
 				FD22ED98270F16E700B5B33F /* WalletViewController.swift in Sources */,
+				FD53905127A99FA400D4C0B6 /* FeedItemWebViewController.swift in Sources */,
+				FD99E6A427A153C400F069C8 /* ScanQRCodeViewController.swift in Sources */,
 				FD6018EB2731C5E300F78EBE /* AddWalletViewController.swift in Sources */,
+				FDA65FC827A94D2D00B8069C /* DotCALayer.swift in Sources */,
 				FD5C21602755087000795A2F /* AddressKeyPair.swift in Sources */,
 				FD5C215B2755087000795A2F /* Context.swift in Sources */,
 				FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */,
@@ -1012,6 +1133,7 @@
 				FD22ED8E270F108800B5B33F /* SplashViewController.swift in Sources */,
 				FD931478279DF6E7001C0A2C /* WalletMarketTableViewCell.swift in Sources */,
 				FD46E68227761F18008806C4 /* WalletButtonsTableViewCell.swift in Sources */,
+				FDA65FB227A4063100B8069C /* EarnTableViewCell.swift in Sources */,
 				FD22ED92270F11AF00B5B33F /* EnterPinViewController.swift in Sources */,
 				FD5C21552755087000795A2F /* TransactionsDataModel.swift in Sources */,
 				FD5C21562755087000795A2F /* CryptoFactory.swift in Sources */,
@@ -1041,6 +1163,7 @@
 				FD5C216D2755087000795A2F /* XEWalletStatusDataModel.swift in Sources */,
 				FD5C216C2755087000795A2F /* XEExchangeRatesDataModel.swift in Sources */,
 				FD5C21682755087000795A2F /* WalletDataModel.swift in Sources */,
+				FD93147C279EE9E2001C0A2C /* WalletPageTransactionTableViewCell.swift in Sources */,
 				FD6018FF27361C6F00F78EBE /* ExchangeWithdrawViewController.swift in Sources */,
 				FD31F23827183F520034A59E /* SendViewController.swift in Sources */,
 				FD31F23627183EC40034A59E /* BackupViewController.swift in Sources */,
@@ -1050,6 +1173,7 @@
 				FD5C215A2755087000795A2F /* PrivateKey.swift in Sources */,
 				FD5C21992757852400795A2F /* Networks.swift in Sources */,
 				FD5C215F2755087000795A2F /* Secp256k1PublicKey.swift in Sources */,
+				FDA65FCD27A9F5E400B8069C /* LearnTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1202,12 +1326,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = xe_wallet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = XE;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is used to scan QR codes to obtain wallet addresses";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "This application wants to access your FaceID scanner to allow easier login";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1235,12 +1360,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 26;
+				CURRENT_PROJECT_VERSION = 38;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = xe_wallet/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = XE;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Camera is used to scan QR codes to obtain wallet addresses";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "This application wants to access your FaceID scanner to allow easier login";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1341,6 +1467,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		FDA65FD427AACA4100B8069C /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		FDB1C73427637E7B009E2DCB /* XCRemoteSwiftPackageReference "BouncyLayout" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/roberthein/BouncyLayout.git";
@@ -1417,6 +1551,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = FD742699274B10CD0046D148 /* XCRemoteSwiftPackageReference "Toast-Swift" */;
 			productName = Toast;
+		};
+		FDA65FD527AACA4200B8069C /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FDA65FD427AACA4100B8069C /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
 		};
 		FDB1C73527637E7B009E2DCB /* BouncyLayout */ = {
 			isa = XCSwiftPackageProductDependency;

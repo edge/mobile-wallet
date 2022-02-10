@@ -7,19 +7,18 @@
 
 import UIKit
 
-class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource, ManageTableViewCellDelegate {
+class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
 
 
     @IBOutlet weak var tableView: UITableView!
     
-    
     var walletTableViewData = [WalletDataModel]()
     
-    let tableViewCellHeight:CGFloat = 68
+    //let tableViewCellHeight:CGFloat = 52
     var selectedIndex: Int?
     
-    let tableViewCellHeightClosed: CGFloat = 56
-    let tableViewCellHeightOpen: CGFloat = 256
+    //let tableViewCellHeightClosed: CGFloat = 56
+    //let tableViewCellHeightOpen: CGFloat = 256
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,11 +26,14 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         
         self.walletTableViewData = WalletDataModelManager.shared.getWalletData()
         
-        //self.tableView.isEditing = true
+        tableView.tableFooterView = nil
+        self.tableView.isEditing = true
         self.tableView.allowsSelectionDuringEditing = true
+        self.tableView.separatorColor = .clear
+        tableView.contentInsetAdjustmentBehavior = .never
         //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
         
-    
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,79 +57,74 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
 extension ManageViewController {
     
     
+    // Set the spacing between sections
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 8
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.yellow
+        return headerView
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return  self.walletTableViewData.count
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return self.walletTableViewData.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
-        if selectedIndex == indexPath.row {
-            
-            //self.tableView.isEditing = false
-            return tableViewCellHeightOpen
-        }
-        return tableViewCellHeightClosed
+        return 56
     }
-    
+        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "ManageTableViewCell", for: indexPath)
-        
-        (cell as? ManageTableViewCell)?.configure(data: self.walletTableViewData[indexPath.row])
-        (cell as? ManageTableViewCell)?.delegate = self
-        
-        cell.overrideUserInterfaceStyle = .dark
         cell.selectionStyle = .none
-        cell.layer.borderColor = UIColor(named:"BackgroundMain")?.cgColor
-        cell.layer.borderWidth = 4
+        cell.overrideUserInterfaceStyle = .dark
+        
+        (cell as? ManageTableViewCell)?.configure(data: self.walletTableViewData[indexPath.section])
         return cell
     }
         
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
         return .none
     }
 
     func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        
         return false
     }
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        WalletDataModelManager.shared.switchWalletPosition(aIndex: sourceIndexPath.row, bIndex: destinationIndexPath.row)
+        WalletDataModelManager.shared.switchWalletPosition(aIndex: sourceIndexPath.row, bIndex: destinationIndexPath.section)
         
-        let movedObject = self.walletTableViewData[sourceIndexPath.row]
-        self.walletTableViewData.remove(at: sourceIndexPath.row)
-        self.walletTableViewData.insert(movedObject, at: destinationIndexPath.row)
+        let movedObject = self.walletTableViewData[sourceIndexPath.section]
+        self.walletTableViewData.remove(at: sourceIndexPath.section)
+        self.walletTableViewData.insert(movedObject, at: destinationIndexPath.section)
+        self.tableView.reloadData()
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        //self.tableView.isEditing = true
-        if selectedIndex == indexPath.row {
-            
-            self.selectedIndex = nil
-        } else {
-            
-            self.selectedIndex = indexPath.row
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        
+            let contentVC = UIStoryboard(name: "Manage", bundle: nil).instantiateViewController(withIdentifier: "ManageDetailsViewController") as! ManageDetailsViewController
+            contentVC.data = self.walletTableViewData[indexPath.section]
+            self.presentPanModal(contentVC)
         }
-        tableView.beginUpdates()
-        tableView.endUpdates()
     }
-    
 }
 
-extension ManageViewController {
-    
-    func backupButtonPressed(address: String) {
-        let a = address
-        let b = a
-    }
-    
-    func removeButtonPressed(address: String) {
-        let a = address
-        let b = a
-    }
-}
 

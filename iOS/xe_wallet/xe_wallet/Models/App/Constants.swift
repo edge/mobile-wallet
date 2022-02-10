@@ -65,6 +65,8 @@ class Constants {
     
     static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
     static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
+    static var XE_ExchangeRateHistoryUrl = "https://index.test.network/token/lastweek"
+    
     
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
     static var XE_networkTestNetTitle = "Edge (XE) Testnet"
@@ -75,6 +77,7 @@ class Constants {
     /// TIMERS
 
     static var XE_GasPriceUpdateTime = 2.0
+    static var WalletPageUpdateTimer = 2.0
     static var UpdateWalletsTimer = 10.0
     
     

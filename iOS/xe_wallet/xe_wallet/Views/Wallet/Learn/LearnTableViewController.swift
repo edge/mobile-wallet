@@ -13,13 +13,15 @@ class LearnTableData {
     var height: CGFloat
     var title: String
     var image: String
+    var link: String
     
-    init(cellType: String, height: CGFloat, title: String, image: String) {
+    init(cellType: String, height: CGFloat, title: String, image: String, link: String) {
         
         self.cellType = cellType
         self.height = height
         self.title = title
         self.image = image
+        self.link = link
     }
 }
 
@@ -37,20 +39,21 @@ class LearnTableViewController: UITableViewController {
     
     func configureViews() {
         
+        self.tableView.separatorColor = .clear
         self.tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     func configureArrayData() {
         
-        self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 48, title: "About Edge", image: ""))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Edge Network Website", image: "edge"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "XE Explorer", image: "xe"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Community Wiki", image: "wiki"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 58, title: "Help & Support", image: ""))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "FAQ", image: "faq"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Email Support", image: "email"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Discord", image: "discord"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnDisclaimerTableViewCell", height: 144, title: "", image: ""))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 48, title: "About Edge", image: "", link: ""))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Edge Network Website", image: "edge", link: "https://edge.network/"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "XE Explorer", image: "xe", link: "https://xe.network/"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Community Wiki", image: "wiki", link: "https://wiki.edge.network/"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 58, title: "Help & Support", image: "", link: ""))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "FAQ", image: "faq", link: "https://wiki.edge.network/support/faq"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Email Support", image: "email", link: "mailto:support@edge.network"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Discord", image: "discord", link: "https://discord.gg/edge-network"))
+        self.learnCellArray.append(LearnTableData(cellType: "LearnDisclaimerTableViewCell", height: 144, title: "", image: "", link: ""))
         self.tableView.reloadData()
     }
 }
@@ -86,6 +89,15 @@ extension LearnTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let link = self.learnCellArray[indexPath.row].link
+        if link != "" {
+            
+            if let url = URL(string: link) {
+                
+                UIApplication.shared.open(url)
+            }
+        }
     }
 }
 

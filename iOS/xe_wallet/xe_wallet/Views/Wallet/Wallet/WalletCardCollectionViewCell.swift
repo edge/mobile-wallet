@@ -90,7 +90,6 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
             self.edgeView.isHidden = true
         }
         
-        
         self.addressLabel.text = wallet.address
         
         if let status = wallet.status {
@@ -98,24 +97,18 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
             self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance ?? 0)
             self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance ?? 0)
             
-            var erate: Double = 0
+            
+            let etherrate = Double(EtherExchangeRatesManager.shared.getRateValue())
+            let edgerate = XEExchangeRatesManager.shared.getRates()?.rate
+
             if wallet.type == .ethereum {
             
-                erate = Double(EtherExchangeRatesManager.shared.getRates())
+                self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance*etherrate))) USD"
+                self.edgeTotalLabel.text = "\(String(format: "%.2f", Double(status.edgeBalance * (edgerate ?? 0.0)))) USD"
             } else {
-                
-                if let rate = XEExchangeRatesManager.shared.getRates() {
-                    
-                    erate = rate.rate
-                } else {
-                    
-                    erate = 0
-                }
-                
-            }
-            
-            self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance*erate))) USD"
 
+                self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance * (edgerate ?? 0)))) USD"
+            }
         } else {
             
             self.amountLabel.text = ""

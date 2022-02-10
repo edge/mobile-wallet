@@ -61,6 +61,15 @@ class XEExchangeRatesManager {
         
         return self.exchangeDataModel
     }
+    
+    func getRateValue() -> NSNumber {
+        
+        if let rates = self.exchangeDataModel {
+            
+            return NSNumber(value: rates.rate)
+        }
+        return 0
+    }
         
     func downloadExchangeRates() {
         

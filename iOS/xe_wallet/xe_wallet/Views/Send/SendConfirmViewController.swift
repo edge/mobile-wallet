@@ -24,8 +24,8 @@ enum SendConfirmViewEntryStatus {
     
     var height: PanModalHeight {
         switch self {
-            case .none: return .contentHeight(554)
-            case .pin: return .contentHeight(784)
+            case .none: return .contentHeight(530)
+            case .pin: return .contentHeight(760)
         }
     }
 }
@@ -250,6 +250,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
 
                                 self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
                                 self.textEntryTextView.text = ""
+                                self.entered = false
                             }))
                             self.present(alert, animated: true)
                         }

@@ -134,9 +134,26 @@ class WalletDataModel: Codable {
             EtherWallet().downloadTransactions(address: self.address, completion: { transactions in
                 
                 if let trans = transactions {
-                
-                    self.transactions = TransactionsDataModel(from: trans)
+                    
+                    self.transactions = TransactionsDataModel(from: trans, type: .ethereum)
                 }
+
+                EtherWallet().downloadTokenTransations(address: self.address, completion: { transactions in
+                    
+                    if let trans = transactions {
+                    
+                        if self.transactions == nil {
+                            
+                            self.transactions = TransactionsDataModel(from: trans, type: .edge)
+                        } else {
+                            
+                            if let results = TransactionsDataModel(from: trans, type: .edge).results {
+                            
+                                self.transactions?.results?.append(contentsOf: results)
+                            }
+                        }
+                    }
+                })
             })
             break
             

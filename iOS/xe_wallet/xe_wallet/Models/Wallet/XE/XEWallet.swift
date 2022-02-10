@@ -198,7 +198,7 @@ class XEWallet {
         let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
         let digitalAmount = Int(amountString) ?? 0
 
-        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(toAddress)\",\"amount\":\(digitalAmount),\"data\":{\"memo\":\"Testing\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(toAddress)\",\"amount\":\(digitalAmount),\"data\":{\"memo\":\"\(memo)\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
         j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
         let sig = self.generateSignature(message: j2String, key: key)
         j2String = String(j2String.dropLast())

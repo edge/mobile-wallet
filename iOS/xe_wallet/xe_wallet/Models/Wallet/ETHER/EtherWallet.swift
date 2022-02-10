@@ -60,48 +60,84 @@ class EtherWallet {
         }
 
         DispatchQueue.global().async {
-        let walletAddress = EthereumAddress(address)!
-
-        let balanceResult = try! web3.eth.getBalance(address: walletAddress)
-        var bs = Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 6)!
-
-        let network = AppDataModelManager.shared.getNetworkStatus()
-
-        let exploredAddress = EthereumAddress(address)!
-        let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress())!
-        let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
-        var options = TransactionOptions.defaultOptions
-        options.from = walletAddress
-        options.gasPrice = .automatic
-        options.gasLimit = .automatic
-        let method = "balanceOf"
-        let tx = contract.read(
-            method,
-            parameters: [exploredAddress] as [AnyObject],
-            extraData: Data(),
-            transactionOptions: options)!
-       
-
-        
-            let tokenBalance = try! tx.call()
-        
-            var edgeBalance = "0.0"
-            if let token = tokenBalance["0"] {
+            let walletAddress = EthereumAddress(address)!
+            
+            do {
+                let balanceResult = try web3.eth.getBalance(address: walletAddress)
+                var bs = Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 6)!
                 
-                let big = BigUInt.init("\(token)", Web3.Utils.Units.wei)!
-                edgeBalance = Web3.Utils.formatToEthereumUnits(big, toUnits: .eth, decimals: 6)!
+                let network = AppDataModelManager.shared.getNetworkStatus()
+                
+                let exploredAddress = EthereumAddress(address)!
+                let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress())!
+                let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
+                var options = TransactionOptions.defaultOptions
+                options.from = walletAddress
+                options.gasPrice = .automatic
+                options.gasLimit = .automatic
+                let method = "balanceOf"
+                let tx = contract.read(
+                    method,
+                    parameters: [exploredAddress] as [AnyObject],
+                    extraData: Data(),
+                    transactionOptions: options)!
+                
+                
+                
+                let tokenBalance = try! tx.call()
+                
+                var edgeBalance = "0.0"
+                if let token = tokenBalance["0"] {
+                    
+                    let big = BigUInt.init("\(token)", Web3.Utils.Units.wei)!
+                    edgeBalance = Web3.Utils.formatToEthereumUnits(big, toUnits: .eth, decimals: 6)!
+                }
+                completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance: Double(edgeBalance) ?? 0))
             }
-            completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance: Double(edgeBalance) ?? 0))
+            catch {
+                
+            }
         }
-        
-
     }
     
     func downloadTransactions(address: String, completion: @escaping (EtherTransactionsDataModel?)-> Void) {
-        
+                
         let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
         let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
         let url = "\(apiUrl)&address=\(address)&apikey=\(apiKey)"
+        
+        Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
+            
+            switch (response.result) {
+
+                case .success( _):
+
+                do {
+                                        
+                    let data = try JSONDecoder().decode(EtherTransactionsDataModel.self, from: response.data!)
+                    //let transModel = TransactionsDataModel(from: data)
+                    completion(data)
+                } catch let error as NSError {
+                    
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+                 case .failure(let error):
+                    print("Request error: \(error.localizedDescription)")
+             }
+        }
+    }
+    
+    func downloadTokenTransations(address: String, completion: @escaping (EtherTransactionsDataModel?)-> Void) {
+    
+        //http://api.etherscan.io/api?module=account&action=tokentx&address=0x9f7dd5ea934d188a599567ee104e97fa46cb4496&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken
+        
+
+        
+        let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
+        let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
+        let url = "\(apiUrl)&token=0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301&address=\(address)&apikey=\(apiKey)"
+        
+        //let url = "https://rinkeby.etherscan.io/token/0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301?a=0x8b9bD05Fe9fF20b185d682F664AeEe763023d9b9"
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
             

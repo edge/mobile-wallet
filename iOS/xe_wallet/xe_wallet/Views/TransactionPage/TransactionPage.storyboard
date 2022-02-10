@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transaction Details" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s30-NI-Zmo">
-                                        <rect key="frame" x="24" y="52" width="227.5" height="26"/>
+                                        <rect key="frame" x="24" y="21" width="227.5" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="BL9-JD-77b"/>
                                         </constraints>
@@ -71,7 +71,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nwL-Qp-Cbq">
-                                        <rect key="frame" x="24" y="108" width="366" height="48"/>
+                                        <rect key="frame" x="24" y="84" width="366" height="48"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_ethereum" translatesAutoresizingMaskIntoConstraints="NO" id="S12-Rv-kOB">
                                                 <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
@@ -118,7 +118,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vct-04-IZL">
-                                        <rect key="frame" x="24" y="164" width="366" height="24"/>
+                                        <rect key="frame" x="24" y="140" width="366" height="24"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="zRT-nz-mEk">
                                                 <rect key="frame" x="13" y="0.0" width="22" height="23.5"/>
@@ -149,7 +149,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52N-Bw-HKc">
-                                        <rect key="frame" x="24" y="196" width="366" height="56"/>
+                                        <rect key="frame" x="24" y="172" width="366" height="56"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="9va-f2-K7P">
                                                 <rect key="frame" x="15" y="19" width="18" height="18"/>
@@ -196,7 +196,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DQs-an-bPu">
-                                        <rect key="frame" x="24" y="260" width="366" height="24"/>
+                                        <rect key="frame" x="24" y="236" width="366" height="24"/>
                                         <subviews>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.down.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="1o7-Ky-9JF">
                                                 <rect key="frame" x="13" y="0.0" width="22" height="23.5"/>
@@ -215,7 +215,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Nl-du-uEP">
-                                        <rect key="frame" x="24" y="292" width="366" height="77"/>
+                                        <rect key="frame" x="24" y="268" width="366" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b3n-5q-PLe">
                                                 <rect key="frame" x="52" y="0.0" width="16.5" height="17"/>
@@ -242,10 +242,10 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x63123f7575218108DAbF2C7f4bFBE5FCE4480Af3" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3to-wE-Qss">
-                                                        <rect key="frame" x="56" y="0.0" width="302" height="56"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x63123f7575218108DAbF2C7f4bFBE5FCE4480Af3" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="3to-wE-Qss">
+                                                        <rect key="frame" x="56" y="12" width="302" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="56" id="Rbe-7a-ntC"/>
+                                                            <constraint firstAttribute="height" constant="32" id="Rbe-7a-ntC"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
@@ -279,7 +279,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KwQ-du-dCS">
-                                        <rect key="frame" x="24" y="377" width="366" height="77"/>
+                                        <rect key="frame" x="24" y="353" width="366" height="77"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VeA-kF-vdj">
                                                 <rect key="frame" x="52" y="0.0" width="34.5" height="17"/>
@@ -306,10 +306,10 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x63123f7575218108DAbF2C7f4bFBE5FCE4480Af3" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NDH-CW-dP5">
-                                                        <rect key="frame" x="56" y="0.0" width="302" height="56"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x63123f7575218108DAbF2C7f4bFBE5FCE4480Af3" textAlignment="natural" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NDH-CW-dP5">
+                                                        <rect key="frame" x="56" y="12" width="302" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="56" id="ZTL-XG-C86"/>
+                                                            <constraint firstAttribute="height" constant="32" id="ZTL-XG-C86"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
@@ -343,7 +343,7 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NCn-mr-6Ls">
-                                        <rect key="frame" x="24" y="502" width="366" height="60"/>
+                                        <rect key="frame" x="24" y="478" width="366" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View on Etherscan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWn-3p-fs0">
                                                 <rect key="frame" x="109.5" y="20.5" width="147" height="19"/>
@@ -397,9 +397,9 @@
                                     <constraint firstItem="KwQ-du-dCS" firstAttribute="top" secondItem="3Nl-du-uEP" secondAttribute="bottom" constant="8" id="nL0-vO-wxg"/>
                                     <constraint firstItem="NCn-mr-6Ls" firstAttribute="leading" secondItem="s4w-80-rCq" secondAttribute="leading" constant="24" id="nL8-QN-6n5"/>
                                     <constraint firstAttribute="trailing" secondItem="3Nl-du-uEP" secondAttribute="trailing" constant="24" id="oNd-FE-Vmk"/>
-                                    <constraint firstItem="nwL-Qp-Cbq" firstAttribute="top" secondItem="DUg-Iw-1ez" secondAttribute="bottom" constant="24" id="rdk-JE-mJE"/>
+                                    <constraint firstItem="nwL-Qp-Cbq" firstAttribute="top" secondItem="DUg-Iw-1ez" secondAttribute="bottom" id="rdk-JE-mJE"/>
                                     <constraint firstItem="52N-Bw-HKc" firstAttribute="leading" secondItem="s4w-80-rCq" secondAttribute="leading" constant="24" id="roB-RK-EoW"/>
-                                    <constraint firstItem="s30-NI-Zmo" firstAttribute="top" secondItem="s4w-80-rCq" secondAttribute="top" constant="52" id="scK-ol-P2C"/>
+                                    <constraint firstItem="s30-NI-Zmo" firstAttribute="top" secondItem="s4w-80-rCq" secondAttribute="top" constant="21" id="scK-ol-P2C"/>
                                     <constraint firstItem="Vct-04-IZL" firstAttribute="top" secondItem="nwL-Qp-Cbq" secondAttribute="bottom" constant="8" id="tTr-Fd-3I7"/>
                                     <constraint firstAttribute="trailing" secondItem="KwQ-du-dCS" secondAttribute="trailing" constant="24" id="uUW-dR-Vc5"/>
                                     <constraint firstAttribute="trailing" secondItem="nwL-Qp-Cbq" secondAttribute="trailing" constant="24" id="vzQ-PN-8Bo"/>
@@ -415,6 +415,14 @@
                             <constraint firstAttribute="bottom" secondItem="s4w-80-rCq" secondAttribute="bottom" id="jkI-2U-6Y3"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateLabel" destination="By0-fG-HyN" id="nx4-56-eTV"/>
+                        <outlet property="fromAddressLabel" destination="NDH-CW-dP5" id="9Bw-Xd-0mv"/>
+                        <outlet property="toAddressLabel" destination="3to-wE-Qss" id="qUD-yD-Zlc"/>
+                        <outlet property="tokenAbvLabel" destination="9f7-xa-GEy" id="pOz-Io-79R"/>
+                        <outlet property="tokenAmountLabel" destination="9qf-Vu-TSz" id="5Ge-bb-hYx"/>
+                        <outlet property="tokenIconImage" destination="S12-Rv-kOB" id="HF4-Od-zRg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -424,13 +432,13 @@
     <resources>
         <image name="arrow.down.app" catalog="system" width="128" height="114"/>
         <image name="closeX" width="14" height="14"/>
-        <image name="coin_ethereum" width="256" height="417"/>
+        <image name="coin_ethereum" width="279" height="279"/>
         <image name="tick" width="14" height="10"/>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="ButtonGreen">
-            <color red="0.054999999701976776" green="0.80000001192092896" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.054901960784313725" green="0.80000000000000004" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FontMain">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

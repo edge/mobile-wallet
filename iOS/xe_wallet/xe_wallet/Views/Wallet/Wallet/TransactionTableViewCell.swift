@@ -15,12 +15,12 @@ class TransactionTableViewCell: UITableViewCell {
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
-    @IBOutlet weak var sumTxHashLabel: UILabel!
+    /*@IBOutlet weak var sumTxHashLabel: UILabel!
     @IBOutlet weak var sumDateLabel: UILabel!
     @IBOutlet weak var sumAaddressLabel: UILabel!
     @IBOutlet weak var sumMemoLabel: UILabel!
     @IBOutlet weak var sumStatusLabel: UILabel!
-    @IBOutlet weak var sumAmountLabel: UILabel!
+    @IBOutlet weak var sumAmountLabel: UILabel!*/
     
     
     override func awakeFromNib() {
@@ -28,45 +28,18 @@ class TransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(data: TransactionRecordDataModel, address: String) {
+    func configure(walletData: WalletDataModel?, transactionData: TransactionRecordDataModel?) {
         
-        var typeLabel = "Sent"
-        var iconName = "send"
-        if address.lowercased() == data.recipient.lowercased() {
-            
-            typeLabel = "Received"
-            iconName = "receive"
-        }
-        self.typeLabel.text = typeLabel
-        self.typeImageView.image = UIImage(named:iconName)
+        guard let wallet = walletData else { return }
+        guard let transaction = transactionData else { return }
         
-        var memo = ""
-        if let memData = data.data {
-            
-            memo = memData.memo
-        }
-        self.memoLabel.text = memo
+        self.typeImageView.image = UIImage(named:wallet.type.rawValue)
+        self.typeLabel.text = wallet.type.getDisplayLabel()
         
-        if let status = data.status {
-            
-            self.statusLabel.text = status.rawValue
-            self.sumStatusLabel.text = status.rawValue
-        } else {
-            
-            self.statusLabel.text = TransactionStatus.confirmed.rawValue
-            self.sumStatusLabel.text = TransactionStatus.confirmed.rawValue
-        }
-
-        let valString = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
-        self.amountLabel.text = "\(valString)"
-        //self.statusLabel.text = "\(data.status.rawValue)"
+        let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
+        self.memoLabel.text = date.timeAgoDisplay()
         
-        self.sumTxHashLabel.text = data.hash
-        self.sumDateLabel.text = "\(DateFunctions.getFormattedDateString(timeSince: Double(data.timestamp)/1000))"
-        self.sumAaddressLabel.text = data.sender
-        self.sumMemoLabel.text = memo
-        //self.sumStatusLabel.text = "\(data.status.rawValue)"
-        self.sumAmountLabel.text = "\(valString)"
+        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: transaction.amount)
     }
 }
 

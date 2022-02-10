@@ -24,7 +24,7 @@ extension PointEntry: Comparable {
 class LineChart: UIView {
     
     /// gap between each point
-    let lineGap: CGFloat = 60.0
+    var lineGap: CGFloat = 10.0
     
     /// preseved space at top of the chart
     let topSpace: CGFloat = 40.0
@@ -96,7 +96,7 @@ class LineChart: UIView {
         scrollView.layer.addSublayer(gradientLayer)
         self.layer.addSublayer(gridLayer)
         self.addSubview(scrollView)
-        self.backgroundColor = #colorLiteral(red: 0, green: 0.3529411765, blue: 0.6156862745, alpha: 1)
+        self.backgroundColor = UIColor(named: "SeperatorLine")
     }
     
     override func layoutSubviews() {
@@ -117,7 +117,7 @@ class LineChart: UIView {
                 drawChart()
             }
             maskGradientLayer()
-            drawLables()
+            //drawLables()
         }
     }
     
@@ -133,7 +133,7 @@ class LineChart: UIView {
             
             for i in 0..<entries.count {
                 let height = dataLayer.frame.height * (1 - ((CGFloat(entries[i].value) - CGFloat(min)) / minMaxRange))
-                let point = CGPoint(x: CGFloat(i)*lineGap + 40, y: height)
+                let point = CGPoint(x: CGFloat(i)*lineGap + 0, y: height)
                 result.append(point)
             }
             return result
@@ -222,7 +222,7 @@ class LineChart: UIView {
      Create titles at the bottom for all entries showed in the chart
      */
     private func drawLables() {
-        if let dataEntries = dataEntries,
+        /*if let dataEntries = dataEntries,
             dataEntries.count > 0 {
             for i in 0..<dataEntries.count {
                 let textLayer = CATextLayer()
@@ -236,7 +236,7 @@ class LineChart: UIView {
                 textLayer.string = dataEntries[i].label
                 mainLayer.addSublayer(textLayer)
             }
-        }
+        }*/
     }
     
     /**
@@ -264,7 +264,7 @@ class LineChart: UIView {
                 let lineLayer = CAShapeLayer()
                 lineLayer.path = path.cgPath
                 lineLayer.fillColor = UIColor.clear.cgColor
-                lineLayer.strokeColor = #colorLiteral(red: 0.2784313725, green: 0.5411764706, blue: 0.7333333333, alpha: 1).cgColor
+                lineLayer.strokeColor = UIColor(named:"FontSecondary")?.cgColor
                 lineLayer.lineWidth = 0.5
                 if (value > 0.0 && value < 1.0) {
                     lineLayer.lineDashPattern = [4, 4]
@@ -280,16 +280,16 @@ class LineChart: UIView {
                     lineValue = Int((1-value) * minMaxGap) + Int(min)
                 }
                 
-                let textLayer = CATextLayer()
+                /*let textLayer = CATextLayer()
                 textLayer.frame = CGRect(x: 4, y: height, width: 50, height: 16)
                 textLayer.foregroundColor = #colorLiteral(red: 0.5019607843, green: 0.6784313725, blue: 0.8078431373, alpha: 1).cgColor
                 textLayer.backgroundColor = UIColor.clear.cgColor
                 textLayer.contentsScale = UIScreen.main.scale
                 textLayer.font = CTFontCreateWithName(UIFont.systemFont(ofSize: 0).fontName as CFString, 0, nil)
                 textLayer.fontSize = 12
-                textLayer.string = "\(lineValue)"
+                textLayer.string = "\(lineValue)"*/
                 
-                gridLayer.addSublayer(textLayer)
+                //gridLayer.addSublayer(textLayer)
             }
         }
     }

@@ -70,7 +70,7 @@ struct TransactionsDataModel: Codable {
         self.results = res
     }
     
-    public init(from ether: EtherTransactionsDataModel) {
+    public init(from ether: EtherTransactionsDataModel, type: WalletType) {
         
         guard let results = ether.result else { return }
         
@@ -78,7 +78,7 @@ struct TransactionsDataModel: Codable {
 
         for n in results {
             
-            let newRecord = TransactionRecordDataModel(from: n)
+            let newRecord = TransactionRecordDataModel(from: n, type: type)
             res.append(newRecord)
         }
         self.results = res
@@ -129,6 +129,7 @@ struct TransactionRecordDataModel: Codable {
     var block: TransactionBlockDataModel?
     var confirmations: Int?
     var status: TransactionStatus?
+    var type: WalletType?
     
     enum CodingKeys: String, CodingKey {
         
@@ -142,6 +143,7 @@ struct TransactionRecordDataModel: Codable {
         case hash
         case block
         case confirmations
+        case type
     }
 
     public init(from decoder: Decoder) throws {
@@ -157,17 +159,19 @@ struct TransactionRecordDataModel: Codable {
         self.hash = try container.decode(String.self, forKey: .hash)
         self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
-
+        self.type = try container.decode(WalletType.self, forKey: .type)
     }
     
-    public init(from ether: EtherTransactionDataModel) {
+    public init(from ether: EtherTransactionDataModel, type: WalletType) {
         
         self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
         self.sender = ether.from ?? ""
         self.recipient = ether.to ?? ""
         
-        let newVal: String = String(ether.value?.dropLast(16) ?? "0")
-        self.amount = Double(newVal) ?? 0
+        let newVal: String = String(ether.value?.dropLast(12) ?? "0")
+        let damt = Double(newVal) ?? 0
+        let amt = damt / 1000000
+        self.amount = amt
         self.data = TransactionDataDataModel()
         self.nonce = Int(ether.nonce ?? "0") ?? 0
         self.signature = ""
@@ -175,11 +179,12 @@ struct TransactionRecordDataModel: Codable {
         self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
         self.confirmations = Int(ether.confirmations ?? "0") ?? 0
         self.status = .confirmed
+        self.type = type
     }
     
     public init(from xe: XETransactionRecordDataModel) {
         
-        self.timestamp = xe.timestamp
+        self.timestamp = xe.timestamp/1000
         self.sender = xe.sender
         self.recipient = xe.recipient
         self.amount = Double(xe.amount / 1000000)
@@ -202,6 +207,7 @@ struct TransactionRecordDataModel: Codable {
         }
         self.confirmations = xe.confirmations
         self.status = .confirmed
+        self.type = .xe
     }
     
     public init(from pending: XETransactionPendingRecordDataModel) {
@@ -221,6 +227,21 @@ struct TransactionRecordDataModel: Codable {
         self.signature = pending.signature
         self.hash = pending.hash
         self.status = .pending
+    }
+    
+    public init() {
+        
+        self.timestamp =  0
+        self.sender = ""
+        self.recipient = ""
+        self.amount = 0
+        self.data = TransactionDataDataModel()
+        self.nonce = 0
+        self.signature = ""
+        self.hash = ""
+        self.block = TransactionBlockDataModel(height: 0, hash: "")
+        self.confirmations = 0
+        self.status = .confirmed
     }
 }
 

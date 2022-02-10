@@ -9,6 +9,8 @@ import UIKit
 
 class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var settingsMenuTableViewData = [SettingsDataModel]()
     
     override func viewDidLoad() {
@@ -16,6 +18,7 @@ class SettingsViewController: BaseViewController, UITableViewDelegate,  UITableV
         // Do any additional setup after loading the view.
         
         self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         self.settingsMenuTableViewData = SettingsDataModelManager.shared.getSettingsData()
         //self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))

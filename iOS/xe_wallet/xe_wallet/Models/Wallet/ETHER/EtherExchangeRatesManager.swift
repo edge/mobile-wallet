@@ -25,7 +25,7 @@ class EtherExchangeRatesManager {
         }
     }
     
-    func getRates() -> NSNumber {
+    func getRateValue() -> NSNumber {
         
         return self.etherValue
     }

@@ -17,15 +17,15 @@ enum SendViewEntryStatus {
     
     var height: PanModalHeight {
         switch self {
-            case .none: return .contentHeight(554)
-            case .value: return .contentHeight(664)
-            case .to: return .contentHeight(774)
-            case .memo: return .contentHeight(784)
+            case .none: return .contentHeight(530)
+            case .value: return .contentHeight(640)
+            case .to: return .contentHeight(750)
+            case .memo: return .contentHeight(760)
         }
     }
 }
 
-class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmViewControllerDelegate,  SendSelectTokenViewControllerDelegate {
+class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmViewControllerDelegate,  SendSelectTokenViewControllerDelegate, ScanQRCodeViewControllerDelegate {
 
     @IBOutlet weak var backgroundView: UIView!
     
@@ -50,6 +50,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
     
     @IBOutlet weak var assetLabel: UILabel!
     
+    @IBOutlet weak var sendTitleLabel: UILabel!
+    
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
     
@@ -67,7 +69,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.title = "Send"
+        self.configureViews()
         
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
@@ -88,6 +90,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                 self.tokenSelecttionButton.isHidden = true
                 self.tokenSelectionImage.isHidden = true
                 self.selectedAsset = .xe
+                self.sendTitleLabel.text = "Send XE"
             } else {
                 
                 self.walletTotalLabel.text = "\(self.etherAmount) ETH"
@@ -96,11 +99,29 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                 self.tokenSelecttionButton.isHidden = false
                 self.tokenSelectionImage.isHidden = false
                 self.selectedAsset = .ethereum
+                self.sendTitleLabel.text = "Send Ether"
             }
         }
         
         self.configureCardDisplay()
 
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        self.entryStatus = .none
+        
+        self.configureReviewButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        let a = 1
+    }
+    
+    func configureViews() {
+        
+        self.title = "Send"
+        
         let attrs1 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontSecondary")]
         let attrs2 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontOptional")]
         let attributedString1 = NSMutableAttributedString(string:"Memo ", attributes:attrs1)
@@ -120,24 +141,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         
         self.toTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        
-        /*let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)*/
-        
-        self.entryStatus = .none
-        
-        self.configureReviewButton()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        let a = 1
-    }
     
     func configureCardDisplay() {
         
@@ -159,15 +164,16 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             self.reviewButtonText.textColor = UIColor(named: "ButtonTextInactive")
         }
     }
-
-    /*
-    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-
-        if gesture.direction == .down {
-
-            self.closeWindow()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        print(segue.destination)
+        if segue.destination is ScanQRCodeViewController {
+            
+            let vc = segue.destination as? ScanQRCodeViewController
+            vc?.delegate = self
         }
-    }*/
+    }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
     
@@ -268,36 +274,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             self.configureReviewButton()
         }
     }
-/*
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-                
-        if segue.identifier == "ShowSendReviewViewController" {
-            
-            let controller = segue.destination as! SendConfirmViewController
-            controller.modalPresentationStyle = .overCurrentContext
-            controller.walletData = self.walletData
-            controller.delegate = self
-            var toAddress = ""
-            if let to = self.toTextField.text {
-                
-                toAddress = to
-            }
-            controller.toAddress = toAddress
-            var amount = "0"
-            if let amt = self.amountTextField.text {
-                
-                amount = amt
-            }
-            controller.amount = amount
-            var memo = ""
-            if let mem = self.memoTextField.text {
-                
-                memo = mem
-            }
-            controller.memo = memo
-        }
-    }
- */
+
     @IBAction func pasteButtonPressed(_ sender: Any) {
         
         weak var pb: UIPasteboard? = .general
@@ -370,23 +347,6 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         }
         self.checkForActiveContinueButton()
     }
-    
-    
-    /*func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-
-        // Check here decimal places
-        if (textField.text?.contains("."))! {
-            let limitDecimalPlace = 6
-            let decimalPlace = textField.text?.components(separatedBy: ".").last
-            if (decimalPlace?.count)! < limitDecimalPlace {
-                return true
-            }
-            else {
-                return false
-            }
-        }
-        return true
-    }*/
 }
 
 extension SendViewController {
@@ -400,6 +360,16 @@ extension SendViewController {
         
         self.selectedAsset = type
         self.configureCardDisplay()
+        self.sendTitleLabel.text = "Send \(type.getDisplayLabel())"
+    }
+}
+
+extension SendViewController {
+    
+    func setScannedText(text: String) {
+        
+        self.toTextField.text = text
+        print(text)
     }
 }
 

@@ -28,15 +28,21 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     var walletScreenSegments: [WalletScreenSegment] = []
     
     var selectedWalletAddress = ""
+    var portfolioCell: WalletPortfolioTableViewCell? = nil
+    
+    var lastTransactionWallet: WalletDataModel? = nil
+    var lastTransactionTransaction: TransactionRecordDataModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        //self.navigationController?.navigationBar.topItem?.title = "Wallet"
-        //self.title = "Wallet"
-        
+            
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        self.tableView.separatorColor = .clear
+        
+        let results = WalletDataModelManager.shared.getLatestTransaction()
+        self.lastTransactionWallet = results.wallet
+        self.lastTransactionTransaction = results.transaction
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletPortfolioTableViewCell", size: 56, data: ""))
         
@@ -44,15 +50,23 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletCardsTableViewCell", size: ((sSize.width - 32)/1.58)+28, data: "") )
         
         //self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletManageTableViewCell", size: 28), data: "")
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletButtonsTableViewCell", size: 70, data: ""))
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Last transaction"))
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "TransactionTableViewCell", size: 66, data: ""))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletButtonsTableViewCell", size: 60, data: ""))
+        
+        if self.lastTransactionTransaction != nil {
+        
+            self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Last Transaction"))
+            self.walletScreenSegments.append(WalletScreenSegment(cellName: "TransactionTableViewCell", size: 56, data: ""))
+        }
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Markets"))
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMarketTableViewCell", size: 96, data: "Ethereum"))
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMarketTableViewCell", size: 96, data: "Edge"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMarketTableViewCell", size: 76, data: "Ethereum"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMarketTableViewCell", size: 76, data: "Edge"))
         
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "More things"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Other Stuff"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Settings"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Earn"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Signal"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Learn"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletDisclaimerTableViewCell", size: 128, data: ""))
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl?.tintColor = .white
@@ -72,7 +86,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         self.tableView.reloadData()
     }
-    
+
     @objc func onDidReceiveData(_ notification: Notification) {
         
         self.tableView.reloadData()
@@ -137,13 +151,20 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletPortfolioTableViewCell" {
          
-            (cell as! WalletPortfolioTableViewCell).configure()
+            self.portfolioCell = cell as! WalletPortfolioTableViewCell
+            (cell as! WalletPortfolioTableViewCell).configure(address: self.selectedWalletAddress)
         }
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletCardsTableViewCell" {
          
             (cell as! WalletCardsTableViewCell).delegate = self
             (cell as! WalletCardsTableViewCell).configure()
+        }
+        
+        if self.walletScreenSegments[indexPath.row].cellName == "TransactionTableViewCell" {
+         
+
+            (cell as! TransactionTableViewCell).configure(walletData: self.lastTransactionWallet, transactionData: self.lastTransactionTransaction)
         }
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletHeaderTableViewCell" {
@@ -155,6 +176,11 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
          
             (cell as! WalletMarketTableViewCell).configure(data: self.walletScreenSegments[indexPath.row].data)
         }
+        
+        if self.walletScreenSegments[indexPath.row].cellName == "WalletMenuItemTableViewCell" {
+         
+            (cell as! WalletMenuItemTableViewCell).configure(data: self.walletScreenSegments[indexPath.row].data)
+        }
         return cell
     }
     
@@ -165,18 +191,43 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             DispatchQueue.main.asyncAfter(deadline: .now()) {
             
                 let contentVC = UIStoryboard(name: "TransactionPage", bundle: nil).instantiateViewController(withIdentifier: "TransactionPageViewController") as! TransactionPageViewController
+                contentVC.transactionData = self.lastTransactionTransaction
+                if let wallet = self.lastTransactionWallet {
+                
+                    contentVC.walletType = wallet.type
+                }
                 self.presentPanModal(contentVC)
             }
         }
         
+        if self.walletScreenSegments[indexPath.row].cellName == "WalletMenuItemTableViewCell" {
+            
+            if self.walletScreenSegments[indexPath.row].data == "Settings" {
+    
+                DispatchQueue.main.async(execute: { () -> Void in
+                    
+                    self.performSegue(withIdentifier: "ShowSettingsViewController", sender: nil)
+                })
+            } else if self.walletScreenSegments[indexPath.row].data == "Earn" {
+
+                self.tabBarController?.selectedIndex = 2
+            } else if self.walletScreenSegments[indexPath.row].data == "Signal" {
+
+                self.tabBarController?.selectedIndex = 3
+            } else if self.walletScreenSegments[indexPath.row].data == "Learn" {
+                
+                self.tabBarController?.selectedIndex = 4
+            }
+        }
     }
 }
 
-extension WalletViewController2 {
-    
+extension WalletViewController2: WalletPageViewControllerDelegate {
+
     func setSelectedWalletAddress(address: String) {
         
         self.selectedWalletAddress = address
+        self.portfolioCell?.configure(address: address)
     }
     
     func activateSelectedCard() {
@@ -184,7 +235,14 @@ extension WalletViewController2 {
         DispatchQueue.main.asyncAfter(deadline: .now()) {
         
             let contentVC = UIStoryboard(name: "WalletPage", bundle: nil).instantiateViewController(withIdentifier: "WalletPageViewController") as! WalletPageViewController
+            contentVC.selectedWalletAddress = self.selectedWalletAddress
+            contentVC.delegate = self
             self.presentPanModal(contentVC)
         }
+    }
+    
+    func exchangeButtonPressed() {
+        
+        self.tabBarController?.selectedIndex = 1
     }
 }

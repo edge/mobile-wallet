@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension NSDate {
+extension Date {
     
     func timeAgoDisplay() -> String {
         
@@ -32,5 +32,12 @@ extension NSDate {
         }
         let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
         return "\(diff) weeks ago"
+    }
+    
+    func getFormattedDate(format: String) -> String {
+        
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = format
+        return dateformat.string(from: self)
     }
 }

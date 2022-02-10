@@ -55,7 +55,7 @@ extension SendSelectTokenViewController: PanModalPresentable {
     var allowsExtendedPanScrolling: Bool { return false }
     var anchorModalToLongForm: Bool { return false }
     var cornerRadius: CGFloat { return 12 }
-    var longFormHeight: PanModalHeight { return .contentHeight(312)  }
+    var longFormHeight: PanModalHeight { return .contentHeight(288)  }
     
     var dragIndicatorBackgroundColor: UIColor { return .clear }
 }

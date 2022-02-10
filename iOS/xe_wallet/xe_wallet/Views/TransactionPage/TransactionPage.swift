@@ -10,10 +10,32 @@ import PanModal
 
 class TransactionPageViewController: BaseViewController{
 
+    @IBOutlet weak var tokenIconImage: UIImageView!
+    @IBOutlet weak var tokenAmountLabel: UILabel!
+    @IBOutlet weak var tokenAbvLabel: UILabel!
+    @IBOutlet weak var toAddressLabel: UILabel!
+    @IBOutlet weak var fromAddressLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    var transactionData: TransactionRecordDataModel? = nil
+    var walletType: WalletType = .ethereum
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        if let type = transactionData?.type {
+        
+            self.walletType = type
+        }
+        
+        self.tokenIconImage.image = UIImage(named: self.walletType.rawValue)
+        self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: self.transactionData?.amount ?? 0)
+        self.tokenAbvLabel.text = self.walletType.getCoinSymbol()
+        self.fromAddressLabel.text = self.transactionData?.sender
+        self.toAddressLabel.text = self.transactionData?.recipient
+        let date = Date(timeIntervalSince1970:TimeInterval(self.transactionData?.timestamp ?? 0))
+        self.dateLabel.text = date.timeAgoDisplay()
     }
 
     
@@ -32,12 +54,13 @@ class TransactionPageViewController: BaseViewController{
 }
 
 
+
 extension TransactionPageViewController: PanModalPresentable {
     
     var panScrollable: UIScrollView? { return nil }
     var allowsExtendedPanScrolling: Bool { return false }
     var anchorModalToLongForm: Bool { return false }
     var cornerRadius: CGFloat { return 12 }
-    var longFormHeight: PanModalHeight { return .contentHeight(576) }
+    var longFormHeight: PanModalHeight { return .contentHeight(552) }
     var dragIndicatorBackgroundColor: UIColor { return .clear }
 }

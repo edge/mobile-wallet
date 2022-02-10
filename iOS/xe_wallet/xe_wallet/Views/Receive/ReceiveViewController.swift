@@ -27,9 +27,7 @@ class ReceiveViewController: BaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.imageOuterView.isHidden = true
-        self.QRImageView.layer.magnificationFilter = CALayerContentsFilter.nearest
-        
+
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
         
@@ -39,6 +37,8 @@ class ReceiveViewController: BaseViewController {
             self.selectedWalletAddress = wallet.address
         }
         
+        self.imageOuterView.isHidden = true
+        self.QRImageView.layer.magnificationFilter = CALayerContentsFilter.nearest
         DispatchQueue.main.asyncAfter(deadline: .now()) {
             
             if let qrImage = self.generateQrCode2(self.selectedWalletAddress) {
@@ -86,6 +86,6 @@ extension ReceiveViewController: PanModalPresentable {
     var allowsExtendedPanScrolling: Bool { return false }
     var anchorModalToLongForm: Bool { return false }
     var cornerRadius: CGFloat { return 12 }
-    var longFormHeight: PanModalHeight { return .contentHeight(484) }
+    var longFormHeight: PanModalHeight { return .contentHeight(460) }
     var dragIndicatorBackgroundColor: UIColor { return .clear }
 }

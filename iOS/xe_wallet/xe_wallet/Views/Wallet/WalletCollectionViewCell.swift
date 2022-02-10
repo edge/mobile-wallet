@@ -92,7 +92,7 @@ class WalletCollectionViewCell: UICollectionViewCell {
             var erate: Double = 0
             if wallet.type == .ethereum {
             
-                erate = Double(EtherExchangeRatesManager.shared.getRates())
+                erate = Double(EtherExchangeRatesManager.shared.getRateValue())
             } else {
                 
                 if let rate = XEExchangeRatesManager.shared.getRates() {

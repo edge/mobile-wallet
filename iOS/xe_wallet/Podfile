@@ -12,4 +12,5 @@ target 'xe_wallet' do
 	pod 'AnyCodable-FlightSchool', '~> 0.6.0'
 	pod 'DropDown'
 	pod 'Tisander', '~> 1.0'
+	pod 'MercariQRScanner'
 end

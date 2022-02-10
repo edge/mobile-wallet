@@ -57,23 +57,26 @@ class NetworkViewController: BaseViewController {
     
     @IBAction func selectNetworkButtonPressed(_ sender: Any) {
         
-        let networkText = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString(status: self.testnetStatus)
-        
-        let alert = UIAlertController(title: Constants.networkChangeConfirmMessageHeader , message: "\(Constants.networkChangeConfirmMessage) \(networkText)", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
-
-            AppDataModelManager.shared.testModeToggle()
+        if self.testnetStatus == !self.testnetStatusStart {
             
-            WalletDataModelManager.shared.reloadAllWalletInformation()
-            NotificationCenter.default.post(name: .didReceiveData, object: nil)
-            self.dismiss(animated: true, completion: nil)
+            let networkText = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString(status: self.testnetStatus)
             
-        }))
-        alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
-
-            self.dismiss(animated: true, completion: nil)
-        }))
-        self.present(alert, animated: true)
+            let alert = UIAlertController(title: Constants.networkChangeConfirmMessageHeader , message: "\(Constants.networkChangeConfirmMessage) \(networkText)", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
+                
+                AppDataModelManager.shared.testModeToggle()
+                
+                WalletDataModelManager.shared.reloadAllWalletInformation()
+                NotificationCenter.default.post(name: .didReceiveData, object: nil)
+                self.dismiss(animated: true, completion: nil)
+                
+            }))
+            alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
+                
+                self.dismiss(animated: true, completion: nil)
+            }))
+            self.present(alert, animated: true)
+        }
     }
     
     func setButtonStatus() {

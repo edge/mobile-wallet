@@ -41,9 +41,14 @@ class ExchangeWalletCollectionViewCell: UICollectionViewCell {
         self.addressLabel.text = data.address
 
         var typeSymbol = WalletType.xe.getCoinSymbol()
+        
+        var amount = data.status?.balance
+        
+        
         if data.type != .xe {
             
             typeSymbol = WalletType.edge.getCoinSymbol()
+            amount = data.status?.edgeBalance
         }
         
         
@@ -54,7 +59,13 @@ class ExchangeWalletCollectionViewCell: UICollectionViewCell {
         
         if self.cardValueLabel != nil {
 
-            self.cardValueLabel.text = "0.0 \(typeSymbol)"
+            if let amt = amount {
+            
+                self.cardValueLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: amt)) \(typeSymbol)"
+            } else {
+                
+                self.cardValueLabel.text = "0.000000 \(typeSymbol)"
+            }
         }
     }
 }

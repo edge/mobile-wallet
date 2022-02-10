@@ -29,17 +29,15 @@ class ManageTableViewCell: UITableViewCell {
     
     var address: String = ""
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-
     }
-    
+
     func configure(data: WalletDataModel) {
 
         self.address = data.address
-        self.subAdressLabel.text = data.address
+        //self.subAdressLabel.text = data.address
         self.walletIconImage.image = UIImage(named:"\(data.type.rawValue)")
         self.addressLabel.text = "\(data.address)"
         
@@ -51,8 +49,8 @@ class ManageTableViewCell: UITableViewCell {
         let valString = CryptoHelpers.generateCryptoValueString(value: amount)
         self.amountLabel.text = "\(valString) \(data.type.getDisplayLabel())"
         
-        self.subCreatedLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.created))
-        self.subBackedupLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.backedup))
+        //self.subCreatedLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.created))
+        //self.subBackedupLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data.backedup))
     }
     
     @IBAction func backupButtonPressed(_ sender: Any) {

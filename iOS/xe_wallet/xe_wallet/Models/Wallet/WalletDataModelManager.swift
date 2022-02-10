@@ -88,14 +88,7 @@ class WalletDataModelManager {
     public func loadWalletKey(key:String) -> String {
         
         let username = key
-        /*
-        do {
-            
-            let password = try KeychainHelper.update(account: username)
-            return password
-        } catch {
-        }*/
-        
+
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: username,
@@ -114,7 +107,6 @@ class WalletDataModelManager {
                 
                 return password
             }
-        } else {
         }
         return ""
     }
@@ -189,5 +181,83 @@ class WalletDataModelManager {
             return self.walletData[i]
         }
         return nil
+    }
+    
+    public func getWalletTypeFromAddress(address: String) -> WalletType? {
+        
+        if let i = self.walletData.firstIndex(where: { $0.address == address }) {
+            
+            return self.walletData[i].type
+        }
+        return nil
+    }
+        
+    public func getLatestTransaction() -> (transaction: TransactionRecordDataModel?, wallet: WalletDataModel?) {
+            
+        var transaction: TransactionRecordDataModel? = nil
+        var wallet: WalletDataModel? = nil
+        
+        if self.walletData.count == 0 {
+            
+            return (nil, nil)
+        }
+        
+        for wall in self.walletData {
+            
+            if let transactions = wall.transactions {
+                
+                if let res = transactions.results {
+                    
+                    for trans in res {
+                    
+                        if transaction == nil {
+                            
+                            transaction = trans
+                            wallet = wall
+                        } else {
+                            
+                            if trans.timestamp > transaction?.timestamp ?? 0 {
+                                
+                                transaction = trans
+                                wallet = wall
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            
+        return (transaction, wallet)
+    }
+    
+    public func getWalletTotalValue() -> String {
+        
+        var total = 0.0
+        let xeExchange = Double(XEExchangeRatesManager.shared.getRates()?.rate ?? 0)
+        let etherExchange = Double(EtherExchangeRatesManager.shared.getRateValue())
+        
+        for wallet in self.walletData {
+
+            if wallet.type == .xe {
+                
+                if let xeBal = wallet.status?.balance {
+                
+                    total += xeBal * xeExchange
+                }
+            } else {
+                
+                if let etherBal = wallet.status?.balance {
+                
+                    total += etherBal * etherExchange
+                }
+                
+                if let edgeBal = wallet.status?.edgeBalance {
+                
+                    total += edgeBal * xeExchange
+                }
+            }
+        }
+
+        return String(format:"$%.2f", total)
     }
 }

@@ -14,6 +14,8 @@ class ExchangeViewController2: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var collectionView2: UICollectionView!
     
     var walletData = [WalletDataModel]()
+    var walletData2 = [WalletDataModel]()
+    var selectedWallet = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +38,7 @@ class ExchangeViewController2: UIViewController, UICollectionViewDelegate, UICol
         self.collectionView2.collectionViewLayout = layout2
         
         self.walletData = WalletDataModelManager.shared.getWalletData()
+        self.walletData2 = WalletDataModelManager.shared.getWalletData()
         self.collectionView.reloadData()
         self.collectionView2.reloadData()
     }
@@ -57,8 +60,12 @@ class ExchangeViewController2: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView,
         numberOfItemsInSection section: Int) -> Int {
 
-        //self.delegate?.collectionViewUpdateAmount(amount: self.walletData.count)
-        return self.walletData.count
+        if collectionView.tag == 0 {
+            
+            return self.walletData.count
+        }
+        
+        return self.walletData2.count
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -80,23 +87,20 @@ class ExchangeViewController2: UIViewController, UICollectionViewDelegate, UICol
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let tag = scrollView.tag
-        
-        if tag == 0 {
-        
+        if scrollView.tag == 0 {
+            
             let witdh = scrollView.frame.width - (scrollView.contentInset.left*2)
             let index = scrollView.contentOffset.x / witdh
             let roundedIndex = round(index)
             let idx = Int(roundedIndex)
-        }
-        //self.pageController.currentPage = idx
-        
-        /*if self.walletData.count > 0 {
             
-            if idx >= 0 && idx < self.walletData.count {
+            if self.walletData.count > 0 {
                 
-                WalletDataModelManager.shared.setSelectedWalletAddress(address: self.walletData[idx].address)
+                if idx >= 0 && idx < self.walletData.count {
+                    
+                    self.selectedWallet =  self.walletData[idx].address
+                }
             }
-        }*/
+        }
     }
 }
