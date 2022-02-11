@@ -420,6 +420,8 @@
 		FD073DEB27121BD10077F184 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				FDFB6979270F232D004C2BFD /* Manage */,
+				FD6018F7273464C800F78EBE /* Network */,
 				FD073DEC27121C530077F184 /* Settings.storyboard */,
 				FD073DEE27121C660077F184 /* SettingsViewController.swift */,
 				FD073E06271494130077F184 /* SettingsMenuItemTableViewCell.swift */,
@@ -495,13 +497,7 @@
 				FD93146D279DA2CA001C0A2C /* WalletPage */,
 				FD931472279DD067001C0A2C /* TransactionPage */,
 				FD6018E12731C5A000F78EBE /* AddWallet */,
-				FDFB6976270F22F2004C2BFD /* Send */,
-				FDFB6977270F22F9004C2BFD /* Receive */,
 				FDFB6978270F2318004C2BFD /* Exchange */,
-				FD073DEB27121BD10077F184 /* Settings */,
-				FDFB6979270F232D004C2BFD /* Manage */,
-				FD6018F7273464C800F78EBE /* Network */,
-				FD31F23227183EA30034A59E /* Backup */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -545,6 +541,7 @@
 				FDC6CF5127839F6500C4D49D /* Signal */,
 				FDA65FCB27A9F5CB00B8069C /* Learn */,
 				FDA65FAE27A404FF00B8069C /* Earn */,
+				FD073DEB27121BD10077F184 /* Settings */,
 			);
 			path = Wallet;
 			sourceTree = "<group>";
@@ -746,6 +743,8 @@
 		FDC6CF4F27839F4100C4D49D /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				FDFB6976270F22F2004C2BFD /* Send */,
+				FDFB6977270F22F9004C2BFD /* Receive */,
 				FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */,
 				FDABB8C12768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift */,
 				FD2865E6276A93A6006DEEF4 /* WalletCardsTableViewCell.swift */,
@@ -853,6 +852,7 @@
 		FDFB6979270F232D004C2BFD /* Manage */ = {
 			isa = PBXGroup;
 			children = (
+				FD31F23227183EA30034A59E /* Backup */,
 				FD31F22C2714F2A40034A59E /* Manage.storyboard */,
 				FD31F22E2714F2B20034A59E /* ManageViewController.swift */,
 				FD31F2302714FFD60034A59E /* ManageTableViewCell.swift */,
