@@ -29,6 +29,7 @@ class EarnTableViewCell: UITableViewCell {
     @IBOutlet weak var data231Label: UILabel!
     @IBOutlet weak var data232Label: UILabel!
     
+    @IBOutlet weak var singleLabelLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -44,8 +45,14 @@ class EarnTableViewCell: UITableViewCell {
         self.headerLabel.text = data.header
         self.bodyLabel.text = data.body
         
-        if data.data.count == 4 {
+        if data.data.count == 0 {
+            
+            self.singleLabelLabel.isHidden = false
+            self.stackView2.isHidden = true
+            self.stackView3.isHidden = true
+        } else if data.data.count == 4 {
           
+            self.singleLabelLabel.isHidden = true
             self.stackView2.isHidden = false
             self.stackView3.isHidden = true
             self.data111Label.text = data.data[0]
@@ -54,6 +61,7 @@ class EarnTableViewCell: UITableViewCell {
             self.data122Label.text = data.data[3]
         } else {
             
+            self.singleLabelLabel.isHidden = true
             self.stackView2.isHidden = true
             self.stackView3.isHidden = false
             self.data211Label.text = data.data[0]

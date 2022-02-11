@@ -2624,15 +2624,23 @@
                                                         <constraint firstAttribute="height" constant="40" id="bQR-4P-ppK"/>
                                                     </constraints>
                                                 </stackView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTo-It-tAf">
+                                                    <rect key="frame" x="132.5" y="188.5" width="101.5" height="19.5"/>
+                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                    <color key="textColor" name="ButtonGreen"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ocg-SR-PHj" secondAttribute="trailing" id="48K-bW-leB"/>
+                                                <constraint firstItem="bTo-It-tAf" firstAttribute="centerX" secondItem="RrU-Kh-ivu" secondAttribute="centerX" id="6is-hN-Jt1"/>
                                                 <constraint firstItem="m96-w9-O4Z" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="23" id="6lm-li-Cgz"/>
                                                 <constraint firstAttribute="bottom" secondItem="qco-X3-I99" secondAttribute="bottom" constant="16" id="B9Z-QQ-yXj"/>
                                                 <constraint firstItem="qco-X3-I99" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="EN9-qv-gAB"/>
                                                 <constraint firstAttribute="bottom" secondItem="3oB-Wv-Bbq" secondAttribute="bottom" constant="16" id="EyH-8o-VOh"/>
                                                 <constraint firstAttribute="bottom" secondItem="ocg-SR-PHj" secondAttribute="bottom" id="FYQ-4K-7q5"/>
+                                                <constraint firstAttribute="bottom" secondItem="bTo-It-tAf" secondAttribute="bottom" constant="16" id="Ffn-EQ-DCr"/>
                                                 <constraint firstItem="6Sk-Qo-b0N" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="16" id="Rbd-Gu-HY3"/>
                                                 <constraint firstItem="jSX-sl-wTJ" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="Sp2-Gm-6eY"/>
                                                 <constraint firstAttribute="trailing" secondItem="3oB-Wv-Bbq" secondAttribute="trailing" constant="16" id="TVm-uE-r4U"/>
@@ -2674,6 +2682,7 @@
                                     <outlet property="data231Label" destination="81Y-V2-Nq6" id="3IK-xp-Gnr"/>
                                     <outlet property="data232Label" destination="HQw-pY-bC8" id="at7-gY-51P"/>
                                     <outlet property="headerLabel" destination="m96-w9-O4Z" id="Rdr-3Y-shn"/>
+                                    <outlet property="singleLabelLabel" destination="bTo-It-tAf" id="6Ku-bw-QKq"/>
                                     <outlet property="stackView2" destination="qco-X3-I99" id="ajD-Nj-1WW"/>
                                     <outlet property="stackView3" destination="3oB-Wv-Bbq" id="FUj-TW-q8m"/>
                                     <outlet property="tokenIconImage" destination="6Sk-Qo-b0N" id="8VX-VD-0NA"/>

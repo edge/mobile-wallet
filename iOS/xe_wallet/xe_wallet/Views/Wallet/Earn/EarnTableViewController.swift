@@ -58,7 +58,7 @@ class EarnTableViewController: UITableViewController {
         self.earnSegments.append(EarnSegmentData(type: .edge, header: "Run a Node", body: "Contribute your spare capacity to the Edge Network and earn passive income", data: ["Stargates", "TBC", "Gateways", "TBC", "Hosts", "TBC"]))
         
         
-        self.earnSegments.append(EarnSegmentData(type: .ethereum, header: "Eth Staking", body: "Stake against Ethereum 2.0 nodes running in the Edge Network and earn rewards.", data: ["Total staked", "Coming Soon", "Current APY", "Coming Soon"]))
+        self.earnSegments.append(EarnSegmentData(type: .ethereum, header: "Eth Staking", body: "Stake against Ethereum 2.0 nodes running in the Edge Network and earn rewards.", data: []))//["Total staked", "Coming Soon", "Current APY", "Coming Soon"]))
     }
 }
 
