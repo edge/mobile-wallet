@@ -2410,32 +2410,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" name="BackgroundMain"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" id="qfe-IO-Jqh">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="64"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4nL-yl-ZH7">
-                                    <rect key="frame" x="24" y="16" width="168" height="32"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="mwA-EA-JeB"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="26"/>
-                                    <color key="textColor" name="FontMain"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstItem="4nL-yl-ZH7" firstAttribute="leading" secondItem="qfe-IO-Jqh" secondAttribute="leading" constant="24" id="LaJ-UL-BoI"/>
-                                <constraint firstItem="4nL-yl-ZH7" firstAttribute="centerY" secondItem="qfe-IO-Jqh" secondAttribute="centerY" id="iD0-Te-MMF"/>
-                            </constraints>
-                        </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EarnTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EarnTableViewCell" rowHeight="256" id="gMP-Es-Qa7" customClass="EarnTableViewCell" customModule="xe_wallet" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="108.5" width="414" height="256"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="EarnTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="EarnTableViewCell" rowHeight="240" id="gMP-Es-Qa7" customClass="EarnTableViewCell" customModule="xe_wallet" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gMP-Es-Qa7" id="KUM-xe-6QD">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="256"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="240"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RrU-Kh-ivu">
@@ -2676,7 +2656,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="RrU-Kh-ivu" secondAttribute="trailing" constant="24" id="7DP-KZ-quv"/>
                                         <constraint firstItem="RrU-Kh-ivu" firstAttribute="leading" secondItem="KUM-xe-6QD" secondAttribute="leading" constant="24" id="c9b-WY-w22"/>
-                                        <constraint firstAttribute="bottom" secondItem="RrU-Kh-ivu" secondAttribute="bottom" constant="32" id="lmq-OF-AZT"/>
+                                        <constraint firstAttribute="bottom" secondItem="RrU-Kh-ivu" secondAttribute="bottom" constant="16" id="lmq-OF-AZT"/>
                                         <constraint firstItem="RrU-Kh-ivu" firstAttribute="top" secondItem="KUM-xe-6QD" secondAttribute="top" id="vdC-NC-crp"/>
                                     </constraints>
                                 </tableViewCellContentView>

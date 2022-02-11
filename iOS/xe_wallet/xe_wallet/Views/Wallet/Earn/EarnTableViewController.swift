@@ -32,6 +32,8 @@ class EarnTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        
         self.configureArrayData()
         self.tableView.separatorColor = .clear
     }
@@ -69,7 +71,7 @@ extension EarnTableViewController {
         
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
-        return 256
+        return 240
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
