@@ -304,7 +304,7 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMq-Hn-3tj">
-                                                                            <rect key="frame" x="52" y="10" width="73" height="19"/>
+                                                                            <rect key="frame" x="52" y="18.5" width="73" height="19"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="19" id="0sh-zU-QP1"/>
                                                                             </constraints>
@@ -312,22 +312,13 @@
                                                                             <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F7v-pR-Nxc">
-                                                                            <rect key="frame" x="52" y="31" width="35" height="15"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXd-fy-3tn">
+                                                                            <rect key="frame" x="258.5" y="31" width="33" height="15"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="15" id="sYH-Ol-Fdr"/>
+                                                                                <constraint firstAttribute="height" constant="15" id="FaS-0Q-Cmh"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                                                             <color key="textColor" name="FontSecondary"/>
-                                                                            <nil key="highlightedColor"/>
-                                                                        </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BXd-fy-3tn">
-                                                                            <rect key="frame" x="310" y="10" width="44" height="19"/>
-                                                                            <constraints>
-                                                                                <constraint firstAttribute="height" constant="19" id="tGb-AT-IFc"/>
-                                                                            </constraints>
-                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
-                                                                            <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3.36%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Udd-r7-MR1">
@@ -348,22 +339,31 @@
                                                                                 <constraint firstAttribute="height" constant="15" id="vfH-Kf-HTO"/>
                                                                             </constraints>
                                                                         </imageView>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zoh-eh-21f">
+                                                                            <rect key="frame" x="344" y="10" width="10" height="19"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="19" id="JuO-By-cay"/>
+                                                                            </constraints>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                            <color key="textColor" name="FontMain"/>
+                                                                            <nil key="highlightedColor"/>
+                                                                        </label>
                                                                     </subviews>
                                                                     <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                                     <constraints>
+                                                                        <constraint firstItem="8xB-en-B4H" firstAttribute="leading" secondItem="BXd-fy-3tn" secondAttribute="trailing" constant="8" id="5kZ-1G-faR"/>
                                                                         <constraint firstItem="9LO-m3-LYa" firstAttribute="centerY" secondItem="fUQ-Un-RTD" secondAttribute="centerY" id="BSx-Nl-ShZ"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="F7v-pR-Nxc" secondAttribute="bottom" constant="10" id="FGa-rH-NaG"/>
                                                                         <constraint firstItem="Udd-r7-MR1" firstAttribute="leading" secondItem="8xB-en-B4H" secondAttribute="trailing" constant="4" id="H4h-pc-NY4"/>
                                                                         <constraint firstItem="iMq-Hn-3tj" firstAttribute="leading" secondItem="9LO-m3-LYa" secondAttribute="trailing" constant="8" id="Ktn-Qp-4n1"/>
                                                                         <constraint firstAttribute="bottom" secondItem="Udd-r7-MR1" secondAttribute="bottom" constant="10" id="Owd-uV-g72"/>
                                                                         <constraint firstItem="9LO-m3-LYa" firstAttribute="leading" secondItem="fUQ-Un-RTD" secondAttribute="leading" constant="12" id="SbS-WR-iIX"/>
                                                                         <constraint firstAttribute="bottom" secondItem="8xB-en-B4H" secondAttribute="bottom" constant="10" id="TPt-oM-AO9"/>
                                                                         <constraint firstAttribute="trailing" secondItem="Udd-r7-MR1" secondAttribute="trailing" constant="12" id="UP2-tA-VNq"/>
-                                                                        <constraint firstAttribute="trailing" secondItem="BXd-fy-3tn" secondAttribute="trailing" constant="12" id="Wh1-sO-3y2"/>
-                                                                        <constraint firstItem="BXd-fy-3tn" firstAttribute="top" secondItem="fUQ-Un-RTD" secondAttribute="top" constant="10" id="XRk-9B-7Vb"/>
-                                                                        <constraint firstItem="F7v-pR-Nxc" firstAttribute="leading" secondItem="9LO-m3-LYa" secondAttribute="trailing" constant="8" id="XzJ-mw-yWn"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="BXd-fy-3tn" secondAttribute="bottom" constant="10" id="X0k-an-XVn"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="zoh-eh-21f" secondAttribute="trailing" constant="12" id="YOx-qE-QdR"/>
                                                                         <constraint firstAttribute="height" constant="66" id="aPj-M5-lcz"/>
-                                                                        <constraint firstItem="iMq-Hn-3tj" firstAttribute="top" secondItem="fUQ-Un-RTD" secondAttribute="top" constant="10" id="bFj-q9-wFO"/>
+                                                                        <constraint firstItem="zoh-eh-21f" firstAttribute="top" secondItem="fUQ-Un-RTD" secondAttribute="top" constant="10" id="eAF-1W-1J5"/>
+                                                                        <constraint firstItem="iMq-Hn-3tj" firstAttribute="centerY" secondItem="fUQ-Un-RTD" secondAttribute="centerY" id="vxX-qu-elz"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -382,9 +382,9 @@
                                                         </tableViewCellContentView>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
-                                                            <outlet property="tokenAmountLabel" destination="F7v-pR-Nxc" id="wYC-IE-70d"/>
                                                             <outlet property="tokenChangeImage" destination="8xB-en-B4H" id="Qk5-LV-sJS"/>
                                                             <outlet property="tokenChangeLabel" destination="Udd-r7-MR1" id="6U7-Vs-Yds"/>
+                                                            <outlet property="tokenCoinAmountLabel" destination="zoh-eh-21f" id="5me-iU-y1D"/>
                                                             <outlet property="tokenIconImage" destination="9LO-m3-LYa" id="Biq-o9-YgS"/>
                                                             <outlet property="tokenNameLabel" destination="iMq-Hn-3tj" id="HtR-YB-3EN"/>
                                                             <outlet property="tokenValueLabel" destination="BXd-fy-3tn" id="Aei-YB-Fcn"/>

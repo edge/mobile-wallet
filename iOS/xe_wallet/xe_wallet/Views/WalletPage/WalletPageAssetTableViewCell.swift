@@ -15,6 +15,7 @@ class WalletPageAssetTableViewCell: UITableViewCell {
     @IBOutlet weak var tokenValueLabel: UILabel!
     @IBOutlet weak var tokenChangeLabel: UILabel!
     @IBOutlet weak var tokenChangeImage: UIImageView!
+    @IBOutlet weak var tokenCoinAmountLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,11 +26,12 @@ class WalletPageAssetTableViewCell: UITableViewCell {
                 
         self.tokenIconImage.image = UIImage(named:data.type.rawValue)
         self.tokenNameLabel.text = data.type.getFullNameLabel()
-        self.tokenAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)
+        self.tokenCoinAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)
         self.tokenValueLabel.text = String(format:"$%.2f", data.value)
         
         let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
         self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
         self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
+        
     }
 }
