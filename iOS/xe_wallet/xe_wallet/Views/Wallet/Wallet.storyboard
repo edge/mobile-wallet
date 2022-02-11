@@ -1494,7 +1494,7 @@
                                             <rect key="frame" x="24" y="0.0" width="366" height="56"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_ethereum" translatesAutoresizingMaskIntoConstraints="NO" id="G6V-fi-RGs">
-                                                    <rect key="frame" x="12" y="12" width="32" height="32"/>
+                                                    <rect key="frame" x="8" y="12" width="32" height="32"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="32" id="Ba5-bB-BRv"/>
@@ -1502,7 +1502,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-Xi-P1R">
-                                                    <rect key="frame" x="52" y="10" width="73" height="19"/>
+                                                    <rect key="frame" x="48" y="10" width="73" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="34V-Xn-BQj"/>
                                                     </constraints>
@@ -1511,7 +1511,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 Days ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cO5-Jo-a1z">
-                                                    <rect key="frame" x="52" y="31" width="64" height="15"/>
+                                                    <rect key="frame" x="48" y="31" width="64" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="Sbj-Bt-Tqo"/>
                                                     </constraints>
@@ -1542,7 +1542,7 @@
                                             <constraints>
                                                 <constraint firstItem="cO5-Jo-a1z" firstAttribute="leading" secondItem="G6V-fi-RGs" secondAttribute="trailing" constant="8" symbolic="YES" id="7yj-6M-szI"/>
                                                 <constraint firstItem="DAN-Ws-LFU" firstAttribute="top" secondItem="6ax-ny-j6t" secondAttribute="top" constant="10" id="FPJ-zb-2Wm"/>
-                                                <constraint firstItem="G6V-fi-RGs" firstAttribute="leading" secondItem="6ax-ny-j6t" secondAttribute="leading" constant="12" id="Gng-Sw-md3"/>
+                                                <constraint firstItem="G6V-fi-RGs" firstAttribute="leading" secondItem="6ax-ny-j6t" secondAttribute="leading" constant="8" id="Gng-Sw-md3"/>
                                                 <constraint firstItem="soC-Xi-P1R" firstAttribute="top" secondItem="6ax-ny-j6t" secondAttribute="top" constant="10" id="VuQ-a6-KO6"/>
                                                 <constraint firstAttribute="bottom" secondItem="cO5-Jo-a1z" secondAttribute="bottom" constant="10" id="X6p-o0-9mb"/>
                                                 <constraint firstAttribute="bottom" secondItem="ITk-3n-cAp" secondAttribute="bottom" constant="10" id="ZdR-gZ-fjV"/>
