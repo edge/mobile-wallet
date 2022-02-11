@@ -55,6 +55,27 @@ class XEExchangeRatesManager {
     
     func configure() {
         
+        self.loadFromLocalStorage()
+    }
+    
+    func loadFromLocalStorage() {
+        
+        if let data = UserDefaults.standard.data(forKey: "ExchangeRates") {
+            
+            if let decoded = try? JSONDecoder().decode(XEExchangeRatesDataModel.self, from: data) {
+
+                self.exchangeDataModel = decoded
+            }
+        }
+    }
+    
+    func saveToLocalStorage() {
+        
+        if let encoded = try? JSONEncoder().encode(self.exchangeDataModel) {
+            
+            UserDefaults.standard.set(encoded, forKey: "ExchangeRates")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     func getRates() -> XEExchangeRatesDataModel? {
@@ -90,7 +111,8 @@ class XEExchangeRatesManager {
                 do {
 
                     self.exchangeDataModel = try JSONDecoder().decode(XEExchangeRatesDataModel.self, from: response.data!)
-
+                    self.saveToLocalStorage()
+                    
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                 }

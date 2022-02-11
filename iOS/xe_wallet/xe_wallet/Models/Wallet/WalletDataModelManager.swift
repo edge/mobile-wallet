@@ -152,27 +152,6 @@ class WalletDataModelManager {
         let filtered = self.walletData.filter { $0.type != type }
         return filtered
     }
-        
-    /*
-    public func setSelectedWalletAddress(address: String) {
-        
-        self.selectedWalletAddress = address
-    }
-    
-    public func getSelectedWalletAddress() -> String {
-        
-        return self.selectedWalletAddress
-    }*/
-
-    /*
-    public func getSelectedWalletData() -> WalletDataModel? {
-        
-        if let i = self.walletData.firstIndex(where: { $0.address == self.selectedWalletAddress }) {
-            
-            return self.walletData[i]
-        }
-        return nil
-    }*/
     
     public func getSelectedWalletData(address: String) -> WalletDataModel? {
         

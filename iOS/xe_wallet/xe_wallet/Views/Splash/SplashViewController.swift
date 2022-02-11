@@ -18,6 +18,7 @@ class SplashViewController: UIViewController {
         XEGasRatesManager.shared.configure()
         XEExchangeRateHistoryManager.shared.configure()
         XEStakedDataManagerManager.shared.configure()
+        EtherExchangeRatesManager.shared.configure()
     }
     
     override func viewDidAppear(_ animated: Bool) {

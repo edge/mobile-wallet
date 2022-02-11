@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import web3swift
+import SwiftyJSON
 
 class XEExchangeRateHistoryDataModel: Codable {
 
@@ -49,6 +50,27 @@ class XEExchangeRateHistoryManager {
     
     func configure() {
         
+        self.loadFromLocalStorage()
+    }
+    
+    func loadFromLocalStorage() {
+        
+        if let data = UserDefaults.standard.data(forKey: "ExchangeRateHistory") {
+            
+            if let decoded = try? JSONDecoder().decode([XEExchangeRateHistoryDataModel].self, from: data) {
+
+                self.exchangeDataModel = decoded
+            }
+        }
+    }
+    
+    func saveToLocalStorage() {
+        
+        if let encoded = try? JSONEncoder().encode(self.exchangeDataModel) {
+            
+            UserDefaults.standard.set(encoded, forKey: "ExchangeRateHistory")
+            UserDefaults.standard.synchronize()
+        }
     }
     
     func getRates() -> [XEExchangeRateHistoryDataModel]? {
@@ -143,7 +165,7 @@ class XEExchangeRateHistoryManager {
                 do {
 
                     self.exchangeDataModel = try JSONDecoder().decode([XEExchangeRateHistoryDataModel].self, from: response.data!)
-                    let a = 1
+                    self.saveToLocalStorage()
                     
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")

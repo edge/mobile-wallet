@@ -25,6 +25,25 @@ class EtherExchangeRatesManager {
         }
     }
     
+    func configure() {
+        
+        self.loadFromLocalStorage()
+    }
+    
+    func loadFromLocalStorage() {
+        
+        if let data = UserDefaults.standard.object(forKey:  "EtherExchangeRate") {
+        
+            self.etherValue =   data as! NSNumber
+        }
+    }
+    
+    func saveToLocalStorage() {
+        
+        UserDefaults.standard.set(self.etherValue, forKey:"EtherExchangeRate")
+        UserDefaults.standard.synchronize()
+    }
+    
     func getRateValue() -> NSNumber {
         
         return self.etherValue
@@ -37,6 +56,7 @@ class EtherExchangeRatesManager {
             DispatchQueue.global().async {
                 
                 self.etherValue = value ?? 0
+                self.saveToLocalStorage()
             }
         }
     }
