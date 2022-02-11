@@ -49,7 +49,7 @@ class EarnTableViewController: UITableViewController {
         var stakedAmount = "0"
         if let amount = stakedData?.stakedAmount {
             
-            stakedAmount = "\(CryptoHelpers.generateCryptoValueString(value: amount/1000000 ?? 0))"
+            stakedAmount = "\(CryptoHelpers.generateCryptoValueStringNoDecimal(value: amount/1000000 ?? 0))"
         }
         
         self.earnSegments.append(EarnSegmentData(type: .xe, header: "XE Staking", body: "Start earning rewards on your XE today.  Simplified staking with no minimum requirements and instant activation.", data: ["Stakes", stakedCount, "Staked XE", stakedAmount]))
