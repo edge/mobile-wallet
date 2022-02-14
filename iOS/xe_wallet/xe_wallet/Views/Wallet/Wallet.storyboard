@@ -1913,10 +1913,10 @@
                     </tabBar>
                     <connections>
                         <segue destination="1iV-Et-QSk" kind="relationship" relationship="viewControllers" id="WvR-HB-isY"/>
-                        <segue destination="o5o-Ck-soj" kind="relationship" relationship="viewControllers" id="n7r-jD-Fs3"/>
                         <segue destination="mUd-Ia-E1g" kind="relationship" relationship="viewControllers" id="sIC-Ho-4zL"/>
                         <segue destination="6h6-xu-eTP" kind="relationship" relationship="viewControllers" id="u7k-bn-sAG"/>
                         <segue destination="6rB-6e-Yfd" kind="relationship" relationship="viewControllers" id="Eeo-pZ-n3z"/>
+                        <segue destination="h6x-Pb-RHY" kind="relationship" relationship="viewControllers" id="Jia-AA-KUB"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9OJ-uN-9pA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2967,7 +2967,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="tam-9W-7Lc">
-                                <rect key="frame" x="24" y="44" width="366" height="818"/>
+                                <rect key="frame" x="24" y="88" width="366" height="725"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="SettingsHeaderTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SettingsHeaderTableViewCell" rowHeight="36" id="tcb-N9-X4G" customClass="SettingsHeaderTableViewCell" customModule="xe_wallet" customModuleProvider="target">
@@ -3065,13 +3065,75 @@
                             <constraint firstItem="ufK-w1-FaS" firstAttribute="bottom" secondItem="tam-9W-7Lc" secondAttribute="bottom" id="nYO-bm-EHR"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Settings" id="xkW-bF-cWL"/>
                     <connections>
                         <outlet property="tableView" destination="tam-9W-7Lc" id="UsF-wA-WDj"/>
+                        <segue destination="yUY-3y-nah" kind="show" identifier="ShowManageViewController" id="PtW-2S-m7g"/>
+                        <segue destination="rKp-Qm-VGM" kind="show" identifier="ShowNetworkViewController" id="nhp-hl-geD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Whn-te-0Os" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4948" y="477"/>
+            <point key="canvasLocation" x="2616" y="23"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="h6G-pM-vwP">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="h6x-Pb-RHY" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Settings" image="settings" id="kN4-5P-EnQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="u0o-0Z-43R">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance" backgroundEffect="systemThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="compactAppearance" backgroundEffect="systemThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="scrollEdgeAppearance" backgroundEffect="systemThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                        <navigationBarAppearance key="compactScrollEdgeAppearance" backgroundEffect="systemThinMaterialDark">
+                            <textAttributes key="titleTextAttributes">
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </textAttributes>
+                        </navigationBarAppearance>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5Pd-Rn-dkY" kind="relationship" relationship="rootViewController" id="Tny-WQ-NQl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lam-jr-Wj6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2616" y="-713"/>
+        </scene>
+        <!--ManageViewController-->
+        <scene sceneID="7da-11-Q9w">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Manage" referencedIdentifier="ManageViewController" id="yUY-3y-nah" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Crx-9y-ua8"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uuD-9L-S4t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3207" y="-27"/>
+        </scene>
+        <!--NetworkViewController-->
+        <scene sceneID="swT-pm-mBK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Network" referencedIdentifier="NetworkViewController" id="rKp-Qm-VGM" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="k0P-fW-WSO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T99-Tt-SUy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3210" y="72"/>
         </scene>
     </scenes>
     <resources>
@@ -3088,6 +3150,7 @@
         <image name="plus" width="24" height="24"/>
         <image name="receive" width="32" height="32"/>
         <image name="send" width="32" height="32"/>
+        <image name="settings" width="25" height="25"/>
         <image name="swap" width="20" height="20"/>
         <image name="trendlineUp" width="32" height="32"/>
         <image name="wallet" width="20" height="20"/>
