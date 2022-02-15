@@ -25,7 +25,7 @@ enum SendConfirmViewEntryStatus {
     var height: PanModalHeight {
         switch self {
             case .none: return .contentHeight(530)
-            case .pin: return .contentHeight(760)
+            case .pin: return .contentHeight(470)
         }
     }
 }
@@ -43,6 +43,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     @NibWrapped(PinEntryView.self)
     @IBOutlet var pinEntryView: UIView!
         
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
@@ -137,16 +138,22 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             
         case .confirm:
             self.pinEntryMainView.isHidden = true
+            self.mainView.isHidden = false
             self.confirmButtonOutterView.isHidden = false
             self.confirmButtonText.text = "Confirm"
             self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
             break
         case .pinEntry:
             self.pinEntryMainView.isHidden = false
+            self.mainView.isHidden = true
             self.confirmButtonOutterView.isHidden = true
+            self.entryStatus = .pin
+            panModalSetNeedsLayoutUpdate()
+            panModalTransition(to: .shortForm)
             break
         case .processing:
             self.pinEntryMainView.isHidden = true
+            self.mainView.isHidden = true
             self.confirmButtonOutterView.isHidden = false
             self.confirmButtonText.text = "Submitting..."
             self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")

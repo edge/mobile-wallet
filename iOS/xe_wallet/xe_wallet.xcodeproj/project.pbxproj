@@ -537,7 +537,6 @@
 				FD22ED97270F16E700B5B33F /* WalletViewController.swift */,
 				FD073DE927110D2F0077F184 /* WalletCollectionViewCell.swift */,
 				FDC6CF4F27839F4100C4D49D /* Wallet */,
-				FDC6CF5027839F5800C4D49D /* Exchange */,
 				FDC6CF5127839F6500C4D49D /* Signal */,
 				FDA65FCB27A9F5CB00B8069C /* Learn */,
 				FDA65FAE27A404FF00B8069C /* Earn */,
@@ -743,6 +742,7 @@
 		FDC6CF4F27839F4100C4D49D /* Wallet */ = {
 			isa = PBXGroup;
 			children = (
+				FDC6CF5027839F5800C4D49D /* Exchange */,
 				FDFB6976270F22F2004C2BFD /* Send */,
 				FDFB6977270F22F9004C2BFD /* Receive */,
 				FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */,
@@ -1330,7 +1330,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1344,6 +1344,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1364,7 +1365,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 45;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1378,6 +1379,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

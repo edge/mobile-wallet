@@ -78,7 +78,14 @@ extension ManageViewController {
     // Make the background color show through
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = UIView()
-        headerView.backgroundColor = UIColor.yellow
+        headerView.backgroundColor = UIColor.clear
+        return headerView
+    }
+    
+    // Make the background color show through
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = UIColor.clear
         return headerView
     }
     
@@ -117,7 +124,7 @@ extension ManageViewController {
     
     func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         
-        WalletDataModelManager.shared.switchWalletPosition(aIndex: sourceIndexPath.row, bIndex: destinationIndexPath.section)
+        WalletDataModelManager.shared.switchWalletPosition(aIndex: sourceIndexPath.section, bIndex: destinationIndexPath.section)
         
         let movedObject = self.walletTableViewData[sourceIndexPath.section]
         self.walletTableViewData.remove(at: sourceIndexPath.section)
