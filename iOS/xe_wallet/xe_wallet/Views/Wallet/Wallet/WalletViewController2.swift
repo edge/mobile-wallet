@@ -215,16 +215,19 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             
             if self.walletScreenSegments[indexPath.row].data == "Settings" {
     
-                self.tabBarController?.selectedIndex = 4
+                DispatchQueue.main.async(execute: { () -> Void in
+                    
+                    self.performSegue(withIdentifier: "ShowSettingsViewController", sender: nil)
+                })
             } else if self.walletScreenSegments[indexPath.row].data == "Earn" {
 
-                self.tabBarController?.selectedIndex = 1
+                self.tabBarController?.selectedIndex = 2
             } else if self.walletScreenSegments[indexPath.row].data == "Signal" {
 
-                self.tabBarController?.selectedIndex = 2
+                self.tabBarController?.selectedIndex = 3
             } else if self.walletScreenSegments[indexPath.row].data == "Learn" {
                 
-                self.tabBarController?.selectedIndex = 3
+                self.tabBarController?.selectedIndex = 4
             }
         }
     }

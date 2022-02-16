@@ -19,9 +19,6 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
 
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
-        //tableView.rowHeight = UITableView.automaticDimension
-        //tableView.estimatedRowHeight = 140
-        //tableView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorColor = .clear
@@ -97,32 +94,17 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
             
             if let imageStr = (data.object(forKey: "image") as? String)?.trim() {
                 
-                //let imageData = NSData(contentsOf:NSURL(fileURLWithPath: imageStr) as URL)
-                //let url = NSURL(string:imageStr)
-                /*if let idata = NSData(contentsOf:url! as URL) {
-                    
-                    var img = UIImage(data:idata as Data)
-                    img = resizeImage(image: img!, toTheSize: CGSize(width: 366, height: 187))
-                    (cell as! SignalTableViewCell).mainImage.image = img
-                    
-                    
-
-                }*/
+                (cell as! SignalTableViewCell).mainImage.sd_setImage(with: URL(string: imageStr), placeholderImage: UIImage(named: "defaultSignalImage"))
+            } else {
                 
-                //(cell as! SignalTableViewCell).mainImage.image = img
-                (cell as! SignalTableViewCell).mainImage.sd_setImage(with: URL(string: imageStr))
+                (cell as! SignalTableViewCell).mainImage.image = UIImage(named:"defaultSignalImage")
             }
             
             if let title = (data.object(forKey: "title") as? String)?.trim() {
                 
                 (cell as! SignalTableViewCell).titleLabel.text = title
             }
-            
-            /*if let description = (data.object(forKey: "description") as? String)?.trim() {
-                
-                (cell as! SignalTableViewCell).descriptionTextView.text = description
-            }*/
-            
+
             if let pubDate = (data.object(forKey: "pubDate") as? String)?.trim() {
                 
                 let formatter = DateFormatter()
@@ -134,37 +116,6 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
                 (cell as! SignalTableViewCell).dateLabel.text = "\(dString)"
             }
         }
-        
-        
-        //let cellBGColorView = UIView()
-        //let cellImageLayer: CALayer?  = cell.imageView?.layer
-        //let url = NSURL(string:feedImgs[indexPath.row] as! String)
-        //let data = NSData(contentsOf:url! as URL)
-        //var image = UIImage(data:data! as Data)
-        
-        //image = resizeImage(image: image!, toTheSize: CGSize(width: 70, height: 70))
-        
-        //cellImageLayer!.cornerRadius = 35
-        //cellImageLayer!.masksToBounds = true
-        //cellBGColorView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
-        
-        /*if indexPath.row % 2 == 0 {
-            cell.backgroundColor = UIColor(white: 1, alpha: 0)
-        } else {
-            cell.backgroundColor = UIColor(white: 1, alpha: 0.1)
-        }*/
-        
-        //cell.textLabel?.backgroundColor = UIColor.clear
-        //cell.detailTextLabel?.backgroundColor = UIColor.clear
-        //cell.selectedBackgroundView = cellBGColorView
-        //cell.imageView?.image = image
-        //cell.textLabel?.text = (myFeed.object(at: indexPath.row) as AnyObject).object(forKey: "title") as? String
-        //cell.textLabel?.textColor = UIColor.white
-        //cell.textLabel?.numberOfLines = 0
-        //cell.textLabel?.lineBreakMode = .byWordWrapping
-        //cell.detailTextLabel?.text = (myFeed.object(at: indexPath.row) as AnyObject).object(forKey: "pubDate") as? String
-        //cell.detailTextLabel?.textColor = UIColor.white
-
         return cell
     }
 
