@@ -3205,6 +3205,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="T9M-dN-2mz">
                                                     <rect key="frame" x="0.0" y="0.0" width="366" height="187"/>
+                                                    <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="T9M-dN-2mz" secondAttribute="height" multiplier="366:187" id="8dU-7p-MIy"/>
                                                     </constraints>

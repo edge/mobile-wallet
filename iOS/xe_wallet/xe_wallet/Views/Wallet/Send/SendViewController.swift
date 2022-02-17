@@ -70,6 +70,20 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         // Do any additional setup after loading the view.
 
         self.configureViews()
+        self.configureData()
+        self.configureCardDisplay()
+
+        self.entryStatus = .none
+        
+        self.configureReviewButton()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+    }
+    
+    func configureData() {
         
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
@@ -102,25 +116,14 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                 self.sendTitleLabel.text = "Send Ether"
             }
         }
-        
-        self.configureCardDisplay()
-
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-        self.entryStatus = .none
-        
-        self.configureReviewButton()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        let a = 1
     }
     
     func configureViews() {
         
         self.title = "Send"
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
+        view.addGestureRecognizer(tap)
         
         let attrs1 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontSecondary")]
         let attrs2 = [NSAttributedString.Key.font : UIFont(name:"Inter-Medium", size:14), NSAttributedString.Key.foregroundColor : UIColor(named:"FontOptional")]

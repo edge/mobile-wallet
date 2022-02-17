@@ -76,14 +76,6 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         // Do any additional setup after loading the view.
 
         self.configureViews()
-
-        UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
-        textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
-
-        
-        _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
-        self.textEntryTextView.text = ""
-        
         self.configureConfirmStatus()
     }
 
@@ -92,11 +84,12 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         
         self.title = "Confirm"
         
+        UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
+        textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
         self.amountLabel.text = self.amount
         self.toLabel.text = self.toAddress
         self.fromLabel.text = self.fromAddress
-        
-        
         
         let valString = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)
                 
@@ -104,32 +97,9 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         self.receiveAmountLabel.text = "\(valString) \(self.walletType.getCoinSymbol())"
         self.typeLabel.text = "(\(self.walletType.getDisplayLabel()))"
         self.feeLabel.text = "Fee: 0 \(self.walletType.getCoinSymbol()) ($0.00)"
-        /*
-        if let wallet = self.walletData {
         
-            self.typeLabel.text = "(\(wallet.type.getDisplayLabel()))"
-            
-            var valTypeLabel = "XE"
-            if wallet.type != .xe {
-                
-                var edgeAmount = "0.0"
-                if let status = wallet.status {
-                    
-                    edgeAmount = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance ?? 0)
-                }
-                
-                
-                if memo.lowercased() == "edge" {
-                    
-                    valTypeLabel = "EDGE"
-                } else {
-                    
-                    valTypeLabel = "ETH"
-                }
-            }
-            
-            self.receiveAmountLabel.text = "\(valString) \(valTypeLabel)"
-        }*/
+        _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+        self.textEntryTextView.text = ""
     }
     
     func configureConfirmStatus() {
@@ -199,14 +169,6 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             break
         }
     }
-    
-    /*@objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-
-        if gesture.direction == .down {
-
-            self.closeWindow(callKillDelegate: true)
-        }
-    }*/
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         
