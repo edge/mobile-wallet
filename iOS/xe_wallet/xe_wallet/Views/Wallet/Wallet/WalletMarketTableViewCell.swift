@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 class WalletMarketTableViewCell: UITableViewCell {
             
     @IBOutlet weak var tokenImage: UIImageView!
