@@ -2826,7 +2826,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fromTokenAbv" destination="MDx-Es-SRn" id="Jl6-dJ-kaS"/>
+                        <outlet property="fromTokenImage" destination="gQq-qo-yLv" id="zuZ-ui-yz9"/>
                         <outlet property="secondTimerLabel" destination="HR3-re-TQd" id="auE-jQ-X8A"/>
+                        <outlet property="toTokenAbv" destination="P1B-kL-Pdh" id="1E8-FN-bIt"/>
+                        <outlet property="toTokenImage" destination="B8c-J9-qCE" id="cDu-fn-jGA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xke-2y-bKd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

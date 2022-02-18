@@ -10,10 +10,19 @@ import PanModal
 
 class ExchangeWalletReviewViewController: BaseViewController {
 
+    @IBOutlet weak var fromTokenImage: UIImageView!
+    @IBOutlet weak var fromTokenAbv: UILabel!
+    @IBOutlet weak var toTokenImage: UIImageView!
+    @IBOutlet weak var toTokenAbv: UILabel!
     @IBOutlet weak var secondTimerLabel: UILabel!
     
     var timer:Timer?
     var timerCount = 30
+    
+    var fromAddress:WalletDataModel? = nil
+    var fromType:WalletType = .ethereum
+    var toAddress:WalletDataModel? = nil
+    var totype:WalletType = .ethereum
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +41,10 @@ class ExchangeWalletReviewViewController: BaseViewController {
 
     func configureViews() {
         
+        self.fromTokenImage.image = UIImage(named:self.fromType.rawValue)
+        self.fromTokenAbv.text = self.fromType.getDisplayLabel()
+        self.toTokenImage.image = UIImage(named:self.totype.rawValue)
+        self.toTokenAbv.text = self.totype.getDisplayLabel()
     }
     
     func configureTableViewArray() {

@@ -142,11 +142,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         if self.walletData[self.selectedIndex].type == .xe {
         
             self.toIndex = self.findFirstIndex(type: .ethereum)
-            self.swapToTokenType = .xe
+            self.swapToTokenType = .ethereum
         } else {
             
             self.toIndex = 0
-            self.swapToTokenType = .ethereum
+            self.swapToTokenType = self.walletData[0].type
         }
     }
     
@@ -252,6 +252,10 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         DispatchQueue.main.asyncAfter(deadline: .now()) {
         
             let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletReviewViewController") as! ExchangeWalletReviewViewController
+            contentVC.fromAddress = self.walletData[self.selectedIndex]
+            contentVC.fromType = self.swapFromTokenType
+            contentVC.toAddress = self.walletData[self.toIndex]
+            contentVC.totype = self.swapToTokenType
             self.presentPanModal(contentVC)
         }
     }
@@ -288,6 +292,7 @@ extension ExchangeViewController2 {
             if let index = self.walletData.firstIndex(where: { $0.address == data }) {
                 
                 self.toIndex = index
+                self.swapToTokenType = self.walletData[self.toIndex].type
                 self.configureSelectedWallet()
             }
             break
