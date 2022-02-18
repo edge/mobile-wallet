@@ -13,6 +13,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var addressTokenImage: UIImageView!
     @IBOutlet weak var addressAddressLabel: UILabel!
     
+    @IBOutlet weak var swapFromCardImage: UIImageView!
     @IBOutlet weak var swapFromTokenImage: UIImageView!
     @IBOutlet weak var swapFromTokenAbv: UILabel!
     @IBOutlet weak var swapFromAmountTextField: UITextField!
@@ -20,6 +21,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var swapFromTokenSelectButton: UIButton!
     @IBOutlet weak var swapFromAvailableLabel: UILabel!
     
+    @IBOutlet weak var swapToCardImage: UIImageView!
     @IBOutlet weak var swapToTokenImage: UIImageView!
     @IBOutlet weak var swapToAddressLabel: UILabel!
     
@@ -83,6 +85,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
             self.swapFromTokenAbv.text = wallet.type.getDisplayLabel()
             self.swapFromAvailableLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)) XE available to swap"
+            self.swapFromCardImage.image = UIImage(named:wallet.type.getBackgroundImage())
         } else {
             
             self.swapFromSelectImage.isHidden = false
@@ -97,6 +100,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 balance = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.edgeBalance ?? 0)) EDGE available to swap"
             }
             self.swapFromAvailableLabel.text = balance
+            self.swapFromCardImage.image = UIImage(named:WalletType.ethereum.getBackgroundImage())
         }
         
         if self.toIndex != -1 {
@@ -111,6 +115,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 
                 self.swapToTokenSelectImage.isHidden = true
                 self.swapToTokenSelectButton.isEnabled = false
+                self.swapToCardImage.image = UIImage(named:WalletType.xe.getBackgroundImage())
             } else {
                 
                 self.swapToTokenSelectImage.isHidden = false
@@ -124,6 +129,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.ethereum.rawValue)
                     self.swapToTokenTokenAbv.text = WalletType.ethereum.getDisplayLabel()
                 }
+                self.swapToCardImage.image = UIImage(named:WalletType.ethereum.getBackgroundImage())
             }
         } else {
             
@@ -240,6 +246,15 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @objc func textFieldDidChange(_ textField: UITextField) {
         
     }
+    
+    @IBAction func reviewButtonPressed(_ sender: Any) {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()) {
+        
+            let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletReviewViewController") as! ExchangeWalletReviewViewController
+            self.presentPanModal(contentVC)
+        }
+    }
 }
 
 extension ExchangeViewController2 {
@@ -278,6 +293,14 @@ extension ExchangeViewController2 {
             break
             
         case 3:
+            if data == "Ethereum" {
+                
+                self.swapToTokenType = .ethereum
+            } else {
+                
+                self.swapToTokenType = .edge
+            }
+            self.configureSelectedWallet()
             break
         default:
             break

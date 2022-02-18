@@ -149,6 +149,7 @@
 		FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */; };
 		FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F52745C62A0068B9F9 /* Constants.swift */; };
 		FD9F19F227BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */; };
+		FD9F19F427BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */; };
 		FDA65FB027A4052A00B8069C /* EarnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */; };
 		FDA65FB227A4063100B8069C /* EarnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */; };
 		FDA65FB427A43E7B00B8069C /* WalletMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */; };
@@ -324,6 +325,7 @@
 		FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleBar.swift; sourceTree = "<group>"; };
 		FD9EA5F52745C62A0068B9F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTokenSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletReviewViewController.swift; sourceTree = "<group>"; };
 		FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewController.swift; sourceTree = "<group>"; };
 		FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewCell.swift; sourceTree = "<group>"; };
 		FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMenuItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 				FDAC56EF27BD98B2000C7316 /* ExchangeWalletSelectionViewController.swift */,
 				FDAC56F127BDA027000C7316 /* ExchangeWalletSelectionTableViewCell.swift */,
 				FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */,
+				FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */,
 				FDC6CF5227839FA100C4D49D /* ExchangeWalletCollectionViewCell.swift */,
 			);
 			path = Exchange;
@@ -1190,6 +1193,7 @@
 				FD5C21992757852400795A2F /* Networks.swift in Sources */,
 				FD5C215F2755087000795A2F /* Secp256k1PublicKey.swift in Sources */,
 				FDA65FCD27A9F5E400B8069C /* LearnTableViewController.swift in Sources */,
+				FD9F19F427BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
