@@ -170,14 +170,18 @@ class ExchangeWalletReviewViewController: BaseViewController {
         switch self.confirmStatus {
             
         case .confirm:
-            textEntryTextView.becomeFirstResponder()
-            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
-            self.confirmStatus = .pinEntry
-            self.configureConfirmStatus()
-            
-            self.entryStatus = .pin
-            panModalSetNeedsLayoutUpdate()
-            panModalTransition(to: .shortForm)
+
+            BiometricsManager().authenticateUser(completion: { [weak self] (response) in
+                switch response {
+                
+                case .failure:
+
+                    self?.handleFailedBiometrics()
+                case .success:
+
+                    self?.handleExchangeAuthenticated()
+                }
+            })
             break
         case .pinEntry:
             break
@@ -269,11 +273,51 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func completeButtonPressed(_ sender: Any) {
+    func handleFailedBiometrics() {
         
-        let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
-        contentVC.modalPresentationStyle = .overFullScreen
-        present(contentVC, animated: false, completion: nil)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+            
+            self.textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            
+            self.entryStatus = .pin
+            self.panModalSetNeedsLayoutUpdate()
+            self.panModalTransition(to: .shortForm)
+        }
+    }
+    
+    func handleExchangeAuthenticated() {
+        
+        self.textEntryTextView.endEditing(true)
+        self.confirmStatus = .processing
+        self.configureConfirmStatus()
+        
+        let amountValue = self.toTokenAmount
+        let fAmount = String(format: "%.6f", amountValue!)
+        
+        let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress?.address ?? "")
+        
+        if let wallet = self.fromAddress {
+            
+            if let toWallet = self.toAddress {
+                
+                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
+                    
+                    if res {
+                        
+                        let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
+                        contentVC.modalPresentationStyle = .overFullScreen
+                        self.present(contentVC, animated: true, completion: nil)
+                    } else {
+                        
+                        self.confirmStatus = .confirm
+                        self.configureConfirmStatus()
+                    }
+                })
+            }
+        }
     }
     
     @objc private func textFieldDidChange(_ textField: UITextField) {
@@ -290,60 +334,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
                     
                         if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
                             
-                            self.textEntryTextView.endEditing(true)
-                            self.confirmStatus = .processing
-                            self.configureConfirmStatus()
-                            
-                            let amountValue = self.toTokenAmount
-                            let fAmount = String(format: "%.6f", amountValue!)
-                            
-                            let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress?.address ?? "")
-                            
-                            if let wallet = self.fromAddress {
-                                
-                                if let toWallet = self.toAddress {
-                                    
-                                    wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
-                                        
-                                        if res {
-                                            
-                                            let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
-                                            contentVC.modalPresentationStyle = .overFullScreen
-                                            self.present(contentVC, animated: true, completion: nil)
-                                        } else {
-                                            
-                                            self.confirmStatus = .confirm
-                                            self.configureConfirmStatus()
-                                        }
-                                    })
-                                }
-                            }
-                            
-                            
-                            
-                            /*if let wallet = self.walletData {
-                                               
-                                self.textEntryTextView.endEditing(true)
-                                self.confirmStatus = .processing
-                                self.configureConfirmStatus()
-                                
-                                let amountValue = Float(self.amount)
-                                let fAmount = String(format: "%.6f", amountValue!)
-                                
-                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
-                                self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
-                                    
-                                    if res {
-                                        
-                                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
-                                        
-                                    } else {
-                                        
-                                        self.confirmStatus = .error
-                                        self.configureConfirmStatus()
-                                    }
-                                })
-                            }*/
+                            self.handleExchangeAuthenticated()
                         } else {
                                                         
                             let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
