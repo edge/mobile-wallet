@@ -16,6 +16,7 @@ class SplashViewController: UIViewController {
         
         XEExchangeRatesManager.shared.configure()
         XEGasRatesManager.shared.configure()
+        XEExchangeRateCurrentManager.shared.configure()
         XEExchangeRateHistoryManager.shared.configure()
         XEStakedDataManagerManager.shared.configure()
         EtherExchangeRatesManager.shared.configure()

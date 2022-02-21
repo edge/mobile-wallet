@@ -102,12 +102,12 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
             let edgerate = XEExchangeRatesManager.shared.getRates()?.rate
 
             if wallet.type == .ethereum {
-            
-                self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance*etherrate))) USD"
-                self.edgeTotalLabel.text = "\(String(format: "%.2f", Double(status.edgeBalance * (edgerate ?? 0.0)))) USD"
+                            
+                self.valueLabel.text = "\(StringHelpers.generateValueString(value: Double(status.balance*etherrate))) USD"
+                self.edgeTotalLabel.text = "\(StringHelpers.generateValueString(value: Double(status.edgeBalance * (edgerate ?? 0.0)))) USD"
             } else {
 
-                self.valueLabel.text = "\(String(format: "%.2f", Double(status.balance * (edgerate ?? 0)))) USD"
+                self.valueLabel.text = "\(StringHelpers.generateValueString(value: Double(status.balance * (edgerate ?? 0)))) USD"
             }
         } else {
             

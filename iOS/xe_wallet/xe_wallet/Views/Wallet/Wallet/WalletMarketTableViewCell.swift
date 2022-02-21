@@ -39,11 +39,11 @@ class WalletMarketTableViewCell: UITableViewCell {
     func configure(data: String) {
         
         self.type = .edge
-        var rate = XEExchangeRatesManager.shared.getRateValue()
+        var rate = XEExchangeRateCurrentManager.shared.getRates()?.usdPerXE
         if data == "Ethereum" {
         
             self.type = .ethereum
-            rate = EtherExchangeRatesManager.shared.getRateValue()
+            rate = Double(EtherExchangeRatesManager.shared.getRateValue())
         }
 
         let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: type)
@@ -57,7 +57,7 @@ class WalletMarketTableViewCell: UITableViewCell {
             self.tokenPercentChangeLabel.textColor = UIColor(named: "XEGreen")
         }
         
-        self.tokenValueLabel.text = "$\(String(format: "%.2f", Double(truncating: rate)))"
+        self.tokenValueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: rate as! NSNumber)))"
         self.tokenImage.image = UIImage(named:type.rawValue)
         self.tokenNameLabel.text = self.type.getFullNameLabel()
         self.tokenAbvLabel.text = self.type.getCoinSymbol()

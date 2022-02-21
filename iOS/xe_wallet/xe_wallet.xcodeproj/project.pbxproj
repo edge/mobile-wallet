@@ -144,6 +144,9 @@
 		FD99E6A427A153C400F069C8 /* ScanQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD99E6A327A153C400F069C8 /* ScanQRCodeViewController.swift */; };
 		FD9BACBC2763A78D00D0C14D /* UICollectionView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BACBB2763A78D00D0C14D /* UICollectionView+Ext.swift */; };
 		FD9BACBE2766B2FE00D0C14D /* WalletViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */; };
+		FD9DB4A327C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A227C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift */; };
+		FD9DB4A527C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */; };
+		FD9DB4A927C415D1004C7D44 /* StringHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A827C415D1004C7D44 /* StringHelpers.swift */; };
 		FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */; };
 		FD9EA5F02745AA980068B9F9 /* CustomTitleBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */; };
 		FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */; };
@@ -320,6 +323,9 @@
 		FD99E6A327A153C400F069C8 /* ScanQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanQRCodeViewController.swift; sourceTree = "<group>"; };
 		FD9BACBB2763A78D00D0C14D /* UICollectionView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Ext.swift"; sourceTree = "<group>"; };
 		FD9BACBD2766B2FE00D0C14D /* WalletViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewController2.swift; sourceTree = "<group>"; };
+		FD9DB4A227C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletCompleteViewController.swift; sourceTree = "<group>"; };
+		FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEExchangeRateCurrentDataModel.swift; sourceTree = "<group>"; };
+		FD9DB4A827C415D1004C7D44 /* StringHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelpers.swift; sourceTree = "<group>"; };
 		FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleBar.xib; sourceTree = "<group>"; };
 		FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleBar.swift; sourceTree = "<group>"; };
@@ -631,6 +637,7 @@
 				FD5C21532755087000795A2F /* XEWallet.swift */,
 				FD5C214F2755087000795A2F /* XEWalletDataModel.swift */,
 				FD5C21502755087000795A2F /* XEExchangeRatesDataModel.swift */,
+				FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */,
 				FDA65FBD27A93F7600B8069C /* XEExchangeRateHistoryDataModel.swift */,
 				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
 				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
@@ -776,6 +783,7 @@
 				FDAC56F127BDA027000C7316 /* ExchangeWalletSelectionTableViewCell.swift */,
 				FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */,
 				FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */,
+				FD9DB4A227C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift */,
 				FDC6CF5227839FA100C4D49D /* ExchangeWalletCollectionViewCell.swift */,
 			);
 			path = Exchange;
@@ -806,6 +814,7 @@
 				FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */,
 				FD46E67F27761256008806C4 /* BouncyLayout2.swift */,
 				FD53905227A99FF700D4C0B6 /* XmlParserManager.swift */,
+				FD9DB4A827C415D1004C7D44 /* StringHelpers.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -1128,6 +1137,7 @@
 				FD22ED5D270F04B800B5B33F /* SceneDelegate.swift in Sources */,
 				FD53905327A99FF700D4C0B6 /* XmlParserManager.swift in Sources */,
 				FDA65FC527A94CEC00B8069C /* CurveAlgorithm.swift in Sources */,
+				FD9DB4A927C415D1004C7D44 /* StringHelpers.swift in Sources */,
 				FD5C21952757850C00795A2F /* ProjectContract.swift in Sources */,
 				FD5C215C2755087000795A2F /* Secp256k1PrivateKey.swift in Sources */,
 				FD46E68027761256008806C4 /* BouncyLayout2.swift in Sources */,
@@ -1179,6 +1189,7 @@
 				FD073E07271494130077F184 /* SettingsMenuItemTableViewCell.swift in Sources */,
 				FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */,
 				FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */,
+				FD9DB4A527C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift in Sources */,
 				FD5C216D2755087000795A2F /* XEWalletStatusDataModel.swift in Sources */,
 				FD5C216C2755087000795A2F /* XEExchangeRatesDataModel.swift in Sources */,
 				FD5C21682755087000795A2F /* WalletDataModel.swift in Sources */,
@@ -1188,6 +1199,7 @@
 				FD31F23627183EC40034A59E /* BackupViewController.swift in Sources */,
 				FD5C216B2755087000795A2F /* XEWalletDataModel.swift in Sources */,
 				FD6018E82731C5A000F78EBE /* RestoreWalletViewController.swift in Sources */,
+				FD9DB4A327C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift in Sources */,
 				FD5C21622755087000795A2F /* EtherWalletStatusDataModel.swift in Sources */,
 				FD5C215A2755087000795A2F /* PrivateKey.swift in Sources */,
 				FD5C21992757852400795A2F /* Networks.swift in Sources */,
@@ -1346,7 +1358,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1381,7 +1393,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 46;
+				CURRENT_PROJECT_VERSION = 48;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

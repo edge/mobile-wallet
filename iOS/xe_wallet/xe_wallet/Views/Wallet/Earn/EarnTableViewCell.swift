@@ -45,6 +45,18 @@ class EarnTableViewCell: UITableViewCell {
         self.headerLabel.text = data.header
         self.bodyLabel.text = data.body
         
+        if data.type == .edge {
+            
+            self.data212Label.textColor = UIColor(named: "FontSecondary")
+            self.data222Label.textColor = UIColor(named: "FontSecondary")
+            self.data232Label.textColor = UIColor(named: "FontSecondary")
+        } else {
+            
+            self.data212Label.textColor = UIColor(named: "ButtonGreen")
+            self.data222Label.textColor = UIColor(named: "ButtonGreen")
+            self.data232Label.textColor = UIColor(named: "ButtonGreen")
+        }
+        
         if data.data.count == 0 {
             
             self.singleLabelLabel.isHidden = false

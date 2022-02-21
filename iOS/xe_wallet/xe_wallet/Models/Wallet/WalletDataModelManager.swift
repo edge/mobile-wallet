@@ -237,6 +237,6 @@ class WalletDataModelManager {
             }
         }
 
-        return String(format:"$%.2f", total)
+        return "\(StringHelpers.generateValueString(value: total)) USD"
     }
 }

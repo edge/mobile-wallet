@@ -10,6 +10,8 @@ import UIKit
 
 class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewControllerDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var addressTokenImage: UIImageView!
     @IBOutlet weak var addressAddressLabel: UILabel!
     
@@ -31,6 +33,9 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var swapToTokenSelectImage: UIImageView!
     @IBOutlet weak var swapToTokenSelectButton: UIButton!
     
+    @IBOutlet weak var reviewButtonView: UIView!
+    @IBOutlet weak var reviewButtonButton: UIButton!
+    @IBOutlet weak var reviewButtonText: UILabel!
     
     var walletData = [WalletDataModel]()
     var selectedIndex = 0
@@ -45,6 +50,15 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         self.configureViews()
         self.configureData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let tbheight = self.tabBarController?.tabBar.frame.height ?? 49.0
+        let topBarHeight = UIApplication.shared.statusBarFrame.size.height +
+                (self.navigationController?.navigationBar.frame.height ?? 0.0)
+        
+       scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-((tbheight+topBarHeight)-1))
     }
     
     func configureViews() {
@@ -135,6 +149,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             
             self.swapToAddressLabel.text = "No Available Wallets"
         }
+        
+        self.checkForActiveReviewButton()
     }
     
     func setToWalletDetails() {
@@ -157,6 +173,35 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             return index
         }
         return -1
+    }
+    
+    func checkForActiveReviewButton() {
+        
+        var active = true
+        
+        if self.swapFromTokenType == .ethereum || self.swapToTokenType == .ethereum {
+            
+            active = false
+        }
+        
+        let amountString:String = self.swapFromAmountTextField.text ?? "0.0"
+        let amount: Double = Double(amountString) ?? 0.0
+        if amount <= 0 {
+            
+            active = false
+        }
+        
+        if active == false {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+            self.reviewButtonText.textColor = UIColor(named:"FontSecondary")
+            self.reviewButtonButton.isEnabled = false
+        } else {
+            
+            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonText.textColor = UIColor(named:"FontMain")
+            self.reviewButtonButton.isEnabled = true
+        }
     }
     
     @objc func dismissKeyboard() {
@@ -245,6 +290,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     
     @objc func textFieldDidChange(_ textField: UITextField) {
         
+        self.checkForActiveReviewButton()
     }
     
     @IBAction func reviewButtonPressed(_ sender: Any) {
@@ -254,6 +300,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletReviewViewController") as! ExchangeWalletReviewViewController
             contentVC.fromAddress = self.walletData[self.selectedIndex]
             contentVC.fromType = self.swapFromTokenType
+            let amountString:String = self.swapFromAmountTextField.text ?? "0.0"
+            contentVC.fromAmount = Double(amountString) ?? 0.0
             contentVC.toAddress = self.walletData[self.toIndex]
             contentVC.totype = self.swapToTokenType
             self.presentPanModal(contentVC)
