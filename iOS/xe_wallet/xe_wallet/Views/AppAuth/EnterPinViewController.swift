@@ -29,11 +29,11 @@ class EnterPinViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let story = UIStoryboard(name: "Wallet", bundle:nil)
+        /*let story = UIStoryboard(name: "Wallet", bundle:nil)
         //let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UINavigationController
         let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
         UIApplication.shared.windows.first?.rootViewController = vc
-        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        UIApplication.shared.windows.first?.makeKeyAndVisible()*/
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
