@@ -451,6 +451,7 @@ class EtherWallet {
             response.done({result in
                 
                 print(result)
+                completion(result as! Bool)
             })
         }catch{
             

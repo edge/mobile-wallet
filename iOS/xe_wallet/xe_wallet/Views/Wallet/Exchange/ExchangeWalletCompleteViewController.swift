@@ -18,9 +18,9 @@ class ExchangeWalletCompleteViewController: BaseViewController {
 
         self.configureViews()
         self.configureTableViewArray()
-        self.showSpinner(onView: self.view)
+        //self.showSpinner(onView: self.view)
         
-        self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
+        self.timer = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {

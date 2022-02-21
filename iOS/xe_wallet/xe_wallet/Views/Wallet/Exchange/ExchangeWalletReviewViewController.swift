@@ -8,8 +8,38 @@
 import UIKit
 import PanModal
 
+enum ExchangeConfirmStatus {
+    
+    case confirm
+    case pinEntry
+    case processing
+    case error
+    case done
+}
+
+enum ExchangeConfirmViewEntryStatus {
+    
+    case none
+    case pin
+    
+    var height: PanModalHeight {
+        switch self {
+            case .none: return .contentHeight(520)
+            case .pin: return .contentHeight(470)
+        }
+    }
+}
+
 class ExchangeWalletReviewViewController: BaseViewController {
 
+    @IBOutlet weak var mainView: UIView!
+
+    @IBOutlet weak var pinEntryMainView: UIView!
+    
+    @NibWrapped(PinEntryView.self)
+    @IBOutlet var pinEntryView: UIView!
+    @IBOutlet weak var textEntryTextView: UITextField!
+    
     @IBOutlet weak var etherValueLabel: UILabel!
     
     @IBOutlet weak var fromTokenImage: UIImageView!
@@ -38,12 +68,17 @@ class ExchangeWalletReviewViewController: BaseViewController {
     var toAddress:WalletDataModel? = nil
     var totype:WalletType = .ethereum
 
+    var entryStatus: ExchangeConfirmViewEntryStatus = . none
+    var confirmStatus = ExchangeConfirmStatus.confirm
+    
+    var entered = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
         self.configureViews()
+        self.configureConfirmStatus()
         
         self.timerCount = 30
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
@@ -65,6 +100,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
 
     func configureViews() {
         
+        UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
+        textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        
         let rate = self.getExchangeRateString()
         self.etherValueLabel.text = "1 \(self.fromType.getCoinSymbol()) = \(CryptoHelpers.generateCryptoValueString(value: rate)) \(self.totype.getCoinSymbol())"
         
@@ -82,7 +120,78 @@ class ExchangeWalletReviewViewController: BaseViewController {
             self.maximumFeeLabel.text = ""
         }
         
+        _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+        self.textEntryTextView.text = ""
+        
         self.checkForActiveReviewButton()
+    }
+    
+    func configureConfirmStatus() {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            self.pinEntryMainView.isHidden = true
+            self.mainView.isHidden = false
+            self.completeButtonView.isHidden = false
+            self.completeButtonText.text = "Confirm"
+            self.completeButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .pinEntry:
+            self.pinEntryMainView.isHidden = false
+            self.mainView.isHidden = true
+            self.completeButtonView.isHidden = true
+            self.entryStatus = .pin
+            panModalSetNeedsLayoutUpdate()
+            panModalTransition(to: .shortForm)
+            break
+        case .processing:
+            self.pinEntryMainView.isHidden = true
+            self.mainView.isHidden = false
+            self.completeButtonView.isHidden = false
+            self.completeButtonText.text = "Submitting..."
+            self.completeButtonView.backgroundColor = UIColor(named:"ButtonTextInactive")
+            self.entryStatus = .none
+            panModalSetNeedsLayoutUpdate()
+            panModalTransition(to: .shortForm)
+            break
+        case .error:
+            //self.confirmButtonErrorLabel.text = "Failed to send coins"
+            self.completeButtonText.text = "Retry"
+            self.completeButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            break
+        case .done:
+            break
+        }
+    }
+    
+    @IBAction func reviewContinueButtonPressed(_ sender: Any) {
+        
+        switch self.confirmStatus {
+            
+        case .confirm:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            
+            self.entryStatus = .pin
+            panModalSetNeedsLayoutUpdate()
+            panModalTransition(to: .shortForm)
+            break
+        case .pinEntry:
+            break
+        case .processing:
+            break
+        case .error:
+            textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            break
+        case .done:
+            break
+        }
     }
     
     func getExchangeRateString() -> Double {
@@ -166,6 +275,91 @@ class ExchangeWalletReviewViewController: BaseViewController {
         contentVC.modalPresentationStyle = .overFullScreen
         present(contentVC, animated: false, completion: nil)
     }
+    
+    @objc private func textFieldDidChange(_ textField: UITextField) {
+
+        if let characters = textField.text?.count {
+        
+            _pinEntryView.unwrapped.setBoxesUsed(amt: characters)
+            if characters >= AppDataModelManager.shared.appPinCharacterLength && self.entered == false {
+                
+                self.entered = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    
+                    if let code = textField.text {
+                    
+                        if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
+                            
+                            self.textEntryTextView.endEditing(true)
+                            self.confirmStatus = .processing
+                            self.configureConfirmStatus()
+                            
+                            let amountValue = self.toTokenAmount
+                            let fAmount = String(format: "%.6f", amountValue!)
+                            
+                            let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress?.address ?? "")
+                            
+                            if let wallet = self.fromAddress {
+                                
+                                if let toWallet = self.toAddress {
+                                    
+                                    wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
+                                        
+                                        if res {
+                                            
+                                            let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
+                                            contentVC.modalPresentationStyle = .overFullScreen
+                                            self.present(contentVC, animated: true, completion: nil)
+                                        } else {
+                                            
+                                            self.confirmStatus = .confirm
+                                            self.configureConfirmStatus()
+                                        }
+                                    })
+                                }
+                            }
+                            
+                            
+                            
+                            /*if let wallet = self.walletData {
+                                               
+                                self.textEntryTextView.endEditing(true)
+                                self.confirmStatus = .processing
+                                self.configureConfirmStatus()
+                                
+                                let amountValue = Float(self.amount)
+                                let fAmount = String(format: "%.6f", amountValue!)
+                                
+                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
+                                self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
+                                    
+                                    if res {
+                                        
+                                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                                        
+                                    } else {
+                                        
+                                        self.confirmStatus = .error
+                                        self.configureConfirmStatus()
+                                    }
+                                })
+                            }*/
+                        } else {
+                                                        
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
+
+                                self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+                                self.textEntryTextView.text = ""
+                                self.entered = false
+                            }))
+                            self.present(alert, animated: true)
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 extension ExchangeWalletReviewViewController: PanModalPresentable {
@@ -174,6 +368,11 @@ extension ExchangeWalletReviewViewController: PanModalPresentable {
     var allowsExtendedPanScrolling: Bool { return false }
     var anchorModalToLongForm: Bool { return false }
     var cornerRadius: CGFloat { return 12 }
-    var longFormHeight: PanModalHeight { return .contentHeight(520)  }
+    //var longFormHeight: PanModalHeight { return .contentHeight(518)  }
+    
+    var shortFormHeight: PanModalHeight {
+        
+        return self.entryStatus.height
+    }
     var dragIndicatorBackgroundColor: UIColor { return .clear }
 }
