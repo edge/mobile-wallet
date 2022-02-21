@@ -146,14 +146,19 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         switch self.confirmStatus {
             
         case .confirm:
-            textEntryTextView.becomeFirstResponder()
-            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
-            self.confirmStatus = .pinEntry
-            self.configureConfirmStatus()
+
+            BiometricsManager().authenticateUser(completion: { [weak self] (response) in
+                switch response {
+                
+                case .failure:
+
+                    self?.handleFailedBiometrics()
+                case .success:
+
+                    self?.handleSendAuthenticated()
+                }
+            })
             
-            self.entryStatus = .pin
-            panModalSetNeedsLayoutUpdate()
-            panModalTransition(to: .shortForm)
             break
         case .pinEntry:
             break
@@ -167,6 +172,48 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             break
         case .done:
             break
+        }
+    }
+    
+    func handleFailedBiometrics() {
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
+            
+            self.textEntryTextView.becomeFirstResponder()
+            self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
+            self.confirmStatus = .pinEntry
+            self.configureConfirmStatus()
+            
+            self.entryStatus = .pin
+            self.panModalSetNeedsLayoutUpdate()
+            self.panModalTransition(to: .shortForm)
+        }
+    }
+    
+    func handleSendAuthenticated() {
+        
+        if let wallet = self.walletData {
+                           
+            self.textEntryTextView.endEditing(true)
+            self.confirmStatus = .processing
+            self.configureConfirmStatus()
+            
+            let amountValue = Float(self.amount)
+            let fAmount = String(format: "%.6f", amountValue!)
+            
+            let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
+            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
+                
+                if res {
+                    
+                    self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    
+                } else {
+                    
+                    self.confirmStatus = .error
+                    self.configureConfirmStatus()
+                }
+            })
         }
     }
     
@@ -189,29 +236,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                     
                         if AppDataModelManager.shared.getAppPinCode() == String(code.prefix(6)) {
                             
-                            if let wallet = self.walletData {
-                                               
-                                self.textEntryTextView.endEditing(true)
-                                self.confirmStatus = .processing
-                                self.configureConfirmStatus()
-                                
-                                let amountValue = Float(self.amount)
-                                let fAmount = String(format: "%.6f", amountValue!)
-                                
-                                let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
-                                self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
-                                    
-                                    if res {
-                                        
-                                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
-                                        
-                                    } else {
-                                        
-                                        self.confirmStatus = .error
-                                        self.configureConfirmStatus()
-                                    }
-                                })
-                            }
+                            self.handleSendAuthenticated()
                         } else {
                                                         
                             let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
