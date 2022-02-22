@@ -126,8 +126,8 @@ class XEWallet {
                 do {
 
                     var data = try JSONDecoder().decode(XETransactionsDataModel.self, from: response.data!)
-                    completion(data)
-/*                    var transactions = data.results
+
+                    var transactions = data.results
                     if transactions == nil {
                         
                         transactions = [XETransactionRecordDataModel]()
@@ -139,14 +139,14 @@ class XEWallet {
                             
                             for n in array {
                                 
-                                let newRecord = TransactionPendingRecordDataModel(from: n)
+                                let newRecord = XETransactionRecordDataModel(from: n)
                                 newTrans.insert(newRecord, at: 0)
                             }
                         }
+                        transactions?.append(contentsOf: newTrans)
                         data.results = transactions
                         completion(data)
-                    })*/
-
+                    })
 
                 } catch let error as NSError {
                     

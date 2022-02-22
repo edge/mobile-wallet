@@ -76,6 +76,11 @@ class Constants {
     
     static var XE_StakedAmountsUrl = "https://index.xe.network/stats/stakes"
     
+    /// Transactions Pending endpoint
+    ///
+    static var XE_testTransactionPendingURL = "https://xe1.test.network/transactions/pending"
+    static var XE_mainTransactionPendingURL = "https://api.xe.network/transactions/pending"
+
     /// Transaction TX endpoint
     ///
     static var XE_testTransactionRecordUrl = "https://index.test.network/transaction/"
