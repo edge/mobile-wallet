@@ -256,7 +256,7 @@ extension WalletPageViewController {
             (cell as! WalletPageAssetTableViewCell).configure(data: self.assetsArray[indexPath.row])
         } else {
             
-            (cell as! WalletPageTransactionTableViewCell).configure(data: self.transactionsArray[indexPath.row], type: self.walletType)
+            (cell as! WalletPageTransactionTableViewCell).configure(data: self.transactionsArray[indexPath.row], type: self.walletType, address: selectedWalletAddress)
         }
         //self.walletTotalValue.text = String(format:"$%.2f", self.totalValue)
         return cell
@@ -271,6 +271,7 @@ extension WalletPageViewController {
                 let contentVC = UIStoryboard(name: "TransactionPage", bundle: nil).instantiateViewController(withIdentifier: "TransactionPageViewController") as! TransactionPageViewController
                 contentVC.transactionData = self.transactionsArray[indexPath.row]
                 contentVC.walletType = self.walletType
+                contentVC.walletAddress = self.selectedWalletAddress
                 self.presentPanModal(contentVC)
             }
         }

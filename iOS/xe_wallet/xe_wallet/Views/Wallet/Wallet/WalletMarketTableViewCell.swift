@@ -39,7 +39,13 @@ class WalletMarketTableViewCell: UITableViewCell {
     func configure(data: String) {
         
         self.type = .edge
-        var rate = XEExchangeRateCurrentManager.shared.getRates()?.usdPerXE
+        
+        var rate = 0.0
+        if let rates = XEExchangeRateCurrentManager.shared.getRates() {
+            
+            rate = rates.usdPerXE
+        }
+        
         if data == "Ethereum" {
         
             self.type = .ethereum

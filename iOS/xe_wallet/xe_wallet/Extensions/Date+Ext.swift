@@ -18,19 +18,39 @@ extension Date {
         let weekAgo = calendar.date(byAdding: .day, value: -7, to: Date())!
         
         if minuteAgo < self {
+            
             let diff = Calendar.current.dateComponents([.second], from: self, to: Date()).second ?? 0
-            return "\(diff) sec ago"
+            return "\(diff) secs ago"
         } else if hourAgo < self {
+            
             let diff = Calendar.current.dateComponents([.minute], from: self, to: Date()).minute ?? 0
-            return "\(diff) min ago"
+            if diff == 1 {
+                
+                return "\(diff) min ago"
+            }
+            return "\(diff) mins ago"
         } else if dayAgo < self {
+            
             let diff = Calendar.current.dateComponents([.hour], from: self, to: Date()).hour ?? 0
-            return "\(diff) hrs ago"
+            if diff == 1 {
+                
+                return "\(diff) hour ago"
+            }
+            return "\(diff) hours ago"
         } else if weekAgo < self {
+            
             let diff = Calendar.current.dateComponents([.day], from: self, to: Date()).day ?? 0
+            if diff == 1 {
+                
+                return "\(diff) day ago"
+            }
             return "\(diff) days ago"
         }
         let diff = Calendar.current.dateComponents([.weekOfYear], from: self, to: Date()).weekOfYear ?? 0
+        if diff == 1 {
+            
+            return "\(diff) week ago"
+        }
         return "\(diff) weeks ago"
     }
     

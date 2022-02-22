@@ -20,7 +20,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(data: TransactionRecordDataModel, type: WalletType) {
+    func configure(data: TransactionRecordDataModel, type: WalletType, address: String) {
         
         self.typeImageView.image = UIImage(named: data.type?.rawValue ?? "")
         self.typeLabel.text = data.type?.getFullNameLabel()

@@ -200,27 +200,22 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     func getExchangeRateString() -> Double {
         
-        let exchangeData = XEExchangeRateCurrentManager.shared.getRates()
-        
-        if self.fromType == .xe || self.fromType == .edge {
+        if let exchangeData = XEExchangeRateCurrentManager.shared.getRates() {
             
-            if self.totype == .xe || self.totype == .edge {
+            if self.fromType == .xe || self.fromType == .edge {
                 
-                return 1.0
+                if self.totype == .xe || self.totype == .edge {
+                    
+                    return 1.0
+                } else {
+                    
+                    return exchangeData.ethPerXE
+                }
             } else {
                 
-                if let eth = exchangeData?.ethPerXE {
-                
-                    return eth
-                }
-            }
-        } else {
-            
-            if self.totype == .xe || self.totype == .edge {
-                
-                if let eth = exchangeData?.ethPerXE {
-                
-                    return 1/eth
+                if self.totype == .xe || self.totype == .edge {
+                    
+                    return 1/exchangeData.ethPerXE
                 }
             }
         }

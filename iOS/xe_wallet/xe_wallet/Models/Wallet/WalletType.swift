@@ -18,13 +18,13 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return "XE"
+            return Constants.XE_DisplayLabel
             
         case .edge:
-            return "Edge"
+            return Constants.EDGE_DisplayLabel
             
         case .ethereum:
-            return "Ether"
+            return Constants.ETHER_DisplayLabel
         }
     }
     
@@ -33,13 +33,13 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return "XE"
+            return Constants.XE_FullNameLabel
             
         case .edge:
-            return "Edge"
+            return Constants.EDGE_FullNameLabel
             
         case .ethereum:
-            return "Ethereum"
+            return Constants.ETHER_FullNameLabel
         }
     }
     
@@ -48,13 +48,13 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return "XE"
+            return Constants.XE_AbriviationLabel
             
         case .edge:
-            return "EDGE"
+            return Constants.EDGE_AbriviationLabel
             
         case .ethereum:
-            return "ETH"
+            return Constants.ETHER_AbriviationLabel
         }
     }
     
@@ -115,6 +115,54 @@ enum WalletType: String, Codable {
             
         case .ethereum:
             return "0x"
+        }
+    }
+    
+    func getExploreButtonText() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return Constants.XE_NetworkButtonLabel
+            
+        case .edge:
+            return Constants.EDGE_NetworkButtonLabel
+            
+        case .ethereum:
+            return Constants.ETHER_NetworkButtonLabel
+        }
+    }
+    
+    func getExploreButtonUrl() -> String {
+        
+        switch self {
+            
+        case .xe:
+            if AppDataModelManager.shared.testModeStatus() {
+                
+                return Constants.XE_testTransactionRecordUrl
+            } else {
+                
+                return Constants.XE_mainTransactionRecordUrl
+            }
+            
+        case .edge:
+            if AppDataModelManager.shared.testModeStatus() {
+            
+                return Constants.ETH_testTransactionRecordUrl
+            } else {
+                
+                return Constants.ETH_mainTransactionRecordUrl
+            }
+            
+        case .ethereum:
+            if AppDataModelManager.shared.testModeStatus() {
+                
+                return Constants.ETH_testTransactionRecordUrl
+            } else{
+                
+                return Constants.ETH_mainTransactionRecordUrl
+            }
         }
     }
 

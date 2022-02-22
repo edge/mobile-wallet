@@ -13,29 +13,63 @@ class TransactionPageViewController: BaseViewController{
     @IBOutlet weak var tokenIconImage: UIImageView!
     @IBOutlet weak var tokenAmountLabel: UILabel!
     @IBOutlet weak var tokenAbvLabel: UILabel!
+    @IBOutlet weak var toTokenImage: UIImageView!
     @IBOutlet weak var toAddressLabel: UILabel!
+    @IBOutlet weak var fromTokenImage: UIImageView!
     @IBOutlet weak var fromAddressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var directionLabel: UILabel!
+    
+    @IBOutlet weak var exploreButtonLabel: UILabel!
     
     var transactionData: TransactionRecordDataModel? = nil
     var walletType: WalletType = .ethereum
+    var walletAddress = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        if let type = transactionData?.type {
-        
-            self.walletType = type
+        if let transaction = self.transactionData {
+            
+            self.walletType = transaction.type ?? .ethereum
+            
+            self.tokenIconImage.image = UIImage(named: self.walletType.rawValue)
+            
+            if self.walletAddress.lowercased() == transaction.sender.lowercased() {
+                
+                if transaction.confirmations ?? 0 >= 10 {
+                    
+                    self.directionLabel.text = "Sent"
+                } else {
+                    
+                    self.directionLabel.text = "Sending"
+                }
+            } else {
+                
+                if transaction.confirmations ?? 0 >= 10 {
+                    
+                    self.directionLabel.text = "Received"
+                } else {
+                    
+                    self.directionLabel.text = "Receiving"
+                }
+            }
+                
+            self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
+            self.tokenAbvLabel.text = self.walletType.getCoinSymbol()
+                
+            self.toTokenImage.image = UIImage(named: self.walletType.rawValue)
+            self.toAddressLabel.text = transaction.recipient
+                
+            self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)
+            self.fromAddressLabel.text = transaction.sender
+                
+            let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
+            self.dateLabel.text = date.timeAgoDisplay()
+            
+            self.exploreButtonLabel.text = transaction.type?.getExploreButtonText()
         }
-        
-        self.tokenIconImage.image = UIImage(named: self.walletType.rawValue)
-        self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: self.transactionData?.amount ?? 0)
-        self.tokenAbvLabel.text = self.walletType.getCoinSymbol()
-        self.fromAddressLabel.text = self.transactionData?.sender
-        self.toAddressLabel.text = self.transactionData?.recipient
-        let date = Date(timeIntervalSince1970:TimeInterval(self.transactionData?.timestamp ?? 0))
-        self.dateLabel.text = date.timeAgoDisplay()
     }
 
     
@@ -46,9 +80,15 @@ class TransactionPageViewController: BaseViewController{
 
     @IBAction func exploreButtonPressed(_ sender: Any) {
         
-        if let url = URL(string: "https://etherscan.io/tx/0xae5631210fa01945879d06b7dee6ace38ab89f9a7be98f98b545cf0f9db486e9") {
-            
-            UIApplication.shared.open(url)
+        if let transaction = self.transactionData {
+         
+            if let end = transaction.type?.getExploreButtonUrl() {
+                
+                if let url = URL(string: "\(end)\(transaction.hash)") {
+                    
+                    UIApplication.shared.open(url)
+                }
+            }
         }
     }
 }

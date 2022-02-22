@@ -53,16 +53,22 @@ class Constants {
     static var XE_MainNetStatusUrl = "https://api.xe.network/wallet/"
     static var XE_TestNetStatusUrl = "https://xe1.test.network/wallet/"
     
+    /// XE transactions endpoint
+    ///
     static var XE_MainNetTransactionUrl = "https://index.xe.network/transactions/"
     static var XE_TestNetTransactionUrl = "https://index.test.network/transactions/"
     
-    static var XE_MainNetSendUrl = "https://api.xe.network/transaction"
-    static var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
-    
+    /// XE pending transaction Endpoints
+    ///
     static var XE_MainNetPendingUrl = "https://api.xe.network/transactions/pending/"
     static var XE_TestNetPendingUrl = "https://xe1.test.network/transactions/pending/"
     
+    /// XE send endpoint
+    ///
+    static var XE_MainNetSendUrl = "https://api.xe.network/transaction"
+    static var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
     
+
     static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
     static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
     static var XE_ExchangeRateCurrentUrl = "https://index.xe.network/token/current"
@@ -70,9 +76,46 @@ class Constants {
     
     static var XE_StakedAmountsUrl = "https://index.xe.network/stats/stakes"
     
+    /// Transaction TX endpoint
+    ///
+    static var XE_testTransactionRecordUrl = "https://index.test.network/transaction/"
+    static var XE_mainTransactionRecordUrl = "https://xe.network/transaction/"
+
+    static var ETH_testTransactionRecordUrl = "https://rinkeby.etherscan.io/tx/"
+    static var ETH_mainTransactionRecordUrl = "https://etherscan.io/tx/"
+    
+    /// View Transaction On Network Button Labels
+    ///
+    static var XE_NetworkButtonLabel = "View on Edge Network"
+    static var EDGE_NetworkButtonLabel = "View on Etherscan"
+    static var ETHER_NetworkButtonLabel = "View on Etherscan"
+
+    /// Token type display Label
+    ///
+    static var XE_DisplayLabel = "XE"
+    static var EDGE_DisplayLabel = "Edge"
+    static var ETHER_DisplayLabel = "Ether"
+
+    /// Token full name display label
+    ///
+    static var XE_FullNameLabel = "XE"
+    static var EDGE_FullNameLabel = "Edge"
+    static var ETHER_FullNameLabel = "Ethereum"
+    
+    /// Token Abriviation display label
+    ///
+    static var XE_AbriviationLabel = "XE"
+    static var EDGE_AbriviationLabel = "EDGE"
+    static var ETHER_AbriviationLabel = "ETH"
+
+    
+    /// Network labels for in app
+    ///
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
     static var XE_networkTestNetTitle = "Edge (XE) Testnet"
     
+    /// Edge/xe bridge addresses
+    ///
     static var XE_mainNetBridge = "xe_A4788d8201Fb879e3b7523a0367401D2a985D42F"
     static var XE_testNetBridge = "xe_BEE3d7E5f007b662B2C886d51e2B3E08de090488"
     
