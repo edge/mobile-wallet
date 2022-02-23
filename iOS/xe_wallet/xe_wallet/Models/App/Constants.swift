@@ -46,10 +46,10 @@ class Constants {
     static var resetAppMessageHeader = "Reset App Data"
     static var resetAppMessageBody = "This will remove all apps data including pins and wallets."
 
-    ///  display message when trying to delete last XE wallet
+    ///  Delete wallet warning message
     ///
-    static var deleteLastXEWalletHeader = "Delete Wallet Error"
-    static var deleteLastXEWalletBody = "Unable to delete wallet as this is your last XE wallet and you need to have at least 1 to run the app"
+    static var deleteWalletHeader = "Delete Wallet"
+    static var deleteWalletBody = "This will remove the wallet from the app."
     
     static var toastDisplayTime = 1.5
     

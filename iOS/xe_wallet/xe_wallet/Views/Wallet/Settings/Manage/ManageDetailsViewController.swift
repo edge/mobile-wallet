@@ -49,11 +49,7 @@ class ManageDetailsViewController: BaseViewController {
                 
                 if WalletDataModelManager.shared.getXEWalletAmount() == 1 {
                     
-                    let alert = UIAlertController(title: Constants.deleteLastXEWalletHeader, message: Constants.deleteLastXEWalletBody, preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
-                        
-                    }))
-                    self.present(alert, animated: true)
+
                 } else {
                     
                     self.deleteTheWallet()
@@ -67,9 +63,18 @@ class ManageDetailsViewController: BaseViewController {
     
     func deleteTheWallet() {
         
-        WalletDataModelManager.shared.deleteWallet(address: self.data?.address ?? "")
-        self.delegate?.walletDeleted()
-        self.dismiss(animated: true, completion: nil)
+        let alert = UIAlertController(title: Constants.deleteWalletHeader, message: Constants.deleteWalletBody, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
+
+            WalletDataModelManager.shared.deleteWallet(address: self.data?.address ?? "")
+            self.delegate?.walletDeleted()
+            self.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
+
+        }))
+        self.present(alert, animated: true)
+    
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
