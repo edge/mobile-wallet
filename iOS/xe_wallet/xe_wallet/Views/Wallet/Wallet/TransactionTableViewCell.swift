@@ -9,19 +9,13 @@ import UIKit
 
 class TransactionTableViewCell: UITableViewCell {
             
+    @IBOutlet weak var mainView: UIView!
+    
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var memoLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    
-    /*@IBOutlet weak var sumTxHashLabel: UILabel!
-    @IBOutlet weak var sumDateLabel: UILabel!
-    @IBOutlet weak var sumAaddressLabel: UILabel!
-    @IBOutlet weak var sumMemoLabel: UILabel!
-    @IBOutlet weak var sumStatusLabel: UILabel!
-    @IBOutlet weak var sumAmountLabel: UILabel!*/
-    
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,10 +33,12 @@ class TransactionTableViewCell: UITableViewCell {
         
         if transaction.confirmations ?? 0 >= 10 {
             
+            self.mainView.alpha = 1.0
             let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
             self.memoLabel.text = date.timeAgoDisplay()
         } else {
             
+            self.mainView.alpha = 0.4
             self.memoLabel.text = "Pending"
         }
         

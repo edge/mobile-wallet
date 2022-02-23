@@ -477,6 +477,8 @@
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
                                                             <outlet property="amountLabel" destination="TcD-0b-TYE" id="Eqt-jc-aOz"/>
+                                                            <outlet property="contentView" destination="5Dc-9S-Q67" id="fkC-7l-aca"/>
+                                                            <outlet property="mainView" destination="SdQ-f5-ik2" id="PXa-Qo-EhW"/>
                                                             <outlet property="receivedLabel" destination="eRO-kP-5jF" id="Gqp-Ba-use"/>
                                                             <outlet property="typeImageView" destination="UQG-12-6AO" id="KfH-ZL-5aO"/>
                                                             <outlet property="typeLabel" destination="4F5-Gw-tGB" id="5J0-pp-0Nv"/>

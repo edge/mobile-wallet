@@ -1911,6 +1911,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="amountLabel" destination="DAN-Ws-LFU" id="4c6-NV-bcs"/>
+                                    <outlet property="mainView" destination="6ax-ny-j6t" id="lGy-Qx-Kc1"/>
                                     <outlet property="memoLabel" destination="cO5-Jo-a1z" id="lwu-RI-xwv"/>
                                     <outlet property="statusLabel" destination="ITk-3n-cAp" id="SPp-HB-mOs"/>
                                     <outlet property="typeImageView" destination="G6V-fi-RGs" id="L8d-Oy-gIi"/>

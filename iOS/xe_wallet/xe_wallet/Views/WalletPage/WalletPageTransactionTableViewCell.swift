@@ -9,6 +9,8 @@ import UIKit
 
 class WalletPageTransactionTableViewCell: UITableViewCell {
             
+    @IBOutlet weak var mainView: UIView!
+    
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var receivedLabel: UILabel!
@@ -27,10 +29,12 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         
         if data.confirmations ?? 0 >= 10 {
             
+            self.mainView.alpha = 1.0
             let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
             self.receivedLabel.text = date.timeAgoDisplay()
         } else {
             
+            self.mainView.alpha = 0.4
             self.receivedLabel.text = "Pending"
         }
         self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
