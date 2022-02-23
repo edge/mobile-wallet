@@ -2482,7 +2482,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E49-hL-29F">
                                         <rect key="frame" x="0.0" y="20" width="366" height="60"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="1 ETH = 3,421 XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYf-qa-msT">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 ETH = 3,421 XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NYf-qa-msT">
                                                 <rect key="frame" x="118.5" y="0.0" width="129.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="809-J1-zDR"/>
@@ -2491,10 +2491,17 @@
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zMm-9G-CRa">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zMm-9G-CRa">
                                                 <rect key="frame" x="8" y="28" width="350" height="32"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New quote in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfw-Cu-Edr">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="MXH-hg-DFr">
+                                                        <rect key="frame" x="97" y="6" width="20" height="20"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="20" id="eTa-J6-nHz"/>
+                                                            <constraint firstAttribute="width" constant="20" id="tCo-5C-gkr"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New quote in" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfw-Cu-Edr">
                                                         <rect key="frame" x="125" y="6" width="100.5" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="fCn-5O-fiS"/>
@@ -2503,15 +2510,8 @@
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="MXH-hg-DFr">
-                                                        <rect key="frame" x="97" y="6" width="20" height="20"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="20" id="eTa-J6-nHz"/>
-                                                            <constraint firstAttribute="width" constant="20" id="tCo-5C-gkr"/>
-                                                        </constraints>
-                                                    </imageView>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HR3-re-TQd">
-                                                        <rect key="frame" x="233.5" y="6" width="35" height="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HR3-re-TQd">
+                                                        <rect key="frame" x="229.5" y="6" width="35" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="SkS-sR-w27"/>
                                                         </constraints>
@@ -2523,10 +2523,10 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstItem="cfw-Cu-Edr" firstAttribute="leading" secondItem="MXH-hg-DFr" secondAttribute="trailing" constant="8" symbolic="YES" id="0kV-Hb-78E"/>
-                                                    <constraint firstItem="cfw-Cu-Edr" firstAttribute="top" secondItem="zMm-9G-CRa" secondAttribute="top" constant="6" id="4G7-S1-4Mp"/>
-                                                    <constraint firstItem="HR3-re-TQd" firstAttribute="leading" secondItem="cfw-Cu-Edr" secondAttribute="trailing" constant="8" symbolic="YES" id="Nar-uA-B2E"/>
+                                                    <constraint firstItem="cfw-Cu-Edr" firstAttribute="centerY" secondItem="zMm-9G-CRa" secondAttribute="centerY" id="L2A-yy-q0C"/>
                                                     <constraint firstItem="cfw-Cu-Edr" firstAttribute="centerX" secondItem="zMm-9G-CRa" secondAttribute="centerX" id="Okd-cy-62N"/>
                                                     <constraint firstItem="MXH-hg-DFr" firstAttribute="centerY" secondItem="zMm-9G-CRa" secondAttribute="centerY" id="Ydd-66-VBi"/>
+                                                    <constraint firstItem="HR3-re-TQd" firstAttribute="leading" secondItem="cfw-Cu-Edr" secondAttribute="trailing" constant="4" id="ZSh-EQ-MRZ"/>
                                                     <constraint firstAttribute="height" constant="32" id="lIF-nW-5bw"/>
                                                     <constraint firstItem="HR3-re-TQd" firstAttribute="centerY" secondItem="zMm-9G-CRa" secondAttribute="centerY" id="z2c-vf-7lh"/>
                                                 </constraints>
@@ -2538,6 +2538,7 @@
                                             <constraint firstItem="zMm-9G-CRa" firstAttribute="top" secondItem="NYf-qa-msT" secondAttribute="bottom" constant="8" symbolic="YES" id="59K-1W-4R7"/>
                                             <constraint firstItem="NYf-qa-msT" firstAttribute="centerX" secondItem="E49-hL-29F" secondAttribute="centerX" id="KS4-Bf-sb3"/>
                                             <constraint firstAttribute="trailing" secondItem="zMm-9G-CRa" secondAttribute="trailing" constant="8" id="Sj6-y4-Ehj"/>
+                                            <constraint firstAttribute="bottom" secondItem="zMm-9G-CRa" secondAttribute="bottom" id="jHB-FC-JXZ"/>
                                             <constraint firstAttribute="height" constant="60" id="sZw-Bs-O58"/>
                                         </constraints>
                                     </view>
