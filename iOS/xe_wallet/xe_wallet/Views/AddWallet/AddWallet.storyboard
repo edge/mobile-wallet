@@ -962,6 +962,7 @@
                                             <constraint firstAttribute="trailing" secondItem="GUe-J7-2IM" secondAttribute="trailing" constant="8" id="05C-nw-vXm"/>
                                             <constraint firstItem="Mfn-uB-x1g" firstAttribute="centerY" secondItem="WtH-iy-Gqy" secondAttribute="centerY" id="2xH-cj-ciY"/>
                                             <constraint firstItem="GUe-J7-2IM" firstAttribute="top" secondItem="WtH-iy-Gqy" secondAttribute="top" constant="8" id="CN6-Dh-FoR"/>
+                                            <constraint firstItem="GUe-J7-2IM" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Mfn-uB-x1g" secondAttribute="trailing" constant="12" id="J8R-IC-lhX"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="80" id="Mak-8S-rMx"/>
                                             <constraint firstAttribute="bottom" secondItem="GUe-J7-2IM" secondAttribute="bottom" constant="8" id="b9g-VZ-121"/>
                                             <constraint firstItem="Mfn-uB-x1g" firstAttribute="leading" secondItem="WtH-iy-Gqy" secondAttribute="leading" constant="10" id="cp1-nI-rcL"/>
