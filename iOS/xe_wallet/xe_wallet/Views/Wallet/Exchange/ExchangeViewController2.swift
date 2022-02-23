@@ -78,10 +78,10 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         self.selectedIndex = 0
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
         self.setToWalletDetails()
-        self.configureSelectedWallet()
+        self.configureSelectedWallet(clearValue: true)
     }
     
-    func configureSelectedWallet() {
+    func configureSelectedWallet(clearValue: Bool) {
         
         let wallet = self.walletData[self.selectedIndex]
         
@@ -90,7 +90,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
         self.swapFromTokenAbv.text = wallet.type.getDisplayLabel()
-        self.swapFromAmountTextField.text = ""
+        
+        if clearValue {
+        
+            self.swapFromAmountTextField.text = ""
+        }
                 
         if wallet.type == .xe {
             
@@ -321,7 +325,7 @@ extension ExchangeViewController2 {
                 self.selectedIndex = index
                 self.swapFromTokenType = self.walletData[self.selectedIndex].type
                 self.setToWalletDetails()
-                self.configureSelectedWallet()
+                self.configureSelectedWallet(clearValue: true)
             }
             break
             
@@ -333,7 +337,7 @@ extension ExchangeViewController2 {
                 
                 self.swapFromTokenType = .edge
             }
-            self.configureSelectedWallet()
+            self.configureSelectedWallet(clearValue: true)
             break
             
         case 2:
@@ -341,7 +345,7 @@ extension ExchangeViewController2 {
                 
                 self.toIndex = index
                 self.swapToTokenType = self.walletData[self.toIndex].type
-                self.configureSelectedWallet()
+                self.configureSelectedWallet(clearValue: false)
             }
             break
             
@@ -353,7 +357,7 @@ extension ExchangeViewController2 {
                 
                 self.swapToTokenType = .edge
             }
-            self.configureSelectedWallet()
+            self.configureSelectedWallet(clearValue: false)
             break
         default:
             break
