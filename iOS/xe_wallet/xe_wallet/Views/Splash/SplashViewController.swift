@@ -10,6 +10,8 @@ import Security
 
 class SplashViewController: UIViewController {
 
+    var override = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -37,31 +39,35 @@ class SplashViewController: UIViewController {
 
         if SecItemCopyMatching(query as CFDictionary, &item) == noErr {
 
-            if let existingItem = item as? [String: Any],
-               let _ = existingItem[kSecAttrAccount as String] as? String,
-               let passwordData = existingItem[kSecValueData as String] as? Data,
-               let password = String(data: passwordData, encoding: .utf8)
-            {
+            if self.override == false {
                 
-                AppDataModelManager.shared.setAppPinCode(pin: password)
-                BiometricsManager().authenticateUser(completion: { [weak self] (response) in
-                    switch response {
+                if let existingItem = item as? [String: Any],
+                   let _ = existingItem[kSecAttrAccount as String] as? String,
+                   let passwordData = existingItem[kSecValueData as String] as? Data,
+                   let password = String(data: passwordData, encoding: .utf8)
+                {
                     
-                    case .failure:
-                        DispatchQueue.main.async {
+                    AppDataModelManager.shared.setAppPinCode(pin: password)
+                    BiometricsManager().authenticateUser(completion: { [weak self] (response) in
+                        switch response {
                             
-                            self?.performSegue(withIdentifier: "ShowEnterPinViewController", sender: nil)
+                        case .failure:
+                            DispatchQueue.main.async {
+                                
+                                self?.override = true
+                                self?.performSegue(withIdentifier: "ShowEnterPinViewController", sender: nil)
+                            }
+                        case .success:
+                            DispatchQueue.main.async {
+                                
+                                let story = UIStoryboard(name: "Wallet", bundle:nil)
+                                let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
+                                UIApplication.shared.windows.first?.rootViewController = vc
+                                UIApplication.shared.windows.first?.makeKeyAndVisible()
+                            }
                         }
-                    case .success:
-                        DispatchQueue.main.async {
-
-                            let story = UIStoryboard(name: "Wallet", bundle:nil)
-                            let vc = story.instantiateViewController(withIdentifier: "WalletNavigationController") as! UITabBarController
-                            UIApplication.shared.windows.first?.rootViewController = vc
-                            UIApplication.shared.windows.first?.makeKeyAndVisible()
-                        }
-                    }
-                })
+                    })
+                }
             }
         } else {
 
