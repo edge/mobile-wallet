@@ -36,8 +36,15 @@ class TransactionTableViewCell: UITableViewCell {
         self.typeImageView.image = UIImage(named:wallet.type.rawValue)
         self.typeLabel.text = wallet.type.getDisplayLabel()
         
-        let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
-        self.memoLabel.text = date.timeAgoDisplay()
+        
+        if transaction.confirmations ?? 0 >= 10 {
+            
+            let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
+            self.memoLabel.text = date.timeAgoDisplay()
+        } else {
+            
+            self.memoLabel.text = "Pending"
+        }
         
         self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: transaction.amount)
     }

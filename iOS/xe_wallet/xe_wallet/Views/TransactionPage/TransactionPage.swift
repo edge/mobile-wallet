@@ -65,8 +65,14 @@ class TransactionPageViewController: BaseViewController{
             self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.fromAddressLabel.text = transaction.sender
                 
-            let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
-            self.dateLabel.text = date.timeAgoDisplay()
+            if transaction.confirmations ?? 0 >= 10 {
+                
+                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
+                self.dateLabel.text = date.timeAgoDisplay()
+            } else {
+                
+                self.dateLabel.text = "Pending"
+            }
             
             self.exploreButtonLabel.text = transaction.type?.getExploreButtonText()
         }

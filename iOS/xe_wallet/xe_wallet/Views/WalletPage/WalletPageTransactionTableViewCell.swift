@@ -24,40 +24,16 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         
         self.typeImageView.image = UIImage(named: data.type?.rawValue ?? "")
         self.typeLabel.text = data.type?.getFullNameLabel()
-        let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
-        self.receivedLabel.text = date.timeAgoDisplay()
-        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
         
-        
-        
-        /*var typeLabel = "Sent"
-        var iconName = "send"
-        if address.lowercased() == data.recipient.lowercased() {
+        if data.confirmations ?? 0 >= 10 {
             
-            typeLabel = "Received"
-            iconName = "receive"
-        }
-        self.typeLabel.text = typeLabel
-        self.typeImageView.image = UIImage(named:iconName)
-        
-        var memo = ""
-        if let memData = data.data {
-            
-            memo = memData.memo
-        }
-        self.memoLabel.text = memo
-        
-        if let status = data.status {
-            
-            self.statusLabel.text = status.rawValue
+            let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
+            self.receivedLabel.text = date.timeAgoDisplay()
         } else {
             
-            self.statusLabel.text = TransactionStatus.confirmed.rawValu
+            self.receivedLabel.text = "Pending"
         }
+        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
 
-        let valString = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
-        self.amountLabel.text = "\(valString)"
-        //self.statusLabel.text = "\(data.status.rawValue)"
-        */
     }
 }

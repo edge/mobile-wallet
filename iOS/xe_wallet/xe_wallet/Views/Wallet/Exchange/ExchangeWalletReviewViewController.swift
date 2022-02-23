@@ -244,7 +244,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
 
         self.timerCount-=1
         
-        if self.timerCount == -1 {
+        if self.timerCount == 0 {
             
             self.timerCount = 30
             self.configureViews()
