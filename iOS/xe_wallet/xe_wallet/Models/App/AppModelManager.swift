@@ -22,7 +22,7 @@ class AppDataModelManager {
             appData.testMode = true
         } else {
             
-            self.appData.testMode = UserDefaults.standard.bool(forKey: "TestMode")
+            self.appData.testMode = true //UserDefaults.standard.bool(forKey: "TestMode")
         }
     }
     
