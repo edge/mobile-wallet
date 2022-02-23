@@ -11,19 +11,33 @@ extension UITableView {
 
     func setEmptyMessage(_ message: String) {
         
-        let messageLabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.bounds.size.width, height: self.bounds.size.height))
+        let backView = UIView(frame: CGRect(x: 0, y:0, width: self.bounds.size.width, height: self.bounds.size.height))
+        backView.backgroundColor = UIColor(named:"BackgroundMain")
+        
+        let messageLabel = UILabel(frame: CGRect(x: 0, y:0, width: self.bounds.size.width, height: 20))
         messageLabel.text = message
-        messageLabel.textColor = .white
+        messageLabel.textColor = UIColor(named: "FontSecondary")
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
         messageLabel.font = UIFont(name: "Inter-Bold", size: 16)
         messageLabel.sizeToFit()
-
-        self.backgroundView = messageLabel
+        messageLabel.baselineAdjustment = .alignCenters
+        messageLabel.center.x = backView.center.x
+        messageLabel.center.y = backView.center.y - 24
+        backView.addSubview(messageLabel)
+        
+        self.backgroundView = backView
         self.separatorStyle = .none
     }
 
     func restore() {
+        
+        if let backview = self.backgroundView {
+            for view in backview.subviews{
+                
+                view.removeFromSuperview()
+            }
+        }
         
         self.backgroundView = nil
         self.separatorStyle = .singleLine
