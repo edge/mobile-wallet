@@ -104,7 +104,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
         textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
         let rate = self.getExchangeRateString()
-        self.etherValueLabel.text = "1 \(self.fromType.getCoinSymbol()) = \(CryptoHelpers.generateCryptoValueString(value: rate)) \(self.totype.getCoinSymbol())"
+        self.etherValueLabel.text = "1 \(self.fromType.getCoinSymbol()) = 1 \(self.totype.getCoinSymbol())"
         
         self.fromTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount)
         
