@@ -108,7 +108,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             } else {
                 
                 self.walletTotalLabel.text = "\(self.etherAmount) ETH"
-                self.and1TokenLabel.text = "\(self.edgeAmount) Edge"
+                self.and1TokenLabel.text = "\(self.edgeAmount) EDGE"
                 self.and1TokenLabel.isHidden = false
                 self.tokenSelecttionButton.isHidden = false
                 self.tokenSelectionImage.isHidden = false

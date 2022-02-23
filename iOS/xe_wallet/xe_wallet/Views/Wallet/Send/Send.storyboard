@@ -235,20 +235,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x923jb345jhb5k3jb" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N2s-Jd-JaM">
-                                                <rect key="frame" x="16" y="33" width="222" height="20"/>
+                                                <rect key="frame" x="16" y="33" width="214" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="222" id="L4O-T4-nqy"/>
                                                     <constraint firstAttribute="height" constant="20" id="Umd-I6-w92"/>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="222" id="q8V-va-k3Q"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="12"/>
                                                 <color key="textColor" name="FontSecondary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0 EDGE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx5-ip-L73">
-                                                <rect key="frame" x="267" y="33" width="83" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 EDGE" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lx5-ip-L73">
+                                                <rect key="frame" x="230" y="33" width="120" height="20"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="20" id="M2M-nv-YmE"/>
+                                                    <constraint firstAttribute="width" constant="120" id="Oqd-z4-rlc"/>
+                                                    <constraint firstAttribute="height" constant="20" id="z6T-39-mdL"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                                 <color key="textColor" name="FontMain"/>
@@ -258,7 +257,7 @@
                                         <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                         <constraints>
                                             <constraint firstItem="XUt-m4-TOJ" firstAttribute="leading" secondItem="2vV-0a-gTE" secondAttribute="leading" constant="16" id="0en-OJ-Foa"/>
-                                            <constraint firstItem="lx5-ip-L73" firstAttribute="top" secondItem="Yxf-sS-8XA" secondAttribute="bottom" constant="2" id="Ae4-GW-wMB"/>
+                                            <constraint firstItem="lx5-ip-L73" firstAttribute="top" secondItem="Yxf-sS-8XA" secondAttribute="bottom" constant="2" id="0pQ-3b-fgA"/>
                                             <constraint firstItem="iCk-gM-0Vh" firstAttribute="top" secondItem="2vV-0a-gTE" secondAttribute="top" id="Bit-vf-dGA"/>
                                             <constraint firstAttribute="trailing" secondItem="qfL-87-mXy" secondAttribute="trailing" constant="16" id="JZ1-4w-nAG"/>
                                             <constraint firstItem="Yxf-sS-8XA" firstAttribute="top" secondItem="2vV-0a-gTE" secondAttribute="top" constant="16" id="UGc-VV-TAt"/>
@@ -269,7 +268,8 @@
                                             <constraint firstAttribute="trailing" secondItem="iCk-gM-0Vh" secondAttribute="trailing" id="dKe-eC-hDl"/>
                                             <constraint firstItem="XUt-m4-TOJ" firstAttribute="top" secondItem="2vV-0a-gTE" secondAttribute="top" constant="16" id="e2v-8G-ApU"/>
                                             <constraint firstAttribute="bottom" secondItem="qfL-87-mXy" secondAttribute="bottom" constant="16" id="fxH-uW-2me"/>
-                                            <constraint firstAttribute="trailing" secondItem="lx5-ip-L73" secondAttribute="trailing" constant="16" id="q68-sb-fcF"/>
+                                            <constraint firstItem="lx5-ip-L73" firstAttribute="leading" secondItem="N2s-Jd-JaM" secondAttribute="trailing" id="lRR-aQ-eQ3"/>
+                                            <constraint firstAttribute="trailing" secondItem="lx5-ip-L73" secondAttribute="trailing" constant="16" id="loT-fi-n2c"/>
                                             <constraint firstAttribute="width" secondItem="2vV-0a-gTE" secondAttribute="height" multiplier="2.42:1" id="qdS-ci-GNH"/>
                                             <constraint firstItem="qfL-87-mXy" firstAttribute="leading" secondItem="2vV-0a-gTE" secondAttribute="leading" constant="16" id="rCp-AN-an8"/>
                                             <constraint firstItem="N2s-Jd-JaM" firstAttribute="leading" secondItem="2vV-0a-gTE" secondAttribute="leading" constant="16" id="zaj-qG-0i1"/>
