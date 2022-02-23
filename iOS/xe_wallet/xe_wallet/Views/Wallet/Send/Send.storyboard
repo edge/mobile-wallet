@@ -216,8 +216,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUt-m4-TOJ">
-                                                <rect key="frame" x="16" y="16" width="83" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XUt-m4-TOJ">
+                                                <rect key="frame" x="16" y="16" width="48" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="Wcs-Bz-uWt"/>
                                                 </constraints>
