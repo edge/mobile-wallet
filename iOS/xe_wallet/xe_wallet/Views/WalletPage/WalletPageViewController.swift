@@ -62,7 +62,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
         
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.WalletPageUpdateTimer, repeats: true) { timer in
             
-            self.refreshExchangeRates()
+            self.configureViewsData()
         }
     }
     
@@ -142,6 +142,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
                 }
             }
         }
+        self.tableView.reloadData()
     }
     
     @objc func segmentedControlValueChanged(_ sender: UISegmentedControl) {
