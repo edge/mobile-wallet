@@ -3495,29 +3495,29 @@
                                                     <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                 </view>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Sk-Qo-b0N">
-                                                    <rect key="frame" x="16" y="16" width="48" height="48"/>
+                                                    <rect key="frame" x="16" y="16" width="32" height="32"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="48" id="A5S-Sg-g68"/>
-                                                        <constraint firstAttribute="height" constant="48" id="by4-vW-vGR"/>
+                                                        <constraint firstAttribute="width" constant="32" id="A5S-Sg-g68"/>
+                                                        <constraint firstAttribute="height" constant="32" id="by4-vW-vGR"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="24"/>
+                                                            <integer key="value" value="16"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m96-w9-O4Z">
-                                                    <rect key="frame" x="72" y="23" width="53.5" height="34"/>
+                                                    <rect key="frame" x="60" y="16" width="53.5" height="32"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="34" id="7S7-nM-Cgh"/>
+                                                        <constraint firstAttribute="height" constant="32" id="bIK-fv-331"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="20"/>
                                                     <color key="textColor" name="FontMain"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jSX-sl-wTJ">
-                                                    <rect key="frame" x="16" y="80" width="334" height="92"/>
+                                                    <rect key="frame" x="16" y="64" width="334" height="92"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="92" id="gHX-vk-igA"/>
@@ -3707,12 +3707,13 @@
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="ocg-SR-PHj" secondAttribute="trailing" id="48K-bW-leB"/>
                                                 <constraint firstItem="bTo-It-tAf" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="67c-Bc-d5M"/>
-                                                <constraint firstItem="m96-w9-O4Z" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="23" id="6lm-li-Cgz"/>
+                                                <constraint firstItem="m96-w9-O4Z" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="16" id="Aqp-FT-C33"/>
                                                 <constraint firstAttribute="bottom" secondItem="qco-X3-I99" secondAttribute="bottom" constant="16" id="B9Z-QQ-yXj"/>
                                                 <constraint firstItem="qco-X3-I99" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="EN9-qv-gAB"/>
                                                 <constraint firstAttribute="bottom" secondItem="3oB-Wv-Bbq" secondAttribute="bottom" constant="16" id="EyH-8o-VOh"/>
                                                 <constraint firstAttribute="bottom" secondItem="ocg-SR-PHj" secondAttribute="bottom" id="FYQ-4K-7q5"/>
                                                 <constraint firstAttribute="bottom" secondItem="bTo-It-tAf" secondAttribute="bottom" constant="16" id="Ffn-EQ-DCr"/>
+                                                <constraint firstItem="m96-w9-O4Z" firstAttribute="leading" secondItem="6Sk-Qo-b0N" secondAttribute="trailing" constant="12" id="HfB-gd-xnj"/>
                                                 <constraint firstItem="6Sk-Qo-b0N" firstAttribute="top" secondItem="RrU-Kh-ivu" secondAttribute="top" constant="16" id="Rbd-Gu-HY3"/>
                                                 <constraint firstItem="jSX-sl-wTJ" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="Sp2-Gm-6eY"/>
                                                 <constraint firstAttribute="trailing" secondItem="3oB-Wv-Bbq" secondAttribute="trailing" constant="16" id="TVm-uE-r4U"/>
@@ -3723,7 +3724,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="qco-X3-I99" secondAttribute="trailing" constant="16" id="e0e-yT-IrH"/>
                                                 <constraint firstItem="ocg-SR-PHj" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" id="llI-ia-Mib"/>
                                                 <constraint firstItem="3oB-Wv-Bbq" firstAttribute="leading" secondItem="RrU-Kh-ivu" secondAttribute="leading" constant="16" id="nfn-y2-tnO"/>
-                                                <constraint firstItem="m96-w9-O4Z" firstAttribute="leading" secondItem="6Sk-Qo-b0N" secondAttribute="trailing" constant="8" symbolic="YES" id="tFx-Gd-hyq"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
