@@ -10,16 +10,16 @@ import UIKit
 class Constants {
     
     /// default storage values
-
+    ///
     static var defaultStorageName = "WalletData9"
     
     /// default button messages
-
+    ///
     static var buttonOkText = "Ok"
     static var buttonCancelText = "Cancel"
     
     /// card screen transitions and positioning
-    
+    ///
     static var screenFadeTransitionSpeed = 0.3
     static var cardViewTopConstraintStart: CGFloat = 66
     static var cardViewTopConstraintEnd: CGFloat = 20
@@ -27,7 +27,7 @@ class Constants {
     static var cardViewSideConstraintEnd: CGFloat = 95
     
     /// authentication messages
-    
+    ///
     static var confirmIncorrectPinMessageHeader = "Incorrect PIN"
     static var confirmIncorrectPinMessageBody = "The PIN does not match previously entered PIN.  Please try again"
     static var confirmIncorrectPinButtonText = "Retry"
@@ -37,19 +37,24 @@ class Constants {
     static var enterIncorrectPinButtonText = "Retry"
     
     /// settings network change messages
-
+    ///
     static var networkChangeConfirmMessageHeader = "Changing Networks"
     static var networkChangeConfirmMessage = "Are you sure you wish to change to "
     
     /// settings reset messages
-
+    ///
     static var resetAppMessageHeader = "Reset App Data"
     static var resetAppMessageBody = "This will remove all apps data including pins and wallets."
 
+    ///  display message when trying to delete last XE wallet
+    ///
+    static var deleteLastXEWalletHeader = "Delete Wallet Error"
+    static var deleteLastXEWalletBody = "Unable to delete wallet as this is your last XE wallet and you need to have at least 1 to run the app"
+    
     static var toastDisplayTime = 1.5
     
     /// NETWORK settings
-    
+    ///
     static var XE_MainNetStatusUrl = "https://api.xe.network/wallet/"
     static var XE_TestNetStatusUrl = "https://xe1.test.network/wallet/"
     

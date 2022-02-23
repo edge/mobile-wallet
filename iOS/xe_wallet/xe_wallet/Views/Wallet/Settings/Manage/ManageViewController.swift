@@ -7,8 +7,7 @@
 
 import UIKit
 
-class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource {
-
+class ManageViewController: BaseViewController, UITableViewDelegate,  UITableViewDataSource, ManageDetailsViewControllerDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -138,8 +137,18 @@ extension ManageViewController {
         
             let contentVC = UIStoryboard(name: "Manage", bundle: nil).instantiateViewController(withIdentifier: "ManageDetailsViewController") as! ManageDetailsViewController
             contentVC.data = self.walletTableViewData[indexPath.section]
+            contentVC.delegate = self
             self.presentPanModal(contentVC)
         }
+    }
+}
+
+extension ManageViewController {
+    
+    func walletDeleted() {
+
+        self.walletTableViewData = WalletDataModelManager.shared.getWalletData()
+        self.tableView.reloadData()
     }
 }
 

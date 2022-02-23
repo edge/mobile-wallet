@@ -239,4 +239,27 @@ class WalletDataModelManager {
 
         return "\(StringHelpers.generateValueString(value: total)) USD"
     }
+    
+    func getXEWalletAmount() -> Int {
+        
+        var amount = 0
+        for wall in self.walletData {
+        
+            if wall.type == .xe {
+                
+                amount += 1
+            }
+        }
+            
+        return amount
+    }
+    
+    func deleteWallet(address: String) {
+        
+        if let i = self.walletData.firstIndex(where: { $0.address == address }) {
+            
+            self.walletData.remove(at: i)
+        }
+        self.saveWalletData()
+    }
 }

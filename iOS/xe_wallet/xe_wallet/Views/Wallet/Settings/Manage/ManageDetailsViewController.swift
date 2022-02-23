@@ -8,6 +8,11 @@
 import UIKit
 import PanModal
 
+protocol ManageDetailsViewControllerDelegate: AnyObject {
+    
+    func walletDeleted()
+}
+
 class ManageDetailsViewController: BaseViewController {
 
     @IBOutlet weak var addressLabel: UILabel!
@@ -15,6 +20,7 @@ class ManageDetailsViewController: BaseViewController {
     @IBOutlet weak var backedupLabel: UILabel!
     
     var data: WalletDataModel? = nil
+    var delegate: ManageDetailsViewControllerDelegate? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +43,33 @@ class ManageDetailsViewController: BaseViewController {
     
     @IBAction func removeButtonPressed(_ sender: Any) {
         
+        if let wallet = self.data {
+            
+            if wallet.type == .xe {
+                
+                if WalletDataModelManager.shared.getXEWalletAmount() == 1 {
+                    
+                    let alert = UIAlertController(title: Constants.deleteLastXEWalletHeader, message: Constants.deleteLastXEWalletBody, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
+                        
+                    }))
+                    self.present(alert, animated: true)
+                } else {
+                    
+                    self.deleteTheWallet()
+                }
+            } else {
+                
+                self.deleteTheWallet()
+            }
+        }
+    }
+    
+    func deleteTheWallet() {
+        
+        WalletDataModelManager.shared.deleteWallet(address: self.data?.address ?? "")
+        self.delegate?.walletDeleted()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

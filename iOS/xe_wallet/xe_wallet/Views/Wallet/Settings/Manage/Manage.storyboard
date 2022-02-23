@@ -268,7 +268,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z4p-zA-7Wf">
-                                        <rect key="frame" x="24" y="194.5" width="366" height="60"/>
+                                        <rect key="frame" x="24" y="194.5" width="366" height="130"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lRq-5M-pNd">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
@@ -312,23 +312,24 @@
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pFA-W4-3ku">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Nh-uG-xnY">
                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="60"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <connections>
-                                                            <action selector="removeButtonPressed:" destination="38K-cn-ZzW" eventType="touchUpInside" id="zVo-NT-Ibq"/>
+                                                            <action selector="removeButtonPressed:" destination="38K-cn-ZzW" eventType="touchUpInside" id="1J3-uX-Jzj"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemRedColor"/>
                                                 <constraints>
-                                                    <constraint firstItem="pFA-W4-3ku" firstAttribute="top" secondItem="dpc-MQ-BMQ" secondAttribute="top" id="6R0-jX-L9R"/>
                                                     <constraint firstAttribute="height" constant="60" id="6rM-ap-NSb"/>
+                                                    <constraint firstItem="4Nh-uG-xnY" firstAttribute="top" secondItem="dpc-MQ-BMQ" secondAttribute="top" id="HMA-gE-dsf"/>
                                                     <constraint firstItem="cOt-bP-NDh" firstAttribute="centerX" secondItem="dpc-MQ-BMQ" secondAttribute="centerX" id="Lif-Ju-VtX"/>
-                                                    <constraint firstItem="pFA-W4-3ku" firstAttribute="leading" secondItem="dpc-MQ-BMQ" secondAttribute="leading" id="dsY-qG-xxe"/>
+                                                    <constraint firstAttribute="bottom" secondItem="4Nh-uG-xnY" secondAttribute="bottom" id="dTK-VU-oH4"/>
                                                     <constraint firstItem="cOt-bP-NDh" firstAttribute="centerY" secondItem="dpc-MQ-BMQ" secondAttribute="centerY" id="h4C-t3-W5Q"/>
-                                                    <constraint firstAttribute="bottom" secondItem="pFA-W4-3ku" secondAttribute="bottom" id="tbd-oV-Uvq"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pFA-W4-3ku" secondAttribute="trailing" id="zyR-Fn-icA"/>
+                                                    <constraint firstItem="4Nh-uG-xnY" firstAttribute="leading" secondItem="dpc-MQ-BMQ" secondAttribute="leading" id="mOJ-Qi-n8l"/>
+                                                    <constraint firstAttribute="trailing" secondItem="4Nh-uG-xnY" secondAttribute="trailing" id="tmg-Jl-PDK"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -341,7 +342,7 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="lRq-5M-pNd" secondAttribute="trailing" id="0YJ-VC-DBP"/>
                                             <constraint firstItem="dpc-MQ-BMQ" firstAttribute="top" secondItem="lRq-5M-pNd" secondAttribute="bottom" constant="8" id="M4f-ks-PWI"/>
-                                            <constraint firstAttribute="height" constant="60" id="U5T-dl-emo"/>
+                                            <constraint firstAttribute="height" constant="130" id="U5T-dl-emo"/>
                                             <constraint firstItem="lRq-5M-pNd" firstAttribute="top" secondItem="z4p-zA-7Wf" secondAttribute="top" id="bvQ-J3-oZV"/>
                                             <constraint firstItem="lRq-5M-pNd" firstAttribute="leading" secondItem="z4p-zA-7Wf" secondAttribute="leading" id="lro-C4-d2y"/>
                                             <constraint firstAttribute="trailing" secondItem="dpc-MQ-BMQ" secondAttribute="trailing" id="qg5-t3-fZw"/>
