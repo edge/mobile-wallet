@@ -224,6 +224,7 @@ extension WalletPageViewController {
 
         if self.segmentedControl.selectedSegmentIndex == 1 {
             
+            self.tableView.restore()
             return self.assetsArray.count
         }
         
