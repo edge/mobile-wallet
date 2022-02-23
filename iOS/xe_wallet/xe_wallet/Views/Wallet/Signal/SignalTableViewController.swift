@@ -18,35 +18,39 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
         super.viewDidLoad()
 
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.separatorColor = .clear
-
-        loadData()
+        
+        self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
+        self.refreshControl?.tintColor = .white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if self.tableView.contentOffset.y == 0 {
+            
+            self.tableView.contentOffset = CGPoint(x: 0, y: -(self.refreshControl?.frame.size.height ?? 0));
+            self.refreshControl?.beginRefreshing()
+        }
+        self.refresh(sender: self)
     }
 
-    @IBAction func refreshFeed(_ sender: Any) {
+    @objc func refresh(sender:AnyObject)
+    {
 
-        loadData()
+        self.loadData()
     }
 
     func loadData() {
-        //url = URL(string: "https://www.nasa.gov/rss/dyn/breaking_news.rss")!
+
         url = URL(string: "https://edge.network/en/rss/")!
-    
-        loadRss(url);
-    }
-
-    func loadRss(_ data: URL) {
-
-        // XmlParserManager instance/object/variable.
-        let myParser : XmlParserManager = XmlParserManager().initWithURL(data) as! XmlParserManager
-
-        // Put feed in array.
+        let myParser : XmlParserManager = XmlParserManager().initWithURL(url) as! XmlParserManager
         feedImgs = myParser.img as [AnyObject]
         myFeed = myParser.feeds
-        tableView.reloadData()
+        self.tableView.reloadData()
+        self.refreshControl?.endRefreshing()
     }
 
     override func didReceiveMemoryWarning() {
@@ -69,7 +73,6 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
         }
     }
 
-    // MARK: - Table view data source.
     override func numberOfSections(in tableView: UITableView) -> Int {
         
         return 1

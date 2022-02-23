@@ -147,6 +147,7 @@
 		FD9DB4A327C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A227C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift */; };
 		FD9DB4A527C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */; };
 		FD9DB4A927C415D1004C7D44 /* StringHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4A827C415D1004C7D44 /* StringHelpers.swift */; };
+		FD9DB4AB27C68ACA004C7D44 /* UIRefreshControl+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9DB4AA27C68AC9004C7D44 /* UIRefreshControl+Ext.swift */; };
 		FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */; };
 		FD9EA5F02745AA980068B9F9 /* CustomTitleBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */; };
 		FD9EA5F42745B93B0068B9F9 /* CustomTitleBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */; };
@@ -326,6 +327,7 @@
 		FD9DB4A227C050B5004C7D44 /* ExchangeWalletCompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletCompleteViewController.swift; sourceTree = "<group>"; };
 		FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XEExchangeRateCurrentDataModel.swift; sourceTree = "<group>"; };
 		FD9DB4A827C415D1004C7D44 /* StringHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringHelpers.swift; sourceTree = "<group>"; };
+		FD9DB4AA27C68AC9004C7D44 /* UIRefreshControl+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIRefreshControl+Ext.swift"; sourceTree = "<group>"; };
 		FD9EA5EA274564C10068B9F9 /* Notification+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+Ext.swift"; sourceTree = "<group>"; };
 		FD9EA5EF2745AA980068B9F9 /* CustomTitleBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTitleBar.xib; sourceTree = "<group>"; };
 		FD9EA5F32745B93B0068B9F9 /* CustomTitleBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTitleBar.swift; sourceTree = "<group>"; };
@@ -833,6 +835,7 @@
 				FD93147D279F8D86001C0A2C /* UITabBar+Ext.swift */,
 				FDA65FB527A456F900B8069C /* Date+Ext.swift */,
 				FD83C3DD27B01C2700507A5F /* NSAttributedString+Ext.swift */,
+				FD9DB4AA27C68AC9004C7D44 /* UIRefreshControl+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1077,6 +1080,7 @@
 				FD2865EB276F8202006DEEF4 /* WalletCardCollectionViewCell.swift in Sources */,
 				FD83C3DC27B0112E00507A5F /* ManageBackupViewController.swift in Sources */,
 				FD74268A27488D4B0046D148 /* UIViewController+Ext.swift in Sources */,
+				FD9DB4AB27C68ACA004C7D44 /* UIRefreshControl+Ext.swift in Sources */,
 				FD5C216E2755087000795A2F /* XEGasRatesDataModel.swift in Sources */,
 				FD9EA5EB274564C10068B9F9 /* Notification+Ext.swift in Sources */,
 				FDAC56F027BD98B3000C7316 /* ExchangeWalletSelectionViewController.swift in Sources */,
