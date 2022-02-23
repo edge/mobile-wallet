@@ -131,14 +131,14 @@ class XEExchangeRateHistoryManager {
             
                 if type == .edge || type == .xe {
                 
-                    let last = rates[rates.count-1].usdPerXE
-                    let second = rates[rates.count-2].usdPerXE
+                    let last = rates[0].usdPerXE
+                    let second = rates[1].usdPerXE
                     
                     return ((last - second) / second ) * 100
                 } else if type == .ethereum {
                     
-                    let last = rates[rates.count-1].usdPerXE / rates[rates.count-1].ethPerXE
-                    let second = rates[rates.count-2].usdPerXE / rates[rates.count-2].ethPerXE
+                    let last = rates[0].usdPerXE / rates[rates.count-1].ethPerXE
+                    let second = rates[1].usdPerXE / rates[rates.count-2].ethPerXE
                     return ((last - second) / second ) * 100
                 }
             }

@@ -54,9 +54,9 @@ class WalletMarketTableViewCell: UITableViewCell {
 
         let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: type)
         
-        if percent < 0 {
         self.tokenPercentChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-            
+        if percent < 0 {
+        
             self.tokenPercentChangeLabel.textColor = UIColor.red
         } else {
             
