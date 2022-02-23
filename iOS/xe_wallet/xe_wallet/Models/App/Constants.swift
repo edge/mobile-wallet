@@ -96,7 +96,7 @@ class Constants {
     
     /// View Transaction On Network Button Labels
     ///
-    static var XE_NetworkButtonLabel = "View on Edge Network"
+    static var XE_NetworkButtonLabel = "View on Explorer"
     static var EDGE_NetworkButtonLabel = "View on Etherscan"
     static var ETHER_NetworkButtonLabel = "View on Etherscan"
 

@@ -175,7 +175,7 @@
                                                             <constraint firstAttribute="width" constant="70.5" id="1hx-sb-knt"/>
                                                             <constraint firstAttribute="height" constant="22" id="7UL-TZ-1gJ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -184,7 +184,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="nmD-r4-LUt"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -207,7 +207,7 @@
                                                             <constraint firstAttribute="width" constant="68.5" id="4eP-oE-Yze"/>
                                                             <constraint firstAttribute="height" constant="22" id="VIG-Pi-fac"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -216,7 +216,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="UFA-bk-LdG"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -239,7 +239,7 @@
                                                             <constraint firstAttribute="height" constant="22" id="i0b-iP-xA4"/>
                                                             <constraint firstAttribute="width" constant="126" id="uDc-lo-bMt"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -248,7 +248,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="uew-9j-DXR"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
