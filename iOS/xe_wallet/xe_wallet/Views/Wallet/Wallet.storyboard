@@ -3699,7 +3699,7 @@
                                                         <constraint firstAttribute="height" constant="19.5" id="GXT-bN-pzL"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
-                                                    <color key="textColor" name="ButtonGreen"/>
+                                                    <color key="textColor" name="FontSecondary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
