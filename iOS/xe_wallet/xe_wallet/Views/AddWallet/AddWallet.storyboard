@@ -248,6 +248,7 @@
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="zSI-d6-8gG" secondAttribute="bottom" constant="8" id="5Qm-wn-FqT"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="93Z-4Q-Jpg"/>
+                                            <constraint firstItem="zSI-d6-8gG" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="x0S-DQ-Faf" secondAttribute="trailing" constant="12" id="BWL-m3-d8K"/>
                                             <constraint firstAttribute="height" constant="70" id="L0k-A7-fPi"/>
                                             <constraint firstItem="x0S-DQ-Faf" firstAttribute="top" secondItem="j3X-D7-bBR" secondAttribute="top" constant="8" id="LP8-sT-xed"/>
                                             <constraint firstItem="x0S-DQ-Faf" firstAttribute="leading" secondItem="j3X-D7-bBR" secondAttribute="leading" constant="16" id="ScC-f4-7PO"/>
@@ -273,7 +274,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDP-OX-en0">
                                         <rect key="frame" x="24" y="236" width="366" height="70"/>
                                         <subviews>
-                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34f18c7e2c1db3a9bb6d635bc984569a934ae92ce6d7d0fbaec40ca256e5780a" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hpp-i7-cxM">
+                                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="34f18c7e2c1db3a9bb6d635bc984569a934ae92ce6d7d0fbaec40ca256e5780a" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Hpp-i7-cxM">
                                                 <rect key="frame" x="16" y="8" width="253" height="53"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="253" id="Ew9-Uv-6PR"/>
@@ -326,6 +327,7 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="70" id="XbX-nH-vUq"/>
                                             <constraint firstAttribute="trailing" secondItem="SMk-6e-FgP" secondAttribute="trailing" constant="8" id="aZ8-Kg-54c"/>
                                             <constraint firstAttribute="bottom" secondItem="SMk-6e-FgP" secondAttribute="bottom" constant="8" id="bcL-ae-gct"/>
+                                            <constraint firstItem="SMk-6e-FgP" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Hpp-i7-cxM" secondAttribute="trailing" constant="12" id="cEr-3u-0rh"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
