@@ -408,6 +408,9 @@
                         <outlet property="addressLabel" destination="NRf-Fc-zTc" id="nCM-7X-kPd"/>
                         <outlet property="backedupLabel" destination="Tol-gD-fVe" id="Nwy-0d-jhF"/>
                         <outlet property="createdLabel" destination="w8m-1S-AiT" id="EnO-iO-ZSN"/>
+                        <outlet property="deleteButtonButton" destination="4Nh-uG-xnY" id="qYH-xQ-Otq"/>
+                        <outlet property="deleteButtonText" destination="cOt-bP-NDh" id="SFe-I8-xDD"/>
+                        <outlet property="deleteButtonView" destination="dpc-MQ-BMQ" id="zIg-q8-v2N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CrD-Zn-GCu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

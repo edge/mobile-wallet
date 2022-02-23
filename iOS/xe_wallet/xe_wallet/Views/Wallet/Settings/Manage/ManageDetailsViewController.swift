@@ -19,6 +19,10 @@ class ManageDetailsViewController: BaseViewController {
     @IBOutlet weak var createdLabel: UILabel!
     @IBOutlet weak var backedupLabel: UILabel!
     
+    @IBOutlet weak var deleteButtonView: UIView!
+    @IBOutlet weak var deleteButtonText: UILabel!
+    @IBOutlet weak var deleteButtonButton: UIButton!
+    
     var data: WalletDataModel? = nil
     var delegate: ManageDetailsViewControllerDelegate? = nil
     
@@ -29,6 +33,8 @@ class ManageDetailsViewController: BaseViewController {
         self.addressLabel.text = self.data?.address
         self.createdLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data?.created ?? 0))
         self.backedupLabel.text = DateFunctions.getFormattedDateString(timeSince: Double(data?.backedup ?? 0))
+        
+        self.checkRemoveButton()
     }
     
     @IBAction func backupButtonPressed(_ sender: Any) {
@@ -41,7 +47,7 @@ class ManageDetailsViewController: BaseViewController {
         }
     }
     
-    @IBAction func removeButtonPressed(_ sender: Any) {
+    func checkRemoveButton() {
         
         if let wallet = self.data {
             
@@ -49,16 +55,21 @@ class ManageDetailsViewController: BaseViewController {
                 
                 if WalletDataModelManager.shared.getXEWalletAmount() == 1 {
                     
-
-                } else {
-                    
-                    self.deleteTheWallet()
+                    self.deleteButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
+                    self.deleteButtonText.textColor = UIColor(named:"FontSecondary")
+                    self.deleteButtonButton.isEnabled = false
+                    return
                 }
-            } else {
-                
-                self.deleteTheWallet()
             }
         }
+        self.deleteButtonView.backgroundColor = .red
+        self.deleteButtonText.textColor = .white
+        self.deleteButtonButton.isEnabled = true
+    }
+    
+    @IBAction func removeButtonPressed(_ sender: Any) {
+        
+        self.deleteTheWallet()
     }
     
     func deleteTheWallet() {
