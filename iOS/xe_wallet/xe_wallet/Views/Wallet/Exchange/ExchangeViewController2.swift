@@ -165,8 +165,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.swapToTokenType = .ethereum
         } else {
             
-            self.toIndex = 0
-            self.swapToTokenType = self.walletData[0].type
+            self.toIndex = self.findFirstIndex(type: .xe)
+            self.swapToTokenType = .xe
         }
     }
     
@@ -266,7 +266,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 contentVC.walletData = self.walletData.filter { $0.type != .xe }
             } else {
             
-                contentVC.walletData = self.walletData
+                contentVC.walletData = self.walletData.filter { $0.type == .xe }
             }
             contentVC.type = .wallet
             contentVC.tag = 2
