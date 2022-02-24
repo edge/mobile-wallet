@@ -20,4 +20,16 @@ class StringHelpers {
         let amountVal = Double(value)
         return "\(formatter.string(from:NSNumber(value:amountVal )) ?? "0.00")"
     }
+    
+    static func generateValueString4Dec(value: Double) -> String {
+        
+        let formatter = NumberFormatter()
+        formatter.usesGroupingSeparator = true
+        formatter.groupingSize = 3
+        formatter.alwaysShowsDecimalSeparator = true
+        formatter.minimumFractionDigits = 4
+        formatter.maximumFractionDigits = 4
+        let amountVal = Double(value)
+        return "\(formatter.string(from:NSNumber(value:amountVal )) ?? "0.00")"
+    }
 }

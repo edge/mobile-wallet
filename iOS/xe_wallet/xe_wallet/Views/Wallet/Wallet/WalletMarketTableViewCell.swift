@@ -63,7 +63,13 @@ class WalletMarketTableViewCell: UITableViewCell {
             self.tokenPercentChangeLabel.textColor = UIColor(named: "XEGreen")
         }
         
-        self.tokenValueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: rate as! NSNumber)))"
+        if data == "Ethereum" {
+            
+            self.tokenValueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: rate as! NSNumber)))"
+        } else {
+        
+            self.tokenValueLabel.text = "$\(StringHelpers.generateValueString4Dec(value: Double(truncating: rate as! NSNumber)))"
+        }
         self.tokenImage.image = UIImage(named:type.rawValue)
         self.tokenNameLabel.text = self.type.getFullNameLabel()
         self.tokenAbvLabel.text = self.type.getCoinSymbol()
