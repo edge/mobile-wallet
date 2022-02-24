@@ -52,8 +52,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     @IBOutlet weak var secondTimerLabel: UILabel!
     
-    @IBOutlet weak var estimatedFeeLabel: UILabel!
-    @IBOutlet weak var maximumFeeLabel: UILabel!
+    @IBOutlet weak var transactionFeeLabel: UILabel!
+    @IBOutlet weak var swappingAmountLabel: UILabel!
+    @IBOutlet weak var receiveAmountLabel: UILabel!
     
     @IBOutlet weak var completeButtonView: UIView!
     @IBOutlet weak var completeButtonButton: UIButton!
@@ -116,8 +117,17 @@ class ExchangeWalletReviewViewController: BaseViewController {
         
         if let gas = XEGasRatesManager.shared.getRates() {
             
-            self.estimatedFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: ((self.fromAmount)/100) * gas.handlingFeePercentage))"
-            self.maximumFeeLabel.text = ""
+            let fee: Double = Double(gas.fee)
+            var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
+            if handling < 25 {
+                
+                handling = 25
+            }
+            let totalFee = fee + handling
+
+            self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
+            self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
+            self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee))"
         }
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
