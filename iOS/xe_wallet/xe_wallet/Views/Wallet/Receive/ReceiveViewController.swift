@@ -55,7 +55,11 @@ class ReceiveViewController: BaseViewController {
         
         UIPasteboard.general.string = self.addressLabel.text
         self.view.makeToast("Address copied to clipboard", duration: Constants.toastDisplayTime, position: .top)
-        self.dismiss(animated: true, completion: nil)
+
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+        
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {
