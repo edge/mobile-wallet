@@ -289,16 +289,18 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.confirmStatus = .processing
         self.configureConfirmStatus()
         
-        let amountValue = self.toTokenAmount
-        let fAmount = String(format: "%.6f", amountValue!)
+        let amountValue = self.toTokenAmount.text ?? "0.0"
+        //let fAmount = String(format: "%.6f", amountValue!)
         
-        let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress?.address ?? "")
+
         
         if let wallet = self.fromAddress {
             
+            let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address ?? "")
+            
             if let toWallet = self.toAddress {
                 
-                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
+                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: amountValue, fee: 0, key: key, completion: { res in
                     
                     if res {
                         

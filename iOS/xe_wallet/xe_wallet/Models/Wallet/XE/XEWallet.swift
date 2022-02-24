@@ -243,11 +243,19 @@ class XEWallet {
     
     func withdrawCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
         
-        let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+        var amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
+        amountString = amountString.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range:nil)
         let digitalAmount = Int(amountString) ?? 0
-        let digitalFee = Int(fee*1000000)
+        var digitalFee = Int(fee*1000000)
+        var ref = ""
+        if let rates = XEGasRatesManager.shared.getRates() {
+            
+            digitalFee = rates.fee
+            ref = rates.ref
+        }
         
-        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(AppDataModelManager.shared.getNetworkStatus().getWithdrawBridgeAddress())\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"fee\":\(digitalFee),\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+        
+        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(AppDataModelManager.shared.getNetworkStatus().getWithdrawBridgeAddress())\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"ref\":\"\(ref)\",\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
         j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
         let sig = self.generateSignature(message: j2String, key: key)
         j2String = String(j2String.dropLast())
