@@ -123,7 +123,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             break
         case .processing:
             self.pinEntryMainView.isHidden = true
-            self.mainView.isHidden = true
+            self.mainView.isHidden = false
             self.confirmButtonOutterView.isHidden = false
             self.confirmButtonText.text = "Submitting..."
             self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonTextInactive")
@@ -206,8 +206,12 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                 
                 if res {
                     
-                    self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    self.view.makeToast("Transaction Succeded", duration: Constants.toastDisplayTime, position: .top)
+
+                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
                     
+                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    }
                 } else {
                     
                     self.confirmStatus = .error

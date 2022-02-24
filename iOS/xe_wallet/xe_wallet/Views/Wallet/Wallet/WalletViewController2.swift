@@ -112,7 +112,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
     @IBAction func unwindToWalletView(sender: UIStoryboardSegue) {
 
-        self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
+        //self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
     }
     
     @IBAction func addWalletButtonPressed(_ sender: Any) {
