@@ -85,8 +85,8 @@ class ExchangeWalletSelectionViewController: BaseViewController, UITableViewDele
             
             let wallet = self.walletData[self.selectedWalletIndex]
             self.tokenData.removeAll()
-            self.tokenData.append(ExchangeTokenSelectionDataModel(type:.ethereum, address: "Ethereum", balance:wallet.status?.balance ?? 0))
-            self.tokenData.append(ExchangeTokenSelectionDataModel(type:.edge, address: "Edge", balance:wallet.status?.edgeBalance ?? 0))
+            self.tokenData.append(ExchangeTokenSelectionDataModel(type:.ethereum, address: "Ethereum", abv: "$ETH", balance:wallet.status?.balance ?? 0, value: wallet.status?.balance ?? 0))
+            self.tokenData.append(ExchangeTokenSelectionDataModel(type:.edge, address: "Edge", abv: "$EDGE", balance:wallet.status?.edgeBalance ?? 0, value: wallet.status?.edgeBalance ?? 0))
         }
         self.tableView.reloadData()
     }
@@ -133,7 +133,19 @@ extension ExchangeWalletSelectionViewController {
             let token = self.tokenData[indexPath.row]
             (cell as! ExchangeTokenSelectionTableViewCell).tokenImage.image = UIImage(named:token.type.rawValue)
             (cell as! ExchangeTokenSelectionTableViewCell).addressLabel.text = token.address
+            (cell as! ExchangeTokenSelectionTableViewCell).abvLabel.text = token.abv
             (cell as! ExchangeTokenSelectionTableViewCell).amountLabel.text = CryptoHelpers.generateCryptoValueString(value: token.balance ?? 0)
+            
+            let etherrate = Double(EtherExchangeRatesManager.shared.getRateValue())
+            let edgerate = XEExchangeRatesManager.shared.getRates()?.rate
+            let value = token.value
+            if token.type == .edge {
+            
+                (cell as! ExchangeTokenSelectionTableViewCell).valueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: value * (edgerate ?? 0) as! NSNumber)))"
+            } else {
+            
+                (cell as! ExchangeTokenSelectionTableViewCell).valueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: value * (etherrate ?? 0) as! NSNumber)))"
+            }
         }
         
         return cell

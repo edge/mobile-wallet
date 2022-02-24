@@ -2363,20 +2363,37 @@
                                                                 </userDefinedRuntimeAttribute>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-WP-vcU">
-                                                            <rect key="frame" x="52" y="16" width="110" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-WP-vcU">
+                                                            <rect key="frame" x="52" y="8" width="55.5" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="7nU-HD-kAV"/>
-                                                                <constraint firstAttribute="width" constant="110" id="86H-Ql-Am5"/>
+                                                                <constraint firstAttribute="height" constant="20" id="ntn-Sa-QHn"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-Cl-HB7">
-                                                            <rect key="frame" x="170" y="16" width="184" height="24"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ggm-U9-dZW">
+                                                            <rect key="frame" x="52" y="28" width="55.5" height="20"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" constant="24" id="Bcq-Pr-e85"/>
+                                                                <constraint firstAttribute="height" constant="20" id="u4g-od-jto"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                                            <color key="textColor" name="FontMain"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-Cl-HB7">
+                                                            <rect key="frame" x="318" y="8" width="36" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="S0h-xq-rNA"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                                            <color key="textColor" name="FontMain"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ks4-Cz-qxF">
+                                                            <rect key="frame" x="318" y="28" width="36" height="20"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="20" id="e3w-ih-zsj"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                                             <color key="textColor" name="FontMain"/>
@@ -2385,15 +2402,17 @@
                                                     </subviews>
                                                     <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                     <constraints>
-                                                        <constraint firstItem="jmR-WP-vcU" firstAttribute="leading" secondItem="sPg-Zv-sM0" secondAttribute="trailing" constant="8" symbolic="YES" id="3gI-JA-AJg"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ggm-U9-dZW" secondAttribute="bottom" constant="8" id="4tt-ha-48x"/>
                                                         <constraint firstItem="sPg-Zv-sM0" firstAttribute="centerY" secondItem="dO1-Lr-Vo4" secondAttribute="centerY" id="AaH-Kx-Z2T"/>
-                                                        <constraint firstItem="jmR-WP-vcU" firstAttribute="leading" secondItem="sPg-Zv-sM0" secondAttribute="trailing" constant="8" id="EeW-XJ-E63"/>
+                                                        <constraint firstItem="xvd-Cl-HB7" firstAttribute="top" secondItem="dO1-Lr-Vo4" secondAttribute="top" constant="8" id="EBx-m6-7jq"/>
+                                                        <constraint firstItem="ggm-U9-dZW" firstAttribute="leading" secondItem="sPg-Zv-sM0" secondAttribute="trailing" constant="8" symbolic="YES" id="JFX-ah-52l"/>
                                                         <constraint firstItem="sPg-Zv-sM0" firstAttribute="leading" secondItem="dO1-Lr-Vo4" secondAttribute="leading" constant="12" id="PWo-19-gus"/>
-                                                        <constraint firstAttribute="trailing" secondItem="xvd-Cl-HB7" secondAttribute="trailing" constant="12" id="QYZ-sW-zPe"/>
+                                                        <constraint firstAttribute="trailing" secondItem="ks4-Cz-qxF" secondAttribute="trailing" constant="12" id="PwB-7h-YC6"/>
                                                         <constraint firstAttribute="height" constant="56" id="SZb-RP-HLS"/>
-                                                        <constraint firstItem="jmR-WP-vcU" firstAttribute="centerY" secondItem="dO1-Lr-Vo4" secondAttribute="centerY" id="UHg-zI-o9t"/>
-                                                        <constraint firstItem="xvd-Cl-HB7" firstAttribute="leading" secondItem="jmR-WP-vcU" secondAttribute="trailing" constant="8" id="ooS-0L-LJv"/>
-                                                        <constraint firstItem="xvd-Cl-HB7" firstAttribute="centerY" secondItem="dO1-Lr-Vo4" secondAttribute="centerY" id="zp8-Qb-vQP"/>
+                                                        <constraint firstItem="jmR-WP-vcU" firstAttribute="top" secondItem="dO1-Lr-Vo4" secondAttribute="top" constant="8" id="VWz-oH-y58"/>
+                                                        <constraint firstAttribute="trailing" secondItem="xvd-Cl-HB7" secondAttribute="trailing" constant="12" id="XyW-Hd-SLv"/>
+                                                        <constraint firstItem="jmR-WP-vcU" firstAttribute="leading" secondItem="sPg-Zv-sM0" secondAttribute="trailing" constant="8" symbolic="YES" id="kbD-mu-bBE"/>
+                                                        <constraint firstAttribute="bottom" secondItem="ks4-Cz-qxF" secondAttribute="bottom" constant="8" id="x0p-oN-g3L"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2412,9 +2431,11 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
+                                            <outlet property="abvLabel" destination="ggm-U9-dZW" id="Bep-rf-QAO"/>
                                             <outlet property="addressLabel" destination="jmR-WP-vcU" id="6cN-6k-k8N"/>
                                             <outlet property="amountLabel" destination="xvd-Cl-HB7" id="Dmt-gf-lKl"/>
                                             <outlet property="tokenImage" destination="sPg-Zv-sM0" id="l4H-Hm-CXo"/>
+                                            <outlet property="valueLabel" destination="ks4-Cz-qxF" id="7Cv-EG-0OF"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
