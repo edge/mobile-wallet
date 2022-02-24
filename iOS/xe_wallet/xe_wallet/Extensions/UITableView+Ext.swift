@@ -19,7 +19,7 @@ extension UITableView {
         messageLabel.textColor = UIColor(named: "FontSecondary")
         messageLabel.numberOfLines = 0
         messageLabel.textAlignment = .center
-        messageLabel.font = UIFont(name: "Inter-Bold", size: 16)
+        messageLabel.font = UIFont(name: "Inter-Regular", size: 16)
         messageLabel.sizeToFit()
         messageLabel.baselineAdjustment = .alignCenters
         messageLabel.center.x = backView.center.x
