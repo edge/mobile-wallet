@@ -27,11 +27,21 @@ class WalletPageAssetTableViewCell: UITableViewCell {
         self.tokenIconImage.image = UIImage(named:data.type.rawValue)
         self.tokenNameLabel.text = data.type.getFullNameLabel()
         self.tokenCoinAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)
-        self.tokenValueLabel.text = String(format:"$%.2f", data.value)
         
-        let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
-        self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-        self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
+        if data.value == 0 {
         
+            self.tokenValueLabel.isHidden = true
+            self.tokenChangeImage.isHidden = true
+            self.tokenChangeLabel.text = String(format:"$%.2f", data.value)
+        } else {
+            
+            self.tokenValueLabel.isHidden = false
+            self.tokenChangeImage.isHidden = false
+            self.tokenValueLabel.text = String(format:"$%.2f", data.value)
+            
+            let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
+            self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
+            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
+        }
     }
 }
