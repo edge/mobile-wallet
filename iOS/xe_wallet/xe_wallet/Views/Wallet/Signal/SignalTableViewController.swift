@@ -80,8 +80,15 @@ class SignalTableViewController: UITableViewController, XMLParserDelegate {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return myFeed.count
+        if self.myFeed.count == 0 {
+            
+            self.tableView.setEmptyMessage("Loading")
+            return 0 }
+        
+        self.tableView.restore()
+        return self.myFeed.count
     }
+    
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
      
