@@ -88,7 +88,7 @@ class Constants {
 
     /// Transaction TX endpoint
     ///
-    static var XE_testTransactionRecordUrl = "https://index.test.network/transaction/"
+    static var XE_testTransactionRecordUrl = "https://test.network/transaction/"
     static var XE_mainTransactionRecordUrl = "https://xe.network/transaction/"
 
     static var ETH_testTransactionRecordUrl = "https://rinkeby.etherscan.io/tx/"
