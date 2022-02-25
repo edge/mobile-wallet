@@ -1050,7 +1050,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="29.5" id="klN-86-GKh"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="18"/>
+                                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                                 <color key="textColor" name="FontMain"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
