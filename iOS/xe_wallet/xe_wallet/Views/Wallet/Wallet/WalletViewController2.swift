@@ -85,7 +85,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         if self.lastTransactionTransaction != nil {
         
             self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Last Transaction"))
-            self.walletScreenSegments.append(WalletScreenSegment(cellName: "TransactionTableViewCell", size: 56, data: ""))
+            self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletPageTransactionTableViewCell", size: 56, data: ""))
         }
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Markets"))
@@ -173,10 +173,15 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             (cell as! WalletCardsTableViewCell).configure()
         }
         
-        if self.walletScreenSegments[indexPath.row].cellName == "TransactionTableViewCell" {
+        if self.walletScreenSegments[indexPath.row].cellName == "WalletPageTransactionTableViewCell" {
          
-
-            (cell as! TransactionTableViewCell).configure(walletData: self.lastTransactionWallet, transactionData: self.lastTransactionTransaction)
+            if let transaction = self.lastTransactionTransaction {
+            
+                if let lastWallet = self.lastTransactionWallet {
+                
+                    (cell as! WalletPageTransactionTableViewCell).configure(data: transaction , type: lastWallet.type, address: lastWallet.address)
+                }
+            }
         }
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletHeaderTableViewCell" {
@@ -198,7 +203,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if self.walletScreenSegments[indexPath.row].cellName == "TransactionTableViewCell" {
+        if self.walletScreenSegments[indexPath.row].cellName == "WalletPageTransactionTableViewCell" {
             
             DispatchQueue.main.asyncAfter(deadline: .now()) {
             

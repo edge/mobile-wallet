@@ -22,7 +22,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
+        
     func configure(data: TransactionRecordDataModel, type: WalletType, address: String) {
         
         self.typeImageView.image = UIImage(named: data.type?.rawValue ?? "")
@@ -61,19 +61,6 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             self.receivedLabel.isHidden = true
         }
         
-        
-        
-        /*
-        if data.confirmations ?? 0 >= 10 {
-            
-            self.mainView.alpha = 1.0
-
-        } else {
-            
-            self.mainView.alpha = 0.4
-            self.receivedLabel.text = "Pending"
-        }*/
-
 
     }
 }

@@ -1825,7 +1825,7 @@
                                     <outlet property="titleLabel" destination="Cf1-kp-pAB" id="evV-zT-eHW"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="TransactionTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TransactionTableViewCell" rowHeight="56" id="ibr-CC-xQF" userLabel="TransactionTableViewCell" customClass="TransactionTableViewCell" customModule="xe_wallet" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WalletPageTransactionTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalletPageTransactionTableViewCell" rowHeight="56" id="ibr-CC-xQF" userLabel="TransactionTableViewCell" customClass="WalletPageTransactionTableViewCell" customModule="xe_wallet" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="488.5" width="414" height="56"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ibr-CC-xQF" id="uPg-DP-GTs">
@@ -1922,13 +1922,13 @@
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
-                                    <outlet property="amountLabel" destination="DAN-Ws-LFU" id="4c6-NV-bcs"/>
-                                    <outlet property="directionArrowImage" destination="Y8Y-zl-Pwu" id="16p-L9-wt7"/>
+                                    <outlet property="amountLabel" destination="DAN-Ws-LFU" id="LVC-kI-20h"/>
+                                    <outlet property="directionArrowImage" destination="Y8Y-zl-Pwu" id="fV7-zh-xmt"/>
                                     <outlet property="mainView" destination="6ax-ny-j6t" id="lGy-Qx-Kc1"/>
-                                    <outlet property="memoLabel" destination="cO5-Jo-a1z" id="lwu-RI-xwv"/>
-                                    <outlet property="statusLabel" destination="ITk-3n-cAp" id="SPp-HB-mOs"/>
-                                    <outlet property="typeImageView" destination="G6V-fi-RGs" id="L8d-Oy-gIi"/>
-                                    <outlet property="typeLabel" destination="soC-Xi-P1R" id="KAg-Q2-H7y"/>
+                                    <outlet property="receivedLabel" destination="cO5-Jo-a1z" id="cre-gM-yjA"/>
+                                    <outlet property="typeImageView" destination="G6V-fi-RGs" id="Qy5-Pi-zX5"/>
+                                    <outlet property="typeLabel" destination="soC-Xi-P1R" id="UVO-Di-E8w"/>
+                                    <outlet property="valueLabel" destination="ITk-3n-cAp" id="vgr-1V-JoX"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="WalletMarketTableViewCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="WalletMarketTableViewCell" rowHeight="76" id="oeF-wP-2B9" customClass="WalletMarketTableViewCell" customModule="xe_wallet" customModuleProvider="target">
@@ -2531,6 +2531,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="MXH-hg-DFr">
                                                         <rect key="frame" x="97" y="6" width="20" height="20"/>
+                                                        <color key="tintColor" name="FontMain"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="eTa-J6-nHz"/>
                                                             <constraint firstAttribute="width" constant="20" id="tCo-5C-gkr"/>
@@ -4301,7 +4302,7 @@
         <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="burger" width="24" height="24"/>
         <image name="chevronRight" width="9" height="16"/>
-        <image name="clock" width="32" height="32"/>
+        <image name="clock" width="97.160003662109375" height="97.160003662109375"/>
         <image name="closeX" width="14" height="14"/>
         <image name="coin_ethereum" width="279" height="279"/>
         <image name="credit_card" width="344" height="204"/>

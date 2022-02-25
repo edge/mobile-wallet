@@ -19,6 +19,7 @@ class TransactionPageViewController: BaseViewController{
     @IBOutlet weak var fromAddressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var directionLabel: UILabel!
+    @IBOutlet weak var statusTickImage: UIImageView!
     
     @IBOutlet weak var exploreButtonLabel: UILabel!
     
@@ -36,26 +37,47 @@ class TransactionPageViewController: BaseViewController{
             
             self.tokenIconImage.image = UIImage(named: self.walletType.rawValue)
             
-            if self.walletAddress.lowercased() == transaction.sender.lowercased() {
+            if transaction.status == .pending {
                 
-                if transaction.confirmations ?? 0 >= 10 {
-                    
-                    self.directionLabel.text = "Sent"
-                } else {
-                    
-                    self.directionLabel.text = "Sending"
-                }
+                self.statusTickImage.image = UIImage(named:"clock")
+                self.statusTickImage.tintColor = UIColor(named:"FontSecondary")
+                
+                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
+                self.directionLabel.text = "Pending for \(date.timeAgoDisplay())"
+                self.directionLabel.textColor = UIColor(named:"FontSecondary")
+                self.dateLabel.isHidden = true
             } else {
                 
-                if transaction.confirmations ?? 0 >= 10 {
+                if transaction.confirmations ?? 0 < 10 {
+                
+                    self.statusTickImage.image = UIImage(named:"clock")
+                    self.statusTickImage.tintColor = UIColor(named:"FontSecondary")
+                    if let confirmations = transaction.confirmations {
                     
-                    self.directionLabel.text = "Received"
+                        self.directionLabel.text = "\(confirmations) confirmations"
+                    }
+                    self.directionLabel.textColor = UIColor(named:"FontSecondary")
                 } else {
                     
-                    self.directionLabel.text = "Receiving"
+                    self.statusTickImage.image = UIImage(named:"tick")
+                    self.statusTickImage.tintColor = UIColor(named:"FontMain")
+                    self.directionLabel.textColor = .green
+                    
+                    if self.walletAddress.lowercased() == transaction.sender.lowercased() {
+                        
+                        self.directionLabel.text = "Sent"
+                    } else {
+                        
+                        self.directionLabel.text = "Received"
+                    }
                 }
-            }
                 
+                self.dateLabel.isHidden = false
+                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
+                self.dateLabel.text = date.timeAgoDisplay()
+                self.dateLabel.isHidden = false
+            }
+             
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
             self.tokenAbvLabel.text = self.walletType.getCoinSymbol()
                 
@@ -64,15 +86,6 @@ class TransactionPageViewController: BaseViewController{
                 
             self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.fromAddressLabel.text = transaction.sender
-                
-            if transaction.confirmations ?? 0 >= 10 {
-                
-                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
-                self.dateLabel.text = date.timeAgoDisplay()
-            } else {
-                
-                self.dateLabel.text = "Pending"
-            }
             
             self.exploreButtonLabel.text = transaction.type?.getExploreButtonText()
         }

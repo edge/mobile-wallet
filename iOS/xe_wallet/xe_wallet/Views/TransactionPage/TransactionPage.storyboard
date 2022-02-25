@@ -129,20 +129,20 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YTp-C6-JaE">
-                                                <rect key="frame" x="50" y="18" width="70" height="20"/>
+                                                <rect key="frame" x="50" y="18" width="61" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="zh1-DC-8r1"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                 <color key="textColor" name="ButtonGreen"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 week ago" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="By0-fG-HyN">
-                                                <rect key="frame" x="269" y="18" width="85" height="20"/>
+                                                <rect key="frame" x="279.5" y="18" width="74.5" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="KSx-30-zFI"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                 <color key="textColor" name="FontOptional"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -366,6 +366,7 @@
                         <outlet property="exploreButtonLabel" destination="IWn-3p-fs0" id="gCa-Dp-z6J"/>
                         <outlet property="fromAddressLabel" destination="NDH-CW-dP5" id="9Bw-Xd-0mv"/>
                         <outlet property="fromTokenImage" destination="qAn-Fd-z8Q" id="dD6-CZ-xDB"/>
+                        <outlet property="statusTickImage" destination="9va-f2-K7P" id="nm3-va-b4n"/>
                         <outlet property="toAddressLabel" destination="3to-wE-Qss" id="qUD-yD-Zlc"/>
                         <outlet property="toTokenImage" destination="Rk9-AD-8KS" id="CQ1-qh-eEH"/>
                         <outlet property="tokenAbvLabel" destination="9f7-xa-GEy" id="pOz-Io-79R"/>
