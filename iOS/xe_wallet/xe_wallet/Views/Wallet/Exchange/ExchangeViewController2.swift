@@ -77,6 +77,10 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         self.walletData = WalletDataModelManager.shared.getWalletData()
         self.selectedIndex = 0
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
+        if self.swapFromTokenType == .ethereum {
+            
+            self.swapFromTokenType = .edge
+        }
         self.setToWalletDetails()
         self.configureSelectedWallet(clearValue: true)
     }
@@ -162,7 +166,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         if self.walletData[self.selectedIndex].type == .xe {
         
             self.toIndex = self.findFirstIndex(type: .ethereum)
-            self.swapToTokenType = .ethereum
+            self.swapToTokenType = .edge
         } else {
             
             self.toIndex = self.findFirstIndex(type: .xe)
