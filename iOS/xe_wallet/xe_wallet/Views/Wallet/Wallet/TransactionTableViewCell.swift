@@ -35,11 +35,13 @@ class TransactionTableViewCell: UITableViewCell {
             self.directionArrowImage.image = UIImage(systemName:"arrow.up")
             self.directionArrowImage.tintColor = UIColor.red
             self.typeLabel.text = transaction.recipient
+            self.amountLabel.text = "-\(CryptoHelpers.generateCryptoValueString(value: transaction.amount))"
         } else {
             
             self.directionArrowImage.image = UIImage(systemName:"arrow.down")
             self.directionArrowImage.tintColor = UIColor.green
             self.typeLabel.text = transaction.sender
+            self.amountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: transaction.amount))"
         }
         
         let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
@@ -48,7 +50,15 @@ class TransactionTableViewCell: UITableViewCell {
         if wallet.type == .xe {
             
             self.memoLabel.isHidden = false
-            self.memoLabel.text = transaction.data?.memo
+            if transaction.data?.memo == "" {
+                
+                self.memoLabel.text = "None"
+                self.memoLabel.alpha = 0.6
+            } else {
+            
+                self.memoLabel.text = transaction.data?.memo
+                self.memoLabel.alpha = 1.0
+            }
         } else {
             
             self.memoLabel.isHidden = true
@@ -65,7 +75,7 @@ class TransactionTableViewCell: UITableViewCell {
             self.memoLabel.text = "Pending"
         }*/
         
-        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: transaction.amount)
+        
     }
 }
 

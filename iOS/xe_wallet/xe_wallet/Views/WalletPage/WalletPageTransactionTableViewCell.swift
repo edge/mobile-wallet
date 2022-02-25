@@ -32,11 +32,13 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             self.directionArrowImage.image = UIImage(systemName:"arrow.up")
             self.directionArrowImage.tintColor = UIColor.red
             self.typeLabel.text = data.recipient
+            self.amountLabel.text = "-\(CryptoHelpers.generateCryptoValueString(value: Double(data.amount)))"
         } else {
             
             self.directionArrowImage.image = UIImage(systemName:"arrow.down")
             self.directionArrowImage.tintColor = UIColor.green
             self.typeLabel.text = data.sender
+            self.amountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(data.amount)))"
         }
         
         let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
@@ -45,11 +47,21 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         if type == .xe {
             
             self.receivedLabel.isHidden = false
-            self.receivedLabel.text = data.data?.memo
+            if data.data?.memo == "" {
+                
+                self.receivedLabel.text = "None"
+                self.receivedLabel.alpha = 0.4
+            } else {
+            
+                self.receivedLabel.text = data.data?.memo
+                self.receivedLabel.alpha = 1.0
+            }
         } else {
             
             self.receivedLabel.isHidden = true
         }
+        
+        
         
         /*
         if data.confirmations ?? 0 >= 10 {
@@ -61,7 +73,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             self.mainView.alpha = 0.4
             self.receivedLabel.text = "Pending"
         }*/
-        self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
+
 
     }
 }
