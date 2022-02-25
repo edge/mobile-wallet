@@ -39,16 +39,28 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             self.typeLabel.text = data.sender
         }
         
+        let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
+        self.valueLabel.text = date.timeAgoDisplay()
+        
+        if type == .xe {
+            
+            self.receivedLabel.isHidden = false
+            self.receivedLabel.text = data.data?.memo
+        } else {
+            
+            self.receivedLabel.isHidden = true
+        }
+        
+        /*
         if data.confirmations ?? 0 >= 10 {
             
             self.mainView.alpha = 1.0
-            let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
-            self.receivedLabel.text = date.timeAgoDisplay()
+
         } else {
             
             self.mainView.alpha = 0.4
             self.receivedLabel.text = "Pending"
-        }
+        }*/
         self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(data.amount))
 
     }

@@ -42,6 +42,18 @@ class TransactionTableViewCell: UITableViewCell {
             self.typeLabel.text = transaction.sender
         }
         
+        let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp))
+        self.statusLabel.text = date.timeAgoDisplay()
+        
+        if wallet.type == .xe {
+            
+            self.memoLabel.isHidden = false
+            self.memoLabel.text = transaction.data?.memo
+        } else {
+            
+            self.memoLabel.isHidden = true
+        }
+        /*
         if transaction.confirmations ?? 0 >= 10 {
             
             self.mainView.alpha = 1.0
@@ -51,7 +63,7 @@ class TransactionTableViewCell: UITableViewCell {
             
             self.mainView.alpha = 0.4
             self.memoLabel.text = "Pending"
-        }
+        }*/
         
         self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: transaction.amount)
     }
