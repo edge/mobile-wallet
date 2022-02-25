@@ -199,6 +199,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             active = false
         }
         
+        active = self.checkValidAmountSubFees(amount: amount)
+        
         if active == false {
             
             self.reviewButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
@@ -210,6 +212,26 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.reviewButtonText.textColor = UIColor(named:"FontMain")
             self.reviewButtonButton.isEnabled = true
         }
+    }
+    
+    func checkValidAmountSubFees(amount: Double) -> Bool {
+        
+        if let gas = XEGasRatesManager.shared.getRates() {
+            
+            let fee: Double = Double(gas.fee)
+            var handling: Double = ((amount)/100) * gas.handlingFeePercentage
+            if handling < 25 {
+                
+                handling = 25
+            }
+            let totalFee = fee + handling
+
+            if amount - totalFee > 0 {
+                
+                return true
+            }
+        }
+        return false
     }
     
     @objc func dismissKeyboard() {
@@ -366,7 +388,5 @@ extension ExchangeViewController2 {
         default:
             break
         }
-        
-
     }
 }
