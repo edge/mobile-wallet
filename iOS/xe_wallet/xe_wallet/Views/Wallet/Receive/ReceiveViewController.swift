@@ -10,6 +10,11 @@ import CoreImage.CIFilterBuiltins
 import CoreImage.CIFilterConstructor
 import PanModal
 
+protocol ReceiveViewControllerDelegate {
+
+    func copySelected()
+}
+
 class ReceiveViewController: BaseViewController {
         
     @IBOutlet var backgroundView: UIView!
@@ -19,6 +24,8 @@ class ReceiveViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     
     @IBOutlet weak var imageOuterView: UIView!
+    
+    var deletegate: ReceiveViewControllerDelegate? = nil
     
     var selectedWalletAddress = ""
     var walletData: WalletDataModel? = nil
@@ -54,12 +61,9 @@ class ReceiveViewController: BaseViewController {
     @IBAction func copyButtonPressed(_ sender: Any) {
         
         UIPasteboard.general.string = self.addressLabel.text
-        self.view.makeToast("Address copied to clipboard", duration: Constants.toastDisplayTime, position: .top)
 
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
-        
-            self.dismiss(animated: true, completion: nil)
-        }
+        self.deletegate?.copySelected()
+        self.dismiss(animated: true, completion: nil)
     }
     
     @IBAction func closeButtonPressed(_ sender: Any) {

@@ -166,6 +166,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
         
             let contentVC = UIStoryboard(name: "Receive", bundle: nil).instantiateViewController(withIdentifier: "ReceiveViewController") as! ReceiveViewController
             contentVC.selectedWalletAddress = self.selectedWalletAddress
+            contentVC.deletegate = self
             self.presentPanModal(contentVC)
         }
     }
@@ -277,6 +278,16 @@ extension WalletPageViewController {
                 self.presentPanModal(contentVC)
             }
         }
+    }
+}
+
+extension WalletPageViewController: ReceiveViewControllerDelegate {
+    
+    func copySelected() {
+        
+        let centerX = UIScreen.main.bounds.maxX / 2
+        let centerY = UIScreen.main.bounds.maxY / 2
+        self.view.makeToast("Address copied to clipboard", duration: Constants.toastDisplayTime, point: CGPoint(x: centerX, y: centerY-90), title: nil, image: nil, completion: nil)
     }
 }
 
