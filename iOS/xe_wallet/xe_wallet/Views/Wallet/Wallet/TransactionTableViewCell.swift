@@ -11,6 +11,7 @@ class TransactionTableViewCell: UITableViewCell {
             
     @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var directionArrowImage: UIImageView!
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var memoLabel: UILabel!
@@ -28,8 +29,18 @@ class TransactionTableViewCell: UITableViewCell {
         guard let transaction = transactionData else { return }
         
         self.typeImageView.image = UIImage(named:wallet.type.rawValue)
-        self.typeLabel.text = wallet.type.getDisplayLabel()
         
+        if wallet.address.lowercased() == transaction.sender.lowercased() {
+            
+            self.directionArrowImage.image = UIImage(systemName:"arrow.up")
+            self.directionArrowImage.tintColor = UIColor.red
+            self.typeLabel.text = transaction.recipient
+        } else {
+            
+            self.directionArrowImage.image = UIImage(systemName:"arrow.down")
+            self.directionArrowImage.tintColor = UIColor.green
+            self.typeLabel.text = transaction.sender
+        }
         
         if transaction.confirmations ?? 0 >= 10 {
             

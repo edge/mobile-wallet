@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -304,11 +305,11 @@
                                                                             </constraints>
                                                                         </imageView>
                                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMq-Hn-3tj">
-                                                                            <rect key="frame" x="52" y="18.5" width="73" height="19"/>
+                                                                            <rect key="frame" x="52" y="18.5" width="63.5" height="19"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="19" id="0sh-zU-QP1"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -408,12 +409,12 @@
                                                                                 <constraint firstAttribute="width" constant="32" id="XUs-FR-3co"/>
                                                                             </constraints>
                                                                         </imageView>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F5-Gw-tGB">
-                                                                            <rect key="frame" x="52" y="10" width="73" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4F5-Gw-tGB">
+                                                                            <rect key="frame" x="68" y="10" width="164" height="19"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="19" id="Oup-TZ-JET"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -426,12 +427,13 @@
                                                                             <color key="textColor" name="FontSecondary"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.01 ETH" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcD-0b-TYE">
-                                                                            <rect key="frame" x="279" y="10" width="75" height="19"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.01 ETH" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcD-0b-TYE">
+                                                                            <rect key="frame" x="244" y="10" width="110" height="19"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="19" id="FFf-U7-g8l"/>
+                                                                                <constraint firstAttribute="width" constant="110" id="xhy-z9-Q9Z"/>
                                                                             </constraints>
-                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                                             <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
@@ -444,19 +446,30 @@
                                                                             <color key="textColor" name="FontSecondary"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
+                                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="eoP-mY-WEK">
+                                                                            <rect key="frame" x="52" y="13" width="12" height="14"/>
+                                                                            <color key="tintColor" systemColor="systemRedColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="height" constant="16" id="PVM-WT-nNT"/>
+                                                                                <constraint firstAttribute="width" constant="12" id="jML-IA-CqE"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                     </subviews>
                                                                     <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="sEC-FA-Ew1" secondAttribute="trailing" constant="12" id="2bO-k9-IFc"/>
                                                                         <constraint firstAttribute="bottom" secondItem="eRO-kP-5jF" secondAttribute="bottom" constant="10" id="3kT-wH-ouO"/>
+                                                                        <constraint firstItem="4F5-Gw-tGB" firstAttribute="leading" secondItem="eoP-mY-WEK" secondAttribute="trailing" constant="4" id="58l-He-fYn"/>
                                                                         <constraint firstItem="eRO-kP-5jF" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" id="8k9-3a-f9G"/>
                                                                         <constraint firstItem="TcD-0b-TYE" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="10" id="8tC-Es-Mz6"/>
                                                                         <constraint firstAttribute="height" constant="66" id="AoH-iP-Tfv"/>
-                                                                        <constraint firstItem="4F5-Gw-tGB" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" id="Ckk-jf-qUf"/>
+                                                                        <constraint firstItem="eoP-mY-WEK" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="12" id="Smc-7C-AYG"/>
                                                                         <constraint firstItem="UQG-12-6AO" firstAttribute="leading" secondItem="SdQ-f5-ik2" secondAttribute="leading" constant="12" id="TCF-tk-cOr"/>
+                                                                        <constraint firstItem="eoP-mY-WEK" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" symbolic="YES" id="Xnw-hK-Nuj"/>
                                                                         <constraint firstAttribute="bottom" secondItem="sEC-FA-Ew1" secondAttribute="bottom" constant="10" id="cAc-fx-SgE"/>
                                                                         <constraint firstItem="UQG-12-6AO" firstAttribute="centerY" secondItem="SdQ-f5-ik2" secondAttribute="centerY" id="kKy-5c-aIS"/>
                                                                         <constraint firstItem="4F5-Gw-tGB" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="10" id="mzz-2G-AQ7"/>
+                                                                        <constraint firstItem="TcD-0b-TYE" firstAttribute="leading" secondItem="4F5-Gw-tGB" secondAttribute="trailing" constant="12" id="rbv-Z0-H89"/>
                                                                         <constraint firstAttribute="trailing" secondItem="TcD-0b-TYE" secondAttribute="trailing" constant="12" id="v6z-fe-LaO"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
@@ -478,6 +491,7 @@
                                                         <connections>
                                                             <outlet property="amountLabel" destination="TcD-0b-TYE" id="Eqt-jc-aOz"/>
                                                             <outlet property="contentView" destination="5Dc-9S-Q67" id="fkC-7l-aca"/>
+                                                            <outlet property="directionArrowImage" destination="eoP-mY-WEK" id="u1b-au-nuw"/>
                                                             <outlet property="mainView" destination="SdQ-f5-ik2" id="PXa-Qo-EhW"/>
                                                             <outlet property="receivedLabel" destination="eRO-kP-5jF" id="Gqp-Ba-use"/>
                                                             <outlet property="typeImageView" destination="UQG-12-6AO" id="KfH-ZL-5aO"/>
@@ -579,6 +593,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="arrow.up.right" catalog="system" width="128" height="112"/>
         <image name="closeX" width="14" height="14"/>
         <image name="coin_ethereum" width="279" height="279"/>
@@ -600,5 +615,8 @@
         <namedColor name="PinEntryBoxBackground">
             <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

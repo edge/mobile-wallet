@@ -11,6 +11,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             
     @IBOutlet weak var mainView: UIView!
     
+    @IBOutlet weak var directionArrowImage: UIImageView!
     @IBOutlet weak var typeImageView: UIImageView!
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var receivedLabel: UILabel!
@@ -25,7 +26,18 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
     func configure(data: TransactionRecordDataModel, type: WalletType, address: String) {
         
         self.typeImageView.image = UIImage(named: data.type?.rawValue ?? "")
-        self.typeLabel.text = data.type?.getFullNameLabel()
+        
+        if address.lowercased() == data.sender.lowercased() {
+            
+            self.directionArrowImage.image = UIImage(systemName:"arrow.up")
+            self.directionArrowImage.tintColor = UIColor.red
+            self.typeLabel.text = data.recipient
+        } else {
+            
+            self.directionArrowImage.image = UIImage(systemName:"arrow.down")
+            self.directionArrowImage.tintColor = UIColor.green
+            self.typeLabel.text = data.sender
+        }
         
         if data.confirmations ?? 0 >= 10 {
             

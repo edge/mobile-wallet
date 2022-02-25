@@ -1843,12 +1843,12 @@
                                                         <constraint firstAttribute="width" constant="32" id="mVl-Wx-mfB"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-Xi-P1R">
-                                                    <rect key="frame" x="48" y="10" width="73" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ethereum" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="soC-Xi-P1R">
+                                                    <rect key="frame" x="64" y="10" width="178" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="34V-Xn-BQj"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
+                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                     <color key="textColor" name="FontMain"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1861,12 +1861,13 @@
                                                     <color key="textColor" name="FontSecondary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAN-Ws-LFU">
-                                                    <rect key="frame" x="322.5" y="10" width="31.5" height="19"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAN-Ws-LFU">
+                                                    <rect key="frame" x="254" y="10" width="100" height="19"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="S5R-LN-8XG"/>
+                                                        <constraint firstAttribute="width" constant="100" id="yT8-ze-0Xo"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                                     <color key="textColor" name="FontMain"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -1879,10 +1880,19 @@
                                                     <color key="textColor" name="FontSecondary"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.up" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Y8Y-zl-Pwu">
+                                                    <rect key="frame" x="48" y="12" width="12" height="16"/>
+                                                    <color key="tintColor" systemColor="systemRedColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="18" id="F33-AH-uiC"/>
+                                                        <constraint firstAttribute="width" constant="12" id="wEh-Ar-2W6"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                             <constraints>
                                                 <constraint firstItem="cO5-Jo-a1z" firstAttribute="leading" secondItem="G6V-fi-RGs" secondAttribute="trailing" constant="8" symbolic="YES" id="7yj-6M-szI"/>
+                                                <constraint firstItem="DAN-Ws-LFU" firstAttribute="leading" secondItem="soC-Xi-P1R" secondAttribute="trailing" constant="12" id="Cyt-y9-MH8"/>
                                                 <constraint firstItem="DAN-Ws-LFU" firstAttribute="top" secondItem="6ax-ny-j6t" secondAttribute="top" constant="10" id="FPJ-zb-2Wm"/>
                                                 <constraint firstItem="G6V-fi-RGs" firstAttribute="leading" secondItem="6ax-ny-j6t" secondAttribute="leading" constant="8" id="Gng-Sw-md3"/>
                                                 <constraint firstItem="soC-Xi-P1R" firstAttribute="top" secondItem="6ax-ny-j6t" secondAttribute="top" constant="10" id="VuQ-a6-KO6"/>
@@ -1892,7 +1902,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="ITk-3n-cAp" secondAttribute="trailing" constant="12" id="eXX-J8-MHH"/>
                                                 <constraint firstAttribute="height" constant="56" id="lBA-lQ-TrF"/>
                                                 <constraint firstItem="G6V-fi-RGs" firstAttribute="centerY" secondItem="6ax-ny-j6t" secondAttribute="centerY" id="mTT-eb-Ou6"/>
-                                                <constraint firstItem="soC-Xi-P1R" firstAttribute="leading" secondItem="G6V-fi-RGs" secondAttribute="trailing" constant="8" symbolic="YES" id="v6U-au-x48"/>
+                                                <constraint firstItem="Y8Y-zl-Pwu" firstAttribute="leading" secondItem="G6V-fi-RGs" secondAttribute="trailing" constant="8" symbolic="YES" id="sJ4-LU-hYu"/>
+                                                <constraint firstItem="soC-Xi-P1R" firstAttribute="leading" secondItem="Y8Y-zl-Pwu" secondAttribute="trailing" constant="4" id="vUQ-cc-QxK"/>
+                                                <constraint firstItem="Y8Y-zl-Pwu" firstAttribute="top" secondItem="6ax-ny-j6t" secondAttribute="top" constant="11" id="wMW-6V-gRo"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1911,6 +1923,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="amountLabel" destination="DAN-Ws-LFU" id="4c6-NV-bcs"/>
+                                    <outlet property="directionArrowImage" destination="Y8Y-zl-Pwu" id="16p-L9-wt7"/>
                                     <outlet property="mainView" destination="6ax-ny-j6t" id="lGy-Qx-Kc1"/>
                                     <outlet property="memoLabel" destination="cO5-Jo-a1z" id="lwu-RI-xwv"/>
                                     <outlet property="statusLabel" destination="ITk-3n-cAp" id="SPp-HB-mOs"/>
@@ -4285,6 +4298,7 @@
         <image name="airhat" width="20" height="20"/>
         <image name="arrow.down" catalog="system" width="120" height="128"/>
         <image name="arrow.down.app.fill" catalog="system" width="128" height="114"/>
+        <image name="arrow.up" catalog="system" width="120" height="128"/>
         <image name="burger" width="24" height="24"/>
         <image name="chevronRight" width="9" height="16"/>
         <image name="clock" width="32" height="32"/>
@@ -4339,6 +4353,9 @@
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
