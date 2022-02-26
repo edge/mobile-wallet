@@ -51,7 +51,7 @@ class WalletDataModel: Codable {
         self.created = Date().timeIntervalSince1970
         self.backedup = Date().timeIntervalSince1970
 
-        self.status = WalletStatusDataModel(address: wallet.address, balance: 0, nonce: 0)
+        self.status = WalletStatusDataModel(address: wallet.address, balance: 0, erc20Tokens: nil, nonce: 0)
         self.transactions = nil
         
         self.wallet = wallet.wallet
@@ -63,42 +63,10 @@ class WalletDataModel: Codable {
     
     func downloadWalletStatus() {
                 
-        switch self.type {
+        self.type.downloadWalletStatus(address: self.address, completion: { status in
             
-        case .xe:
-            XEWallet().downloadStatus(address: self.address, completion: { status in
-            
-                if let stat = status {
-                
-                    if (self.status != nil) {
-                        
-                        self.status = nil
-                    }
-                    self.status = WalletStatusDataModel(from: stat)
-                }
-            })
-            break
-            
-        case .ethereum:
-            EtherWallet().downloadStatus(address: self.address, completion: { status in
-                
-                if let stat = status {
-                
-                    if (self.status != nil) {
-                        
-                        self.status = nil
-                    }
-                    self.status = WalletStatusDataModel(from: stat)
-                }
-            })
-            break
-            
-        case .edge:
-            break
-            
-        case .usdc:
-            break
-        }
+            self.status = status
+        })
     }
     
     func downloadWalletTransactions() {

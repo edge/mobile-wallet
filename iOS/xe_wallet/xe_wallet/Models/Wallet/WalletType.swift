@@ -93,13 +93,7 @@ enum WalletType: String, Codable {
         case .xe:
             return 0.000001
             
-        case .edge:
-            return 0.001000
-            
-        case .ethereum:
-            return 0.001000
-            
-        case .usdc:
+        case .edge, .ethereum, .usdc:
             return 0.001000
         }
     }
@@ -111,13 +105,7 @@ enum WalletType: String, Codable {
         case .xe:
             return 43
             
-        case .edge:
-            return 42
-            
-        case .ethereum:
-            return 42
-            
-        case .usdc:
+        case .edge, .ethereum, .usdc:
             return 42
         }
     }
@@ -129,13 +117,7 @@ enum WalletType: String, Codable {
         case .xe:
             return "xe_"
             
-        case .edge:
-            return "0x"
-            
-        case .ethereum:
-            return "0x"
-            
-        case .usdc:
+        case .edge, .ethereum, .usdc:
             return "0x"
         }
     }
@@ -147,13 +129,7 @@ enum WalletType: String, Codable {
         case .xe:
             return "View on Explorer"
             
-        case .edge:
-            return "View on Etherscan"
-            
-        case .ethereum:
-            return "View on Etherscan"
-            
-        case .usdc:
+        case .edge, .ethereum, .usdc:
             return "View on Etherscan"
         }
     }
@@ -171,29 +147,11 @@ enum WalletType: String, Codable {
                 return "https://xe.network/transaction/"
             }
             
-        case .edge:
+        case .edge, .ethereum, .usdc:
             if AppDataModelManager.shared.testModeStatus() {
             
                 return "https://rinkeby.etherscan.io/tx/"
             } else {
-                
-                return "https://etherscan.io/tx/"
-            }
-            
-        case .ethereum:
-            if AppDataModelManager.shared.testModeStatus() {
-                
-                return "https://rinkeby.etherscan.io/tx/"
-            } else{
-                
-                return "https://etherscan.io/tx/"
-            }
-            
-        case .usdc:
-            if AppDataModelManager.shared.testModeStatus() {
-                
-                return "https://rinkeby.etherscan.io/tx/"
-            } else{
                 
                 return "https://etherscan.io/tx/"
             }
@@ -208,36 +166,42 @@ enum WalletType: String, Codable {
         case .xe:
             return XEWallet().generateWallet(type: .xe)
             
-        case .edge:
-            return EtherWallet().generateWallet(type: .ethereum)
-            
-        case .ethereum:
-            return EtherWallet().generateWallet(type: .ethereum)
-            
-        case .usdc:
+        case .edge, .ethereum, .usdc:
             return EtherWallet().generateWallet(type: .ethereum)
         }
     }
     
-    public func restoreWallet(key: String) -> AddressKeyPairModel? {
+    func restoreWallet(key: String) -> AddressKeyPairModel? {
         
         switch self {
             
         case .xe:
             return XEWallet().generateWalletFromPrivateKey(privateKeyString: key)
             
-        case .ethereum:
-            return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
-            
-        case .edge:
-            return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
-            
-        case .usdc:
+        case .ethereum, .edge, .usdc:
             return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
         }
     }
+    
+    func downloadWalletStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
+        
+        switch self {
+            
+        case .xe:
+            XEWallet().downloadStatus(address: address, completion: { status in
+            
+                completion(status)
+            })
+            
+        case .ethereum, .edge, .usdc:
+            EtherWallet().downloadStatus(address: address, completion: { status in
+                
+                completion(status)
+            })
+        }
+    }
 
-    public func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
+    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
         
         switch self {
             
@@ -272,7 +236,7 @@ enum WalletType: String, Codable {
         }
     }
     
-    public func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
+    func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
         
         switch self {
             

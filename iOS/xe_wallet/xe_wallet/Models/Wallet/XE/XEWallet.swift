@@ -70,7 +70,7 @@ class XEWallet {
         return "xe_\(chkAddr)"
     }
     
-    public func downloadStatus(address: String, completion: @escaping (XEWalletStatusDataModel?)-> Void) {
+    public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
         
         let url = AppDataModelManager.shared.getNetworkStatus().getStatusUrl()
         
@@ -92,7 +92,10 @@ class XEWallet {
                 do {
 
                     let status = try JSONDecoder().decode(XEWalletStatusDataModel.self, from: response.data!)
-                    completion( status)
+                    let newStats = WalletStatusDataModel(address: status.address ?? "", balance: Double(status.balance ?? 0)/1000000, erc20Tokens: nil, nonce: status.nonce ?? 0)
+                    
+                    completion(newStats)
+                    //completion( status)
                     
                 } catch let error as NSError {
                     

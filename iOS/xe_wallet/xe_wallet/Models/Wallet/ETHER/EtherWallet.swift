@@ -51,7 +51,7 @@ class EtherWallet {
         return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
     }
     
-    public func downloadStatus(address: String, completion: @escaping (EtherWalletStatusDataModel?)-> Void) {
+    public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
 
         var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
         if AppDataModelManager.shared.testModeStatus() {
@@ -102,7 +102,11 @@ class EtherWallet {
                     erc20Tokens.append(ERC20TokenDataModel(type: erc20, balance: Double(balance) ?? 0.0))
                 }
                 
-                completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance:0.0, erc20Tokens: erc20Tokens))
+                completion(WalletStatusDataModel(address: address, balance:Double(bs) ?? 0, erc20Tokens: erc20Tokens, nonce:0))
+                
+                //completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance:0.0, erc20Tokens: erc20Tokens))
+                
+
             }
             catch {
                 

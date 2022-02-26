@@ -21,7 +21,6 @@ class WalletStatusDataModel: Codable {
         
         case address
         case balance
-        //case edgeBalance
         case erc20Tokens
         case nonce
     }
@@ -31,17 +30,15 @@ class WalletStatusDataModel: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.address = try container.decode(String.self, forKey: .address)
         self.balance = try container.decode(Double.self, forKey: .balance)
-        //self.edgeBalance = try container.decodeIfPresent(Double.self, forKey: .edgeBalance) ?? 0
         self.erc20Tokens = try container.decodeIfPresent([ERC20TokenDataModel].self, forKey: .erc20Tokens)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
     }
     
-    public init(address: String, balance: Double, nonce: Int) {
+    public init(address: String, balance: Double, erc20Tokens: [ERC20TokenDataModel]?, nonce: Int) {
         
         self.address = address
         self.balance = balance
-        //self.edgeBalance = 0
-        self.erc20Tokens = nil
+        self.erc20Tokens = erc20Tokens
         self.nonce = nonce
     }
     
@@ -49,7 +46,6 @@ class WalletStatusDataModel: Codable {
         
         self.address = xe.address ?? ""
         self.balance = Double(xe.balance ?? 0)/1000000
-        //self.edgeBalance = 0
         self.erc20Tokens = nil
         self.nonce = xe.nonce ?? 0
     }
@@ -58,7 +54,6 @@ class WalletStatusDataModel: Codable {
         
         self.address = ether.address ?? ""
         self.balance = Double(ether.balance ?? 0)///1000000
-        //self.edgeBalance = Double(ether.edgeBalance ?? 0)
         self.erc20Tokens = ether.erc20Tokens
         self.nonce = ether.nonce ?? 0
     }
