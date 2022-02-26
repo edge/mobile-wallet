@@ -212,7 +212,7 @@ struct TransactionRecordDataModel: Codable {
     
     public init(from pending: XETransactionPendingRecordDataModel) {
         
-        self.timestamp =  pending.timestamp
+        self.timestamp =  pending.timestamp/1000
         self.sender = pending.sender
         self.recipient = pending.recipient
         self.amount = Double(pending.amount / 1000000)
@@ -227,6 +227,7 @@ struct TransactionRecordDataModel: Codable {
         self.signature = pending.signature
         self.hash = pending.hash
         self.status = .pending
+        self.type = .xe
     }
     
     public init() {

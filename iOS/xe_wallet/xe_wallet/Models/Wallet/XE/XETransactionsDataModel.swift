@@ -99,7 +99,6 @@ struct XETransactionRecordDataModel: Codable {
         self.hash = try container.decode(String.self, forKey: .hash)
         self.block = try container.decode(XETransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
-
     }
         
     public init(from pending: XETransactionPendingRecordDataModel) {
@@ -107,7 +106,7 @@ struct XETransactionRecordDataModel: Codable {
         self.timestamp =  pending.timestamp
         self.sender = pending.sender
         self.recipient = pending.recipient
-        self.amount = pending.amount / 1000000
+        self.amount = pending.amount
         self.data = pending.data
         self.nonce = pending.nonce
         self.signature = pending.signature
@@ -126,7 +125,7 @@ struct XETransactionPendingRecordDataModel: Codable {
     var nonce: Int
     var signature: String
     var hash: String
-
+    
     enum CodingKeys: String, CodingKey {
         
         case timestamp

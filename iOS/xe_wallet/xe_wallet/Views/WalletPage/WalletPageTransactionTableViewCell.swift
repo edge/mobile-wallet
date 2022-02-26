@@ -9,6 +9,8 @@ import UIKit
 
 class WalletPageTransactionTableViewCell: UITableViewCell {
             
+
+    @IBOutlet weak var mainContentView: UIView!
     @IBOutlet weak var mainView: UIView!
     
     @IBOutlet weak var directionArrowImage: UIImageView!
@@ -61,6 +63,12 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             self.receivedLabel.isHidden = true
         }
         
-
+        if data.status == .pending {
+            
+            self.contentView.alpha = 0.4
+        } else {
+            
+            self.contentView.alpha = 1.0
+        }
     }
 }

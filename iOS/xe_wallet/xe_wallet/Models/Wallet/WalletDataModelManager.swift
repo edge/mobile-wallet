@@ -117,6 +117,20 @@ class WalletDataModelManager {
             
             wallet.downloadWalletStatus()
             wallet.downloadWalletTransactions()
+            
+            if wallet.address.lowercased() == "xe_5cE9a7c5feA37E3363aeafC4C9766e14CBB2E9c3".lowercased() {
+                
+                if let trans = wallet.transactions {
+                    
+                    if let results = trans.results {
+                        
+                        if results.count > 0 {
+                            
+                            let a = 1
+                        }
+                    }
+                }
+            }
         }
     }
     

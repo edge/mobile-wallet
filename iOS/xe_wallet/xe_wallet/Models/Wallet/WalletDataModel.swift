@@ -102,32 +102,28 @@ class WalletDataModel: Codable {
                 
                     self.transactions = TransactionsDataModel(from: trans)
                 }
-            })
-            XEWallet().downloadPendingTransactions(address: self.address, completion: { transactions in
-            
-                if let trans = transactions {
                 
-                    var newArray = [TransactionRecordDataModel]()
-                    for t in trans {
-
-                        let newRecord = TransactionRecordDataModel(from: t)
-                        newArray.append(newRecord)
-                    }
+                XEWallet().downloadPendingTransactions(address: self.address, completion: { transactions in
+                
+                    if let trans = transactions {
                     
-                    if self.transactions?.results == nil {
-                        
-                        self.transactions?.results = [TransactionRecordDataModel]()
-                    }
-                    
-                    if var oldTrans = self.transactions?.results {
-                        
-                        oldTrans.insert(contentsOf: newArray, at: 0)
-                        self.transactions?.results = oldTrans
-                    }
+                        var newArray = [TransactionRecordDataModel]()
+                        for t in trans {
 
-                }
+                            let newRecord = TransactionRecordDataModel(from: t)
+                            newArray.append(newRecord)
+                        }
+                        
+                        if self.transactions?.results == nil {
+                            
+                            self.transactions?.results = [TransactionRecordDataModel]()
+                        }
+                        
+                        self.transactions?.results?.append(contentsOf: newArray)
+                    }
+                    NotificationCenter.default.post(name: .didReceiveData, object: nil)
+                })
             })
-            NotificationCenter.default.post(name: .didReceiveData, object: nil)
             break
             
         case .ethereum:
