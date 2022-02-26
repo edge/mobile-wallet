@@ -86,39 +86,6 @@ class Constants {
     static var XE_testTransactionPendingURL = "https://xe1.test.network/transactions/pending"
     static var XE_mainTransactionPendingURL = "https://api.xe.network/transactions/pending"
 
-    /// Transaction TX endpoint
-    ///
-    static var XE_testTransactionRecordUrl = "https://test.network/transaction/"
-    static var XE_mainTransactionRecordUrl = "https://xe.network/transaction/"
-
-    static var ETH_testTransactionRecordUrl = "https://rinkeby.etherscan.io/tx/"
-    static var ETH_mainTransactionRecordUrl = "https://etherscan.io/tx/"
-    
-    /// View Transaction On Network Button Labels
-    ///
-    static var XE_NetworkButtonLabel = "View on Explorer"
-    static var EDGE_NetworkButtonLabel = "View on Etherscan"
-    static var ETHER_NetworkButtonLabel = "View on Etherscan"
-
-    /// Token type display Label
-    ///
-    static var XE_DisplayLabel = "XE"
-    static var EDGE_DisplayLabel = "Edge"
-    static var ETHER_DisplayLabel = "Ether"
-
-    /// Token full name display label
-    ///
-    static var XE_FullNameLabel = "XE"
-    static var EDGE_FullNameLabel = "Edge"
-    static var ETHER_FullNameLabel = "Ethereum"
-    
-    /// Token Abriviation display label
-    ///
-    static var XE_AbriviationLabel = "XE"
-    static var EDGE_AbriviationLabel = "EDGE"
-    static var ETHER_AbriviationLabel = "ETH"
-
-    
     /// Network labels for in app
     ///
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"
@@ -133,7 +100,6 @@ class Constants {
 
     static var XE_GasPriceUpdateTime = 2.0
     static var WalletPageUpdateTimer = 2.0
-    static var UpdateWalletsTimer = 10.0
     
     
     static var infuraToken = "f4953edd390547d3bb63dd1f76af13f2"

@@ -70,6 +70,10 @@ class WalletDataModel: Codable {
             
                 if let stat = status {
                 
+                    if (self.status != nil) {
+                        
+                        self.status = nil
+                    }
                     self.status = WalletStatusDataModel(from: stat)
                 }
             })
@@ -80,13 +84,19 @@ class WalletDataModel: Codable {
                 
                 if let stat = status {
                 
+                    if (self.status != nil) {
+                        
+                        self.status = nil
+                    }
                     self.status = WalletStatusDataModel(from: stat)
                 }
             })
-            EtherWallet2().getBalance(address: self.address)
             break
             
         case .edge:
+            break
+            
+        case .usdc:
             break
         }
     }
@@ -154,6 +164,9 @@ class WalletDataModel: Codable {
             break
             
         case .edge:
+            break
+            
+        case .usdc:
             break
         }
     }

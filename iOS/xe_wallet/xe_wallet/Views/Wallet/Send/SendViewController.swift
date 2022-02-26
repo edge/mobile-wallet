@@ -95,7 +95,9 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             if let status = wallet.status {
                 
                 self.etherAmount = CryptoHelpers.generateCryptoValueString(value: Double(status.balance) )
-                self.edgeAmount = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance )
+                
+                let edgeBalance = status.getTokenBalance(type: .edge)
+                self.edgeAmount = CryptoHelpers.generateCryptoValueString(value: edgeBalance )
             }
             if wallet.type == .xe {
                 
@@ -342,7 +344,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             
             if self.selectedAsset == .edge {
                 
-                self.amountTextField.text = "\(String(format: "%.6f", Double(status.edgeBalance)))"
+                let edgeBalance = status.getTokenBalance(type: .edge)
+                self.amountTextField.text = "\(String(format: "%.6f", Double(edgeBalance)))"
             } else {
             
                 self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance)))"

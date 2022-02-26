@@ -54,6 +54,8 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             break
         case .edge:
             break
+        case .usdc:
+            break
         }
         
         self.setConfirmStatus()

@@ -48,7 +48,6 @@ class WalletPortfolioTableViewCell: UITableViewCell {
     
     func updateTotalValue() {
         
-        let total = WalletDataModelManager.shared.getWalletTotalValue()
-        self.totalValue.text = total
+        self.totalValue.text = WalletDataModelManager.shared.getPortfolioTotalValue()
     }
 }

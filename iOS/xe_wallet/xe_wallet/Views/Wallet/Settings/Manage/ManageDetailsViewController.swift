@@ -53,7 +53,7 @@ class ManageDetailsViewController: BaseViewController {
             
             if wallet.type == .xe {
                 
-                if WalletDataModelManager.shared.getXEWalletAmount() == 1 {
+                if WalletDataModelManager.shared.getAmountOfWalletsForType(type:.xe) == 1 {
                     
                     self.deleteButtonView.backgroundColor = UIColor(named:"PinEntryBoxBackground")
                     self.deleteButtonText.textColor = UIColor(named:"FontSecondary")

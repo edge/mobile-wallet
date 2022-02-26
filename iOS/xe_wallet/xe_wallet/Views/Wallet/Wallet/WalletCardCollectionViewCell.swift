@@ -94,8 +94,10 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
         
         if let status = wallet.status {
         
-            self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance ?? 0)
-            self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance ?? 0)
+            let edgeBalance = status.getTokenBalance(type: .edge)
+            
+            self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance )
+            self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: edgeBalance )
             
             
             let etherrate = Double(EtherExchangeRatesManager.shared.getRateValue())
@@ -104,7 +106,7 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
             if wallet.type == .ethereum {
                             
                 self.valueLabel.text = "\(StringHelpers.generateValueString(value: Double(status.balance*etherrate))) USD"
-                self.edgeTotalLabel.text = "\(StringHelpers.generateValueString(value: Double(status.edgeBalance * (edgerate ?? 0.0)))) USD"
+                self.edgeTotalLabel.text = "\(StringHelpers.generateValueString(value: Double(edgeBalance * (edgerate ?? 0.0)))) USD"
             } else {
 
                 self.valueLabel.text = "\(StringHelpers.generateValueString(value: Double(status.balance * (edgerate ?? 0)))) USD"

@@ -48,7 +48,8 @@ class ExchangeWalletCollectionViewCell: UICollectionViewCell {
         if data.type != .xe {
             
             typeSymbol = WalletType.edge.getCoinSymbol()
-            amount = data.status?.edgeBalance
+            let edgeBalance = data.status?.getTokenBalance(type: .edge)
+            amount = edgeBalance
         }
         
         

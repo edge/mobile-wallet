@@ -86,8 +86,9 @@ class WalletCollectionViewCell: UICollectionViewCell {
         
         if let status = wallet.status {
         
-            self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance ?? 0)
-            self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.edgeBalance ?? 0)
+            self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: status.balance)
+            let edgeBalance = status.getTokenBalance(type: .edge)
+            self.edgeAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: edgeBalance)
             
             var erate: Double = 0
             if wallet.type == .ethereum {

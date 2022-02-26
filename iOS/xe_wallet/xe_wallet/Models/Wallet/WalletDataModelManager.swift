@@ -18,13 +18,11 @@ class WalletDataModelManager {
     var walletData = [WalletDataModel]()
 
     var timerUpdate: Timer?
-    //var selectedWalletAddress = ""
-    
     
     private init() {
         
         self.loadWalletList()
-        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: Constants.UpdateWalletsTimer, repeats: true) { timer in
+        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { timer in
             
             self.reloadAllWalletInformation()
         }
@@ -117,20 +115,6 @@ class WalletDataModelManager {
             
             wallet.downloadWalletStatus()
             wallet.downloadWalletTransactions()
-            
-            if wallet.address.lowercased() == "xe_5cE9a7c5feA37E3363aeafC4C9766e14CBB2E9c3".lowercased() {
-                
-                if let trans = wallet.transactions {
-                    
-                    if let results = trans.results {
-                        
-                        if results.count > 0 {
-                            
-                            let a = 1
-                        }
-                    }
-                }
-            }
         }
     }
     
@@ -223,7 +207,7 @@ class WalletDataModelManager {
         return (transaction, wallet)
     }
     
-    public func getWalletTotalValue() -> String {
+    public func getPortfolioTotalValue() -> String {
         
         var total = 0.0
         let xeExchange = Double(XEExchangeRatesManager.shared.getRates()?.rate ?? 0)
@@ -244,22 +228,20 @@ class WalletDataModelManager {
                     total += etherBal * etherExchange
                 }
                 
-                if let edgeBal = wallet.status?.edgeBalance {
-                
-                    total += edgeBal * xeExchange
-                }
+                let edgeBalance = wallet.status?.getTokenBalance(type: .edge)
+                total += edgeBalance ?? 0.0 * xeExchange
             }
         }
 
         return "\(StringHelpers.generateValueString(value: total)) USD"
     }
     
-    func getXEWalletAmount() -> Int {
+    func getAmountOfWalletsForType(type: WalletType) -> Int {
         
         var amount = 0
         for wall in self.walletData {
         
-            if wall.type == .xe {
+            if wall.type == type {
                 
                 amount += 1
             }

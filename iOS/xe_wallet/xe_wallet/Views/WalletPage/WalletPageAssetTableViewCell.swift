@@ -7,6 +7,22 @@
 
 import UIKit
 
+class WalletPageAsset {
+    
+    var walletType: WalletType = .ethereum
+    var tokenType: ERC20TokenType? = .edge
+    var amount: Double = 0.0
+    var value: Double = 0.0
+    
+    init(walletType: WalletType, tokenType: ERC20TokenType?, amount: Double, value: Double) {
+        
+        self.walletType = walletType
+        self.tokenType = tokenType
+        self.amount = amount
+        self.value = value
+    }
+}
+
 class WalletPageAssetTableViewCell: UITableViewCell {
             
     @IBOutlet weak var tokenIconImage: UIImageView!
@@ -24,8 +40,16 @@ class WalletPageAssetTableViewCell: UITableViewCell {
     
     func configure(data: WalletPageAsset) {
                 
-        self.tokenIconImage.image = UIImage(named:data.type.rawValue)
-        self.tokenNameLabel.text = data.type.getFullNameLabel()
+        if let tokenType = data.tokenType {
+            
+            self.tokenIconImage.image = UIImage(named:tokenType.rawValue)
+            self.tokenNameLabel.text = tokenType.getFullNameLabel()
+        } else {
+            
+            self.tokenIconImage.image = UIImage(named:data.walletType.rawValue)
+            self.tokenNameLabel.text = data.walletType.getFullNameLabel()
+        }
+        
         self.tokenCoinAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)
         
         if data.value == 0 {
@@ -39,9 +63,9 @@ class WalletPageAssetTableViewCell: UITableViewCell {
             self.tokenChangeImage.isHidden = false
             self.tokenValueLabel.text = String(format:"$%.2f", data.value)
             
-            let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
+            let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.walletType)
             self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
+            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.walletType)
         }
     }
 }

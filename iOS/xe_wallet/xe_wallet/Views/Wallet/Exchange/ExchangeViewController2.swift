@@ -119,7 +119,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             
             if self.swapFromTokenType == .edge {
                 
-                balance = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.edgeBalance ?? 0)) EDGE available to swap"
+                let edgeBalance = self.walletData[self.selectedIndex].status?.getTokenBalance(type: .edge)
+                balance = "\(CryptoHelpers.generateCryptoValueString(value: edgeBalance ?? 0.0)) EDGE available to swap"
             }
             self.swapFromAvailableLabel.text = balance
             self.swapFromCardImage.image = UIImage(named:WalletType.ethereum.getBackgroundImage())
@@ -272,7 +273,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         if self.swapFromTokenType == .edge {
         
-            self.swapFromAmountTextField.text = CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.edgeBalance ?? 0)
+            let edgeBalance = self.walletData[self.selectedIndex].status?.getTokenBalance(type: .edge)
+            self.swapFromAmountTextField.text = CryptoHelpers.generateCryptoValueString(value: edgeBalance ?? 0)
         } else {
             
             self.swapFromAmountTextField.text = CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)

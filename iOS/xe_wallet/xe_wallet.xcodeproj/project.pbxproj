@@ -86,7 +86,6 @@
 		FD5C2172275508BE00795A2F /* NetworkState.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C2171275508BE00795A2F /* NetworkState.swift */; };
 		FD5C21742755097300795A2F /* HttpBodyStringEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21732755097300795A2F /* HttpBodyStringEncoding.swift */; };
 		FD5C217D27550C1F00795A2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FD5C217B27550C1F00795A2F /* Main.storyboard */; };
-		FD5C21862755404E00795A2F /* EtherWallet2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD5C21852755404E00795A2F /* EtherWallet2.swift */; };
 		FD5C218C27564D2400795A2F /* Web3 in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218B27564D2400795A2F /* Web3 */; };
 		FD5C218E27564D2400795A2F /* Web3ContractABI in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218D27564D2400795A2F /* Web3ContractABI */; };
 		FD5C219027564D2400795A2F /* Web3PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = FD5C218F27564D2400795A2F /* Web3PromiseKit */; };
@@ -174,6 +173,7 @@
 		FDABB8C22768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDABB8C12768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift */; };
 		FDAC56F027BD98B3000C7316 /* ExchangeWalletSelectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC56EF27BD98B2000C7316 /* ExchangeWalletSelectionViewController.swift */; };
 		FDAC56F227BDA027000C7316 /* ExchangeWalletSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAC56F127BDA027000C7316 /* ExchangeWalletSelectionTableViewCell.swift */; };
+		FDAE647327C9BFA90047CBB8 /* ERC20TokenDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDAE647227C9BFA90047CBB8 /* ERC20TokenDataModel.swift */; };
 		FDB1C73627637E7B009E2DCB /* BouncyLayout in Frameworks */ = {isa = PBXBuildFile; productRef = FDB1C73527637E7B009E2DCB /* BouncyLayout */; };
 		FDB1C7392763809D009E2DCB /* FAPaginationLayout2.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */; };
 		FDB72A3C273DF3160071711F /* secp256k1 in Frameworks */ = {isa = PBXBuildFile; productRef = FDB72A3B273DF3160071711F /* secp256k1 */; };
@@ -272,7 +272,6 @@
 		FD5C2171275508BE00795A2F /* NetworkState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkState.swift; sourceTree = "<group>"; };
 		FD5C21732755097300795A2F /* HttpBodyStringEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HttpBodyStringEncoding.swift; sourceTree = "<group>"; };
 		FD5C217C27550C1F00795A2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Main.storyboard; sourceTree = "<group>"; };
-		FD5C21852755404E00795A2F /* EtherWallet2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EtherWallet2.swift; sourceTree = "<group>"; };
 		FD5C2192275784FE00795A2F /* ContractComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractComponents.swift; sourceTree = "<group>"; };
 		FD5C21942757850C00795A2F /* ProjectContract.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjectContract.swift; sourceTree = "<group>"; };
 		FD5C21962757851800795A2F /* Wallet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
@@ -353,6 +352,7 @@
 		FDABB8C12768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPortfolioTableViewCell.swift; sourceTree = "<group>"; };
 		FDAC56EF27BD98B2000C7316 /* ExchangeWalletSelectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletSelectionViewController.swift; sourceTree = "<group>"; };
 		FDAC56F127BDA027000C7316 /* ExchangeWalletSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletSelectionTableViewCell.swift; sourceTree = "<group>"; };
+		FDAE647227C9BFA90047CBB8 /* ERC20TokenDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ERC20TokenDataModel.swift; sourceTree = "<group>"; };
 		FDB1C7382763809D009E2DCB /* FAPaginationLayout2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAPaginationLayout2.swift; sourceTree = "<group>"; };
 		FDC6CF5227839FA100C4D49D /* ExchangeWalletCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletCollectionViewCell.swift; sourceTree = "<group>"; };
 		FDC6CF542783A02E00C4D49D /* ExchangeViewController2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeViewController2.swift; sourceTree = "<group>"; };
@@ -589,10 +589,11 @@
 			children = (
 				FD5C21372755087000795A2F /* secp256k1 */,
 				FD5C214A2755087000795A2F /* WalletType.swift */,
-				FD5C214B2755087000795A2F /* WalletDataModel.swift */,
+				FD5C21962757851800795A2F /* Wallet.swift */,
 				FD5C21432755087000795A2F /* WalletDataModelManager.swift */,
-				FD5C21362755087000795A2F /* TransactionsDataModel.swift */,
+				FD5C214B2755087000795A2F /* WalletDataModel.swift */,
 				FD5C214C2755087000795A2F /* WalletStatusDataModel.swift */,
+				FD5C21362755087000795A2F /* TransactionsDataModel.swift */,
 				FD5C214D2755087000795A2F /* CurrencyType.swift */,
 				FD5C214E2755087000795A2F /* XE */,
 				FD5C21442755087000795A2F /* ETHER */,
@@ -622,13 +623,12 @@
 			isa = PBXGroup;
 			children = (
 				FD5C2191275784E300795A2F /* SmartContract */,
-				FD5C21962757851800795A2F /* Wallet.swift */,
 				FD5C21482755087000795A2F /* EtherWallet.swift */,
-				FD5C21452755087000795A2F /* EtherWalletStatusDataModel.swift */,
-				FD5C21462755087000795A2F /* EtherExchangeRatesManager.swift */,
-				FD5C21492755087000795A2F /* EthereumTransactionsDataModel.swift */,
 				FD5C21472755087000795A2F /* EtherWalletDataModel.swift */,
-				FD5C21852755404E00795A2F /* EtherWallet2.swift */,
+				FD5C21452755087000795A2F /* EtherWalletStatusDataModel.swift */,
+				FD5C21492755087000795A2F /* EthereumTransactionsDataModel.swift */,
+				FD5C21462755087000795A2F /* EtherExchangeRatesManager.swift */,
+				FDAE647227C9BFA90047CBB8 /* ERC20TokenDataModel.swift */,
 			);
 			path = ETHER;
 			sourceTree = "<group>";
@@ -638,11 +638,11 @@
 			children = (
 				FD5C21532755087000795A2F /* XEWallet.swift */,
 				FD5C214F2755087000795A2F /* XEWalletDataModel.swift */,
+				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
+				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
 				FD5C21502755087000795A2F /* XEExchangeRatesDataModel.swift */,
 				FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */,
 				FDA65FBD27A93F7600B8069C /* XEExchangeRateHistoryDataModel.swift */,
-				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
-				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
 				FD5C21522755087000795A2F /* XEGasRatesDataModel.swift */,
 				FD83C3DF27B5980500507A5F /* XEStakedDataModel.swift */,
 			);
@@ -1135,6 +1135,7 @@
 				FDA65FC327A94CA100B8069C /* LineChart.swift in Sources */,
 				FD6018DF272F465500F78EBE /* String+Ext.swift in Sources */,
 				FDA65FB427A43E7B00B8069C /* WalletMenuItemTableViewCell.swift in Sources */,
+				FDAE647327C9BFA90047CBB8 /* ERC20TokenDataModel.swift in Sources */,
 				FD931471279DA307001C0A2C /* WalletPageViewController.swift in Sources */,
 				FD74269127499A5D0046D148 /* NiceButton.swift in Sources */,
 				FD83C3DE27B01C2700507A5F /* NSAttributedString+Ext.swift in Sources */,
@@ -1186,7 +1187,6 @@
 				FD2865E7276A93A6006DEEF4 /* WalletCardsTableViewCell.swift in Sources */,
 				FD5C21632755087000795A2F /* EtherExchangeRatesManager.swift in Sources */,
 				FD87138C274D72D500B4CD2A /* CryptoHelpers.swift in Sources */,
-				FD5C21862755404E00795A2F /* EtherWallet2.swift in Sources */,
 				FD5C21592755087000795A2F /* Error.swift in Sources */,
 				FDABB8C22768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift in Sources */,
 				FD9BACBE2766B2FE00D0C14D /* WalletViewController2.swift in Sources */,
@@ -1362,7 +1362,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1397,7 +1397,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 60;
+				CURRENT_PROJECT_VERSION = 61;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

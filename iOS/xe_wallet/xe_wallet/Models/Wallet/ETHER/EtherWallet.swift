@@ -68,31 +68,41 @@ class EtherWallet {
                 
                 let network = AppDataModelManager.shared.getNetworkStatus()
                 
-                let exploredAddress = EthereumAddress(address)!
-                let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress())!
-                let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
-                var options = TransactionOptions.defaultOptions
-                options.from = walletAddress
-                options.gasPrice = .automatic
-                options.gasLimit = .automatic
-                let method = "balanceOf"
-                let tx = contract.read(
-                    method,
-                    parameters: [exploredAddress] as [AnyObject],
-                    extraData: Data(),
-                    transactionOptions: options)!
+                var erc20Tokens:[ERC20TokenDataModel] = []
                 
-                
-                
-                let tokenBalance = try! tx.call()
-                
-                var edgeBalance = "0.0"
-                if let token = tokenBalance["0"] {
+                for erc20 in ERC20TokenType.allCases {
                     
-                    let big = BigUInt.init("\(token)", Web3.Utils.Units.wei)!
-                    edgeBalance = Web3.Utils.formatToEthereumUnits(big, toUnits: .eth, decimals: 6)!
+                    let exploredAddress = EthereumAddress(address)!
+                    let erc20ContractAddress = EthereumAddress(erc20.getContractAddress())!
+                    
+                    
+                    //let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress())!
+                    let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
+                    var options = TransactionOptions.defaultOptions
+                    options.from = walletAddress
+                    options.gasPrice = .automatic
+                    options.gasLimit = .automatic
+                    let method = "balanceOf"
+                    let tx = contract.read(
+                        method,
+                        parameters: [exploredAddress] as [AnyObject],
+                        extraData: Data(),
+                        transactionOptions: options)!
+                    
+                    let tokenBalance = try! tx.call()
+                    
+                    
+                    var balance = "0.0"
+                    if let token = tokenBalance["0"] {
+                        
+                        let big = BigUInt.init("\(token)", Web3.Utils.Units.wei)!
+                        balance = Web3.Utils.formatToEthereumUnits(big, toUnits: .eth, decimals: 6)!
+                    }
+                    
+                    erc20Tokens.append(ERC20TokenDataModel(type: erc20, balance: Double(balance) ?? 0.0))
                 }
-                completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance: Double(edgeBalance) ?? 0))
+                
+                completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance:0.0, erc20Tokens: erc20Tokens))
             }
             catch {
                 
@@ -232,66 +242,6 @@ class EtherWallet {
             print(result)
             completion(result as! Bool)
         })
-    }
-    
-    func sendEdge2(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
-        
-        let network = AppDataModelManager.shared.getNetworkStatus()
-        
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
-            
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
-        }
-        
-        guard let ewallet = wallet.wallet else { return }
-        let data = ewallet.data
-        let keystoreManager: KeystoreManager
-        if ewallet.isHD {
-            let keystore = BIP32Keystore(data)!
-            keystoreManager = KeystoreManager([keystore])
-        } else {
-            let keystore = EthereumKeystoreV3(data)!
-            keystoreManager = KeystoreManager([keystore])
-        }
-        
-        web3.addKeystoreManager(keystoreManager)
-        
-        
-        let value: String = amt // Any amount of Ether you need to send
-        let walletAddress = EthereumAddress(ewallet.address)! // Your wallet address
-        
-        let tAddress = EthereumAddress(toAddr)
-        let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
-        //let parameters: [tAddress as Any, amount as Any] as [AnyObject],
-        
-        let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress(), ignoreChecksum: true)!
-        //let erc20ContractAddress = EthereumAddress("0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301")
-        let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
-        
-        var options = TransactionOptions.defaultOptions
-        options.from = walletAddress
-        options.gasLimit = .automatic
-        options.gasPrice = .automatic
-
-        let contractMethod = "transfer"
-        if let transaction = contract.write(contractMethod, parameters: [tAddress, UInt(amount ?? 0)] as [AnyObject], extraData: Data(), transactionOptions: options) {
-            
-            do {
-                let password = AppDataModelManager.shared.getAppPinCode()
-                if password != nil {
-                    
-                let result = try transaction.send(password: password)
-                
-                    print(" DEPOSIT SUCCESS \(result)")
-                    return
-                }
-            } catch {
-                
-                print("DEPOSIT FAIL \(error)")
-                return
-            }
-        }
     }
     
     func sendEdge(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
@@ -458,60 +408,5 @@ class EtherWallet {
             print ("Failed to construct contract and/or keystoreManager \(error)")
         }
     }
-
-    /*
-    func getDepositABIContract(completion: @escaping (String?)-> Void) {
-        
-        let url = AppDataModelManager.shared.getNetworkStatus().getABIContactUrl()
-        
-        Alamofire.request(url, method: .get, encoding: URLEncoding.queryString, headers: nil)
-         .validate()
-         .responseJSON { response in
-
-             print(response)
-            switch (response.result) {
-
-                case .success( _):
-
-                if let result = response.result.value {
-                    
-                    let JSON = result as! NSDictionary
-                    let abi = JSON["abi"]
-                    print(abi)
-                    
-                    //let paramsJSON = JSON(abi)
-                    //let paramsString = paramsJSON.rawString(String.Encoding.utf8, options: JSONSerialization.WritingOptions.prettyPrinted)!
-                    
-                    let jsonString = self.json(from: abi)
-                    completion(jsonString)
-                    return
-                }
-                
-                /*if let json = response.result.value as? [String:AnyObject] {
-                    
-                    if let abi : [String:AnyObject] = json["abi"] as? [String : AnyObject] {
-                        
-                        let json = String(data: abi, encoding: NSUTF8StringEncoding)
-                        print(json)
-                        completion(json)
-                    }
-                }*/
-                completion(nil)
-
-                 case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
-                    completion(nil)
-             }
-         }
-    }
-                               
-    func json(from object:Any) -> String? {
-                        
-        guard let data = try? JSONSerialization.data(withJSONObject: object, options: []) else {
-        
-            return nil
-        }
-        return String(data: data, encoding: String.Encoding.utf8)
-    }*/
 }
 

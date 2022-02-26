@@ -8,20 +8,6 @@
 import UIKit
 import PanModal
 
-class WalletPageAsset {
-    
-    var type: WalletType = .ethereum
-    var amount: Double = 0.0
-    var value: Double = 0.0
-    
-    init(type: WalletType, amount: Double, value: Double) {
-        
-        self.type = type
-        self.amount = amount
-        self.value = value
-    }
-}
-
 protocol WalletPageViewControllerDelegate {
 
     func exchangeButtonPressed()
@@ -124,7 +110,8 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
                 self.walletTotalValue.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(status.balance))) XE"
             } else {
             
-                self.walletTotalValue.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(status.edgeBalance))) EDGE"
+                let edgeBalance = status.getTokenBalance(type: .edge)
+                self.walletTotalValue.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(edgeBalance))) EDGE"
             }
         }
         
@@ -203,16 +190,22 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
             if wallet.type == .xe {
                 
                 let amount = wallet.status?.balance ?? 0
-                self.assetsArray.append(WalletPageAsset(type:.xe, amount:amount, value:amount * self.edgeExchangeRate))
+                self.assetsArray.append(WalletPageAsset(walletType:.xe, tokenType: nil, amount:amount, value:amount * self.edgeExchangeRate))
                 self.totalValue += amount * self.edgeExchangeRate
             } else {
                 
                 let amount = wallet.status?.balance ?? 0
-                self.assetsArray.append(WalletPageAsset(type:.ethereum, amount:amount, value:amount * self.ethereumExchangeRate))
+                self.assetsArray.append(WalletPageAsset(walletType:.ethereum, tokenType: nil, amount:amount, value:amount * self.ethereumExchangeRate))
                 self.totalValue += amount * self.ethereumExchangeRate
-                let edgeAmount = wallet.status?.edgeBalance ?? 0
-                self.assetsArray.append(WalletPageAsset(type:.edge, amount:edgeAmount, value:edgeAmount * self.edgeExchangeRate))
-                self.totalValue += edgeAmount * self.edgeExchangeRate
+                
+                if let erc20 = wallet.status?.erc20Tokens {
+                    
+                    for erc in erc20 {
+                        
+                        self.assetsArray.append(WalletPageAsset(walletType:.ethereum, tokenType:erc.type, amount:erc.balance, value:erc.balance * self.edgeExchangeRate))
+                        self.totalValue += erc.balance * self.edgeExchangeRate
+                    }
+                }
             }
         }
         

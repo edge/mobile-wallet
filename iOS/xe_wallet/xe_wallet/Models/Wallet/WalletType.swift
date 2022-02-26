@@ -12,34 +12,41 @@ enum WalletType: String, Codable {
     case xe = "coin_xe"
     case edge = "coin_edge"
     case ethereum = "coin_ethereum"
+    case usdc = "coin_usdc"
     
     func getDisplayLabel() -> String {
         
         switch self {
             
         case .xe:
-            return Constants.XE_DisplayLabel
+            return "XE"
             
         case .edge:
-            return Constants.EDGE_DisplayLabel
+            return "Edge"
             
         case .ethereum:
-            return Constants.ETHER_DisplayLabel
+            return "Ether"
+            
+        case .usdc:
+            return "USDC"
         }
     }
-    
+
     func getFullNameLabel() -> String {
         
         switch self {
             
         case .xe:
-            return Constants.XE_FullNameLabel
+            return "XE"
             
         case .edge:
-            return Constants.EDGE_FullNameLabel
+            return "Edge"
             
         case .ethereum:
-            return Constants.ETHER_FullNameLabel
+            return "Ethereum"
+            
+        case .usdc:
+            return "USDC"
         }
     }
     
@@ -48,13 +55,16 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return Constants.XE_AbriviationLabel
+            return "XE"
             
         case .edge:
-            return Constants.EDGE_AbriviationLabel
+            return "EDGE"
             
         case .ethereum:
-            return Constants.ETHER_AbriviationLabel
+            return "ETH"
+            
+        case .usdc:
+            return "USDC"
         }
     }
     
@@ -69,6 +79,9 @@ enum WalletType: String, Codable {
             return "credit_card_xe"
             
         case .ethereum:
+            return "credit_card_ether"
+            
+        case .usdc:
             return "credit_card_ether"
         }
     }
@@ -85,6 +98,9 @@ enum WalletType: String, Codable {
             
         case .ethereum:
             return 0.001000
+            
+        case .usdc:
+            return 0.001000
         }
     }
     
@@ -99,6 +115,9 @@ enum WalletType: String, Codable {
             return 42
             
         case .ethereum:
+            return 42
+            
+        case .usdc:
             return 42
         }
     }
@@ -115,6 +134,9 @@ enum WalletType: String, Codable {
             
         case .ethereum:
             return "0x"
+            
+        case .usdc:
+            return "0x"
         }
     }
     
@@ -123,13 +145,16 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            return Constants.XE_NetworkButtonLabel
+            return "View on Explorer"
             
         case .edge:
-            return Constants.EDGE_NetworkButtonLabel
+            return "View on Etherscan"
             
         case .ethereum:
-            return Constants.ETHER_NetworkButtonLabel
+            return "View on Etherscan"
+            
+        case .usdc:
+            return "View on Etherscan"
         }
     }
     
@@ -140,32 +165,42 @@ enum WalletType: String, Codable {
         case .xe:
             if AppDataModelManager.shared.testModeStatus() {
                 
-                return Constants.XE_testTransactionRecordUrl
+                return "https://test.network/transaction/"
             } else {
                 
-                return Constants.XE_mainTransactionRecordUrl
+                return "https://xe.network/transaction/"
             }
             
         case .edge:
             if AppDataModelManager.shared.testModeStatus() {
             
-                return Constants.ETH_testTransactionRecordUrl
+                return "https://rinkeby.etherscan.io/tx/"
             } else {
                 
-                return Constants.ETH_mainTransactionRecordUrl
+                return "https://etherscan.io/tx/"
             }
             
         case .ethereum:
             if AppDataModelManager.shared.testModeStatus() {
                 
-                return Constants.ETH_testTransactionRecordUrl
+                return "https://rinkeby.etherscan.io/tx/"
             } else{
                 
-                return Constants.ETH_mainTransactionRecordUrl
+                return "https://etherscan.io/tx/"
+            }
+            
+        case .usdc:
+            if AppDataModelManager.shared.testModeStatus() {
+                
+                return "https://rinkeby.etherscan.io/tx/"
+            } else{
+                
+                return "https://etherscan.io/tx/"
             }
         }
     }
 
+    
     func createWallet() -> AddressKeyPairModel? {
         
         switch self {
@@ -177,6 +212,9 @@ enum WalletType: String, Codable {
             return EtherWallet().generateWallet(type: .ethereum)
             
         case .ethereum:
+            return EtherWallet().generateWallet(type: .ethereum)
+            
+        case .usdc:
             return EtherWallet().generateWallet(type: .ethereum)
         }
     }
@@ -192,6 +230,9 @@ enum WalletType: String, Codable {
             return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
             
         case .edge:
+            return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
+            
+        case .usdc:
             return EtherWallet().generateWalletFromPrivateKey(privateKeyString: key)
         }
     }
@@ -214,15 +255,19 @@ enum WalletType: String, Codable {
             })
             break
             
+        case .usdc:
+            EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
+                
+                completion( res )
+            })
+            break
+            
         case .ethereum:
             
             EtherWallet().sendEther(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
                 
                 completion( res )
             })
-            break
-            
-        case .edge:
             break
         }
     }
@@ -246,6 +291,9 @@ enum WalletType: String, Codable {
             break
             
         case .edge:
+            break
+            
+        case .usdc:
             break
         }
     }
