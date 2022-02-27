@@ -83,7 +83,7 @@ struct TransactionDataModel: Codable {
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
         self.type = try container.decode(WalletType.self, forKey: .type)
     }
-        
+        /*
     public init(from ether: EtherTransactionDataModel, type: WalletType) {
         
         self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
@@ -102,7 +102,7 @@ struct TransactionDataModel: Codable {
         self.confirmations = Int(ether.confirmations ?? "0") ?? 0
         self.status = .confirmed
         self.type = type
-    }
+    }*/
     
     public init() {
         
@@ -118,7 +118,7 @@ struct TransactionDataModel: Codable {
         self.confirmations = 0
         self.status = .confirmed
     }
-    
+    /*
     public init(from xe: XETransactionRecordDataModel) {
         
         self.timestamp = xe.timestamp/1000
@@ -165,7 +165,7 @@ struct TransactionDataModel: Codable {
         self.hash = pending.hash
         self.status = .pending
         self.type = .xe
-    }
+    }*/
     
 
 }

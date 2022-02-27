@@ -151,7 +151,16 @@ class XEWallet {
                             transArray.append(trans)
                         }
                     }
-                    completion(transArray)
+                    
+                    XEWallet().downloadPendingTransactions(address: address, completion: { pending in
+                    
+                        if let pend = pending {
+                        
+                            transArray.append(contentsOf: pend)
+                        }
+                        completion(transArray)
+                    })
+
                 } catch let error as NSError {
                     
                     print("Failed to load: \(error.localizedDescription)")
@@ -162,7 +171,7 @@ class XEWallet {
          }
     }
     
-    func downloadPendingTransactions(address: String, completion: @escaping ([XETransactionPendingRecordDataModel]?)-> Void) {
+    func downloadPendingTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
 
         let urlPending = AppDataModelManager.shared.getNetworkStatus().getPendingUrl()// .getXEServerPendingUrl()
         Alamofire.request("\(urlPending)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
@@ -179,7 +188,25 @@ class XEWallet {
                     if response.data?.count ?? 0 > 2 {
                     
                         let data = try JSONDecoder().decode([XETransactionPendingRecordDataModel].self, from: response.data!)
-                        completion(data)
+                        
+                        var transArray:[TransactionDataModel] = []
+                        for res in data {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = res.timestamp/1000
+                            trans.sender = res.sender
+                            trans.recipient = res.recipient
+                            trans.amount = Double(res.amount / 1000000)
+                            trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
+                            trans.nonce = res.nonce
+                            trans.signature = res.signature
+                            trans.hash = res.hash
+                            trans.status = .pending
+                            trans.type = .xe
+                            transArray.append(trans)
+                        }
+                        completion(transArray)
                     } else {
                         
                         completion(nil)
