@@ -88,6 +88,11 @@ class ExchangeWalletSelectionViewController: BaseViewController, UITableViewDele
             //self.tokenData.append(ExchangeTokenSelectionDataModel(type:.ethereum, address: "Ethereum", abv: "$ETH", balance:wallet.status?.balance ?? 0, value: wallet.status?.balance ?? 0))
             let edgeBalance = wallet.status?.getTokenBalance(type: .edge)
             self.tokenData.append(ExchangeTokenSelectionDataModel(type:.edge, address: "Edge", abv: "$EDGE", balance:edgeBalance ?? 0.0, value: edgeBalance ?? 0.0))
+            
+            if self.tag != 1 {
+            
+                self.tokenData.append(ExchangeTokenSelectionDataModel(type:.usdc, address: "USDC", abv: "$USDC", balance:0.0, value:0.0))
+            }
         }
         self.tableView.reloadData()
     }

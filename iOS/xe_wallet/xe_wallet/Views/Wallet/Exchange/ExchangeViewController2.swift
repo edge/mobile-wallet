@@ -147,6 +147,10 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.edge.rawValue)
                     self.swapToTokenTokenAbv.text = WalletType.edge.getDisplayLabel()
+                } else if self.swapToTokenType == .usdc {
+                        
+                    self.swapToTokenTokenImage.image = UIImage(named:WalletType.usdc.rawValue)
+                    self.swapToTokenTokenAbv.text = WalletType.usdc.getDisplayLabel()
                 } else {
                     
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.ethereum.rawValue)
@@ -381,9 +385,12 @@ extension ExchangeViewController2 {
             if data == "Ethereum" {
                 
                 self.swapToTokenType = .ethereum
-            } else {
+            } else if data == "Edge" {
                 
                 self.swapToTokenType = .edge
+            } else {
+                
+                self.swapToTokenType = .usdc
             }
             self.configureSelectedWallet(clearValue: false)
             break
