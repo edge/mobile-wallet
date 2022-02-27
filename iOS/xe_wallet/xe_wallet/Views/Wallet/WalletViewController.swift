@@ -15,7 +15,7 @@ class WalletViewController: BaseViewController, UITableViewDelegate,  UITableVie
 
     @IBOutlet weak var exchangeButtonTextLabel: UILabel!
     
-    var transactionListViewData = [TransactionRecordDataModel]()
+    var transactionListViewData = [TransactionDataModel]()
     var walletCollectionViewData = [WalletDataModel]()
     
     var selectedIndex: Int?
@@ -221,19 +221,15 @@ extension WalletViewController {
             
             self.tableView.setEmptyMessage("No Transactions")
             return 0 }
-        guard let results = trans.results else {
-            
-            self.tableView.setEmptyMessage("No Transactions")
-            return 0 }
         
-        if results.count == 0 {
+        if trans.count == 0 {
             
             self.tableView.setEmptyMessage("No Transactions")
             return 0
             
         }
         self.tableView.restore()
-        return results.count
+        return trans.count
 
     }
         
@@ -252,10 +248,6 @@ extension WalletViewController {
         
         if let trans = self.walletCollectionViewData[self.selectedWallet].transactions {
             
-            if let entries = trans.results {
-            
-                //(cell as! TransactionTableViewCell).configure(data:entries[indexPath.row], address: self.walletCollectionViewData[self.selectedWallet].address)
-            }
         }
         cell.selectionStyle = .none
         return cell

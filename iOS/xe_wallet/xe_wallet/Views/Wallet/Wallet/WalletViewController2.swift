@@ -31,7 +31,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     var portfolioCell: WalletPortfolioTableViewCell? = nil
     
     var lastTransactionWallet: WalletDataModel? = nil
-    var lastTransactionTransaction: TransactionRecordDataModel? = nil
+    var lastTransactionTransaction: TransactionDataModel? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()

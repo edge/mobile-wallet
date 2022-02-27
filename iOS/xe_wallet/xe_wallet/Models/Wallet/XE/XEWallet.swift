@@ -112,7 +112,7 @@ class XEWallet {
     
 
     
-    func downloadTransactions(address: String, completion: @escaping (XETransactionsDataModel?)-> Void) {
+    func downloadTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
         
         let urlTransactions = AppDataModelManager.shared.getNetworkStatus().getTransactionsUrl()
         //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
@@ -121,7 +121,6 @@ class XEWallet {
          .validate()
          .responseJSON { response in
 
-             //print(response)
             switch (response.result) {
 
                 case .success( _):
@@ -129,8 +128,30 @@ class XEWallet {
                 do {
 
                     var data = try JSONDecoder().decode(XETransactionsDataModel.self, from: response.data!)
-                    completion(data)
 
+                    var transArray:[TransactionDataModel] = []
+                    if let results = data.results {
+                        
+                        for res in results {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = res.timestamp/1000
+                            trans.sender = res.sender
+                            trans.recipient = res.recipient
+                            trans.amount = Double(res.amount / 1000000)
+                            trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
+                            trans.nonce = res.nonce
+                            trans.signature = res.signature
+                            trans.hash = res.hash
+                            trans.block = TransactionBlockDataModel(height: res.block?.height ?? 0, hash: res.block?.hash ?? "")
+                            trans.confirmations = res.confirmations
+                            trans.status = res.status
+                            trans.type = .xe
+                            transArray.append(trans)
+                        }
+                    }
+                    completion(transArray)
                 } catch let error as NSError {
                     
                     print("Failed to load: \(error.localizedDescription)")

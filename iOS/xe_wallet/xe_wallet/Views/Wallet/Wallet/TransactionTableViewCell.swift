@@ -23,7 +23,7 @@ class TransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(walletData: WalletDataModel?, transactionData: TransactionRecordDataModel?) {
+    func configure(walletData: WalletDataModel?, transactionData: TransactionDataModel?) {
         
         guard let wallet = walletData else { return }
         guard let transaction = transactionData else { return }

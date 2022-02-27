@@ -23,7 +23,7 @@ class TransactionPageViewController: BaseViewController{
     
     @IBOutlet weak var exploreButtonLabel: UILabel!
     
-    var transactionData: TransactionRecordDataModel? = nil
+    var transactionData: TransactionDataModel? = nil
     var walletType: WalletType = .ethereum
     var walletAddress = ""
     

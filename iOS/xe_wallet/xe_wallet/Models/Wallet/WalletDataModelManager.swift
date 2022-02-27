@@ -169,9 +169,9 @@ class WalletDataModelManager {
         return nil
     }
         
-    public func getLatestTransaction() -> (transaction: TransactionRecordDataModel?, wallet: WalletDataModel?) {
+    public func getLatestTransaction() -> (transaction: TransactionDataModel?, wallet: WalletDataModel?) {
             
-        var transaction: TransactionRecordDataModel? = nil
+        var transaction: TransactionDataModel? = nil
         var wallet: WalletDataModel? = nil
         
         if self.walletData.count == 0 {
@@ -183,21 +183,18 @@ class WalletDataModelManager {
             
             if let transactions = wall.transactions {
                 
-                if let res = transactions.results {
+                for trans in transactions {
                     
-                    for trans in res {
-                    
-                        if transaction == nil {
+                    if transaction == nil {
+                        
+                        transaction = trans
+                        wallet = wall
+                    } else {
+                        
+                        if trans.timestamp > transaction?.timestamp ?? 0 {
                             
                             transaction = trans
                             wallet = wall
-                        } else {
-                            
-                            if trans.timestamp > transaction?.timestamp ?? 0 {
-                                
-                                transaction = trans
-                                wallet = wall
-                            }
                         }
                     }
                 }

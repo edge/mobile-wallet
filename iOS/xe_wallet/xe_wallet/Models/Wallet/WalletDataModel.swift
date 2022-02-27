@@ -15,7 +15,7 @@ class WalletDataModel: Codable {
     var created: Double
     var backedup: Double
     var status: WalletStatusDataModel?
-    var transactions: TransactionsDataModel?
+    var transactions: [TransactionDataModel]?
     var wallet: Wallet?
     
     enum CodingKeys: String, CodingKey {
@@ -71,72 +71,29 @@ class WalletDataModel: Codable {
     
     func downloadWalletTransactions() {
                 
-        switch self.type {
+        self.type.downloadTransactions(address: self.address, completion: { status in
             
-        case .xe:
-            XEWallet().downloadTransactions(address: self.address, completion: { transactions in
+            self.transactions = status
             
-                if let trans = transactions {
+            if let tokens = self.status?.erc20Tokens {
                 
-                    self.transactions = TransactionsDataModel(from: trans)
-                }
-                
-                XEWallet().downloadPendingTransactions(address: self.address, completion: { transactions in
-                
-                    if let trans = transactions {
+                for token in tokens {
                     
-                        var newArray = [TransactionRecordDataModel]()
-                        for t in trans {
-
-                            let newRecord = TransactionRecordDataModel(from: t)
-                            newArray.append(newRecord)
-                        }
-                        
-                        if self.transactions?.results == nil {
+                    if token.type == .edge {
+                        self.type.downloadTokenTransactions(address: self.address, completion: { transactions in
                             
-                            self.transactions?.results = [TransactionRecordDataModel]()
-                        }
-                        
-                        self.transactions?.results?.append(contentsOf: newArray)
-                    }
-                    NotificationCenter.default.post(name: .didReceiveData, object: nil)
-                })
-            })
-            break
-            
-        case .ethereum:
-            EtherWallet().downloadTransactions(address: self.address, completion: { transactions in
-                
-                if let trans = transactions {
-                    
-                    self.transactions = TransactionsDataModel(from: trans, type: .ethereum)
-                }
-
-                EtherWallet().downloadTokenTransations(address: self.address, completion: { transactions in
-                    
-                    if let trans = transactions {
-                    
-                        if self.transactions == nil {
-                            
-                            self.transactions = TransactionsDataModel(from: trans, type: .edge)
-                        } else {
-                            
-                            if let results = TransactionsDataModel(from: trans, type: .edge).results {
-                            
-                                self.transactions?.results?.append(contentsOf: results)
+                            var oldArray: [TransactionDataModel] = self.transactions ?? []
+                            if let trans = transactions {
+                                
+                                oldArray.append(contentsOf: trans)
                             }
-                        }
+                            self.transactions = oldArray
+                            NotificationCenter.default.post(name: .didReceiveData, object: nil)
+                        })
                     }
-                })
-            })
-            break
-            
-        case .edge:
-            break
-            
-        case .usdc:
-            break
-        }
+                }
+            }
+        })
     }
     
 }

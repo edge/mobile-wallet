@@ -25,7 +25,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
         
-    func configure(data: TransactionRecordDataModel, type: WalletType, address: String) {
+    func configure(data: TransactionDataModel, type: WalletType, address: String) {
         
         self.typeImageView.image = UIImage(named: data.type?.rawValue ?? "")
         

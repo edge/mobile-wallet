@@ -27,7 +27,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
     var delegate: WalletPageViewControllerDelegate? = nil
     
     var assetsArray: [WalletPageAsset] = []
-    var transactionsArray: [TransactionRecordDataModel] = []
+    var transactionsArray: [TransactionDataModel] = []
     
     var walletData: WalletDataModel? = nil
     var selectedWalletAddress = ""
@@ -123,10 +123,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
             self.walletType = wData.type
             if let trans = wData.transactions {
                 
-                if let res = trans.results {
-                    
-                    self.transactionsArray = res.sorted(by: {$0.timestamp > $1.timestamp})
-                }
+                self.transactionsArray = trans.sorted(by: {$0.timestamp > $1.timestamp})
             }
         }
         self.tableView.reloadData()

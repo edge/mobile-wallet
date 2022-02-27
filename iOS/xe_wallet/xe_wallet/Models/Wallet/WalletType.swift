@@ -200,6 +200,39 @@ enum WalletType: String, Codable {
             })
         }
     }
+    
+    func downloadTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
+        
+        switch self {
+            
+        case .xe:
+            XEWallet().downloadTransactions(address: address, completion: { status in
+            
+                completion(status)
+            })
+            
+        case .ethereum, .edge, .usdc:
+            EtherWallet().downloadTransactions(address: address, completion: { status in
+                
+                completion(status)
+            })
+        }
+    }
+    
+    func downloadTokenTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
+        
+        switch self {
+            
+        case .xe:
+            break
+            
+        case .ethereum, .edge, .usdc:
+            EtherWallet().downloadTokenTransations(address: address, type: self, completion: { status in
+                
+                completion(status)
+            })
+        }
+    }
 
     func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
         

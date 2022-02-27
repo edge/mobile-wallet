@@ -114,7 +114,7 @@ class EtherWallet {
         }
     }
     
-    func downloadTransactions(address: String, completion: @escaping (EtherTransactionsDataModel?)-> Void) {
+    func downloadTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
                 
         let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
         let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
@@ -129,8 +129,34 @@ class EtherWallet {
                 do {
                                         
                     let data = try JSONDecoder().decode(EtherTransactionsDataModel.self, from: response.data!)
-                    //let transModel = TransactionsDataModel(from: data)
-                    completion(data)
+
+                    var transArray:[TransactionDataModel] = []
+                    if let results = data.result {
+                        
+                        for res in results {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = Int(res.timeStamp ?? "0") ?? 0
+                            trans.sender = res.from ?? ""
+                            trans.recipient = res.to ?? ""
+                            let newVal: String = String(res.value?.dropLast(12) ?? "0")
+                            let damt = Double(newVal) ?? 0
+                            let amt = damt / 1000000
+                            trans.amount = amt
+                            trans.data = TransactionDataDataModel()
+                            trans.nonce = Int(res.nonce ?? "0") ?? 0
+                            trans.signature = ""
+                            trans.hash = res.hash ?? ""
+                            trans.block = TransactionBlockDataModel(height: Int(res.blockNumber ?? "0") ?? 0, hash: res.blockHash ?? "")
+                            trans.confirmations = Int(res.confirmations ?? "0") ?? 0
+                            trans.status = .confirmed
+                            trans.type = .ethereum
+                            transArray.append(trans)
+                        }
+                    }
+                    completion(transArray)
+
                 } catch let error as NSError {
                     
                     print("Failed to load: \(error.localizedDescription)")
@@ -141,11 +167,9 @@ class EtherWallet {
         }
     }
     
-    func downloadTokenTransations(address: String, completion: @escaping (EtherTransactionsDataModel?)-> Void) {
+    func downloadTokenTransations(address: String, type: WalletType, completion: @escaping ([TransactionDataModel]?)-> Void) {
     
         //http://api.etherscan.io/api?module=account&action=tokentx&address=0x9f7dd5ea934d188a599567ee104e97fa46cb4496&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken
-        
-
         
         let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
         let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
@@ -162,8 +186,33 @@ class EtherWallet {
                 do {
                                         
                     let data = try JSONDecoder().decode(EtherTransactionsDataModel.self, from: response.data!)
-                    //let transModel = TransactionsDataModel(from: data)
-                    completion(data)
+                    
+                    var transArray:[TransactionDataModel] = []
+                    if let results = data.result {
+                        
+                        for res in results {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = Int(res.timeStamp ?? "0") ?? 0
+                            trans.sender = res.from ?? ""
+                            trans.recipient = res.to ?? ""
+                            let newVal: String = String(res.value?.dropLast(12) ?? "0")
+                            let damt = Double(newVal) ?? 0
+                            let amt = damt / 1000000
+                            trans.amount = amt
+                            trans.data = TransactionDataDataModel()
+                            trans.nonce = Int(res.nonce ?? "0") ?? 0
+                            trans.signature = ""
+                            trans.hash = res.hash ?? ""
+                            trans.block = TransactionBlockDataModel(height: Int(res.blockNumber ?? "0") ?? 0, hash: res.blockHash ?? "")
+                            trans.confirmations = Int(res.confirmations ?? "0") ?? 0
+                            trans.status = .confirmed
+                            trans.type = .edge
+                            transArray.append(trans)
+                        }
+                    }
+                    completion(transArray)
                 } catch let error as NSError {
                     
                     print("Failed to load: \(error.localizedDescription)")

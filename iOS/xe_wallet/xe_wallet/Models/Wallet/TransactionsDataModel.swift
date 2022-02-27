@@ -38,85 +38,7 @@ enum TransactionStatus: String {
 }
 
 
-struct TransactionsDataModel: Codable {
-
-    var results: [TransactionRecordDataModel]?
-    var metadata: TransactionMetaDataModel?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case results
-        case metadata
-    }
-
-    public init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.results = try container.decode([TransactionRecordDataModel].self, forKey: .results)
-        self.metadata = try container.decode(TransactionMetaDataModel.self, forKey: .metadata)
-    }
-    
-    public init(from xe: XETransactionsDataModel) {
-        
-        guard let results = xe.results else { return }
-        
-        var res = [TransactionRecordDataModel]()
-
-        for n in results {
-            
-            let newRecord = TransactionRecordDataModel(from: n)
-            res.append(newRecord)
-        }
-        self.results = res
-    }
-    
-    public init(from ether: EtherTransactionsDataModel, type: WalletType) {
-        
-        guard let results = ether.result else { return }
-        
-        var res = [TransactionRecordDataModel]()
-
-        for n in results {
-            
-            let newRecord = TransactionRecordDataModel(from: n, type: type)
-            res.append(newRecord)
-        }
-        self.results = res
-    }
-}
-
-struct TransactionMetaDataModel: Codable {
-
-    var address: String
-    var totalCount: Int
-    var count: Int
-    var page: Int
-    var limit: Int
-    var skip: Int
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case address
-        case totalCount
-        case count
-        case page
-        case limit
-        case skip
-    }
-
-    public init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.address = try container.decode(String.self, forKey: .address)
-        self.totalCount = try container.decode(Int.self, forKey: .totalCount)
-        self.count = try container.decode(Int.self, forKey: .count)
-        self.page = try container.decode(Int.self, forKey: .page)
-        self.limit = try container.decode(Int.self, forKey: .limit)
-        self.skip = try container.decode(Int.self, forKey: .skip)
-    }
-}
-
-struct TransactionRecordDataModel: Codable {
+struct TransactionDataModel: Codable {
 
     var timestamp: Int
     var sender: String
@@ -161,7 +83,7 @@ struct TransactionRecordDataModel: Codable {
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
         self.type = try container.decode(WalletType.self, forKey: .type)
     }
-    
+        
     public init(from ether: EtherTransactionDataModel, type: WalletType) {
         
         self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
@@ -180,6 +102,21 @@ struct TransactionRecordDataModel: Codable {
         self.confirmations = Int(ether.confirmations ?? "0") ?? 0
         self.status = .confirmed
         self.type = type
+    }
+    
+    public init() {
+        
+        self.timestamp =  0
+        self.sender = ""
+        self.recipient = ""
+        self.amount = 0
+        self.data = TransactionDataDataModel()
+        self.nonce = 0
+        self.signature = ""
+        self.hash = ""
+        self.block = TransactionBlockDataModel(height: 0, hash: "")
+        self.confirmations = 0
+        self.status = .confirmed
     }
     
     public init(from xe: XETransactionRecordDataModel) {
@@ -230,20 +167,7 @@ struct TransactionRecordDataModel: Codable {
         self.type = .xe
     }
     
-    public init() {
-        
-        self.timestamp =  0
-        self.sender = ""
-        self.recipient = ""
-        self.amount = 0
-        self.data = TransactionDataDataModel()
-        self.nonce = 0
-        self.signature = ""
-        self.hash = ""
-        self.block = TransactionBlockDataModel(height: 0, hash: "")
-        self.confirmations = 0
-        self.status = .confirmed
-    }
+
 }
 
 struct TransactionPendingRecordDataModel: Codable {
@@ -320,6 +244,11 @@ struct TransactionDataDataModel: Codable {
     public init() {
         
         self.memo = ""
+    }
+    
+    public init(memo: String) {
+        
+        self.memo = memo
     }
     
     public init(from xe:XETransactionDataDataModel) {
