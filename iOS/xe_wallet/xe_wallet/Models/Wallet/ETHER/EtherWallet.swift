@@ -155,6 +155,7 @@ class EtherWallet {
                             transArray.append(trans)
                         }
                     }
+                    
                     completion(transArray)
 
                 } catch let error as NSError {

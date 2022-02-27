@@ -17,7 +17,6 @@ struct Wallet: Codable {
     let isHD:Bool
 }
 
-
 struct HDKey: Codable {
     
     let name:String?
@@ -31,7 +30,6 @@ func createWallet(password:String,walletName:String) -> Wallet {
     let address = keystore.addresses!.first!.address
     return Wallet(address: address, data: keyData, name: walletName, isHD: false)
 }
-
 
 func createWallet(password:String,mnemonicesPassword:String,walletName:String) -> Wallet {
     

@@ -152,7 +152,7 @@ class XEWallet {
                         }
                     }
                     
-                    XEWallet().downloadPendingTransactions(address: address, completion: { pending in
+                    self.downloadPendingTransactions(address: address, completion: { pending in
                     
                         if let pend = pending {
                         

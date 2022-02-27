@@ -253,10 +253,6 @@ enum WalletType: String, Codable {
             break
             
         case .usdc:
-            EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
-                
-                completion( res )
-            })
             break
             
         case .ethereum:

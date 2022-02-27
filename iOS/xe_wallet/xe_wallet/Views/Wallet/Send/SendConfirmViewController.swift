@@ -202,7 +202,9 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             let fAmount = String(format: "%.6f", amountValue!)
             
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
-            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: self.memo, amount: fAmount, key: key, completion: { res in
+            var memoString = self.memo
+            let trimmedMemo = memoString.trimmingCharacters(in: .whitespacesAndNewlines)
+            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: { res in
                 
                 if res {
                     
