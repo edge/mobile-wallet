@@ -208,12 +208,18 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                 
                 if res {
                     
-                    self.view.makeToast("Transaction Succeded", duration: Constants.toastDisplayTime, position: .top)
+                    let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
+                    contentVC.modalPresentationStyle = .overFullScreen
+                    self.present(contentVC, animated: true, completion: nil)
+                    
+                    
+                   /* self.view.makeToast("Transaction Succeded", duration: Constants.toastDisplayTime, position: .top)
 
                     Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
                     
+                        
                         self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
-                    }
+                    }*/
                 } else {
                     
                     self.confirmStatus = .error
