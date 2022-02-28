@@ -161,7 +161,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         
         if self.isReviewActive {
             
-            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonView.backgroundColor = UIColor(named:"XEGreen")
             self.reviewButtonText.textColor = UIColor(named: "FontMain")
         } else {
             

@@ -54,14 +54,20 @@ class TransactionPageViewController: BaseViewController{
                     self.statusTickImage.tintColor = UIColor(named:"FontSecondary")
                     if let confirmations = transaction.confirmations {
                     
-                        self.directionLabel.text = "\(confirmations) confirmations"
+                        if confirmations == 1 {
+                            
+                            self.directionLabel.text = "\(confirmations) confirmation"
+                        } else {
+                            
+                            self.directionLabel.text = "\(confirmations) confirmations"
+                        }
                     }
                     self.directionLabel.textColor = UIColor(named:"FontSecondary")
                 } else {
                     
                     self.statusTickImage.image = UIImage(named:"tick")
                     self.statusTickImage.tintColor = UIColor(named:"FontMain")
-                    self.directionLabel.textColor = .green
+                    self.directionLabel.textColor = UIColor(named:"XEGreen")
                     
                     self.directionLabel.text = "Confirmed"
                 }

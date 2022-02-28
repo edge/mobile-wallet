@@ -215,7 +215,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.reviewButtonButton.isEnabled = false
         } else {
             
-            self.reviewButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.reviewButtonView.backgroundColor = UIColor(named:"XEGreen")
             self.reviewButtonText.textColor = UIColor(named:"FontMain")
             self.reviewButtonButton.isEnabled = true
         }

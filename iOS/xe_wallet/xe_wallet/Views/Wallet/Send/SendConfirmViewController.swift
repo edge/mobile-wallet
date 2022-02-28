@@ -111,7 +111,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             self.mainView.isHidden = false
             self.confirmButtonOutterView.isHidden = false
             self.confirmButtonText.text = "Confirm"
-            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"XEGreen")
             break
         case .pinEntry:
             self.pinEntryMainView.isHidden = false
@@ -134,7 +134,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         case .error:
             self.confirmButtonErrorLabel.text = "Failed to send coins"
             self.confirmButtonText.text = "Retry"
-            self.confirmButtonMainView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.confirmButtonMainView.backgroundColor = UIColor(named:"XEGreen")
             break
         case .done:
             break

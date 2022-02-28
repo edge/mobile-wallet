@@ -39,7 +39,7 @@ class TransactionTableViewCell: UITableViewCell {
         } else {
             
             self.directionArrowImage.image = UIImage(systemName:"arrow.down")
-            self.directionArrowImage.tintColor = UIColor.green
+            self.directionArrowImage.tintColor = UIColor(named:"XEGreen")
             self.typeLabel.text = transaction.sender
             self.amountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: transaction.amount))"
         }

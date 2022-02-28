@@ -184,7 +184,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
             self.mainView.isHidden = false
             self.completeButtonView.isHidden = false
             self.completeButtonText.text = "Confirm"
-            self.completeButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.completeButtonView.backgroundColor = UIColor(named:"XEGreen")
             break
         case .pinEntry:
             self.pinEntryMainView.isHidden = false
@@ -207,7 +207,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
         case .error:
             //self.confirmButtonErrorLabel.text = "Failed to send coins"
             self.completeButtonText.text = "Retry"
-            self.completeButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.completeButtonView.backgroundColor = UIColor(named:"XEGreen")
             break
         case .done:
             break
@@ -293,7 +293,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
             self.completeButtonButton.isEnabled = false
         } else {
             
-            self.completeButtonView.backgroundColor = UIColor(named:"ButtonGreen")
+            self.completeButtonView.backgroundColor = UIColor(named:"XEGreen")
             self.completeButtonText.textColor = UIColor(named:"FontMain")
             self.completeButtonButton.isEnabled = true
         }

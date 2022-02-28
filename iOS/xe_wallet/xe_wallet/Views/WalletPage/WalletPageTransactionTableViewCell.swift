@@ -38,7 +38,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         } else {
             
             self.directionArrowImage.image = UIImage(systemName:"arrow.down")
-            self.directionArrowImage.tintColor = UIColor.green
+            self.directionArrowImage.tintColor = UIColor(named:"XEGreen")
             self.typeLabel.text = data.sender
             self.amountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(data.amount)))"
         }
