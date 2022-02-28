@@ -144,9 +144,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
                     }
                     let totalFee = fee + handling
                     
-                    self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
-                    self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
-                    self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: (self.fromAmount - totalFee) * rates.rate))"
+                    self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee)) \(self.fromType.getDataString(dataType: .coinSymbolLabel))"
+                    self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount)) \(self.fromType.getDataString(dataType: .coinSymbolLabel))"
+                    self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: (self.fromAmount - totalFee) * rates.rate)) \(self.totype.getDataString(dataType: .coinSymbolLabel))"
                 }
             }
         } else {
@@ -161,9 +161,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
                 }
                 let totalFee = fee + handling
                 
-                self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
-                self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
-                self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee))"
+                self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee)) \(self.fromType.getDataString(dataType: .coinSymbolLabel))"
+                self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount)) \(self.fromType.getDataString(dataType: .coinSymbolLabel))"
+                self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee)) \(self.totype.getDataString(dataType: .coinSymbolLabel))"
             }
         }
         
