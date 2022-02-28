@@ -94,7 +94,7 @@ class XEExchangeRatesManager {
         
     func downloadExchangeRates() {
         
-        Alamofire.request(Constants.XE_ExchangeRatesUrl, method: .get, encoding: URLEncoding.queryString, headers: nil)
+        Alamofire.request(WalletType.xe.getDataNetwork(dataType: .gasExchangeRates), method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 

@@ -93,7 +93,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         self.addressAddressLabel.text = wallet.address
         
         self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
-        self.swapFromTokenAbv.text = wallet.type.getDisplayLabel()
+        self.swapFromTokenAbv.text = wallet.type.getDataString(dataType: .displayLabel)
         
         if clearValue {
         
@@ -105,16 +105,16 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.swapFromSelectImage.isHidden = true
             self.swapFromTokenSelectButton.isEnabled = false
             self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
-            self.swapFromTokenAbv.text = wallet.type.getCoinSymbol()
+            self.swapFromTokenAbv.text = wallet.type.getDataString(dataType: .coinSymbolLabel)
             self.swapFromAvailableLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)) XE available to swap"
-            self.swapFromCardImage.image = UIImage(named:wallet.type.getBackgroundImage())
+            self.swapFromCardImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
         } else {
             
             self.swapFromSelectImage.isHidden = false
             self.swapFromTokenSelectButton.isEnabled = true
             
             self.swapFromTokenImage.image = UIImage(named:self.swapFromTokenType.rawValue)
-            self.swapFromTokenAbv.text = self.swapFromTokenType.getCoinSymbol()
+            self.swapFromTokenAbv.text = self.swapFromTokenType.getDataString(dataType: .coinSymbolLabel)
             var balance = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)) ETH available to swap"
             
             if self.swapFromTokenType == .edge {
@@ -123,7 +123,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 balance = "\(CryptoHelpers.generateCryptoValueString(value: edgeBalance ?? 0.0)) EDGE available to swap"
             }
             self.swapFromAvailableLabel.text = balance
-            self.swapFromCardImage.image = UIImage(named:WalletType.ethereum.getBackgroundImage())
+            self.swapFromCardImage.image = UIImage(named:WalletType.ethereum.getDataString(dataType: .backgroundImage))
         }
         
         if self.toIndex != -1 {
@@ -134,11 +134,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             if self.walletData[self.toIndex].type == .xe {
                 
                 self.swapToTokenTokenImage.image = UIImage(named:self.walletData[self.toIndex].type.rawValue)
-                self.swapToTokenTokenAbv.text = self.walletData[self.toIndex].type.getDisplayLabel()
+                self.swapToTokenTokenAbv.text = self.walletData[self.toIndex].type.getDataString(dataType: .displayLabel)
                 
                 self.swapToTokenSelectImage.isHidden = true
                 self.swapToTokenSelectButton.isEnabled = false
-                self.swapToCardImage.image = UIImage(named:WalletType.xe.getBackgroundImage())
+                self.swapToCardImage.image = UIImage(named:WalletType.xe.getDataString(dataType: .backgroundImage))
             } else {
                 
                 self.swapToTokenSelectImage.isHidden = false
@@ -146,17 +146,17 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 if self.swapToTokenType == .edge {
                     
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.edge.rawValue)
-                    self.swapToTokenTokenAbv.text = WalletType.edge.getDisplayLabel()
+                    self.swapToTokenTokenAbv.text = WalletType.edge.getDataString(dataType: .displayLabel)
                 } else if self.swapToTokenType == .usdc {
                         
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.usdc.rawValue)
-                    self.swapToTokenTokenAbv.text = WalletType.usdc.getDisplayLabel()
+                    self.swapToTokenTokenAbv.text = WalletType.usdc.getDataString(dataType: .displayLabel)
                 } else {
                     
                     self.swapToTokenTokenImage.image = UIImage(named:WalletType.ethereum.rawValue)
-                    self.swapToTokenTokenAbv.text = WalletType.ethereum.getDisplayLabel()
+                    self.swapToTokenTokenAbv.text = WalletType.ethereum.getDataString(dataType: .displayLabel)
                 }
-                self.swapToCardImage.image = UIImage(named:WalletType.ethereum.getBackgroundImage())
+                self.swapToCardImage.image = UIImage(named:WalletType.ethereum.getDataString(dataType: .backgroundImage))
             }
         } else {
             

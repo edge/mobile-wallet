@@ -68,14 +68,14 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
             
             self.fromImageView.image = UIImage(named: fWallet.type.rawValue )
             self.fromAddressLabel.text = fWallet.address
-            self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDisplayLabel())"
+            self.fromAmountLabel.text = "\(String(format: "%.6f", Double(fWallet.status?.balance ?? 00)/1000000)) \(fWallet.type.getDataString(dataType: .displayLabel))"
         }
         
         if let tWallet = self.toWalletData {
             
             self.toImageView.image = UIImage(named: tWallet.type.rawValue )
             self.toAddressLabel.text = tWallet.address
-            self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDisplayLabel())"
+            self.toAmountLabel.text = "\(String(format: "%.6f", Double(tWallet.status?.balance ?? 00)/1000000)) \(tWallet.type.getDataString(dataType: .displayLabel))"
         }
         
         self.amountLabel.text = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)

@@ -88,7 +88,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
         
-            self.cardBackgroundImage.image = UIImage(named:wallet.type.getBackgroundImage())
+            self.cardBackgroundImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
             self.addressLabel.text = wallet.address
             self.selectedWalletAddress = wallet.address
                         
@@ -152,7 +152,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
     func configureCardDisplay() {
         
         self.coinIconImage.image = UIImage(named: self.selectedAsset.rawValue)
-        self.assetLabel.text = self.selectedAsset.getDisplayLabel()
+        self.assetLabel.text = self.selectedAsset.getDataString(dataType: .displayLabel)
         self.amountTextField.text = ""
         self.checkForActiveContinueButton()
     }
@@ -263,7 +263,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                             
                             shouldBeActive = true
                             
-                            if toText.count != wallet.type.getWalletCharacterLength() || !toText.hasPrefix(wallet.type.getWalletPrefix()) {
+                            if toText.count != wallet.type.getWalletCharacterLength() || !toText.hasPrefix(wallet.type.getDataString(dataType: .coinPrefix)) {
                                 
                                 shouldBeActive = false
                             }
@@ -366,7 +366,7 @@ extension SendViewController {
         
         self.selectedAsset = type
         self.configureCardDisplay()
-        self.sendTitleLabel.text = "Send \(type.getDisplayLabel())"
+        self.sendTitleLabel.text = "Send \(type.getDataString(dataType: .displayLabel))"
     }
 }
 

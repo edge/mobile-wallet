@@ -52,40 +52,10 @@ class Constants {
     static var deleteWalletBody = "This will remove the wallet from the app."
     
     static var toastDisplayTime = 1.5
-    
-    /// NETWORK settings
-    ///
-    static var XE_MainNetStatusUrl = "https://api.xe.network/wallet/"
-    static var XE_TestNetStatusUrl = "https://xe1.test.network/wallet/"
-    
-    /// XE transactions endpoint
-    ///
-    static var XE_MainNetTransactionUrl = "https://index.xe.network/transactions/"
-    static var XE_TestNetTransactionUrl = "https://index.test.network/transactions/"
-    
-    /// XE pending transaction Endpoints
-    ///
-    static var XE_MainNetPendingUrl = "https://api.xe.network/transactions/pending/"
-    static var XE_TestNetPendingUrl = "https://xe1.test.network/transactions/pending/"
-    
-    /// XE send endpoint
-    ///
-    static var XE_MainNetSendUrl = "https://api.xe.network/transaction"
-    static var XE_TestNetSendUrl = "https://xe1.test.network/transaction"
-    
+        
 
-    static var XE_GasRatesUrl = "https://index.xe.network/gasrates"
-    static var XE_ExchangeRatesUrl = "https://index.xe.network/exchangerate"
-    static var XE_ExchangeRateCurrentUrl = "https://index.xe.network/token/current"
-    static var XE_ExchangeRateHistoryUrl = "https://index.test.network/token/lastweek"
-    
     static var XE_StakedAmountsUrl = "https://index.xe.network/stats/stakes"
     
-    /// Transactions Pending endpoint
-    ///
-    static var XE_testTransactionPendingURL = "https://xe1.test.network/transactions/pending"
-    static var XE_mainTransactionPendingURL = "https://api.xe.network/transactions/pending"
-
     /// Network labels for in app
     ///
     static var XE_networkMainNetTitle = "Edge (XE) Mainnet"

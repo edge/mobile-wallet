@@ -72,7 +72,7 @@ class XEWallet {
     
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
         
-        let url = AppDataModelManager.shared.getNetworkStatus().getStatusUrl()
+        let url = WalletType.xe.getDataNetwork(dataType: .status)
         
         Alamofire.request("\(url)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
@@ -114,7 +114,7 @@ class XEWallet {
     
     func downloadTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
         
-        let urlTransactions = AppDataModelManager.shared.getNetworkStatus().getTransactionsUrl()
+        let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
         //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
                 
         Alamofire.request("\(urlTransactions)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
@@ -173,7 +173,7 @@ class XEWallet {
     
     func downloadPendingTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
 
-        let urlPending = AppDataModelManager.shared.getNetworkStatus().getPendingUrl()// .getXEServerPendingUrl()
+        let urlPending = WalletType.xe.getDataNetwork(dataType: .pendingTransaction)
         Alamofire.request("\(urlPending)\(address)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
@@ -238,7 +238,7 @@ class XEWallet {
         j2String = String(j2String.dropLast())
         j2String = "\(j2String),\"hash\":\"\(hash)\"}"
         
-        let url = AppDataModelManager.shared.getNetworkStatus().getSendUrl()// getXEServerSendUrl()
+        let url = WalletType.xe.getDataNetwork(dataType: .send)
         
         let headers: HTTPHeaders = [
             "Content-type": "application/json"
@@ -295,7 +295,7 @@ class XEWallet {
         j2String = String(j2String.dropLast())
         j2String = "\(j2String),\"hash\":\"\(hash)\"}"
         
-        let url = AppDataModelManager.shared.getNetworkStatus().getSendUrl()// getXEServerSendUrl()
+        let url = WalletType.xe.getDataNetwork(dataType: .send)
         
         let headers: HTTPHeaders = [
             "Content-type": "application/json"

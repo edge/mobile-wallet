@@ -33,21 +33,21 @@ class ExchangeWalletCollectionViewCell: UICollectionViewCell {
     
     public func config(data: WalletDataModel) {
         
-        self.cardBackgroundImage.image = UIImage(named:data.type.getBackgroundImage())
+        self.cardBackgroundImage.image = UIImage(named:data.type.getDataString(dataType: .backgroundImage))
         if self.coinIconImage != nil {
         
             self.coinIconImage.image = UIImage(named:data.type.rawValue)
         }
         self.addressLabel.text = data.address
 
-        var typeSymbol = WalletType.xe.getCoinSymbol()
+        var typeSymbol = WalletType.xe.getDataString(dataType: .coinSymbolLabel)
         
         var amount = data.status?.balance
         
         
         if data.type != .xe {
             
-            typeSymbol = WalletType.edge.getCoinSymbol()
+            typeSymbol = WalletType.edge.getDataString(dataType: .coinSymbolLabel)
             let edgeBalance = data.status?.getTokenBalance(type: .edge)
             amount = edgeBalance
         }

@@ -47,7 +47,7 @@ class WalletPageAssetTableViewCell: UITableViewCell {
         } else {
             
             self.tokenIconImage.image = UIImage(named:data.walletType.rawValue)
-            self.tokenNameLabel.text = data.walletType.getFullNameLabel()
+            self.tokenNameLabel.text = data.walletType.getDataString(dataType: .fullNameLabel)
         }
         
         self.tokenCoinAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)

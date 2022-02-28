@@ -79,7 +79,7 @@ class TransactionPageViewController: BaseViewController{
             }
              
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
-            self.tokenAbvLabel.text = self.walletType.getCoinSymbol()
+            self.tokenAbvLabel.text = self.walletType.getDataString(dataType: .coinSymbolLabel)
                 
             self.toTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.toAddressLabel.text = transaction.recipient
@@ -87,7 +87,7 @@ class TransactionPageViewController: BaseViewController{
             self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.fromAddressLabel.text = transaction.sender
             
-            self.exploreButtonLabel.text = transaction.type?.getExploreButtonText()
+            self.exploreButtonLabel.text = transaction.type?.getDataString(dataType: .explorerButtonText)
         }
     }
 
@@ -101,7 +101,7 @@ class TransactionPageViewController: BaseViewController{
         
         if let transaction = self.transactionData {
          
-            if let end = transaction.type?.getExploreButtonUrl() {
+            if let end = transaction.type?.getDataNetwork(dataType: .exploreButtonUrl) {
                 
                 if let url = URL(string: "\(end)\(transaction.hash)") {
                     

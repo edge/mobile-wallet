@@ -113,7 +113,7 @@ class ExchangeDepositViewController: BaseViewController, KillViewDelegate, Custo
             
             self.toDropDown.dataSource.append(wallet.address)
             cellImages.append(wallet.type.rawValue)
-            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0))) \(wallet.type.getDisplayLabel())")
+            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0))) \(wallet.type.getDataString(dataType: .displayLabel))")
         }
         
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]

@@ -94,9 +94,9 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         let valString = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)
                 
         self.amountLabel.text = valString
-        self.receiveAmountLabel.text = "\(valString) \(self.walletType.getCoinSymbol())"
-        self.typeLabel.text = "(\(self.walletType.getDisplayLabel()))"
-        self.feeLabel.text = "Fee: 0 \(self.walletType.getCoinSymbol()) ($0.00)"
+        self.receiveAmountLabel.text = "\(valString) \(self.walletType.getDataString(dataType: .coinSymbolLabel))"
+        self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .displayLabel)))"
+        self.feeLabel.text = "Fee: 0 \(self.walletType.getDataString(dataType: .coinSymbolLabel)) ($0.00)"
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""

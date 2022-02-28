@@ -71,8 +71,8 @@ class WalletMarketTableViewCell: UITableViewCell {
             self.tokenValueLabel.text = "$\(StringHelpers.generateValueString4Dec(value: Double(truncating: rate as! NSNumber)))"
         }
         self.tokenImage.image = UIImage(named:type.rawValue)
-        self.tokenNameLabel.text = self.type.getFullNameLabel()
-        self.tokenAbvLabel.text = self.type.getCoinSymbol()
+        self.tokenNameLabel.text = self.type.getDataString(dataType: .fullNameLabel)
+        self.tokenAbvLabel.text = self.type.getDataString(dataType: .coinSymbolLabel)
         self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: self.type)
     }
     

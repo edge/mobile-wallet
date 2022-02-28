@@ -12,55 +12,7 @@ enum NetworkState: String, Codable {
     case main = "Edge (XE) Mainnet"
     case test = "Edge (XE) Testnet"
     
-    func getStatusUrl() -> String {
-        
-        switch self {
-            
-        case .main:
-            return "https://api.xe.network/wallet/"
-            
-        case .test:
-            return "https://xe1.test.network/wallet/"
-        }
-    }
-        
-    func getTransactionsUrl() -> String {
-            
-        switch self {
-                
-        case .main:
-            return "https://index.xe.network/transactions/"
-                
-        case .test:
-            return "https://index.test.network/transactions/"
-        }
-    }
-    
-    func getSendUrl() -> String {
-                
-        switch self {
-                    
-        case .main:
-            return "https://api.xe.network/transaction"
-                    
-        case .test:
-            return "https://xe1.test.network/transaction"
-        }
-    }
-            
-    func getPendingUrl() -> String {
-            
-        switch self {
-                
-        case .main:
-            return "https://api.xe.network/transactions/pending/"
-                
-        case .test:
-            return "https://xe1.test.network/transactions/pending/"
-        }
-    }
-    
-        
+
     func getWithdrawBridgeAddress() -> String {
                     
         switch self {

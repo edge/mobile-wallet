@@ -77,7 +77,7 @@ class WalletCardCollectionViewCell: UICollectionViewCell {
         guard let wallet = self.walletData else { return }
         //guard let displayData = wallet.getFormattedDataDisplayModel() else { return }
 
-        self.creditCardImage.image = UIImage(named:wallet.type.getBackgroundImage())
+        self.creditCardImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
         self.walletTypeIcon.image = UIImage(named:wallet.type.rawValue)
         
         if wallet.type == .ethereum {

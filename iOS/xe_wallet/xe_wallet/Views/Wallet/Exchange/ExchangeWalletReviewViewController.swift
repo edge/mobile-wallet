@@ -105,14 +105,14 @@ class ExchangeWalletReviewViewController: BaseViewController {
         textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
         let rate = self.getExchangeRateString()
-        self.etherValueLabel.text = "1 \(self.fromType.getCoinSymbol()) = 1 \(self.totype.getCoinSymbol())"
+        self.etherValueLabel.text = "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
         
         self.fromTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount)
         
         self.fromTokenImage.image = UIImage(named:self.fromType.rawValue)
-        self.fromTokenAbv.text = self.fromType.getDisplayLabel()
+        self.fromTokenAbv.text = self.fromType.getDataString(dataType: .displayLabel)
         self.toTokenImage.image = UIImage(named:self.totype.rawValue)
-        self.toTokenAbv.text = self.totype.getDisplayLabel()
+        self.toTokenAbv.text = self.totype.getDataString(dataType: .displayLabel)
         self.toTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount * rate)
         
         if let gas = XEGasRatesManager.shared.getRates() {

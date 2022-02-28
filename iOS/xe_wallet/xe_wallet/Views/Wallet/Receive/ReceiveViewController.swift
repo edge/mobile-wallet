@@ -38,7 +38,7 @@ class ReceiveViewController: BaseViewController {
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
         
-            self.walletBackgroundImage.image = UIImage(named:wallet.type.getBackgroundImage())
+            self.walletBackgroundImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
             self.walletImageIcon.image = UIImage(named:wallet.type.rawValue)
             self.addressLabel.text = wallet.address
             self.selectedWalletAddress = wallet.address

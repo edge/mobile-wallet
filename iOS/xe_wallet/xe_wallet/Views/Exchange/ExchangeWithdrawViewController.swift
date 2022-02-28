@@ -178,7 +178,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
             
             self.toDropDown.dataSource.append(wallet.address)
             cellImages.append(wallet.type.rawValue)
-            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0)/1000000)) \(wallet.type.getDisplayLabel())")
+            cellAmounts.append("\(String(format: "%.6f", Double(wallet.status?.balance ?? 0)/1000000)) \(wallet.type.getDataString(dataType: .displayLabel))")
         }
         
         self.toButtonAddressLabel.text = self.toDropDown.dataSource[0]

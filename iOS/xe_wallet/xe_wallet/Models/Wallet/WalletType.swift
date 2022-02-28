@@ -7,6 +7,29 @@
 
 import Foundation
 
+enum WalletStringData {
+    
+    case displayLabel
+    case fullNameLabel
+    case coinSymbolLabel
+    case backgroundImage
+    case coinPrefix
+    case explorerButtonText
+}
+
+enum WalletNetworkStringData {
+    
+    case status
+    case gasRates
+    case gasExchangeRates
+    case gasExchangeCurrent
+    case gasExchangeHistory
+    case send
+    case transaction
+    case pendingTransaction
+    case exploreButtonUrl
+}
+
 enum WalletType: String, Codable {
     
     case xe = "coin_xe"
@@ -14,76 +37,147 @@ enum WalletType: String, Codable {
     case ethereum = "coin_ethereum"
     case usdc = "coin_usdc"
     
-    func getDisplayLabel() -> String {
+    func getDataString(dataType: WalletStringData) -> String {
         
         switch self {
             
         case .xe:
-            return "XE"
+            switch dataType {
+                
+            case .displayLabel, .fullNameLabel, .coinSymbolLabel:
+                return "XE"
+            case .backgroundImage:
+                return "credit_card_xe"
+            case .coinPrefix:
+                return "xe_"
+            case .explorerButtonText:
+                return "View on Explorer"
+            }
             
         case .edge:
-            return "Edge"
+            switch dataType {
+                
+            case .displayLabel, .fullNameLabel:
+                return "Edge"
+            case .coinSymbolLabel:
+                return "EDGE"
+            case .backgroundImage:
+                return "credit_card_xe"
+            case .coinPrefix:
+                return "0x"
+            case .explorerButtonText:
+                return "View on Etherscan"
+            }
             
         case .ethereum:
-            return "Ether"
+            switch dataType {
+                
+            case .displayLabel:
+                return "Ether"
+            case .fullNameLabel:
+                return "Ethereum"
+            case .coinSymbolLabel:
+                return "ETH"
+            case .backgroundImage:
+                return "credit_card_ether"
+            case .coinPrefix:
+                return "0x"
+            case .explorerButtonText:
+                return "View on Etherscan"
+            }
             
         case .usdc:
-            return "USDC"
+            switch dataType {
+                
+            case .displayLabel, .fullNameLabel, .coinSymbolLabel:
+                return "USDC"
+            case .backgroundImage:
+                return "credit_card_ether"
+            case .coinPrefix:
+                return "0x"
+            case .explorerButtonText:
+                return "View on Etherscan"
+            }
         }
     }
 
-    func getFullNameLabel() -> String {
+    func getDataNetwork(dataType: WalletNetworkStringData) -> String {
         
-        switch self {
+        if AppDataModelManager.shared.testModeStatus() {
             
-        case .xe:
-            return "XE"
+            switch self {
+                
+            case .xe:
+                switch dataType {
+                    
+                case .status:
+                    return "https://xe1.test.network/wallet/"
+                case .gasRates:
+                    return "https://index.test.network/gasrates"
+                case .gasExchangeRates:
+                    return "https://index.test.network/exchangerate"
+                case .gasExchangeCurrent:
+                    return "https://index.test.network/token/current"
+                case .gasExchangeHistory:
+                    return "https://index.test.network/token/lastweek"
+                case .send:
+                    return "https://xe1.test.network/transaction"
+                case .transaction:
+                    return "https://index.test.network/transactions/"
+                case .pendingTransaction:
+                    return "https://xe1.test.network/transactions/pending/"
+                case .exploreButtonUrl:
+                    return "https://test.network/transaction/"
+                }
+                
+            case .edge, .ethereum, .usdc:
+                switch dataType {
+                    
+                case .status, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                    return ""
+                        
+                case .exploreButtonUrl:
+                    return "https://rinkeby.etherscan.io/tx/"
+                }
+            }
+        } else {
             
-        case .edge:
-            return "Edge"
-            
-        case .ethereum:
-            return "Ethereum"
-            
-        case .usdc:
-            return "USDC"
+            switch self {
+                
+            case .xe:
+                switch dataType {
+                    
+                case .status:
+                    return "https://api.xe.network/wallet/"
+                case .gasRates:
+                    return "https://index.xe.network/gasrates"
+                case .gasExchangeRates:
+                    return "https://index.xe.network/exchangerate"
+                case .gasExchangeCurrent:
+                    return "https://index.xe.network/token/current"
+                case .gasExchangeHistory:
+                    return "https://index.xe.network/token/lastweek"
+                case .send:
+                    return "https://api.xe.network/transaction"
+                case .transaction:
+                    return "https://index.xe.network/transactions/"
+                case .pendingTransaction:
+                    return "https://api.xe.network/transactions/pending/"
+                case .exploreButtonUrl:
+                    return "https://xe.network/transaction/"
+                }
+                
+            case .edge, .ethereum, .usdc:
+                switch dataType {
+                    
+                case .status, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                    return ""
+                case .exploreButtonUrl:
+                    return "https://etherscan.io/tx/"
+                }
+            }
         }
-    }
-    
-    func getCoinSymbol() -> String {
-        
-        switch self {
-            
-        case .xe:
-            return "XE"
-            
-        case .edge:
-            return "EDGE"
-            
-        case .ethereum:
-            return "ETH"
-            
-        case .usdc:
-            return "USDC"
-        }
-    }
-    
-    func getBackgroundImage() -> String {
-        
-        switch self {
-            
-        case .xe:
-            return "credit_card_xe"
-            
-        case .edge:
-            return "credit_card_xe"
-            
-        case .ethereum:
-            return "credit_card_ether"
-            
-        case .usdc:
-            return "credit_card_ether"
-        }
+        return ""
     }
     
     func getMinSendValue() -> Double {
@@ -109,56 +203,7 @@ enum WalletType: String, Codable {
             return 42
         }
     }
-    
-    func getWalletPrefix() -> String {
-        
-        switch self {
-            
-        case .xe:
-            return "xe_"
-            
-        case .edge, .ethereum, .usdc:
-            return "0x"
-        }
-    }
-    
-    func getExploreButtonText() -> String {
-        
-        switch self {
-            
-        case .xe:
-            return "View on Explorer"
-            
-        case .edge, .ethereum, .usdc:
-            return "View on Etherscan"
-        }
-    }
-    
-    func getExploreButtonUrl() -> String {
-        
-        switch self {
-            
-        case .xe:
-            if AppDataModelManager.shared.testModeStatus() {
-                
-                return "https://test.network/transaction/"
-            } else {
-                
-                return "https://xe.network/transaction/"
-            }
-            
-        case .edge, .ethereum, .usdc:
-            if AppDataModelManager.shared.testModeStatus() {
-            
-                return "https://rinkeby.etherscan.io/tx/"
-            } else {
-                
-                return "https://etherscan.io/tx/"
-            }
-        }
-    }
 
-    
     func createWallet() -> AddressKeyPairModel? {
         
         switch self {
