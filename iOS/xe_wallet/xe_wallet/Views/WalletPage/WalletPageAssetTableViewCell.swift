@@ -9,14 +9,14 @@ import UIKit
 
 class WalletPageAsset {
     
-    var walletType: WalletType = .ethereum
+    var type: WalletType = .ethereum
     var tokenType: ERC20TokenType? = .edge
     var amount: Double = 0.0
     var value: Double = 0.0
     
-    init(walletType: WalletType, tokenType: ERC20TokenType?, amount: Double, value: Double) {
+    init(type: WalletType, tokenType: ERC20TokenType?, amount: Double, value: Double) {
         
-        self.walletType = walletType
+        self.type = type
         self.tokenType = tokenType
         self.amount = amount
         self.value = value
@@ -46,26 +46,32 @@ class WalletPageAssetTableViewCell: UITableViewCell {
             self.tokenNameLabel.text = tokenType.getFullNameLabel()
         } else {
             
-            self.tokenIconImage.image = UIImage(named:data.walletType.rawValue)
-            self.tokenNameLabel.text = data.walletType.getDataString(dataType: .fullNameLabel)
+            self.tokenIconImage.image = UIImage(named:data.type.rawValue)
+            self.tokenNameLabel.text = data.type.getDataString(dataType: .fullNameLabel)
         }
         
         self.tokenCoinAmountLabel.text = CryptoHelpers.generateCryptoValueString(value: data.amount)
         
-        if data.value == 0 {
+        if data.value == 0 || data.tokenType == .usdc {
         
             self.tokenValueLabel.isHidden = true
             self.tokenChangeImage.isHidden = true
-            self.tokenChangeLabel.text = String(format:"$%.2f", data.value)
+            if data.tokenType == .usdc {
+            
+                self.tokenChangeLabel.text = "$\(StringHelpers.generateValueString(value: data.amount))"
+            } else {
+                
+                self.tokenChangeLabel.text = "$\(StringHelpers.generateValueString(value: data.value))"
+            }
         } else {
             
             self.tokenValueLabel.isHidden = false
             self.tokenChangeImage.isHidden = false
-            self.tokenValueLabel.text = String(format:"$%.2f", data.value)
+            self.tokenValueLabel.text = "$\(StringHelpers.generateValueString(value: data.value))"
             
-            let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.walletType)
+            let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
             self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.walletType)
+            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
         }
     }
 }

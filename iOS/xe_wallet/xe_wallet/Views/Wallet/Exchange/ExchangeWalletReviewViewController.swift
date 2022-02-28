@@ -62,6 +62,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     var timer:Timer?
     var timerCount = 30
+    var countdownStartAmount = 30
     
     var fromAddress:WalletDataModel? = nil
     var fromType:WalletType = .ethereum
@@ -81,7 +82,13 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.configureViews()
         self.configureConfirmStatus()
         
-        self.timerCount = 30
+        if self.totype == .usdc {
+            
+            self.countdownStartAmount = 15
+        }
+        self.timerCount = self.countdownStartAmount
+        self.secondTimerLabel.text = String(format: "%.2f", Double(self.timerCount)/100)
+        
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
     
@@ -104,8 +111,16 @@ class ExchangeWalletReviewViewController: BaseViewController {
         UITextField.appearance().keyboardAppearance = UIKeyboardAppearance.dark
         textEntryTextView.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         
-        let rate = self.getExchangeRateString()
-        self.etherValueLabel.text = "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
+        /*let rate = self.getExchangeRateString()
+        self.etherValueLabel.text = "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"*/
+        
+        self.etherValueLabel.text = self.getExchangeRateString()
+        
+        var rate = 1.0
+        if self.totype == .usdc {
+            
+            rate = Double(XEExchangeRatesManager.shared.getRateValue())
+        }
         
         self.fromTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount)
         
@@ -115,20 +130,44 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.toTokenAbv.text = self.totype.getDataString(dataType: .displayLabel)
         self.toTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount * rate)
         
-        if let gas = XEGasRatesManager.shared.getRates() {
+        if self.totype == .usdc {
             
-            let fee: Double = Double(gas.fee)
-            var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
-            if handling < 25 {
+            if let rates = XEExchangeRatesManager.shared.getRates() {
                 
-                handling = 25
+                if let gas = XEGasRatesManager.shared.getRates() {
+                    
+                    let fee: Double = Double(rates.gas)
+                    var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
+                    if handling < 25 {
+                        
+                        handling = 25
+                    }
+                    let totalFee = fee + handling
+                    
+                    self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
+                    self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
+                    self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: (self.fromAmount - totalFee) * rates.rate))"
+                }
             }
-            let totalFee = fee + handling
-
-            self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
-            self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
-            self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee))"
+        } else {
+            
+            if let gas = XEGasRatesManager.shared.getRates() {
+                
+                let fee: Double = Double(gas.fee)
+                var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
+                if handling < 25 {
+                    
+                    handling = 25
+                }
+                let totalFee = fee + handling
+                
+                self.transactionFeeLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: totalFee))"
+                self.swappingAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount))"
+                self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee))"
+            }
         }
+        
+    
         
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
@@ -208,29 +247,39 @@ class ExchangeWalletReviewViewController: BaseViewController {
         }
     }
     
-    func getExchangeRateString() -> Double {
+    func getExchangeRateString() -> String {
         
-        if let exchangeData = XEExchangeRateCurrentManager.shared.getRates() {
+        if self.totype == .usdc {
             
-            if self.fromType == .xe || self.fromType == .edge {
+            let exchangeValue = XEExchangeRatesManager.shared.getRateValue()
+            return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = \(exchangeValue) \(self.totype.getDataString(dataType: .coinSymbolLabel))"
+        } else {
+            
+            let exchangeValue = XEExchangeRatesManager.shared.getRateValue()
+            return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
+            /*
+            if let exchangeData = XEExchangeRateCurrentManager.shared.getRates() {
                 
-                if self.totype == .xe || self.totype == .edge {
+                if self.fromType == .xe || self.fromType == .edge {
                     
-                    return 1.0
+                    if self.totype == .xe || self.totype == .edge {
+                        
+                        return 1.0
+                    } else {
+                        
+                        return exchangeData.ethPerXE
+                    }
                 } else {
                     
-                    return exchangeData.ethPerXE
+                    if self.totype == .xe || self.totype == .edge {
+                        
+                        return 1/exchangeData.ethPerXE
+                    }
                 }
-            } else {
-                
-                if self.totype == .xe || self.totype == .edge {
-                    
-                    return 1/exchangeData.ethPerXE
-                }
-            }
+            }*/
         }
 
-        return 1.0
+        return ""
     }
     
     func checkForActiveReviewButton() {
@@ -256,7 +305,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
         
         if self.timerCount == 0 {
             
-            self.timerCount = 30
+            self.timerCount = self.countdownStartAmount
             self.configureViews()
         }
         
@@ -299,7 +348,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.confirmStatus = .processing
         self.configureConfirmStatus()
         
-        let amountValue = self.toTokenAmount.text ?? "0.0"
+        let amountValue = self.fromTokenAmount.text ?? "0.0"
         //let fAmount = String(format: "%.6f", amountValue!)
         
 
@@ -310,7 +359,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
             
             if let toWallet = self.toAddress {
                 
-                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", amount: amountValue, fee: 0, key: key, completion: { res in
+                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", toType: self.totype, amount: amountValue, fee: 0, key: key, completion: { res in
                     
                     if res {
                         

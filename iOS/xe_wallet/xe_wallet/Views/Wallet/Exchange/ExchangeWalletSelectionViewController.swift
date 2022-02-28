@@ -85,13 +85,14 @@ class ExchangeWalletSelectionViewController: BaseViewController, UITableViewDele
             
             let wallet = self.walletData[self.selectedWalletIndex]
             self.tokenData.removeAll()
-            //self.tokenData.append(ExchangeTokenSelectionDataModel(type:.ethereum, address: "Ethereum", abv: "$ETH", balance:wallet.status?.balance ?? 0, value: wallet.status?.balance ?? 0))
+
             let edgeBalance = wallet.status?.getTokenBalance(type: .edge)
             self.tokenData.append(ExchangeTokenSelectionDataModel(type:.edge, address: "Edge", abv: "$EDGE", balance:edgeBalance ?? 0.0, value: edgeBalance ?? 0.0))
             
             if self.tag != 1 {
             
-                self.tokenData.append(ExchangeTokenSelectionDataModel(type:.usdc, address: "USDC", abv: "$USDC", balance:0.0, value:0.0))
+                let usdcBalance = wallet.status?.getTokenBalance(type: .usdc)
+                self.tokenData.append(ExchangeTokenSelectionDataModel(type:.usdc, address: "USDC", abv: "$USDC", balance:usdcBalance ?? 0.0, value:usdcBalance ?? 0.0))
             }
         }
         self.tableView.reloadData()
@@ -148,6 +149,9 @@ extension ExchangeWalletSelectionViewController {
             if token.type == .edge {
             
                 (cell as! ExchangeTokenSelectionTableViewCell).valueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: value * (edgerate ?? 0) as! NSNumber)))"
+            } else if token.type == .usdc {
+                
+                (cell as! ExchangeTokenSelectionTableViewCell).valueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: value * 1 as! NSNumber)))"
             } else {
             
                 (cell as! ExchangeTokenSelectionTableViewCell).valueLabel.text = "$\(StringHelpers.generateValueString(value: Double(truncating: value * (etherrate ?? 0) as! NSNumber)))"

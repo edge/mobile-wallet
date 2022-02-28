@@ -310,12 +310,12 @@ enum WalletType: String, Codable {
         }
     }
     
-    func exchangeCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
+    func exchangeCoins(wallet: WalletDataModel, toAddress: String, toType: WalletType, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
         
         switch self {
             
         case .xe:
-            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, amount: amount, fee: fee, key: key, completion: { res in
+            XEWallet().withdrawCoins(wallet: wallet, toAddress: toAddress, toType: toType, amount: amount, fee: fee, key: key, completion: { res in
                 
                 completion( res )
             })

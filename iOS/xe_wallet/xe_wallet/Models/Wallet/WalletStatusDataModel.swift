@@ -40,28 +40,12 @@ class WalletStatusDataModel: Codable {
         self.erc20Tokens = erc20Tokens
         self.nonce = nonce
     }
-   /*
-    public init(from xe: XEWalletStatusDataModel) {
-        
-        self.address = xe.address ?? ""
-        self.balance = Double(xe.balance ?? 0)/1000000
-        self.erc20Tokens = nil
-        self.nonce = xe.nonce ?? 0
-    }
-    
-    public init(from ether: EtherWalletStatusDataModel) {
-        
-        self.address = ether.address ?? ""
-        self.balance = Double(ether.balance ?? 0)///1000000
-        self.erc20Tokens = ether.erc20Tokens
-        self.nonce = ether.nonce ?? 0
-    }*/
     
     public func getTokenBalance(type: ERC20TokenType) -> Double {
         
         if let erc20 = self.erc20Tokens {
             
-            if let index = erc20.firstIndex(where: { $0.type == type }) {
+            if let index = erc20.firstIndex(where: { $0.tokenType == type }) {
                 
                 return erc20[index].balance
             }

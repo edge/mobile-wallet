@@ -102,16 +102,16 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 
         if wallet.type == .xe {
             
-            self.swapFromSelectImage.isHidden = true
-            self.swapFromTokenSelectButton.isEnabled = false
+            //self.swapFromSelectImage.isHidden = true
+            //self.swapFromTokenSelectButton.isEnabled = false
             self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
             self.swapFromTokenAbv.text = wallet.type.getDataString(dataType: .coinSymbolLabel)
             self.swapFromAvailableLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)) XE available to swap"
             self.swapFromCardImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
         } else {
             
-            self.swapFromSelectImage.isHidden = false
-            self.swapFromTokenSelectButton.isEnabled = true
+            //self.swapFromSelectImage.isHidden = false
+            //self.swapFromTokenSelectButton.isEnabled = true
             
             self.swapFromTokenImage.image = UIImage(named:self.swapFromTokenType.rawValue)
             self.swapFromTokenAbv.text = self.swapFromTokenType.getDataString(dataType: .coinSymbolLabel)
@@ -161,6 +161,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         } else {
             
             self.swapToAddressLabel.text = "No Available Wallets"
+            self.swapToTokenSelectButton.isHidden = true
+            self.swapToTokenSelectButton.isEnabled = false
         }
         
         self.checkForActiveReviewButton()
@@ -221,19 +223,33 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     
     func checkValidAmountSubFees(amount: Double) -> Bool {
         
-        if let gas = XEGasRatesManager.shared.getRates() {
+        if self.swapToTokenType == .usdc {
             
-            let fee: Double = Double(gas.fee)
-            var handling: Double = ((amount)/100) * gas.handlingFeePercentage
-            if handling < 25 {
-                
-                handling = 25
-            }
-            let totalFee = fee + handling
+            let rates = XEExchangeRatesManager.shared.getRates()
 
-            if amount - totalFee > 0 {
+            let rate = XEExchangeRatesManager.shared.getRateValue()
+            if amount <= 0 || amount > rates?.limit ?? 100 {
                 
-                return true
+                return false
+            }
+            return true
+
+        } else {
+            
+            if let gas = XEGasRatesManager.shared.getRates() {
+                
+                let fee: Double = Double(gas.fee)
+                var handling: Double = ((amount)/100) * gas.handlingFeePercentage
+                if handling < 25 {
+                    
+                    handling = 25
+                }
+                let totalFee = fee + handling
+                
+                if amount - totalFee > 0 {
+                    
+                    return true
+                }
             }
         }
         return false
@@ -356,6 +372,10 @@ extension ExchangeViewController2 {
                 
                 self.selectedIndex = index
                 self.swapFromTokenType = self.walletData[self.selectedIndex].type
+                if self.swapFromTokenType == .ethereum {
+                    
+                    self.swapFromTokenType = .edge
+                }
                 self.setToWalletDetails()
                 self.configureSelectedWallet(clearValue: true)
             }

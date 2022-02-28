@@ -204,7 +204,7 @@ class ExchangeDepositConfirmViewController: BaseViewController, CustomTitleBarDe
                                 let fAmount = String(format: "%.6f", amountValue!)
                                 
                                 let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
-                                wallet.type.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", amount: fAmount, fee: 0, key: key, completion: { res in
+                                wallet.type.exchangeCoins(wallet: wallet, toAddress: self.toWalletData?.address ?? "", toType: .xe, amount: fAmount, fee: 0, key: key, completion: { res in
                                     
                                     if res {
                                         

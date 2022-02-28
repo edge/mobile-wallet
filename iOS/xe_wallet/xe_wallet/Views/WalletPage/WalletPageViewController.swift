@@ -187,19 +187,19 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
             if wallet.type == .xe {
                 
                 let amount = wallet.status?.balance ?? 0
-                self.assetsArray.append(WalletPageAsset(walletType:.xe, tokenType: nil, amount:amount, value:amount * self.edgeExchangeRate))
+                self.assetsArray.append(WalletPageAsset(type:.xe, tokenType: nil, amount:amount, value:amount * self.edgeExchangeRate))
                 self.totalValue += amount * self.edgeExchangeRate
             } else {
                 
                 let amount = wallet.status?.balance ?? 0
-                self.assetsArray.append(WalletPageAsset(walletType:.ethereum, tokenType: nil, amount:amount, value:amount * self.ethereumExchangeRate))
+                self.assetsArray.append(WalletPageAsset(type:.ethereum, tokenType: nil, amount:amount, value:amount * self.ethereumExchangeRate))
                 self.totalValue += amount * self.ethereumExchangeRate
                 
                 if let erc20 = wallet.status?.erc20Tokens {
                     
                     for erc in erc20 {
                         
-                        self.assetsArray.append(WalletPageAsset(walletType:.ethereum, tokenType:erc.type, amount:erc.balance, value:erc.balance * self.edgeExchangeRate))
+                        self.assetsArray.append(WalletPageAsset(type:erc.type, tokenType:erc.tokenType, amount:erc.balance, value:erc.balance * self.edgeExchangeRate))
                         self.totalValue += erc.balance * self.edgeExchangeRate
                     }
                 }

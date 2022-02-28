@@ -728,6 +728,7 @@
                                                                                             </label>
                                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="UCN-Gc-Kab">
                                                                                                 <rect key="frame" x="246" y="7" width="20" height="17.5"/>
+                                                                                                <color key="tintColor" name="FontSecondary"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="20" id="FJv-hw-K0U"/>
                                                                                                     <constraint firstAttribute="width" constant="20" id="TOL-M7-sFP"/>
@@ -835,7 +836,7 @@
                                                                                                 <color key="textColor" name="FontMain"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oO7-GX-Z4v">
+                                                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oO7-GX-Z4v">
                                                                                                 <rect key="frame" x="50" y="7" width="20" height="17.5"/>
                                                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                                 <imageReference key="image" image="arrow.down.app.fill" catalog="system" renderingMode="hierarchical">
@@ -846,7 +847,7 @@
                                                                                                     </hierarchicalColors>
                                                                                                 </imageReference>
                                                                                             </imageView>
-                                                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-b0-GeC">
+                                                                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZlN-b0-GeC">
                                                                                                 <rect key="frame" x="0.0" y="4" width="70" height="24"/>
                                                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                                                 <connections>
@@ -1049,8 +1050,9 @@
                                                                                                 <color key="textColor" name="FontMain"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
-                                                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwe-j9-Chv">
+                                                                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rwe-j9-Chv">
                                                                                                 <rect key="frame" x="246" y="7" width="20" height="17.5"/>
+                                                                                                <color key="tintColor" name="FontSecondary"/>
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="width" constant="20" id="hK2-uZ-KyG"/>
                                                                                                     <constraint firstAttribute="height" constant="20" id="yqP-Ym-PgM"/>
@@ -1074,7 +1076,7 @@
                                                                                             <constraint firstItem="RBU-Hj-WNi" firstAttribute="leading" secondItem="6Py-RL-CEr" secondAttribute="leading" id="qma-VS-JKq"/>
                                                                                         </constraints>
                                                                                     </view>
-                                                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncu-OQ-Qge">
+                                                                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ncu-OQ-Qge">
                                                                                         <rect key="frame" x="0.0" y="0.0" width="366" height="56"/>
                                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -1135,6 +1137,7 @@
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D6N-2W-1EK">
                                                                                         <rect key="frame" x="12" y="10" width="32" height="32"/>
                                                                                         <color key="backgroundColor" name="PinEntryBoxBackground"/>
+                                                                                        <color key="tintColor" name="FontSecondary"/>
                                                                                         <constraints>
                                                                                             <constraint firstAttribute="height" constant="32" id="8I0-aT-1gq"/>
                                                                                             <constraint firstAttribute="width" constant="32" id="gdA-rh-jht"/>
@@ -2391,7 +2394,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="u4g-od-jto"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
-                                                            <color key="textColor" name="FontMain"/>
+                                                            <color key="textColor" name="FontSecondary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000" textAlignment="right" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xvd-Cl-HB7">
@@ -2409,7 +2412,7 @@
                                                                 <constraint firstAttribute="height" constant="20" id="e3w-ih-zsj"/>
                                                             </constraints>
                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
-                                                            <color key="textColor" name="FontMain"/>
+                                                            <color key="textColor" name="FontSecondary"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>

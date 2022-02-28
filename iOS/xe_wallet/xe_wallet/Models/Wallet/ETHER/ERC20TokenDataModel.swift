@@ -6,11 +6,34 @@
 //
 
 import Foundation
+import web3swift
 
 enum ERC20TokenType: String, Codable, CaseIterable {
     
     case edge = "coin_edge"
     case usdc = "coin_usdc"
+    
+    func getTokenUnitType() -> Web3.Utils.Units {
+        
+        switch self {
+            
+        case .edge:
+            return .wei
+        case .usdc:
+            return .Microether
+        }
+    }
+    
+    func getMainType() -> WalletType {
+        
+        switch self {
+            
+        case .edge:
+            return WalletType.edge
+        case .usdc:
+            return WalletType.usdc
+        }
+    }
     
     func getDisplayLabel() -> String {
         
@@ -64,7 +87,7 @@ enum ERC20TokenType: String, Codable, CaseIterable {
         case .usdc:
             if AppDataModelManager.shared.getNetworkStatus() == .test {
             
-                return "0xeb8f08a975Ab53E34D8a0330E0D34de942C95926"
+                return "0xA279968Cc3Ac93640bEe947322F1e5f94FDA6fC5"
             } else {
             
                 return "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48"
@@ -75,26 +98,29 @@ enum ERC20TokenType: String, Codable, CaseIterable {
 
 class ERC20TokenDataModel: Codable {
 
-    var type: ERC20TokenType
+    var type: WalletType
+    var tokenType: ERC20TokenType
     var balance: Double
 
     enum CodingKeys: String, CodingKey {
         
         case type
+        case tokenType
         case balance
     }
 
     public required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.type = try container.decode(ERC20TokenType.self, forKey: .type)
+        self.type = try container.decode(WalletType.self, forKey: .type)
+        self.tokenType = try container.decode(ERC20TokenType.self, forKey: .type)
         self.balance = try container.decode(Double.self, forKey: .balance)
     }
     
-    public init(type: ERC20TokenType, balance: Double) {
+    public init(type: WalletType, tokenType: ERC20TokenType, balance: Double) {
         
         self.type = type
+        self.tokenType = tokenType
         self.balance = balance
-
     }
 }

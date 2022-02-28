@@ -272,7 +272,7 @@ class XEWallet {
         }
     }
     
-    func withdrawCoins(wallet: WalletDataModel, toAddress: String, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
+    func withdrawCoins(wallet: WalletDataModel, toAddress: String, toType: WalletType, amount: String, fee: Double, key: String, completion: @escaping (Bool)-> Void) {
         
         var amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
         amountString = amountString.replacingOccurrences(of: ",", with: "", options: NSString.CompareOptions.literal, range:nil)
@@ -285,8 +285,14 @@ class XEWallet {
             ref = rates.ref
         }
         
-        
-        var j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(AppDataModelManager.shared.getNetworkStatus().getWithdrawBridgeAddress())\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"ref\":\"\(ref)\",\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+        var j2String = ""
+        if toType == .usdc {
+            
+            j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(AppDataModelManager.shared.getNetworkStatus().getWithdrawBridgeAddress())\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"ref\":\"\(ref)\",\"memo\":\"XE Sale\",\"token\":\"USDC\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+        } else {
+            
+            j2String = "{\"timestamp\":\(UInt64(Date().timeIntervalSince1970)*1000),\"sender\":\"\(wallet.address)\",\"recipient\":\"\(AppDataModelManager.shared.getNetworkStatus().getWithdrawBridgeAddress())\",\"amount\":\(digitalAmount),\"data\":{\"destination\":\"\(toAddress)\",\"ref\":\"\(ref)\",\"memo\":\"XE Withdrawal\",\"token\":\"EDGE\"},\"nonce\":\(wallet.status?.nonce ?? 0)}"
+        }
         j2String = j2String.replacingOccurrences(of: "\\", with: "", options: .regularExpression)
         let sig = self.generateSignature(message: j2String, key: key)
         j2String = String(j2String.dropLast())
