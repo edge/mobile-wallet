@@ -63,13 +63,7 @@ class TransactionPageViewController: BaseViewController{
                     self.statusTickImage.tintColor = UIColor(named:"FontMain")
                     self.directionLabel.textColor = .green
                     
-                    if self.walletAddress.lowercased() == transaction.sender.lowercased() {
-                        
-                        self.directionLabel.text = "Sent"
-                    } else {
-                        
-                        self.directionLabel.text = "Received"
-                    }
+                    self.directionLabel.text = "Confirmed"
                 }
                 
                 self.dateLabel.isHidden = false
