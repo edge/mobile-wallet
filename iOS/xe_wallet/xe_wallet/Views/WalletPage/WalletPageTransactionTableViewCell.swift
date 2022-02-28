@@ -60,7 +60,11 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
             }
         } else {
             
-            self.receivedLabel.isHidden = true
+            self.receivedLabel.isHidden = false
+            if let type = data.type {
+            
+                self.receivedLabel.text = "$\(type.getDataString(dataType: .coinSymbolLabel))"
+            }
         }
         
         if data.status == .pending {
