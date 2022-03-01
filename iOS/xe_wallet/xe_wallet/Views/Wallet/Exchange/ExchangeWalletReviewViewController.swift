@@ -176,9 +176,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
                 self.receiveAmountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.fromAmount - totalFee)) \(self.totype.getDataString(dataType: .coinSymbolLabel))"
             }
         }
-        
     
-        
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
         
@@ -311,24 +309,27 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     @objc func fireTimer() {
 
-        self.timerCount-=1
-        
-        if self.timerCount == 0 {
+        if self.confirmStatus != .processing {
             
-            self.timerCount = self.countdownStartAmount
-            self.configureViews()
-        }
-        
-        var timeString = String(format: "%.2f", Double(self.timerCount)/100)
-        timeString = timeString.replacingOccurrences(of: ".", with: ":")
-        self.secondTimerLabel.text = timeString
-        
-        if self.timerCount <= 5 {
+            self.timerCount-=1
             
-            self.secondTimerLabel.textColor = .red
-        } else {
+            if self.timerCount == 0 {
+                
+                self.timerCount = self.countdownStartAmount
+                self.configureViews()
+            }
             
-            self.secondTimerLabel.textColor = UIColor(named: "FontMain")
+            var timeString = String(format: "%.2f", Double(self.timerCount)/100)
+            timeString = timeString.replacingOccurrences(of: ".", with: ":")
+            self.secondTimerLabel.text = timeString
+            
+            if self.timerCount <= 5 {
+                
+                self.secondTimerLabel.textColor = .red
+            } else {
+                
+                self.secondTimerLabel.textColor = UIColor(named: "FontMain")
+            }
         }
     }
     
