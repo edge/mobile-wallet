@@ -64,8 +64,8 @@ class ExchangeWalletReviewViewController: BaseViewController {
     @IBOutlet weak var etherWarningMessageHeightConstraint: NSLayoutConstraint!
     
     var timer:Timer?
-    var timerCount = 30
-    var countdownStartAmount = 30
+    var timerCount = 15
+    var countdownStartAmount = 15
     
     var fromAddress:WalletDataModel? = nil
     var fromType:WalletType = .ethereum
@@ -85,10 +85,6 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.configureViews()
         self.configureConfirmStatus()
         
-        if self.totype == .usdc {
-            
-            self.countdownStartAmount = 15
-        }
         self.timerCount = self.countdownStartAmount
         self.secondTimerLabel.text = String(format: "%.2f", Double(self.timerCount)/100)
         
