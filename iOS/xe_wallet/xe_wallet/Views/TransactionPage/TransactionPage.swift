@@ -8,6 +8,20 @@
 import UIKit
 import PanModal
 
+
+enum TransactionPageViewControllerHeights {
+    
+    case xe
+    case other
+    
+    var height: PanModalHeight {
+        switch self {
+            case .xe: return .contentHeight(629)
+            case .other: return .contentHeight(552)
+        }
+    }
+}
+
 class TransactionPageViewController: BaseViewController{
 
     @IBOutlet weak var tokenIconImage: UIImageView!
@@ -23,9 +37,15 @@ class TransactionPageViewController: BaseViewController{
     
     @IBOutlet weak var exploreButtonLabel: UILabel!
     
+    @IBOutlet weak var memoView: UIView!
+    @IBOutlet weak var memoViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var memoTextLabel: UITextField!
+    
     var transactionData: TransactionDataModel? = nil
     var walletType: WalletType = .ethereum
     var walletAddress = ""
+    var viewHeight: TransactionPageViewControllerHeights = .other
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,6 +98,23 @@ class TransactionPageViewController: BaseViewController{
                 self.dateLabel.isHidden = false
             }
              
+            if walletType == .xe {
+                
+                self.memoView.isHidden = false
+                self.memoViewHeightConstraint.constant = 77
+                self.memoTextLabel.text = transaction.data?.memo
+                self.viewHeight = .xe
+                panModalSetNeedsLayoutUpdate()
+                //panModalTransition(to: .shortForm)
+            } else {
+                
+                self.memoView.isHidden = true
+                self.memoViewHeightConstraint.constant = 0
+                self.viewHeight = .other
+                panModalSetNeedsLayoutUpdate()
+                //panModalTransition(to: .shortForm)
+            }
+            
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
             self.tokenAbvLabel.text = self.walletType.getDataString(dataType: .coinSymbolLabel)
                 
@@ -120,6 +157,12 @@ extension TransactionPageViewController: PanModalPresentable {
     var allowsExtendedPanScrolling: Bool { return false }
     var anchorModalToLongForm: Bool { return false }
     var cornerRadius: CGFloat { return 12 }
-    var longFormHeight: PanModalHeight { return .contentHeight(552) }
+//    var longFormHeight: PanModalHeight { return .contentHeight(552) }
+    
+    var shortFormHeight: PanModalHeight {
+        
+        return self.viewHeight.height
+    }
+    
     var dragIndicatorBackgroundColor: UIColor { return .clear }
 }
