@@ -55,8 +55,9 @@ extension ScanQRCodeViewController: QRScannerViewDelegate {
 
     func qrScannerView(_ qrScannerView: QRScannerView, didSuccess code: String) {
         
-        self.delegate?.setScannedText(text: code)
-        print(code)
+        let updatedCode = code.replacingOccurrences(of: "ethereum:", with: "")
+        self.delegate?.setScannedText(text: updatedCode)
+        print(updatedCode)
         dismiss(animated: true)
     }
 }
