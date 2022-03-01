@@ -2819,8 +2819,28 @@
                                             <constraint firstItem="Z78-qS-NL0" firstAttribute="leading" secondItem="bl2-6h-Tpt" secondAttribute="leading" id="ov7-yy-U0g"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THQ-w7-Tst">
+                                        <rect key="frame" x="0.0" y="370" width="366" height="50"/>
+                                        <subviews>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your transaction will be submitted to the Ethereum blockchain. It may take a few minutes to process." textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95n-AS-kCk">
+                                                <rect key="frame" x="0.0" y="0.0" width="366" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" name="FontSecondary"/>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="95n-AS-kCk" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="top" id="0Pa-Zv-8qa"/>
+                                            <constraint firstItem="95n-AS-kCk" firstAttribute="leading" secondItem="THQ-w7-Tst" secondAttribute="leading" id="IsY-JB-Fqo"/>
+                                            <constraint firstAttribute="bottom" secondItem="95n-AS-kCk" secondAttribute="bottom" id="eo7-sZ-8n4"/>
+                                            <constraint firstAttribute="trailing" secondItem="95n-AS-kCk" secondAttribute="trailing" id="hzf-E9-Rm5"/>
+                                            <constraint firstAttribute="height" constant="50" id="zTj-JR-q5V"/>
+                                        </constraints>
+                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VzM-44-X5U">
-                                        <rect key="frame" x="0.0" y="380" width="366" height="60"/>
+                                        <rect key="frame" x="0.0" y="444" width="366" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Swap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-nm-hI1">
                                                 <rect key="frame" x="121.5" y="20.5" width="123.5" height="19.5"/>
@@ -2862,18 +2882,21 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="VzM-44-X5U" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="bottom" constant="24" id="CvW-QU-ta1"/>
                                     <constraint firstItem="E49-hL-29F" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="EwF-9Z-011"/>
                                     <constraint firstItem="swd-T5-aaf" firstAttribute="top" secondItem="E49-hL-29F" secondAttribute="bottom" constant="12" id="JBD-DQ-1kc"/>
                                     <constraint firstItem="swd-T5-aaf" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="LoF-aF-fR7"/>
                                     <constraint firstItem="bl2-6h-Tpt" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="SsD-bl-LUA"/>
+                                    <constraint firstAttribute="trailing" secondItem="THQ-w7-Tst" secondAttribute="trailing" id="Uf8-ZJ-88a"/>
                                     <constraint firstItem="E49-hL-29F" firstAttribute="top" secondItem="cTm-54-Qtx" secondAttribute="top" constant="20" symbolic="YES" id="UzL-Rd-XbY"/>
+                                    <constraint firstItem="THQ-w7-Tst" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="VKx-L6-avt"/>
                                     <constraint firstAttribute="trailing" secondItem="bl2-6h-Tpt" secondAttribute="trailing" id="Z6g-Z1-S1N"/>
                                     <constraint firstAttribute="trailing" secondItem="E49-hL-29F" secondAttribute="trailing" id="ea4-xG-MxX"/>
                                     <constraint firstItem="VzM-44-X5U" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="fX7-Zk-u8q"/>
                                     <constraint firstItem="bl2-6h-Tpt" firstAttribute="top" secondItem="swd-T5-aaf" secondAttribute="bottom" constant="16" id="fhX-rv-BtE"/>
+                                    <constraint firstItem="THQ-w7-Tst" firstAttribute="top" secondItem="bl2-6h-Tpt" secondAttribute="bottom" constant="18" id="mhB-iE-n2C"/>
                                     <constraint firstAttribute="trailing" secondItem="swd-T5-aaf" secondAttribute="trailing" id="pPX-CS-ZrS"/>
                                     <constraint firstAttribute="trailing" secondItem="VzM-44-X5U" secondAttribute="trailing" id="pyJ-Xf-IeN"/>
-                                    <constraint firstItem="VzM-44-X5U" firstAttribute="top" secondItem="bl2-6h-Tpt" secondAttribute="bottom" constant="28" id="xJr-T4-yYh"/>
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WK6-iM-2uP">
@@ -2970,6 +2993,8 @@
                         <outlet property="completeButtonText" destination="fZP-nm-hI1" id="ZD9-GX-i53"/>
                         <outlet property="completeButtonView" destination="VzM-44-X5U" id="MeO-eZ-S3K"/>
                         <outlet property="etherValueLabel" destination="NYf-qa-msT" id="YXO-FP-rcU"/>
+                        <outlet property="etherWarningMessageHeightConstraint" destination="zTj-JR-q5V" id="NTk-7Y-jIq"/>
+                        <outlet property="etherWarningMessageView" destination="THQ-w7-Tst" id="NRA-1L-CcV"/>
                         <outlet property="fromTokenAbv" destination="MDx-Es-SRn" id="Jl6-dJ-kaS"/>
                         <outlet property="fromTokenAmount" destination="4us-QA-msu" id="XhU-tb-Q3g"/>
                         <outlet property="fromTokenImage" destination="gQq-qo-yLv" id="zuZ-ui-yz9"/>

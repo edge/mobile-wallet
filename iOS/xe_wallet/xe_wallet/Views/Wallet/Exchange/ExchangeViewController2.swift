@@ -102,16 +102,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 
         if wallet.type == .xe {
             
-            //self.swapFromSelectImage.isHidden = true
-            //self.swapFromTokenSelectButton.isEnabled = false
             self.swapFromTokenImage.image = UIImage(named:wallet.type.rawValue)
             self.swapFromTokenAbv.text = wallet.type.getDataString(dataType: .coinSymbolLabel)
             self.swapFromAvailableLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)) XE available to swap"
             self.swapFromCardImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
         } else {
-            
-            //self.swapFromSelectImage.isHidden = false
-            //self.swapFromTokenSelectButton.isEnabled = true
             
             self.swapFromTokenImage.image = UIImage(named:self.swapFromTokenType.rawValue)
             self.swapFromTokenAbv.text = self.swapFromTokenType.getDataString(dataType: .coinSymbolLabel)

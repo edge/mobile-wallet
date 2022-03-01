@@ -60,6 +60,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
     @IBOutlet weak var completeButtonButton: UIButton!
     @IBOutlet weak var completeButtonText: UILabel!
     
+    @IBOutlet weak var etherWarningMessageView: UIView!
+    @IBOutlet weak var etherWarningMessageHeightConstraint: NSLayoutConstraint!
+    
     var timer:Timer?
     var timerCount = 30
     var countdownStartAmount = 30
@@ -121,6 +124,17 @@ class ExchangeWalletReviewViewController: BaseViewController {
             
             rate = Double(XEExchangeRatesManager.shared.getRateValue())
         }
+        
+        if self.fromType == .edge {
+        
+            self.etherWarningMessageView.isHidden = false
+            self.etherWarningMessageHeightConstraint.constant = 50
+        } else {
+            
+            self.etherWarningMessageView.isHidden = true
+            self.etherWarningMessageHeightConstraint.constant = 0
+        }
+        
         
         self.fromTokenAmount.text = CryptoHelpers.generateCryptoValueString(value: self.fromAmount)
         
