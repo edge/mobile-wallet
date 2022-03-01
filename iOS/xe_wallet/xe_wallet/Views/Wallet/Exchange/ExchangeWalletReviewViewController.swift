@@ -165,8 +165,13 @@ class ExchangeWalletReviewViewController: BaseViewController {
             
             if let gas = XEGasRatesManager.shared.getRates() {
                 
-                let fee: Double = Double(gas.fee)
                 var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
+                
+                var fee: Double = 0
+                if self.fromType == .xe {
+                 
+                    fee = Double(gas.fee)
+                }
                 if handling < 25 {
                     
                     handling = 25
