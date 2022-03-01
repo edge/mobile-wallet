@@ -87,6 +87,12 @@ class ReceiveViewController: BaseViewController {
         return nil
     }
     
+    @IBAction func shareButtonPressed(_ sender: Any) {
+        
+        let activityViewController = UIActivityViewController(activityItems: [self.selectedWalletAddress] , applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+    }
 }
 
 extension ReceiveViewController: PanModalPresentable {
