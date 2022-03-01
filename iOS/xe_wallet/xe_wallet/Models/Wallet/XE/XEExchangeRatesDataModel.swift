@@ -43,19 +43,29 @@ class XEExchangeRatesManager {
     
     var exchangeDataModel: XEExchangeRatesDataModel? = nil
     var timer: Timer?
+    var lastUpdateTime = Date()
     
     private init() {
         
         self.downloadExchangeRates()
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-            self.downloadExchangeRates()
+            //self.downloadExchangeRates()
         }
     }
     
     func configure() {
         
         self.loadFromLocalStorage()
+    }
+    
+    func hasUpdateInLastMinute(interval: TimeInterval) -> Bool {
+        
+        if Date().timeIntervalSince(self.lastUpdateTime) >= interval {
+            
+            return false
+        }
+        return true
     }
     
     func loadFromLocalStorage() {
@@ -112,6 +122,7 @@ class XEExchangeRatesManager {
 
                     self.exchangeDataModel = try JSONDecoder().decode(XEExchangeRatesDataModel.self, from: response.data!)
                     self.saveToLocalStorage()
+                    self.lastUpdateTime = Date()
                     
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")

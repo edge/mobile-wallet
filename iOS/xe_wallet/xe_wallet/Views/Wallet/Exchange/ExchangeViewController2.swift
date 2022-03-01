@@ -49,12 +49,15 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         // Do any additional setup after loading the view.
     
         self.configureViews()
+        self.configureData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.configureData()
+       
+        //let address = WalletDataModelManager.shared.selectedWalletAddress
+        //self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -80,10 +83,6 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     func configureData() {
         
         self.walletData = WalletDataModelManager.shared.getWalletData()
-        
-        let address = WalletDataModelManager.shared.selectedWalletAddress
-        self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
-        
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
         if self.swapFromTokenType == .ethereum {
             

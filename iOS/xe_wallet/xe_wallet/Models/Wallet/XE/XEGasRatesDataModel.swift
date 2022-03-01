@@ -54,23 +54,32 @@ class XEGasRatesManager {
     
     var gasDataModel: XEGasRatesDataModel? = nil
     var timer: Timer?
+    var lastUpdateTime = Date()
     
     private init() {
         
         self.downloadGasRates()
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-            //self.downloadGasRates()
+            self.downloadGasRates()
         }
     }
     
     func configure() {
-        
     }
     
     func getRates() -> XEGasRatesDataModel? {
         
         return self.gasDataModel
+    }
+    
+    func hasUpdateInLastMinute(interval: TimeInterval) -> Bool {
+        
+        if Date().timeIntervalSince(self.lastUpdateTime) >= interval {
+            
+            return false
+        }
+        return true
     }
     
     func downloadGasRates() {
@@ -92,7 +101,8 @@ class XEGasRatesManager {
                 do {
 
                     self.gasDataModel = try JSONDecoder().decode(XEGasRatesDataModel.self, from: response.data!)
-
+                    self.lastUpdateTime = Date()
+                    
                 } catch let error as NSError {
                     print("Failed to load: \(error.localizedDescription)")
                 }

@@ -93,6 +93,8 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
+        self.checkForActiveReviewButton()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -265,26 +267,6 @@ class ExchangeWalletReviewViewController: BaseViewController {
             
             let exchangeValue = XEExchangeRatesManager.shared.getRateValue()
             return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
-            /*
-            if let exchangeData = XEExchangeRateCurrentManager.shared.getRates() {
-                
-                if self.fromType == .xe || self.fromType == .edge {
-                    
-                    if self.totype == .xe || self.totype == .edge {
-                        
-                        return 1.0
-                    } else {
-                        
-                        return exchangeData.ethPerXE
-                    }
-                } else {
-                    
-                    if self.totype == .xe || self.totype == .edge {
-                        
-                        return 1/exchangeData.ethPerXE
-                    }
-                }
-            }*/
         }
 
         return ""
@@ -293,6 +275,20 @@ class ExchangeWalletReviewViewController: BaseViewController {
     func checkForActiveReviewButton() {
         
         var active = true
+        
+        if self.totype == .usdc {
+            
+            if !XEExchangeRatesManager.shared.hasUpdateInLastMinute(interval: 60) {
+                
+                active = false
+            }
+        } else {
+            
+            if !XEGasRatesManager.shared.hasUpdateInLastMinute(interval: 60) {
+                
+                active = false
+            }
+        }
         
         if active == false {
             
@@ -309,7 +305,10 @@ class ExchangeWalletReviewViewController: BaseViewController {
     
     @objc func fireTimer() {
 
+
         if self.confirmStatus != .processing {
+            
+            self.checkForActiveReviewButton()
             
             self.timerCount-=1
             
