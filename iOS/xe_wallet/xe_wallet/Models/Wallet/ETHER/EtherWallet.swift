@@ -439,7 +439,6 @@ class EtherWallet {
                         }else{
                             
                             let result = try tx!.call()
-                            // fulfill are result from contract
                             let anyResult = result["0"] as Any
                             seal.resolve(.fulfilled(anyResult))
                         }

@@ -83,26 +83,6 @@ struct TransactionDataModel: Codable {
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
         self.type = try container.decode(WalletType.self, forKey: .type)
     }
-        /*
-    public init(from ether: EtherTransactionDataModel, type: WalletType) {
-        
-        self.timestamp = Int(ether.timeStamp ?? "0") ?? 0
-        self.sender = ether.from ?? ""
-        self.recipient = ether.to ?? ""
-        
-        let newVal: String = String(ether.value?.dropLast(12) ?? "0")
-        let damt = Double(newVal) ?? 0
-        let amt = damt / 1000000
-        self.amount = amt
-        self.data = TransactionDataDataModel()
-        self.nonce = Int(ether.nonce ?? "0") ?? 0
-        self.signature = ""
-        self.hash = ether.hash ?? ""
-        self.block = TransactionBlockDataModel(height: Int(ether.blockNumber ?? "0") ?? 0, hash: ether.blockHash ?? "")
-        self.confirmations = Int(ether.confirmations ?? "0") ?? 0
-        self.status = .confirmed
-        self.type = type
-    }*/
     
     public init() {
         
@@ -118,56 +98,6 @@ struct TransactionDataModel: Codable {
         self.confirmations = 0
         self.status = .confirmed
     }
-    /*
-    public init(from xe: XETransactionRecordDataModel) {
-        
-        self.timestamp = xe.timestamp/1000
-        self.sender = xe.sender
-        self.recipient = xe.recipient
-        self.amount = Double(xe.amount / 1000000)
-        if let data = xe.data {
-            
-            self.data = TransactionDataDataModel(from: data)
-        } else {
-            
-            self.data = nil
-        }
-        self.nonce = xe.nonce
-        self.signature = xe.signature
-        self.hash = xe.hash
-        if let block = xe.block {
-            
-            self.block = TransactionBlockDataModel(from: block)
-        } else {
-            
-            self.block = nil
-        }
-        self.confirmations = xe.confirmations
-        self.status = .confirmed
-        self.type = .xe
-    }
-    
-    public init(from pending: XETransactionPendingRecordDataModel) {
-        
-        self.timestamp =  pending.timestamp/1000
-        self.sender = pending.sender
-        self.recipient = pending.recipient
-        self.amount = Double(pending.amount / 1000000)
-        if let data = pending.data {
-            
-            self.data = TransactionDataDataModel(from: data)
-        } else {
-            
-            self.data = nil
-        }
-        self.nonce = pending.nonce
-        self.signature = pending.signature
-        self.hash = pending.hash
-        self.status = .pending
-        self.type = .xe
-    }*/
-    
-
 }
 
 struct TransactionPendingRecordDataModel: Codable {

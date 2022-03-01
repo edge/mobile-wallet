@@ -203,12 +203,23 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         let amountString:String = self.swapFromAmountTextField.text ?? "0.0"
         let amount: Double = Double(amountString) ?? 0.0
-        if amount <= 0 {
+        
+        active = self.checkValidAmountSubFees(amount: amount)
+        var maxAmount = 0.0
+        if let status = self.walletData[self.selectedIndex].status {
+            
+            if self.swapFromTokenType == .edge {
+                
+                maxAmount = status.getTokenBalance(type: .edge)
+            } else if self.swapFromTokenType == .xe {
+                
+                maxAmount = status.balance
+            }
+        }
+        if amount <= 0 || amount > maxAmount {
             
             active = false
         }
-        
-        active = self.checkValidAmountSubFees(amount: amount)
         
         if active == false {
             

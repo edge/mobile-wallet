@@ -105,26 +105,35 @@ class TransactionPageViewController: BaseViewController{
                 self.memoTextLabel.text = transaction.data?.memo
                 self.viewHeight = .xe
                 panModalSetNeedsLayoutUpdate()
-                //panModalTransition(to: .shortForm)
             } else {
                 
                 self.memoView.isHidden = true
                 self.memoViewHeightConstraint.constant = 0
                 self.viewHeight = .other
                 panModalSetNeedsLayoutUpdate()
-                //panModalTransition(to: .shortForm)
             }
             
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
             self.tokenAbvLabel.text = self.walletType.getDataString(dataType: .coinSymbolLabel)
                 
-            self.toTokenImage.image = UIImage(named: self.walletType.rawValue)
+            var toTokenType = walletType
+            if let data = transaction.data {
+                
+                if data.memo == "XE Withdrawal" {
+                        
+                    toTokenType = .edge
+                }
+            }
+            
+            self.toTokenImage.image = UIImage(named: toTokenType.rawValue)
             self.toAddressLabel.text = transaction.recipient
                 
             self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.fromAddressLabel.text = transaction.sender
             
             self.exploreButtonLabel.text = transaction.type?.getDataString(dataType: .explorerButtonText)
+            
+
         }
     }
 

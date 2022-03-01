@@ -268,13 +268,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
             
             let exchangeValue = XEExchangeRatesManager.shared.getRateValue()
             return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = \(exchangeValue) \(self.totype.getDataString(dataType: .coinSymbolLabel))"
-        } else {
-            
-            let exchangeValue = XEExchangeRatesManager.shared.getRateValue()
-            return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
         }
-
-        return ""
+            
+        return "1 \(self.fromType.getDataString(dataType: .coinSymbolLabel)) = 1 \(self.totype.getDataString(dataType: .coinSymbolLabel))"
     }
     
     func checkForActiveReviewButton() {
@@ -364,17 +360,14 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.configureConfirmStatus()
         
         let amountValue = self.fromTokenAmount.text ?? "0.0"
-        //let fAmount = String(format: "%.6f", amountValue!)
-        
-
-        
+  
         if let wallet = self.fromAddress {
             
-            let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address ?? "")
+            let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             
             if let toWallet = self.toAddress {
                 
-                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address ?? "", toType: self.totype, amount: amountValue, fee: 0, key: key, completion: { res in
+                wallet.type.exchangeCoins(wallet: wallet, toAddress: toWallet.address , toType: self.totype, amount: amountValue, fee: 0, key: key, completion: { res in
                     
                     if res {
                         
