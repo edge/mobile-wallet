@@ -145,7 +145,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         self.tabBarController?.selectedIndex = 1
     }
-        
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return self.walletScreenSegments.count
@@ -245,6 +245,7 @@ extension WalletViewController2: WalletPageViewControllerDelegate {
         
         self.selectedWalletAddress = address
         self.portfolioCell?.configure(address: address)
+        WalletDataModelManager.shared.selectedWalletAddress = address
     }
     
     func activateSelectedCard() {

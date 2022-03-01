@@ -11,4 +11,5 @@ extension Notification.Name {
     
     static let didReceiveData = Notification.Name("didReceiveData")
     static let setWalletCardAmount = Notification.Name("setWalletCardAmount")
+    static let exchangeSetDefaultCard = Notification.Name("exchangeSetDefaultCard")
 }

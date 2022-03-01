@@ -47,8 +47,13 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+    
         self.configureViews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         self.configureData()
     }
     
@@ -60,7 +65,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-((tbheight+topBarHeight)-1))
     }
-    
+
     func configureViews() {
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
@@ -75,7 +80,10 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     func configureData() {
         
         self.walletData = WalletDataModelManager.shared.getWalletData()
-        self.selectedIndex = 0
+        
+        let address = WalletDataModelManager.shared.selectedWalletAddress
+        self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
+        
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
         if self.swapFromTokenType == .ethereum {
             

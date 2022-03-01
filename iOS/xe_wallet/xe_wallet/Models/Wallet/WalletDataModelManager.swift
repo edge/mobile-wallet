@@ -16,7 +16,8 @@ class WalletDataModelManager {
     static let shared = WalletDataModelManager()
     
     var walletData = [WalletDataModel]()
-
+    var selectedWalletAddress = ""
+    
     var timerUpdate: Timer?
     
     private init() {
