@@ -50,6 +50,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var receiveAmountLabel: UILabel!
     @IBOutlet weak var feeLabel: UILabel!
+    @IBOutlet weak var receiveTypeLabel: UILabel!
     
     
     @IBOutlet weak var pinEntryMainView: UIView!
@@ -94,7 +95,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         let valString = CryptoHelpers.generateCryptoValueString(value: Double(self.amount) ?? 0)
                 
         self.amountLabel.text = valString
-        self.receiveAmountLabel.text = "\(valString) \(self.walletType.getDataString(dataType: .coinSymbolLabel))"
+        self.receiveAmountLabel.text = "\(valString)"
+        self.receiveTypeLabel.text =  "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
         self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .displayLabel)))"
         self.feeLabel.text = "Fee: 0 \(self.walletType.getDataString(dataType: .coinSymbolLabel)) ($0.00)"
         

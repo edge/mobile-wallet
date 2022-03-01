@@ -1042,6 +1042,15 @@
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C1O-53-e5w">
+                                                        <rect key="frame" x="116" y="0.0" width="37" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="17" id="swz-WC-ONP"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                        <color key="textColor" name="FontOptional"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vR2-Ls-9qL">
                                                         <rect key="frame" x="0.0" y="21" width="366" height="56"/>
                                                         <subviews>
@@ -1073,12 +1082,14 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="50" id="F3t-Ai-D1Q"/>
+                                                    <constraint firstItem="C1O-53-e5w" firstAttribute="leading" secondItem="TYq-kw-JUp" secondAttribute="trailing" constant="4" id="MAM-HI-0j3"/>
                                                     <constraint firstAttribute="height" constant="77" id="Noj-DA-TYe"/>
                                                     <constraint firstItem="TYq-kw-JUp" firstAttribute="top" secondItem="Fkb-zg-IXg" secondAttribute="top" id="Zab-do-L76"/>
                                                     <constraint firstAttribute="bottom" secondItem="vR2-Ls-9qL" secondAttribute="bottom" id="aJc-Ef-ONI"/>
                                                     <constraint firstItem="TYq-kw-JUp" firstAttribute="leading" secondItem="Fkb-zg-IXg" secondAttribute="leading" id="nPl-QM-vIg"/>
                                                     <constraint firstAttribute="trailing" secondItem="vR2-Ls-9qL" secondAttribute="trailing" id="q0m-te-Dw5"/>
                                                     <constraint firstItem="vR2-Ls-9qL" firstAttribute="leading" secondItem="Fkb-zg-IXg" secondAttribute="leading" id="uPu-jf-2Wo"/>
+                                                    <constraint firstItem="C1O-53-e5w" firstAttribute="top" secondItem="Fkb-zg-IXg" secondAttribute="top" id="zbh-lo-VFu"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HS0-5W-Lga">
@@ -1242,6 +1253,7 @@
                         <outlet property="pinEntryMainView" destination="dEI-OP-0eK" id="5ib-Td-Gar"/>
                         <outlet property="pinEntryView" destination="JwQ-Lu-aPK" id="9h8-cI-KXK"/>
                         <outlet property="receiveAmountLabel" destination="Ef2-Qb-9tw" id="mYU-7Z-LI0"/>
+                        <outlet property="receiveTypeLabel" destination="C1O-53-e5w" id="6A7-b5-Xqy"/>
                         <outlet property="textEntryTextView" destination="8nK-z2-Dgo" id="GG0-Tm-EoZ"/>
                         <outlet property="toLabel" destination="HXC-uE-xUm" id="Tte-tX-sMp"/>
                         <outlet property="typeLabel" destination="OMg-sp-NM1" id="tsS-X0-k4K"/>
