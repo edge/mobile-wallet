@@ -85,6 +85,14 @@ class WalletDataModel: Codable {
                             var oldArray: [TransactionDataModel] = self.transactions ?? []
                             if let trans = transactions {
                                 
+                                for tran in trans {
+                                    
+                                    if let index = oldArray.firstIndex(where: { $0.hash == tran.hash }) {
+                                        
+                                        oldArray.remove(at: index)
+                                    }
+                                }
+                                
                                 oldArray.append(contentsOf: trans)
                             }
                             self.transactions = oldArray
