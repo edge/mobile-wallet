@@ -116,16 +116,8 @@ class TransactionPageViewController: BaseViewController{
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
             self.tokenAbvLabel.text = self.walletType.getDataString(dataType: .coinSymbolLabel)
                 
-            var toTokenType = walletType
-            if let data = transaction.data {
-                
-                if data.memo == "XE Withdrawal" {
-                        
-                    toTokenType = .edge
-                }
-            }
             
-            self.toTokenImage.image = UIImage(named: toTokenType.rawValue)
+            self.toTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.toAddressLabel.text = transaction.recipient
                 
             self.fromTokenImage.image = UIImage(named: self.walletType.rawValue)

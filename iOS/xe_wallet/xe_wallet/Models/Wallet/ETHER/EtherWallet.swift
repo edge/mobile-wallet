@@ -339,8 +339,8 @@ class EtherWallet {
                     
                     var options = TransactionOptions.defaultOptions
                     options.from = walletAddress
-                    options.gasLimit = .manual(BigUInt(2000000))
-                    options.gasPrice = .manual(BigUInt(120000000000))
+                    options.gasLimit = .automatic //.manual(BigUInt(2000000))
+                    options.gasPrice = .automatic// .manual(BigUInt(0.00622212))  //.manual(BigUInt(120000000000))
                     
                     if let tx = contract.write("transfer", parameters: [tAddress, String(amount ?? "")] as [AnyObject], extraData: Data(), transactionOptions: options) {
                     
@@ -422,8 +422,8 @@ class EtherWallet {
                         var options = TransactionOptions.defaultOptions
                         
                         options.from = walletAddress
-                        options.gasLimit = .manual(BigUInt(2000000))
-                        options.gasPrice = .manual(BigUInt(120000000000))
+                        options.gasLimit = .automatic //.manual(BigUInt(2000000))
+                        options.gasPrice = .automatic //.manual(BigUInt(120000000000))
                         
                         let tx = contract!.method("approveAndCall",
                                                   parameters: parameters as [AnyObject],
