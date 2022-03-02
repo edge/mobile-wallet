@@ -174,9 +174,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
                 }
                 
                 var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
-                if handling < 25 {
+                if handling < gas.minimumHandlingFee {
                     
-                    handling = 25
+                    handling = gas.minimumHandlingFee
                 }
                 let totalFee = fee + handling
                 

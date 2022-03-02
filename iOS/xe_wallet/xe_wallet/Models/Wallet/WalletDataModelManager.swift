@@ -68,7 +68,7 @@ class WalletDataModelManager {
         }
     }
     
-    private func saveWalletData() {
+    public func saveWalletData() {
         
         self.exchangeRefreshNeeded = true
         let wData = try! JSONEncoder().encode(self.walletData)
@@ -115,6 +115,7 @@ class WalletDataModelManager {
     
     public func reloadAllWalletInformation() {
         
+        self.saveWalletData()
         for wallet in self.walletData {
             
             wallet.downloadWalletStatus()

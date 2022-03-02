@@ -281,9 +281,9 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 }
                 
                 var handling: Double = ((amount)/100) * gas.handlingFeePercentage
-                if handling < 25 {
+                if handling < gas.minimumHandlingFee {
                     
-                    handling = 25
+                    handling = gas.minimumHandlingFee
                 }
                 let totalFee = fee + handling
                 

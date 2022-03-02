@@ -96,7 +96,6 @@ class WalletDataModel: Codable {
                                 oldArray.append(contentsOf: trans)
                             }
                             self.transactions = oldArray
-                            NotificationCenter.default.post(name: .didReceiveData, object: nil)
                         })
                     }
                 }

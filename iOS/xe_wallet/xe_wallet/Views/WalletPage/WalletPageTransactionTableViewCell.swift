@@ -31,14 +31,14 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         
         if address.lowercased() == data.sender.lowercased() {
             
-            //self.directionArrowImage.image = UIImage(systemName:"arrow.up")
-            //self.directionArrowImage.tintColor = UIColor.red
+            self.directionArrowImage.image = UIImage(systemName:"arrow.up")
+            self.directionArrowImage.tintColor = UIColor.red
             self.typeLabel.text = data.recipient
             self.amountLabel.text = "-\(CryptoHelpers.generateCryptoValueString(value: Double(data.amount)))"
         } else {
             
-            //self.directionArrowImage.image = UIImage(systemName:"arrow.down")
-            //self.directionArrowImage.tintColor = UIColor(named:"XEGreen")
+            self.directionArrowImage.image = UIImage(systemName:"arrow.down")
+            self.directionArrowImage.tintColor = UIColor(named:"XEGreen")
             self.typeLabel.text = data.sender
             self.amountLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: Double(data.amount)))"
         }
