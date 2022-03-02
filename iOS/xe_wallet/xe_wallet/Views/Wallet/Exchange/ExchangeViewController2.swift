@@ -274,7 +274,12 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             
             if let gas = XEGasRatesManager.shared.getRates() {
                 
-                let fee: Double = Double(gas.fee)
+                var fee: Double = 0
+                if self.swapFromTokenType == .xe {
+                 
+                    fee = Double(gas.fee)
+                }
+                
                 var handling: Double = ((amount)/100) * gas.handlingFeePercentage
                 if handling < 25 {
                     

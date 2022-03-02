@@ -2822,25 +2822,24 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="THQ-w7-Tst">
                                         <rect key="frame" x="0.0" y="370" width="366" height="50"/>
                                         <subviews>
-                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Your transaction will be submitted to the Ethereum blockchain. It may take a few minutes to process." textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="95n-AS-kCk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your transaction will be submitted to the Ethereum blockchain. It may take a few minutes to process." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="viT-H8-roK">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="50"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <color key="textColor" name="FontSecondary"/>
-                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
-                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                            </textView>
+                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                <color key="textColor" name="FontOptional"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="95n-AS-kCk" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="top" id="0Pa-Zv-8qa"/>
-                                            <constraint firstItem="95n-AS-kCk" firstAttribute="leading" secondItem="THQ-w7-Tst" secondAttribute="leading" id="IsY-JB-Fqo"/>
-                                            <constraint firstAttribute="bottom" secondItem="95n-AS-kCk" secondAttribute="bottom" id="eo7-sZ-8n4"/>
-                                            <constraint firstAttribute="trailing" secondItem="95n-AS-kCk" secondAttribute="trailing" id="hzf-E9-Rm5"/>
+                                            <constraint firstItem="viT-H8-roK" firstAttribute="leading" secondItem="THQ-w7-Tst" secondAttribute="leading" id="0Tv-fS-Et1"/>
+                                            <constraint firstItem="viT-H8-roK" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="top" id="KHy-Nz-7YQ"/>
+                                            <constraint firstAttribute="bottom" secondItem="viT-H8-roK" secondAttribute="bottom" id="eFB-A8-RrP"/>
+                                            <constraint firstAttribute="trailing" secondItem="viT-H8-roK" secondAttribute="trailing" id="xFd-SL-yTg"/>
                                             <constraint firstAttribute="height" constant="50" id="zTj-JR-q5V"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VzM-44-X5U">
-                                        <rect key="frame" x="0.0" y="444" width="366" height="60"/>
+                                        <rect key="frame" x="0.0" y="436" width="366" height="60"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Swap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fZP-nm-hI1">
                                                 <rect key="frame" x="121.5" y="20.5" width="123.5" height="19.5"/>
@@ -2865,7 +2864,6 @@
                                             <constraint firstItem="fZP-nm-hI1" firstAttribute="centerY" secondItem="VzM-44-X5U" secondAttribute="centerY" id="csJ-Qa-zGd"/>
                                             <constraint firstAttribute="bottom" secondItem="WnU-E4-5be" secondAttribute="bottom" id="fvl-r0-I82"/>
                                             <constraint firstAttribute="trailing" secondItem="WnU-E4-5be" secondAttribute="trailing" id="jFY-RG-ibu"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="u2B-XC-jEp"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -2882,7 +2880,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="VzM-44-X5U" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="bottom" constant="24" id="CvW-QU-ta1"/>
+                                    <constraint firstItem="VzM-44-X5U" firstAttribute="top" secondItem="THQ-w7-Tst" secondAttribute="bottom" constant="16" id="CvW-QU-ta1"/>
                                     <constraint firstItem="E49-hL-29F" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="EwF-9Z-011"/>
                                     <constraint firstItem="swd-T5-aaf" firstAttribute="top" secondItem="E49-hL-29F" secondAttribute="bottom" constant="12" id="JBD-DQ-1kc"/>
                                     <constraint firstItem="swd-T5-aaf" firstAttribute="leading" secondItem="cTm-54-Qtx" secondAttribute="leading" id="LoF-aF-fR7"/>
@@ -4335,7 +4333,7 @@
         <image name="plus" width="24" height="24"/>
         <image name="receive" width="32" height="32"/>
         <image name="send" width="32" height="32"/>
-        <image name="settings" width="20" height="20"/>
+        <image name="settings" width="25" height="25"/>
         <image name="swap" width="20" height="20"/>
         <image name="trendlineUp" width="32" height="32"/>
         <image name="wallet" width="20" height="20"/>
