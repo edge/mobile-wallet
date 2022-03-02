@@ -50,7 +50,7 @@ class XEExchangeRatesManager {
         self.downloadExchangeRates()
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-            //self.downloadExchangeRates()
+            self.downloadExchangeRates()
         }
     }
     

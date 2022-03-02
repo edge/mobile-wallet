@@ -248,14 +248,27 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         if self.swapToTokenType == .usdc {
             
-            let rates = XEExchangeRatesManager.shared.getRates()
-
-            let rate = XEExchangeRatesManager.shared.getRateValue()
-            if amount <= 0 || amount > rates?.limit ?? 100 {
+            
+            if let rates = XEExchangeRatesManager.shared.getRates() {
                 
-                return false
+                if let gas = XEGasRatesManager.shared.getRates() {
+                    
+                    let fee: Double = Double(rates.gas)
+                    var handling: Double = ((amount)/100) * gas.handlingFeePercentage
+                    if handling < 25 {
+                        
+                        handling = 25
+                    }
+                    let totalFee = fee + handling
+            
+                    if totalFee >= amount || amount <= 0 || amount > (rates.limit ?? 100) {
+                        
+                        return false
+                    }
+                    return true
+
+                }
             }
-            return true
 
         } else {
             

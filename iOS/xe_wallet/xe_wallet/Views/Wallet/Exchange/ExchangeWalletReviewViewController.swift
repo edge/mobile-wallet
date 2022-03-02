@@ -170,10 +170,10 @@ class ExchangeWalletReviewViewController: BaseViewController {
                 var handling: Double = ((self.fromAmount)/100) * gas.handlingFeePercentage
                 
                 var fee: Double = 0
-                if self.fromType == .xe {
+                //if self.fromType == .xe {
                  
                     fee = Double(gas.fee)
-                }
+                //}
                 if handling < 25 {
                     
                     handling = 25
