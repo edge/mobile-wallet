@@ -86,7 +86,9 @@ class ExchangeWalletReviewViewController: BaseViewController {
         self.configureConfirmStatus()
         
         self.timerCount = self.countdownStartAmount
-        self.secondTimerLabel.text = String(format: "%.2f", Double(self.timerCount)/100)
+        var timeString = String(format: "%.2f", Double(self.timerCount)/100)
+        timeString = timeString.replacingOccurrences(of: ".", with: ":")
+        self.secondTimerLabel.text = timeString
         
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(fireTimer), userInfo: nil, repeats: true)
     }
