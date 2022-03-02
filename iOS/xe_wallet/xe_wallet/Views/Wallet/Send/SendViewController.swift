@@ -316,6 +316,9 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                     
                     memo = mem
                 }
+                
+                memo = memo.components(separatedBy: CharacterSet.punctuationCharacters).joined(separator: "")
+
                 contentVC.memo = memo
                 contentVC.fromAddress = self.walletData?.address ?? ""
                 
