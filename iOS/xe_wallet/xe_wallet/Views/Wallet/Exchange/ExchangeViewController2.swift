@@ -48,16 +48,21 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
-        self.configureViews()
-        self.configureData()
+        self.walletData = WalletDataModelManager.shared.getWalletData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-       
-        //let address = WalletDataModelManager.shared.selectedWalletAddress
-        //self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
+        if WalletDataModelManager.shared.exchangeRefreshNeeded {
+        
+            self.walletData = WalletDataModelManager.shared.getWalletData()
+            let address = WalletDataModelManager.shared.selectedWalletAddress
+            self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
+            WalletDataModelManager.shared.exchangeRefreshNeeded = false
+            self.configureViews()
+            self.configureData()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +72,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 (self.navigationController?.navigationBar.frame.height ?? 0.0)
         
        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height-((tbheight+topBarHeight)-1))
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
     }
 
     func configureViews() {
@@ -82,7 +92,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     
     func configureData() {
         
-        self.walletData = WalletDataModelManager.shared.getWalletData()
+        //self.walletData = WalletDataModelManager.shared.getWalletData()
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
         if self.swapFromTokenType == .ethereum {
             

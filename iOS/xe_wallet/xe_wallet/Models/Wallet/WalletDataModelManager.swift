@@ -17,6 +17,7 @@ class WalletDataModelManager {
     
     var walletData = [WalletDataModel]()
     var selectedWalletAddress = ""
+    var exchangeRefreshNeeded = true
     
     var timerUpdate: Timer?
     
@@ -68,6 +69,7 @@ class WalletDataModelManager {
     
     private func saveWalletData() {
         
+        self.exchangeRefreshNeeded = true
         let wData = try! JSONEncoder().encode(self.walletData)
         //let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
         UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)

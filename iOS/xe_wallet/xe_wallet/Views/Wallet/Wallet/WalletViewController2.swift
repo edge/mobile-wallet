@@ -246,6 +246,7 @@ extension WalletViewController2: WalletPageViewControllerDelegate {
         self.selectedWalletAddress = address
         self.portfolioCell?.configure(address: address)
         WalletDataModelManager.shared.selectedWalletAddress = address
+        WalletDataModelManager.shared.exchangeRefreshNeeded = true
     }
     
     func activateSelectedCard() {
