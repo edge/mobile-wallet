@@ -24,6 +24,7 @@ class WalletDataModelManager {
     private init() {
         
         self.loadWalletList()
+        self.reloadAllWalletInformation()
         self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { timer in
             
             self.reloadAllWalletInformation()

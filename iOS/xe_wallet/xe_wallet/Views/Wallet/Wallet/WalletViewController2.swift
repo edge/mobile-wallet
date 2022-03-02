@@ -106,6 +106,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     {
         // Updating your data here...
 
+        WalletDataModelManager.shared.reloadAllWalletInformation()
         self.tableView.reloadData()
         self.refreshControl?.endRefreshing()
     }
