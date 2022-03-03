@@ -166,7 +166,7 @@ class EtherWallet {
         let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
         let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
         let url = "\(apiUrl)&token=0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301&address=\(address)&apikey=\(apiKey)"
-        
+                
         //let url = "https://rinkeby.etherscan.io/token/0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301?a=0x8b9bD05Fe9fF20b185d682F664AeEe763023d9b9"
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
@@ -189,10 +189,6 @@ class EtherWallet {
                             trans.timestamp = Int(res.timeStamp ?? "0") ?? 0
                             trans.sender = res.from ?? ""
                             trans.recipient = res.to ?? ""
-                            let newVal: String = String(res.value?.dropLast(12) ?? "0")
-                            let damt = Double(newVal) ?? 0
-                            let amt = damt / 1000000
-                            trans.amount = amt
                             trans.data = TransactionDataDataModel()
                             trans.nonce = Int(res.nonce ?? "0") ?? 0
                             trans.signature = ""
@@ -200,7 +196,23 @@ class EtherWallet {
                             trans.block = TransactionBlockDataModel(height: Int(res.blockNumber ?? "0") ?? 0, hash: res.blockHash ?? "")
                             trans.confirmations = Int(res.confirmations ?? "0") ?? 0
                             trans.status = .confirmed
-                            trans.type = .edge
+                            
+                            if AppDataModelManager.shared.getNetworkStatus().getDepositTokenAddress().lowercased() == res.contractAddress {
+                                
+                                let newVal: String = String(res.value?.dropLast(12) ?? "0")
+                                let damt = Double(newVal) ?? 0
+                                let amt = damt / 1000000
+                                trans.amount = amt
+                                trans.type = .edge
+                            } else {
+                                
+                                let newVal: String = String(res.value ?? "0")
+                                let damt = Double(newVal) ?? 0
+                                let amt = damt / 1000000
+                                trans.amount = amt
+                                trans.type = .usdc
+                            }
+                            
                             transArray.append(trans)
                         }
                     }
