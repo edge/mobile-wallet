@@ -61,21 +61,17 @@ class EtherWallet {
 
         DispatchQueue.global().async {
             let walletAddress = EthereumAddress(address)!
-            
+           
             do {
                 let balanceResult = try web3.eth.getBalance(address: walletAddress)
                 var bs = Web3.Utils.formatToEthereumUnits(balanceResult, toUnits: .eth, decimals: 6)!
-                
-                let network = AppDataModelManager.shared.getNetworkStatus()
-                
+
                 var erc20Tokens:[ERC20TokenDataModel] = []
                 
                 for erc20 in ERC20TokenType.allCases {
                     
                     let exploredAddress = EthereumAddress(address)!
                     let erc20ContractAddress = EthereumAddress(erc20.getContractAddress())!
-                    
-                    //let erc20ContractAddress = EthereumAddress(network.getDepositTokenAddress())!
                     let contract = web3.contract(Web3.Utils.erc20ABI, at: erc20ContractAddress, abiVersion: 2)!
                     var options = TransactionOptions.defaultOptions
                     options.from = walletAddress
@@ -88,7 +84,7 @@ class EtherWallet {
                         extraData: Data(),
                         transactionOptions: options)!
                     
-                    let tokenBalance = try! tx.call()
+                    let tokenBalance = try tx.call()
                     
                     
                     var balance = "0.0"
@@ -102,10 +98,6 @@ class EtherWallet {
                 }
                 
                 completion(WalletStatusDataModel(address: address, balance:Double(bs) ?? 0, erc20Tokens: erc20Tokens, nonce:0))
-                
-                //completion(EtherWalletStatusDataModel(address: address, balance:Double(bs) ?? 0, nonce:0, edgeBalance:0.0, erc20Tokens: erc20Tokens))
-                
-
             }
             catch {
                 

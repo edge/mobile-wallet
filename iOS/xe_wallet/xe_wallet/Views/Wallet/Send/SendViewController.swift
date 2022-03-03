@@ -257,13 +257,22 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                     
                     if let status = wallet.status {
                     
-                        let walletAmount = status.balance
+                        var walletAmount = 0.0
+                        if self.selectedAsset == .edge {
+                            
+                            walletAmount = status.getTokenBalance(type: .edge)
+                                    
+                        } else {
+                            
+                            walletAmount = status.balance
+                        }
                         
-                        if amountVal >= wallet.type.getMinSendValue() {//}&& amountVal <= Double(walletAmount) {
+                        
+                        if amountVal >= self.selectedAsset.getMinSendValue() {//}&& amountVal <= Double(walletAmount) {
                             
                             shouldBeActive = true
                             
-                            if toText.count != wallet.type.getWalletCharacterLength() || !toText.hasPrefix(wallet.type.getDataString(dataType: .coinPrefix)) {
+                            if toText.count != wallet.type.getWalletCharacterLength() || !toText.hasPrefix(self.selectedAsset.getDataString(dataType: .coinPrefix)) {
                                 
                                 shouldBeActive = false
                             }

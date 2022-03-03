@@ -39,9 +39,6 @@ class WalletDataModel: Codable {
         self.status = try container.decode(WalletStatusDataModel.self, forKey: .status)
         self.transactions = nil
         self.wallet = try container.decodeIfPresent(Wallet.self, forKey: .wallet)
-        
-        self.downloadWalletStatus()
-        self.downloadWalletTransactions()
     }
     
     public init(type: WalletType, wallet: AddressKeyPairModel) {
@@ -55,10 +52,6 @@ class WalletDataModel: Codable {
         self.transactions = nil
         
         self.wallet = wallet.wallet
-        
-        self.downloadWalletStatus()
-        self.downloadWalletTransactions()
-        
     }
     
     func downloadWalletStatus() {

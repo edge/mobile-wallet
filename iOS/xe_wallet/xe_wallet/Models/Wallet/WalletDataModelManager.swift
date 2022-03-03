@@ -21,9 +21,13 @@ class WalletDataModelManager {
     
     var timerUpdate: Timer?
     
+    var latestTransaction: TransactionDataModel? = nil
+    var latestTransactionWallet: WalletDataModel? = nil
+    
     private init() {
         
         self.loadWalletList()
+        //self.loadLatestTransaction()
         self.reloadAllWalletInformation()
         self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { timer in
             
@@ -36,11 +40,6 @@ class WalletDataModelManager {
         if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
-            
-            if self.walletData.count > 0 {
-                
-                //self.selectedWalletAddress = self.walletData[0].address
-            }
         }
     }
     
@@ -72,8 +71,8 @@ class WalletDataModelManager {
         
         self.exchangeRefreshNeeded = true
         let wData = try! JSONEncoder().encode(self.walletData)
-        //let test = try! JSONDecoder().decode([WalletDataModel].self, from: wData)
         UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
+        UserDefaults.standard.synchronize()
         NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
     
@@ -113,9 +112,31 @@ class WalletDataModelManager {
         return ""
     }
     
+    /*private func loadLatestTransaction() {
+        
+        if let trans = UserDefaults.standard.data(forKey: "LatestTransaction") {
+            
+            self.latestTransaction = try! JSONDecoder().decode(TransactionDataModel.self, from: trans)
+        }
+        if let wallet = UserDefaults.standard.data(forKey: "LatestTransactionWallet") {
+            
+            self.latestTransactionWallet = try! JSONDecoder().decode(WalletDataModel.self, from: wallet)
+        }
+    }
+    
+    private func saveLatestTransaction() {
+        
+        let trans = try! JSONEncoder().encode(self.latestTransaction)
+        UserDefaults.standard.set(trans, forKey: "LatestTransaction")
+        let wallet = try! JSONEncoder().encode(self.latestTransactionWallet)
+        UserDefaults.standard.set(wallet, forKey: "LatestTransactionWallet")
+        UserDefaults.standard.synchronize()
+    }*/
+    
+    
     public func reloadAllWalletInformation() {
         
-        self.saveWalletData()
+        self.calculateLatestTransaction()
         for wallet in self.walletData {
             
             wallet.downloadWalletStatus()
@@ -175,13 +196,20 @@ class WalletDataModelManager {
     }
         
     public func getLatestTransaction() -> (transaction: TransactionDataModel?, wallet: WalletDataModel?) {
+        
+        return (self.latestTransaction, self.latestTransactionWallet)
+    }
+    
+    public func calculateLatestTransaction() {
             
         var transaction: TransactionDataModel? = nil
         var wallet: WalletDataModel? = nil
         
         if self.walletData.count == 0 {
             
-            return (nil, nil)
+            self.latestTransaction = nil
+            self.latestTransactionWallet = nil
+            return
         }
         
         for wall in self.walletData {
@@ -206,7 +234,10 @@ class WalletDataModelManager {
             }
         }
             
-        return (transaction, wallet)
+        self.latestTransaction = transaction
+        self.latestTransactionWallet = wallet
+        NotificationCenter.default.post(name: .didReceiveData, object: nil)
+        //self.saveLatestTransaction()
     }
     
     public func getPortfolioTotalValue() -> String {
