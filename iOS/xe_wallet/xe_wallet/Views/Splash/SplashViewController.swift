@@ -16,6 +16,7 @@ class SplashViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        WalletDataModelManager.shared.selectedWalletAddress = ""
         XEExchangeRatesManager.shared.configure()
         XEGasRatesManager.shared.configure()
         XEExchangeRateCurrentManager.shared.configure()

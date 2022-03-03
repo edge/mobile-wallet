@@ -29,10 +29,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     
     var selectedWalletAddress = ""
     var portfolioCell: WalletPortfolioTableViewCell? = nil
-    
-    var lastTransactionWallet: WalletDataModel? = nil
-    var lastTransactionTransaction: TransactionDataModel? = nil
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -67,11 +64,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     }
     
     func buildMainPage() {
-        
-        let results = WalletDataModelManager.shared.getLatestTransaction()
-        self.lastTransactionWallet = results.wallet
-        self.lastTransactionTransaction = results.transaction
-        
+                
         self.walletScreenSegments.removeAll()
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletPortfolioTableViewCell", size: 56, data: ""))
@@ -82,7 +75,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         //self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletManageTableViewCell", size: 28), data: "")
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletButtonsTableViewCell", size: 60, data: ""))
         
-        if self.lastTransactionTransaction != nil {
+        if let latestTrans = WalletDataModelManager.shared.latestTransaction {
         
             self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Last Transaction"))
             self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletPageTransactionTableViewCell", size: 56, data: ""))
@@ -176,9 +169,9 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         if self.walletScreenSegments[indexPath.row].cellName == "WalletPageTransactionTableViewCell" {
          
-            if let transaction = self.lastTransactionTransaction {
+            if let transaction = WalletDataModelManager.shared.latestTransaction { //} self.lastTransactionTransaction {
             
-                if let lastWallet = self.lastTransactionWallet {
+                if let lastWallet = WalletDataModelManager.shared.latestTransactionWallet {//} self.lastTransactionWallet {
                 
                     (cell as! WalletPageTransactionTableViewCell).configure(data: transaction , type: lastWallet.type, address: lastWallet.address)
                 }
@@ -209,8 +202,8 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             DispatchQueue.main.asyncAfter(deadline: .now()) {
             
                 let contentVC = UIStoryboard(name: "TransactionPage", bundle: nil).instantiateViewController(withIdentifier: "TransactionPageViewController") as! TransactionPageViewController
-                contentVC.transactionData = self.lastTransactionTransaction
-                if let wallet = self.lastTransactionWallet {
+                contentVC.transactionData = WalletDataModelManager.shared.latestTransaction// self.lastTransactionTransaction
+                if let wallet = WalletDataModelManager.shared.latestTransactionWallet {// self.lastTransactionWallet {
                 
                     contentVC.walletType = wallet.type
                 }

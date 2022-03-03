@@ -23,10 +23,10 @@ class TransactionTableViewCell: UITableViewCell {
         // Initialization code
     }
     
-    func configure(walletData: WalletDataModel?, transactionData: TransactionDataModel?) {
+    func configure() {
         
-        guard let wallet = walletData else { return }
-        guard let transaction = transactionData else { return }
+        guard let wallet = WalletDataModelManager.shared.latestTransactionWallet else { return }// walletData else { return }
+        guard let transaction = WalletDataModelManager.shared.latestTransaction else { return }// transactionData else { return }
         
         self.typeImageView.image = UIImage(named:wallet.type.rawValue)
         
