@@ -1263,8 +1263,25 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="54w-ZD-eh5">
+                                                <rect key="frame" x="24" y="608.5" width="366" height="25"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="av9-KC-P3X">
+                                                        <rect key="frame" x="0.0" y="12.5" width="0.0" height="0.0"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                        <color key="textColor" systemColor="systemRedColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="av9-KC-P3X" firstAttribute="leading" secondItem="54w-ZD-eh5" secondAttribute="leading" id="T4d-ht-mzo"/>
+                                                    <constraint firstItem="av9-KC-P3X" firstAttribute="centerY" secondItem="54w-ZD-eh5" secondAttribute="centerY" id="ufq-oG-RYO"/>
+                                                    <constraint firstAttribute="height" constant="25" id="x0J-tU-f8H"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7do-q0-W8c">
-                                                <rect key="frame" x="24" y="620.5" width="366" height="60"/>
+                                                <rect key="frame" x="24" y="645.5" width="366" height="60"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review Swap" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cRR-OG-jpE">
                                                         <rect key="frame" x="131" y="20.5" width="104" height="19"/>
@@ -1300,14 +1317,17 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="Bo5-lX-w17" secondAttribute="trailing" constant="24" id="0ow-95-wSH"/>
+                                            <constraint firstItem="7do-q0-W8c" firstAttribute="top" secondItem="54w-ZD-eh5" secondAttribute="bottom" constant="12" id="AvT-YO-7k5"/>
                                             <constraint firstItem="7do-q0-W8c" firstAttribute="leading" secondItem="jhQ-Dw-c16" secondAttribute="leading" constant="24" id="GQe-WH-NPe"/>
                                             <constraint firstItem="6gi-r1-saw" firstAttribute="leading" secondItem="jhQ-Dw-c16" secondAttribute="leading" constant="24" id="LgH-UC-Owp"/>
                                             <constraint firstAttribute="trailing" secondItem="6gi-r1-saw" secondAttribute="trailing" constant="24" id="PLT-6c-2zy"/>
                                             <constraint firstItem="Bo5-lX-w17" firstAttribute="top" secondItem="jhQ-Dw-c16" secondAttribute="top" constant="109" id="SED-7y-gx3"/>
+                                            <constraint firstItem="54w-ZD-eh5" firstAttribute="leading" secondItem="jhQ-Dw-c16" secondAttribute="leading" constant="24" id="SGS-jp-gcC"/>
                                             <constraint firstItem="Bo5-lX-w17" firstAttribute="leading" secondItem="jhQ-Dw-c16" secondAttribute="leading" constant="24" id="Xq3-bl-rYp"/>
-                                            <constraint firstItem="7do-q0-W8c" firstAttribute="top" secondItem="6gi-r1-saw" secondAttribute="bottom" constant="24" id="fqe-lb-esz"/>
+                                            <constraint firstItem="54w-ZD-eh5" firstAttribute="top" secondItem="6gi-r1-saw" secondAttribute="bottom" constant="12" id="f0N-Bd-OmT"/>
                                             <constraint firstItem="6gi-r1-saw" firstAttribute="top" secondItem="Bo5-lX-w17" secondAttribute="bottom" constant="24" id="fs8-Gj-9He"/>
                                             <constraint firstAttribute="trailing" secondItem="7do-q0-W8c" secondAttribute="trailing" constant="24" id="lHm-Rb-c6s"/>
+                                            <constraint firstAttribute="trailing" secondItem="54w-ZD-eh5" secondAttribute="trailing" constant="24" id="vYf-Io-Z2g"/>
                                             <constraint firstItem="6gi-r1-saw" firstAttribute="top" secondItem="Bo5-lX-w17" secondAttribute="bottom" constant="24" id="vpH-jb-vmE"/>
                                         </constraints>
                                     </view>
@@ -1356,6 +1376,8 @@
                         <outlet property="swapToTokenSelectImage" destination="s4C-HN-rEs" id="iDl-ya-uwH"/>
                         <outlet property="swapToTokenTokenAbv" destination="fmH-Nm-VWr" id="Yhg-qh-MPL"/>
                         <outlet property="swapToTokenTokenImage" destination="D6N-2W-1EK" id="Bri-wg-Wl4"/>
+                        <outlet property="warningMessageHeightConstraint" destination="x0J-tU-f8H" id="z9b-KR-pSU"/>
+                        <outlet property="warningMessageLabel" destination="av9-KC-P3X" id="aAG-bW-MtB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uov-34-jEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

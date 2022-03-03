@@ -60,6 +60,7 @@ class WalletDataModel: Codable {
             
             self.status = status
         })
+        NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
     
     func downloadWalletTransactions() {
@@ -94,5 +95,6 @@ class WalletDataModel: Codable {
                 }
             }
         })
+        NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
 }

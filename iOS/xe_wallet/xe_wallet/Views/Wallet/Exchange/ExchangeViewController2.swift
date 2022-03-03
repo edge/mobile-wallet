@@ -37,6 +37,9 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var reviewButtonButton: UIButton!
     @IBOutlet weak var reviewButtonText: UILabel!
     
+    @IBOutlet weak var warningMessageLabel: UILabel!
+    @IBOutlet weak var warningMessageHeightConstraint: NSLayoutConstraint!
+    
     var walletData = [WalletDataModel]()
     var selectedIndex = 0
     var selectedWallet = ""
@@ -48,6 +51,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        self.warningMessageLabel.text = ""
+        self.warningMessageHeightConstraint.constant = 0
         self.walletData = WalletDataModelManager.shared.getWalletData()
     }
     
@@ -246,6 +251,9 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     
     func checkValidAmountSubFees(amount: Double) -> Bool {
         
+        self.warningMessageLabel.text = ""
+        self.warningMessageHeightConstraint.constant = 0
+        
         if self.swapToTokenType == .usdc {
             
             
@@ -261,8 +269,13 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     }
                     let totalFee = fee + handling
             
-                    if totalFee >= amount || amount <= 0 || amount > (rates.limit ?? 100) {
+                    if totalFee >= amount || amount <= 0 || amount > (rates.limit ) {
                         
+                        if amount > (rates.limit ) {
+                            
+                            self.warningMessageLabel.text = "The exchange maximum is \(rates.limit) XE."
+                            self.warningMessageHeightConstraint.constant = 25
+                        }
                         return false
                     }
                     return true
