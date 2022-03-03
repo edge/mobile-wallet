@@ -284,6 +284,13 @@ class XEWallet {
             digitalFee = rates.fee
             ref = rates.ref
         }
+        if toType == .usdc {
+            
+            if let rates = XEExchangeRatesManager.shared.getRates() {
+                
+                ref = rates.ref
+            }
+        }
         
         var j2String = ""
         if toType == .usdc {
