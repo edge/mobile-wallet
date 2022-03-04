@@ -69,8 +69,8 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.configureViews()
         self.configureData()
+        self.configureViews()
         self.configureCardDisplay()
 
         self.entryStatus = .none
@@ -87,7 +87,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         
         self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
-        
+                    
             self.cardBackgroundImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
             self.addressLabel.text = wallet.address
             self.selectedWalletAddress = wallet.address
@@ -134,9 +134,6 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         attributedString1.append(attributedString2)
         self.memoLabel.attributedText = attributedString1
 
-        self.toTextField.attributedPlaceholder = NSAttributedString(
-            string: "XE wallet address",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named:"PlaceHolderFont") ?? .white])
         self.memoTextField.attributedPlaceholder = NSAttributedString(
             string: "Leave a memo",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor(named:"PlaceHolderFont") ?? .white])
@@ -154,6 +151,9 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         self.coinIconImage.image = UIImage(named: self.selectedAsset.rawValue)
         self.assetLabel.text = self.selectedAsset.getDataString(dataType: .displayLabel)
         self.amountTextField.text = ""
+        self.toTextField.attributedPlaceholder = NSAttributedString(
+            string: "\(self.selectedAsset.getDataString(dataType: .coinSymbolLabel)) wallet address",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(named:"PlaceHolderFont") ?? .white])
         self.checkForActiveContinueButton()
     }
     
