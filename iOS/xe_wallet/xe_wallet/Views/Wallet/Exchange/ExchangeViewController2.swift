@@ -451,7 +451,9 @@ extension ExchangeViewController2 {
                 
                 self.toIndex = index
                 self.swapToTokenType = self.walletData[self.toIndex].type
+                self.setToWalletDetails()
                 self.configureSelectedWallet(clearValue: false)
+
             }
             break
             

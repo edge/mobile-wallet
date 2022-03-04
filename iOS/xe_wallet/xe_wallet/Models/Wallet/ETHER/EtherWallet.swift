@@ -51,6 +51,22 @@ class EtherWallet {
         return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
     }
     
+    public func getGasString() -> String {
+        
+        var gasString = ""
+        
+        //let cost = EtherExchangeRatesManager.shared.getRateValue()
+        //let gas = Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .Gwei, decimals: 6)!
+        //let cost = Web3.Utils
+        //let gasVal = Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .eth, decimals: 12)!
+        //let gasTotal = self.gasPrice * EtherExchangeRatesManager.shared.getCurrentEtherValue()
+        //let dGas = Double(Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .eth, decimals: 12)!) ?? 0.0
+        //let total = Double(cost) * dGas
+        //"Gas: \(CryptoHelpers.generateCryptoValueString(value: Double(gas) ?? 0)) gwei ($0.00)"
+        
+        return gasString
+    }
+    
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
 
         var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)

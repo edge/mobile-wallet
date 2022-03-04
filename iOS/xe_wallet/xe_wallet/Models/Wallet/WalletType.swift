@@ -228,6 +228,18 @@ enum WalletType: String, Codable {
         }
     }
     
+    func getGasString() -> String {
+        
+        switch self {
+            
+        case .xe:
+            return ""
+            
+        case .ethereum, .edge, .usdc:
+            return EtherWallet().getGasString()
+        }
+    }
+    
     func downloadWalletStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
         
         switch self {

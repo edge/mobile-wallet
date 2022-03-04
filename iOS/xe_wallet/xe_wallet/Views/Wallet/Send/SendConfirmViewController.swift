@@ -7,6 +7,8 @@
 
 import UIKit
 import PanModal
+import web3swift
+import BigInt
 
 enum SendConfirmStatus {
     
@@ -71,15 +73,28 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     
     var entered = false
     var confirmStatus = SendConfirmStatus.confirm
+    var gasPrice: BigUInt = 0
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        self.configureGasFee()
         self.configureViews()
         self.configureConfirmStatus()
     }
 
+    func configureGasFee() {
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
+        if AppDataModelManager.shared.testModeStatus() {
+            
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+        }
+        
+        self.gasPrice = try! web3.eth.getGasPrice()
+    }
     
     func configureViews() {
         
@@ -97,9 +112,10 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         self.amountLabel.text = valString
         self.receiveAmountLabel.text = "\(valString)"
         self.receiveTypeLabel.text =  "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
-        self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .displayLabel)))"
-        self.feeLabel.text = "Fee: 0 \(self.walletType.getDataString(dataType: .coinSymbolLabel)) ($0.00)"
+        self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
         
+        self.feeLabel.text = self.walletType.getGasString()
+                
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
     }
@@ -210,7 +226,6 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                 
                 if res {
                     
-                    WalletDataModelManager.shared.reloadAllWalletInformation()
                     let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                     contentVC.modalPresentationStyle = .overFullScreen
                     self.present(contentVC, animated: true, completion: nil)
