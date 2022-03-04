@@ -1377,6 +1377,7 @@
                         <outlet property="swapToTokenSelectImage" destination="s4C-HN-rEs" id="iDl-ya-uwH"/>
                         <outlet property="swapToTokenTokenAbv" destination="fmH-Nm-VWr" id="Yhg-qh-MPL"/>
                         <outlet property="swapToTokenTokenImage" destination="D6N-2W-1EK" id="Bri-wg-Wl4"/>
+                        <outlet property="swapToWalletSelectImage" destination="rwe-j9-Chv" id="941-B6-kf0"/>
                         <outlet property="warningMessageHeightConstraint" destination="x0J-tU-f8H" id="z9b-KR-pSU"/>
                         <outlet property="warningMessageLabel" destination="av9-KC-P3X" id="aAG-bW-MtB"/>
                     </connections>

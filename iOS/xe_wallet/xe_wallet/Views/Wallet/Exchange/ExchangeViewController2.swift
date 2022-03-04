@@ -26,6 +26,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var swapToCardImage: UIImageView!
     @IBOutlet weak var swapToTokenImage: UIImageView!
     @IBOutlet weak var swapToAddressLabel: UILabel!
+    @IBOutlet weak var swapToWalletSelectImage: UIImageView!
     
     @IBOutlet weak var swapToTokenTokenImage: UIImageView!
     @IBOutlet weak var swapToTokenTokenAbv: UILabel!
@@ -147,6 +148,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
             self.swapToTokenImage.image = UIImage(named:self.walletData[self.toIndex].type.rawValue)
             self.swapToAddressLabel.text = self.walletData[self.toIndex].address
+            self.swapToWalletSelectImage.isHidden = false
+            self.swapToTokenSelectImage.isHidden = false
             
             if self.walletData[self.toIndex].type == .xe {
                 
@@ -180,6 +183,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             self.swapToAddressLabel.text = "No Available Wallets"
             self.swapToTokenSelectButton.isHidden = true
             self.swapToTokenSelectButton.isEnabled = false
+            self.swapToWalletSelectImage.isHidden = true
+            self.swapToTokenSelectImage.isHidden = true
         }
         
         self.checkForActiveReviewButton()
