@@ -312,21 +312,21 @@ enum WalletType: String, Codable {
         return nil
     }
     
-    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
+    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool, String)-> Void) {
         
         switch self {
             
         case .xe:
-            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key, completion: { res in
+            XEWallet().sendCoins(wallet: wallet, toAddress: toAddress, memo: memo, amount: amount, key: key, completion: { res, error  in
                 
-                completion( res )
+                completion( res, error )
             })
             break
             
         case .edge:
             EtherWallet().sendEdge(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
                 
-                completion( res )
+                completion( res, "" )
             })
             break
             
@@ -337,7 +337,7 @@ enum WalletType: String, Codable {
             
             EtherWallet().sendEther(toAddr: toAddress, wallet: wallet, amt: amount, key: key, completion: { res in
                 
-                completion( res )
+                completion( res, "" )
             })
             break
         }

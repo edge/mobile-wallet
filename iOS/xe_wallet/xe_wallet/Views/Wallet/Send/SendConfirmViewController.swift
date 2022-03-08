@@ -73,7 +73,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     
     var entered = false
     var confirmStatus = SendConfirmStatus.confirm
-    
+    var sendErrorString = "Failed to send coins"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,7 +147,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             panModalTransition(to: .shortForm)
             break
         case .error:
-            self.confirmButtonErrorLabel.text = "Failed to send coins"
+            self.confirmButtonErrorLabel.text = self.sendErrorString
             self.confirmButtonText.text = "Retry"
             self.confirmButtonMainView.backgroundColor = UIColor(named:"XEGreen")
             break
@@ -219,24 +219,20 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             var memoString = self.memo
             let trimmedMemo = memoString.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: { res in
+            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: { res, error in
                 
                 if res {
                     
                     let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                     contentVC.modalPresentationStyle = .overFullScreen
                     self.present(contentVC, animated: true, completion: nil)
-                    
-                    
-                   /* self.view.makeToast("Transaction Succeded", duration: Constants.toastDisplayTime, position: .top)
-
-                    Timer.scheduledTimer(withTimeInterval: 3, repeats: false) { timer in
-                    
-                        
-                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
-                    }*/
                 } else {
                     
+                    self.sendErrorString = "Failed to send coins"
+                    if error != nil {
+                        
+                        self.sendErrorString = "Transaction failed: \(error)"
+                    }
                     self.confirmStatus = .error
                     self.configureConfirmStatus()
                 }

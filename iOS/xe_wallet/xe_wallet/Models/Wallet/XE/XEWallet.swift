@@ -224,7 +224,7 @@ class XEWallet {
          }
     }
     
-    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
+    func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool, String)-> Void) {
          
         let amountString = amount.replacingOccurrences(of: ".", with: "", options: NSString.CompareOptions.literal, range:nil)
         let digitalAmount = Int(amountString) ?? 0
@@ -254,20 +254,28 @@ class XEWallet {
                     
                     if let meta : [String:AnyObject] = json["metadata"] as? [String : AnyObject] {
                         
+                        var error = ""
                         if let _ = meta["accepted"]  {
                             
-                            completion(true)
+                            completion(true, "")
                         }
                         if let _ = meta["rejected"]  {
                             
-                            completion(false)
+                            if let results : [AnyObject] = json["results"] as? [AnyObject] {
+                                
+                                if let errString = results[0]["reason"] {
+                                
+                                    error = errString as! String
+                                }
+                            }
                         }
+                        completion(false, error)
                     }
                 }
                 
             case .failure(let error):
                 print("Request error: \(error.localizedDescription)")
-                completion(false)
+                completion(false, "")
             }
         }
     }
