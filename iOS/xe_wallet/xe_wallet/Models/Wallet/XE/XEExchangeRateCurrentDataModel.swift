@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 import web3swift
 import SwiftyJSON
-
+/*
 class XEExchangeRateCurrentDataModel: Codable {
 
     var date: String
@@ -42,7 +42,7 @@ class XEExchangeRateCurrentManager {
     private init() {
         
         self.downloadExchangeRates()
-        self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { timer in
             
             self.downloadExchangeRates()
         }
@@ -121,3 +121,4 @@ class XEExchangeRateCurrentManager {
 }
 
 
+*/

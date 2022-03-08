@@ -48,7 +48,7 @@ class XEExchangeRatesManager {
     private init() {
         
         self.downloadExchangeRates()
-        self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
             
             self.downloadExchangeRates()
         }

@@ -417,6 +417,7 @@
                         <outlet property="exploreButtonLabel" destination="IWn-3p-fs0" id="gCa-Dp-z6J"/>
                         <outlet property="fromAddressLabel" destination="NDH-CW-dP5" id="9Bw-Xd-0mv"/>
                         <outlet property="fromTokenImage" destination="qAn-Fd-z8Q" id="dD6-CZ-xDB"/>
+                        <outlet property="memoHeadingLabel" destination="Ef1-KM-YNS" id="69D-q5-HQB"/>
                         <outlet property="memoTextLabel" destination="GLl-CI-enZ" id="biy-ex-sR1"/>
                         <outlet property="memoView" destination="JKP-DH-GlF" id="Og1-iP-znl"/>
                         <outlet property="memoViewHeightConstraint" destination="LGM-4y-pcW" id="TBg-fg-Nas"/>

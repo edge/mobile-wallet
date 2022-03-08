@@ -52,6 +52,9 @@ struct TransactionDataModel: Codable {
     var confirmations: Int?
     var status: TransactionStatus?
     var type: WalletType?
+    var gas: String?
+    var gasPrice: String?
+    var gasUsed: String?
     
     enum CodingKeys: String, CodingKey {
         
@@ -66,6 +69,9 @@ struct TransactionDataModel: Codable {
         case block
         case confirmations
         case type
+        case gas
+        case gasPrice
+        case gasUsed
     }
 
     public init(from decoder: Decoder) throws {
@@ -82,6 +88,9 @@ struct TransactionDataModel: Codable {
         self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
         self.confirmations = try container.decode(Int.self, forKey: .confirmations)
         self.type = try container.decode(WalletType.self, forKey: .type)
+        self.gas = try container.decode(String.self, forKey: .gas)
+        self.gasPrice = try container.decode(String.self, forKey: .gasPrice)
+        self.gasUsed = try container.decode(String.self, forKey: .gasUsed)
     }
     
     public init() {
@@ -97,6 +106,9 @@ struct TransactionDataModel: Codable {
         self.block = TransactionBlockDataModel(height: 0, hash: "")
         self.confirmations = 0
         self.status = .confirmed
+        self.gas = ""
+        self.gasPrice = ""
+        self.gasUsed = ""
     }
 }
 

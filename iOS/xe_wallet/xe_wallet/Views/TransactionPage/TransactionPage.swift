@@ -7,6 +7,7 @@
 
 import UIKit
 import PanModal
+import web3swift
 
 
 enum TransactionPageViewControllerHeights {
@@ -16,8 +17,8 @@ enum TransactionPageViewControllerHeights {
     
     var height: PanModalHeight {
         switch self {
-            case .xe: return .contentHeight(629)
-            case .other: return .contentHeight(552)
+            case .xe: return .contentHeight(609)
+            case .other: return .contentHeight(609)
         }
     }
 }
@@ -41,6 +42,8 @@ class TransactionPageViewController: BaseViewController{
     @IBOutlet weak var memoViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var memoTextLabel: UITextField!
     
+    @IBOutlet weak var memoHeadingLabel: UILabel!
+    
     var transactionData: TransactionDataModel? = nil
     var walletType: WalletType = .ethereum
     var walletAddress = ""
@@ -50,7 +53,7 @@ class TransactionPageViewController: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-
+        
         if let transaction = self.transactionData {
             
             self.walletType = transaction.type ?? .ethereum
@@ -104,13 +107,30 @@ class TransactionPageViewController: BaseViewController{
                 self.memoViewHeightConstraint.constant = 77
                 self.memoTextLabel.text = transaction.data?.memo
                 self.viewHeight = .xe
+                self.memoHeadingLabel.text = "Memo"
+                
                 panModalSetNeedsLayoutUpdate()
+                
             } else {
                 
-                self.memoView.isHidden = true
-                self.memoViewHeightConstraint.constant = 0
+                var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
+                if AppDataModelManager.shared.testModeStatus() {
+                    
+                    web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+                }
+                
+                self.memoView.isHidden = false
+                self.memoViewHeightConstraint.constant = 77
                 self.viewHeight = .other
                 panModalSetNeedsLayoutUpdate()
+                
+                self.memoHeadingLabel.text = "Fee"
+                if let gas = self.transactionData?.gas {
+                
+                    let price = (Double(gas) ?? 0.0)/1000000000
+                    let rate = Double(EtherExchangeRatesManager.shared.getRateValue()) * price
+                    self.memoTextLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: price)) Ether ($\(StringHelpers.generateValueString(value: Double(truncating: rate as! NSNumber))))"
+                }
             }
             
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)

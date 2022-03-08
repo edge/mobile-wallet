@@ -73,27 +73,14 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     
     var entered = false
     var confirmStatus = SendConfirmStatus.confirm
-    var gasPrice: BigUInt = 0
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
-        self.configureGasFee()
         self.configureViews()
         self.configureConfirmStatus()
-    }
-
-    func configureGasFee() {
-        
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
-            
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
-        }
-        
-        self.gasPrice = try! web3.eth.getGasPrice()
     }
     
     func configureViews() {
@@ -114,7 +101,17 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         self.receiveTypeLabel.text =  "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
         self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
         
-        self.feeLabel.text = self.walletType.getGasString()
+        let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress)
+        if let wallet = self.walletData {
+        
+            let tx = self.walletType.createSendTX(wallet: wallet, toAddress: self.toAddress, memo: "", amount: self.amount, key: key )
+            if let a = tx {
+                
+                let b = 1
+            }
+        }
+        
+        self.feeLabel.text = self.walletType.getGasString(amount: valString, fromAddress: self.fromAddress, toAddress: self.toAddress)
                 
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""

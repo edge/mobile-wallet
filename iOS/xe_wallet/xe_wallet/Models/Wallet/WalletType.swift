@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import web3swift
 
 enum WalletStringData {
     
@@ -228,7 +229,7 @@ enum WalletType: String, Codable {
         }
     }
     
-    func getGasString() -> String {
+    func getGasString(amount: String, fromAddress: String, toAddress: String) -> String {
         
         switch self {
             
@@ -236,7 +237,7 @@ enum WalletType: String, Codable {
             return ""
             
         case .ethereum, .edge, .usdc:
-            return EtherWallet().getGasString()
+            return EtherWallet().getGasString(amount: amount, fromAddress: fromAddress, toAddress: toAddress)
         }
     }
     
@@ -291,6 +292,26 @@ enum WalletType: String, Codable {
         }
     }
 
+    func createSendTX(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String ) -> WriteTransaction? {
+        
+        switch self {
+            
+        case .xe:
+            break
+            
+        case .edge:
+            break
+            
+        case .usdc:
+            break
+            
+        case .ethereum:
+            return EtherWallet().createSendEtherTX(toAddr: toAddress, wallet: wallet, amt: amount, key: key)
+            break
+        }
+        return nil
+    }
+    
     func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool)-> Void) {
         
         switch self {

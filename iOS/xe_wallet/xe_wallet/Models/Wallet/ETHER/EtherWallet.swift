@@ -51,19 +51,34 @@ class EtherWallet {
         return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
     }
     
-    public func getGasString() -> String {
+    public func getGasString(amount: String, fromAddress: String, toAddress: String) -> String {
+
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
+        if AppDataModelManager.shared.testModeStatus() {
+            
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+        }
         
-        var gasString = ""
+        let walletAddress = EthereumAddress(fromAddress)!
+        let contract = web3.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(toAddress)!, abiVersion: 2)!
+        let amt = Web3.Utils.parseToBigUInt(amount, units: .eth)
+
+        var options = TransactionOptions.defaultOptions
+        options.value = amt
+        options.from = walletAddress
+        options.gasPrice = .automatic
+        options.gasLimit = .automatic
+                    
+        let tx = contract.write(
+        "fallback",
+        parameters: [AnyObject](),
+        extraData: Data(),
+        transactionOptions: options)!
         
-        //let cost = EtherExchangeRatesManager.shared.getRateValue()
-        //let gas = Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .Gwei, decimals: 6)!
-        //let cost = Web3.Utils
-        //let gasVal = Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .eth, decimals: 12)!
-        //let gasTotal = self.gasPrice * EtherExchangeRatesManager.shared.getCurrentEtherValue()
-        //let dGas = Double(Web3.Utils.formatToEthereumUnits(self.gasPrice, toUnits: .eth, decimals: 12)!) ?? 0.0
-        //let total = Double(cost) * dGas
-        //"Gas: \(CryptoHelpers.generateCryptoValueString(value: Double(gas) ?? 0)) gwei ($0.00)"
+        let gp = tx.transaction.gasPrice
+        let gl = tx.transaction.gasLimit
         
+        var gasString = "Gas: \(CryptoHelpers.generateCryptoValueString(value: Double("0.0") ?? 0.0 )) gwei ($xxx)"
         return gasString
     }
     
@@ -159,6 +174,10 @@ class EtherWallet {
                             trans.confirmations = Int(res.confirmations ?? "0") ?? 0
                             trans.status = .confirmed
                             trans.type = .ethereum
+                            trans.gas = res.gas
+                            trans.gasPrice = res.gasPrice
+                            trans.gasUsed = res.gasUsed
+                            
                             transArray.append(trans)
                         }
                     }
@@ -229,6 +248,10 @@ class EtherWallet {
                                 trans.type = .usdc
                             }
                             
+                            trans.gas = res.gas
+                            trans.gasPrice = res.gasPrice
+                            trans.gasUsed = res.gasUsed
+                            
                             transArray.append(trans)
                         }
                     }
@@ -241,6 +264,48 @@ class EtherWallet {
                     print("Request error: \(error.localizedDescription)")
              }
         }
+    }
+    
+    
+    public func createSendEtherTX(toAddr: String, wallet: WalletDataModel, amt: String, key: String ) -> WriteTransaction? {
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
+        if AppDataModelManager.shared.testModeStatus() {
+            
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+        }
+        
+        guard let ewallet = wallet.wallet else { return nil }
+        let data = ewallet.data
+        var keystoreManager: KeystoreManager
+        if ewallet.isHD {
+            let keystore = BIP32Keystore(data)!
+            keystoreManager = KeystoreManager([keystore])
+        }else{
+            let keystore = EthereumKeystoreV3(data)!
+            keystoreManager = KeystoreManager([keystore])
+        }
+        web3.addKeystoreManager(keystoreManager)
+        
+        let value: String = amt
+        let walletAddress = EthereumAddress(ewallet.address)!
+        let toAddress = EthereumAddress(toAddr)!
+        let contract = web3.contract(Web3.Utils.coldWalletABI, at: toAddress, abiVersion: 2)!
+        let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
+
+        var options = TransactionOptions.defaultOptions
+        options.value = amount
+        options.from = walletAddress
+        options.gasPrice = .automatic
+        options.gasLimit = .automatic
+        
+        let tx = contract.write(
+            "fallback",
+            parameters: [AnyObject](),
+            extraData: Data(),
+            transactionOptions: options)!
+        
+        return tx
     }
     
     public func sendEther(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
