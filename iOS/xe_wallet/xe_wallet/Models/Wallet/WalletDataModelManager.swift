@@ -29,7 +29,7 @@ class WalletDataModelManager {
         self.loadWalletList()
         self.loadLatestTransaction()
         self.reloadAllWalletInformation()
-        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { timer in
+        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10*60.0, repeats: true) { timer in
             
             self.reloadAllWalletInformation()
         }
@@ -41,6 +41,15 @@ class WalletDataModelManager {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
         }
+    }
+    
+    public func saveWalletData() {
+        
+        self.exchangeRefreshNeeded = true
+        let wData = try! JSONEncoder().encode(self.walletData)
+        UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
+        UserDefaults.standard.synchronize()
+        NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
     
     public func saveWalletToSystem(wallet:AddressKeyPairModel, type: WalletType) {
@@ -65,15 +74,6 @@ class WalletDataModelManager {
             } catch {
             }
         }
-    }
-    
-    public func saveWalletData() {
-        
-        self.exchangeRefreshNeeded = true
-        let wData = try! JSONEncoder().encode(self.walletData)
-        UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
-        UserDefaults.standard.synchronize()
-        NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
     
     public func activeWalletAmount() -> Int {
@@ -148,12 +148,69 @@ class WalletDataModelManager {
     public func reloadAllWalletInformation() {
         
         self.calculateLatestTransaction()
+        
+        var xeAddresses: [String] = []
         for wallet in self.walletData {
             
-            wallet.downloadWalletStatus()
-            wallet.downloadWalletTransactions()
+            if wallet.type == .xe {
+            
+                xeAddresses.append(wallet.address)
+            } else {
+                
+                wallet.downloadWalletStatus()
+                wallet.downloadWalletTransactions()
+            }
         }
+        self.handleXEUpdates(addresses: xeAddresses)
     }
+    
+    private func handleXEUpdates(addresses: [String]) {
+                
+        XEWallet().downloadAllWalletData(addresses: addresses, completion: { response in
+        
+            guard let summary = response else { return }
+            guard let balances = summary.balances else { return }
+
+            for balance in balances {
+                
+                if let index = self.walletData.firstIndex(where: { $0.address == balance.address }) {
+                    
+                    self.walletData[index].status = WalletStatusDataModel(address: balance.address ?? "", balance: Double(balance.balance ?? 0)/1000000, erc20Tokens: nil, nonce: balance.nonce ?? 0)
+                    
+                    if let latestTx = balance.latestTx {
+                        
+                        if let block = latestTx.block {
+                            
+                            var downloadTransactions = true
+                            if let cachedTransactions = self.walletData[index].transactions {
+                            
+                                for trans in cachedTransactions {
+                                    
+                                    if trans.block?.height == block {
+                                        
+                                        downloadTransactions = false
+                                    }
+                                }
+                            }
+                            
+                            if downloadTransactions {
+                                
+                                XEWallet().downloadAllTransactions(address: balance.address ?? "", completion: { response in
+                                
+                                    if let transactions = response {
+                                        
+                                        self.walletData[index].transactions = transactions
+                                        self.saveWalletData()
+                                    }
+                                })
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
     
     public func getInitialWalletAddress() -> String {
         

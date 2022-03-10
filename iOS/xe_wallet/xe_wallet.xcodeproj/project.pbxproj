@@ -153,6 +153,7 @@
 		FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9EA5F52745C62A0068B9F9 /* Constants.swift */; };
 		FD9F19F227BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */; };
 		FD9F19F427BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */; };
+		FDA0948427DAA8F800911E24 /* XESummaryDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA0948327DAA8F800911E24 /* XESummaryDataModel.swift */; };
 		FDA65FB027A4052A00B8069C /* EarnTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */; };
 		FDA65FB227A4063100B8069C /* EarnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */; };
 		FDA65FB427A43E7B00B8069C /* WalletMenuItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */; };
@@ -334,6 +335,7 @@
 		FD9EA5F52745C62A0068B9F9 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		FD9F19F127BDB4D2001D85A2 /* ExchangeTokenSelectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeTokenSelectionTableViewCell.swift; sourceTree = "<group>"; };
 		FD9F19F327BF04FB001D85A2 /* ExchangeWalletReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeWalletReviewViewController.swift; sourceTree = "<group>"; };
+		FDA0948327DAA8F800911E24 /* XESummaryDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XESummaryDataModel.swift; sourceTree = "<group>"; };
 		FDA65FAF27A4052A00B8069C /* EarnTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewController.swift; sourceTree = "<group>"; };
 		FDA65FB127A4063100B8069C /* EarnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EarnTableViewCell.swift; sourceTree = "<group>"; };
 		FDA65FB327A43E7B00B8069C /* WalletMenuItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletMenuItemTableViewCell.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 				FD5C21532755087000795A2F /* XEWallet.swift */,
 				FD5C214F2755087000795A2F /* XEWalletDataModel.swift */,
 				FD5C21512755087000795A2F /* XEWalletStatusDataModel.swift */,
+				FDA0948327DAA8F800911E24 /* XESummaryDataModel.swift */,
 				FD5C21542755087000795A2F /* XETransactionsDataModel.swift */,
 				FD5C21502755087000795A2F /* XEExchangeRatesDataModel.swift */,
 				FD9DB4A427C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift */,
@@ -1194,6 +1197,7 @@
 				FDABB8C22768E0E900E7D7A3 /* WalletPortfolioTableViewCell.swift in Sources */,
 				FD9BACBE2766B2FE00D0C14D /* WalletViewController2.swift in Sources */,
 				FD073E07271494130077F184 /* SettingsMenuItemTableViewCell.swift in Sources */,
+				FDA0948427DAA8F800911E24 /* XESummaryDataModel.swift in Sources */,
 				FD9EA5F62745C62A0068B9F9 /* Constants.swift in Sources */,
 				FD31F23E27183F940034A59E /* ReceiveViewController.swift in Sources */,
 				FD9DB4A527C3DDCA004C7D44 /* XEExchangeRateCurrentDataModel.swift in Sources */,
@@ -1366,7 +1370,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1401,7 +1405,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 69;
+				CURRENT_PROJECT_VERSION = 70;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

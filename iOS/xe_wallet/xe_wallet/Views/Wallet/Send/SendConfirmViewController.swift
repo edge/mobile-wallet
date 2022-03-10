@@ -223,6 +223,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                 
                 if res {
                     
+                    self.sendErrorString = ""
                     let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                     contentVC.modalPresentationStyle = .overFullScreen
                     self.present(contentVC, animated: true, completion: nil)

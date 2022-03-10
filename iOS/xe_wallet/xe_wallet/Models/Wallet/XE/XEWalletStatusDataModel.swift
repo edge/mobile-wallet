@@ -37,3 +37,4 @@ class XEWalletStatusDataModel: Codable {
         self.nonce = nonce
     }
 }
+

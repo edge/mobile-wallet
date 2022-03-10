@@ -70,6 +70,102 @@ class XEWallet {
         return "xe_\(chkAddr)"
     }
     
+    
+    public func downloadAllWalletData(addresses: [String], completion: @escaping (XESummaryDataModel?)-> Void) {
+        
+        let url = WalletType.xe.getDataNetwork(dataType: .summary)
+        let joinedAddresses = addresses.joined(separator: ",")
+        
+        let finalurl = "\(url)\(joinedAddresses)/summary"
+        
+        Alamofire.request(finalurl, method: .get, encoding: URLEncoding.queryString, headers: nil)
+         .validate()
+         .responseJSON { response in
+
+             guard response.result.error == nil else {
+                 print("error calling GET ")
+                 print(response.result.error!)
+                 completion(nil)
+                 return
+             }
+             
+            switch (response.result) {
+
+                case .success( _):
+
+                do {
+
+                    let summary = try JSONDecoder().decode(XESummaryDataModel.self, from: response.data!)
+                    completion(summary)
+                } catch let error as NSError {
+                    
+                    print("Failed to load: \(error.localizedDescription)")
+                    completion(nil)
+                }
+
+                 case .failure(let error):
+                    print("Request error: \(error.localizedDescription)")
+                    completion(nil)
+             }
+         }
+    }
+    
+    func downloadAllTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
+        
+        let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
+        //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
+                
+        Alamofire.request("\(urlTransactions)\(address)?stakesPage=1&txsPage=2", method: .get, encoding: URLEncoding.queryString, headers: nil)
+         .validate()
+         .responseJSON { response in
+
+            switch (response.result) {
+
+                case .success( _):
+
+                do {
+
+                    var data = try JSONDecoder().decode(XETransactionsDataModel.self, from: response.data!)
+
+                    var transArray:[TransactionDataModel] = []
+                    if let results = data.results {
+                        
+                        for res in results {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = res.timestamp/1000
+                            trans.sender = res.sender
+                            trans.recipient = res.recipient
+                            trans.amount = Double(res.amount / 1000000)
+                            trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
+                            trans.nonce = res.nonce
+                            trans.signature = res.signature
+                            trans.hash = res.hash
+                            trans.block = TransactionBlockDataModel(height: res.block?.height ?? 0, hash: res.block?.hash ?? "")
+                            trans.confirmations = res.confirmations
+                            trans.status = res.status
+                            trans.type = .xe
+                            transArray.append(trans)
+                        }
+                    }
+                    completion(transArray)
+
+                } catch let error as NSError {
+                    
+                    print("Failed to load: \(error.localizedDescription)")
+                }
+                case .failure(let error):
+                    print("Request error: \(error.localizedDescription)")
+             }
+         }
+    }
+    
+    
+    
+    
+    
+    
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
         
         let url = WalletType.xe.getDataNetwork(dataType: .status)

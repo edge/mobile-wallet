@@ -21,6 +21,7 @@ enum WalletStringData {
 enum WalletNetworkStringData {
     
     case status
+    case summary
     case gasRates
     case gasExchangeRates
     case gasExchangeCurrent
@@ -113,6 +114,8 @@ enum WalletType: String, Codable {
                     
                 case .status:
                     return "https://xe1.test.network/wallet/"
+                case .summary:
+                    return "https://index.test.network/wallets/"
                 case .gasRates:
                     return "https://index.test.network/gasrates"
                 case .gasExchangeRates:
@@ -134,7 +137,7 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
                     return ""
                         
                 case .exploreButtonUrl:
@@ -150,6 +153,8 @@ enum WalletType: String, Codable {
                     
                 case .status:
                     return "https://api.xe.network/wallet/"
+                case .summary:
+                    return "https://index.xe.network/wallets/"
                 case .gasRates:
                     return "https://index.xe.network/gasrates"
                 case .gasExchangeRates:
@@ -171,7 +176,7 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
                     return ""
                 case .exploreButtonUrl:
                     return "https://etherscan.io/tx/"

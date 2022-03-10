@@ -59,6 +59,12 @@ class EtherWallet {
             web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
         }
         
+        
+
+        
+        
+        
+        
         let walletAddress = EthereumAddress(fromAddress)!
         let contract = web3.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(toAddress)!, abiVersion: 2)!
         let amt = Web3.Utils.parseToBigUInt(amount, units: .eth)
@@ -69,6 +75,10 @@ class EtherWallet {
         options.gasPrice = .automatic
         options.gasLimit = .automatic
                     
+        
+        //web3.eth
+        
+        
         let tx = contract.write(
         "fallback",
         parameters: [AnyObject](),
@@ -80,6 +90,37 @@ class EtherWallet {
         
         var gasString = "Gas: \(CryptoHelpers.generateCryptoValueString(value: Double("0.0") ?? 0.0 )) gwei ($xxx)"
         return gasString
+    }
+    
+    public func estimateGas(_ transactionJSON: [String: Any]) -> BigUInt? {
+        
+        guard let transaction = EthereumTransaction.fromJSON(transactionJSON) else {return nil}
+        guard let options = TransactionOptions.fromJSON(transactionJSON) else {return nil}
+        var transactionOptions = TransactionOptions()
+        transactionOptions.from = options.from
+        transactionOptions.to = options.to
+        transactionOptions.value = options.value != nil ? options.value! : BigUInt(0)
+        transactionOptions.gasLimit = .automatic
+        transactionOptions.gasPrice = options.gasPrice != nil ? options.gasPrice! : .automatic
+        return self.estimateGas(transaction, transactionOptions: transactionOptions)
+    }
+    
+    public func estimateGas(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions) -> BigUInt? {
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
+        if AppDataModelManager.shared.testModeStatus() {
+            
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+        }
+        
+        do {
+            
+            let result = try web3.eth.estimateGas(transaction, transactionOptions: transactionOptions)
+            return result
+        } catch {
+            
+            return nil
+        }
     }
     
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
