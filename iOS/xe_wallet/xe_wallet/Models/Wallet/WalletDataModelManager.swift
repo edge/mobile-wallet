@@ -182,22 +182,31 @@ class WalletDataModelManager {
                         
                         if let block = latestTx.block {
                             
+                            var cachedBlock = 0
                             var downloadTransactions = true
                             if let cachedTransactions = self.walletData[index].transactions {
-                            
+
                                 for trans in cachedTransactions {
                                     
-                                    if trans.block?.height == block {
+                                    if let tBlock = trans.block {
                                         
-                                        downloadTransactions = false
+                                        if tBlock.height > cachedBlock {
+                                            
+                                            cachedBlock = tBlock.height ?? 0
+                                        }
+                                        if tBlock.height == block {
+                                            
+                                            downloadTransactions = false
+                                        }
                                     }
                                 }
                             }
                             
                             if downloadTransactions {
                                                      
-                                self.walletData[index].transactions = []
-                                self.walletData[index].downloadXETransactionBlock(address: balance.address ?? "", count: 0, page: 1, completion: { response in
+                                //self.walletData[index].transactions = []
+                                
+                                self.walletData[index].downloadXETransactionBlock(address: balance.address ?? "", count: 0, page: 1, block:cachedBlock, completion: { response in
                                     
                                     self.saveWalletData()
                                 })

@@ -78,7 +78,7 @@ enum CurrencyType: String {
                 
                 // If an error was returned set the value in the completion as nil and print the error
                 completion(nil)
-                print(error?.localizedDescription ?? "")
+                print(String(describing: error))
                 return
             }
             
@@ -95,7 +95,7 @@ enum CurrencyType: String {
                 
                 // If we couldn't serialize the JSON set the value in the completion as nil and print the error
                 completion(nil)
-                print(error.localizedDescription)
+                print(String(describing: error))
             }
         }
         request.resume()

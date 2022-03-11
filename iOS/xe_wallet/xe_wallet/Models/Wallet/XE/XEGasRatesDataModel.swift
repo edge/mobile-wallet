@@ -104,11 +104,11 @@ class XEGasRatesManager {
                     self.lastUpdateTime = Date()
                     
                 } catch let error as NSError {
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                 }
 
                  case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
              }
          }
     }

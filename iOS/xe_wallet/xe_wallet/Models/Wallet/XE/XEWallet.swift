@@ -77,7 +77,7 @@ class XEWallet {
         let joinedAddresses = addresses.joined(separator: ",")
         
         let finalurl = "\(url)\(joinedAddresses)/summary"
-        
+        print(finalurl)
         Alamofire.request(finalurl, method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
@@ -99,23 +99,23 @@ class XEWallet {
                     completion(summary)
                 } catch let error as NSError {
                     
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                     completion(nil)
                 }
 
                  case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
                     completion(nil)
              }
          }
     }
     
-    func downloadAllTransactions(address: String, page: Int, completion: @escaping ([TransactionDataModel]?, Int, Int)-> Void) {
+    func downloadAllTransactions(address: String, page: Int, block: Int, completion: @escaping ([TransactionDataModel]?, Int, Int)-> Void) {
         
         let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
         //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
                 
-        Alamofire.request("\(urlTransactions)\(address)?page=\(page)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+        Alamofire.request("\(urlTransactions)\(address)?above=block&page=\(page)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 
@@ -160,11 +160,11 @@ class XEWallet {
 
                 } catch let error as NSError {
                     
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                     completion(nil,0,0)
                 }
                 case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
                     completion(nil,0,0)
              }
          }
@@ -204,12 +204,12 @@ class XEWallet {
                     
                 } catch let error as NSError {
                     
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                     completion(nil)
                 }
-
+                
                  case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
                     completion(nil)
              }
          }
@@ -268,10 +268,10 @@ class XEWallet {
 
                 } catch let error as NSError {
                     
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                 }
                 case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
              }
          }
     }
@@ -318,12 +318,12 @@ class XEWallet {
                     }
                 } catch let error as NSError {
                     
-                    print("Failed to load: \(error.localizedDescription)")
+                    print("Failed to load: \(String(describing: error))")
                     completion(nil)
                 }
 
                  case .failure(let error):
-                    print("Request error: \(error.localizedDescription)")
+                    print("Request error: \(String(describing: error))")
                     completion(nil)
              }
          }
@@ -379,7 +379,7 @@ class XEWallet {
                 }
                 
             case .failure(let error):
-                print("Request error: \(error.localizedDescription)")
+                print("Request error: \(String(describing: error))")
                 completion(false, "")
             }
         }
@@ -449,7 +449,7 @@ class XEWallet {
                 }
                 
             case .failure(let error):
-                print("Request error: \(error.localizedDescription)")
+                print("Request error: \(String(describing: error))")
                 completion(false)
             }
         }

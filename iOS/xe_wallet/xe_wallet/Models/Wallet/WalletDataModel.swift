@@ -66,11 +66,16 @@ class WalletDataModel: Codable {
         self.wallet = wallet.wallet
     }
     
-    func downloadXETransactionBlock(address: String, count: Int, page: Int, completion: @escaping (Int)-> Void) {
+    func downloadXETransactionBlock(address: String, count: Int, page: Int, block: Int, completion: @escaping (Int)-> Void) {
         
-        XEWallet().downloadAllTransactions(address: address, page: page, completion: { response, resCount, resTotalCount in
+        XEWallet().downloadAllTransactions(address: address, page: page, block: block, completion: { response, resCount, resTotalCount in
         
             if let transactions = response {
+                
+                if self.transactions == nil {
+                    
+                    self.transactions = []
+                }
                 
                 self.transactions?.append(contentsOf: transactions)
 
@@ -80,7 +85,7 @@ class WalletDataModel: Codable {
                     completion(0)
                 } else {
                     
-                    self.downloadXETransactionBlock(address: address, count: newCount, page: page+1, completion: completion)
+                    self.downloadXETransactionBlock(address: address, count: newCount, page: page+1, block: block, completion: completion)
                 }
             }
         })
