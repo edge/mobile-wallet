@@ -144,7 +144,14 @@ class XEWallet {
                             trans.hash = res.hash
                             trans.block = TransactionBlockDataModel(height: res.block?.height ?? 0, hash: res.block?.hash ?? "")
                             trans.confirmations = res.confirmations
-                            trans.status = res.status
+                            if let stat = res.status {
+                                
+                                trans.status = stat
+                            } else {
+                                
+                                trans.status = .confirmed
+                            }
+                            
                             trans.type = .xe
                             transArray.append(trans)
                         }
@@ -154,9 +161,11 @@ class XEWallet {
                 } catch let error as NSError {
                     
                     print("Failed to load: \(error.localizedDescription)")
+                    completion(nil,0,0)
                 }
                 case .failure(let error):
                     print("Request error: \(error.localizedDescription)")
+                    completion(nil,0,0)
              }
          }
     }

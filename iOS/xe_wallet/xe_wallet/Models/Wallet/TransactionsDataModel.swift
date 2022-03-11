@@ -31,7 +31,7 @@ enum TransactionType: String {
     }
 }
 
-enum TransactionStatus: String {
+enum TransactionStatus: String, Codable {
     
     case pending = "Pending"
     case confirmed = "Confirmed"
@@ -68,6 +68,7 @@ struct TransactionDataModel: Codable {
         case hash
         case block
         case confirmations
+        case status
         case type
         case gas
         case gasPrice
@@ -81,18 +82,20 @@ struct TransactionDataModel: Codable {
         self.sender = try container.decode(String.self, forKey: .sender)
         self.recipient = try container.decode(String.self, forKey: .recipient)
         self.amount = try container.decode(Double.self, forKey: .amount)
-        self.data = try container.decode(TransactionDataDataModel.self, forKey: .data)
+        self.data = try container.decodeIfPresent(TransactionDataDataModel.self, forKey: .data)
         self.nonce = try container.decode(Int.self, forKey: .nonce)
         self.signature = try container.decode(String.self, forKey: .signature)
         self.hash = try container.decode(String.self, forKey: .hash)
-        self.block = try container.decode(TransactionBlockDataModel.self, forKey: .block)
-        self.confirmations = try container.decode(Int.self, forKey: .confirmations)
-        self.type = try container.decode(WalletType.self, forKey: .type)
-        self.gas = try container.decode(String.self, forKey: .gas)
-        self.gasPrice = try container.decode(String.self, forKey: .gasPrice)
-        self.gasUsed = try container.decode(String.self, forKey: .gasUsed)
+        self.block = try container.decodeIfPresent(TransactionBlockDataModel.self, forKey: .block)
+        self.confirmations = try container.decodeIfPresent(Int.self, forKey: .confirmations)
+        self.status = try container.decodeIfPresent(TransactionStatus.self, forKey: .status)
+        self.type = try container.decodeIfPresent(WalletType.self, forKey: .type)
+        self.gas = try container.decodeIfPresent(String.self, forKey: .gas)
+        self.gasPrice = try container.decodeIfPresent(String.self, forKey: .gasPrice)
+        self.gasUsed = try container.decodeIfPresent(String.self, forKey: .gasUsed)
     }
-    
+        
+        
     public init() {
         
         self.timestamp =  0
@@ -148,6 +151,7 @@ struct TransactionPendingRecordDataModel: Codable {
         self.hash = try container.decode(String.self, forKey: .hash)
     }
     
+    
     public init(from xe: XETransactionPendingRecordDataModel) {
         
         self.timestamp = xe.timestamp
@@ -183,6 +187,12 @@ struct TransactionDataDataModel: Codable {
         self.memo = try container.decode(String.self, forKey: .memo)
     }
     
+    func encode(to encoder: Encoder) throws {
+
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(memo, forKey: .memo)
+    }
+    
     public init() {
         
         self.memo = ""
@@ -215,6 +225,13 @@ struct TransactionBlockDataModel: Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.height = try container.decode(Int.self, forKey: .height)
         self.hash = try container.decode(String.self, forKey: .hash)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(height, forKey: .height)
+        try container.encode(hash, forKey: .hash)
     }
     
     public init(height: Int, hash: String) {

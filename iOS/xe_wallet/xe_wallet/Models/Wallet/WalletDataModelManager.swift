@@ -29,14 +29,14 @@ class WalletDataModelManager {
         self.loadWalletList()
         self.loadLatestTransaction()
         self.reloadAllWalletInformation()
-        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 10*60.0, repeats: true) { timer in
+        self.timerUpdate = Timer.scheduledTimer(withTimeInterval: 15, repeats: true) { timer in
             
             self.reloadAllWalletInformation()
         }
     }
         
     func loadWalletList() {
-        
+
         if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
@@ -46,6 +46,7 @@ class WalletDataModelManager {
     public func saveWalletData() {
         
         self.exchangeRefreshNeeded = true
+        
         let wData = try! JSONEncoder().encode(self.walletData)
         UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
         UserDefaults.standard.synchronize()
@@ -194,8 +195,9 @@ class WalletDataModelManager {
                             }
                             
                             if downloadTransactions {
-                                                                
-                                self.walletData[index].downloadXETransactions(index: index, address: balance.address ?? "", completion: { response in
+                                                     
+                                self.walletData[index].transactions = []
+                                self.walletData[index].downloadXETransactionBlock(address: balance.address ?? "", count: 0, page: 1, completion: { response in
                                     
                                     self.saveWalletData()
                                 })

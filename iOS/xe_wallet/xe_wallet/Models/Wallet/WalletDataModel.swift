@@ -36,9 +36,21 @@ class WalletDataModel: Codable {
         self.address = try container.decode(String.self, forKey: .address)
         self.created = try container.decode(Double.self, forKey: .created)
         self.backedup = try container.decode(Double.self, forKey: .backedup)
-        self.status = try container.decode(WalletStatusDataModel.self, forKey: .status)
-        self.transactions = nil
+        self.status = try container.decodeIfPresent(WalletStatusDataModel.self, forKey: .status)
+        self.transactions = try container.decodeIfPresent([TransactionDataModel].self, forKey: .transactions)
         self.wallet = try container.decodeIfPresent(Wallet.self, forKey: .wallet)
+    }
+    
+    func encode(to encoder: Encoder) throws {
+
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(type, forKey: .type)
+        try container.encode(address, forKey: .address)
+        try container.encode(created, forKey: .created)
+        try container.encode(backedup, forKey: .backedup)
+        try container.encode(status, forKey: .status)
+        try container.encode(transactions, forKey: .transactions)
+        try container.encode(wallet, forKey: .wallet)
     }
     
     public init(type: WalletType, wallet: AddressKeyPairModel) {
@@ -52,12 +64,6 @@ class WalletDataModel: Codable {
         self.transactions = nil
         
         self.wallet = wallet.wallet
-    }
-    
-    func downloadXETransactions(index: Int, address: String, completion: @escaping (Int)-> Void) {
-        
-        self.transactions = []
-        self.downloadXETransactionBlock(address: address, count: 0, page: 1, completion: completion)
     }
     
     func downloadXETransactionBlock(address: String, count: Int, page: Int, completion: @escaping (Int)-> Void) {
