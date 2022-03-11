@@ -194,14 +194,10 @@ class WalletDataModelManager {
                             }
                             
                             if downloadTransactions {
-                                
-                                XEWallet().downloadAllTransactions(address: balance.address ?? "", completion: { response in
-                                
-                                    if let transactions = response {
-                                        
-                                        self.walletData[index].transactions = transactions
-                                        self.saveWalletData()
-                                    }
+                                                                
+                                self.walletData[index].downloadXETransactions(index: index, address: balance.address ?? "", completion: { response in
+                                    
+                                    self.saveWalletData()
                                 })
                             }
                         }
@@ -210,6 +206,7 @@ class WalletDataModelManager {
             }
         })
     }
+
     
     
     public func getInitialWalletAddress() -> String {

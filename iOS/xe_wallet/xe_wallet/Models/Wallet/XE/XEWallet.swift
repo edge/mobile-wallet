@@ -110,12 +110,12 @@ class XEWallet {
          }
     }
     
-    func downloadAllTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
+    func downloadAllTransactions(address: String, page: Int, completion: @escaping ([TransactionDataModel]?, Int, Int)-> Void) {
         
         let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
         //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
                 
-        Alamofire.request("\(urlTransactions)\(address)?stakesPage=1&txsPage=2", method: .get, encoding: URLEncoding.queryString, headers: nil)
+        Alamofire.request("\(urlTransactions)\(address)?page=\(page)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 
@@ -149,7 +149,7 @@ class XEWallet {
                             transArray.append(trans)
                         }
                     }
-                    completion(transArray)
+                    completion(transArray, data.metadata?.count ?? 0, data.metadata?.totalCount ?? 0)
 
                 } catch let error as NSError {
                     

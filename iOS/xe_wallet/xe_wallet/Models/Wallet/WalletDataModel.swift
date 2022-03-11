@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 class WalletDataModel: Codable {
-
+    
     var type: WalletType
     var address: String
     var created: Double
@@ -54,6 +54,33 @@ class WalletDataModel: Codable {
         self.wallet = wallet.wallet
     }
     
+    func downloadXETransactions(index: Int, address: String, completion: @escaping (Int)-> Void) {
+        
+        self.transactions = []
+        self.downloadXETransactionBlock(address: address, count: 0, page: 1, completion: completion)
+    }
+    
+    func downloadXETransactionBlock(address: String, count: Int, page: Int, completion: @escaping (Int)-> Void) {
+        
+        XEWallet().downloadAllTransactions(address: address, page: page, completion: { response, resCount, resTotalCount in
+        
+            if let transactions = response {
+                
+                self.transactions?.append(contentsOf: transactions)
+
+                var newCount = count + resCount
+                if newCount >= resTotalCount {
+                    
+                    completion(0)
+                } else {
+                    
+                    self.downloadXETransactionBlock(address: address, count: newCount, page: page+1, completion: completion)
+                }
+            }
+        })
+    }
+    
+    
     func downloadWalletStatus() {
                 
         self.type.downloadWalletStatus(address: self.address, completion: { status in
@@ -97,4 +124,6 @@ class WalletDataModel: Codable {
         })
         NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
+    
+    
 }
