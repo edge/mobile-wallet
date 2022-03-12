@@ -10,80 +10,35 @@ import UIKit
 class XESummaryDataModel: Codable {
 
     var latestBlock: Int?
-    var latestTx: XESummaryLatestTxDataModel?
-    var balances: [XESummaryBalancesDataModel]?
+    var wallets: [XESummaryWalletsDataModel]?
 
     enum CodingKeys: String, CodingKey {
         
         case latestBlock
-        case latestTx
-        case balances
+        case wallets
     }
 
     public required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.latestBlock = try container.decodeIfPresent(Int.self, forKey: .latestBlock)
-        self.latestTx = try container.decodeIfPresent(XESummaryLatestTxDataModel.self, forKey: .latestTx)
-        self.balances = try container.decodeIfPresent([XESummaryBalancesDataModel].self, forKey: .balances)
+        self.wallets = try container.decodeIfPresent([XESummaryWalletsDataModel].self, forKey: .wallets)
     }
     
-    public init(latestBlock: Int, latestTx: XESummaryLatestTxDataModel, balances: [XESummaryBalancesDataModel]) {
+    public init(latestBlock: Int, wallets: [XESummaryWalletsDataModel]) {
         
         self.latestBlock = latestBlock
-        self.latestTx = latestTx
-        self.balances = balances
+        self.wallets = wallets
     }
 }
 
-struct XESummaryLatestTxDataModel: Codable {
-
-    var timestamp: Int?
-    var sender: String?
-    var recipient: String?
-    var amount: Int?
-    var data: XETransactionDataDataModel?
-    var nonce: Int?
-    var signature: String?
-    var hash: String?
-    var block: XETransactionBlockDataModel?
-    var confirmations: Int?
-    var status: TransactionStatus?
-    
-    enum CodingKeys: String, CodingKey {
-        
-        case timestamp
-        case sender
-        case recipient
-        case amount
-        case data
-        case nonce
-        case signature
-        case hash
-        case block
-    }
-
-    public init(from decoder: Decoder) throws {
-        
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.timestamp = try container.decode(Int.self, forKey: .timestamp)
-        self.sender = try container.decode(String.self, forKey: .sender)
-        self.recipient = try container.decode(String.self, forKey: .recipient)
-        self.amount = try container.decode(Int.self, forKey: .amount)
-        self.data = try container.decode(XETransactionDataDataModel.self, forKey: .data)
-        self.nonce = try container.decode(Int.self, forKey: .nonce)
-        self.signature = try container.decode(String.self, forKey: .signature)
-        self.hash = try container.decode(String.self, forKey: .hash)
-        self.block = try container.decode(XETransactionBlockDataModel.self, forKey: .block)
-    }
-}
-
-class XESummaryBalancesDataModel: Codable {
+class XESummaryWalletsDataModel: Codable {
 
     var address: String?
     var balance: Int?
     var nonce: Int?
     var latestTx: XESummaryBalancesLatestTxDataModel?
+    var pendingTxs: [XETransactionPendingRecordDataModel]?
     
     enum CodingKeys: String, CodingKey {
         
@@ -91,6 +46,7 @@ class XESummaryBalancesDataModel: Codable {
         case balance
         case nonce
         case latestTx
+        case pendingTxs
     }
 
     public required init(from decoder: Decoder) throws {
@@ -100,14 +56,16 @@ class XESummaryBalancesDataModel: Codable {
         self.balance = try container.decodeIfPresent(Int.self, forKey: .balance)
         self.nonce = try container.decodeIfPresent(Int.self, forKey: .nonce)
         self.latestTx = try container.decodeIfPresent(XESummaryBalancesLatestTxDataModel.self, forKey: .latestTx)
+        self.pendingTxs = try container.decodeIfPresent([XETransactionPendingRecordDataModel].self, forKey: .pendingTxs)
     }
     
-    public init(address: String, balance: Int, nonce: Int, latestTx: XESummaryBalancesLatestTxDataModel) {
+    public init(address: String, balance: Int, nonce: Int, latestTx: XESummaryBalancesLatestTxDataModel, pendingTxs: [XETransactionPendingRecordDataModel]) {
         
         self.address = address
         self.balance = balance
         self.nonce = nonce
         self.latestTx = latestTx
+        self.pendingTxs = pendingTxs
     }
 }
 

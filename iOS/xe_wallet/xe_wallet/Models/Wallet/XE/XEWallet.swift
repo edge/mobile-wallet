@@ -114,8 +114,8 @@ class XEWallet {
         
         let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
         //NetworkState. AppDataModelManager.shared.getXEServerTransactionUrl()
-                
-        Alamofire.request("\(urlTransactions)\(address)?above=block&page=\(page)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+        print("\(urlTransactions)\(address)?above=block&page=\(page)")
+        Alamofire.request("\(urlTransactions)\(address)?above=\(block)&page=\(page)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 

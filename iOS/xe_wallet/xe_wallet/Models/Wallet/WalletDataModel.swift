@@ -16,6 +16,7 @@ class WalletDataModel: Codable {
     var backedup: Double
     var status: WalletStatusDataModel?
     var transactions: [TransactionDataModel]?
+    var pending: [TransactionDataModel]?
     var wallet: Wallet?
     
     enum CodingKeys: String, CodingKey {
@@ -26,6 +27,7 @@ class WalletDataModel: Codable {
         case backedup
         case status
         case transactions
+        case pending
         case wallet
     }
 
@@ -38,19 +40,8 @@ class WalletDataModel: Codable {
         self.backedup = try container.decode(Double.self, forKey: .backedup)
         self.status = try container.decodeIfPresent(WalletStatusDataModel.self, forKey: .status)
         self.transactions = try container.decodeIfPresent([TransactionDataModel].self, forKey: .transactions)
+        self.pending = try container.decodeIfPresent([TransactionDataModel].self, forKey: .pending)
         self.wallet = try container.decodeIfPresent(Wallet.self, forKey: .wallet)
-    }
-    
-    func encode(to encoder: Encoder) throws {
-
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(type, forKey: .type)
-        try container.encode(address, forKey: .address)
-        try container.encode(created, forKey: .created)
-        try container.encode(backedup, forKey: .backedup)
-        try container.encode(status, forKey: .status)
-        try container.encode(transactions, forKey: .transactions)
-        try container.encode(wallet, forKey: .wallet)
     }
     
     public init(type: WalletType, wallet: AddressKeyPairModel) {
@@ -135,6 +126,4 @@ class WalletDataModel: Codable {
         })
         NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }
-    
-    
 }

@@ -40,6 +40,41 @@ class WalletDataModelManager {
         if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
+            //self.purgeTransactions()
+        }
+    }
+    
+    func purgeTransactions() {
+        
+        for wallet in self.walletData {
+            
+            if var transactions = wallet.transactions {
+                
+                var index = 0
+                
+                repeat {
+                    
+                    var pos = 0
+                    repeat {
+                        
+                        if pos != index {
+                            
+                            if transactions[index].hash == transactions[pos].hash {
+                                
+                                transactions.remove(at: pos)
+                            } else {
+                                
+                                pos += 1
+                            }
+                        } else {
+                            
+                            pos += 1
+                        }
+                    } while( pos < transactions.count )
+                    index += 1
+                } while( index < transactions.count )
+                wallet.transactions = transactions
+            }
         }
     }
     
@@ -170,15 +205,40 @@ class WalletDataModelManager {
         XEWallet().downloadAllWalletData(addresses: addresses, completion: { response in
         
             guard let summary = response else { return }
-            guard let balances = summary.balances else { return }
+            guard let wallets = summary.wallets else { return }
 
-            for balance in balances {
+            for wallet in wallets {
                 
-                if let index = self.walletData.firstIndex(where: { $0.address == balance.address }) {
+                if let index = self.walletData.firstIndex(where: { $0.address == wallet.address }) {
                     
-                    self.walletData[index].status = WalletStatusDataModel(address: balance.address ?? "", balance: Double(balance.balance ?? 0)/1000000, erc20Tokens: nil, nonce: balance.nonce ?? 0)
+                    self.walletData[index].status = WalletStatusDataModel(address: wallet.address ?? "", balance: Double(wallet.balance ?? 0)/1000000, erc20Tokens: nil, nonce: wallet.nonce ?? 0)
                     
-                    if let latestTx = balance.latestTx {
+                    if let pending = wallet.pendingTxs {
+                    
+                        if pending.count > 0 {
+                            
+                            for pend in pending {
+                                
+                                var trans = TransactionDataModel()
+                                
+                                trans.timestamp = pend.timestamp/1000
+                                trans.sender = pend.sender
+                                trans.recipient = pend.recipient
+                                trans.amount = Double(pend.amount / 1000000)
+                                trans.data = TransactionDataDataModel(memo: pend.data?.memo ?? "")
+                                trans.nonce = pend.nonce
+                                trans.signature = pend.signature
+                                trans.hash = pend.hash
+                                trans.status = .pending
+                                trans.type = .xe
+                                
+                                self.walletData[index].pending = []
+                                self.walletData[index].pending?.append(trans)
+                            }
+                        }
+                    }
+                    
+                    if let latestTx = wallet.latestTx {
                         
                         if let block = latestTx.block {
                             
@@ -203,13 +263,16 @@ class WalletDataModelManager {
                             }
                             
                             if downloadTransactions {
-                                                     
-                                //self.walletData[index].transactions = []
-                                
-                                self.walletData[index].downloadXETransactionBlock(address: balance.address ?? "", count: 0, page: 1, block:cachedBlock, completion: { response in
+
+                                DispatchQueue.main.async {
                                     
-                                    self.saveWalletData()
-                                })
+                                    self.walletData[index].downloadXETransactionBlock(address: wallet.address ?? "", count: 0, page: 1, block:cachedBlock, completion: { response in
+                                        
+                                        self.checkForFinalisedPending(index: index)
+                                        self.saveWalletData()
+                                        NotificationCenter.default.post(name: .didReceiveData, object: nil)
+                                    })
+                                }
                             }
                         }
                     }
@@ -217,8 +280,26 @@ class WalletDataModelManager {
             }
         })
     }
-
     
+    func checkForFinalisedPending(index: Int) {
+        
+        if let pending = self.walletData[index].pending {
+            
+            var newPending:[TransactionDataModel] = []
+            if pending.count > 0 {
+
+                for pend in pending {
+                    
+                    if let index = self.walletData[index].transactions?.firstIndex(where: { $0.hash == pend.hash }) {
+                    } else {
+                        
+                        newPending.append(pend)
+                    }
+                }
+            }
+            self.walletData[index].pending = newPending
+        }
+    }
     
     public func getInitialWalletAddress() -> String {
         
@@ -291,6 +372,25 @@ class WalletDataModelManager {
             if let transactions = wall.transactions {
                 
                 for trans in transactions {
+                    
+                    if transaction == nil {
+                        
+                        transaction = trans
+                        wallet = wall
+                    } else {
+                        
+                        if trans.timestamp > transaction?.timestamp ?? 0 {
+                            
+                            transaction = trans
+                            wallet = wall
+                        }
+                    }
+                }
+            }
+            
+            if let pending = wall.pending {
+                
+                for trans in pending {
                     
                     if transaction == nil {
                         

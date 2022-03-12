@@ -46,7 +46,7 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
         self.configureViews()
         self.configureViewsData()
         
-        self.timer = Timer.scheduledTimer(withTimeInterval: Constants.WalletPageUpdateTimer, repeats: true) { timer in
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             
             self.configureViewsData()
         }
@@ -121,10 +121,17 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
         if let wData = self.walletData {
 
             self.walletType = wData.type
+            var tranArray:[TransactionDataModel] = []
+            if let trans = wData.pending {
+                
+                tranArray.append(contentsOf: trans)
+            }
             if let trans = wData.transactions {
                 
-                self.transactionsArray = trans.sorted(by: {$0.timestamp > $1.timestamp})
+                tranArray.append(contentsOf: trans)
             }
+            
+            self.transactionsArray = tranArray.sorted(by: {$0.timestamp > $1.timestamp})
         }
         self.tableView.reloadData()
     }
