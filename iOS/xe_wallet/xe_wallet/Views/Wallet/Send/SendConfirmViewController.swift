@@ -207,6 +207,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     
     func handleSendAuthenticated() {
         
+        self.sendErrorString = ""
+        self.confirmButtonErrorLabel.text = ""
         if let wallet = self.walletData {
                            
             self.textEntryTextView.endEditing(true)
@@ -223,8 +225,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                 
                 if res {
                     
-                    self.sendErrorString = ""
-                    self.confirmButtonErrorLabel.text = ""
+
                     WalletDataModelManager.shared.reloadAllWalletInformation()
                     let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                     contentVC.modalPresentationStyle = .overFullScreen
