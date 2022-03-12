@@ -270,6 +270,7 @@ class WalletDataModelManager {
                                         
                                         self.checkForFinalisedPending(index: index)
                                         self.saveWalletData()
+                                        self.calculateLatestTransaction()
                                         NotificationCenter.default.post(name: .didReceiveData, object: nil)
                                     })
                                 }
