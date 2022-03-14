@@ -374,7 +374,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
                     if res {
                         
                         WalletDataModelManager.shared.exchangeRefreshNeeded = true
-                        WalletDataModelManager.shared.reloadAllWalletInformation()
+                        WalletDataModelManager.shared.reloadAllWalletInformationAfterDelay()
                         
                         let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                         contentVC.modalPresentationStyle = .overFullScreen

@@ -200,6 +200,14 @@ class WalletDataModelManager {
         self.handleXEUpdates(addresses: xeAddresses)
     }
     
+    public func reloadAllWalletInformationAfterDelay() {
+        
+        _ = Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { timer in
+            
+            self.reloadAllWalletInformation()
+        }
+    }
+    
     private func handleXEUpdates(addresses: [String]) {
                 
         XEWallet().downloadAllWalletData(addresses: addresses, completion: { response in
