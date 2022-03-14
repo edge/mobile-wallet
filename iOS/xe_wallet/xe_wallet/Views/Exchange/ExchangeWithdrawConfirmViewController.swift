@@ -212,7 +212,7 @@ class ExchangeWithdrawConfirmViewController: BaseViewController, CustomTitleBarD
                 
                 handlingFee = gas.minimumHandlingFee
             }
-            let totalFee = Double(gas.fast) + handlingFee
+            let totalFee = Double(gas.fee) + handlingFee
             let exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
             self.exchangeFee = "\(totalFee)XE"
             self.totalFee = totalFee

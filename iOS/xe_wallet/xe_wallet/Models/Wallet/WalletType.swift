@@ -301,13 +301,7 @@ enum WalletType: String, Codable {
         
         switch self {
             
-        case .xe:
-            break
-            
-        case .edge:
-            break
-            
-        case .usdc:
+        case .xe, .edge, .usdc:
             break
             
         case .ethereum:
@@ -315,6 +309,22 @@ enum WalletType: String, Codable {
             break
         }
         return nil
+    }
+    
+    func sendTX(tx: WriteTransaction, completion: @escaping (Bool, String)-> Void) {
+        
+        switch self {
+            
+        case .xe, .edge, .usdc:
+            break
+            
+        case .ethereum:
+            EtherWallet().sendTx(tx: tx, completion: { res in
+                
+                completion( res, "" )
+            })
+            break
+        }
     }
     
     func sendCoins(wallet: WalletDataModel, toAddress: String, memo: String, amount: String, key: String, completion: @escaping (Bool, String)-> Void) {

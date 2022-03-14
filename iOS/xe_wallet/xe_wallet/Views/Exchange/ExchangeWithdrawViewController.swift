@@ -153,7 +153,7 @@ class ExchangeWithdrawViewController: BaseViewController, KillViewDelegate, Cust
                 
                 handlingFee = gas.minimumHandlingFee
             }
-            var totalFee = Double(gas.fast) + handlingFee
+            var totalFee = Double(gas.fee) + handlingFee
             var exchangeRate = self.exchangeRatesDataModel?.rate ?? 0
             self.exchangeFee = "\(totalFee)XE"
             

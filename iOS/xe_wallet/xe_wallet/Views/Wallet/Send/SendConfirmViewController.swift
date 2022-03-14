@@ -75,6 +75,8 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     var confirmStatus = SendConfirmStatus.confirm
     var sendErrorString = "Failed to send coins"
     
+    var sendTx: WriteTransaction? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -104,14 +106,33 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress)
         if let wallet = self.walletData {
         
-            let tx = self.walletType.createSendTX(wallet: wallet, toAddress: self.toAddress, memo: "", amount: self.amount, key: key )
-            if let a = tx {
-                
-                let b = 1
-            }
+            self.sendTx = self.walletType.createSendTX(wallet: wallet, toAddress: self.toAddress, memo: "", amount: self.amount, key: key )
+
         }
         
-        self.feeLabel.text = self.walletType.getGasString(amount: valString, fromAddress: self.fromAddress, toAddress: self.toAddress)
+        let gas = XEGasRatesManager.shared.getRates()
+        var legacyString = "0.0"
+        if let legacy = gas?.ethereum.legacy {
+            
+            legacyString = "\(legacy)"
+            
+            let gasPrice = BigUInt(legacy) //Web3.Utils.parseToBigUInt(legacyString, units: .Gwei) ?? BigUInt(0.0)
+            let gasLimit = BigUInt(21000)
+            let gasCost = gasPrice * gasLimit
+            
+            let gweiPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0 * Double(0.000000001)
+            
+            
+            let ethValue = EtherExchangeRatesManager.shared.getRateValue()
+            let gasValue = Double(ethValue) * gweiPrice
+            
+            let gasString = "Gas: \(gasPrice) gwei ($\(StringHelpers.generateValueString(value: gasValue)))"
+            self.feeLabel.text = gasString
+        }
+        //let test = Web3.Utils.formatToEthereumUnits(legacyString, toUnits: .Gwei, decimals: 6)!
+        
+
+
                 
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
@@ -221,26 +242,32 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             var memoString = self.memo
             let trimmedMemo = memoString.trimmingCharacters(in: .whitespacesAndNewlines)
-            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: { res, error in
+            //self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: {
+            
+            if let tx = self.sendTx {
                 
-                if res {
+                self.walletType.sendTX(tx: tx, completion: {
+                    res, error in
                     
-
-                    WalletDataModelManager.shared.reloadAllWalletInformationAfterDelay()
-                    let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
-                    contentVC.modalPresentationStyle = .overFullScreen
-                    self.present(contentVC, animated: true, completion: nil)
-                } else {
-                    
-                    self.sendErrorString = "Failed to send coins"
-                    if error != nil {
+                    if res {
                         
-                        self.sendErrorString = "Transaction failed: \(error)"
+                        
+                        WalletDataModelManager.shared.reloadAllWalletInformationAfterDelay()
+                        let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
+                        contentVC.modalPresentationStyle = .overFullScreen
+                        self.present(contentVC, animated: true, completion: nil)
+                    } else {
+                        
+                        self.sendErrorString = "Failed to send coins"
+                        if error != nil {
+                            
+                            self.sendErrorString = "Transaction failed: \(error)"
+                        }
+                        self.confirmStatus = .error
+                        self.configureConfirmStatus()
                     }
-                    self.confirmStatus = .error
-                    self.configureConfirmStatus()
-                }
-            })
+                })
+            }
         }
     }
     

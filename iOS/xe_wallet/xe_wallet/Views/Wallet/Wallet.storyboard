@@ -4357,7 +4357,7 @@
         <image name="plus" width="24" height="24"/>
         <image name="receive" width="32" height="32"/>
         <image name="send" width="32" height="32"/>
-        <image name="settings" width="25" height="25"/>
+        <image name="settings" width="20" height="20"/>
         <image name="swap" width="20" height="20"/>
         <image name="trendlineUp" width="32" height="32"/>
         <image name="wallet" width="20" height="20"/>

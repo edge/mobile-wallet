@@ -11,42 +11,57 @@ import Alamofire
 class XEGasRatesDataModel: Codable {
 
     var date: Int
-    var average: Int
-    var fast: Int
-    var fastest: Int
-    var slow: Int
     var fee: Int
     var ref: String
     var handlingFeePercentage: Double
     var minimumHandlingFee: Double
-    
+    var ethereum: XEGasRatesEthereumDataModel
+        
     enum CodingKeys: String, CodingKey {
         
         case date
-        case average
-        case fast
-        case fastest
-        case slow
         case fee
         case ref
         case handlingFeePercentage
         case minimumHandlingFee
+        case ethereum
     }
 
     public required init(from decoder: Decoder) throws {
         
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.date = try container.decode(Int.self, forKey: .date)
-        self.average = try container.decode(Int.self, forKey: .average)
-        self.fast = try container.decode(Int.self, forKey: .fast)
-        self.fastest = try container.decode(Int.self, forKey: .fastest)
-        self.slow = try container.decode(Int.self, forKey: .slow)
         self.fee = try container.decode(Int.self, forKey: .fee)
         self.ref = try container.decode(String.self, forKey: .ref)
         self.handlingFeePercentage = try container.decode(Double.self, forKey: .handlingFeePercentage)
         self.minimumHandlingFee = try container.decode(Double.self, forKey: .minimumHandlingFee)
+        self.ethereum = try container.decode(XEGasRatesEthereumDataModel.self, forKey: .ethereum)
     }
 }
+
+class XEGasRatesEthereumDataModel: Codable {
+
+    var legacy: Double
+    var baseFee: Double
+    var priorityFee: Double
+    
+    enum CodingKeys: String, CodingKey {
+        
+        case legacy
+        case baseFee
+        case priorityFee
+    }
+
+    public required init(from decoder: Decoder) throws {
+        
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.legacy = try container.decode(Double.self, forKey: .legacy)
+        self.baseFee = try container.decode(Double.self, forKey: .baseFee)
+        self.priorityFee = try container.decode(Double.self, forKey: .priorityFee)
+    }
+}
+
+
 
 class XEGasRatesManager {
 

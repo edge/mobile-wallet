@@ -41,6 +41,22 @@ class WalletDataModelManager {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
             //self.purgeTransactions()
+            self.checkForInvalidX()
+        }
+    }
+    
+    func checkForInvalidX() {
+        
+        for wallet in self.walletData {
+            
+            var address = wallet.address
+            let test = address.replacingOccurrences(of: "x", with: "b")
+            if test.count < 1 {
+                
+                let a = 1
+                return
+            }
+            
         }
     }
     

@@ -334,11 +334,19 @@ class EtherWallet {
         let contract = web3.contract(Web3.Utils.coldWalletABI, at: toAddress, abiVersion: 2)!
         let amount = Web3.Utils.parseToBigUInt(value, units: .eth)
 
+        let gas = XEGasRatesManager.shared.getRates()
+        var legacyString = "0.0"
+        if let legacy = gas?.ethereum.legacy {
+            
+            legacyString = "\(legacy)"
+        }
+        let price = Web3.Utils.parseToBigUInt(legacyString, units: .Gwei)
+        
         var options = TransactionOptions.defaultOptions
         options.value = amount
         options.from = walletAddress
-        options.gasPrice = .automatic
-        options.gasLimit = .automatic
+        options.gasPrice = .manual(price ?? BigUInt(0.0)) //.automatic
+        options.gasLimit = .manual(BigUInt(21000)) //.automatic
         
         let tx = contract.write(
             "fallback",
@@ -347,6 +355,44 @@ class EtherWallet {
             transactionOptions: options)!
         
         return tx
+    }
+    
+    public func sendTx(tx: WriteTransaction, completion: @escaping (Bool)-> Void) {
+        
+        DispatchQueue.global().async {
+            
+            let response = Promise<Any> { seal in
+                
+                do {
+                    
+                    let password = AppDataModelManager.shared.getAppPinCode()
+                    if password != nil {
+                        
+                        let result = try tx.send(password: password)
+                        print(result)
+                        seal.resolve(.fulfilled(true))
+                        
+                    }else{
+                        
+                        let result = try tx.call()
+                        // fulfill are result from contract
+                        let anyResult = result["0"] as Any
+                        seal.resolve(.fulfilled(anyResult))
+                    }
+                }catch {
+                    
+                    print("SEND FAIL \(error)")
+                    seal.reject(error)
+                    completion(false)
+                    
+                }
+            }
+            response.done({result in
+                
+                print(result)
+                completion(result as! Bool)
+            })
+        }
     }
     
     public func sendEther(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
