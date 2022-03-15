@@ -55,7 +55,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="JP0-nS-iez"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -175,7 +175,7 @@
                                                             <constraint firstAttribute="width" constant="70.5" id="1hx-sb-knt"/>
                                                             <constraint firstAttribute="height" constant="22" id="7UL-TZ-1gJ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

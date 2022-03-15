@@ -13,9 +13,6 @@
         <array key="Inter-Bold.otf">
             <string>Inter-Bold</string>
         </array>
-        <array key="Inter-Regular.otf">
-            <string>Inter-Regular</string>
-        </array>
     </customFonts>
     <scenes>
         <!--Receive-->
@@ -143,7 +140,7 @@
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="76" id="pBo-lp-0j3"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="15"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>

@@ -197,7 +197,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="ZTL-XG-C86"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -261,7 +261,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="Rbe-7a-ntC"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

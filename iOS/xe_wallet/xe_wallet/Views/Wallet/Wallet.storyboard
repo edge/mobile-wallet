@@ -722,7 +722,7 @@
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="17" id="8Ye-SB-2d3"/>
                                                                                                 </constraints>
-                                                                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                                                                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="14"/>
                                                                                                 <color key="textColor" name="FontMain"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
@@ -1046,7 +1046,7 @@
                                                                                                 <constraints>
                                                                                                     <constraint firstAttribute="height" constant="17" id="K26-vw-czW"/>
                                                                                                 </constraints>
-                                                                                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                                                                                <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="14"/>
                                                                                                 <color key="textColor" name="FontMain"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
@@ -1505,8 +1505,8 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="xe_1jhgsdfjhgw37gsdf" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FLb-si-XtV">
                                                                         <rect key="frame" x="24" y="110" width="372" height="22"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="18"/>
-                                                                        <color key="textColor" name="FontMain"/>
+                                                                        <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="18"/>
+                                                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BALANCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bZU-gd-Miz">
@@ -2345,7 +2345,7 @@
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="17" id="foa-Rp-aOY"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Bold" family="Menlo" pointSize="14"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -2404,11 +2404,11 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="address" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmR-WP-vcU">
-                                                            <rect key="frame" x="52" y="8" width="53.5" height="20"/>
+                                                            <rect key="frame" x="52" y="8" width="59.5" height="20"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="ntn-Sa-QHn"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                            <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                             <color key="textColor" name="FontMain"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
