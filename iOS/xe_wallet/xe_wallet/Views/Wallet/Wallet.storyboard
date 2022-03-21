@@ -1372,6 +1372,7 @@
                         <outlet property="swapFromTokenSelectButton" destination="ZlN-b0-GeC" id="7ZT-s6-qgJ"/>
                         <outlet property="swapToAddressLabel" destination="RBU-Hj-WNi" id="dYX-8C-IfU"/>
                         <outlet property="swapToCardImage" destination="8y1-Tp-uZd" id="11c-w7-y4U"/>
+                        <outlet property="swapToSelectButton" destination="ncu-OQ-Qge" id="1H1-yU-93U"/>
                         <outlet property="swapToTokenImage" destination="gAV-PE-W3i" id="K77-5Y-2uJ"/>
                         <outlet property="swapToTokenSelectButton" destination="sTc-fU-Pwi" id="nFq-aH-yHl"/>
                         <outlet property="swapToTokenSelectImage" destination="s4C-HN-rEs" id="iDl-ya-uwH"/>
@@ -4357,7 +4358,7 @@
         <image name="plus" width="24" height="24"/>
         <image name="receive" width="32" height="32"/>
         <image name="send" width="32" height="32"/>
-        <image name="settings" width="20" height="20"/>
+        <image name="settings" width="25" height="25"/>
         <image name="swap" width="20" height="20"/>
         <image name="trendlineUp" width="32" height="32"/>
         <image name="wallet" width="20" height="20"/>

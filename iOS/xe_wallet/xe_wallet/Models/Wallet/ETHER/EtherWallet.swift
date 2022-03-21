@@ -51,20 +51,29 @@ class EtherWallet {
         return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
     }
     
+    public func getAPIKey(keyName: String) -> String {
+        
+        if let path = Bundle.main.path(forResource: "keys", ofType: "plist") {
+            
+            let keys = NSDictionary(contentsOfFile: path)
+            if let key = keys?[keyName] {
+                
+                return key as! String
+            }
+        }
+        return ""
+    }
+    
     public func getGasString(amount: String, fromAddress: String, toAddress: String) -> String {
 
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        let infura = self.getAPIKey(keyName: "infura")
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
-        
-        
-
-        
-        
-        
-        
+                
         let walletAddress = EthereumAddress(fromAddress)!
         let contract = web3.contract(Web3.Utils.coldWalletABI, at: EthereumAddress(toAddress)!, abiVersion: 2)!
         let amt = Web3.Utils.parseToBigUInt(amount, units: .eth)
@@ -107,10 +116,12 @@ class EtherWallet {
     
     public func estimateGas(_ transaction: EthereumTransaction, transactionOptions: TransactionOptions) -> BigUInt? {
         
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        let infura = self.getAPIKey(keyName: "infura")
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
         
         do {
@@ -125,10 +136,12 @@ class EtherWallet {
     
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
 
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        let infura = self.getAPIKey(keyName: "infura")
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
 
         DispatchQueue.global().async {
@@ -179,9 +192,10 @@ class EtherWallet {
     
     func downloadTransactions(address: String, completion: @escaping ([TransactionDataModel]?)-> Void) {
                 
-        let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-        let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
-        let url = "\(apiUrl)&address=\(address)&apikey=\(apiKey)"
+        let endpoint = WalletType.ethereum.getDataNetwork(dataType: .transaction)
+        let apiUrl = "api?module=account&action=txlist&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
+        let apiKey = EtherWallet().getAPIKey(keyName: "etherscan")
+        let url = "\(endpoint)\(apiUrl)&address=\(address)&apikey=\(apiKey)"
         
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
             
@@ -237,14 +251,12 @@ class EtherWallet {
     
     func downloadTokenTransations(address: String, type: WalletType, completion: @escaping ([TransactionDataModel]?)-> Void) {
     
-        //http://api.etherscan.io/api?module=account&action=tokentx&address=0x9f7dd5ea934d188a599567ee104e97fa46cb4496&startblock=0&endblock=999999999&sort=asc&apikey=YourApiKeyToken
+        let endpoint = WalletType.ethereum.getDataNetwork(dataType: .transaction)
         
-        let apiUrl = "https://api-rinkeby.etherscan.io/api?module=account&action=tokentx&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
-        let apiKey = "2HA3ZV1XH4JHEVRA7J534AJ1PUGQVVKD4V"
-        let url = "\(apiUrl)&token=0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301&address=\(address)&apikey=\(apiKey)"
-                
-        //let url = "https://rinkeby.etherscan.io/token/0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301?a=0x8b9bD05Fe9fF20b185d682F664AeEe763023d9b9"
-        
+        let apiUrl = "api?module=account&action=tokentx&startblock=0&endblock=99999999&page=1&offset=10&sort=asc"
+        let apiKey = EtherWallet().getAPIKey(keyName: "etherscan")
+        let url = "\(endpoint)\(apiUrl)&token=0xbf57cd6638fdfd7c4fa4c10390052f7ab3a1c301&address=\(address)&apikey=\(apiKey)"
+
         Alamofire.request(url, method: .get, encoding: JSONEncoding.default).responseJSON { response in
             
             switch (response.result) {
@@ -310,10 +322,12 @@ class EtherWallet {
     
     public func createSendEtherTX(toAddr: String, wallet: WalletDataModel, amt: String, key: String ) -> WriteTransaction? {
         
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        let infura = self.getAPIKey(keyName: "infura")
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
         
         guard let ewallet = wallet.wallet else { return nil }
@@ -397,10 +411,12 @@ class EtherWallet {
     
     public func sendEther(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
         
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        let infura = self.getAPIKey(keyName: "infura")
+        
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
         
         guard let ewallet = wallet.wallet else { return }
@@ -472,11 +488,12 @@ class EtherWallet {
     func sendEdge(toAddr: String, wallet: WalletDataModel, amt: String, key: String, completion: @escaping (Bool)-> Void) {
         
         let network = AppDataModelManager.shared.getNetworkStatus()
+        let infura = self.getAPIKey(keyName: "infura")
         
-        var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-        if AppDataModelManager.shared.testModeStatus() {
+        var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
-            web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+            web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
         }
         
         guard let ewallet = wallet.wallet else { return }
@@ -554,10 +571,12 @@ class EtherWallet {
         
         var contract:web3.web3contract?
         do {
-            var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-            if AppDataModelManager.shared.testModeStatus() {
+            let infura = self.getAPIKey(keyName: "infura")
+            
+            var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+            if AppDataModelManager.shared.testModeStatus() == .test {
                 
-                web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+                web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
             }
             
             guard let ewallet = wallet.wallet else { return }

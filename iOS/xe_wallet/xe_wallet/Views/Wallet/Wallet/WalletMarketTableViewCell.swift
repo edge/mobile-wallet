@@ -58,12 +58,12 @@ class WalletMarketTableViewCell: UITableViewCell {
         let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: type)
         
         self.tokenPercentChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-        if percent < 0 {
+        if XEExchangeRateHistoryManager.shared.getRatePerformanceDir(type: self.type) {
         
-            self.tokenPercentChangeLabel.textColor = UIColor.red
+            self.tokenPercentChangeLabel.textColor = UIColor(named: "XEGreen")
         } else {
             
-            self.tokenPercentChangeLabel.textColor = UIColor(named: "XEGreen")
+            self.tokenPercentChangeLabel.textColor = UIColor(named: "FontSecondary")
         }
         
         if data == "Ethereum" {

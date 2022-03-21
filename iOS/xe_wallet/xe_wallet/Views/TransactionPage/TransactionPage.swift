@@ -113,10 +113,12 @@ class TransactionPageViewController: BaseViewController{
                 
             } else {
                 
-                var web3 = Web3.InfuraMainnetWeb3(accessToken: Constants.infuraToken)
-                if AppDataModelManager.shared.testModeStatus() {
+                let infura = EtherWallet().getAPIKey(keyName: "infura")
+                
+                var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
+                if AppDataModelManager.shared.testModeStatus() == .test {
                     
-                    web3 = Web3.InfuraRinkebyWeb3(accessToken: Constants.infuraToken)
+                    web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
                 }
                 
                 self.memoView.isHidden = false

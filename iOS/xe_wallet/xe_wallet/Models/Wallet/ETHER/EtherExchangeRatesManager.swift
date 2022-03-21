@@ -32,7 +32,7 @@ class EtherExchangeRatesManager {
     
     func loadFromLocalStorage() {
         
-        if let data = UserDefaults.standard.object(forKey:  "EtherExchangeRate") {
+        if let data = UserDefaults.standard.object(forKey:  "\(AppDataModelManager.shared.getNetworkStatusString())EtherExchangeRate") {
         
             self.etherValue =   data as! NSNumber
         }
@@ -40,7 +40,7 @@ class EtherExchangeRatesManager {
     
     func saveToLocalStorage() {
         
-        UserDefaults.standard.set(self.etherValue, forKey:"EtherExchangeRate")
+        UserDefaults.standard.set(self.etherValue, forKey:"\(AppDataModelManager.shared.getNetworkStatusString())EtherExchangeRate")
         UserDefaults.standard.synchronize()
     }
     

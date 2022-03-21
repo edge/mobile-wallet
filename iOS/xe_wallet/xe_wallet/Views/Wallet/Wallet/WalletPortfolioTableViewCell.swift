@@ -27,12 +27,23 @@ class WalletPortfolioTableViewCell: UITableViewCell {
     
     func configure(address: String) {
                 
+        var typ: WalletType = .xe
         self.updateTotalValue()
         if let type = WalletDataModelManager.shared.getWalletTypeFromAddress(address: address) {
             
             self.networkLabel.isHidden = false
             self.networkNameLabel.isHidden = false
-            if type == .xe {
+            typ = type
+        } else {
+            
+            //self.networkLabel.isHidden = true
+            //self.networkNameLabel.isHidden = true
+            typ = .xe
+        }
+        
+        if AppDataModelManager.shared.getNetworkStatus() == .test {
+            
+            if typ == .xe {
                 
                 self.networkNameLabel.text = "XE Testnet"
             } else {
@@ -41,8 +52,13 @@ class WalletPortfolioTableViewCell: UITableViewCell {
             }
         } else {
             
-            self.networkLabel.isHidden = true
-            self.networkNameLabel.isHidden = true
+            if typ == .xe {
+                
+                self.networkNameLabel.text = "XE MainNet"
+            } else {
+                
+                self.networkNameLabel.text = "Ethereum MainNet"
+            }
         }
     }
     

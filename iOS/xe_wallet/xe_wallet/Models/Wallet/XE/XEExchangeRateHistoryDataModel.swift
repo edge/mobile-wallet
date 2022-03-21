@@ -55,7 +55,7 @@ class XEExchangeRateHistoryManager {
     
     func loadFromLocalStorage() {
         
-        if let data = UserDefaults.standard.data(forKey: "ExchangeRateHistory") {
+        if let data = UserDefaults.standard.data(forKey: "\(AppDataModelManager.shared.getNetworkStatusString())ExchangeRateHistory") {
             
             if let decoded = try? JSONDecoder().decode([XEExchangeRateHistoryDataModel].self, from: data) {
 
@@ -68,7 +68,7 @@ class XEExchangeRateHistoryManager {
         
         if let encoded = try? JSONEncoder().encode(self.exchangeDataModel) {
             
-            UserDefaults.standard.set(encoded, forKey: "ExchangeRateHistory")
+            UserDefaults.standard.set(encoded, forKey: "\(AppDataModelManager.shared.getNetworkStatusString())ExchangeRateHistory")
             UserDefaults.standard.synchronize()
         }
     }
@@ -121,6 +121,30 @@ class XEExchangeRateHistoryManager {
             }
         }
         return UIImage(named:"trendlineUp")
+    }
+    
+    func getRatePerformanceDir(type: WalletType) -> Bool {
+        
+        if let rates = self.exchangeDataModel {
+            
+            if rates.count > 1 {
+               
+                if type == .edge || type == .xe {
+                    
+                    if rates[rates.count-1].usdPerXE < rates[rates.count-2].usdPerXE {
+                        
+                        return false
+                    }
+                } else if type == .ethereum {
+                    
+                    if (rates[rates.count-1].usdPerXE / rates[rates.count-1].ethPerXE) < (rates[rates.count-2].usdPerXE / rates[rates.count-2].ethPerXE) {
+                        
+                        return false
+                    }
+                }
+            }
+        }
+        return true
     }
     
     func getRateHistoryPercentage(type: WalletType) -> Double {

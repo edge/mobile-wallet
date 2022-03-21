@@ -602,8 +602,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XE Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMj-W4-mVC">
-                                                <rect key="frame" x="40" y="6" width="72" height="20"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Edge (XE)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMj-W4-mVC">
+                                                <rect key="frame" x="40" y="6" width="76" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="UFG-B4-GL5"/>
                                                 </constraints>
@@ -611,8 +611,8 @@
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$XE is used for services" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-pO-q3s">
-                                                <rect key="frame" x="40" y="27" width="138" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stake and earn with $XE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gc-pO-q3s">
+                                                <rect key="frame" x="40" y="27" width="140.5" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="MrM-ua-3Bi"/>
                                                 </constraints>
@@ -671,8 +671,8 @@
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$EDGE is used for the network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ww8-kV-45h">
-                                                <rect key="frame" x="40" y="25" width="175.5" height="15"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Ethereum wallet supporting ERC-20 tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ww8-kV-45h">
+                                                <rect key="frame" x="40" y="25" width="286" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="V8A-On-edR"/>
                                                 </constraints>
@@ -739,6 +739,7 @@
                                             <constraint firstItem="ww8-kV-45h" firstAttribute="leading" secondItem="39P-Sn-ZhK" secondAttribute="trailing" constant="8" symbolic="YES" id="FPp-QH-tEP"/>
                                             <constraint firstItem="Shx-kx-9Gq" firstAttribute="leading" secondItem="MC5-3S-s7e" secondAttribute="leading" id="NPi-sF-Kf7"/>
                                             <constraint firstItem="bHp-zF-otx" firstAttribute="top" secondItem="MC5-3S-s7e" secondAttribute="top" constant="6" id="RYV-OK-QMG"/>
+                                            <constraint firstItem="30o-fc-rPA" firstAttribute="leading" secondItem="ww8-kV-45h" secondAttribute="trailing" constant="8" symbolic="YES" id="Swc-lN-SCb"/>
                                             <constraint firstItem="39P-Sn-ZhK" firstAttribute="centerY" secondItem="MC5-3S-s7e" secondAttribute="centerY" id="WDM-8c-Dhc"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="YW1-jJ-GNA"/>
                                             <constraint firstAttribute="bottom" secondItem="ww8-kV-45h" secondAttribute="bottom" constant="8" id="Ys2-Xe-lUw"/>

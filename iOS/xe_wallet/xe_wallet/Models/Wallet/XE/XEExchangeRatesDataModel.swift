@@ -70,7 +70,7 @@ class XEExchangeRatesManager {
     
     func loadFromLocalStorage() {
         
-        if let data = UserDefaults.standard.data(forKey: "ExchangeRates") {
+        if let data = UserDefaults.standard.data(forKey: "\(AppDataModelManager.shared.getNetworkStatusString())ExchangeRates") {
             
             if let decoded = try? JSONDecoder().decode(XEExchangeRatesDataModel.self, from: data) {
 
@@ -83,7 +83,7 @@ class XEExchangeRatesManager {
         
         if let encoded = try? JSONEncoder().encode(self.exchangeDataModel) {
             
-            UserDefaults.standard.set(encoded, forKey: "ExchangeRates")
+            UserDefaults.standard.set(encoded, forKey: "\(AppDataModelManager.shared.getNetworkStatusString())ExchangeRates")
             UserDefaults.standard.synchronize()
         }
     }

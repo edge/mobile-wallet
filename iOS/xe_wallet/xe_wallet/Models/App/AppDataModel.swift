@@ -12,5 +12,5 @@ struct AppDataModel {
     var pinCode: String = ""
     var testMode: Bool = true
     
-    var networkState: NetworkState = .test
+    var networkState: NetworkState = .main
 }

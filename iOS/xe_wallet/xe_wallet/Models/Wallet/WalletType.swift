@@ -105,7 +105,7 @@ enum WalletType: String, Codable {
 
     func getDataNetwork(dataType: WalletNetworkStringData) -> String {
         
-        if AppDataModelManager.shared.testModeStatus() {
+        if AppDataModelManager.shared.testModeStatus() == .test {
             
             switch self {
                 
@@ -137,9 +137,12 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction:
                     return ""
                         
+                case .transaction:
+                    return "https://api-rinkeby.etherscan.io/"
+                    
                 case .exploreButtonUrl:
                     return "https://rinkeby.etherscan.io/tx/"
                 }
@@ -176,8 +179,12 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .transaction, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction:
                     return ""
+                    
+                case .transaction:
+                    return "https://api.etherscan.io/"
+                    
                 case .exploreButtonUrl:
                     return "https://etherscan.io/tx/"
                 }

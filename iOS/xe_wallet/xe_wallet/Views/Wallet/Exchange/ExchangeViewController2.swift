@@ -28,6 +28,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var swapToAddressLabel: UILabel!
     @IBOutlet weak var swapToWalletSelectImage: UIImageView!
     
+    @IBOutlet weak var swapToSelectButton: UIButton!
     @IBOutlet weak var swapToTokenTokenImage: UIImageView!
     @IBOutlet weak var swapToTokenTokenAbv: UILabel!
     @IBOutlet weak var swapToTokenAmountTextField: UITextField!
@@ -146,6 +147,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         if self.toIndex != -1 {
         
+            self.swapToSelectButton.isEnabled = true
             self.swapToTokenImage.image = UIImage(named:self.walletData[self.toIndex].type.rawValue)
             self.swapToAddressLabel.text = self.walletData[self.toIndex].address
             self.swapToWalletSelectImage.isHidden = false
@@ -180,6 +182,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             }
         } else {
             
+            self.swapToSelectButton.isEnabled = false
             self.swapToAddressLabel.text = "No Available Wallets"
             self.swapToTokenSelectButton.isHidden = true
             self.swapToTokenSelectButton.isEnabled = false

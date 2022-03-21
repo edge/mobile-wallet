@@ -72,5 +72,5 @@ class Constants {
     static var WalletPageUpdateTimer = 2.0
     
     
-    static var infuraToken = "f4953edd390547d3bb63dd1f76af13f2"
+    //static var infuraToken = "f4953edd390547d3bb63dd1f76af13f2"
 }

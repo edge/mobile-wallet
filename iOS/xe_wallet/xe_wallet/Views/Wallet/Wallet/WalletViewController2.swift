@@ -43,18 +43,18 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.refreshControl?.tintColor = .white
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-        
-        if WalletDataModelManager.shared.activeWalletAmount() == 0 {
-            
-            performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
-        }
-        
+                
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        
+        if WalletDataModelManager.shared.activeWalletAmount() == 0 {
+            
+            performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
+        }
         self.tableView.reloadData()
     }
 

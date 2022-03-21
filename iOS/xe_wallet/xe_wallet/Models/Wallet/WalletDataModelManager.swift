@@ -37,12 +37,18 @@ class WalletDataModelManager {
         
     func loadWalletList() {
 
-        if let data = UserDefaults.standard.data(forKey: Constants.defaultStorageName) {
+        if let data = UserDefaults.standard.data(forKey: "\(AppDataModelManager.shared.getNetworkStatusString())WalletData") {
             
             self.walletData = try! JSONDecoder().decode([WalletDataModel].self, from: data)
             //self.purgeTransactions()
             self.checkForInvalidX()
         }
+    }
+    
+    func switchedWallets() {
+        
+        self.walletData = []
+        self.loadWalletList()
     }
     
     func checkForInvalidX() {
@@ -99,7 +105,7 @@ class WalletDataModelManager {
         self.exchangeRefreshNeeded = true
         
         let wData = try! JSONEncoder().encode(self.walletData)
-        UserDefaults.standard.set(wData, forKey: Constants.defaultStorageName)
+        UserDefaults.standard.set(wData, forKey: "\(AppDataModelManager.shared.getNetworkStatusString())WalletData")
         UserDefaults.standard.synchronize()
         NotificationCenter.default.post(name: .didReceiveData, object: nil)
     }

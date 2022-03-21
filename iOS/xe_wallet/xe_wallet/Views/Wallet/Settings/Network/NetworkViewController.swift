@@ -17,8 +17,8 @@ class NetworkViewController: BaseViewController {
     
     @IBOutlet weak var mainnetTickImage: UIImageView!
     @IBOutlet weak var testnetTickImage: UIImageView!
-    var testnetStatus = false
-    var testnetStatusStart = false
+    var testnetStatus: NetworkState = .test
+    var testnetStatusStart: NetworkState = .test
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,31 +44,35 @@ class NetworkViewController: BaseViewController {
     
     @IBAction func mainNetButtonPressed(_ sender: Any) {
         
-        /*
-        self.testnetStatus = false
-        self.setButtonStatus()*/
+        self.testnetStatus = .main
+        self.setButtonStatus()
     }
     
     @IBAction func testNetButtonPressed(_ sender: Any) {
         
-        self.testnetStatus = true
+        self.testnetStatus = .test
         self.setButtonStatus()
     }
     
     @IBAction func selectNetworkButtonPressed(_ sender: Any) {
         
-        if self.testnetStatus == !self.testnetStatusStart {
+        if self.testnetStatus != self.testnetStatusStart {
             
-            let networkText = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString(status: self.testnetStatus)
-            
+            var networkText = NetworkState.test.rawValue
+            if AppDataModelManager.shared.getNetworkStatus() == .test {
+                
+                networkText = NetworkState.main.rawValue
+            }
+
             let alert = UIAlertController(title: Constants.networkChangeConfirmMessageHeader , message: "\(Constants.networkChangeConfirmMessage) \(networkText)", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: Constants.buttonOkText, style: .default, handler: { action in
                 
-                AppDataModelManager.shared.testModeToggle()
-                
+                AppDataModelManager.shared.statusToggle()
+                WalletDataModelManager.shared.switchedWallets()
                 WalletDataModelManager.shared.reloadAllWalletInformation()
                 NotificationCenter.default.post(name: .didReceiveData, object: nil)
-                self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                //self.dismiss(animated: true, completion: nil)
                 
             }))
             alert.addAction(UIAlertAction(title: Constants.buttonCancelText, style: .default, handler: { action in
@@ -81,7 +85,7 @@ class NetworkViewController: BaseViewController {
     
     func setButtonStatus() {
         
-        if self.testnetStatus {
+        if self.testnetStatus == .test {
         
             self.mainNetHighlightView.backgroundColor = UIColor(named: "BackgroundMain")
             self.testNetHighlightView.backgroundColor = UIColor(named: "ButtonGreen")
@@ -96,7 +100,7 @@ class NetworkViewController: BaseViewController {
 
         }
         
-        if self.testnetStatus == !self.testnetStatusStart {
+        if self.testnetStatus != self.testnetStatusStart {
 
             self.selectNetworkButtonText.textColor = UIColor(named: "FontMain")
             self.selectNetworkButtonView.backgroundColor = UIColor(named:"ButtonGreen")

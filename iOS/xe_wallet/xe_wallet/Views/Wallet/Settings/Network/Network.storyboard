@@ -37,7 +37,7 @@
                                 <color key="textColor" name="FontSecondary"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view alpha="0.20000000000000001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-nk-9c3">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z9z-nk-9c3">
                                 <rect key="frame" x="24" y="114" width="366" height="48"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_xe" translatesAutoresizingMaskIntoConstraints="NO" id="GxM-Jc-30g">
@@ -247,7 +247,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIj-M2-AAV">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lIj-M2-AAV">
                                 <rect key="frame" x="24" y="262" width="366" height="86"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mainnet disabled during beta testing." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="6rH-L8-4xZ">
@@ -392,9 +392,11 @@
                         <outlet property="selectNetworkButtonView" destination="aQ9-g1-oii" id="Ji2-Ew-8z7"/>
                         <outlet property="testNetHighlightView" destination="g1V-Zw-3bS" id="I62-eS-qYS"/>
                         <outlet property="testnetTickImage" destination="bok-za-3hi" id="UjM-vw-oGj"/>
+                        <segue destination="FhA-mx-S7c" kind="unwind" identifier="unwindToWalletView" unwindAction="unwindToWalletViewWithSender:" id="Kkp-TN-ohc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="FhA-mx-S7c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="118.84057971014494" y="67.633928571428569"/>
         </scene>

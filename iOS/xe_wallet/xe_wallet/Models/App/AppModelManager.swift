@@ -17,13 +17,26 @@ class AppDataModelManager {
     
     private init() {
         
-        if UserDefaults.standard.object(forKey: "TestMode") == nil {
+        let test = UserDefaults.standard.bool(forKey: "TestMode")
+        if test {
             
-            appData.testMode = true
+            self.appData.networkState = .test
         } else {
             
-            self.appData.testMode = true //UserDefaults.standard.bool(forKey: "TestMode")
+            self.appData.networkState = .main
         }
+    }
+    
+    func saveNetworkStatus() {
+        
+        if self.appData.networkState == .test {
+            
+            UserDefaults.standard.set(true, forKey: "TestMode")
+        } else {
+            
+            UserDefaults.standard.set(false, forKey: "TestMode")
+        }
+        UserDefaults.standard.synchronize()
     }
     
     func setAppPinCode(pin: String) {
@@ -50,18 +63,30 @@ class AppDataModelManager {
         return appData.networkState
     }
     
+    public func getNetworkStatusString() -> String {
     
-    
-    
-    func testModeStatus() -> Bool {
-        
-        return appData.testMode
+        return appData.networkState.rawValue
     }
     
-    func testModeToggle() -> Bool {
+    
+    
+    
+    
+    func testModeStatus() -> NetworkState {
         
-        appData.testMode.toggle()
-        UserDefaults.standard.set(appData.testMode, forKey: "TestMode")
+        return appData.networkState
+    }
+    
+    func statusToggle() -> Bool {
+        
+        if self.appData.networkState == .test {
+            
+            self.appData.networkState = .main
+        } else {
+            
+            self.appData.networkState = .test
+        }
+        self.saveNetworkStatus()
         return appData.testMode
     }
     /*
