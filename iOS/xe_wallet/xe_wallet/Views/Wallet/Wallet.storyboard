@@ -1204,8 +1204,8 @@
                                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-NA-CMG">
                                                                                 <rect key="frame" x="0.0" y="0.0" width="334" height="56"/>
                                                                                 <subviews>
-                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmt-GF-vXw">
-                                                                                        <rect key="frame" x="107.5" y="18" width="119" height="20"/>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmt-GF-vXw">
+                                                                                        <rect key="frame" x="124.5" y="18" width="85" height="20"/>
                                                                                         <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                                                                         <color key="textColor" name="FontMain"/>
                                                                                         <nil key="highlightedColor"/>
@@ -4376,7 +4376,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iol-S3-0y9"/>
+        <segue reference="U2g-cn-LJZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Seedling" width="20" height="20"/>

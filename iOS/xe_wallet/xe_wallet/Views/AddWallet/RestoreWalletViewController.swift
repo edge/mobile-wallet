@@ -129,6 +129,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
                     self.removeSpinner()
                     if self.unwindToExchange == false {
                     
+                        NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
                         self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
                     } else {
                         

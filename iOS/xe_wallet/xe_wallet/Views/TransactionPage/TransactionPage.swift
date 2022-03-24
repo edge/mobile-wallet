@@ -88,7 +88,7 @@ class TransactionPageViewController: BaseViewController{
                     self.directionLabel.textColor = UIColor(named:"FontSecondary")
                 } else {
                     
-                    self.statusTickImage.image = UIImage(named:"tick")
+                    self.statusTickImage.image = UIImage(named:"xetick")
                     self.statusTickImage.tintColor = UIColor(named:"FontMain")
                     self.directionLabel.textColor = UIColor(named:"XEGreen")
                     
@@ -105,7 +105,16 @@ class TransactionPageViewController: BaseViewController{
                 
                 self.memoView.isHidden = false
                 self.memoViewHeightConstraint.constant = 77
-                self.memoTextLabel.text = transaction.data?.memo
+                
+                var memoString = "None"
+                if let memo = transaction.data?.memo {
+                    
+                    if memo.count > 0 {
+                        
+                        memoString = memo
+                    }
+                }
+                self.memoTextLabel.text = memoString
                 self.viewHeight = .xe
                 self.memoHeadingLabel.text = "Memo"
                 

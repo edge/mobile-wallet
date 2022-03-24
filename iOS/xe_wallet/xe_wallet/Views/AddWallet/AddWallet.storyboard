@@ -536,13 +536,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mUB-NV-vwJ">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Wallet Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wL0-3p-Z5w">
-                                        <rect key="frame" x="24" y="105" width="78.5" height="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose Wallet Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wL0-3p-Z5w">
+                                        <rect key="frame" x="24" y="105" width="156" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="AHV-gb-bGz"/>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="fm2-6x-83R"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                         <color key="textColor" name="FontSecondary"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -672,7 +672,7 @@
                                                 <color key="textColor" name="FontMain"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Ethereum wallet supporting ERC-20 tokens" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ww8-kV-45h">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Standard Ethereum wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ww8-kV-45h">
                                                 <rect key="frame" x="40" y="25" width="286" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="V8A-On-edR"/>

@@ -153,6 +153,7 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
                 
                 if self.unwindToExchange == false {
                 
+                    NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
                     self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
                 } else {
                     

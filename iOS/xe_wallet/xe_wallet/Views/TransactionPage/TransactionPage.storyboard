@@ -120,7 +120,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="52N-Bw-HKc">
                                         <rect key="frame" x="24" y="156" width="366" height="56"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tick" translatesAutoresizingMaskIntoConstraints="NO" id="9va-f2-K7P">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xetick" translatesAutoresizingMaskIntoConstraints="NO" id="9va-f2-K7P">
                                                 <rect key="frame" x="17" y="19" width="18" height="18"/>
                                                 <color key="tintColor" name="FontMain"/>
                                                 <constraints>
@@ -308,7 +308,7 @@
                                                 <rect key="frame" x="0.0" y="21" width="366" height="56"/>
                                                 <subviews>
                                                     <textField opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GLl-CI-enZ">
-                                                        <rect key="frame" x="8" y="4" width="350" height="48"/>
+                                                        <rect key="frame" x="12" y="4" width="342" height="48"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
@@ -317,11 +317,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="GLl-CI-enZ" secondAttribute="trailing" constant="8" id="SIV-Pb-zm2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="GLl-CI-enZ" secondAttribute="trailing" constant="12" id="SIV-Pb-zm2"/>
                                                     <constraint firstAttribute="height" constant="56" id="Uoy-q0-cmd"/>
                                                     <constraint firstItem="GLl-CI-enZ" firstAttribute="top" secondItem="Q7z-Oe-LYK" secondAttribute="top" constant="4" id="V3k-6S-3HI"/>
                                                     <constraint firstAttribute="bottom" secondItem="GLl-CI-enZ" secondAttribute="bottom" constant="4" id="t0D-aM-bZj"/>
-                                                    <constraint firstItem="GLl-CI-enZ" firstAttribute="leading" secondItem="Q7z-Oe-LYK" secondAttribute="leading" constant="8" id="ziX-W5-7JV"/>
+                                                    <constraint firstItem="GLl-CI-enZ" firstAttribute="leading" secondItem="Q7z-Oe-LYK" secondAttribute="leading" constant="12" id="ziX-W5-7JV"/>
                                                 </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -437,7 +437,7 @@
     <resources>
         <image name="closeX" width="14" height="14"/>
         <image name="coin_ethereum" width="279" height="279"/>
-        <image name="tick" width="14" height="10"/>
+        <image name="xetick" width="32" height="32"/>
         <namedColor name="BackgroundMain">
             <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

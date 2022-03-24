@@ -62,35 +62,35 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSv-hK-r20">
                                         <rect key="frame" x="24" y="0.0" width="285" height="64"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_ethereum" translatesAutoresizingMaskIntoConstraints="NO" id="0bn-V8-tPA">
-                                                <rect key="frame" x="0.0" y="16" width="48" height="48"/>
-                                                <color key="backgroundColor" name="BackgroundMain"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="48" id="Lp9-rL-fgQ"/>
-                                                    <constraint firstAttribute="height" constant="48" id="V48-3C-jPq"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                        <integer key="value" value="24"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0x63123f7575218108DAbF2C7f4bFBE5FCE4480Af3" textAlignment="natural" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xo5-jA-xCL">
-                                                <rect key="frame" x="56" y="30" width="221" height="20"/>
+                                                <rect key="frame" x="48" y="30" width="229" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="0mD-9l-MFs"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                 <color key="textColor" name="FontSecondary"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coin_ethereum" translatesAutoresizingMaskIntoConstraints="NO" id="0bn-V8-tPA">
+                                                <rect key="frame" x="0.0" y="20" width="40" height="40"/>
+                                                <color key="backgroundColor" name="BackgroundMain"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Lp9-rL-fgQ"/>
+                                                    <constraint firstAttribute="height" constant="40" id="V48-3C-jPq"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="0bn-V8-tPA" firstAttribute="leading" secondItem="dSv-hK-r20" secondAttribute="leading" id="3Tq-zN-pXz"/>
                                             <constraint firstAttribute="height" constant="64" id="B9C-lE-cEC"/>
                                             <constraint firstItem="Xo5-jA-xCL" firstAttribute="leading" secondItem="0bn-V8-tPA" secondAttribute="trailing" constant="8" symbolic="YES" id="CiU-TL-7Jb"/>
-                                            <constraint firstAttribute="bottom" secondItem="0bn-V8-tPA" secondAttribute="bottom" id="MrA-t0-iEm"/>
+                                            <constraint firstAttribute="bottom" secondItem="0bn-V8-tPA" secondAttribute="bottom" constant="4" id="MrA-t0-iEm"/>
                                             <constraint firstItem="Xo5-jA-xCL" firstAttribute="top" secondItem="dSv-hK-r20" secondAttribute="top" constant="30" id="QNm-dZ-cDC"/>
                                             <constraint firstAttribute="trailing" secondItem="Xo5-jA-xCL" secondAttribute="trailing" constant="8" id="gSu-3E-V6s"/>
                                         </constraints>

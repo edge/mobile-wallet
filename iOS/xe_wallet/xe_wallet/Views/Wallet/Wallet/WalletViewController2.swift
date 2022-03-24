@@ -43,7 +43,8 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.refreshControl?.tintColor = .white
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
-                
+        NotificationCenter.default.addObserver(self, selector: #selector(onForceMainPageRefresh(_:)), name: .forceMainPageRefresh, object: nil)
+        
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
     }
     
@@ -58,11 +59,17 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.tableView.reloadData()
     }
 
+    @objc func onForceMainPageRefresh(_ notification: Notification) {
+        
+        self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
+        self.buildMainPage()
+    }
+    
     @objc func onDidReceiveData(_ notification: Notification) {
         
         self.buildMainPage()
     }
-    
+        
     func buildMainPage() {
                 
         self.walletScreenSegments.removeAll()
