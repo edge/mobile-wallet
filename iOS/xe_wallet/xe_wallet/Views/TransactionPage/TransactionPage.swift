@@ -107,11 +107,13 @@ class TransactionPageViewController: BaseViewController{
                 self.memoViewHeightConstraint.constant = 77
                 
                 var memoString = "None"
+                self.memoTextLabel.alpha = 0.4
                 if let memo = transaction.data?.memo {
                     
                     if memo.count > 0 {
                         
                         memoString = memo
+                        self.memoTextLabel.alpha = 1.0
                     }
                 }
                 self.memoTextLabel.text = memoString
