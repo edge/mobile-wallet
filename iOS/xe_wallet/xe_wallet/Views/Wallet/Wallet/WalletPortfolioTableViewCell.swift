@@ -54,10 +54,10 @@ class WalletPortfolioTableViewCell: UITableViewCell {
             
             if typ == .xe {
                 
-                self.networkNameLabel.text = "XE MainNet"
+                self.networkNameLabel.text = "XE Mainnet"
             } else {
                 
-                self.networkNameLabel.text = "Ethereum MainNet"
+                self.networkNameLabel.text = "Ethereum Mainnet"
             }
         }
     }

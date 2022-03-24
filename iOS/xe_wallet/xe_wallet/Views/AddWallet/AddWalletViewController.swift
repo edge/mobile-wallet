@@ -18,42 +18,45 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
     @IBOutlet weak var etherInnerCircleView: UIView!
     @IBOutlet weak var etherWalletTickImage: UIImageView!
     
+    @IBOutlet weak var selectXEMainView: UIView!
+    @IBOutlet weak var selectXEButton: UIButton!
+    
+    
     @IBOutlet weak var closeXIconTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var closeXIconRightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var customTitleBarView: CustomTitleBar!
     var selected:WalletType = .xe
+    var preventXE = true
+    var unwindToExchange = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        //view.isOpaque = false
-        //view.backgroundColor = .clear
-        //self.backgroundView.alpha = 0.0
-        
-        //navigationItem.hidesBackButton = true
-        //self.title = "Add Wallet"
-        
-        self.configureSelectedButtons()
-
+                
         self.customTitleBarView.delegate = self
         
         let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.handleGesture(gesture:)))
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
+        
+        if self.preventXE {
+            
+            self.selectXEButton.isEnabled = false
+            self.selectXEMainView.alpha = 0.2
+            self.selected = .ethereum
+
+        } else {
+            
+            self.selectXEButton.isEnabled = true
+            self.selectXEMainView.alpha = 1.0
+            self.selected = .xe
+        }
+        self.configureSelectedButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        /*UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
-
-            self.backgroundView.alpha = 1.0
-            self.view.layoutIfNeeded()
-        }, completion: { finished in
-
-        })*/
     }
     
     func configureSelectedButtons() {
@@ -84,6 +87,7 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
             let controller = segue.destination as! CreateWalletViewController
             controller.modalPresentationStyle = .overCurrentContext
             controller.type = self.selected
+            controller.unwindToExchange = self.unwindToExchange
         }
         
         if segue.identifier == "RestoreWalletViewController" {
@@ -91,6 +95,7 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
             let controller = segue.destination as! RestoreWalletViewController
             controller.modalPresentationStyle = .overCurrentContext
             controller.type = self.selected
+            controller.unwindToExchange = self.unwindToExchange
         }
     }
     
@@ -132,15 +137,6 @@ class AddWalletViewController: BaseViewController, CustomTitleBarDelegate {
     func closeWindow() {
         
         self.dismiss(animated: true, completion: nil)
-        /*
-        UIView.animate(withDuration: Constants.screenFadeTransitionSpeed, delay: 0, options: .curveEaseOut, animations: {
-
-            self.backgroundView.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }, completion: { finished in
-
-            self.dismiss(animated: false, completion: nil)
-        })*/
     }
 }
 

@@ -517,6 +517,7 @@
                         <outlet property="walletAddressLabel" destination="x0S-DQ-Faf" id="3pC-hn-opx"/>
                         <outlet property="warningMessageLabel" destination="Lay-98-Eyw" id="zUp-Ix-gMf"/>
                         <segue destination="XRE-KN-CeK" kind="unwind" identifier="unwindToWalletView" animates="NO" unwindAction="unwindToWalletViewWithSender:" id="T3E-Nc-0z1"/>
+                        <segue destination="XRE-KN-CeK" kind="unwind" identifier="unwindToExchangeView" unwindAction="unwindToExchangeViewWithSender:" id="x7D-yv-h5b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jMw-U1-Tng" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -867,6 +868,8 @@
                         <outlet property="etherCircleView" destination="30o-fc-rPA" id="klz-k2-x5G"/>
                         <outlet property="etherInnerCircleView" destination="MmI-XJ-3cd" id="3Rg-Ed-u9m"/>
                         <outlet property="etherWalletTickImage" destination="GaG-sG-udr" id="iYg-Yb-HCf"/>
+                        <outlet property="selectXEButton" destination="Rf3-7h-670" id="sIE-Gu-Fms"/>
+                        <outlet property="selectXEMainView" destination="WWA-l8-ssc" id="hzj-5n-ewm"/>
                         <outlet property="xeCircleView" destination="hZp-tC-ZgP" id="MzE-SL-rC3"/>
                         <outlet property="xeInnerCircleView" destination="H7d-qX-E8K" id="cho-br-hnU"/>
                         <outlet property="xeWalletTickImage" destination="uua-Na-ZjN" id="b3s-Nb-kG5"/>
@@ -1045,6 +1048,7 @@
                         <outlet property="customTitleBarView" destination="p0I-JH-1Ol" id="dSC-Ai-MRc"/>
                         <outlet property="privateKeyTextView" destination="Mfn-uB-x1g" id="IkC-OL-QwA"/>
                         <segue destination="qdL-cn-fSq" kind="unwind" identifier="unwindToWalletView" unwindAction="unwindToWalletViewWithSender:" id="cXt-7e-F9a"/>
+                        <segue destination="qdL-cn-fSq" kind="unwind" identifier="unwindToExchangeView" unwindAction="unwindToExchangeViewWithSender:" id="YWm-b9-dTJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m9g-R9-Pd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

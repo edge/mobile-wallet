@@ -7,6 +7,7 @@
 
 import UIKit
 import Toast
+import CryptoKit
 
 class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
         
@@ -30,6 +31,7 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
     var confirmStatus = false
     var walletData: AddressKeyPairModel? = nil
     var type:WalletType = .xe
+    var unwindToExchange = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -149,7 +151,14 @@ class CreateWalletViewController: BaseViewController, CustomTitleBarDelegate {
             
                 WalletDataModelManager.shared.saveWalletToSystem(wallet: data, type: self.type)
                 
-                self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                if self.unwindToExchange == false {
+                
+                    self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                } else {
+                    
+                    NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
+                    self.performSegue(withIdentifier: "unwindToExchangeView", sender: self)
+                }
             }
         }
     }

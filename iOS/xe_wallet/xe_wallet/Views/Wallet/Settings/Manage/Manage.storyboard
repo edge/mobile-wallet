@@ -184,7 +184,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="nmD-r4-LUt"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                         <color key="textColor" name="FontMain"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

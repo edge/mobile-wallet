@@ -84,16 +84,4 @@ enum NetworkState: String, Codable {
             return "https://raw.githubusercontent.com/edge/bridge-utils/master/dist/artifacts/token.json"
         }
     }
-    /*
-    func getInfuraUrl() -> String {
-                    
-        switch self {
-                        
-        case .main:
-            return "https://mainnet.infura.io/v3/f4953edd390547d3bb63dd1f76af13f2"
-                        
-        case .test:
-            return "https://rinkeby.infura.io/v3/f4953edd390547d3bb63dd1f76af13f2"
-        }
-    }*/
 }

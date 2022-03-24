@@ -22,6 +22,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
     
     var continueActive = false
     var type:WalletType = .xe
+    var unwindToExchange = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +127,14 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
                     
                     WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
                     self.removeSpinner()
-                    self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    if self.unwindToExchange == false {
+                    
+                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    } else {
+                        
+                        NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
+                        self.performSegue(withIdentifier: "unwindToExchangeView", sender: self)
+                    }
                 } else {
                     
                     self.removeSpinner()

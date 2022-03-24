@@ -35,6 +35,8 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     @IBOutlet weak var swapToTokenSelectImage: UIImageView!
     @IBOutlet weak var swapToTokenSelectButton: UIButton!
     
+    @IBOutlet weak var swapToCreateAWalletView: UIView!
+    
     @IBOutlet weak var reviewButtonView: UIView!
     @IBOutlet weak var reviewButtonButton: UIButton!
     @IBOutlet weak var reviewButtonText: UILabel!
@@ -56,6 +58,9 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         self.warningMessageLabel.text = ""
         self.warningMessageHeightConstraint.constant = 0
         self.walletData = WalletDataModelManager.shared.getWalletData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(forceRefreshOnChange(_:)), name: .forceRefreshOnChange, object: nil)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,6 +89,20 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
+    }
+    
+    @IBAction func unwindToExchangeView(sender: UIStoryboardSegue) {
+
+    }
+    
+    @objc func forceRefreshOnChange(_ notification: Notification) {
+        
+        self.walletData = WalletDataModelManager.shared.getWalletData()
+        let address = WalletDataModelManager.shared.selectedWalletAddress
+        self.selectedIndex = self.walletData.firstIndex(where: { $0.address == address }) ?? 0
+        WalletDataModelManager.shared.exchangeRefreshNeeded = false
+        self.configureViews()
+        self.configureData()
     }
 
     func configureViews() {
@@ -147,6 +166,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         
         if self.toIndex != -1 {
         
+            self.swapToCreateAWalletView.isHidden = true
             self.swapToSelectButton.isEnabled = true
             self.swapToTokenImage.image = UIImage(named:self.walletData[self.toIndex].type.rawValue)
             self.swapToAddressLabel.text = self.walletData[self.toIndex].address
@@ -182,6 +202,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             }
         } else {
             
+            self.swapToCreateAWalletView.isHidden = false
             self.swapToSelectButton.isEnabled = false
             self.swapToAddressLabel.text = "No Available Wallets"
             self.swapToTokenSelectButton.isHidden = true
@@ -420,6 +441,21 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             contentVC.totype = self.swapToTokenType
             self.presentPanModal(contentVC)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.destination is AddWalletViewController {
+            
+            let vc = segue.destination as? AddWalletViewController
+            vc?.preventXE = true
+            vc?.unwindToExchange = true
+        }
+    }
+        
+    @IBAction func createAWalletButtonPressed(_ sender: Any) {
+        
+        performSegue(withIdentifier: "ShowAddWallet", sender: nil)
     }
 }
 

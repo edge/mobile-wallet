@@ -51,6 +51,16 @@ class ManageViewController: BaseViewController, UITableViewDelegate,  UITableVie
         //self.title = AppDataModelManager.shared.getNetworkStatus().rawValue // getNetworkTitleString()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.destination is AddWalletViewController {
+            
+            let vc = segue.destination as? AddWalletViewController
+            vc?.preventXE = false
+            vc?.unwindToExchange = false
+        }
+    }
+    
     @objc func addWalletButtonPressed() {
 
         performSegue(withIdentifier: "ShowAddWallet", sender: nil)

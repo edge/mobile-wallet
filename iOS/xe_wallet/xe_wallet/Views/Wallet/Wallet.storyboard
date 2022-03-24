@@ -1125,10 +1125,10 @@
                                                                     <constraint firstItem="KBJ-fs-pIc" firstAttribute="leading" secondItem="tap-Mx-nZJ" secondAttribute="leading" id="eCl-yo-okA"/>
                                                                 </constraints>
                                                             </view>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wF-od-6rb">
+                                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wF-od-6rb">
                                                                 <rect key="frame" x="0.0" y="93" width="334" height="56"/>
                                                                 <subviews>
-                                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-BW-EZV">
+                                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-BW-EZV">
                                                                         <rect key="frame" x="0.0" y="0.0" width="334" height="56"/>
                                                                         <subviews>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qAU-im-6EX">
@@ -1201,14 +1201,46 @@
                                                                                     </userDefinedRuntimeAttribute>
                                                                                 </userDefinedRuntimeAttributes>
                                                                             </view>
+                                                                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7d8-NA-CMG">
+                                                                                <rect key="frame" x="0.0" y="0.0" width="334" height="56"/>
+                                                                                <subviews>
+                                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a Wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mmt-GF-vXw">
+                                                                                        <rect key="frame" x="107.5" y="18" width="119" height="20"/>
+                                                                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
+                                                                                        <color key="textColor" name="FontMain"/>
+                                                                                        <nil key="highlightedColor"/>
+                                                                                    </label>
+                                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLY-VU-GiQ">
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="56"/>
+                                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                                        <connections>
+                                                                                            <action selector="createAWalletButtonPressed:" destination="SwZ-uA-7nP" eventType="touchUpInside" id="Jn8-78-46f"/>
+                                                                                        </connections>
+                                                                                    </button>
+                                                                                </subviews>
+                                                                                <color key="backgroundColor" name="XEGreen"/>
+                                                                                <constraints>
+                                                                                    <constraint firstItem="pLY-VU-GiQ" firstAttribute="top" secondItem="7d8-NA-CMG" secondAttribute="top" id="10z-YE-fQb"/>
+                                                                                    <constraint firstItem="mmt-GF-vXw" firstAttribute="centerX" secondItem="7d8-NA-CMG" secondAttribute="centerX" id="ELH-F4-ofF"/>
+                                                                                    <constraint firstItem="pLY-VU-GiQ" firstAttribute="leading" secondItem="7d8-NA-CMG" secondAttribute="leading" id="art-Iw-6ts"/>
+                                                                                    <constraint firstAttribute="trailing" secondItem="pLY-VU-GiQ" secondAttribute="trailing" id="r51-Pu-Je4"/>
+                                                                                    <constraint firstAttribute="bottom" secondItem="pLY-VU-GiQ" secondAttribute="bottom" id="s7C-2j-NV0"/>
+                                                                                    <constraint firstItem="mmt-GF-vXw" firstAttribute="centerY" secondItem="7d8-NA-CMG" secondAttribute="centerY" id="sHC-IZ-xKS"/>
+                                                                                </constraints>
+                                                                            </view>
                                                                         </subviews>
                                                                         <color key="backgroundColor" name="FontOptional"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="56" id="Cg4-U9-m7g"/>
                                                                             <constraint firstItem="qAU-im-6EX" firstAttribute="top" secondItem="IfF-BW-EZV" secondAttribute="top" constant="2" id="Hcl-T0-LAV"/>
                                                                             <constraint firstAttribute="trailing" secondItem="qAU-im-6EX" secondAttribute="trailing" constant="2" id="J50-oy-4rM"/>
+                                                                            <constraint firstAttribute="bottom" secondItem="7d8-NA-CMG" secondAttribute="bottom" id="JtE-Tn-BDR"/>
+                                                                            <constraint firstAttribute="trailing" secondItem="7d8-NA-CMG" secondAttribute="trailing" id="RK4-Gl-3Lo"/>
+                                                                            <constraint firstItem="7d8-NA-CMG" firstAttribute="leading" secondItem="IfF-BW-EZV" secondAttribute="leading" id="YSG-NB-gSI"/>
                                                                             <constraint firstItem="qAU-im-6EX" firstAttribute="leading" secondItem="IfF-BW-EZV" secondAttribute="leading" constant="2" id="bXv-wn-U0A"/>
                                                                             <constraint firstAttribute="bottom" secondItem="qAU-im-6EX" secondAttribute="bottom" constant="2" id="fNg-82-axt"/>
+                                                                            <constraint firstItem="7d8-NA-CMG" firstAttribute="top" secondItem="IfF-BW-EZV" secondAttribute="top" id="qa5-CS-fNr"/>
                                                                         </constraints>
                                                                         <userDefinedRuntimeAttributes>
                                                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -1372,6 +1404,7 @@
                         <outlet property="swapFromTokenSelectButton" destination="ZlN-b0-GeC" id="7ZT-s6-qgJ"/>
                         <outlet property="swapToAddressLabel" destination="RBU-Hj-WNi" id="dYX-8C-IfU"/>
                         <outlet property="swapToCardImage" destination="8y1-Tp-uZd" id="11c-w7-y4U"/>
+                        <outlet property="swapToCreateAWalletView" destination="7d8-NA-CMG" id="Npg-7R-CIE"/>
                         <outlet property="swapToSelectButton" destination="ncu-OQ-Qge" id="1H1-yU-93U"/>
                         <outlet property="swapToTokenImage" destination="gAV-PE-W3i" id="K77-5Y-2uJ"/>
                         <outlet property="swapToTokenSelectButton" destination="sTc-fU-Pwi" id="nFq-aH-yHl"/>
@@ -1381,9 +1414,12 @@
                         <outlet property="swapToWalletSelectImage" destination="rwe-j9-Chv" id="941-B6-kf0"/>
                         <outlet property="warningMessageHeightConstraint" destination="x0J-tU-f8H" id="z9b-KR-pSU"/>
                         <outlet property="warningMessageLabel" destination="av9-KC-P3X" id="aAG-bW-MtB"/>
+                        <segue destination="coq-NT-QrC" kind="presentation" identifier="ShowAddWallet" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="iol-S3-0y9"/>
+                        <segue destination="7mI-fn-hz1" kind="unwind" identifier="unwindToExchangeView" unwindAction="unwindToExchangeViewWithSender:" id="eTF-w7-dRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uov-34-jEu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="7mI-fn-hz1" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1446.376811594203" y="6.6964285714285712"/>
         </scene>
@@ -1876,7 +1912,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="19" id="34V-Xn-BQj"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="14"/>
                                                     <color key="textColor" name="FontMain"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -2261,7 +2297,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bsY-HL-8rh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3045" y="424"/>
+            <point key="canvasLocation" x="-3449" y="424"/>
         </scene>
         <!--Exchange Wallet Selection View Controller-->
         <scene sceneID="LkL-Pz-TKw">
@@ -3092,7 +3128,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7PJ-CK-82r" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3587" y="424"/>
+            <point key="canvasLocation" x="-2765" y="424"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="nRt-rF-bkR">
@@ -3146,7 +3182,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zqW-ES-dbz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3318" y="424"/>
+            <point key="canvasLocation" x="-3650" y="424"/>
         </scene>
         <!--ReceiveViewController-->
         <scene sceneID="iis-Ga-IbC">
@@ -4339,6 +4375,9 @@
             <point key="canvasLocation" x="3680" y="-2451"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="iol-S3-0y9"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Seedling" width="20" height="20"/>
         <image name="Signal2" width="20" height="20"/>
@@ -4397,6 +4436,9 @@
         </namedColor>
         <namedColor name="SeperatorLine">
             <color red="0.21176470588235294" green="0.21176470588235294" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="XEGreen">
+            <color red="0.054901960784313725" green="0.80000000000000004" blue="0.37254901960784315" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -921,15 +921,6 @@
                                                         <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee: 0 XE ($0.00)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btP-Tu-GNF">
-                                                        <rect key="frame" x="284" y="0.0" width="82" height="17"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="17" id="eje-49-NP4"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
-                                                        <color key="textColor" name="FontSecondary"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ubz-sx-AFO">
                                                         <rect key="frame" x="0.0" y="21" width="366" height="56"/>
                                                         <subviews>
@@ -960,12 +951,10 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="bottom" secondItem="Ubz-sx-AFO" secondAttribute="bottom" id="96U-7e-CUh"/>
-                                                    <constraint firstAttribute="trailing" secondItem="btP-Tu-GNF" secondAttribute="trailing" id="M9c-0j-eNa"/>
                                                     <constraint firstAttribute="trailing" secondItem="Ubz-sx-AFO" secondAttribute="trailing" id="Qvi-mD-hLH"/>
                                                     <constraint firstItem="acw-Kf-5tt" firstAttribute="top" secondItem="zBe-k5-dHD" secondAttribute="top" id="Ymn-f9-cHs"/>
                                                     <constraint firstItem="Ubz-sx-AFO" firstAttribute="leading" secondItem="zBe-k5-dHD" secondAttribute="leading" id="hzD-2u-UB2"/>
                                                     <constraint firstAttribute="height" constant="77" id="pT7-lY-uYf"/>
-                                                    <constraint firstItem="btP-Tu-GNF" firstAttribute="top" secondItem="zBe-k5-dHD" secondAttribute="top" id="rqP-ai-zCN"/>
                                                     <constraint firstItem="acw-Kf-5tt" firstAttribute="leading" secondItem="zBe-k5-dHD" secondAttribute="leading" id="vDL-t5-U9b"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="77" id="zrJ-43-ktY"/>
                                                 </constraints>
@@ -989,6 +978,16 @@
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                         <color key="textColor" name="FontOptional"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee: 0 XE ($0.00)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="btP-Tu-GNF">
+                                                        <rect key="frame" x="284" y="0.0" width="82" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="che-ih-3yl"/>
+                                                            <constraint firstAttribute="height" constant="17" id="eje-49-NP4"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
+                                                        <color key="textColor" name="FontSecondary"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xi0-dd-Tya">
@@ -1020,6 +1019,8 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="btP-Tu-GNF" secondAttribute="trailing" id="Aha-5v-m4W"/>
+                                                    <constraint firstItem="btP-Tu-GNF" firstAttribute="top" secondItem="kVi-29-A4z" secondAttribute="top" id="Tjd-Hk-U0c"/>
                                                     <constraint firstItem="OMg-sp-NM1" firstAttribute="top" secondItem="kVi-29-A4z" secondAttribute="top" id="bQA-bP-zk3"/>
                                                     <constraint firstItem="3yJ-CC-g97" firstAttribute="top" secondItem="kVi-29-A4z" secondAttribute="top" id="f5B-Jh-0oD"/>
                                                     <constraint firstAttribute="trailing" secondItem="xi0-dd-Tya" secondAttribute="trailing" id="fBA-4f-GVQ"/>
@@ -1027,6 +1028,8 @@
                                                     <constraint firstItem="3yJ-CC-g97" firstAttribute="leading" secondItem="kVi-29-A4z" secondAttribute="leading" id="hPv-U2-wqb"/>
                                                     <constraint firstItem="OMg-sp-NM1" firstAttribute="leading" secondItem="3yJ-CC-g97" secondAttribute="trailing" constant="4" id="kVZ-dC-t34"/>
                                                     <constraint firstAttribute="bottom" secondItem="xi0-dd-Tya" secondAttribute="bottom" id="oAX-AI-2cO"/>
+                                                    <constraint firstAttribute="trailing" secondItem="btP-Tu-GNF" secondAttribute="trailing" id="obm-Xz-OF3"/>
+                                                    <constraint firstItem="btP-Tu-GNF" firstAttribute="top" secondItem="kVi-29-A4z" secondAttribute="top" id="pcl-Oi-SSA"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="77" id="q7D-2u-fFv"/>
                                                     <constraint firstAttribute="height" constant="77" id="xma-FR-w9X"/>
                                                 </constraints>

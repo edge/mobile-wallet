@@ -75,7 +75,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
     var confirmStatus = SendConfirmStatus.confirm
     var sendErrorString = "Failed to send coins"
     
-    var sendTx: WriteTransaction? = nil
+    //var sendTx: WriteTransaction? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,36 +104,37 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
         self.typeLabel.text = "(\(self.walletType.getDataString(dataType: .coinSymbolLabel)))"
         
         let key = WalletDataModelManager.shared.loadWalletKey(key:self.toAddress)
-        if let wallet = self.walletData {
+        //if let wallet = self.walletData {
         
-            self.sendTx = self.walletType.createSendTX(wallet: wallet, toAddress: self.toAddress, memo: "", amount: self.amount, key: key )
+        //    self.sendTx = self.walletType.createSendTX(wallet: wallet, toAddress: self.toAddress, memo: "", amount: self.amount, key: key )
 
-        }
+        //}
         
-        let gas = XEGasRatesManager.shared.getRates()
-        var legacyString = "0.0"
-        if let legacy = gas?.ethereum.legacy {
+        if self.walletType == .xe {
             
-            legacyString = "\(legacy)"
-            
-            let gasPrice = BigUInt(legacy) //Web3.Utils.parseToBigUInt(legacyString, units: .Gwei) ?? BigUInt(0.0)
-            let gasLimit = BigUInt(21000)
-            let gasCost = gasPrice * gasLimit
-            
-            let gweiPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0 * Double(0.000000001)
-            
-            
-            let ethValue = EtherExchangeRatesManager.shared.getRateValue()
-            let gasValue = Double(ethValue) * gweiPrice
-            
-            let gasString = "Gas: \(gasPrice) gwei ($\(StringHelpers.generateValueString(value: gasValue)))"
-            self.feeLabel.text = gasString
-        }
-        //let test = Web3.Utils.formatToEthereumUnits(legacyString, toUnits: .Gwei, decimals: 6)!
+            self.feeLabel.text = "Fee: 0 XE ($0.00)"
+        } else {
         
-
-
+            let gas = XEGasRatesManager.shared.getRates()
+            var legacyString = "0.0"
+            if let legacy = gas?.ethereum.legacy {
                 
+                legacyString = "\(legacy)"
+                
+                let gasPrice = BigUInt(legacy) //Web3.Utils.parseToBigUInt(legacyString, units: .Gwei) ?? BigUInt(0.0)
+                let gasLimit = BigUInt(21000)
+                let gasCost = gasPrice * gasLimit
+                
+                let gweiPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0 * Double(0.000000001)
+                
+                let ethValue = EtherExchangeRatesManager.shared.getRateValue()
+                let gasValue = Double(ethValue) * gweiPrice
+                
+                let gasString = "Gas: \(gasPrice) gwei ($\(StringHelpers.generateValueString(value: gasValue)))"
+                self.feeLabel.text = gasString
+            }
+        }
+
         _pinEntryView.unwrapped.setBoxesUsed(amt: 0)
         self.textEntryTextView.text = ""
     }
@@ -242,11 +243,11 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             var memoString = self.memo
             let trimmedMemo = memoString.trimmingCharacters(in: .whitespacesAndNewlines)
-            //self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: {
+            self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: {
             
-            if let tx = self.sendTx {
+            //if let tx = self.sendTx {
                 
-                self.walletType.sendTX(tx: tx, completion: {
+                //self.walletType.sendTX(tx: tx, completion: {
                     res, error in
                     
                     if res {
@@ -267,7 +268,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                         self.configureConfirmStatus()
                     }
                 })
-            }
+            //}
         }
     }
     

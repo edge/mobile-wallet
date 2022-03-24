@@ -87,8 +87,8 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletHeaderTableViewCell", size: 58, data: "Other Stuff"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Settings"))
-        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Earn"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Signal"))
+        self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Earn"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletMenuItemTableViewCell", size: 56, data: "Learn"))
         self.walletScreenSegments.append(WalletScreenSegment(cellName: "WalletDisclaimerTableViewCell", size: 128, data: ""))
         
@@ -107,6 +107,17 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     @IBAction func unwindToWalletView(sender: UIStoryboardSegue) {
 
         //self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.destination is AddWalletViewController {
+            
+            let vc = segue.destination as? AddWalletViewController
+            vc?.preventXE = false
+            vc?.unwindToExchange = false
+        }
     }
     
     @IBAction func addWalletButtonPressed(_ sender: Any) {
@@ -219,10 +230,10 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
                     
                     self.performSegue(withIdentifier: "ShowSettingsViewController", sender: nil)
                 })
-            } else if self.walletScreenSegments[indexPath.row].data == "Earn" {
+            } else if self.walletScreenSegments[indexPath.row].data == "Signal" {
 
                 self.tabBarController?.selectedIndex = 2
-            } else if self.walletScreenSegments[indexPath.row].data == "Signal" {
+            } else if self.walletScreenSegments[indexPath.row].data == "Earn" {
 
                 self.tabBarController?.selectedIndex = 3
             } else if self.walletScreenSegments[indexPath.row].data == "Learn" {
