@@ -260,8 +260,15 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 maxAmount = status.balance
             }
         }
-        if amount <= 0 || amount > maxAmount {
+        if amount <= 0 {
             
+            //self.warningMessageLabel.text = "Amount Entered is"
+            //self.warningMessageHeightConstraint.constant = 25
+            active = false
+        } else if amount > maxAmount {
+            
+            self.warningMessageLabel.text = "Amount exceeds amount available."
+            self.warningMessageHeightConstraint.constant = 25
             active = false
         }
         
@@ -284,7 +291,6 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
         self.warningMessageHeightConstraint.constant = 0
         
         if self.swapToTokenType == .usdc {
-            
             
             if let rates = XEExchangeRatesManager.shared.getRates() {
                 
@@ -335,6 +341,13 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 }
             }
         }
+        
+        if amount > 0 {
+        
+            self.warningMessageLabel.text = "Amount is below minimum swap amount."
+            self.warningMessageHeightConstraint.constant = 25
+        }
+        
         return false
     }
     
