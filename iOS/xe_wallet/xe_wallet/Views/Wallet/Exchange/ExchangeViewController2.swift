@@ -323,9 +323,11 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             if let gas = XEGasRatesManager.shared.getRates() {
                 
                 var fee: Double = 0
+                var typeString = WalletType.edge.getDataString(dataType: .coinSymbolLabel)
                 if self.swapFromTokenType == .xe {
                  
                     fee = Double(gas.fee)
+                    typeString = WalletType.xe.getDataString(dataType: .coinSymbolLabel)
                 }
                 
                 var handling: Double = ((amount)/100) * gas.handlingFeePercentage
@@ -338,13 +340,21 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                 if amount - totalFee > 0 {
                     
                     return true
+                } else {
+                    
+                    if amount > 0 {
+                    
+                        self.warningMessageLabel.text = "Minimum swap amount is \(totalFee + 0.000001) \(typeString)"
+                        self.warningMessageHeightConstraint.constant = 25
+                    }
+                    return false
                 }
             }
         }
         
         if amount > 0 {
         
-            self.warningMessageLabel.text = "Amount is below minimum swap amount."
+            self.warningMessageLabel.text = "Minimum swap amount is"
             self.warningMessageHeightConstraint.constant = 25
         }
         
