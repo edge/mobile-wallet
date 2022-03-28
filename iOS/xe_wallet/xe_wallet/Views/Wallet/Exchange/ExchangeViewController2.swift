@@ -304,11 +304,14 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     }
                     let totalFee = fee + handling
             
-                    if totalFee >= amount || amount <= 0 || amount > (rates.limit ) {
+                    if amount - totalFee > 0 {
                         
-                        if amount > (rates.limit ) {
-                            
-                            self.warningMessageLabel.text = "The exchange maximum is \(rates.limit) XE."
+                        return true
+                    } else {
+                        
+                        if amount > 0 {
+                        
+                            self.warningMessageLabel.text = "Swap amount must exceed \(totalFee) XE"
                             self.warningMessageHeightConstraint.constant = 25
                         }
                         return false
@@ -344,7 +347,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     
                     if amount > 0 {
                     
-                        self.warningMessageLabel.text = "Minimum swap amount is \(totalFee + 0.000001) \(typeString)"
+                        self.warningMessageLabel.text = "Swap amount must exceed \(totalFee) \(typeString)"
                         self.warningMessageHeightConstraint.constant = 25
                     }
                     return false
@@ -405,6 +408,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             
             self.swapFromAmountTextField.text = CryptoHelpers.generateCryptoValueString(value: self.walletData[self.selectedIndex].status?.balance ?? 0)
         }
+        self.configureSelectedWallet(clearValue: false)
     }
     
     @IBAction func swapToSelectButtonPressed(_ sender: Any) {
