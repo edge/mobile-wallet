@@ -274,22 +274,36 @@ class WalletDataModelManager {
                             
                             var cachedBlock = 0
                             var downloadTransactions = true
+                            var overrideBlock = -1
                             if let cachedTransactions = self.walletData[index].transactions {
 
                                 for trans in cachedTransactions {
-                                    
+                                                                        
                                     if let tBlock = trans.block {
                                         
-                                        if tBlock.height > cachedBlock {
+                                        if tBlock.height > cachedBlock && trans.confirmations ?? 0 > 10 {
                                             
                                             cachedBlock = tBlock.height ?? 0
                                         }
-                                        if tBlock.height == block {
+                                        if tBlock.height == block && trans.confirmations ?? 0 > 10 {
                                             
                                             downloadTransactions = false
                                         }
                                     }
+                                    if overrideBlock == -1 {
+                                        
+                                        if trans.confirmations ?? 0 < 10 {
+                                            
+                                            overrideBlock = trans.block?.height ?? 0
+                                        }
+                                    }
                                 }
+                            }
+                            
+                            if overrideBlock != -1 {
+                                
+                                cachedBlock = overrideBlock
+                                downloadTransactions = true
                             }
                             
                             if downloadTransactions {
@@ -299,6 +313,7 @@ class WalletDataModelManager {
                                     self.walletData[index].downloadXETransactionBlock(address: wallet.address ?? "", count: 0, page: 1, block:cachedBlock, completion: { response in
                                         
                                         self.checkForFinalisedPending(index: index)
+                                        //self.checkForDuplicateTransactions(index: index)
                                         self.saveWalletData()
                                         self.calculateLatestTransaction()
                                         NotificationCenter.default.post(name: .didReceiveData, object: nil)
@@ -386,6 +401,18 @@ class WalletDataModelManager {
     public func getLatestTransaction() -> (transaction: TransactionDataModel?, wallet: WalletDataModel?) {
         
         return (self.latestTransaction, self.latestTransactionWallet)
+    }
+    
+    public func getTransactionFromAddress(address: String, hash: String) -> TransactionDataModel? {
+        
+        if let index = self.walletData.firstIndex(where: { $0.address == address }) {
+            
+            if let ind = self.walletData[index].transactions?.firstIndex(where: { $0.hash == hash }) {
+                
+                return self.walletData[index].transactions?[ind]
+            }
+        }
+        return nil
     }
     
     public func calculateLatestTransaction() {

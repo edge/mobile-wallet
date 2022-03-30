@@ -49,10 +49,32 @@ class TransactionPageViewController: BaseViewController{
     var walletAddress = ""
     var viewHeight: TransactionPageViewControllerHeights = .other
     
+    var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        self.configureViewsData()
+        self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
+            
+            self.configureViewsData()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        if self.timer != nil {
+            
+            self.timer?.invalidate()
+            self.timer = nil
+        }
+    }
+
+    func configureViewsData() {
+        
+        self.transactionData = WalletDataModelManager.shared.getTransactionFromAddress(address: self.walletAddress, hash: self.transactionData?.hash ?? "")
         
         if let transaction = self.transactionData {
             
@@ -65,8 +87,8 @@ class TransactionPageViewController: BaseViewController{
                 self.statusTickImage.image = UIImage(named:"clock")
                 self.statusTickImage.tintColor = UIColor(named:"FontSecondary")
                 
-                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
-                self.directionLabel.text = "Pending for \(date.timeAgoDisplay())"
+                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ))
+                self.directionLabel.text = "Pending for \(date.timeAgoDisplay(ago: ""))"
                 self.directionLabel.textColor = UIColor(named:"FontSecondary")
                 self.dateLabel.isHidden = true
             } else {
@@ -96,8 +118,8 @@ class TransactionPageViewController: BaseViewController{
                 }
                 
                 self.dateLabel.isHidden = false
-                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ?? 0))
-                self.dateLabel.text = date.timeAgoDisplay()
+                let date = Date(timeIntervalSince1970:TimeInterval(transaction.timestamp ))
+                self.dateLabel.text = date.timeAgoDisplay(ago: "ago")
                 self.dateLabel.isHidden = false
             }
              
@@ -124,14 +146,6 @@ class TransactionPageViewController: BaseViewController{
                 
             } else {
                 
-                let infura = EtherWallet().getAPIKey(keyName: "infura")
-                
-                var web3 = Web3.InfuraMainnetWeb3(accessToken: infura)
-                if AppDataModelManager.shared.testModeStatus() == .test {
-                    
-                    web3 = Web3.InfuraRinkebyWeb3(accessToken: infura)
-                }
-                
                 self.memoView.isHidden = false
                 self.memoViewHeightConstraint.constant = 77
                 self.viewHeight = .other
@@ -149,7 +163,6 @@ class TransactionPageViewController: BaseViewController{
             self.tokenAmountLabel.text =  CryptoHelpers.generateCryptoValueString(value: transaction.amount)
             self.tokenAbvLabel.text = self.walletType.getDataString(dataType: .coinSymbolLabel)
                 
-            
             self.toTokenImage.image = UIImage(named: self.walletType.rawValue)
             self.toAddressLabel.text = transaction.recipient
                 
@@ -157,11 +170,8 @@ class TransactionPageViewController: BaseViewController{
             self.fromAddressLabel.text = transaction.sender
             
             self.exploreButtonLabel.text = transaction.type?.getDataString(dataType: .explorerButtonText)
-            
-
         }
     }
-
     
     @IBAction func closeButtonPressed(_ sender: Any) {
     

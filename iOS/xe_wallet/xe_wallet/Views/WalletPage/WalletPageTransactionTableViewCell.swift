@@ -44,7 +44,7 @@ class WalletPageTransactionTableViewCell: UITableViewCell {
         }
         
         let date = Date(timeIntervalSince1970:TimeInterval(data.timestamp))
-        self.valueLabel.text = date.timeAgoDisplay()
+        self.valueLabel.text = date.timeAgoDisplay(ago: "ago")
         
         if type == .xe {
             

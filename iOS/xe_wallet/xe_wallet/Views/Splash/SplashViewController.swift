@@ -78,4 +78,8 @@ class SplashViewController: UIViewController {
             }
         }
     }
+    
+    @IBAction func unwindToSplashView(sender: UIStoryboardSegue) {
+
+    }
 }

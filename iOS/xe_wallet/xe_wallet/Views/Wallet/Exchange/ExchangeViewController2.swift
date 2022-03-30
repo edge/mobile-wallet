@@ -311,7 +311,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                         
                         if amount > 0 {
                         
-                            self.warningMessageLabel.text = "Swap amount must exceed \(totalFee) XE"
+                            self.warningMessageLabel.text = "Swap amount must exceed \(Int(totalFee)) XE"
                             self.warningMessageHeightConstraint.constant = 25
                         }
                         return false
@@ -347,7 +347,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
                     
                     if amount > 0 {
                     
-                        self.warningMessageLabel.text = "Swap amount must exceed \(totalFee) \(typeString)"
+                        self.warningMessageLabel.text = "Swap amount must exceed \(Int(totalFee)) \(typeString)"
                         self.warningMessageHeightConstraint.constant = 25
                     }
                     return false

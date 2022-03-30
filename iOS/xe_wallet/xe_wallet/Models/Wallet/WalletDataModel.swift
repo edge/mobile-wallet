@@ -68,8 +68,16 @@ class WalletDataModel: Codable {
                     self.transactions = []
                 }
                 
-                self.transactions?.append(contentsOf: transactions)
-
+                for trans in transactions {
+                    
+                    if let index = self.transactions?.firstIndex(where: { $0.hash == trans.hash }) {
+                    
+                        self.transactions?[index] = trans
+                    } else {
+                        
+                        self.transactions?.append(trans)
+                    }
+                }
                 var newCount = count + resCount
                 if newCount >= resTotalCount {
                     

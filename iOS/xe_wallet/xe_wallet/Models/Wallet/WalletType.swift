@@ -8,6 +8,12 @@
 import Foundation
 import web3swift
 
+
+public protocol WalletUtilProtocol: AnyObject {
+    
+    func getMinSwapAmount() -> Double
+}
+
 enum WalletStringData {
     
     case displayLabel
@@ -258,10 +264,11 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            XEWallet().downloadStatus(address: address, completion: { status in
+            break
+            //XEWallet().downloadStatus(address: address, completion: { status in
             
-                completion(status)
-            })
+            //    completion(status)
+            //})
             
         case .ethereum, .edge, .usdc:
             EtherWallet().downloadStatus(address: address, completion: { status in
@@ -276,10 +283,11 @@ enum WalletType: String, Codable {
         switch self {
             
         case .xe:
-            XEWallet().downloadTransactions(address: address, completion: { status in
+            break
+            //XEWallet().downloadTransactions(address: address, completion: { status in
             
-                completion(status)
-            })
+             //   completion(status)
+            //})
             
         case .ethereum, .edge, .usdc:
             EtherWallet().downloadTransactions(address: address, completion: { status in

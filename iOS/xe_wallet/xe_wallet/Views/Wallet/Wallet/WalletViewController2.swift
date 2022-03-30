@@ -44,6 +44,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onForceMainPageRefresh(_:)), name: .forceMainPageRefresh, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(appAppearedFromBackground), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
     }
@@ -57,6 +58,12 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             performSegue(withIdentifier: "ShowAddXeStartup", sender: nil)
         }
         self.tableView.reloadData()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
     }
 
     @objc func onForceMainPageRefresh(_ notification: Notification) {
@@ -126,6 +133,16 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
             vc?.unwindToExchange = false
         }
     }
+    
+    @objc func appAppearedFromBackground() {
+        
+        let story = UIStoryboard(name: "Main", bundle:nil)
+        let vc = story.instantiateViewController(withIdentifier: "SplashViewController") as! SplashViewController
+        UIApplication.shared.windows.first?.rootViewController = vc
+        UIApplication.shared.windows.first?.makeKeyAndVisible()
+        //self.performSegue(withIdentifier: "unwindToSplashView", sender: self)
+    }
+    
     
     @IBAction func addWalletButtonPressed(_ sender: Any) {
         

@@ -2282,6 +2282,7 @@
                         <segue destination="zFF-h4-7P7" kind="unwind" identifier="unwindToWallet" unwindAction="unwindToWalletViewWithSender:" id="QfF-Dy-Zdk"/>
                         <segue destination="0Mk-MB-zmG" kind="presentation" identifier="ShowAddXeStartup" animates="NO" modalPresentationStyle="fullScreen" id="Iq6-je-BvQ"/>
                         <segue destination="UMo-Xn-cHd" kind="show" identifier="ShowSettingsViewController" id="Dha-Iy-ybu"/>
+                        <segue destination="zFF-h4-7P7" kind="unwind" identifier="unwindToSplashView" unwindAction="unwindToSplashViewWithSender:" id="Ybp-rA-ma8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TPS-vj-FKM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -4376,7 +4377,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iol-S3-0y9"/>
+        <segue reference="U2g-cn-LJZ"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Seedling" width="20" height="20"/>
