@@ -119,7 +119,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             var legacyString = "0.0"
             if let legacy = gas?.ethereum.legacy {
                 
-                legacyString = "\(legacy)"
+                //legacyString = "\(legacy)"
                 
                 let gasPrice = BigUInt(legacy) //Web3.Utils.parseToBigUInt(legacyString, units: .Gwei) ?? BigUInt(0.0)
                 let gasLimit = BigUInt(21000)

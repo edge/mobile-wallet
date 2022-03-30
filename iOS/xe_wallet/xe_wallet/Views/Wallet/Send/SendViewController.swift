@@ -7,6 +7,8 @@
 
 import UIKit
 import PanModal
+import BigInt
+import web3swift
 
 enum SendViewEntryStatus {
     
@@ -65,10 +67,13 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
     var etherAmount = ""
     var edgeAmount = ""
     
+    var gasPrice = Double(0.0)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
 
+        self.calculateGasPrice()
         self.configureData()
         self.configureViews()
         self.configureCardDisplay()
@@ -81,6 +86,19 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+    }
+    
+    func calculateGasPrice() {
+        
+        let gas = XEGasRatesManager.shared.getRates()
+        if let legacy = gas?.ethereum.legacy {
+            
+            let gasPrice = BigUInt(legacy)
+            let gasLimit = BigUInt(21000)
+            let gasCost = gasPrice * gasLimit
+            
+            self.gasPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0
+        }
     }
     
     func configureData() {
@@ -268,7 +286,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                         }
                         
                         
-                        if amountVal >= self.selectedAsset.getMinSendValue() && amountVal <= Double(walletAmount) {
+                        if amountVal >= self.selectedAsset.getMinSendValue() && amountVal <= Double(walletAmount - self.gasPrice) {
                             
                             shouldBeActive = true
                             
@@ -360,7 +378,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                 self.amountTextField.text = "\(String(format: "%.6f", Double(edgeBalance)))"
             } else {
             
-                self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance)))"
+                self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance - self.gasPrice)))"
             }
         }
         self.checkForActiveContinueButton()
