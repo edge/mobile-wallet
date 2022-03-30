@@ -419,9 +419,9 @@
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
                                                                         <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received 1 week ago" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRO-kP-5jF">
-                                                                            <rect key="frame" x="52" y="31" width="119" height="15"/>
+                                                                            <rect key="frame" x="52" y="31" width="200" height="15"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="15" id="6nO-YV-g9p"/>
+                                                                                <constraint firstAttribute="height" constant="15" id="N6S-ox-tjR"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                                                             <color key="textColor" name="FontSecondary"/>
@@ -437,10 +437,11 @@
                                                                             <color key="textColor" name="FontMain"/>
                                                                             <nil key="highlightedColor"/>
                                                                         </label>
-                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEC-FA-Ew1">
-                                                                            <rect key="frame" x="307.5" y="31" width="46.5" height="15"/>
+                                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$12,000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEC-FA-Ew1">
+                                                                            <rect key="frame" x="260" y="31" width="94" height="15"/>
                                                                             <constraints>
-                                                                                <constraint firstAttribute="height" constant="15" id="qmj-Vg-uBq"/>
+                                                                                <constraint firstAttribute="width" constant="94" id="KWK-QY-xSJ"/>
+                                                                                <constraint firstAttribute="height" constant="15" id="X4F-3E-nWS"/>
                                                                             </constraints>
                                                                             <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
                                                                             <color key="textColor" name="FontSecondary"/>
@@ -457,20 +458,21 @@
                                                                     </subviews>
                                                                     <color key="backgroundColor" name="PinEntryBoxBackground"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="trailing" secondItem="sEC-FA-Ew1" secondAttribute="trailing" constant="12" id="2bO-k9-IFc"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="eRO-kP-5jF" secondAttribute="bottom" constant="10" id="3kT-wH-ouO"/>
                                                                         <constraint firstItem="4F5-Gw-tGB" firstAttribute="leading" secondItem="eoP-mY-WEK" secondAttribute="trailing" constant="4" id="58l-He-fYn"/>
-                                                                        <constraint firstItem="eRO-kP-5jF" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" id="8k9-3a-f9G"/>
                                                                         <constraint firstItem="TcD-0b-TYE" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="10" id="8tC-Es-Mz6"/>
                                                                         <constraint firstAttribute="height" constant="66" id="AoH-iP-Tfv"/>
+                                                                        <constraint firstItem="sEC-FA-Ew1" firstAttribute="leading" secondItem="eRO-kP-5jF" secondAttribute="trailing" constant="8" id="B9P-AZ-gGn"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="eRO-kP-5jF" secondAttribute="bottom" constant="10" id="GOo-EA-apQ"/>
                                                                         <constraint firstItem="eoP-mY-WEK" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="12" id="Smc-7C-AYG"/>
                                                                         <constraint firstItem="UQG-12-6AO" firstAttribute="leading" secondItem="SdQ-f5-ik2" secondAttribute="leading" constant="12" id="TCF-tk-cOr"/>
                                                                         <constraint firstItem="eoP-mY-WEK" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" symbolic="YES" id="Xnw-hK-Nuj"/>
-                                                                        <constraint firstAttribute="bottom" secondItem="sEC-FA-Ew1" secondAttribute="bottom" constant="10" id="cAc-fx-SgE"/>
                                                                         <constraint firstItem="UQG-12-6AO" firstAttribute="centerY" secondItem="SdQ-f5-ik2" secondAttribute="centerY" id="kKy-5c-aIS"/>
                                                                         <constraint firstItem="4F5-Gw-tGB" firstAttribute="top" secondItem="SdQ-f5-ik2" secondAttribute="top" constant="10" id="mzz-2G-AQ7"/>
                                                                         <constraint firstItem="TcD-0b-TYE" firstAttribute="leading" secondItem="4F5-Gw-tGB" secondAttribute="trailing" constant="12" id="rbv-Z0-H89"/>
+                                                                        <constraint firstAttribute="bottom" secondItem="sEC-FA-Ew1" secondAttribute="bottom" constant="10" id="thN-Ee-xCK"/>
                                                                         <constraint firstAttribute="trailing" secondItem="TcD-0b-TYE" secondAttribute="trailing" constant="12" id="v6z-fe-LaO"/>
+                                                                        <constraint firstItem="eRO-kP-5jF" firstAttribute="leading" secondItem="UQG-12-6AO" secondAttribute="trailing" constant="8" symbolic="YES" id="wu9-HT-QX5"/>
+                                                                        <constraint firstAttribute="trailing" secondItem="sEC-FA-Ew1" secondAttribute="trailing" constant="12" id="xPE-DV-4NN"/>
                                                                     </constraints>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">

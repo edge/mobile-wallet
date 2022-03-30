@@ -363,6 +363,7 @@ class XEWallet {
                         if let _ = meta["accepted"]  {
                             
                             completion(true, "")
+                            return
                         }
                         if let _ = meta["rejected"]  {
                             

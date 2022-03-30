@@ -242,7 +242,11 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             var memoString = self.memo
-            let trimmedMemo = memoString.trimmingCharacters(in: .whitespacesAndNewlines)
+            let okayChars : Set<Character> =
+                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")
+            var trimmedMemo =  String(memoString.filter {okayChars.contains($0) })
+            
+            
             self.walletType.sendCoins(wallet: wallet, toAddress: self.toAddress, memo: trimmedMemo, amount: fAmount, key: key, completion: {
             
             //if let tx = self.sendTx {
@@ -252,7 +256,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
                     
                     if res {
                         
-                        
+                        self.sendErrorString = ""
                         WalletDataModelManager.shared.reloadAllWalletInformationAfterDelay()
                         let contentVC = UIStoryboard(name: "Wallet", bundle: nil).instantiateViewController(withIdentifier: "ExchangeWalletCompleteViewController") as! ExchangeWalletCompleteViewController
                         contentVC.modalPresentationStyle = .overFullScreen

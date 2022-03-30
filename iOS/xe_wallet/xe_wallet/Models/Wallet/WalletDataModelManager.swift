@@ -405,11 +405,24 @@ class WalletDataModelManager {
     
     public func getTransactionFromAddress(address: String, hash: String) -> TransactionDataModel? {
         
-        if let index = self.walletData.firstIndex(where: { $0.address == address }) {
+        if address == "" {
             
-            if let ind = self.walletData[index].transactions?.firstIndex(where: { $0.hash == hash }) {
+            for wallet in self.walletData {
                 
-                return self.walletData[index].transactions?[ind]
+                if let ind = wallet.transactions?.firstIndex(where: { $0.hash == hash }) {
+                    
+                    return wallet.transactions?[ind]
+                }
+            }
+            
+        } else {
+            
+            if let index = self.walletData.firstIndex(where: { $0.address == address }) {
+                
+                if let ind = self.walletData[index].transactions?.firstIndex(where: { $0.hash == hash }) {
+                    
+                    return self.walletData[index].transactions?[ind]
+                }
             }
         }
         return nil
