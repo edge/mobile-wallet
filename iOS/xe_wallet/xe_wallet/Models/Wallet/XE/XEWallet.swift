@@ -374,7 +374,7 @@ class XEWallet {
                                 }
                             }
                         }
-                        completion(true, error)
+                        completion(false, error)
                     }
                 }
                 

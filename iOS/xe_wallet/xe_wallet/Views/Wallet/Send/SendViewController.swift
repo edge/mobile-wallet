@@ -268,7 +268,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
                         }
                         
                         
-                        if amountVal >= self.selectedAsset.getMinSendValue() {//}&& amountVal <= Double(walletAmount) {
+                        if amountVal >= self.selectedAsset.getMinSendValue() && amountVal <= Double(walletAmount) {
                             
                             shouldBeActive = true
                             

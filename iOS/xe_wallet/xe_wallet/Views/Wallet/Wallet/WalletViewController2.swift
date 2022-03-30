@@ -44,7 +44,7 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         
         NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onForceMainPageRefresh(_:)), name: .forceMainPageRefresh, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(appAppearedFromBackground), name: UIApplication.willEnterForegroundNotification, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(appAppearedFromBackground), name: .appEnteredForeground, object: nil)
         
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
     }

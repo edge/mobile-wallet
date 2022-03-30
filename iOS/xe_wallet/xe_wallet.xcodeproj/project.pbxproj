@@ -188,6 +188,7 @@
 		FDDF6E5827F4378000EF7B67 /* EDGEUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF6E5727F4378000EF7B67 /* EDGEUtils.swift */; };
 		FDDF6E5A27F4379000EF7B67 /* ETHERUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF6E5927F4379000EF7B67 /* ETHERUtils.swift */; };
 		FDDF6E5C27F4379E00EF7B67 /* USDCUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF6E5B27F4379E00EF7B67 /* USDCUtils.swift */; };
+		FDDF6E5E27F4738300EF7B67 /* WalletTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FDDF6E5D27F4738300EF7B67 /* WalletTabBarController.swift */; };
 		FDFB696E270F1E08004C2BFD /* AppAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */; };
 		FDFB6970270F1FB0004C2BFD /* Wallet.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FDFB696F270F1FB0004C2BFD /* Wallet.storyboard */; };
 		FDFB697D270F390A004C2BFD /* PinEntryView.xib in Resources */ = {isa = PBXBuildFile; fileRef = FDFB697C270F390A004C2BFD /* PinEntryView.xib */; };
@@ -370,6 +371,7 @@
 		FDDF6E5727F4378000EF7B67 /* EDGEUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EDGEUtils.swift; sourceTree = "<group>"; };
 		FDDF6E5927F4379000EF7B67 /* ETHERUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETHERUtils.swift; sourceTree = "<group>"; };
 		FDDF6E5B27F4379E00EF7B67 /* USDCUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USDCUtils.swift; sourceTree = "<group>"; };
+		FDDF6E5D27F4738300EF7B67 /* WalletTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTabBarController.swift; sourceTree = "<group>"; };
 		FDFB696D270F1E08004C2BFD /* AppAuth.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AppAuth.storyboard; sourceTree = "<group>"; };
 		FDFB696F270F1FB0004C2BFD /* Wallet.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wallet.storyboard; sourceTree = "<group>"; };
 		FDFB697C270F390A004C2BFD /* PinEntryView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PinEntryView.xib; sourceTree = "<group>"; };
@@ -563,6 +565,7 @@
 			isa = PBXGroup;
 			children = (
 				FDFB696F270F1FB0004C2BFD /* Wallet.storyboard */,
+				FDDF6E5D27F4738300EF7B67 /* WalletTabBarController.swift */,
 				FD22ED97270F16E700B5B33F /* WalletViewController.swift */,
 				FD073DE927110D2F0077F184 /* WalletCollectionViewCell.swift */,
 				FDC6CF4F27839F4100C4D49D /* Wallet */,
@@ -1176,6 +1179,7 @@
 				FD22ED98270F16E700B5B33F /* WalletViewController.swift in Sources */,
 				FD53905127A99FA400D4C0B6 /* FeedItemWebViewController.swift in Sources */,
 				FD99E6A427A153C400F069C8 /* ScanQRCodeViewController.swift in Sources */,
+				FDDF6E5E27F4738300EF7B67 /* WalletTabBarController.swift in Sources */,
 				FD6018EB2731C5E300F78EBE /* AddWalletViewController.swift in Sources */,
 				FDA65FC827A94D2D00B8069C /* DotCALayer.swift in Sources */,
 				FD5C21602755087000795A2F /* AddressKeyPair.swift in Sources */,
@@ -1386,7 +1390,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 89;
+				CURRENT_PROJECT_VERSION = 91;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1421,7 +1425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 89;
+				CURRENT_PROJECT_VERSION = 91;
 				DEVELOPMENT_TEAM = 8H56ZV4YB7;
 				ENABLE_TESTING_SEARCH_PATHS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

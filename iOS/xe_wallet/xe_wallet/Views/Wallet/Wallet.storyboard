@@ -3131,10 +3131,10 @@
             </objects>
             <point key="canvasLocation" x="-2765" y="424"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Wallet Tab Bar Controller-->
         <scene sceneID="nRt-rF-bkR">
             <objects>
-                <tabBarController storyboardIdentifier="WalletNavigationController" id="rNz-I0-jeG" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="WalletNavigationController" id="rNz-I0-jeG" customClass="WalletTabBarController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="Bxh-zd-lf7" customClass="CustomTabBar" customModule="xe_wallet" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
