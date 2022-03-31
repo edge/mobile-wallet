@@ -17,6 +17,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var buttonText: UILabel!
     
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
     var buttonBottomConstraintOriginal: CGFloat = 0
     
@@ -57,6 +58,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         swipeDown.direction = .down
         self.view.addGestureRecognizer(swipeDown)
         
+        self.errorLabel.text = ""
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,7 +116,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         self.privateKeyTextView.text = text
         
         self.continueActive = false
-        if text.count == 64 {
+        if self.isKeyEnteredValid(key: text) {
             
             self.continueActive = true
         }
@@ -130,16 +132,25 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
             
                 if let walletData = self.type.restoreWallet(key: self.privateKeyTextView.text) {
                     
-                    WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
-                    self.removeSpinner()
-                    if self.unwindToExchange == false {
-                    
-                        NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
-                        self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                    if WalletDataModelManager.shared.doesAddressExist(address: walletData.address) {
+                        
+                        self.errorLabel.text = "Wallet already exists"
+                        self.privateKeyTextView.text = ""
+                        self.removeSpinner()
                     } else {
                         
-                        NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
-                        self.performSegue(withIdentifier: "unwindToExchangeView", sender: self)
+                        self.errorLabel.text = ""
+                        WalletDataModelManager.shared.saveWalletToSystem(wallet: walletData, type: self.type)
+                        self.removeSpinner()
+                        if self.unwindToExchange == false {
+                            
+                            NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
+                            self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
+                        } else {
+                            
+                            NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
+                            self.performSegue(withIdentifier: "unwindToExchangeView", sender: self)
+                        }
                     }
                 } else {
                     
@@ -168,12 +179,26 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         if let text = textView.text {
             
             self.continueActive = false
-            if text.count == 64 {
+            if self.isKeyEnteredValid(key: text) {
                 
                 self.continueActive = true
             }
             self.changeContinueButtonStatus()
         }
+    }
+    
+    func isKeyEnteredValid(key: String) -> Bool{
+        
+        let okayChars : Set<Character> =
+            Set("abcdefABCDEF1234567890")
+        let trimmedKey =  String(key.filter {okayChars.contains($0) })
+        
+        if key.count != 64 || trimmedKey.count != 64 {
+            
+            return false
+        }
+        
+        return true
     }
     
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {

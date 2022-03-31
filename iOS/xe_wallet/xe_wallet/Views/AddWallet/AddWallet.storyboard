@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -1013,13 +1014,26 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erh-7g-k5H">
+                                        <rect key="frame" x="24" y="225" width="366" height="17"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="17" id="ktJ-N6-cNq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" name="BackgroundMain"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="buc-jC-meG" secondAttribute="trailing" constant="24" id="052-Pk-6Ab"/>
+                                    <constraint firstItem="erh-7g-k5H" firstAttribute="top" secondItem="WtH-iy-Gqy" secondAttribute="bottom" constant="16" id="2Jx-hg-Xon"/>
                                     <constraint firstAttribute="trailing" secondItem="WtH-iy-Gqy" secondAttribute="trailing" constant="24" id="AlP-rI-V7A"/>
+                                    <constraint firstItem="erh-7g-k5H" firstAttribute="leading" secondItem="Kkx-8c-Cug" secondAttribute="leading" constant="24" id="FEC-NC-bMP"/>
                                     <constraint firstItem="WtH-iy-Gqy" firstAttribute="top" secondItem="tv7-ro-nbs" secondAttribute="bottom" constant="4" id="JVM-sZ-ahp"/>
                                     <constraint firstItem="p0I-JH-1Ol" firstAttribute="leading" secondItem="Kkx-8c-Cug" secondAttribute="leading" id="P4J-hi-dtc"/>
+                                    <constraint firstAttribute="trailing" secondItem="erh-7g-k5H" secondAttribute="trailing" constant="24" id="UNu-G1-PY0"/>
                                     <constraint firstItem="p0I-JH-1Ol" firstAttribute="top" secondItem="Kkx-8c-Cug" secondAttribute="top" id="ZVu-1t-ASO"/>
                                     <constraint firstItem="tv7-ro-nbs" firstAttribute="leading" secondItem="Kkx-8c-Cug" secondAttribute="leading" constant="24" id="gUV-nc-o0A"/>
                                     <constraint firstItem="tv7-ro-nbs" firstAttribute="top" secondItem="p0I-JH-1Ol" secondAttribute="bottom" constant="16" id="j1T-p5-Bty"/>
@@ -1046,6 +1060,7 @@
                         <outlet property="buttonText" destination="xoj-sA-Pyh" id="pcZ-sz-yB8"/>
                         <outlet property="buttonView" destination="buc-jC-meG" id="M0t-hE-NgL"/>
                         <outlet property="customTitleBarView" destination="p0I-JH-1Ol" id="dSC-Ai-MRc"/>
+                        <outlet property="errorLabel" destination="erh-7g-k5H" id="ITP-Qi-k6o"/>
                         <outlet property="privateKeyTextView" destination="Mfn-uB-x1g" id="IkC-OL-QwA"/>
                         <segue destination="qdL-cn-fSq" kind="unwind" identifier="unwindToWalletView" unwindAction="unwindToWalletViewWithSender:" id="cXt-7e-F9a"/>
                         <segue destination="qdL-cn-fSq" kind="unwind" identifier="unwindToExchangeView" unwindAction="unwindToExchangeViewWithSender:" id="YWm-b9-dTJ"/>
@@ -1087,5 +1102,8 @@
         <namedColor name="PinEntryBoxBackground">
             <color red="0.18431372549019609" green="0.18431372549019609" blue="0.18431372549019609" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

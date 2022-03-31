@@ -65,7 +65,6 @@ class WalletDataModelManager {
                 let a = 1
                 return
             }
-            
         }
     }
     
@@ -101,6 +100,15 @@ class WalletDataModelManager {
                 wallet.transactions = transactions
             }
         }
+    }
+    
+    public func doesAddressExist(address: String) -> Bool {
+        
+        if let index = self.walletData.firstIndex(where: { $0.address == address }) {
+            
+            return true
+        }
+        return false
     }
     
     public func saveWalletData() {
