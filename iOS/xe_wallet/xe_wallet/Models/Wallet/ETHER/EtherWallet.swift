@@ -39,16 +39,20 @@ class EtherWallet {
         return nil
     }
     
-    public func generateWalletFromPrivateKey(privateKeyString: String) -> AddressKeyPairModel {
+    public func generateWalletFromPrivateKey(privateKeyString: String) -> AddressKeyPairModel? {
 
         let password = AppDataModelManager.shared.getAppPinCode()
         let formattedKey = privateKeyString.trimmingCharacters(in: .whitespacesAndNewlines)
-        let dataKey = Data.fromHex(formattedKey)!
-        let keyStore = try! EthereumKeystoreV3(privateKey:dataKey, password: password)!
-        let keyData = try! JSONEncoder().encode(keyStore.keystoreParams)
-        let address = keyStore.addresses!.first!.address
-        let wallet = Wallet(address: address, data: keyData, name: "", isHD: false)
-        return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
+        
+        if let dataKey = Data.fromHex(formattedKey) {
+        
+            let keyStore = try! EthereumKeystoreV3(privateKey:dataKey, password: password)!
+            let keyData = try! JSONEncoder().encode(keyStore.keystoreParams)
+            let address = keyStore.addresses!.first!.address
+            let wallet = Wallet(address: address, data: keyData, name: "", isHD: false)
+            return AddressKeyPairModel(privateKey: privateKeyString, address: address, wallet: wallet)
+        }
+        return nil
     }
     
     public func getAPIKey(keyName: String) -> String {
