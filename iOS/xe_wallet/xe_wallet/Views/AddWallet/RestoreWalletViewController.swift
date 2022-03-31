@@ -114,7 +114,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         self.privateKeyTextView.text = text
         
         self.continueActive = false
-        if text.count < 64 && self.continueActive || text.count >= 64 && !self.continueActive {
+        if text.count == 64 {
             
             self.continueActive = true
         }
@@ -167,11 +167,12 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         
         if let text = textView.text {
             
-            if text.count < 64 && self.continueActive || text.count >= 64 && !self.continueActive {
+            self.continueActive = false
+            if text.count == 64 {
                 
-                self.continueActive.toggle()
-                self.changeContinueButtonStatus()
+                self.continueActive = true
             }
+            self.changeContinueButtonStatus()
         }
     }
     
