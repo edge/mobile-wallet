@@ -90,20 +90,27 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
     
     func calculateGasPrice() {
         
-        let gas = XEGasRatesManager.shared.getRates()
-        if let legacy = gas?.ethereum.legacy {
+        self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
+        
+        if self.walletData?.type == .xe {
             
-            let gasPrice = BigUInt(legacy)
-            let gasLimit = BigUInt(21000)
-            let gasCost = gasPrice * gasLimit
+            self.gasPrice = 0
+        } else {
             
-            self.gasPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0
+            let gas = XEGasRatesManager.shared.getRates()
+            if let legacy = gas?.ethereum.legacy {
+                
+                let gasPrice = BigUInt(legacy)
+                let gasLimit = BigUInt(21000)
+                let gasCost = gasPrice * gasLimit
+                
+                self.gasPrice = Double(Web3.Utils.formatToEthereumUnits(gasCost, toUnits: .Gwei, decimals: 6)!) ?? 0.0
+            }
         }
     }
     
     func configureData() {
         
-        self.walletData = WalletDataModelManager.shared.getSelectedWalletData(address: self.selectedWalletAddress)
         if let wallet = self.walletData {
                     
             self.cardBackgroundImage.image = UIImage(named:wallet.type.getDataString(dataType: .backgroundImage))
@@ -375,10 +382,10 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
             if self.selectedAsset == .edge {
                 
                 let edgeBalance = status.getTokenBalance(type: .edge)
-                self.amountTextField.text = "\(String(format: "%.6f", Double(edgeBalance)))"
+                self.amountTextField.text = "\(String(format: "%.6f", Double(edgeBalance) - Double(self.gasPrice)))"
             } else {
             
-                self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance - self.gasPrice)))"
+                self.amountTextField.text = "\(String(format: "%.6f", Double(status.balance) - Double(self.gasPrice)))"
             }
         }
         self.checkForActiveContinueButton()
