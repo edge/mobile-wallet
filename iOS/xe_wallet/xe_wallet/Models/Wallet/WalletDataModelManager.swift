@@ -424,6 +424,11 @@ class WalletDataModelManager {
                     
                     return wallet.transactions?[ind]
                 }
+                
+                if let ind = wallet.pending?.firstIndex(where: { $0.hash == hash }) {
+                    
+                    return wallet.pending?[ind]
+                }
             }
             
         } else {
@@ -433,6 +438,10 @@ class WalletDataModelManager {
                 if let ind = self.walletData[index].transactions?.firstIndex(where: { $0.hash == hash }) {
                     
                     return self.walletData[index].transactions?[ind]
+                }
+                if let ind = self.walletData[index].pending?.firstIndex(where: { $0.hash == hash }) {
+                    
+                    return self.walletData[index].pending?[ind]
                 }
             }
         }
