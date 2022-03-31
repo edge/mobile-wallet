@@ -69,9 +69,7 @@ class NetworkViewController: BaseViewController {
                 
                 AppDataModelManager.shared.statusToggle()
                 WalletDataModelManager.shared.switchedWallets()
-                WalletDataModelManager.shared.reloadAllWalletInformation()
-                NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
-                NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
+
                 self.performSegue(withIdentifier: "unwindToWalletView", sender: self)
                 //self.dismiss(animated: true, completion: nil)
                 

@@ -112,7 +112,12 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
         weak var pb: UIPasteboard? = .general
         guard let text = pb?.string else { return }
         self.privateKeyTextView.text = text
-        self.continueActive.toggle()
+        
+        self.continueActive = false
+        if text.count < 64 && self.continueActive || text.count >= 64 && !self.continueActive {
+            
+            self.continueActive = true
+        }
         self.changeContinueButtonStatus()
     }
     
@@ -138,6 +143,7 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
                     }
                 } else {
                     
+                    self.privateKeyTextView.text = ""
                     self.removeSpinner()
                 }
             }

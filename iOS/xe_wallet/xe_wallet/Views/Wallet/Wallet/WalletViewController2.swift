@@ -42,8 +42,9 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
         self.refreshControl?.addTarget(self, action: #selector(refresh), for: UIControl.Event.valueChanged)
         self.refreshControl?.tintColor = .white
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(onForceMainPageRefresh(_:)), name: .forceMainPageRefresh, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: .didReceiveData, object: nil)
+
         //NotificationCenter.default.addObserver(self, selector: #selector(appAppearedFromBackground), name: .appEnteredForeground, object: nil)
         
         self.selectedWalletAddress = WalletDataModelManager.shared.getInitialWalletAddress()
@@ -63,7 +64,6 @@ class WalletViewController2: UITableViewController, WalletCardsTableViewCellDele
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self)
     }
 
     @objc func onForceMainPageRefresh(_ notification: Notification) {

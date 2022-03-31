@@ -3357,7 +3357,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recent Transactions" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieh-Ve-FrH">
-                                            <rect key="frame" x="24" y="23" width="161.5" height="24"/>
+                                            <rect key="frame" x="24" y="23" width="146" height="24"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="24" id="Ihp-nC-XDI"/>
                                             </constraints>
@@ -3397,7 +3397,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKr-Fr-hz0">
-                                                    <rect key="frame" x="32" y="18.5" width="36" height="20"/>
+                                                    <rect key="frame" x="32" y="18.5" width="34.5" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="vIX-Wy-J5s"/>
                                                     </constraints>
