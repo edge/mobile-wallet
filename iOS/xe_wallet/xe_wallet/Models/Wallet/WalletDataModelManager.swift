@@ -49,9 +49,9 @@ class WalletDataModelManager {
         
         self.walletData = []
         self.loadWalletList()
+        self.reloadAllWalletInformation()
         NotificationCenter.default.post(name: .forceMainPageRefresh, object: nil)
         NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
-        self.reloadAllWalletInformation()
     }
     
     func checkForInvalidX() {
@@ -452,6 +452,9 @@ class WalletDataModelManager {
             
         var transaction: TransactionDataModel? = nil
         var wallet: WalletDataModel? = nil
+        
+        self.latestTransaction = transaction
+        self.latestTransactionWallet = wallet
         
         if self.walletData.count == 0 {
             

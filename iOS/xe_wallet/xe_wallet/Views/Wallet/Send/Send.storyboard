@@ -1097,15 +1097,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HS0-5W-Lga">
-                                                <rect key="frame" x="24" y="356" width="366" height="81"/>
+                                                <rect key="frame" x="24" y="356" width="366" height="91"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zt0-K9-wI4">
+                                                    <label userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zt0-K9-wI4">
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                                         <color key="textColor" systemColor="systemRedColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UKM-fk-scC">
-                                                        <rect key="frame" x="0.0" y="21" width="366" height="60"/>
+                                                        <rect key="frame" x="0.0" y="31" width="366" height="60"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Continue" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S5b-Mv-YhV">
                                                                 <rect key="frame" x="147" y="20.5" width="72" height="19"/>
@@ -1140,7 +1141,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="81" id="4KH-Cg-bOh"/>
+                                                    <constraint firstAttribute="height" constant="91" id="4KH-Cg-bOh"/>
                                                     <constraint firstItem="zt0-K9-wI4" firstAttribute="leading" secondItem="HS0-5W-Lga" secondAttribute="leading" id="KYY-Y5-NWn"/>
                                                     <constraint firstItem="zt0-K9-wI4" firstAttribute="top" secondItem="HS0-5W-Lga" secondAttribute="top" id="Oe5-fX-A7X"/>
                                                     <constraint firstItem="UKM-fk-scC" firstAttribute="leading" secondItem="HS0-5W-Lga" secondAttribute="leading" id="Ujf-iM-zx1"/>

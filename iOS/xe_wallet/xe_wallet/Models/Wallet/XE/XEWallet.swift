@@ -137,7 +137,7 @@ class XEWallet {
                             trans.timestamp = res.timestamp/1000
                             trans.sender = res.sender
                             trans.recipient = res.recipient
-                            trans.amount = Double(res.amount / 1000000)
+                            trans.amount = Double(res.amount) / 1000000
                             trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
                             trans.nonce = res.nonce
                             trans.signature = res.signature
