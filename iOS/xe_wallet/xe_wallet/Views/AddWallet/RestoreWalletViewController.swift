@@ -137,6 +137,8 @@ class RestoreWalletViewController: BaseViewController, UITextViewDelegate, Custo
                         self.errorLabel.text = "Wallet already exists"
                         self.privateKeyTextView.text = ""
                         self.removeSpinner()
+                        self.continueActive = false
+                        self.changeContinueButtonStatus()
                     } else {
                         
                         self.errorLabel.text = ""
