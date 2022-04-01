@@ -168,6 +168,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         
         self.toTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         self.amountTextField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
+        self.memoTextField.addTarget(self, action: #selector(self.memoTextFieldDidChange(_:)), for: .editingChanged)
     }
     
     
@@ -250,6 +251,17 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         self.checkForActiveContinueButton()
     }
     
+    @objc func memoTextFieldDidChange(_ textField: UITextField) {
+        
+        if let text = textField.text {
+            
+            let okayChars : Set<Character> =
+            Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890-:$")
+            var trimmedMemo =  String(text.filter {okayChars.contains($0) })
+            textField.text = trimmedMemo
+        }
+    }
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         if textField.tag == 0 {
@@ -266,7 +278,7 @@ class SendViewController: BaseViewController, UITextFieldDelegate, SendConfirmVi
         }
         return true
     }
-    
+
     func checkForActiveContinueButton() {
         
         var shouldBeActive = false

@@ -113,7 +113,7 @@ class WalletDataModelManager {
     
     public func saveWalletData() {
         
-        self.exchangeRefreshNeeded = true
+        //self.exchangeRefreshNeeded = true
         
         let wData = try! JSONEncoder().encode(self.walletData)
         UserDefaults.standard.set(wData, forKey: "\(AppDataModelManager.shared.getNetworkStatusString())WalletData")

@@ -243,7 +243,7 @@ class SendConfirmViewController: BaseViewController, UITextViewDelegate {
             let key = WalletDataModelManager.shared.loadWalletKey(key:wallet.address)
             var memoString = self.memo
             let okayChars : Set<Character> =
-                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890+-*=(),.:!_")
+                Set("abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLKMNOPQRSTUVWXYZ1234567890-:$")
             var trimmedMemo =  String(memoString.filter {okayChars.contains($0) })
             
             

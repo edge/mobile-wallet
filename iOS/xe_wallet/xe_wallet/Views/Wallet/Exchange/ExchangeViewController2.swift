@@ -118,7 +118,7 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
     
     func configureData() {
         
-        //self.walletData = WalletDataModelManager.shared.getWalletData()
+        self.walletData = WalletDataModelManager.shared.getWalletData()
         self.swapFromTokenType = self.walletData[self.selectedIndex].type
         if self.swapFromTokenType == .ethereum {
             
@@ -224,6 +224,15 @@ class ExchangeViewController2: UIViewController, ExchangeWalletSelectionViewCont
             
             self.toIndex = self.findFirstIndex(type: .xe)
             self.swapToTokenType = .xe
+        }
+    }
+    
+    func setToTokenDetails() {
+        
+        if self.walletData[self.toIndex].type == .ethereum {
+        
+            self.swapToTokenType = .edge
+
         }
     }
     
@@ -522,7 +531,7 @@ extension ExchangeViewController2 {
                 
                 self.toIndex = index
                 self.swapToTokenType = self.walletData[self.toIndex].type
-                self.setToWalletDetails()
+                self.setToTokenDetails()
                 self.configureSelectedWallet(clearValue: false)
 
             }

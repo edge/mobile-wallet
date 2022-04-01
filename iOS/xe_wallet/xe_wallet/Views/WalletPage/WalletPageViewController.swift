@@ -52,6 +52,11 @@ class WalletPageViewController: BaseViewController, UITableViewDelegate,  UITabl
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.configureViewsData()
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
