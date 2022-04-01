@@ -33,7 +33,14 @@ class LearnTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        NotificationCenter.default.addObserver(self, selector: #selector(forceUpdate(_:)), name: .learnForceUpdate, object: nil)
+        
         self.configureViews()
+        self.configureArrayData()
+    }
+    
+    @objc func forceUpdate(_ notification: Notification) {
+        
         self.configureArrayData()
     }
     
@@ -45,9 +52,16 @@ class LearnTableViewController: UITableViewController {
     
     func configureArrayData() {
         
+        self.learnCellArray = []
         self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 48, title: "About Edge", image: "", link: ""))
         self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Edge Network Website", image: "edge", link: "https://edge.network/"))
-        self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "XE Explorer", image: "xe", link: "https://xe.network/"))
+        if AppDataModelManager.shared.testModeStatus() == .test {
+            
+            self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "XE Explorer", image: "xe", link: "https://test.network/"))
+        } else {
+            
+            self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "XE Explorer", image: "xe", link: "https://xe.network/"))
+        }
         self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "Community Wiki", image: "wiki", link: "https://wiki.edge.network/"))
         self.learnCellArray.append(LearnTableData(cellType: "LearnHeaderTableViewCell", height: 58, title: "Help & Support", image: "", link: ""))
         self.learnCellArray.append(LearnTableData(cellType: "LearnMenuItemTableViewCell", height: 56, title: "FAQ", image: "faq", link: "https://wiki.edge.network/support/faq"))

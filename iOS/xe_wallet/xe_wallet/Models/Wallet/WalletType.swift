@@ -36,6 +36,7 @@ enum WalletNetworkStringData {
     case transaction
     case pendingTransaction
     case exploreButtonUrl
+    case stakedAmounts
 }
 
 enum WalletType: String, Codable {
@@ -138,12 +139,14 @@ enum WalletType: String, Codable {
                     return "https://xe1.test.network/transactions/pending/"
                 case .exploreButtonUrl:
                     return "https://test.network/transaction/"
+                case .stakedAmounts:
+                    return "https://index.test.network/stats/stakes"
                 }
                 
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts:
                     return ""
                         
                 case .transaction:
@@ -180,12 +183,14 @@ enum WalletType: String, Codable {
                     return "https://api.xe.network/transactions/pending/"
                 case .exploreButtonUrl:
                     return "https://xe.network/transaction/"
+                case .stakedAmounts:
+                    return "https://index.xe.network/stats/stakes"
                 }
                 
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts:
                     return ""
                     
                 case .transaction:

@@ -37,10 +37,10 @@ class XEStakedDataManagerManager {
     
     private init() {
         
-        self.downloadStakedData()
+        self.downloadStakedData(completion: {})
         self.timer = Timer.scheduledTimer(withTimeInterval: Constants.XE_GasPriceUpdateTime, repeats: true) { timer in
             
-            self.downloadStakedData()
+            self.downloadStakedData(completion: {})
         }
     }
     
@@ -53,9 +53,9 @@ class XEStakedDataManagerManager {
         return self.xeStakedDataModel
     }
         
-    func downloadStakedData() {
+    func downloadStakedData(completion: @escaping ()-> Void) {
         
-        Alamofire.request(Constants.XE_StakedAmountsUrl, method: .get, encoding: URLEncoding.queryString, headers: nil)
+        Alamofire.request(WalletType.xe.getDataNetwork(dataType: .stakedAmounts), method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 
@@ -72,7 +72,8 @@ class XEStakedDataManagerManager {
                 do {
 
                     self.xeStakedDataModel = try JSONDecoder().decode(XEStakedDataModel.self, from: response.data!)
-
+                    completion()
+                    
                 } catch let error as NSError {
                     print("Failed to load: \(String(describing: error))")
                 }

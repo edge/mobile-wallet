@@ -32,14 +32,25 @@ class EarnTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     
+        NotificationCenter.default.addObserver(self, selector: #selector(forceUpdate(_:)), name: .earnForceUpdate, object: nil)
+        
         self.tableView.contentInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
         
         self.configureArrayData()
         self.tableView.separatorColor = .clear
     }
     
+    @objc func forceUpdate(_ notification: Notification) {
+        
+        XEStakedDataManagerManager.shared.downloadStakedData(completion: {
+            
+            self.configureArrayData()
+        })
+    }
+    
     func configureArrayData() {
         
+        self.earnSegments = []
         let stakedData = XEStakedDataManagerManager.shared.getStakeData()
         var stakedCount = "0"
         if let count = stakedData?.count {
@@ -59,6 +70,8 @@ class EarnTableViewController: UITableViewController {
         
         
         self.earnSegments.append(EarnSegmentData(type: .ethereum, header: "Eth Staking", body: "Stake against Ethereum 2.0 nodes running in the Edge Network and earn rewards.", data: []))//["Total staked", "Coming Soon", "Current APY", "Coming Soon"]))
+    
+        self.tableView.reloadData()
     }
 }
 

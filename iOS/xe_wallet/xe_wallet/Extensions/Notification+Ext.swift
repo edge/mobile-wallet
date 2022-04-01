@@ -16,4 +16,6 @@ extension Notification.Name {
     static let exchangeSetDefaultCard = Notification.Name("exchangeSetDefaultCard")
     static let saveAllWalletData = Notification.Name("saveAllWalletData")
     static let appEnteredForeground = Notification.Name("appEnteredForeground")
+    static let learnForceUpdate = Notification.Name("learnForceUpdate")
+    static let earnForceUpdate = Notification.Name("earnForceUpdate")
 }
