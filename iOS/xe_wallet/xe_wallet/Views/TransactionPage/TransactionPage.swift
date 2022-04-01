@@ -155,8 +155,14 @@ class TransactionPageViewController: BaseViewController{
                 if let gas = self.transactionData?.gas {
                 
                     let price = (Double(gas) ?? 0.0)/1000000000
-                    let rate = Double(EtherExchangeRatesManager.shared.getRateValue()) * price
-                    self.memoTextLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: price)) Ether ($\(StringHelpers.generateValueString(value: Double(truncating: rate as! NSNumber))))"
+                    var cost = 0.0
+                    if let gasUsed = self.transactionData?.gasUsed {
+                        
+                        cost = price * (Double(gasUsed) ?? 0.0)
+                    }
+                    
+                    //let rate = Double(EtherExchangeRatesManager.shared.getRateValue()) * price
+                    self.memoTextLabel.text = "\(CryptoHelpers.generateCryptoValueString(value: price)) Ether ($\(StringHelpers.generateValueString(value: Double(truncating: cost as! NSNumber))))"
                 }
             }
             

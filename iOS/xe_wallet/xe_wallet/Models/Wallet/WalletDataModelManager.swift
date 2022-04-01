@@ -54,6 +54,7 @@ class WalletDataModelManager {
         NotificationCenter.default.post(name: .forceRefreshOnChange, object: nil)
         NotificationCenter.default.post(name: .earnForceUpdate, object: nil)
         NotificationCenter.default.post(name: .learnForceUpdate, object: nil)
+        XEGasRatesManager.shared.downloadGasRates()
     }
     
     func checkForInvalidX() {
