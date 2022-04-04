@@ -8,10 +8,17 @@
 import UIKit
 import PanModal
 
+protocol ManageBackupViewControllerDelegate {
+
+    func closeWindow()
+}
+
 class ManageBackupViewController: BaseViewController {
 
     @IBOutlet weak var walletAddressLabel: UILabel!
     @IBOutlet weak var privateKeyLabel: UILabel!
+    
+    var delegate: ManageBackupViewControllerDelegate? = nil
     
     var data: WalletDataModel? = nil
     
@@ -41,6 +48,7 @@ class ManageBackupViewController: BaseViewController {
     
     @IBAction func closeButtonPressed(_ sender: Any) {
         
+        self.delegate?.closeWindow()
         self.dismiss(animated: true, completion: nil)
     }
 }
