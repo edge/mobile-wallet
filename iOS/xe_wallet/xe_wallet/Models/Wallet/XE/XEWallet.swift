@@ -171,10 +171,10 @@ class XEWallet {
     }
     
  
-    func downloadSomeTransactions(address: String, block: Int, completion: @escaping ([TransactionDataModel]?)-> Void) {
+    func downloadSingleTransaction(address: String, hash: String, completion: @escaping (TransactionDataModel?)-> Void) {
         
-        let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
-        Alamofire.request("\(urlTransactions)\(address)?above=\(block-1)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+        let urlTransaction = WalletType.xe.getDataNetwork(dataType: .singleTransaction)
+        Alamofire.request("\(urlTransaction)\(hash)", method: .get, encoding: URLEncoding.queryString, headers: nil)
          .validate()
          .responseJSON { response in
 
@@ -184,38 +184,28 @@ class XEWallet {
 
                 do {
 
-                    var data = try JSONDecoder().decode(XETransactionsDataModel.self, from: response.data!)
-
-                    var transArray:[TransactionDataModel] = []
-                    if let results = data.results {
+                    var data = try JSONDecoder().decode(XETransactionRecordDataModel.self, from: response.data!)
+                    var trans = TransactionDataModel()
+                    trans.timestamp = data.timestamp/1000
+                    trans.sender = data.sender
+                    trans.recipient = data.recipient
+                    trans.amount = Double(data.amount) / 1000000
+                    trans.data = TransactionDataDataModel(memo: data.data?.memo ?? "")
+                    trans.nonce = data.nonce
+                    trans.signature = data.signature
+                    trans.hash = data.hash
+                    trans.block = TransactionBlockDataModel(height: data.block?.height ?? 0, hash: data.block?.hash ?? "")
+                    trans.confirmations = data.confirmations
+                    if let stat = data.status {
                         
-                        for res in results {
-                            
-                            var trans = TransactionDataModel()
-                            
-                            trans.timestamp = res.timestamp/1000
-                            trans.sender = res.sender
-                            trans.recipient = res.recipient
-                            trans.amount = Double(res.amount) / 1000000
-                            trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
-                            trans.nonce = res.nonce
-                            trans.signature = res.signature
-                            trans.hash = res.hash
-                            trans.block = TransactionBlockDataModel(height: res.block?.height ?? 0, hash: res.block?.hash ?? "")
-                            trans.confirmations = res.confirmations
-                            if let stat = res.status {
-                                
-                                trans.status = stat
-                            } else {
-                                
-                                trans.status = .confirmed
-                            }
-                            
-                            trans.type = .xe
-                            transArray.append(trans)
-                        }
+                        trans.status = stat
+                    } else {
+                        
+                        trans.status = .confirmed
                     }
-                    completion(transArray)
+                    
+                    trans.type = .xe
+                    completion(trans)
 
                 } catch let error as NSError {
                     

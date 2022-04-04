@@ -244,11 +244,11 @@ class WalletDataModelManager {
         }
     }
     
-    public func updateXETransactions(address: String, block: Int, completion: @escaping (Bool)-> Void) {
+    public func updateXETransaction(address: String, hash: String, completion: @escaping (Bool)-> Void) {
         
-        XEWallet().downloadSomeTransactions(address: address, block: block, completion: { response in
+        XEWallet().downloadSingleTransaction(address: address, hash: hash, completion: { response in
         
-            if let transactions = response {
+            if let transaction = response {
                 
                 if let index = self.walletData.firstIndex(where: { $0.address == address }) {
 
@@ -257,16 +257,16 @@ class WalletDataModelManager {
                         
                         newTrans = oldTrans
                     }
-                    for trans in transactions {
+   
+                    if let index2 = newTrans.firstIndex(where: { $0.hash == transaction.hash }) {
                             
-                        if let index2 = newTrans.firstIndex(where: { $0.hash == trans.hash }) {
+                        newTrans[index2] = transaction
+                    } else {
                             
-                            newTrans[index2] = trans
-                        } else {
-                            
-                            newTrans.append(trans)
-                        }
+                        newTrans.append(transaction)
                     }
+
+                    self.walletData[index].transactions = newTrans
                     self.saveWalletData()
                 }
             }

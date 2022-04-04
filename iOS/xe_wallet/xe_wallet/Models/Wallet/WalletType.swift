@@ -34,6 +34,7 @@ enum WalletNetworkStringData {
     case gasExchangeHistory
     case send
     case transaction
+    case singleTransaction
     case pendingTransaction
     case exploreButtonUrl
     case stakedAmounts
@@ -135,6 +136,8 @@ enum WalletType: String, Codable {
                     return "https://xe1.test.network/transaction"
                 case .transaction:
                     return "https://index.test.network/transactions/"
+                case .singleTransaction:
+                    return "https://index.test.network/transaction/"
                 case .pendingTransaction:
                     return "https://xe1.test.network/transactions/pending/"
                 case .exploreButtonUrl:
@@ -146,7 +149,7 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts, .singleTransaction:
                     return ""
                         
                 case .transaction:
@@ -179,6 +182,8 @@ enum WalletType: String, Codable {
                     return "https://api.xe.network/transaction"
                 case .transaction:
                     return "https://index.xe.network/transactions/"
+                case .singleTransaction:
+                    return "https://index.xe.network/transaction/"
                 case .pendingTransaction:
                     return "https://api.xe.network/transactions/pending/"
                 case .exploreButtonUrl:
@@ -190,7 +195,7 @@ enum WalletType: String, Codable {
             case .edge, .ethereum, .usdc:
                 switch dataType {
                     
-                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts:
+                case .status, .summary, .gasRates, .gasExchangeRates, .gasExchangeCurrent, .gasExchangeHistory, .send, .pendingTransaction, .stakedAmounts, .singleTransaction:
                     return ""
                     
                 case .transaction:

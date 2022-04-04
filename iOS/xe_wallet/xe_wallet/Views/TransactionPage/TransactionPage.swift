@@ -58,7 +58,7 @@ class TransactionPageViewController: BaseViewController{
         if walletType == .xe {
             
             if let trans = self.transactionData {
-                WalletDataModelManager.shared.updateXETransactions(address: self.walletAddress, block: trans.block?.height ?? 0, completion: { _ in
+                WalletDataModelManager.shared.updateXETransaction(address: self.walletAddress, hash: trans.hash, completion: { _ in
                 })
             }
         }
