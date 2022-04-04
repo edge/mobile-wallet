@@ -170,9 +170,64 @@ class XEWallet {
          }
     }
     
-    
-    
-    
+ 
+    func downloadSomeTransactions(address: String, block: Int, completion: @escaping ([TransactionDataModel]?)-> Void) {
+        
+        let urlTransactions = WalletType.xe.getDataNetwork(dataType: .transaction)
+        Alamofire.request("\(urlTransactions)\(address)?above=\(block-1)", method: .get, encoding: URLEncoding.queryString, headers: nil)
+         .validate()
+         .responseJSON { response in
+
+            switch (response.result) {
+
+                case .success( _):
+
+                do {
+
+                    var data = try JSONDecoder().decode(XETransactionsDataModel.self, from: response.data!)
+
+                    var transArray:[TransactionDataModel] = []
+                    if let results = data.results {
+                        
+                        for res in results {
+                            
+                            var trans = TransactionDataModel()
+                            
+                            trans.timestamp = res.timestamp/1000
+                            trans.sender = res.sender
+                            trans.recipient = res.recipient
+                            trans.amount = Double(res.amount) / 1000000
+                            trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
+                            trans.nonce = res.nonce
+                            trans.signature = res.signature
+                            trans.hash = res.hash
+                            trans.block = TransactionBlockDataModel(height: res.block?.height ?? 0, hash: res.block?.hash ?? "")
+                            trans.confirmations = res.confirmations
+                            if let stat = res.status {
+                                
+                                trans.status = stat
+                            } else {
+                                
+                                trans.status = .confirmed
+                            }
+                            
+                            trans.type = .xe
+                            transArray.append(trans)
+                        }
+                    }
+                    completion(transArray)
+
+                } catch let error as NSError {
+                    
+                    print("Failed to load: \(String(describing: error))")
+                    completion(nil)
+                }
+                case .failure(let error):
+                    print("Request error: \(String(describing: error))")
+                    completion(nil)
+             }
+         }
+    }
     
     
     public func downloadStatus(address: String, completion: @escaping (WalletStatusDataModel?)-> Void) {
@@ -244,7 +299,7 @@ class XEWallet {
                             trans.timestamp = res.timestamp/1000
                             trans.sender = res.sender
                             trans.recipient = res.recipient
-                            trans.amount = Double(res.amount / 1000000)
+                            trans.amount = Double(res.amount) / 1000000
                             trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
                             trans.nonce = res.nonce
                             trans.signature = res.signature
@@ -302,7 +357,7 @@ class XEWallet {
                             trans.timestamp = res.timestamp/1000
                             trans.sender = res.sender
                             trans.recipient = res.recipient
-                            trans.amount = Double(res.amount / 1000000)
+                            trans.amount = Double(res.amount) / 1000000
                             trans.data = TransactionDataDataModel(memo: res.data?.memo ?? "")
                             trans.nonce = res.nonce
                             trans.signature = res.signature

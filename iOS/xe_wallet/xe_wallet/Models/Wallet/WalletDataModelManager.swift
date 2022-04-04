@@ -244,6 +244,36 @@ class WalletDataModelManager {
         }
     }
     
+    public func updateXETransactions(address: String, block: Int, completion: @escaping (Bool)-> Void) {
+        
+        XEWallet().downloadSomeTransactions(address: address, block: block, completion: { response in
+        
+            if let transactions = response {
+                
+                if let index = self.walletData.firstIndex(where: { $0.address == address }) {
+
+                    var newTrans: [TransactionDataModel] = []
+                    if let oldTrans = self.walletData[index].transactions {
+                        
+                        newTrans = oldTrans
+                    }
+                    for trans in transactions {
+                            
+                        if let index2 = newTrans.firstIndex(where: { $0.hash == trans.hash }) {
+                            
+                            newTrans[index2] = trans
+                        } else {
+                            
+                            newTrans.append(trans)
+                        }
+                    }
+                    self.saveWalletData()
+                }
+            }
+        })
+    }
+
+    
     private func handleXEUpdates(addresses: [String]) {
                 
         XEWallet().downloadAllWalletData(addresses: addresses, completion: { response in
@@ -268,7 +298,7 @@ class WalletDataModelManager {
                                 trans.timestamp = pend.timestamp/1000
                                 trans.sender = pend.sender
                                 trans.recipient = pend.recipient
-                                trans.amount = Double(pend.amount / 1000000)
+                                trans.amount = Double(pend.amount) / 1000000
                                 trans.data = TransactionDataDataModel(memo: pend.data?.memo ?? "")
                                 trans.nonce = pend.nonce
                                 trans.signature = pend.signature

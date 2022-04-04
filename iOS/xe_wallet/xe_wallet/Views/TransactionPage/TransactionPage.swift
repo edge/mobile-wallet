@@ -55,6 +55,14 @@ class TransactionPageViewController: BaseViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        if walletType == .xe {
+            
+            if let trans = self.transactionData {
+                WalletDataModelManager.shared.updateXETransactions(address: self.walletAddress, block: trans.block?.height ?? 0, completion: { _ in
+                })
+            }
+        }
+        
         self.configureViewsData()
         self.timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             
