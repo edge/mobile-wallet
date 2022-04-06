@@ -71,7 +71,16 @@ class WalletPageAssetTableViewCell: UITableViewCell {
             
             let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: data.type)
             self.tokenChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-            self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: data.type)
+            
+            if percent > 0 {
+            
+                self.tokenChangeLabel.textColor = UIColor(named: "XEGreen")
+                self.tokenChangeImage.image = UIImage(named:"trendlineUp")
+            } else {
+                
+                self.tokenChangeLabel.textColor = UIColor(named: "FontSecondary")
+                self.tokenChangeImage.image = UIImage(named:"trendlineDown")
+            }
         }
     }
 }
