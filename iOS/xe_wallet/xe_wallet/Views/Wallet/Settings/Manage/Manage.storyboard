@@ -355,8 +355,8 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Fo-kS-B94">
                                                 <rect key="frame" x="0.0" y="0.0" width="366" height="81"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm with PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYZ-KL-n1J">
-                                                        <rect key="frame" x="0.0" y="0.0" width="113" height="17"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock with PIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYZ-KL-n1J">
+                                                        <rect key="frame" x="0.0" y="0.0" width="106" height="17"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="17" id="ze7-o5-Kvo"/>
                                                         </constraints>

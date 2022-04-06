@@ -29,11 +29,11 @@ class Constants {
     /// authentication messages
     ///
     static var confirmIncorrectPinMessageHeader = "Incorrect PIN"
-    static var confirmIncorrectPinMessageBody = "The PIN does not match previously entered PIN.  Please try again"
+    static var confirmIncorrectPinMessageBody = "The PIN does not match previously entered PIN. Please try again"
     static var confirmIncorrectPinButtonText = "Retry"
     
     static var enterIncorrectPinMessageHeader = "Incorrect PIN"
-    static var enterIncorrectPinMessageBody = "You entered an incorrect PIN.  Please try again"
+    static var enterIncorrectPinMessageBody = "The PIN entered is incorrect. Please try again."
     static var enterIncorrectPinButtonText = "Retry"
     
     /// settings network change messages

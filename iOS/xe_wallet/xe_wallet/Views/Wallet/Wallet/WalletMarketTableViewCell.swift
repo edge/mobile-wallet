@@ -58,12 +58,14 @@ class WalletMarketTableViewCell: UITableViewCell {
         let percent = XEExchangeRateHistoryManager.shared.getRateHistoryPercentage(type: type)
         
         self.tokenPercentChangeLabel.text = "\(String(format: "%.2f", Double(percent)))%"
-        if XEExchangeRateHistoryManager.shared.getRatePerformanceDir(type: self.type) {
+        if percent > 0 {
         
             self.tokenPercentChangeLabel.textColor = UIColor(named: "XEGreen")
+            self.tokenChangeImage.image = UIImage(named:"trendlineUp")
         } else {
             
             self.tokenPercentChangeLabel.textColor = UIColor(named: "FontSecondary")
+            self.tokenChangeImage.image = UIImage(named:"trendlineDown")
         }
         
         if data == "Ethereum" {
@@ -76,7 +78,7 @@ class WalletMarketTableViewCell: UITableViewCell {
         self.tokenImage.image = UIImage(named:type.rawValue)
         self.tokenNameLabel.text = self.type.getDataString(dataType: .fullNameLabel)
         self.tokenAbvLabel.text = self.type.getDataString(dataType: .coinSymbolLabel)
-        self.tokenChangeImage.image = XEExchangeRateHistoryManager.shared.getRatePerformanceImage(type: self.type)
+        
     }
     
     private func generatePointEntries() -> [PointEntry] {

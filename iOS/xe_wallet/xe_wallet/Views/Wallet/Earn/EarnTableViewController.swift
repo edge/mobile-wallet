@@ -63,7 +63,7 @@ class EarnTableViewController: UITableViewController {
             stakedAmount = "\(CryptoHelpers.generateCryptoValueStringNoDecimal(value: amount/1000000 ?? 0))"
         }
         
-        self.earnSegments.append(EarnSegmentData(type: .xe, header: "XE Staking", body: "Start earning rewards on your XE today.  Simplified staking with no minimum requirements and instant activation.", data: ["Stakes", stakedCount, "Staked XE", stakedAmount]))
+        self.earnSegments.append(EarnSegmentData(type: .xe, header: "XE Staking", body: "Earn rewards on your XE. Simplified staking with no minimum requirements and instant activation. Coming soon.", data: ["Stakes", stakedCount, "Staked XE", stakedAmount]))
         
 //        Stargates / Gateways / Hosts
         self.earnSegments.append(EarnSegmentData(type: .edge, header: "Run a Node", body: "Contribute your spare capacity to the Edge Network and earn passive income.", data: [])) //["Stargates", "TBC", "Gateways", "TBC", "Hosts", "TBC"]))

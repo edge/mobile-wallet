@@ -406,7 +406,7 @@ class ExchangeWalletReviewViewController: BaseViewController {
                             self.handleExchangeAuthenticated()
                         } else {
                                                         
-                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.enterIncorrectPinMessageBody, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
 
                                 self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)

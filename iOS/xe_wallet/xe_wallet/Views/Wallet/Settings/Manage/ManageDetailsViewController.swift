@@ -94,16 +94,6 @@ class ManageDetailsViewController: BaseViewController, UITextViewDelegate {
                 }
             }
         })
-        
-        
-
-        
-        /*DispatchQueue.main.asyncAfter(deadline: .now()) {
-        
-            let contentVC = UIStoryboard(name: "Manage", bundle: nil).instantiateViewController(withIdentifier: "ManageBackupViewController") as! ManageBackupViewController
-            contentVC.data = self.data
-            self.presentPanModal(contentVC)
-        }*/
     }
     
     func checkRemoveButton() {
@@ -176,7 +166,7 @@ class ManageDetailsViewController: BaseViewController, UITextViewDelegate {
                             }
                         } else {
                                                         
-                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.confirmIncorrectPinMessageBody, preferredStyle: .alert)
+                            let alert = UIAlertController(title: Constants.confirmIncorrectPinMessageHeader, message: Constants.enterIncorrectPinMessageBody, preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: Constants.confirmIncorrectPinButtonText, style: .default, handler: { action in
 
                                 self._pinEntryView.unwrapped.setBoxesUsed(amt: 0)
