@@ -1,0 +1,16 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '13.0'
+
+target 'xe_wallet' do
+   	use_frameworks!
+	pod 'SwiftKeychainWrapper'
+	pod 'FAPaginationLayout'
+	pod 'web3swift', :git => 'https://github.com/skywinder/web3swift', :branch => 'develop'
+	pod 'Alamofire', '~> 4.4'
+	pod 'DataCache'
+	pod 'SwiftyJSON', '~> 4.0'
+	pod 'AnyCodable-FlightSchool', '~> 0.6.0'
+	pod 'DropDown'
+	pod 'Tisander', '~> 1.0'
+	pod 'MercariQRScanner'
+end

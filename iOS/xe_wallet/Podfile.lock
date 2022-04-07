@@ -1,0 +1,89 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AnyCodable-FlightSchool (0.6.2)
+  - BigInt (5.2.0)
+  - CryptoSwift (1.4.2)
+  - DataCache (1.6.0)
+  - DropDown (2.3.13)
+  - FAPaginationLayout (2.0.1)
+  - MercariQRScanner (1.9.0)
+  - PromiseKit (6.15.3):
+    - PromiseKit/CorePromise (= 6.15.3)
+    - PromiseKit/Foundation (= 6.15.3)
+    - PromiseKit/UIKit (= 6.15.3)
+  - PromiseKit/CorePromise (6.15.3)
+  - PromiseKit/Foundation (6.15.3):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.15.3):
+    - PromiseKit/CorePromise
+  - secp256k1.c (0.1.2)
+  - Starscream (4.0.4)
+  - SwiftKeychainWrapper (4.0.1)
+  - SwiftyJSON (4.3.0)
+  - Tisander (1.0.0)
+  - web3swift (2.5.0):
+    - BigInt (~> 5.2.0)
+    - CryptoSwift (~> 1.4.2)
+    - PromiseKit (~> 6.15.3)
+    - secp256k1.c (~> 0.1)
+    - Starscream (~> 4.0.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - AnyCodable-FlightSchool (~> 0.6.0)
+  - DataCache
+  - DropDown
+  - FAPaginationLayout
+  - MercariQRScanner
+  - SwiftKeychainWrapper
+  - SwiftyJSON (~> 4.0)
+  - Tisander (~> 1.0)
+  - web3swift (from `https://github.com/skywinder/web3swift`, branch `develop`)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AnyCodable-FlightSchool
+    - BigInt
+    - CryptoSwift
+    - DataCache
+    - DropDown
+    - FAPaginationLayout
+    - MercariQRScanner
+    - PromiseKit
+    - secp256k1.c
+    - Starscream
+    - SwiftKeychainWrapper
+    - SwiftyJSON
+    - Tisander
+
+EXTERNAL SOURCES:
+  web3swift:
+    :branch: develop
+    :git: https://github.com/skywinder/web3swift
+
+CHECKOUT OPTIONS:
+  web3swift:
+    :commit: 5b45521c05006195ccd5109d24570e35150c87e1
+    :git: https://github.com/skywinder/web3swift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AnyCodable-FlightSchool: ac75ed9bae659e16a41ebfa6c71a663d6f2c111c
+  BigInt: f668a80089607f521586bbe29513d708491ef2f7
+  CryptoSwift: a532e74ed010f8c95f611d00b8bbae42e9fe7c17
+  DataCache: 5f24b356848a37469dbebec89c28ca88b4ef9294
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  FAPaginationLayout: 5f9d95fbd94dff12f863c196640bd797abe68907
+  MercariQRScanner: e5aea873969af59b09b4cc411fc1c5b6293dba44
+  PromiseKit: 3b2b6995e51a954c46dbc550ce3da44fbfb563c5
+  secp256k1.c: db47b726585d80f027423682eb369729e61b3b20
+  Starscream: 5178aed56b316f13fa3bc55694e583d35dd414d9
+  SwiftKeychainWrapper: 807ba1d63c33a7d0613288512399cd1eda1e470c
+  SwiftyJSON: 6faa0040f8b59dead0ee07436cbf76b73c08fd08
+  Tisander: 4d6b710f944c5bab1a0cd98050895942a374db32
+  web3swift: 31ecb7a7da543f851344cdd64badea94c439b0d9
+
+PODFILE CHECKSUM: be63c1d559493c4039458126671ad17685b95beb
+
+COCOAPODS: 1.10.1

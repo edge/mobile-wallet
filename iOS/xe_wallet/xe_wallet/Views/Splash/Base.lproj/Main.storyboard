@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Splash View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="SplashViewController" id="BYZ-38-t0r" customClass="SplashViewController" customModule="xe_wallet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Pyj-Et-QD7">
+                                <rect key="frame" x="152" y="406.5" width="110" height="83"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" name="BackgroundMain"/>
+                        <constraints>
+                            <constraint firstItem="Pyj-Et-QD7" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Aux-Gq-HPE"/>
+                            <constraint firstItem="Pyj-Et-QD7" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Ot8-Dv-i0N"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="Mss-Ww-wAW" kind="show" identifier="ShowEnterPinViewController" animates="NO" id="flK-Qo-R2g"/>
+                        <segue destination="6X8-1K-yJb" kind="show" identifier="ShowCreatePinViewController" animates="NO" id="DUb-Wf-Zlb"/>
+                        <segue destination="1tM-f5-k4B" kind="unwind" identifier="" unwindAction="unwindToSplashViewWithSender:" id="UrN-5F-y4g"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="1tM-f5-k4B" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="-280" y="872"/>
+        </scene>
+        <!--EnterPinViewController-->
+        <scene sceneID="Esp-5o-gfh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AppAuth" referencedIdentifier="EnterPinViewController" id="Mss-Ww-wAW" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0YJ-oE-GdP"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bvY-sj-O6J" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="806"/>
+        </scene>
+        <!--CreatePinViewController-->
+        <scene sceneID="3FU-I9-Zhz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AppAuth" referencedIdentifier="CreatePinViewController" id="6X8-1K-yJb" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="x9n-Fu-dfL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="McQ-CB-HN5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="938"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo" width="110" height="83"/>
+        <namedColor name="BackgroundMain">
+            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

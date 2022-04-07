@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PinEntryView" customModule="xe_wallet" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="gWI-VL-gXt">
+                    <rect key="frame" x="0.0" y="0.0" width="382" height="60"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ubg-KI-0Ic">
+                            <rect key="frame" x="0.0" y="0.0" width="58.5" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pW-MF-2Ol">
+                                    <rect key="frame" x="19.5" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="9z1-et-EdO"/>
+                                        <constraint firstAttribute="width" constant="20" id="eh8-8b-PQq"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="9pW-MF-2Ol" firstAttribute="centerY" secondItem="ubg-KI-0Ic" secondAttribute="centerY" id="GVa-di-jNT"/>
+                                <constraint firstItem="9pW-MF-2Ol" firstAttribute="centerX" secondItem="ubg-KI-0Ic" secondAttribute="centerX" id="LFh-w1-uJa"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aPC-fH-6xI">
+                            <rect key="frame" x="64.5" y="0.0" width="59" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6D-aU-RMI">
+                                    <rect key="frame" x="19.5" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="bCX-r2-yxq"/>
+                                        <constraint firstAttribute="height" constant="20" id="ceV-dw-F7i"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="e6D-aU-RMI" firstAttribute="centerY" secondItem="aPC-fH-6xI" secondAttribute="centerY" id="02D-G5-oIA"/>
+                                <constraint firstItem="e6D-aU-RMI" firstAttribute="centerX" secondItem="aPC-fH-6xI" secondAttribute="centerX" id="VmX-sp-aIX"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m4u-Ou-i0U">
+                            <rect key="frame" x="129.5" y="0.0" width="58.5" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uo1-hF-eQi">
+                                    <rect key="frame" x="19" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="s0S-aL-f0r"/>
+                                        <constraint firstAttribute="width" constant="20" id="tl4-mO-VoK"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="Uo1-hF-eQi" firstAttribute="centerY" secondItem="m4u-Ou-i0U" secondAttribute="centerY" id="1W9-Fb-f0n"/>
+                                <constraint firstItem="Uo1-hF-eQi" firstAttribute="centerX" secondItem="m4u-Ou-i0U" secondAttribute="centerX" id="UFw-eH-yRd"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT8-AN-30W">
+                            <rect key="frame" x="194" y="0.0" width="58.5" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tNp-Yo-7KZ">
+                                    <rect key="frame" x="19.5" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="QYK-bx-tSY"/>
+                                        <constraint firstAttribute="height" constant="20" id="TGu-kJ-30C"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="tNp-Yo-7KZ" firstAttribute="centerX" secondItem="bT8-AN-30W" secondAttribute="centerX" id="KR6-5u-AS8"/>
+                                <constraint firstItem="tNp-Yo-7KZ" firstAttribute="centerY" secondItem="bT8-AN-30W" secondAttribute="centerY" id="f88-qZ-neS"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zb0-Ur-mYz">
+                            <rect key="frame" x="258.5" y="0.0" width="59" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YzX-9C-hD8">
+                                    <rect key="frame" x="19.5" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="ZvI-X2-raU"/>
+                                        <constraint firstAttribute="height" constant="20" id="kAz-Ke-jLL"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="YzX-9C-hD8" firstAttribute="centerY" secondItem="Zb0-Ur-mYz" secondAttribute="centerY" id="Fpk-Te-7cj"/>
+                                <constraint firstItem="YzX-9C-hD8" firstAttribute="centerX" secondItem="Zb0-Ur-mYz" secondAttribute="centerX" id="bkN-ql-q1s"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hYI-RN-odv">
+                            <rect key="frame" x="323.5" y="0.0" width="58.5" height="60"/>
+                            <subviews>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-4Q-Xxn">
+                                    <rect key="frame" x="19" y="20" width="20" height="20"/>
+                                    <color key="backgroundColor" name="ButtonGreen"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="20" id="RPv-iG-SP8"/>
+                                        <constraint firstAttribute="width" constant="20" id="pqW-VC-zhP"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="10"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </view>
+                            </subviews>
+                            <color key="backgroundColor" name="MainBlack"/>
+                            <constraints>
+                                <constraint firstItem="ap5-4Q-Xxn" firstAttribute="centerX" secondItem="hYI-RN-odv" secondAttribute="centerX" id="6km-3j-KYH"/>
+                                <constraint firstItem="ap5-4Q-Xxn" firstAttribute="centerY" secondItem="hYI-RN-odv" secondAttribute="centerY" id="Phd-qp-hZs"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" name="BackgroundMain"/>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="gWI-VL-gXt" secondAttribute="bottom" id="0MV-cf-h2f"/>
+                <constraint firstItem="gWI-VL-gXt" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4xK-Q2-p3o"/>
+                <constraint firstItem="gWI-VL-gXt" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="nwm-5w-EPY"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gWI-VL-gXt" secondAttribute="trailing" id="rYS-Ab-8go"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="stackView" destination="gWI-VL-gXt" id="fcb-Ff-adG"/>
+                <outletCollection property="pinTickBoxes" destination="9pW-MF-2Ol" collectionClass="NSMutableArray" id="hga-4L-IaX"/>
+                <outletCollection property="pinTickBoxes" destination="e6D-aU-RMI" collectionClass="NSMutableArray" id="dcK-Tl-Iix"/>
+                <outletCollection property="pinTickBoxes" destination="Uo1-hF-eQi" collectionClass="NSMutableArray" id="sbV-ei-btT"/>
+                <outletCollection property="pinTickBoxes" destination="tNp-Yo-7KZ" collectionClass="NSMutableArray" id="qDA-sj-oNn"/>
+                <outletCollection property="pinTickBoxes" destination="YzX-9C-hD8" collectionClass="NSMutableArray" id="axy-dU-0qh"/>
+                <outletCollection property="pinTickBoxes" destination="ap5-4Q-Xxn" collectionClass="NSMutableArray" id="AFm-UH-Rsi"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="74"/>
+        </view>
+    </objects>
+    <resources>
+        <namedColor name="BackgroundMain">
+            <color red="0.11372549019607843" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ButtonGreen">
+            <color red="0.054999999701976776" green="0.80000001192092896" blue="0.37299999594688416" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="MainBlack">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
