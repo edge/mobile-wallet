@@ -89,11 +89,12 @@ class ExchangeWalletSelectionViewController: BaseViewController, UITableViewDele
             let edgeBalance = wallet.status?.getTokenBalance(type: .edge)
             self.tokenData.append(ExchangeTokenSelectionDataModel(type:.edge, address: "Edge", abv: "$EDGE", balance:edgeBalance ?? 0.0, value: edgeBalance ?? 0.0))
             
-            if self.tag != 1 {
-            
-                let usdcBalance = wallet.status?.getTokenBalance(type: .usdc)
-                self.tokenData.append(ExchangeTokenSelectionDataModel(type:.usdc, address: "USDC", abv: "$USDC", balance:usdcBalance ?? 0.0, value:usdcBalance ?? 0.0))
-            }
+// https://github.com/edge/mobile-wallet/issues/15
+//            if self.tag != 1 {
+//
+//                let usdcBalance = wallet.status?.getTokenBalance(type: .usdc)
+//                self.tokenData.append(ExchangeTokenSelectionDataModel(type:.usdc, address: "USDC", abv: "$USDC", balance:usdcBalance ?? 0.0, value:usdcBalance ?? 0.0))
+//            }
         }
         self.tableView.reloadData()
     }
